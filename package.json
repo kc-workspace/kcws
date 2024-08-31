@@ -1,14 +1,47 @@
 {
-  "name": "@kcws-js/source",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {},
+  "name": "@kcws/root",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "@nx/js": "19.6.4",
-    "@nx/workspace": "19.6.4",
-    "nx": "19.6.4"
+  "version": "0.0.0",
+  "scripts": {
+    "generate": "nx generate",
+    "format": "nx format:write",
+    "lint": "nx format:check",
+    "start": "pnpm nx affected -t lint test build",
+    "start:ci": "pnpm nx affected -t lint test build"
   },
-  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
+  "devDependencies": {
+    "@nx/eslint": "19.6.4",
+    "@nx/eslint-plugin": "19.6.4",
+    "@nx/js": "19.6.4",
+    "@nx/node": "19.6.4",
+    "@nx/plugin": "19.6.4",
+    "@nx/vite": "19.6.4",
+    "@nx/web": "19.6.4",
+    "@nx/workspace": "19.6.4",
+    "@swc-node/register": "1.10.9",
+    "@swc/core": "1.7.22",
+    "@swc/helpers": "0.5.12",
+    "@types/node": "22.5.1",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
+    "@vitest/coverage-v8": "2.0.5",
+    "@vitest/ui": "2.0.5",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "nx": "19.6.4",
+    "prettier": "3.3.3",
+    "tslib": "2.7.0",
+    "typescript": "5.5.4",
+    "verdaccio": "5.32.1",
+    "vite": "5.4.2",
+    "vite-plugin-dts": "4.0.3",
+    "vitest": "2.0.5"
+  },
+  "packageManager": "pnpm@9.9.0",
+  "nx": {
+    "includedScripts": []
+  },
+  "peerDependencies": {
+    "tslib": "2.7.0"
+  }
 }

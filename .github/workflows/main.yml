@@ -1,0 +1,93 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@v4
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v5
+        with:
+          config: ".github/linters/cspell.json"
+          # Limit the files checked to the ones in the pull request or push.
+          # We will enabled this only if this job tooks more than 3 minutes
+          incremental_files_only: false
+          strict: true
+          inline: warning
+          verbose: false
+  licensecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@v4
+      - name: Scan dependencies
+        uses: fossas/fossa-action@main
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+      - name: Test dependencies
+        uses: fossas/fossa-action@main
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+          run-tests: true
+  lintcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Start super-linter
+        uses: super-linter/super-linter/slim@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IGNORE_GITIGNORED_FILES: true
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TSX: false
+          VALIDATE_JSX: false
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_JAVASCRIPT_ES: false
+
+  main:
+    runs-on: ubuntu-latest
+    needs:
+      - spellcheck
+      - licensecheck
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+      ## https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
+      # - name: Set up task distribution
+      #   run: pnpm dlx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+      - name: Set up nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+          cache: pnpm
+      - name: Set up affected modules
+        uses: nrwl/nx-set-shas@v4
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint, Build and Test packages
+        run: pnpm nx run-many --batch --targets lint build test
+        env:
+          NX_CLOUD_ACCESS_TOKEN: '${{ secrets.NX_CLOUD_ACCESS_TOKEN }}'
+      - name: Scan source code
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
