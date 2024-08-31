@@ -41,11 +41,7 @@ jobs:
           chmod 400 "/tmp/id_ed25519.pub"
           printf '%s' "${{ secrets.BOT_SSH_KEY_BASE64 }}" |
             base64 -d >"/tmp/id_ed25519"
-          chmod 400 "/tmp/id_ed25519"
-      - name: Set up github cli
-        run: gh auth setup-git
-        env:
-          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
+          chmod 400 "/tmp/id_ed25519" 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
       - name: Set up nodejs
@@ -58,9 +54,6 @@ jobs:
       - name: Release packages
         run: pnpm release:ci
         env:
+          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
           NODE_AUTH_TOKEN: "${{ secrets.NPM_ACCESS_TOKEN }}"
           NPM_CONFIG_PROVENANCE: true
-      - name: Update source code
-        run: |
-          git push origin ${{ github.ref_name }} &&
-          git push origin ${{ github.ref_name }} --tags
