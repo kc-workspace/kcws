@@ -90,7 +90,8 @@ jobs:
           VALIDATE_JSX: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_JAVASCRIPT_ES: false
-          TYPESCRIPT_STANDARD_TSCONFIG_FILE: tsconfig.base.json
+          ## We didn't use typescript-standard
+          VALIDATE_TYPESCRIPT_STANDARD: false
 
   main:
     runs-on: ubuntu-latest
