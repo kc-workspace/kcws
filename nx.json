@@ -40,7 +40,7 @@
         "assets": ["{projectRoot}/*.md", "{projectRoot}/src/*.json"]
       }
     },
-    "@nx/js:release-publish": {
+    "nx-release-publish": {
       "options": {
         "packageRoot": "dist/{projectRoot}"
       }
