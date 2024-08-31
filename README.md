@@ -21,3 +21,20 @@
     <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square" alt="Commitizen friendly" />
   </a>
 </p>
+
+<!-- content section -->
+
+## For developers
+
+Just install packages as normal ([docs](https://kcws.kamontat.net)).
+
+## For contributing
+
+Check [here](./CONTRIBUTING.md)
+
+<!-- Footer section -->
+<p align="left">
+    <a href="https://app.fossa.com/projects/custom%2B7211%2Fgithub.com%2Fkc-workspace%2Fkcws?ref=badge_large&issueType=license">
+        <img src="https://app.fossa.com/api/projects/custom%2B7211%2Fgithub.com%2Fkc-workspace%2Fkcws.svg?type=large&issueType=license" alt="FOSSA Status">
+    </a>
+</p>
