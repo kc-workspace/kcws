@@ -7,7 +7,6 @@ on:
   pull_request:
 
 permissions:
-  actions: read
   contents: read
 
 env:
@@ -33,7 +32,9 @@ jobs:
         run: pnpm commitlint --last --verbose
       - name: Validate pull-request title
         if: github.event_name == 'pull_request'
-        run: echo '${{ github.event.pull_request.title }}' | pnpm commitlint --verbose
+        run: echo "$PR_TITLE" | pnpm commitlint --verbose
+        env:
+          PR_TITLE: "${{ github.event.pull_request.title }}"
   spellcheck:
     runs-on: ubuntu-latest
     steps:
@@ -67,6 +68,10 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - commitcheck
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
     steps:
       - name: Set up source code
         uses: actions/checkout@v4
@@ -78,10 +83,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: false
+          ## json using eslint which conflicted with repo file
+          VALIDATE_JSON: false
+          ## Should be run by nx lint target
           VALIDATE_TSX: false
           VALIDATE_JSX: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_JAVASCRIPT_ES: false
+          TYPESCRIPT_STANDARD_TSCONFIG_FILE: tsconfig.base.json
 
   main:
     runs-on: ubuntu-latest
