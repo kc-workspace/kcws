@@ -5,14 +5,15 @@
   "language": "en",
   "allowCompoundWords": true,
   "ignorePaths": [
+    "kcws.code-workspace",
     // Ignore Pnpm lock file
     "**/pnpm-lock.yaml",
     // Ignore dependencies and package file
     "**/package.json",
     // Ignore cspell config
-    "**/.cspell.json",
+    "**/cspell.json",
     // Ignore dict file
-    "**/*.dict.txt"
+    "**/*.dict.txt",
   ],
   "dictionaries": [
     "softwareTerms",
