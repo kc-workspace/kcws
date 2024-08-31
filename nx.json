@@ -56,7 +56,7 @@
       "tag": true
     },
     "version": {
-      "preVersionCommand": "pnpm dlx nx run-many -t build",
+      "preVersionCommand": "pnpm dlx nx run-many --skipNxCache --target build",
       "generatorOptions": {
         "packageRoot": "dist/{projectRoot}",
         "specifierSource": "conventional-commits",
