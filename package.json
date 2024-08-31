@@ -9,7 +9,7 @@
     "test": "nx run-many --batch --targets test",
     "lint": "nx run-many --batch --targets lint",
     "start": "nx run-many --batch --targets lint build test",
-    "start:ci": "nx affected --batch -- --targets lint build test --output-style static",
+    "start:ci": "nx affected --batch --targets lint build test --output-style static",
     "release": "nx release --dry-run",
     "release:ci": "nx release"
   },
