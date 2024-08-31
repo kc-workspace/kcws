@@ -46,6 +46,8 @@ jobs:
           printf '%s' "${{ secrets.BOT_SSH_KEY_BASE64 }}" |
             base64 -d >"/tmp/id_ed25519"
           chmod 400 "/tmp/id_ed25519"
+      - name: Set up github
+        run: gh auth setup-git
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
       - name: Set up nodejs
