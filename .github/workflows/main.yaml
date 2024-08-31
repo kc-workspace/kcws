@@ -13,6 +13,10 @@ env:
   # Disabled husky on CI by default
   HUSKY: 0
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   commitcheck:
     runs-on: ubuntu-latest
