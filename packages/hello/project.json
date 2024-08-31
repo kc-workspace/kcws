@@ -6,13 +6,14 @@
   "tags": ["scope:library", "env:development"],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{projectRoot}/{options.outDir}",
+        "{workspaceRoot}/dist/packages/hello"
+      ],
       "options": {
-        "outputPath": "dist/packages/hello",
         "main": "packages/hello/src/index.ts",
-        "tsConfig": "packages/hello/tsconfig.lib.json",
-        "assets": ["packages/hello/*.md"]
+        "assets": ["packages/hello/*.md"],
+        "outDir": "../../dist/packages/hello"
       }
     },
     "nx-release-publish": {
