@@ -1,19 +1,23 @@
 {
   "folders": [
     {
+      "name": "@kcws/hello",
+      "path": "packages/hello",
+    },
+    {
       "name": "root",
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "extensions": {
     "recommendations": [
       "nrwl.angular-console",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
-      "github.vscode-github-actions"
-    ]
+      "github.vscode-github-actions",
+    ],
   },
   "settings": {
-    "npm.packageManager": "pnpm"
-  }
+    "npm.packageManager": "pnpm",
+  },
 }

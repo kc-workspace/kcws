@@ -53,7 +53,6 @@
   "peerDependencies": {
     "tslib": "2.7.0"
   },
-  "packageManager": "pnpm@9.9.0",
   "nx": {
     "includedScripts": [
       "commit"
@@ -63,5 +62,10 @@
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
     }
-  }
+  },
+  "packageManager": "pnpm@9.9.0",
+  "engines": {
+    "node": ">= 16"
+  },
+  "dependencies": {}
 }

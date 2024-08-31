@@ -4,5 +4,6 @@
   "trailingComma": "es5",
   "singleQuote": false,
   "arrowParens": "avoid",
-  "htmlWhitespaceSensitivity": "css"
+  "htmlWhitespaceSensitivity": "css",
+  "proseWrap": "preserve"
 }

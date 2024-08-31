@@ -1,7 +1,7 @@
-import { hello } from './hello';
+import { hello } from "./hello";
 
-describe('hello', () => {
-  it('should work', () => {
-    expect(hello()).toEqual('hello');
+describe("hello", () => {
+  it("should work", () => {
+    expect(hello()).toEqual("hello");
   });
 });
