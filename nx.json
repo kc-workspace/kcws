@@ -35,7 +35,15 @@
     "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "options": {
+        "assets": ["{projectRoot}/*.md", "{projectRoot}/src/*.json"]
+      }
+    },
+    "@nx/js:release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
     }
   },
   "release": {

@@ -4,22 +4,5 @@
   "sourceRoot": "packages/hello/src",
   "projectType": "library",
   "tags": ["scope:library", "env:development"],
-  "targets": {
-    "build": {
-      "outputs": [
-        "{projectRoot}/{options.outDir}",
-        "{workspaceRoot}/dist/packages/hello"
-      ],
-      "options": {
-        "main": "packages/hello/src/index.ts",
-        "assets": ["packages/hello/*.md"],
-        "outDir": "../../dist/packages/hello"
-      }
-    },
-    "nx-release-publish": {
-      "options": {
-        "packageRoot": "dist/{projectRoot}"
-      }
-    }
-  }
+  "targets": {}
 }

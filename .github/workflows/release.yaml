@@ -55,8 +55,6 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Print information
-        run: pnpm exec nx report
       - name: Release packages
         run: pnpm release:ci
         env:
