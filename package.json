@@ -3,13 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "commit": "cz",
+    "prepare": "husky",
     "generate": "nx generate",
-    "format": "nx format:write",
-    "lint": "nx format:check",
-    "start": "pnpm nx affected -t lint test build",
-    "start:ci": "pnpm nx affected -t lint test build"
+    "start": "nx run-many --batch --targets lint build test",
+    "start:ci": "nx affected --batch -- --targets lint build test --output-style static",
+    "release": "nx release --dry-run",
+    "release:ci": "nx release --verbose"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.4.1",
+    "@commitlint/config-conventional": "19.4.1",
+    "@commitlint/config-nx-scopes": "19.3.1",
+    "@commitlint/cz-commitlint": "19.4.0",
+    "@nx/devkit": "19.6.4",
     "@nx/eslint": "19.6.4",
     "@nx/eslint-plugin": "19.6.4",
     "@nx/js": "19.6.4",
@@ -26,8 +33,12 @@
     "@typescript-eslint/parser": "7.18.0",
     "@vitest/coverage-v8": "2.0.5",
     "@vitest/ui": "2.0.5",
+    "commitizen": "4.3.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
+    "husky": "9.1.5",
+    "inquirer": "9.3.6",
+    "lint-staged": "15.2.9",
     "nx": "19.6.4",
     "prettier": "3.3.3",
     "tslib": "2.7.0",
@@ -37,11 +48,18 @@
     "vite-plugin-dts": "4.0.3",
     "vitest": "2.0.5"
   },
-  "packageManager": "pnpm@9.9.0",
-  "nx": {
-    "includedScripts": []
-  },
   "peerDependencies": {
     "tslib": "2.7.0"
+  },
+  "packageManager": "pnpm@9.9.0",
+  "nx": {
+    "includedScripts": [
+      "commit"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   }
 }
