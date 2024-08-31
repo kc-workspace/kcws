@@ -38,8 +38,71 @@
     }
   },
   "release": {
+    "projects": ["packages/*"],
+    "projectsRelationship": "independent",
+    "releaseTagPattern": "{projectName}/v{version}",
+    "git": {
+      "commit": true,
+      "commitMessage": "chore(release): publish {version} (bot) [skip-ci]",
+      "tag": true
+    },
     "version": {
-      "preVersionCommand": "pnpm dlx nx run-many -t build"
+      "preVersionCommand": "pnpm dlx nx run-many -t build",
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "specifierSource": "conventional-commits",
+        "currentVersionResolver": "git-tag",
+        "fallbackCurrentVersionResolver": "disk"
+      }
+    },
+    "changelog": {
+      "projectChangelogs": {
+        "createRelease": "github",
+        "entryWhenNoChanges": "_Version update only_",
+        "renderOptions": {
+          "authors": false,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      },
+      "automaticFromRef": true
+    },
+    "conventionalCommits": {
+      "types": {
+        "feat": {
+          "semverBump": "minor",
+          "changelog": {
+            "title": "New Features"
+          }
+        },
+        "perf": {
+          "semverBump": "minor",
+          "changelog": {
+            "title": "Improvements"
+          }
+        },
+        "fix": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "Bugfixes"
+          }
+        },
+        "refactor": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "Code Refactoring"
+          }
+        },
+        "docs": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "Documentations"
+          }
+        },
+        "ci": false,
+        "chore": false,
+        "test": false
+      }
     }
   }
 }
