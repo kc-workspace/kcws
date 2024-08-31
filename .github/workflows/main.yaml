@@ -20,11 +20,20 @@ jobs:
     steps:
       - name: Set up source code
         uses: actions/checkout@v4
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+      - name: Set up nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
       - name: Validate current commit
-        run: npx commitlint --last --verbose
+        run: pnpm commitlint --last --verbose
       - name: Validate pull-request title
         if: github.event_name == 'pull_request'
-        run: echo '${{ github.event.pull_request.title }}' | npx commitlint --verbose
+        run: echo '${{ github.event.pull_request.title }}' | pnpm commitlint --verbose
   spellcheck:
     runs-on: ubuntu-latest
     steps:

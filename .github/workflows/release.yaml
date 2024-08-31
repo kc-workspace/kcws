@@ -33,13 +33,13 @@ jobs:
           git config commit.gpgsign true
           git config tag.gpgsign true
           git config gpg.format ssh
-          git config user.signingkey "~/.ssh/id_ed25519.pub"
+          git config user.signingkey "/tmp/id_ed25519.pub"
       - name: Set up SSH key
         run: |
           printf '%s' "${{ secrets.BOT_SSH_PUB_BASE64 }}" |
-            base64 -d >"~/.ssh/id_ed25519.pub"
+            base64 -d >"/tmp/id_ed25519.pub"
           printf '%s' "${{ secrets.BOT_SSH_KEY_BASE64 }}" |
-            base64 -d >"~/.ssh/id_ed25519"
+            base64 -d >"/tmp/id_ed25519"
       - name: Set up github cli
         run: gh auth setup-git
         env:
