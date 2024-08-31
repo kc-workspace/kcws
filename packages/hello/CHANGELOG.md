@@ -1,3 +1,10 @@
+## 0.2.0 (2024-08-31)
+
+
+### Improvements
+
+- **hello:** simplify eslint config ([bf17355](https://github.com/kc-workspace/kcws/commit/bf17355))
+
 ## 0.1.0 (2024-08-31)
 
 
