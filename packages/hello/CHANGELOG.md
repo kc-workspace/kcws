@@ -1,3 +1,10 @@
+## 0.3.0 (2024-08-31)
+
+
+### Improvements
+
+- **hello:** support custom name ([2eef350](https://github.com/kc-workspace/kcws/commit/2eef350))
+
 ## 0.2.0 (2024-08-31)
 
 
