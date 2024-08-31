@@ -48,6 +48,8 @@ jobs:
           chmod 400 "/tmp/id_ed25519"
       - name: Set up github
         run: gh auth setup-git
+        env:
+          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
       - name: Set up nodejs
