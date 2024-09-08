@@ -41,6 +41,10 @@
 - [ ] Support increase version based on [conventional commits](https://www.conventionalcommits.org/)
 - [ ] Support release new package via GitHub Actions
 
+## Notes
+
+- `@nx/js:swc` must be use on nx-plugins only
+
 ## For developers
 
 Just install packages as normal ([docs](https://kcws.kamontat.net)).
