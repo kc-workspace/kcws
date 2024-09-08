@@ -3,15 +3,24 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [
+        "*.ts",
+        "*.cts",
+        "*.mts",
+        "*.tsx",
+        "*.js",
+        "*.cjs",
+        "*.mjs",
+        "*.jsx"
+      ],
       "rules": {}
     },
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.cts", "*.mts", "*.tsx"],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
+      "files": ["*.js", "*.cjs", "*.mjs", "*.jsx"],
       "rules": {}
     },
     {
