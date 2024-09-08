@@ -20,9 +20,7 @@
     "@nx/eslint:lint": {
       "cache": true,
       "inputs": ["default"],
-      "outputs": [
-        "{workspaceRoot}/reports/{projectName}/lint-results/eslint.json"
-      ],
+      "outputs": ["{workspaceRoot}/reports/{projectName}/lint-results"],
       "options": {
         "format": "stylish",
         "fix": true,
