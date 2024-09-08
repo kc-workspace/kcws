@@ -6,11 +6,11 @@
   "scripts": {
     "commit": "cz",
     "prepare": "husky",
-    "lint": "nx run-many --output-style stream --batch --target lint",
-    "build": "nx run-many --output-style stream --batch --target build",
-    "test": "nx run-many --output-style stream --batch --target test",
-    "start": "nx run-many --output-style stream --batch --targets lint,build,test",
-    "start:ci": "nx affected --output-style static --batch --targets lint,build,test",
+    "lint": "nx run-many --output-style stream --target lint",
+    "build": "nx run-many --output-style stream --target build",
+    "test": "nx run-many --output-style stream --target test",
+    "start": "nx run-many --output-style stream --targets lint,build,test",
+    "start:ci": "nx affected --output-style static --targets lint,build,test --configuration ci",
     "release": "nx release --dry-run",
     "release:ci": "nx release",
     "publish:ci": "nx release publish --yes"

@@ -1,7 +1,10 @@
 /// <reference types='vitest' />
+
+import { join } from "node:path";
 import { defineConfig } from "vite";
+
 import dts from "vite-plugin-dts";
-import * as path from "path";
+import { coverageConfigDefaults } from "vitest/config";
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 
 export default defineConfig({
@@ -12,7 +15,7 @@ export default defineConfig({
     nxViteTsPaths(),
     dts({
       entryRoot: "src",
-      tsconfigPath: path.join(__dirname, "tsconfig.lib.json"),
+      tsconfigPath: join(__dirname, "tsconfig.lib.json"),
     }),
   ],
 
@@ -42,11 +45,17 @@ export default defineConfig({
     globals: true,
     environment: "node",
     include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-
-    reporters: ["default"],
+    reporters: ["default", "html", "junit"],
     coverage: {
-      reportsDirectory: "../../coverage/packages/hello",
+      enabled: true,
       provider: "v8",
+      reporter: ["text", "html", "lcovonly"],
+      include: ["src/**"],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        "src/index.ts", // index.ts should not contains any logic
+      ],
+      all: true,
     },
   },
 });

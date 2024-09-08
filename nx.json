@@ -9,35 +9,60 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.js"
     ],
+    "test": [
+      "{projectRoot}/tsconfig.spec.json",
+      "{projectRoot}/**/?(*.)+(spec|test).[cm]?[jt]s?(x)?(.snap)",
+      "sharedGlobals"
+    ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/workflows/*.yaml"]
   },
-  "plugins": [
-    {
-      "plugin": "@nx/eslint/plugin",
+  "targetDefaults": {
+    "@nx/eslint:lint": {
+      "cache": true,
+      "inputs": ["default"],
+      "outputs": [
+        "{workspaceRoot}/reports/{projectName}/lint-results/eslint.json"
+      ],
       "options": {
-        "targetName": "lint"
+        "format": "stylish",
+        "fix": true,
+        "outputFile": "{workspaceRoot}/reports/{projectName}/lint-results/eslint.json"
+      },
+      "configurations": {
+        "ci": {
+          "format": "json",
+          "fix": true
+        }
       }
     },
-    {
-      "plugin": "@nx/vite/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "testTargetName": "test",
-        "serveTargetName": "serve",
-        "previewTargetName": "preview",
-        "serveStaticTargetName": "serve-static"
-      }
-    }
-  ],
-  "targetDefaults": {
     "@nx/vite:build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/release:publish": {
-      "dependsOn": ["build"],
+      "inputs": ["production", "^production"],
       "options": {
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "outputPath": "dist/{projectRoot}",
+        "skipTypeCheck": false,
+        "skipPackageManager": false
+      }
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["test"],
+      "outputs": ["{workspaceRoot}/reports/{projectName}/test-results"],
+      "options": {
+        "outputFile.html": "../../reports/{projectName}/test-results/index.html",
+        "outputFile.junit": "../../reports/{projectName}/test-results/junit.xml",
+        "coverage.reportsDirectory": "../../reports/{projectName}/test-results/coverage"
+      },
+      "configurations": {
+        "ci": {}
+      }
+    },
+    "@nx/js:release-publish": {
+      "cache": false,
+      "options": {
+        "registry": "https://registry.npmjs.org",
         "packageRoot": "{workspaceRoot}/dist/{projectRoot}"
       }
     }
@@ -52,6 +77,7 @@
       "tag": true
     },
     "version": {
+      "preVersionCommand": "pnpm dlx nx run-many --target build --skip-nx-cache",
       "generatorOptions": {
         "packageRoot": "{workspaceRoot}/dist/{projectRoot}",
         "specifierSource": "conventional-commits",

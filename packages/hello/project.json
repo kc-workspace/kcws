@@ -5,15 +5,14 @@
   "projectType": "library",
   "tags": [],
   "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/hello",
-        "main": "packages/hello/src/index.ts",
-        "tsConfig": "packages/hello/tsconfig.lib.json",
-        "assets": ["packages/hello/*.md"]
-      }
+      "executor": "@nx/vite:build"
+    },
+    "test": {
+      "executor": "@nx/vite:test"
     }
   }
 }
