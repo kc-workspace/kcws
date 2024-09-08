@@ -1,1 +1,2 @@
-export * from "./lib/hello";
+import { hello } from "./lib/hello";
+export default hello;

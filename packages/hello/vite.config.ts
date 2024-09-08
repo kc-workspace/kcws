@@ -7,9 +7,12 @@ import dts from "vite-plugin-dts";
 import { coverageConfigDefaults } from "vitest/config";
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 
+const rootDir = "../..";
+const currentPackage = "packages/hello";
+
 export default defineConfig({
   root: __dirname,
-  cacheDir: "../../node_modules/.vite/packages/hello",
+  cacheDir: join(rootDir, "node_modules", ".vite", currentPackage),
 
   plugins: [
     nxViteTsPaths(),
@@ -22,7 +25,7 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: "../../dist/packages/hello",
+    outDir: join(rootDir, "dist", currentPackage),
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
@@ -32,11 +35,15 @@ export default defineConfig({
       entry: "src/index.ts",
       name: "hello",
       fileName: "index",
-      formats: ["es", "cjs"],
+      formats: ["cjs", "es", "umd"],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: [],
+      // Never bundle anything
+      external: id => {
+        if (id.includes(currentPackage)) return false;
+        if (id.startsWith("./")) return false;
+        return true;
+      },
     },
   },
 

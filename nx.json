@@ -40,6 +40,7 @@
       "options": {
         "tsConfig": "{projectRoot}/tsconfig.lib.json",
         "outputPath": "dist/{projectRoot}",
+        "generatePackageJson": false,
         "skipTypeCheck": false,
         "skipPackageManager": false
       }

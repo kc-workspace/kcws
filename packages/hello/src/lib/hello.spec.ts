@@ -2,6 +2,6 @@ import { hello } from "./hello";
 
 describe("hello", () => {
   it("should work", () => {
-    expect(hello()).toEqual("hello");
+    expect(hello()).toEqual("hello world");
   });
 });

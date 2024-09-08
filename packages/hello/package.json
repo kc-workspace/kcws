@@ -1,9 +1,34 @@
 {
   "name": "@kcws/hello",
   "version": "0.0.1",
+  "type": "module",
   "main": "./index.js",
-  "module": "./index.mjs",
-  "typings": "./index.d.ts",
+  "types": "./index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "module": "./index.js",
+      "types": "./index.d.ts",
+      "import": "./index.cjs",
+      "default": "./index.umd.cjs"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kc-workspace/kcws",
+    "directory": "packages/hello"
+  },
+  "author": {
+    "name": "Kamontat Chantrachirathumrong",
+    "email": "kcws@kamontat.net",
+    "url": "https://kamontat.net"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 18"
+  },
   "dependencies": {},
   "devDependencies": {}
 }
