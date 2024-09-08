@@ -96,7 +96,6 @@ jobs:
           VALIDATE_JAVASCRIPT_ES: false
           ## We didn't use typescript-standard
           VALIDATE_TYPESCRIPT_STANDARD: false
-
   main:
     runs-on: ubuntu-latest
     needs:

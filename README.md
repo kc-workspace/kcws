@@ -24,6 +24,23 @@
 
 <!-- content section -->
 
+## Todo list
+
+- [x] Support git hooks via [husky](https://github.com/typicode/husky)
+- [x] Support [lint-staged](https://github.com/lint-staged/lint-staged)
+- [x] Support Eslint && Prettier
+- [ ] Support ESLint 9 ([@nx/eslint-plugin](https://github.com/nrwl/nx/issues/27451))
+- [x] Support commitlint && commitizen
+- [x] Support vite && vitest
+- [ ] Support test junit output (reports/test-results)
+- [ ] Support test coverage output (reports/coverage)
+- [ ] Support [TypeDocs](https://typedoc.org/)
+- [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
+- [ ] Automatically merge PRs via [mergeify](https://mergify.com/)
+- [ ] Support new package generator
+- [ ] Support increase version based on [conventional commits](https://www.conventionalcommits.org/)
+- [ ] Support release new package via GitHub Actions
+
 ## For developers
 
 Just install packages as normal ([docs](https://kcws.kamontat.net)).
