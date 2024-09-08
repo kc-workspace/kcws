@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "@commitlint/config-conventional",
+    "@commitlint/config-nx-scopes"
+  ],
+  "helpUrl": "use 'pnpm commit' to create commit instead",
+  "rules": {
+    "type-enum": [
+      2,
+      "always",
+      ["feat", "perf", "fix", "refactor", "docs", "ci", "chore", "test"]
+    ],
+    "subject-max-length": [1, "always", 80],
+    "subject-case": [2, "always", ["lower-case"]],
+    "body-max-line-length": [1, "always", 200]
+  },
+  "prompts": {
+    "settings": {
+      "enableMultipleScopes": false
+    }
+  }
+}

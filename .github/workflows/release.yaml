@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 11 * * 4"
+
+permissions:
+  contents: write
+  deployments: write
+  id-token: write
+
+env:
+  # Disabled husky on CI by default
+  HUSKY: 0
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://www.npmjs.com/org/kcws
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up git
+        run: |
+          git config user.name "${{ vars.BOT_USERNAME }}"
+          git config user.email "${{ vars.BOT_EMAIL }}"
+          git config push.autoSetupRemote true
+          git config commit.gpgsign true
+          git config tag.gpgsign true
+          git config gpg.format ssh
+          git config user.signingkey "/tmp/id_ed25519.pub"
+      - name: Set up SSH key
+        run: |
+          printf '%s' "${{ secrets.BOT_SSH_PUB_BASE64 }}" |
+            base64 -d >"/tmp/id_ed25519.pub"
+          chmod 400 "/tmp/id_ed25519.pub"
+          printf '%s' "${{ secrets.BOT_SSH_KEY_BASE64 }}" |
+            base64 -d >"/tmp/id_ed25519"
+          chmod 400 "/tmp/id_ed25519"
+      - name: Set up github
+        run: gh auth setup-git
+        env:
+          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+      - name: Set up nodejs
+        uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org
+          always-auth: true
+          node-version-file: .tool-versions
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Release packages
+        run: pnpm release:ci
+        env:
+          GITHUB_TOKEN: "${{ secrets.GH_TOKEN }}"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: dist
+          retention-days: 10
+      - name: Publish packages
+        run: pnpm publish:ci --verbose
+        env:
+          NODE_AUTH_TOKEN: "${{ secrets.NPM_ACCESS_TOKEN }}"
+          NPM_CONFIG_PROVENANCE: true
