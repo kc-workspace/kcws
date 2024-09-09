@@ -17,6 +17,8 @@
     "retest": "pnpm exec:nx:dev run-many --target test --skip-nx-cache",
     "start": "pnpm exec:nx:dev run-many --targets lint,build,test",
     "start:ci": "pnpm exec:nx:ci run-many --targets lint,build,test",
+    "affected": "pnpm exec:nx:dev affected --targets lint,build,test --nx-bail",
+    "affected:ci": "pnpm exec:nx:ci affected --targets lint,build,test --nx-bail",
     "release": "nx release --dry-run",
     "release:ci": "nx release",
     "publish:ci": "nx release publish --yes"
