@@ -1,11 +1,10 @@
 {
   "name": "@kcws/nx-plugin-internal",
   "version": "0.0.1",
-  "private": true,
   "type": "commonjs",
   "dependencies": {
     "@nx/devkit": "19.6.5",
-    "@swc/helpers": "~0.5.11"
+    "@swc/helpers": "0.5.13"
   },
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",

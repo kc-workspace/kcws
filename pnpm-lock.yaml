@@ -49,13 +49,13 @@ importers:
         specifier: 1.10.9
         version: 1.10.9(@swc/core@1.7.24(@swc/helpers@0.5.13))(@swc/types@0.1.12)(typescript@5.5.4)
       '@swc/cli':
-        specifier: ~0.3.12
+        specifier: ~0.3.14
         version: 0.3.14(@swc/core@1.7.24(@swc/helpers@0.5.13))
       '@swc/core':
         specifier: 1.7.24
         version: 1.7.24(@swc/helpers@0.5.13)
       '@swc/helpers':
-        specifier: ~0.5.11
+        specifier: 0.5.13
         version: 0.5.13
       '@types/node':
         specifier: 18.16.9
