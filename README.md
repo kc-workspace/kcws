@@ -26,9 +26,9 @@
 
 ## Todo list
 
-- [x] Support git hooks via [husky](https://github.com/typicode/husky)
+- [x] Support Git hooks via [husky](https://github.com/typicode/husky)
 - [x] Support [lint-staged](https://github.com/lint-staged/lint-staged)
-- [x] Support Eslint && Prettier
+- [x] Support ESLint && Prettier
 - [ ] Support ESLint 9 ([@nx/eslint-plugin](https://github.com/nrwl/nx/issues/27451))
 - [x] Support commitlint && commitizen
 - [x] Support vite && vitest

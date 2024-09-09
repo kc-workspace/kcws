@@ -1,0 +1,11 @@
+{
+  "threshold": 0,
+  "minTokens": 100,
+  "absolute": true,
+  "ignore": [
+    "**/vite.config.ts",
+    "**/tsconfig.json",
+    "**/tsconfig.*.json",
+    "**/.eslintrc.json"
+  ]
+}
