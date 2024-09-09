@@ -45,15 +45,14 @@ jobs:
       - name: Set up source code
         uses: actions/checkout@v4
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v5
+        uses: streetsidesoftware/cspell-action@v6
         with:
           config: ".github/linters/cspell.json"
           # Limit the files checked to the ones in the pull request or push.
-          # We will enabled this only if this job tooks more than 3 minutes
           incremental_files_only: false
           strict: true
           inline: warning
-          verbose: false
+          verbose: true
   licensecheck:
     runs-on: ubuntu-latest
     steps:
