@@ -36,7 +36,7 @@
 - [ ] Support test coverage output (reports/coverage)
 - [ ] Support [TypeDocs](https://typedoc.org/)
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
-- [ ] Automatically merge PRs via [mergeify](https://mergify.com/)
+- [ ] Automatically merge PRs via [mergify](https://mergify.com/)
 - [ ] Support new package generator
 - [ ] Support increase version based on [conventional commits](https://www.conventionalcommits.org/)
 - [ ] Support release new package via GitHub Actions
