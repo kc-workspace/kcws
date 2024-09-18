@@ -16,6 +16,16 @@
       "maxLength": 64,
       "x-prompt": "What name would you like to use?"
     },
+    "description": {
+      "type": "string",
+      "description": "Generator description",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "maxLength": 64,
+      "x-prompt": "Describe your generator usecase?"
+    },
     "plugin": {
       "type": "string",
       "description": "Nx plugin to install (default to nx-plugin-internal)",

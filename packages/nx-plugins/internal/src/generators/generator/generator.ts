@@ -1,94 +1,40 @@
 import type { GeneratorGeneratorSchema } from "./schema";
 
 import { join } from "node:path";
+import { formatFiles, generateFiles, type Tree } from "@nx/devkit";
 
 import {
-  Tree,
-  generateFiles,
-  names,
-  readProjectConfiguration,
-} from "@nx/devkit";
-import { determineArtifactNameAndDirectoryOptions } from "@nx/devkit/src/generators/artifact-name-and-directory-utils";
-
-import { hasGenerator } from "../../utils/generators";
+  getGeneratorInformation,
+  getTemplateFilesOptions,
+} from "../../utils/generators";
 
 export async function generatorGenerator(
   tree: Tree,
   options: GeneratorGeneratorSchema
 ) {
-  const { name, fileName, propertyName, className } = names(options.name);
-
-  const {
-    name: pluginName,
-    root: pluginRoot,
-    sourceRoot: pluginSourceRoot,
-  } = readProjectConfiguration(tree, options.plugin ?? "nx-plugin-internal");
-
-  if (hasGenerator(fileName, pluginRoot)) {
-    throw new Error(`Generator '${fileName}' existed on '${pluginName}'`);
-  }
-
-  const { directory, filePath: outputPath } =
-    await determineArtifactNameAndDirectoryOptions(tree, {
-      name: name,
-      nameAndDirectoryFormat: "as-provided",
-      artifactType: "generator",
-      callingGenerator: "@kcinternals/nx-plugins:generator",
-      project: pluginName,
-      directory: join(pluginSourceRoot, "generators", fileName),
-      fileName: "generator",
-    });
-
-  const templatePath = join(directory, "files/src/index.ts.template");
-  tree.write(templatePath, 'const variable = "<%= name %>";');
-
-  generateFiles(tree, join(__dirname, "files"), directory, {
-    ...options,
-    generatorFnName: `${propertyName}Generator`,
-    schema: {
-      id: className,
-      interface: `${className}GeneratorSchema`,
-    },
+  const plugin = options.plugin ?? "nx-plugin-internal";
+  const generator = await getGeneratorInformation(tree, {
+    name: options.name,
+    plugin: plugin,
   });
 
-  console.log(directory);
-  console.log(outputPath);
+  const template = join(__dirname, "files");
+  const templateOptions = getTemplateFilesOptions(generator, {
+    name: options.name,
+    description: options.description,
+    plugin: plugin,
+    extra: options,
+  });
 
-  // addProjectConfiguration(tree, name, {
-  //   root: projectRoot,
-  //   sourceRoot: `${projectRoot}/src`,
-  //   projectType: "library",
-  //   targets: {},
-  // });
+  // Update generators.json file
+  console.log(JSON.stringify(generator, null, "  "));
 
-  // generateFiles(tree, join(__dirname, "files"), projectRoot, {
-  //   ...options,
-  //   templates: {
-  //     name: "<%= name %>",
-  //   },
-  //   schema: {
-  //     id: "",
-  //   },
-  // });
-  // await formatFiles(tree);
+  // Create generator files
+  generateFiles(tree, template, generator.directory, templateOptions);
+  const templatePath = join(generator.directory, "files/src/index.ts.template");
+  tree.write(templatePath, 'const variable = "<%= name %>";');
+
+  await formatFiles(tree);
 }
-
-// function addFiles(host: Tree, options: NormalizedSchema) {
-//   const indexPath = join(options.directory, "files/src/index.ts.template");
-
-//   if (!host.exists(indexPath)) {
-//     host.write(indexPath, 'const variable = "<%= name %>";');
-//   }
-
-//   generateFiles(host, join(__dirname, "./files/generator"), options.directory, {
-//     ...options,
-//     generatorFnName: `${options.propertyName}Generator`,
-//     schemaInterfaceName: `${options.className}GeneratorSchema`,
-//   });
-
-//   if (options.unitTestRunner === "none") {
-//     host.delete(join(options.directory, `generator.spec.ts`));
-//   }
-// }
 
 export default generatorGenerator;

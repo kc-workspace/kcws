@@ -1,4 +1,3 @@
-export interface WebLibGeneratorSchema {
+export interface <%= schema.interface %> {
   name: string;
-  description: string;
 }

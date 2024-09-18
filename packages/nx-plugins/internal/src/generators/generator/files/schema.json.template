@@ -1,11 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "<%= schema.id %>",
-  "title": "",
+  "title": "<%= schema.description %>",
+  "description": "<%= schema.description %>",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
+      "description": "<%= name %> name",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -13,10 +15,6 @@
       "minLength": 1,
       "maxLength": 64,
       "x-prompt": "What name would you like to use?"
-    },
-    "description": {
-      "type": "string",
-      "x-prompt": "What description would you like to use?"
     }
   },
   "required": ["name"]

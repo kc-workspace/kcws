@@ -3,14 +3,14 @@ import {
   addProjectConfiguration,
   formatFiles,
   generateFiles,
-  Tree,
+  type Tree,
 } from "@nx/devkit";
 
-import type { WebLibGeneratorSchema } from "./schema";
+import type { <%= schema.interface %> } from "./schema";
 
-export async function webLibGenerator(
+export async function <%= generator.fnName %>(
   tree: Tree,
-  options: WebLibGeneratorSchema
+  options: <%= schema.interface %>
 ) {
   const projectRoot = join("packages", options.name);
   const sourceRoot = join(projectRoot, "src");
@@ -41,4 +41,4 @@ export async function webLibGenerator(
   await formatFiles(tree);
 }
 
-export default webLibGenerator;
+export default <%= generator.fnName %>;
