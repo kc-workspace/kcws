@@ -1,11 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "$id": "NodeLib",
-  "title": "",
+  "$id": "Generator",
+  "title": "Nx Plugin Generator",
+  "description": "Create a Generator for an Nx Plugin.",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
+      "description": "Generator name",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -16,7 +18,7 @@
     },
     "plugin": {
       "type": "string",
-      "description": "nx plugin to install (default to nx-plugin-internal)",
+      "description": "Nx plugin to install (default to nx-plugin-internal)",
       "x-prompt": "What nx-plugin would you like to install?"
     }
   },

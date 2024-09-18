@@ -1,9 +1,19 @@
 {
   "generators": {
+    "generator": {
+      "factory": "./src/generators/generator/generator",
+      "schema": "./src/generators/generator/schema.json",
+      "description": "generator generator"
+    },
     "node-lib": {
       "factory": "./src/generators/node-lib/generator",
       "schema": "./src/generators/node-lib/schema.json",
       "description": "node-lib generator"
+    },
+    "web-lib": {
+      "factory": "./src/generators/web-lib/generator",
+      "schema": "./src/generators/web-lib/schema.json",
+      "description": "web-lib generator"
     }
   }
 }

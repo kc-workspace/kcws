@@ -1,25 +1,63 @@
+import { join } from "node:path";
+
 import {
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
   Tree,
+  names,
+  readProjectConfiguration,
 } from "@nx/devkit";
-import * as path from "path";
-import { NodeLibGeneratorSchema } from "./schema";
+import { determineArtifactNameAndDirectoryOptions } from "@nx/devkit/src/generators/artifact-name-and-directory-utils";
+
+import type { NodeLibGeneratorSchema } from "./schema";
 
 export async function nodeLibGenerator(
   tree: Tree,
   options: NodeLibGeneratorSchema
 ) {
-  const projectRoot = `libs/${options.name}`;
-  addProjectConfiguration(tree, options.name, {
-    root: projectRoot,
-    projectType: "library",
-    sourceRoot: `${projectRoot}/src`,
-    targets: {},
+  const { name, fileName } = names(options.name);
+
+  const { name: pluginName, sourceRoot: pluginRoot } = readProjectConfiguration(
+    tree,
+    options.plugin ?? "nx-plugin-internal"
+  );
+
+  const {
+    project,
+    directory,
+    filePath: outputPath,
+    fileName: outputName,
+  } = await determineArtifactNameAndDirectoryOptions(tree, {
+    name: name,
+    nameAndDirectoryFormat: "as-provided",
+    artifactType: "generator",
+    callingGenerator: "@kcinternals/nx-plugins:generator",
+    project: pluginName,
+    directory: join(pluginRoot, "src", "generators", fileName),
   });
-  generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
-  await formatFiles(tree);
+
+  console.log(project);
+  console.log(directory);
+  console.log(outputName);
+  console.log(outputPath);
+
+  // addProjectConfiguration(tree, name, {
+  //   root: projectRoot,
+  //   sourceRoot: `${projectRoot}/src`,
+  //   projectType: "library",
+  //   targets: {},
+  // });
+
+  // generateFiles(tree, join(__dirname, "files"), projectRoot, {
+  //   ...options,
+  //   templates: {
+  //     name: "<%= name %>",
+  //   },
+  //   schema: {
+  //     id: "",
+  //   },
+  // });
+  // await formatFiles(tree);
 }
 
 export default nodeLibGenerator;
