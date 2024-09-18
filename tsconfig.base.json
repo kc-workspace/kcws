@@ -17,6 +17,7 @@
     "paths": {
       "@kcinternals/nx-plugin": ["packages/nx-plugins/internal/src/index.ts"],
       "@kcws/hello": ["packages/hello/src/index.ts"],
+      "@kcws/nx-plugin-public": ["packages/nx-plugins/public/src/index.ts"],
       "@kcws/world": ["packages/world/src/index.ts"]
     }
   },
