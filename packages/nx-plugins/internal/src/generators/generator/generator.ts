@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { formatFiles, generateFiles, type Tree } from "@nx/devkit";
 
 import {
+  createAndUpdateGeneratorsJson,
   getGeneratorInformation,
   getTemplateFilesOptions,
 } from "../../utils/generators";
@@ -27,7 +28,7 @@ export async function generatorGenerator(
   });
 
   // Update generators.json file
-  console.log(JSON.stringify(generator, null, "  "));
+  createAndUpdateGeneratorsJson(tree, generator);
 
   // Create generator files
   generateFiles(tree, template, generator.directory, templateOptions);
