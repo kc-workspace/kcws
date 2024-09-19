@@ -7,3 +7,8 @@ kcconfigs
 kcexamples
 kctypes
 kcinth
+devkit
+npmjs
+npmrc
+pnpm
+pnpmfile

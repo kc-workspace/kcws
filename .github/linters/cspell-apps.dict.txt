@@ -1,8 +1,4 @@
 mergify
-npmjs
-npmrc
-pnpm
-pnpmfile
 sonar
 sonarqube
 sonarcloud
