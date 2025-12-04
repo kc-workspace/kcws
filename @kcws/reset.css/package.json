@@ -1,16 +1,53 @@
 {
 	"name": "@kcws/reset.css",
 	"version": "0.1.0-beta.0",
-	"build": {
-		"type": "css",
-		"entrypoints": [
-			"src/index.css"
-		]
+	"description": "A CSS reset for consistent styling across browsers",
+	"main": "./dist/index.css",
+	"exports": {
+		".": {
+			"default": "./dist/index.css"
+		}
 	},
 	"scripts": {
-		"build": "bun run ../../scripts/build.ts"
+		"build": "bun-build",
+		"clean": "bun-clean",
+		"clean:all": "bun-clean-all"
 	},
-	"dependencies": {
-		"@kcinternals/bun-build": "workspace:*"
+	"devDependencies": {
+		"@kcinternals/bun-build": "workspace:*",
+		"@kcinternals/bun-clean": "workspace:*"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcws/reset.css",
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"repository": {
+		"type": "git",
+		"directory": "@kcws/reset.css",
+		"url": "https://github.com/kc-workspace/kcws.git"
+	},
+	"keywords": [
+		"reset.css",
+		"css",
+		"frontend"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist"
+	],
+	"engines": {
+		"node": ">=14",
+		"bun": ">=1"
+	},
+	"@kcinternals/bun-build": {
+		"type": "css"
+	},
+	"@kcinternals/bun-publish": {},
+	"publishConfig": {
+		"access": "public"
 	}
 }
