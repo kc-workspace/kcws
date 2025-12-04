@@ -1,0 +1,49 @@
+{
+	"name": "@kcinternals/bun-build",
+	"version": "0.1.0-beta.0",
+	"bin": {
+		"bun-build": "dist/index.js"
+	},
+	"scripts": {
+		"build": "bun run src/index.ts"
+	},
+	"dependencies": {
+		"oxc-transform": "0.101.0"
+	},
+	"devDependencies": {
+		"@kctypes/package_json": "workspace:*"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcinternals/bun-build",
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"repository": {
+		"type": "git",
+		"directory": "@kcinternals/bun-build",
+		"url": "https://github.com/kc-workspace/kcws.git"
+	},
+	"keywords": [
+		"commandline",
+		"bun",
+		"bundler"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist"
+	],
+	"engines": {
+		"node": ">=14",
+		"bun": ">=1"
+	},
+	"@kcinternals/bun-build": {
+		"type": "bin"
+	},
+	"@kcinternals/bun-publish": {},
+	"publishConfig": {
+		"access": "public"
+	}
+}

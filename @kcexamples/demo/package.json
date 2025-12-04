@@ -1,0 +1,60 @@
+{
+	"name": "@kcexamples/demo",
+	"version": "0.1.0-beta.0",
+	"description": "Example application for use hello and world together",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"bun": "./src/index.ts",
+			"require": "./dist/index.cjs",
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"start": "bun run ./src/index.ts",
+		"build": "bun-build"
+	},
+	"dependencies": {
+		"@kcexamples/hello": "workspace:*",
+		"@kcexamples/world": "workspace:*"
+	},
+	"devDependencies": {
+		"@kcinternals/bun-build": "workspace:*"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"repository": {
+		"type": "git",
+		"directory": "@kcexamples/demo",
+		"url": "https://github.com/kc-workspace/kcws.git"
+	},
+	"keywords": [
+		"example",
+		"testing",
+		"demo",
+		"typescript"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist"
+	],
+	"engines": {
+		"node": ">=14",
+		"bun": ">=1"
+	},
+	"@kcinternals/bun-build": {
+		"type": "module"
+	},
+	"@kcinternals/bun-publish": {},
+	"publishConfig": {
+		"access": "public"
+	}
+}

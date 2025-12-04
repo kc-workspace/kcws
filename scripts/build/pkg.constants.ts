@@ -1,0 +1,10 @@
+export const DEFAULT_GIT_REPO = "https://github.com/kc-workspace/kcws.git"
+export const DEFAULT_LICENSE = "AGPL-3.0-only"
+export const DEFAULT_BRANCH = "main"
+export const DEFAULT_PUBLISH_CONFIG = "public"
+export const DEFAULT_NODE_VERSION = ">=14"
+export const DEFAULT_BUN_VERSION = ">=1"
+
+export const DEFAULT_AUTHOR_NAME = "Kamontat Chantrachirathumrong"
+export const DEFAULT_AUTHOR_EMAIL = "kcws@kc.in.th"
+export const DEFAULT_AUTHOR_URL = "https://github.com/kamontat"

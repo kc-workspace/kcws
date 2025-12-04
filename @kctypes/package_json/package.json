@@ -1,0 +1,22 @@
+{
+	"name": "@kctypes/package_json",
+	"version": "1.30.4",
+	"description": "Typescript definitions for package.json file",
+	"main": "types/index.d.ts",
+	"types": "types/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./types/index.d.ts",
+			"default": "./types/index.d.ts"
+		}
+	},
+	"peerDependencies": {
+		"typescript": ">=2.0.0"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
