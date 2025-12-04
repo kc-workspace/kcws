@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import { build } from "./bun"
 import { loadPackage } from "./package"
 

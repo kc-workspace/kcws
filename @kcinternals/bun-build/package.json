@@ -2,10 +2,12 @@
 	"name": "@kcinternals/bun-build",
 	"version": "0.1.0-beta.0",
 	"bin": {
-		"bun-build": "dist/index.js"
+		"bun-build": "src/index.ts"
 	},
 	"scripts": {
-		"build": "bun run src/index.ts"
+		"build": "echo 'do nothing'",
+		"clean": "bun run ../bun-clean/src/clean.ts",
+		"clean:all": "bun run ../bun-clean/src/clean-all.ts"
 	},
 	"dependencies": {
 		"oxc-transform": "0.101.0"
@@ -33,14 +35,11 @@
 	"files": [
 		"CHANGELOG.json",
 		"CHANGELOG.md",
-		"dist"
+		"src"
 	],
 	"engines": {
 		"node": ">=14",
 		"bun": ">=1"
-	},
-	"@kcinternals/bun-build": {
-		"type": "bin"
 	},
 	"@kcinternals/bun-publish": {},
 	"publishConfig": {

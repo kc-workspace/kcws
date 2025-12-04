@@ -3,7 +3,7 @@ export const info = (msg: unknown, ...args: unknown[]) => {
 }
 
 export const warn = (msg: unknown, ...args: unknown[]) => {
-	console.warn("[WARN]", msg, ...args)
+	console.warn("[WRN]", msg, ...args)
 }
 
 export const error = (msg: unknown, ...args: unknown[]) => {
