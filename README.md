@@ -27,6 +27,7 @@
 ## Todo list
 
 - [x] Support Pnpm monorepo
+- [ ] Move @kc* to packages/@kc* instead
 - [ ] Support Git hooks via [husky](https://github.com/typicode/husky)
 - [ ] Support [lint-staged](https://github.com/lint-staged/lint-staged)
 - [X] Support Biome
