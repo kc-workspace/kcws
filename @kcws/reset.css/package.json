@@ -14,8 +14,6 @@
 		"clean:all": "bun-clean-all"
 	},
 	"devDependencies": {
-		"@kcinternals/bun-build": "workspace:*",
-		"@kcinternals/bun-clean": "workspace:*"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcws/reset.css",

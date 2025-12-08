@@ -1,0 +1,54 @@
+{
+	"name": "@kcconfigs/vitest",
+	"version": "0.1.0-beta.0",
+	"description": "Common vitest configuration for kc's",
+	"type": "module",
+	"scripts": {
+		"fix": "biome check --fix --unsafe",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint"
+	},
+	"devDependencies": {
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kcconfigs/biome": "workspace:*",
+		"@biomejs/biome": "catalog:"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:peer",
+		"vitest": "catalog:peer"
+	},
+	"main": "// TODO: specify main file",
+	"exports": {
+		".": ".// TODO: specify main file"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/vitest",
+	"repository": {
+		"type": "git",
+		"directory": "@kcconfigs/vitest",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"config",
+		"typescript",
+		"vitest"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

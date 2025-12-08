@@ -1,3 +1,0 @@
-# @kcexamples/hello
-
-hello world

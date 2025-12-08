@@ -1,11 +1,16 @@
 {
-	"name": "@kcinternals/bun-build",
+	"name": "@kcinternals/build",
 	"version": "0.1.0-beta.0",
 	"bin": {
 		"bun-build": "src/index.ts"
 	},
 	"scripts": {
 		"build": "echo 'do nothing'",
+		"test": "vitest",
+		"lint": "",
+		"lint:check": "",
+		"format": "",
+		"format:check": "",
 		"clean": "bun run ../bun-clean/src/clean.ts",
 		"clean:all": "bun run ../bun-clean/src/clean-all.ts"
 	},
@@ -13,7 +18,11 @@
 		"oxc-transform": "0.101.0"
 	},
 	"devDependencies": {
-		"@kctypes/package_json": "workspace:*"
+		"@kctypes/package_json": "workspace:*",
+		"@biomejs/biome": "catalog:"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:peer"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcinternals/bun-build",

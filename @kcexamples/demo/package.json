@@ -14,14 +14,15 @@
 	},
 	"scripts": {
 		"start": "bun run ./src/index.ts",
-		"build": "bun-build"
+		"build": "bun-build",
+		"clean": "bun-clean",
+		"clean:all": "bun-clean-all"
 	},
 	"dependencies": {
 		"@kcexamples/hello": "workspace:*",
 		"@kcexamples/world": "workspace:*"
 	},
 	"devDependencies": {
-		"@kcinternals/bun-build": "workspace:*"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",

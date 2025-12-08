@@ -2,7 +2,7 @@ import { exists, rm } from "node:fs/promises"
 import { join } from "node:path"
 import { pathToFileURL } from "node:url"
 
-const getBasePath = () => {
+export const getBasePath = () => {
 	return pathToFileURL(".").pathname
 }
 

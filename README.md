@@ -39,6 +39,16 @@
 - [ ] Automatically merge PRs via [mergify](https://mergify.com/)
 - [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
 
+## Known issues
+
+- [ ] https://github.com/oven-sh/bun/issues/4112
+
+## Get start
+
+1. Install bun
+2. Run `bun install` to install all dependencies
+3. Run `bun build:all` to build all packages
+
 ## Packages
 
 ### @kcconfigs/*

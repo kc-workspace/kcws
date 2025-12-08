@@ -13,11 +13,11 @@
 		}
 	},
 	"scripts": {
-		"build": "bun-build"
+		"build": "bun-build",
+		"clean": "bun-clean",
+		"clean:all": "bun-clean-all"
 	},
 	"devDependencies": {
-		"@kcinternals/bun-build": "workspace:*",
-		"@kcexamples/world": "workspace:*"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/hello",

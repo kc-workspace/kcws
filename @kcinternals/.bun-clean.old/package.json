@@ -11,7 +11,11 @@
 		"clean:all": "bun run ./src/clean-all.ts"
 	},
 	"devDependencies": {
-		"@kctypes/package_json": "workspace:*"
+		"@kctypes/package_json": "workspace:*",
+		"@biomejs/biome": "catalog:"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcinternals/bun-clean",

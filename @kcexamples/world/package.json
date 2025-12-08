@@ -2,33 +2,49 @@
 	"name": "@kcexamples/world",
 	"version": "0.1.0-beta.0",
 	"description": "Example get name for say hello",
+	"type": "module",
+	"scripts": {
+		"build:dts": "tsc -p tsconfig.dts.json",
+		"build:vite": "vite build && pnpm build:dts",
+		"build:tsdown": "tsdown",
+		"build:zshy": "zshy",
+		"fix": "biome check --fix --unsafe",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"@kcconfigs/biome": "workspace:*",
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@types/node": "catalog:",
+		"rolldown-plugin-dts": "0.18.3",
+		"tsdown": "catalog:",
+		"vite": "catalog:",
+		"zshy": "catalog:"
+	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"bun": "./src/index.ts",
+			"source": "./src/index.ts",
 			"require": "./dist/index.cjs",
 			"types": "./dist/index.d.ts",
 			"default": "./dist/index.js"
 		}
 	},
-	"scripts": {
-		"build": "bun-build"
-	},
-	"devDependencies": {
-		"@kcinternals/bun-build": "workspace:*"
-	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/world",
+	"repository": {
+		"type": "git",
+		"directory": "@kcexamples/world",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
 	"author": {
 		"name": "Kamontat Chantrachirathumrong",
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
-	},
-	"repository": {
-		"type": "git",
-		"directory": "@kcexamples/world",
-		"url": "https://github.com/kc-workspace/kcws.git"
 	},
 	"keywords": [
 		"example",
@@ -42,13 +58,8 @@
 		"dist"
 	],
 	"engines": {
-		"node": ">=14",
-		"bun": ">=1"
+		"node": ">=14"
 	},
-	"@kcinternals/bun-build": {
-		"type": "module"
-	},
-	"@kcinternals/bun-publish": {},
 	"publishConfig": {
 		"access": "public"
 	}

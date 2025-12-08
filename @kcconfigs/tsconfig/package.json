@@ -1,0 +1,55 @@
+{
+	"name": "@kcconfigs/tsconfig",
+	"version": "0.1.0-beta.0",
+	"description": "Common typescript configuration for kc's",
+	"scripts": {
+		"fix": "biome check --fix --unsafe",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint"
+	},
+	"devDependencies": {
+		"@kcconfigs/biome": "workspace:*",
+		"@kctypes/package_json": "workspace:*",
+		"@biomejs/biome": "catalog:"
+	},
+	"peerDependencies": {
+		"typescript": "catalog:peer"
+	},
+	"main": "./src/tsconfig.default.json",
+	"exports": {
+		"./default": "./src/tsconfig.default.json",
+		"./base": "./src/tsconfig.base.json",
+		"./dts": "./src/tsconfig.dts.json",
+		"./bundler": "./src/tsconfig.bundler.json"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/tsconfig",
+	"repository": {
+		"type": "git",
+		"directory": "@kcconfigs/tsconfig",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"config",
+		"typescript",
+		"tsconfig"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"src"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
