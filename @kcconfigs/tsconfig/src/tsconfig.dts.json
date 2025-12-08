@@ -1,8 +1,6 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
 	"extends": "./tsconfig.default.json",
-	"include": ["../../../../package.json", "../../../../src/**/*.ts"],
-	"exclude": ["../../../../src/**/*.test.ts"],
 	"compilerOptions": {
 		"declaration": true,
 		"declarationMap": true,
