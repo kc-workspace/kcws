@@ -6,13 +6,15 @@
 		"test:all": "pnpm recursive run --if-present --stream test",
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
+		"docs:all": "typedoc",
 		"clean": "rimraf --verbose --glob -- **/dist",
 		"clean:all": "rimraf --verbose --glob -- **/dist **/node_modules pnpm-lock.yaml"
 	},
 	"devDependencies": {
 		"@kcconfigs/tsconfig": "workspace:",
 		"@kcconfigs/biome": "workspace:",
-		"@biomejs/biome": "2.3.8",
+		"@biomejs/biome": "catalog:",
+		"typedoc": "catalog:",
 		"rimraf": "6.1.2"
 	},
 	"engines": {

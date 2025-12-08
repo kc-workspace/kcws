@@ -43,6 +43,7 @@
 
 - [X] tsconfig.json typeRoots didn't works when extends with package name
     - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
+- [ ] typedoc didn't works with @kcconfig/tsdown; when dts resolve is true, no custom function is export; when it's false, only custom function is exported
 
 ## Get start
 
