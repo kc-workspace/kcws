@@ -18,12 +18,8 @@
 		"clean": "bun-clean",
 		"clean:all": "bun-clean-all"
 	},
-	"dependencies": {
-		"@kcexamples/hello": "workspace:*",
-		"@kcexamples/world": "workspace:*"
-	},
-	"devDependencies": {
-	},
+	"dependencies": {},
+	"devDependencies": {},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",
 	"author": {
@@ -51,10 +47,6 @@
 		"node": ">=14",
 		"bun": ">=1"
 	},
-	"@kcinternals/bun-build": {
-		"type": "module"
-	},
-	"@kcinternals/bun-publish": {},
 	"publishConfig": {
 		"access": "public"
 	}
