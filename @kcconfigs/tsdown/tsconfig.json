@@ -1,11 +1,3 @@
 {
-	"extends": "@kcconfigs/tsconfig/bundler",
-	"compilerOptions": {
-		"typeRoots": [
-			"./node_modules/@types",
-			"./node_modules/@kctypes",
-			"../../node_modules/@types",
-			"../../node_modules/@kctypes"
-		]
-	}
+	"extends": "./node_modules/@kcconfigs/tsconfig/src/tsconfig.bundler.json"
 }

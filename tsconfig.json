@@ -1,3 +1,3 @@
 {
-	"extends": "@kcconfigs/tsconfig/default"
+	"extends": "@kcconfigs/tsconfig/root"
 }

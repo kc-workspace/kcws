@@ -1,8 +1,7 @@
 {
-	"extends": "@kcconfigs/tsconfig/dts",
-	"include": ["package.json", "src/**/*.ts"],
+	"extends": "./node_modules/@kcconfigs/tsconfig/src/tsconfig.dts.json",
 	"compilerOptions": {
-		"rootDir": "src",
-		"outDir": "dist.tsc"
+		"rootDir": "./src",
+		"outDir": "./dist.dts"
 	}
 }

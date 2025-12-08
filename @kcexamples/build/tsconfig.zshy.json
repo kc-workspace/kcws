@@ -1,8 +1,7 @@
 {
-	"extends": "@kcconfigs/tsconfig/zshy",
-	"include": ["package.json", "src/**/*.ts"],
+	"extends": "./node_modules/@kcconfigs/tsconfig/src/tsconfig.zshy.json",
 	"compilerOptions": {
-		"rootDir": "src",
-		"outDir": "dist.zshy"
+		"rootDir": "./src",
+		"outDir": "./dist.zshy"
 	}
 }

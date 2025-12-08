@@ -39,14 +39,9 @@
 	"types": "./dist.zshy/index.d.cts",
 	"exports": {
 		".": {
-			"require": {
-				"types": "./dist.zshy/index.d.cts",
-				"default": "./dist.zshy/index.cjs"
-			},
-			"default": {
-				"types": "./dist.zshy/index.d.ts",
-				"default": "./dist.zshy/index.js"
-			}
+			"types": "./dist.zshy/index.d.cts",
+			"import": "./dist.zshy/index.js",
+			"require": "./dist.zshy/index.cjs"
 		}
 	},
 	"license": "AGPL-3.0-only",
