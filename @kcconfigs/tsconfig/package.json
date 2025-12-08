@@ -20,8 +20,9 @@
 	},
 	"main": "./src/tsconfig.default.json",
 	"exports": {
-		"./default": "./src/tsconfig.default.json",
 		"./base": "./src/tsconfig.base.json",
+		"./root": "./src/tsconfig.root.json",
+		"./default": "./src/tsconfig.default.json",
 		"./dts": "./src/tsconfig.dts.json",
 		"./bundler": "./src/tsconfig.bundler.json",
 		"./zshy": "./src/tsconfig.zshy.json"

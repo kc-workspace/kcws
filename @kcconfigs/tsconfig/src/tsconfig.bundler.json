@@ -1,6 +1,6 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": "./tsconfig.base.json",
+	"extends": "./tsconfig.default.json",
 	"compilerOptions": {
 		// Bundler mode
 		"moduleResolution": "bundler",
