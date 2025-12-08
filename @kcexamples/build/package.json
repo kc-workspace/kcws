@@ -1,0 +1,88 @@
+{
+	"name": "@kcexamples/build",
+	"version": "0.1.0-beta.0",
+	"description": "Example build library using various tools.",
+	"type": "module",
+	"scripts": {
+		"build:dts": "tsc --project tsconfig.dts.json",
+		"build:vite": "pnpm run build:vite:mjs && pnpm run build:vite:cjs",
+		"build:vite:mjs": "vite build --config vite-mjs.config.ts",
+		"build:vite:cjs": "vite build --config vite-cjs.config.ts",
+		"build:tsdown": "tsdown",
+		"build:zshy": "zshy --project tsconfig.zshy.json",
+		"test": "vitest run",
+		"fix": "biome check --fix --unsafe",
+		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint",
+		"type:check": "tsc --build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"@kcconfigs/biome": "workspace:*",
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kcconfigs/tsdown": "workspace:*",
+		"@vitest/coverage-v8": "catalog:",
+		"@vitest/ui": "catalog:",
+		"publint": "catalog:",
+		"rolldown-plugin-dts": "0.18.3",
+		"tsdown": "catalog:",
+		"vite": "catalog:",
+		"vitest": "catalog:",
+		"zshy": "catalog:"
+	},
+	"zshy": "./src/index.ts",
+	"main": "./dist.zshy/index.cjs",
+	"module": "./dist.zshy/index.js",
+	"types": "./dist.zshy/index.d.cts",
+	"exports": {
+		".": {
+			"require": {
+				"types": "./dist.zshy/index.d.cts",
+				"default": "./dist.zshy/index.cjs"
+			},
+			"default": {
+				"types": "./dist.zshy/index.d.ts",
+				"default": "./dist.zshy/index.js"
+			}
+		}
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/build",
+	"repository": {
+		"type": "git",
+		"directory": "@kcexamples/build",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"example",
+		"testing",
+		"build",
+		"typescript",
+		"zshy",
+		"tsdown",
+		"vite",
+		"tsc"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist.tsc",
+		"dist.tsdown",
+		"dist.vite",
+		"dist.zshy"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
