@@ -11,6 +11,7 @@
 	},
 	"devDependencies": {
 		"@kcconfigs/biome": "workspace:*",
+		"@types/node": "catalog:",
 		"@kctypes/package_json": "workspace:*",
 		"@biomejs/biome": "catalog:"
 	},
@@ -22,7 +23,8 @@
 		"./default": "./src/tsconfig.default.json",
 		"./base": "./src/tsconfig.base.json",
 		"./dts": "./src/tsconfig.dts.json",
-		"./bundler": "./src/tsconfig.bundler.json"
+		"./bundler": "./src/tsconfig.bundler.json",
+		"./zshy": "./src/tsconfig.zshy.json"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/tsconfig",

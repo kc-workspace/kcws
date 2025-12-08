@@ -1,0 +1,12 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"incremental": false,
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"isolatedDeclarations": true,
+		"emitDeclarationOnly": true
+	}
+}

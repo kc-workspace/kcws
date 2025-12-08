@@ -9,6 +9,7 @@
 		"target": "ESNext",
 		"module": "Preserve",
 		"moduleDetection": "force",
+		"resolveJsonModule": true,
 
 		// Output settings
 		"isolatedModules": true,

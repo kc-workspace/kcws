@@ -1,4 +1,9 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": "./tsconfig.base.json"
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"rootDir": "../../../..",
+		"outDir": "../../../../dist",
+		"verbatimModuleSyntax": true
+	}
 }
