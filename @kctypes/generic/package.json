@@ -1,7 +1,7 @@
 {
-	"name": "@kctypes/package_json",
-	"version": "1.30.4",
-	"description": "Typescript definitions for package.json file",
+	"name": "@kctypes/generic",
+	"version": "1.30.3",
+	"description": "Typescript definitions for global generic type",
 	"main": "types/index.d.ts",
 	"types": "types/index.d.ts",
 	"exports": {
