@@ -13,8 +13,7 @@
 		"clean": "bun-clean",
 		"clean:all": "bun-clean-all"
 	},
-	"devDependencies": {
-	},
+	"devDependencies": {},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcws/reset.css",
 	"author": {
@@ -41,10 +40,6 @@
 		"node": ">=14",
 		"bun": ">=1"
 	},
-	"@kcinternals/bun-build": {
-		"type": "css"
-	},
-	"@kcinternals/bun-publish": {},
 	"publishConfig": {
 		"access": "public"
 	}

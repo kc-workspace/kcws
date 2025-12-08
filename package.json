@@ -2,8 +2,10 @@
 	"name": "@kcws/root",
 	"private": true,
 	"scripts": {
-		"build:all": "bun --elide-lines=0 --workspaces run build",
-		"test:all": "bun --elide-lines=0 --workspaces test",
+		"build:all": "pnpm recursive run --if-present --stream build",
+		"test:all": "pnpm recursive run --if-present --stream test",
+		"check:all": "pnpm recursive run --if-present --stream check",
+		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"clean": "rimraf --verbose --glob -- **/dist",
 		"clean:all": "rimraf --verbose --glob -- **/dist **/node_modules pnpm-lock.yaml"
 	},
