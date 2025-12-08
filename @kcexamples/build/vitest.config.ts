@@ -4,9 +4,9 @@ const config: ViteUserConfig = defineConfig({
 	test: {
 		reporters: ["default", "json", "html", "junit"],
 		outputFile: {
-			json: "reports/test/index.json",
-			html: "reports/test/index.html",
-			junit: "reports/test/index.xml",
+			json: "reports/test-results/index.json",
+			html: "reports/test-results/index.html",
+			junit: "reports/test-results/index.xml",
 		},
 		coverage: {
 			enabled: true,

@@ -4,7 +4,7 @@
 	"files": {
 		"includes": [
 			"**",
-			"!reports/test",
+			"!reports/test-results",
 			"!reports/coverage",
 			"!dist",
 			"!dist.*",

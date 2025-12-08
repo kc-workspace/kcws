@@ -26,13 +26,13 @@
 
 ## Todo list
 
-- [x] Support Bun monorepo
+- [x] Support Pnpm monorepo
 - [ ] Support Git hooks via [husky](https://github.com/typicode/husky)
 - [ ] Support [lint-staged](https://github.com/lint-staged/lint-staged)
-- [ ] Support Biome
+- [X] Support Biome
 - [ ] Support commitlint && commitizen
-- [ ] Support test junit output (reports/test-results)
-- [ ] Support test coverage output (reports/coverage)
+- [X] Support test junit output (reports/test-results)
+- [X] Support test coverage output (reports/coverage)
 - [ ] Support [TypeDocs](https://typedoc.org/)
 - [ ] Support new package generator
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
@@ -41,7 +41,8 @@
 
 ## Known issues
 
-- [ ] https://github.com/oven-sh/bun/issues/4112
+- [X] tsconfig.json typeRoots didn't works when extends with package name
+    - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
 
 ## Get start
 
