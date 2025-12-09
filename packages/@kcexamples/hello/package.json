@@ -1,7 +1,7 @@
 {
-	"name": "@kcexamples/demo",
+	"name": "@kcexamples/hello",
 	"version": "0.1.0-beta.0",
-	"description": "Example application for use hello and world together",
+	"description": "Example say hello to with input name",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
@@ -12,16 +12,10 @@
 			"default": "./dist/index.js"
 		}
 	},
-	"scripts": {
-		"start": "bun run ./src/index.ts",
-		"build": "bun-build",
-		"clean": "bun-clean",
-		"clean:all": "bun-clean-all"
-	},
-	"dependencies": {},
+	"scripts": {},
 	"devDependencies": {},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/hello",
 	"author": {
 		"name": "Kamontat Chantrachirathumrong",
 		"email": "kcws@kc.in.th",
@@ -29,13 +23,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"directory": "@kcexamples/demo",
+		"directory": "@kcexamples/hello",
 		"url": "https://github.com/kc-workspace/kcws.git"
 	},
 	"keywords": [
 		"example",
 		"testing",
-		"demo",
+		"hello-world",
 		"typescript"
 	],
 	"files": [

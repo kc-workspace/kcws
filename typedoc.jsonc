@@ -1,9 +1,14 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
+
+	// Input: https://typedoc.org/documents/Options.Input.html
 	"name": "KC's Workspace",
+	"entryPointStrategy": "packages",
+	"exclude": ["**/*+(index|.e2e).ts"],
 	"entryPoints": [
-		"@kcconfigs/tsdown",
-		"@kcexamples/build"
+		"./packages/@kcconfigs/tsdown",
+		"./packages/@kcconfigs/vitest",
+		"./packages/@kcexamples/build"
 		// "@kcconfigs/*",
 		// "@kcexamples/*",
 		// "@kcinternals/*",
@@ -12,7 +17,72 @@
 		// "@kcutils/*",
 		// "@kcws/*"
 	],
-	"entryPointStrategy": "packages",
 	"out": "docs",
-	"includeVersion": false
+	"includeVersion": false,
+
+	// Output: https://typedoc.org/documents/Options.Output.html
+	"theme": "default",
+	"router": "kind-dir",
+	"emit": "docs",
+	"favicon": "assets/docs/favicon.ico",
+	"sourceLinkExternal": true,
+	"markdownLinkExternal": true,
+	"cleanOutputDir": true,
+	"visibilityFilters": {
+		"protected": true,
+		"private": true,
+		"inherited": true,
+		"external": true,
+		"@alpha": true,
+		"@beta": true
+	},
+
+	// Organization: https://typedoc.org/documents/Options.Organization.html
+	"categorizeByGroup": true,
+	"sort": [
+		"visibility",
+		"static-first",
+		"enum-value-ascending",
+		"alphabetical"
+	],
+
+	// Validation: https://typedoc.org/documents/Options.Validation.html
+	"validation": {
+		"invalidLink": true,
+		"notExported": true,
+		"notDocumented": false
+	},
+	"treatWarningsAsErrors": false,
+	"treatValidationWarningsAsErrors": false,
+	// "requiredToBeDocumented": [
+	//   "Namespace",
+	//   "Enum",
+	//   "EnumMember",
+	//   "Function",
+	//   "Class",
+	//   "Method",
+	//   "Reference"
+	// ],
+
+	// Other: https://typedoc.org/documents/Options.Other.html
+
+	// Plugins: https://typedoc.org/documents/Plugins.html
+	"plugin": [
+		"typedoc-material-theme"
+		// "typedoc-plugin-missing-exports"
+		// FIXME: https://github.com/Drarig29/typedoc-plugin-extras/issues/24
+		// "typedoc-plugin-extras"
+	],
+
+	// Themes: https://typedoc.org/documents/Themes.html
+
+	// typedoc-plugin-missing-exports
+	// https://github.com/Gerrit0/typedoc-plugin-missing-exports#options
+	"internalModule": "internal"
+
+	// typedoc-plugin-extras
+	// https://github.com/Drarig29/typedoc-plugin-extras#arguments
+	// "customDescription": "kamontat's workspace for javascript ecosystem",
+	// "footerTypedocVersion": true,
+	// "footerLastModified": true
 }

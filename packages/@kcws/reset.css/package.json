@@ -8,11 +8,7 @@
 			"default": "./dist/index.css"
 		}
 	},
-	"scripts": {
-		"build": "bun-build",
-		"clean": "bun-clean",
-		"clean:all": "bun-clean-all"
-	},
+	"scripts": {},
 	"devDependencies": {},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcws/reset.css",

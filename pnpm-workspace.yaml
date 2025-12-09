@@ -12,14 +12,14 @@ saveWorkspaceProtocol: rolling
 failIfNoMatch: true
 
 packages:
-  - "@kcconfigs/*"
-  - "@kcexamples/*"
-  - "@kcinternals/*"
-  - "@kctools/*"
-  - "@kctypes/*"
-  - "@kcutils/*"
-  - "@kcws/*"
-  - "!**/.*.old/**"
+  - "packages/@kcconfigs/*"
+  - "packages/@kcexamples/*"
+  - "packages/@kcinternals/*"
+  - "packages/@kctools/*"
+  - "packages/@kctypes/*"
+  - "packages/@kcutils/*"
+  - "packages/@kcws/*"
+  - "!packages/**/.*.old/**"
 
 catalog:
   "@types/node": ^22.0.0
@@ -33,6 +33,7 @@ catalog:
   vitest: 4.0.15
   tsdown: 0.17.1
   typedoc: 0.28.15
+  typedoc-material-theme: 1.4.1
   zshy: 0.6.0
 
 catalogs:

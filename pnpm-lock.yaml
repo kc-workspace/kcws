@@ -43,9 +43,6 @@ catalogs:
     vite:
       specifier: ^8.0.0-beta
       version: 8.0.0-beta.1
-    vitest:
-      specifier: ^4.0.0
-      version: 4.0.15
 
 importers:
 
@@ -56,24 +53,39 @@ importers:
         version: 2.3.8
       '@kcconfigs/biome':
         specifier: 'workspace:'
-        version: link:@kcconfigs/biome
+        version: link:packages/@kcconfigs/biome
       '@kcconfigs/tsconfig':
         specifier: 'workspace:'
-        version: link:@kcconfigs/tsconfig
+        version: link:packages/@kcconfigs/tsconfig
+      '@kcconfigs/vitest':
+        specifier: 'workspace:'
+        version: link:packages/@kcconfigs/vitest
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 4.0.15(vitest@4.0.15)
+      '@vitest/ui':
+        specifier: 'catalog:'
+        version: 4.0.15(vitest@4.0.15)
       rimraf:
         specifier: 6.1.2
         version: 6.1.2
       typedoc:
         specifier: 'catalog:'
         version: 0.28.15(typescript@5.9.3)
+      typedoc-material-theme:
+        specifier: 1.4.1
+        version: 1.4.1(typedoc@0.28.15(typescript@5.9.3))
+      vitest:
+        specifier: 'catalog:'
+        version: 4.0.15(@types/node@22.19.1)(@vitest/ui@4.0.15)(lightningcss@1.30.2)(yaml@2.8.2)
 
-  '@kcconfigs/biome':
+  packages/@kcconfigs/biome:
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
         version: 2.3.8
 
-  '@kcconfigs/tsconfig':
+  packages/@kcconfigs/tsconfig:
     dependencies:
       typescript:
         specifier: catalog:peer
@@ -92,7 +104,7 @@ importers:
         specifier: 'catalog:'
         version: 22.19.1
 
-  '@kcconfigs/tsdown':
+  packages/@kcconfigs/tsdown:
     dependencies:
       publint:
         specifier: 'catalog:'
@@ -100,6 +112,9 @@ importers:
       tsdown:
         specifier: 'catalog:'
         version: 0.17.1(publint@0.3.15)(typescript@5.9.3)
+      typescript:
+        specifier: catalog:peer
+        version: 5.9.3
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -110,9 +125,6 @@ importers:
       '@kcconfigs/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      '@kctypes/generic':
-        specifier: workspace:*
-        version: link:../../@kctypes/generic
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 4.0.15(vitest@4.0.15)
@@ -126,7 +138,7 @@ importers:
         specifier: 'catalog:'
         version: 4.0.15(@types/node@22.19.1)(@vitest/ui@4.0.15)(lightningcss@1.30.2)(yaml@2.8.2)
 
-  '@kcconfigs/vite':
+  packages/@kcconfigs/vite:
     dependencies:
       typescript:
         specifier: catalog:peer
@@ -145,13 +157,13 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
-  '@kcconfigs/vitest':
+  packages/@kcconfigs/vitest:
     dependencies:
       typescript:
         specifier: catalog:peer
         version: 5.9.3
       vitest:
-        specifier: catalog:peer
+        specifier: 'catalog:'
         version: 4.0.15(@types/node@22.19.1)(@vitest/ui@4.0.15)(lightningcss@1.30.2)(yaml@2.8.2)
     devDependencies:
       '@biomejs/biome':
@@ -163,8 +175,14 @@ importers:
       '@kcconfigs/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@kcconfigs/tsdown':
+        specifier: workspace:*
+        version: link:../tsdown
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.17.1(publint@0.3.15)(typescript@5.9.3)
 
-  '@kcexamples/build':
+  packages/@kcexamples/build:
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -178,6 +196,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
+      '@kcconfigs/vitest':
+        specifier: 'workspace:'
+        version: link:../../@kcconfigs/vitest
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 4.0.15(vitest@4.0.15)
@@ -203,23 +224,23 @@ importers:
         specifier: 'catalog:'
         version: 0.6.0(typescript@5.9.3)
 
-  '@kcexamples/demo': {}
+  packages/@kcexamples/demo: {}
 
-  '@kcexamples/hello': {}
+  packages/@kcexamples/hello: {}
 
-  '@kctypes/generic':
+  packages/@kctypes/generic:
     dependencies:
       typescript:
         specifier: catalog:peer
         version: 5.9.3
 
-  '@kctypes/package_json':
+  packages/@kctypes/package_json:
     dependencies:
       typescript:
         specifier: catalog:peer
         version: 5.9.3
 
-  '@kcws/reset.css': {}
+  packages/@kcws/reset.css: {}
 
 packages:
 
@@ -489,6 +510,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@material/material-color-utilities@0.3.0':
+    resolution: {integrity: sha512-ztmtTd6xwnuh2/xu+Vb01btgV8SQWYCaK56CkRK8gEkWe5TuDyBcYJ0wgkMRn+2VcE9KUmhvkz+N9GHrqw/C0g==}
 
   '@napi-rs/wasm-runtime@1.1.0':
     resolution: {integrity: sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA==}
@@ -1342,6 +1366,12 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
+  typedoc-material-theme@1.4.1:
+    resolution: {integrity: sha512-/inKZw8SqZPt+pmawpMhDmXCJQyIm+fHFuGChioyJQICZcX2FyzpwZnyPWcZHmJ09upttWFhti4ZI3hESJNkSA==}
+    engines: {node: '>=18.0.0', npm: '>=8.6.0'}
+    peerDependencies:
+      typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
+
   typedoc@0.28.15:
     resolution: {integrity: sha512-mw2/2vTL7MlT+BVo43lOsufkkd2CJO4zeOSuWQQsiXoV2VuEn7f6IZp2jsUDPmBMABpgR0R5jlcJ2OGEFYmkyg==}
     engines: {node: '>= 18', pnpm: '>= 10'}
@@ -1724,6 +1754,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@material/material-color-utilities@0.3.0': {}
 
   '@napi-rs/wasm-runtime@1.1.0':
     dependencies:
@@ -2496,6 +2528,11 @@ snapshots:
 
   tslib@2.8.1:
     optional: true
+
+  typedoc-material-theme@1.4.1(typedoc@0.28.15(typescript@5.9.3)):
+    dependencies:
+      '@material/material-color-utilities': 0.3.0
+      typedoc: 0.28.15(typescript@5.9.3)
 
   typedoc@0.28.15(typescript@5.9.3):
     dependencies:

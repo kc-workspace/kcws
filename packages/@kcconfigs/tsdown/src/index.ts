@@ -36,7 +36,8 @@ export const defineConfig = (
 				? dts
 				: {
 						sourcemap: true,
-						resolve: true,
+						// FIXME: When enabled, typedoc didn't read type correctly
+						resolve: false,
 						...(dts as DtsOptions),
 					},
 		outDir: "dist",

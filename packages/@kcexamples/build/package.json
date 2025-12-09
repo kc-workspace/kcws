@@ -4,6 +4,7 @@
 	"description": "Example build library using various tools.",
 	"type": "module",
 	"scripts": {
+		"build": "pnpm run build:tsdown",
 		"build:dts": "tsc --project tsconfig.dts.json",
 		"build:vite": "pnpm run build:vite:mjs && pnpm run build:vite:cjs",
 		"build:vite:mjs": "vite build --config vite-mjs.config.ts",
@@ -22,6 +23,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
 		"@kcconfigs/biome": "workspace:*",
+		"@kcconfigs/vitest": "workspace:",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@vitest/coverage-v8": "catalog:",

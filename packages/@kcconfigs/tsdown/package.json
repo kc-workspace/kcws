@@ -27,6 +27,8 @@
 		"vitest": "catalog:"
 	},
 	"peerDependencies": {
+		"tsdown": "catalog:peer",
+		"typescript": "catalog:peer",
 		"publint": "catalog:peer"
 	},
 	"peerDependenciesMeta": {
