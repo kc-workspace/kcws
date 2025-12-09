@@ -21,8 +21,6 @@
 	"includeVersion": false,
 
 	// Output: https://typedoc.org/documents/Options.Output.html
-	"theme": "default",
-	"router": "kind-dir",
 	"emit": "docs",
 	"favicon": "assets/docs/favicon.ico",
 	"sourceLinkExternal": true,
@@ -33,8 +31,15 @@
 		"private": true,
 		"inherited": true,
 		"external": true,
+		"@internal": true,
 		"@alpha": true,
 		"@beta": true
+	},
+
+	// Comments: https://typedoc.org/documents/Options.Comments.html
+	"useTsLinkResolution": true,
+	"externalSymbolLinkMappings": {
+		"rolldown": { "transform": "#" }
 	},
 
 	// Organization: https://typedoc.org/documents/Options.Organization.html
@@ -48,9 +53,12 @@
 
 	// Validation: https://typedoc.org/documents/Options.Validation.html
 	"validation": {
-		"invalidLink": true,
 		"notExported": true,
-		"notDocumented": false
+		"invalidLink": true,
+		"invalidPath": true,
+		"rewrittenLink": true,
+		"notDocumented": false,
+		"unusedMergeModuleWith": true
 	},
 	"treatWarningsAsErrors": false,
 	"treatValidationWarningsAsErrors": false,
@@ -68,21 +76,37 @@
 
 	// Plugins: https://typedoc.org/documents/Plugins.html
 	"plugin": [
-		"typedoc-material-theme"
-		// "typedoc-plugin-missing-exports"
-		// FIXME: https://github.com/Drarig29/typedoc-plugin-extras/issues/24
-		// "typedoc-plugin-extras"
+		"typedoc-theme-oxide",
+		"ig-typedoc-theme",
+		"typedoc-theme-fresh",
+		"varvara-typedoc-theme",
+		"typedoc-unhoax-theme",
+		"typedoc-github-theme",
+		// "typedoc-material-theme",
+
+		"typedoc-plugin-missing-exports",
+		"typedoc-plugin-include-example",
+		"typedoc-plugin-extras",
+		"typedoc-plugin-dt-links",
+		"typedoc-plugin-mdn-links"
 	],
 
 	// Themes: https://typedoc.org/documents/Themes.html
+	// "theme": "default",
 
 	// typedoc-plugin-missing-exports
 	// https://github.com/Gerrit0/typedoc-plugin-missing-exports#options
-	"internalModule": "internal"
+	"internalModule": "[internal]",
+	"collapseInternalModule": true,
+	"includeDocCommentReferences": true,
+	"placeInternalsInOwningModule": false,
 
 	// typedoc-plugin-extras
 	// https://github.com/Drarig29/typedoc-plugin-extras#arguments
-	// "customDescription": "kamontat's workspace for javascript ecosystem",
-	// "footerTypedocVersion": true,
-	// "footerLastModified": true
+	"customDescription": "kamontat's workspace for javascript ecosystem",
+	"footerTypedocVersion": true,
+	"footerLastModified": true,
+
+	// https://github.com/Gerrit0/typedoc-plugin-mdn-links#options
+	"resolveUtilityTypes": true
 }

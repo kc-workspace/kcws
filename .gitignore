@@ -3,6 +3,7 @@ node_modules
 
 # output
 docs
+!assets/docs
 out
 dist
 *.tgz

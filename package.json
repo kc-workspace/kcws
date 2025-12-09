@@ -7,8 +7,8 @@
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"docs:all": "typedoc",
-		"clean": "rimraf --verbose --glob -- **/dist",
-		"clean:all": "rimraf --verbose --glob -- **/dist **/node_modules pnpm-lock.yaml"
+		"clean": "rimraf --verbose --glob -- **/dist docs reports coverage",
+		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
@@ -17,9 +17,20 @@
 		"@kcconfigs/vitest": "workspace:",
 		"@vitest/coverage-v8": "catalog:",
 		"@vitest/ui": "catalog:",
+		"ig-typedoc-theme": "7.0.1",
 		"rimraf": "6.1.2",
 		"typedoc": "catalog:",
-		"typedoc-material-theme": "catalog:",
+		"typedoc-github-theme": "0.3.1",
+		"typedoc-material-theme": "1.4.1",
+		"typedoc-plugin-dt-links": "catalog:",
+		"typedoc-plugin-extras": "catalog:",
+		"typedoc-plugin-include-example": "catalog:",
+		"typedoc-plugin-mdn-links": "catalog:",
+		"typedoc-plugin-missing-exports": "catalog:",
+		"typedoc-theme-fresh": "0.2.1",
+		"typedoc-theme-oxide": "0.2.0",
+		"typedoc-unhoax-theme": "0.5.3",
+		"varvara-typedoc-theme": "0.3.8",
 		"vitest": "catalog:"
 	},
 	"engines": {
