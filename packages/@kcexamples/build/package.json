@@ -40,6 +40,8 @@
 	"types": "./dist.tsdown/index.d.cts",
 	"exports": {
 		".": {
+			"source": "./src/index.ts",
+			"typedoc": "./src/index.ts",
 			"require": {
 				"types": "./dist.tsdown/index.d.cts",
 				"default": "./dist.tsdown/index.cjs"
