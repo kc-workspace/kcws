@@ -9,10 +9,10 @@
 		"docs:all": "typedoc",
 		"clean": "rimraf --verbose --glob -- **/dist docs reports coverage",
 		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml",
-		"hooks:pre-commit:check": "pnpm recursive run --if-present --stream fix --no-errors-on-unmatched --colors=off",
+		"hooks:pre-commit:check": "pnpm biome check --fix --unsafe --no-errors-on-unmatched --colors=off",
 		"hooks:pre-push:check:type": "pnpm recursive run --if-present --stream type:check",
-		"hooks:pre-push:check:lint": "pnpm recursive run --if-present --stream lint:check --no-errors-on-unmatched --colors=off",
-		"hooks:pre-push:check:format": "pnpm recursive run --if-present --stream format:check --no-errors-on-unmatched --colors=off"
+		"hooks:pre-push:check:lint": "pnpm biome lint --no-errors-on-unmatched --colors=off",
+		"hooks:pre-push:check:format": "pnpm biome format --no-errors-on-unmatched --colors=off"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
