@@ -1,7 +1,0 @@
-## https://bun.sh/docs/runtime/bunfig
-
-telemetry = false
-
-[install]
-exact  = true
-linker = "isolated"
