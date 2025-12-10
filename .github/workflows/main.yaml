@@ -96,6 +96,9 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_ALL_CODEBASE: true
 
+          ## For testing only
+          LOG_LEVEL: DEBUG
+
           ## Use whitelist mode
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
@@ -116,6 +119,7 @@ jobs:
     needs:
       - commitcheck
       - spellcheck
+      - licensecheck
     steps:
       - name: Set up source code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
