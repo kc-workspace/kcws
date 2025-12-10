@@ -26,9 +26,6 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"tsdown": "catalog:"
 	},
-	"peerDependencies": {
-		"@commitlint/cli": "catalog:commitlint:peer"
-	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
 	"exports": {
