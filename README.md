@@ -27,14 +27,13 @@
 ## Todo list
 
 - [x] Support Pnpm monorepo
-- [ ] Move @kc* to packages/@kc* instead
-- [ ] Support Git hooks via [husky](https://github.com/typicode/husky)
-- [ ] Support [lint-staged](https://github.com/lint-staged/lint-staged)
-- [X] Support Biome
-- [ ] Support commitlint && commitizen
+- [X] Move @kc* to packages/@kc* instead
 - [X] Support test junit output (reports/test-results)
 - [X] Support test coverage output (reports/coverage)
-- [ ] Support [TypeDocs](https://typedoc.org/)
+- [X] Support [TypeDocs](https://typedoc.org/)
+- [X] Support Biome
+- [ ] Support commitlint && commitizen
+- [ ] Support Git hooks via [lefthook](https://lefthook.dev/)
 - [ ] Support new package generator
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [ ] Automatically merge PRs via [mergify](https://mergify.com/)

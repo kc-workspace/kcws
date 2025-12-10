@@ -17,6 +17,7 @@
 		"@kcconfigs/vitest": "workspace:",
 		"@vitest/coverage-v8": "catalog:",
 		"@vitest/ui": "catalog:",
+		"lefthook": "catalog:",
 		"rimraf": "6.1.2",
 		"typedoc": "catalog:",
 		"typedoc-plugin-dt-links": "catalog:",

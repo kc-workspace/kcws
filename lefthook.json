@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json",
+	"assert_lefthook_installed": true,
+	"min_version": "2.0.9",
+	"pre-commit": {
+		"commands": {
+			"check": {
+				"glob": [
+					"*.js",
+					"*.ts",
+					"*.cjs",
+					"*.mjs",
+					"*.d.cts",
+					"*.d.mts",
+					"*.jsx",
+					"*.tsx",
+					"*.json",
+					"*.jsonc"
+				],
+				"run": "pnpm fix:all --no-errors-on-unmatched --colors=off {staged_files}",
+				"stage_fixed": true
+			}
+		}
+	},
+	"pre-push": {
+		"commands": {
+			"check": {
+				"glob": [
+					"*.js",
+					"*.ts",
+					"*.cjs",
+					"*.mjs",
+					"*.d.cts",
+					"*.d.mts",
+					"*.jsx",
+					"*.tsx",
+					"*.json",
+					"*.jsonc"
+				],
+				"run": "pnpm check:all --no-errors-on-unmatched --colors=off {staged_files}"
+			}
+		}
+	}
+}
