@@ -8,6 +8,8 @@
 		"**/*.code-workspace",
 		// Ignore Pnpm lock file
 		"**/pnpm-lock.yaml",
+		// Ignore pnpm workspace file
+		"**/pnpm-workspace.yaml",
 		// Ignore dependencies and package file
 		"**/package.json",
 		// Ignore cspell config

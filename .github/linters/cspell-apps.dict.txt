@@ -2,3 +2,7 @@ mergify
 sonar
 sonarqube
 sonarcloud
+zshy
+unplugin
+attw
+arethetypewrong

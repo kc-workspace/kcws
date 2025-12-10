@@ -31,8 +31,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Build packages
-        run: pnpm build:all
+      - name: Build internal commitlint config
+        run: pnpm --filter @kcconfigs/commitlint build
       - name: Validate current commit
         if: github.event_name == 'push'
         run: pnpm commit:check --last --verbose
