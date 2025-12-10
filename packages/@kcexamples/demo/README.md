@@ -1,8 +1,8 @@
-# @kcexamples/build
+# @kcexamples/demo
 
-Example package for testing various building tools.
+Demo application for testing various tools.
 
-## Tools
+## Building Tools
 
 1. vite - Fully Frontend Bundler
 2. tsdown - Library Bundler

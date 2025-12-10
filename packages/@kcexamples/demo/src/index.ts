@@ -1,10 +1,5 @@
-import { hello } from "@kcexamples/hello"
-import { getName } from "@kcexamples/world"
+import pkg from "../package.json";
 
-function main() {
-	console.log(hello())
-	console.log(hello(getName()))
-	console.log(hello(getName("Custom Name")))
-}
-
-void main()
+export const getName = (name: string = pkg.name): string => {
+	return name;
+};

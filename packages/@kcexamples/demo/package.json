@@ -1,48 +1,87 @@
 {
 	"name": "@kcexamples/demo",
 	"version": "0.1.0-beta.0",
-	"description": "Example application for use hello and world together",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"description": "Demo library for testing various tools.",
+	"type": "module",
+	"scripts": {
+		"build": "pnpm run build:tsdown",
+		"build:dts": "tsc --project tsconfig.dts.json",
+		"build:vite": "pnpm run build:vite:mjs && pnpm run build:vite:cjs",
+		"build:vite:mjs": "vite build --config vite-mjs.config.ts",
+		"build:vite:cjs": "vite build --config vite-cjs.config.ts",
+		"build:tsdown": "tsdown",
+		"build:zshy": "zshy --project tsconfig.zshy.json",
+		"test": "vitest run",
+		"fix": "biome check --fix --unsafe",
+		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint",
+		"type:check": "tsc --build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"@kcconfigs/biome": "workspace:*",
+		"@kcconfigs/vitest": "workspace:*",
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kcconfigs/tsdown": "workspace:*",
+		"publint": "catalog:",
+		"rolldown-plugin-dts": "0.18.3",
+		"tsdown": "catalog:",
+		"vite": "catalog:",
+		"vitest": "catalog:",
+		"zshy": "catalog:"
+	},
+	"zshy": "./src/index.ts",
+	"main": "./dist.tsdown/index.js",
+	"types": "./dist.tsdown/index.d.cts",
 	"exports": {
 		".": {
-			"bun": "./src/index.ts",
-			"require": "./dist/index.cjs",
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
+			"source": "./src/index.ts",
+			"typedoc": "./src/index.ts",
+			"require": {
+				"types": "./dist.tsdown/index.d.cts",
+				"default": "./dist.tsdown/index.cjs"
+			},
+			"default": {
+				"types": "./dist.tsdown/index.d.ts",
+				"default": "./dist.tsdown/index.js"
+			}
 		}
 	},
-	"scripts": {
-		"start": "bun run ./src/index.ts"
-	},
-	"dependencies": {},
-	"devDependencies": {},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",
+	"repository": {
+		"type": "git",
+		"directory": "@kcexamples/demo",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
 	"author": {
 		"name": "Kamontat Chantrachirathumrong",
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"repository": {
-		"type": "git",
-		"directory": "@kcexamples/demo",
-		"url": "https://github.com/kc-workspace/kcws.git"
-	},
 	"keywords": [
 		"example",
 		"testing",
-		"demo",
-		"typescript"
+		"build",
+		"typescript",
+		"zshy",
+		"tsdown",
+		"vite",
+		"tsc"
 	],
 	"files": [
 		"CHANGELOG.json",
 		"CHANGELOG.md",
-		"dist"
+		"dist.tsc",
+		"dist.tsdown",
+		"dist.vite",
+		"dist.zshy"
 	],
 	"engines": {
-		"node": ">=14",
-		"bun": ">=1"
+		"node": ">=14"
 	},
 	"publishConfig": {
 		"access": "public"
