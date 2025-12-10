@@ -6,17 +6,13 @@
 	"entryPointStrategy": "packages",
 	"exclude": ["**/*+(index|.e2e).ts"],
 	"entryPoints": [
-		"./packages/@kcconfigs/commitlint",
-		"./packages/@kcconfigs/tsdown",
-		"./packages/@kcconfigs/vitest",
-		"./packages/@kcexamples/build"
-		// "@kcconfigs/*",
-		// "@kcexamples/*",
-		// "@kcinternals/*",
-		// "@kctools/*",
-		// "@kctypes/*",
-		// "@kcutils/*",
-		// "@kcws/*"
+		"packages/@kcconfigs/*",
+		"packages/@kcexamples/*",
+		"packages/@kcinternals/*",
+		"packages/@kctools/*",
+		"packages/@kctypes/*",
+		"packages/@kcutils/*",
+		"packages/@kcws/*"
 	],
 	"out": "docs",
 	"includeVersion": false,
