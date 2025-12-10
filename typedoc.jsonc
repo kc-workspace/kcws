@@ -6,6 +6,7 @@
 	"entryPointStrategy": "packages",
 	"exclude": ["**/*+(index|.e2e).ts"],
 	"entryPoints": [
+		"./packages/@kcconfigs/commitlint",
 		"./packages/@kcconfigs/tsdown",
 		"./packages/@kcconfigs/vitest",
 		"./packages/@kcexamples/build"

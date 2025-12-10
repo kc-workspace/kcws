@@ -7,8 +7,10 @@
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"docs:all": "typedoc",
-		"clean": "rimraf --verbose --glob -- **/dist docs reports coverage",
+		"clean": "rimraf --verbose --glob -- **/dist docs reports",
 		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml",
+		"commit": "git-cz",
+		"commit:check": "commitlint",
 		"hooks:pre-commit:check": "pnpm biome check --fix --unsafe --no-errors-on-unmatched --colors=off",
 		"hooks:pre-push:check:type": "pnpm recursive run --if-present --stream type:check",
 		"hooks:pre-push:check:lint": "pnpm biome lint --no-errors-on-unmatched --colors=off",
@@ -16,11 +18,16 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
+		"@commitlint/cli": "catalog:commitlint",
+		"@commitlint/cz-commitlint": "catalog:commitlint",
 		"@kcconfigs/biome": "workspace:",
+		"@kcconfigs/commitlint": "workspace:",
 		"@kcconfigs/tsconfig": "workspace:",
 		"@kcconfigs/vitest": "workspace:",
 		"@vitest/coverage-v8": "catalog:",
 		"@vitest/ui": "catalog:",
+		"commitizen": "catalog:commitlint",
+		"inquirer": "catalog:commitlint",
 		"lefthook": "catalog:",
 		"rimraf": "6.1.2",
 		"typedoc": "catalog:",
@@ -31,6 +38,11 @@
 		"typedoc-plugin-missing-exports": "catalog:",
 		"varvara-typedoc-theme": "0.3.8",
 		"vitest": "catalog:"
+	},
+	"config": {
+		"commitizen": {
+			"path": "@commitlint/cz-commitlint"
+		}
 	},
 	"engines": {
 		"node": ">=10",
