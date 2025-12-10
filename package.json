@@ -14,7 +14,8 @@
 		"hooks:pre-commit:check": "pnpm biome check --fix --unsafe --no-errors-on-unmatched --colors=off",
 		"hooks:pre-push:check:type": "pnpm recursive run --if-present --stream type:check",
 		"hooks:pre-push:check:lint": "pnpm biome lint --no-errors-on-unmatched --colors=off",
-		"hooks:pre-push:check:format": "pnpm biome format --no-errors-on-unmatched --colors=off"
+		"hooks:pre-push:check:format": "pnpm biome format --no-errors-on-unmatched --colors=off",
+		"hooks:pre-push:test": "vitest run --no-color"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
