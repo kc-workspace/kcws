@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json
+
+# Configuration file for MegaLinter
+# https://megalinter.io/latest/config-file/
+
+## Disable fixes
+APPLY_FIXES: none
+
+VALIDATE_ALL_CODEBASE: true
+SHOW_ELAPSED_TIME: true

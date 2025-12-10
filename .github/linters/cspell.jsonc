@@ -5,6 +5,9 @@
 	"language": "en",
 	"allowCompoundWords": true,
 	"ignorePaths": [
+		// Ignore node modules
+		"**/node_modules",
+		// Ignore vscode workspace settings
 		"**/*.code-workspace",
 		// Ignore Pnpm lock file
 		"**/pnpm-lock.yaml",
@@ -15,7 +18,11 @@
 		// Ignore cspell config
 		"**/cspell.json",
 		// Ignore dict file
-		"**/*.dict.txt"
+		"**/*.dict.txt",
+		// Ignore build reports
+		"**/reports",
+		// Ignore meta-linter report
+		"**/report"
 	],
 	"dictionaries": [
 		"softwareTerms",

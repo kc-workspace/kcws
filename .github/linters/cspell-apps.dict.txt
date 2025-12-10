@@ -6,3 +6,5 @@ zshy
 unplugin
 attw
 arethetypewrong
+megalinter
+oxsecurity
