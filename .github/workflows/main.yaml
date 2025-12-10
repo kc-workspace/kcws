@@ -189,7 +189,8 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     needs:
-      - lintcheck
+      - lintcheck1
+      - lintcheck2
       - main
     strategy:
       matrix:
