@@ -4,7 +4,7 @@
 	"description": "TSDown configuration",
 	"type": "module",
 	"scripts": {
-		"build": "tsdown",
+		"build": "tsdown --config-loader unrun",
 		"fix": "biome check --fix --unsafe",
 		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
 		"format": "biome format --fix",
@@ -15,7 +15,9 @@
 	},
 	"dependencies": {
 		"tsdown": "catalog:",
-		"publint": "catalog:"
+		"publint": "catalog:",
+		"unplugin-unused": "catalog:",
+		"@arethetypeswrong/core": "catalog:"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
@@ -24,11 +26,18 @@
 	},
 	"peerDependencies": {
 		"tsdown": "catalog:peer",
-		"typescript": "catalog:peer",
-		"publint": "catalog:peer"
+		"publint": "catalog:peer",
+		"unplugin-unused": "catalog:peer",
+		"@arethetypeswrong/core": "catalog:peer"
 	},
 	"peerDependenciesMeta": {
 		"publint": {
+			"optional": true
+		},
+		"unplugin-unused": {
+			"optional": true
+		},
+		"@arethetypeswrong/core": {
 			"optional": true
 		}
 	},

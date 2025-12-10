@@ -68,7 +68,19 @@ export const defineConfig = (
 		fixedExtension: false,
 		outDir: "dist",
 		clean: true,
-		publint: true,
+		publint: {
+			enabled: true,
+			level: "warning",
+		},
+		unused: {
+			enabled: true,
+			level: "warning",
+			depKinds: ["dependencies", "peerDependencies"],
+		},
+		attw: {
+			enabled: true,
+			level: "warn",
+		},
 		format: _format,
 		dts: _dts,
 		...rest,
