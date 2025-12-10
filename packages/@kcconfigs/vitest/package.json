@@ -17,10 +17,10 @@
 		"vitest": "catalog:"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "catalog:",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/biome": "workspace:*",
-		"@biomejs/biome": "catalog:",
 		"tsdown": "catalog:"
 	},
 	"peerDependencies": {
@@ -31,6 +31,8 @@
 	"types": "./dist/index.d.cts",
 	"exports": {
 		".": {
+			"source": "./src/index.ts",
+			"typedoc": "./src/index.ts",
 			"require": {
 				"types": "./dist/index.d.cts",
 				"default": "./dist/index.cjs"
