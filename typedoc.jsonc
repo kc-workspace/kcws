@@ -26,6 +26,10 @@
 	"sourceLinkExternal": true,
 	"markdownLinkExternal": true,
 	"cleanOutputDir": true,
+	// NOTE: This might increase search index
+	"searchInDocuments": true,
+	// NOTE: This might increase search index
+	"searchInComments": true,
 	"visibilityFilters": {
 		"protected": true,
 		"private": true,
@@ -48,7 +52,32 @@
 		"visibility",
 		"static-first",
 		"enum-value-ascending",
-		"alphabetical"
+		"alphabetical-ignoring-documents"
+	],
+	"kindSortOrder": [
+		"Reference",
+		"Project",
+		"Module",
+		"Namespace",
+		"Enum",
+		"EnumMember",
+		"Class",
+		"Interface",
+		"TypeAlias",
+		"Constructor",
+		"Property",
+		"Variable",
+		"Function",
+		"Accessor",
+		"Method",
+		"Parameter",
+		"TypeParameter",
+		"TypeLiteral",
+		"CallSignature",
+		"ConstructorSignature",
+		"IndexSignature",
+		"GetSignature",
+		"SetSignature"
 	],
 
 	// Validation: https://typedoc.org/documents/Options.Validation.html
@@ -76,12 +105,15 @@
 
 	// Plugins: https://typedoc.org/documents/Plugins.html
 	"plugin": [
-		"typedoc-theme-oxide",
-		"ig-typedoc-theme",
-		"typedoc-theme-fresh",
 		"varvara-typedoc-theme",
-		"typedoc-unhoax-theme",
-		"typedoc-github-theme",
+
+		// FIXME: https://github.com/balthild/typedoc-theme-oxide/issues/3
+		// "typedoc-theme-oxide",
+
+		// Default theme with UI matches GitHub
+		// "typedoc-github-theme",
+
+		// Margin is too wide for reading, needs to custom css to fix it
 		// "typedoc-material-theme",
 
 		"typedoc-plugin-missing-exports",
@@ -92,7 +124,7 @@
 	],
 
 	// Themes: https://typedoc.org/documents/Themes.html
-	// "theme": "default",
+	"theme": "varvara-css",
 
 	// typedoc-plugin-missing-exports
 	// https://github.com/Gerrit0/typedoc-plugin-missing-exports#options

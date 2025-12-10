@@ -3,6 +3,7 @@ node_modules
 
 # output
 docs
+docs-*
 !assets/docs
 out
 dist
