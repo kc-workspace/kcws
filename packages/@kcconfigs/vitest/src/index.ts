@@ -19,6 +19,7 @@ const baseConfig: UserConfig = {
 			provider: "v8",
 			reporter: ["text", "lcov", "html", "clover", "json"],
 			reportsDirectory: "reports/coverage",
+			include: ["src/**/*.{ts,tsx}"],
 		},
 	},
 };
