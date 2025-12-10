@@ -1,0 +1,4 @@
+mergify
+sonar
+sonarqube
+sonarcloud

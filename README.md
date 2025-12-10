@@ -59,6 +59,9 @@ pnpm clean
 - [X] Support Biome
 - [X] Support commitlint && commitizen
 - [X] Support Git hooks via [lefthook](https://lefthook.dev/)
+- [ ] Support superlinter
+- [ ] Support CSpell check
+- [ ] Support SonarQube Cloud
 - [ ] Support new package generator
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [ ] Automatically merge PRs via [mergify](https://mergify.com/)
