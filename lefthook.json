@@ -17,14 +17,32 @@
 					"*.json",
 					"*.jsonc"
 				],
-				"run": "pnpm fix:all --no-errors-on-unmatched --colors=off {staged_files}",
+				"run": "pnpm hooks:pre-commit:check {staged_files}",
 				"stage_fixed": true
 			}
 		}
 	},
 	"pre-push": {
 		"commands": {
-			"check": {
+			"check:type": {
+				"run": "pnpm hooks:pre-push:check:type"
+			},
+			"check:lint": {
+				"glob": [
+					"*.js",
+					"*.cjs",
+					"*.mjs",
+					"*.ts",
+					"*.d.cts",
+					"*.d.mts",
+					"*.jsx",
+					"*.tsx",
+					"*.json",
+					"*.jsonc"
+				],
+				"run": "pnpm hooks:pre-push:check:lint {push_files}"
+			},
+			"check:format": {
 				"glob": [
 					"*.js",
 					"*.ts",
@@ -37,7 +55,7 @@
 					"*.json",
 					"*.jsonc"
 				],
-				"run": "pnpm check:all --no-errors-on-unmatched --colors=off {staged_files}"
+				"run": "pnpm hooks:pre-push:check:format {push_files}"
 			}
 		}
 	}
