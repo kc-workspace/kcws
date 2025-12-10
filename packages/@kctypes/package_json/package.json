@@ -2,17 +2,49 @@
 	"name": "@kctypes/package_json",
 	"version": "1.30.4",
 	"description": "Typescript definitions for package.json file",
-	"main": "types/index.d.ts",
-	"types": "types/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./types/index.d.ts",
-			"default": "./types/index.d.ts"
-		}
+	"scripts": {
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"typescript": "catalog:",
+		"vitest": "catalog:"
 	},
 	"peerDependencies": {
 		"typescript": "catalog:peer"
 	},
+	"main": "types/index.d.ts",
+	"types": "types/index.d.ts",
+	"exports": {
+		".": {
+			"typedoc": "./types/index.d.ts",
+			"types": "./types/index.d.ts",
+			"default": "./types/index.d.ts"
+		}
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kctypes/package_json",
+	"repository": {
+		"type": "git",
+		"directory": "@kctypes/package_json",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"typescript",
+		"package.json",
+		"types",
+		"typings"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"types",
+		"!**/*.test-d.ts"
+	],
 	"engines": {
 		"node": ">=12"
 	},
