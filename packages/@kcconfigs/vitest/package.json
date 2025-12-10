@@ -24,7 +24,6 @@
 		"tsdown": "catalog:"
 	},
 	"peerDependencies": {
-		"typescript": "catalog:peer",
 		"vitest": "catalog:peer"
 	},
 	"main": "./dist/index.js",
