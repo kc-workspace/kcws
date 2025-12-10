@@ -2,17 +2,49 @@
 	"name": "@kctypes/generic",
 	"version": "1.30.3",
 	"description": "Typescript definitions for global generic type",
-	"main": "types/index.d.ts",
-	"types": "types/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./types/index.d.ts",
-			"default": "./types/index.d.ts"
-		}
+	"scripts": {
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"typescript": "catalog:",
+		"vitest": "catalog:"
 	},
 	"peerDependencies": {
 		"typescript": "catalog:peer"
 	},
+	"main": "types/index.d.ts",
+	"types": "types/index.d.ts",
+	"exports": {
+		".": {
+			"typedoc": "./types/index.d.ts",
+			"types": "./types/index.d.ts",
+			"default": "./types/index.d.ts"
+		}
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kctypes/generic",
+	"repository": {
+		"type": "git",
+		"directory": "@kctypes/generic",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"typescript",
+		"generic",
+		"types",
+		"typings"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"types",
+		"!**/*.test-d.ts"
+	],
 	"engines": {
 		"node": ">=12"
 	},

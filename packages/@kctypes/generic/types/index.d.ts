@@ -3,8 +3,16 @@ declare global {
 	type WithUndefined<T> = T | undefined;
 	type Null = undefined | null;
 
+	/**
+	 * Type that can be undefined, null, or the original type.
+	 */
 	type Optional<T> = T | undefined | null;
-	type Nullable<T> = Optional<T>; // alias
+
+	/**
+	 * @alias Optional
+	 * @see {@link Optional}
+	 */
+	type Nullable<T> = Optional<T>;
 
 	/**
 	 * Same as Required, for only K keys.
