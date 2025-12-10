@@ -2,17 +2,6 @@
 	"$schema": "https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json",
 	"assert_lefthook_installed": true,
 	"min_version": "2.0.0",
-	"prepare-commit-msg": {
-		"commands": {
-			"commitizen": {
-				"run": "pnpm commit --hook",
-				"interactive": true,
-				"env": {
-					"LEFTHOOK": "0"
-				}
-			}
-		}
-	},
 	"commit-msg": {
 		"commands": {
 			"check": {
