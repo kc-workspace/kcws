@@ -24,6 +24,30 @@
   </a>
 </p>
 
+## Get start
+
+- Clone or Fork repository from GitHub: `git clone git@github.com/kc-workspace/kcws`
+- Install Nodejs using mise (or manual install based on mise.toml version)
+- Install Pnpm: `corepack enable`
+- Install dependencies: `pnpm install`
+- Build package: `pnpm build:all` (required for some internal commands)
+
+### Command cheatsheet
+
+```bash
+## Build all packages
+pnpm build:all
+## Test all packages
+pnpm test:all
+## Fix lint and format on all packages
+pnpm fix:all
+## Generate document html at ./docs folder
+pnpm docs:all
+## Clean built folders
+pnpm clean
+
+```
+
 ## Todo list
 
 - [x] Support Pnpm monorepo
@@ -55,19 +79,19 @@
 
 ### @kcconfigs/*
 
-Shared configuration
+Shared configuration for KC's projects (personal)
 
 ### @kcexamples/*
 
-Example project for trying and POC
+Example project for testing and Proof of concept
 
 ### @kcinternals/*
 
-Internal packages for all @kc*/* packages
+Internal packages specifically for `@kc*/*` packages
 
 ### @kctools/*
 
-CLI tools
+Commandline tools for KC's projects (personal)
 
 ### @kctypes/*
 
@@ -79,4 +103,4 @@ Javascript utilities functions
 
 ### @kcws/*
 
-Packages for any javascript development (including both Frontend and Backend).
+Generic packages for full-stack development (including both Frontend and Backend).
