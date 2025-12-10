@@ -1,5 +1,6 @@
 declare global {
 	/**
+	 * @public
 	 * The repository field on package.json file.
 	 */
 	interface PackageRepository {
@@ -9,6 +10,7 @@ declare global {
 	}
 
 	/**
+	 * @public
 	 * The bugs field on package.json file.
 	 */
 	interface PackageBugReport {
@@ -17,6 +19,7 @@ declare global {
 	}
 
 	/**
+	 * @public
 	 * The author field on package.json file.
 	 */
 	interface PackageAuthor {
@@ -26,6 +29,7 @@ declare global {
 	}
 
 	/**
+	 * @public
 	 * The publishConfig field on package.json file.
 	 */
 	interface PackagePublishConfig {
@@ -33,6 +37,7 @@ declare global {
 	}
 
 	/**
+	 * @public
 	 * Custom typedoc field on package.json file.
 	 */
 	interface TypedocConfig {
@@ -40,6 +45,7 @@ declare global {
 	}
 
 	/**
+	 * @public
 	 * The package.json schema.
 	 */
 	interface Package {
