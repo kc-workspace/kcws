@@ -27,14 +27,24 @@
 	"searchInDocuments": true,
 	// NOTE: This might increase search index
 	"searchInComments": true,
+	"navigationLinks": {
+		"Github": "https://github.com/kc-workspace/kcws"
+	},
+	"sidebarLinks": {
+		"Github": "https://github.com/kc-workspace/kcws"
+	},
+	"navigation": {
+		"includeCategories": true,
+		"includeGroups": true,
+		"includeFolders": false
+	},
 	"visibilityFilters": {
 		"protected": true,
-		"private": true,
-		"inherited": true,
+		"private": false,
 		"external": true,
 		"@internal": true,
-		"@alpha": true,
-		"@beta": true
+		"@beta": true,
+		"@alpha": false
 	},
 
 	// Comments: https://typedoc.org/documents/Options.Comments.html
