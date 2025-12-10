@@ -7,8 +7,8 @@ import { parse } from "yaml";
 
 const findPackages = async (
 	cwd: string,
-	patterns: string[] | undefined,
-	includeRoot: boolean | undefined,
+	patterns?: WithUndefined<string[]>,
+	includeRoot?: WithUndefined<boolean>,
 ) => {
 	const packages = await findWorkspacePackagesNoCheck(cwd, {
 		patterns: patterns ?? ["**"],
