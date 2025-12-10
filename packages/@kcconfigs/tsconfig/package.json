@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@kcconfigs/biome": "workspace:*",
 		"@types/node": "catalog:",
+		"@kctypes/generic": "workspace:*",
 		"@kctypes/package_json": "workspace:*",
 		"@biomejs/biome": "catalog:"
 	},
