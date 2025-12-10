@@ -2,6 +2,7 @@
 	"name": "@kcws/root",
 	"private": true,
 	"scripts": {
+		"postinstall": "pnpm run --filter '@kcconfigs/*' build",
 		"build:all": "pnpm recursive run --if-present --stream build",
 		"test:all": "vitest run",
 		"check:all": "pnpm recursive run --if-present --stream check",
