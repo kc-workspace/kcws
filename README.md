@@ -52,12 +52,13 @@ pnpm clean
 
 - [x] Support Pnpm monorepo
 - [X] Move @kc* to packages/@kc* instead
+- [X] Support run dts test using [vitest](https://vitest.dev/guide/testing-types.html)
 - [X] Support test junit output (reports/test-results)
 - [X] Support test coverage output (reports/coverage)
 - [X] Support [TypeDocs](https://typedoc.org/)
 - [X] Support Biome
-- [ ] Support commitlint && commitizen
-- [ ] Support Git hooks via [lefthook](https://lefthook.dev/)
+- [X] Support commitlint && commitizen
+- [X] Support Git hooks via [lefthook](https://lefthook.dev/)
 - [ ] Support new package generator
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [ ] Automatically merge PRs via [mergify](https://mergify.com/)
