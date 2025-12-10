@@ -31,6 +31,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build packages
+        run: pnpm build:all
       - name: Validate current commit
         if: github.event_name == 'push'
         run: pnpm commit:check --last --verbose
@@ -51,8 +53,9 @@ jobs:
       - name: Run cspell
         uses: streetsidesoftware/cspell-action@e5a858a18b7e0b56e0342b1dcad796308b7341a2 # v8.1.1
         with:
-          config: ".github/linters/cspell.json"
+          config: ".github/linters/cspell.jsonc"
           incremental_files_only: false
-          strict: true
           inline: warning
+          strict: true
+          suggestions: true
           verbose: true
