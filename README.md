@@ -24,6 +24,31 @@
   </a>
 </p>
 
+## Todo list
+
+- [x] Support Pnpm monorepo
+- [X] Move @kc* to packages/@kc* instead
+- [X] Support run dts test using [vitest](https://vitest.dev/guide/testing-types.html)
+- [X] Support test junit output (reports/test-results)
+- [X] Support test coverage output (reports/coverage)
+- [X] Support [TypeDocs](https://typedoc.org/)
+- [X] Support Biome
+- [X] Support commitlint && commitizen
+- [X] Support Git hooks via [lefthook](https://lefthook.dev/)
+- [ ] Support superlinter
+- [ ] Support CSpell check
+- [ ] Support SonarQube Cloud
+- [ ] Support new package generator
+- [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
+- [ ] Automatically merge PRs via [mergify](https://mergify.com/)
+- [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
+
+## Known issues
+
+- [X] tsconfig.json typeRoots didn't works when extends with package name
+  - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
+- [X] typedoc didn't works with @kcconfigs/tsdown; when dts resolve is true, no custom function is export; when it's false, only custom function is exported
+
 ## Get start
 
 - Clone or Fork repository from GitHub: `git clone git@github.com/kc-workspace/kcws`
@@ -47,37 +72,6 @@ pnpm docs:all
 pnpm clean
 
 ```
-
-## Todo list
-
-- [x] Support Pnpm monorepo
-- [X] Move @kc* to packages/@kc* instead
-- [X] Support run dts test using [vitest](https://vitest.dev/guide/testing-types.html)
-- [X] Support test junit output (reports/test-results)
-- [X] Support test coverage output (reports/coverage)
-- [X] Support [TypeDocs](https://typedoc.org/)
-- [X] Support Biome
-- [X] Support commitlint && commitizen
-- [X] Support Git hooks via [lefthook](https://lefthook.dev/)
-- [ ] Support superlinter
-- [ ] Support CSpell check
-- [ ] Support SonarQube Cloud
-- [ ] Support new package generator
-- [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
-- [ ] Automatically merge PRs via [mergify](https://mergify.com/)
-- [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
-
-## Known issues
-
-- [X] tsconfig.json typeRoots didn't works when extends with package name
-    - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
-- [X] typedoc didn't works with @kcconfigs/tsdown; when dts resolve is true, no custom function is export; when it's false, only custom function is exported
-
-## Get start
-
-1. Install bun
-2. Run `bun install` to install all dependencies
-3. Run `bun build:all` to build all packages
 
 ## Packages
 

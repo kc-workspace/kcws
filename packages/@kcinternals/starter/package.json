@@ -40,10 +40,10 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcinternals/new",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcinternals/starter",
 	"repository": {
 		"type": "git",
-		"directory": "@kcinternals/new",
+		"directory": "@kcinternals/starter",
 		"url": "git+https://github.com/kc-workspace/kcws.git"
 	},
 	"author": {
