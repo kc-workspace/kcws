@@ -77,7 +77,7 @@ jobs:
           api-key: ${{ secrets.FOSSA_API_KEY }}
           run-tests: true
 
-  lintcheck1:
+  superlintcheck:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -114,7 +114,7 @@ jobs:
           VALIDATE_XML: true
           VALIDATE_YAML: true
 
-  lintcheck2:
+  megalintcheck:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -193,8 +193,8 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     needs:
-      - lintcheck1
-      - lintcheck2
+      - superlintcheck
+      - megalintcheck
       - main
     strategy:
       matrix:
