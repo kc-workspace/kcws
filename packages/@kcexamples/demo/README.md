@@ -7,4 +7,4 @@ Demo application for testing various tools.
 1. vite - Fully Frontend Bundler
 2. tsdown - Library Bundler
 3. zshy - Library Compiler
-4. tsc - Typescript Compiler
+4. tsc - TypeScript Compiler

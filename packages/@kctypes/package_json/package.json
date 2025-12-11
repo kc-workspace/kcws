@@ -1,7 +1,7 @@
 {
 	"name": "@kctypes/package_json",
 	"version": "1.30.4",
-	"description": "Typescript definitions for package.json file",
+	"description": "TypeScript definitions for package.json file",
 	"scripts": {
 		"test": "vitest run"
 	},

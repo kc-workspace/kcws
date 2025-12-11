@@ -2,9 +2,8 @@
 <h1 align="center">
   Kamontat's Workspace ecosystem
 
-  <img alt="Typescript icon" src="https://simpleicons.org/icons/typescript.svg" width="24px">
-  <img alt="Bun js icon" src="https://simpleicons.org/icons/bun.svg" width="24px">
-  <img alt="Node js icon" src="https://simpleicons.org/icons/nodedotjs.svg" width="24px">
+  <img alt="TypeScript icon" src="https://simpleicons.org/icons/typescript.svg" width="24px">
+  <img alt="Node.js icon" src="https://simpleicons.org/icons/nodedotjs.svg" width="24px">
   <img alt="CSS icon" src="https://simpleicons.org/icons/css.svg" width="24px">
   <img alt="HTML icon" src="https://simpleicons.org/icons/html5.svg" width="24px">
 </h1>
