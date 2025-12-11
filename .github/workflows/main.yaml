@@ -123,6 +123,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
       - name: MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@ff177bfabd9088ff3ccaa7bc68f8ca3fd075ba5c # v9.0.0
         env:

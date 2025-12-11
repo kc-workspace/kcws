@@ -5,6 +5,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
     commit-message:
       prefix: perf
       include: scope
@@ -14,6 +17,9 @@ updates:
       interval: weekly
       day: saturday
       time: "01:00" ## UTC
+    cooldown:
+      default-days: 14
+      semver-major-days: 60
     commit-message:
       prefix: perf
       include: scope

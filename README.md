@@ -27,7 +27,7 @@
 ## Todo list
 
 - [x] Support Pnpm monorepo
-- [X] Move @kc* to packages/@kc* instead
+- [X] Move `@kc*` to `packages/@kc*` to simplify number of directories
 - [X] Support run dts test using [vitest](https://vitest.dev/guide/testing-types.html)
 - [X] Support test junit output (reports/test-results)
 - [X] Support test coverage output (reports/coverage)
@@ -52,12 +52,12 @@
 ## Get start
 
 - Clone or Fork repository from GitHub: `git clone git@github.com/kc-workspace/kcws`
-- Install Nodejs using mise (or manual install based on mise.toml version)
+- Install Node.js using mise (or manual install based on mise.toml version)
 - Install Pnpm: `corepack enable`
 - Install dependencies: `pnpm install`
 - Build package: `pnpm build:all` (required for some internal commands)
 
-### Command cheatsheet
+### Command cheat sheet
 
 ```bash
 ## Build all packages
@@ -89,15 +89,15 @@ Internal packages specifically for `@kc*/*` packages
 
 ### @kctools/*
 
-Commandline tools for KC's projects (personal)
+Command-line tools for KC's projects (personal)
 
 ### @kctypes/*
 
-Typescript type definition utilities helper
+TypeScript type definition utilities helper
 
 ### @kcutils/*
 
-Javascript utilities functions
+JavaScript utilities functions
 
 ### @kcws/*
 

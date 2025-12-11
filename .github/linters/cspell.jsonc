@@ -15,14 +15,12 @@
 		"**/pnpm-workspace.yaml",
 		// Ignore dependencies and package file
 		"**/package.json",
-		// Ignore cspell config
-		"**/cspell.json",
-		// Ignore dict file
-		"**/*.dict.txt",
 		// Ignore build reports
 		"**/reports",
 		// Ignore meta-linter report
-		"**/report"
+		"**/report",
+		// Ignore GitHub configs
+		"**/.github"
 	],
 	"dictionaries": [
 		"softwareTerms",
