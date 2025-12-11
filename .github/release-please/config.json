@@ -1,0 +1,17 @@
+{
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+	"plugins": ["node-workspace"],
+	"release-type": "node",
+
+	"tag-separator": "@",
+
+	"group-pull-request-title-pattern": "chore: release all packages 🤖",
+	"include-v-in-tag": true,
+
+	"packages": {
+		"packages/@kcconfigs/biome": {
+			"prerelease": true,
+			"prerelease-type": "beta"
+		}
+	}
+}
