@@ -66,37 +66,28 @@ ENABLE_LINTERS:
   ## [❌] Check file and directory names
   ## https://megalinter.io/9.2.0/descriptors/repository_ls_lint/
   - REPOSITORY_LS_LINT
-  ## [❌] Check secrets
+  ## [✅] Check secrets
   ## https://megalinter.io/9.2.0/descriptors/repository_secretlint/
   - REPOSITORY_SECRETLINT
-  ## [❌] Static analysis tool
-  ## https://megalinter.io/9.2.0/descriptors/repository_semgrep/
-  - REPOSITORY_SEMGREP
-  ## [❌] Generate SBOM
+  ## [✅] Generate SBOM
   ## https://megalinter.io/9.2.0/descriptors/repository_syft/
   - REPOSITORY_SYFT
-  ## [❌] Check security issues and vulnerabilities
-  ## https://megalinter.io/9.2.0/descriptors/repository_trivy/
-  - REPOSITORY_TRIVY
-  ## [❌] Generate SBOM
-  ## https://megalinter.io/9.2.0/descriptors/repository_trivy_sbom/
-  - REPOSITORY_TRIVY_SBOM
-  ## [❌] Check secrets
+  ## [✅] Check secrets
   ## https://megalinter.io/9.2.0/descriptors/repository_trufflehog/
   - REPOSITORY_TRUFFLEHOG
-  ## [❌] Check spelling
+  ## [✅] Check spelling
   ## https://megalinter.io/9.2.0/descriptors/spell_cspell/
   - SPELL_CSPELL
-  ## [❌] Check broken links
+  ## [✅] Check broken links
   ## https://megalinter.io/9.2.0/descriptors/spell_lychee/
   - SPELL_LYCHEE
-  ## [❌] Check prose
+  ## [✅] Check prose
   ## https://megalinter.io/9.2.0/descriptors/spell_proselint/
   - SPELL_PROSELINT
-  ## [❌] Check spelling
+  ## [✅] Check spelling
   ## https://megalinter.io/9.2.0/descriptors/spell_vale/
   - SPELL_VALE
-  ## [❌] Check XML files
+  ## [✅] Check XML files
   ## https://megalinter.io/9.2.0/descriptors/xml_xmllint/
   - XML_XMLLINT
   ## [✅] Check YAML schema
@@ -105,3 +96,16 @@ ENABLE_LINTERS:
   ## [❌] Check YAML files
   ## https://megalinter.io/9.2.0/descriptors/yaml_yamllint/
   - YAML_YAMLLINT
+
+COPYPASTE_JSCPD_CONFIG_FILE: jscpd.json
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: markdownlint.json
+REPOSITORY_GITLEAKS_CONFIG_FILE: gitleaks.toml
+REPOSITORY_GRYPE_CONFIG_FILE: grype.yaml
+REPOSITORY_LS_LINT_CONFIG_FILE: ls-lint.yaml
+REPOSITORY_SYFT_CONFIG_FILE: syft.yaml
+REPOSITORY_TRUFFLEHOG_CONFIG_FILE: trufflehog.yaml
+SPELL_CSPELL_CONFIG_FILE: cspell.jsonc
+SPELL_LYCHEE_CONFIG_FILE: lychee.toml
+SPELL_PROSELINT_CONFIG_FILE: proselint.json
+SPELL_VALE_CONFIG_FILE: vale.ini
+YAML_YAMLLINT_CONFIG_FILE: yamllint.yml

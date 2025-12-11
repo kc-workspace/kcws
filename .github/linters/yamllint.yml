@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://www.schemastore.org/yamllint.json
+
+locale: en_US.UTF-8
+extends: default
+
+rules:
+  braces:
+    forbid: non-empty
+  new-lines:
+    type: unix
+  line-length:
+    allow-non-breakable-words: true
+    max: 200
+  comments:
+    require-starting-space: true
+    ignore-shebangs: true
+    min-spaces-from-content: 1
+  document-start: disable
+  indentation:
+    spaces: 2 # Matches with editorconfig

@@ -1,0 +1,34 @@
+## https://ls-lint.org/2.3/configuration/the-basics.html
+
+ls:
+  ## All yml must convert to yaml
+  .yml: exists:0
+
+  ## workflows directory must contains only <kebab-case>.yaml files
+  ## and no directory
+  .github/workflows:
+    "*":
+      .dir: exists:0
+    .*: exists:0
+    .yaml: kebab-case
+
+  ## linters config must contains only <kebab-case>.* files
+  ## and no directory
+  .github/linters:
+    "*":
+      .dir: exists:0
+    .*: kebab-case
+
+  ## release-please config must contains only config.json and manifest.json
+  ## no additional file or directory allowed
+  .github/release-please:
+    "*":
+      .dir: exists:0
+    .*: exists:0
+    .json: regex:(config|manifest) | exists:2
+
+ignore:
+  - assets/**
+  - docs/**
+  - "**/dist/**"
+  - "**/reports/**"
