@@ -1,0 +1,14 @@
+## https://ls-lint.org/2.3/configuration/the-basics.html
+ls:
+  packages/*:
+    .js: camelCase | PascalCase
+    .ts: camelCase | PascalCase
+    .d.ts: camelCase
+    .spec.ts: camelCase
+    .mock.ts: camelCase
+
+ignore:
+  - assets/**
+  - "**/dist/**"
+  - "**/reports/**"
+## TODO: Need to configure more; there are so many options to set up

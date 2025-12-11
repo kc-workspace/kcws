@@ -7,4 +7,100 @@
 APPLY_FIXES: none
 
 VALIDATE_ALL_CODEBASE: true
+
+LINTER_RULES_PATH: .github/linters
+SARIF_REPORTER: true
+
+FAIL_IF_MISSING_LINTER_IN_FLAVOR: true
+FAIL_IF_UPDATED_SOURCES: true
+
+CLEAR_REPORT_FOLDER: true
 SHOW_ELAPSED_TIME: true
+PRINT_ALL_FILES: false
+PRINT_ALPACA: true
+
+IGNORE_GENERATED_FILES: true
+IGNORE_GITIGNORED_FILES: true
+
+ENABLE_LINTERS:
+  ## [✅] Check GitHub Actions workflows
+  ## https://megalinter.io/9.2.0/descriptors/action_actionlint/
+  - ACTION_ACTIONLINT
+  ## [✅] Check bash scripts execution
+  ## https://megalinter.io/9.2.0/descriptors/bash_bash_exec/
+  - BASH_EXEC
+  ## [✅] Check bash scripts
+  ## https://megalinter.io/9.2.0/descriptors/bash_shellcheck/
+  - BASH_SHELLCHECK
+  ## [✅] Format bash scripts
+  ## https://megalinter.io/9.2.0/descriptors/bash_shfmt/
+  - BASH_SHFMT
+  ## [✅] Check for duplicate code
+  ## https://megalinter.io/9.2.0/descriptors/copypaste_jscpd/
+  - COPYPASTE_JSCPD
+  ## [✅] Check Dockerfiles
+  ## https://megalinter.io/9.2.0/descriptors/dockerfile_hadolint/
+  - DOCKERFILE_HADOLINT
+  ## [✅] Check .env files
+  ## https://megalinter.io/9.2.0/descriptors/env_dotenv_linter/
+  - ENV_DOTENV_LINTER
+  ## [✅] Check package.json files
+  ## https://megalinter.io/9.2.0/descriptors/json_npm_package_json_lint/
+  - JSON_NPM_PACKAGE_JSON_LINT
+  ## [✅] Check JSON schema
+  ## https://megalinter.io/9.2.0/descriptors/json_v8r/
+  - JSON_V8R
+  ## [✅] Check markdown files
+  ## https://megalinter.io/9.2.0/descriptors/markdown_markdownlint/
+  - MARKDOWN_MARKDOWNLINT
+  ## [✅] Check merge conflict markers
+  ## https://megalinter.io/9.2.0/descriptors/repository_git_diff/
+  - REPOSITORY_GIT_DIFF
+  ## [✅] Check git leaks
+  ## https://megalinter.io/9.2.0/descriptors/repository_gitleaks/
+  - REPOSITORY_GITLEAKS
+  ## [✅] Check dependencies vulnerabilities
+  ## https://megalinter.io/9.2.0/descriptors/repository_grype/
+  - REPOSITORY_GRYPE
+  ## [❌] Check file and directory names
+  ## https://megalinter.io/9.2.0/descriptors/repository_ls_lint/
+  - REPOSITORY_LS_LINT
+  ## [❌] Check secrets
+  ## https://megalinter.io/9.2.0/descriptors/repository_secretlint/
+  - REPOSITORY_SECRETLINT
+  ## [❌] Static analysis tool
+  ## https://megalinter.io/9.2.0/descriptors/repository_semgrep/
+  - REPOSITORY_SEMGREP
+  ## [❌] Generate SBOM
+  ## https://megalinter.io/9.2.0/descriptors/repository_syft/
+  - REPOSITORY_SYFT
+  ## [❌] Check security issues and vulnerabilities
+  ## https://megalinter.io/9.2.0/descriptors/repository_trivy/
+  - REPOSITORY_TRIVY
+  ## [❌] Generate SBOM
+  ## https://megalinter.io/9.2.0/descriptors/repository_trivy_sbom/
+  - REPOSITORY_TRIVY_SBOM
+  ## [❌] Check secrets
+  ## https://megalinter.io/9.2.0/descriptors/repository_trufflehog/
+  - REPOSITORY_TRUFFLEHOG
+  ## [❌] Check spelling
+  ## https://megalinter.io/9.2.0/descriptors/spell_cspell/
+  - SPELL_CSPELL
+  ## [❌] Check broken links
+  ## https://megalinter.io/9.2.0/descriptors/spell_lychee/
+  - SPELL_LYCHEE
+  ## [❌] Check prose
+  ## https://megalinter.io/9.2.0/descriptors/spell_proselint/
+  - SPELL_PROSELINT
+  ## [❌] Check spelling
+  ## https://megalinter.io/9.2.0/descriptors/spell_vale/
+  - SPELL_VALE
+  ## [❌] Check XML files
+  ## https://megalinter.io/9.2.0/descriptors/xml_xmllint/
+  - XML_XMLLINT
+  ## [✅] Check YAML schema
+  ## https://megalinter.io/9.2.0/descriptors/yaml_v8r/
+  - YAML_V8R
+  ## [❌] Check YAML files
+  ## https://megalinter.io/9.2.0/descriptors/yaml_yamllint/
+  - YAML_YAMLLINT
