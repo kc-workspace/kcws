@@ -21,3 +21,6 @@ rules:
   truthy:
     allowed-values: ["true", "false"]
     check-keys: false
+
+ignore:
+  - pnpm-lock.yaml
