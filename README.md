@@ -41,6 +41,7 @@
 - [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [ ] Automatically merge PRs via [mergify](https://mergify.com/)
 - [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
+- [ ] Set GitHub release to immutable
 
 ## Known issues
 
