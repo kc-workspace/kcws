@@ -1,0 +1,12 @@
+name: Release please
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'start publishing...'
