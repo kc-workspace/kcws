@@ -58,7 +58,7 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/tsdown",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/tsdown",
 	"repository": {
 		"type": "git",
 		"directory": "@kcconfigs/tsdown",

@@ -21,7 +21,7 @@
 		"./base": "./src/biome.base.json"
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/biome",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/biome",
 	"repository": {
 		"type": "git",
 		"directory": "@kcconfigs/biome",

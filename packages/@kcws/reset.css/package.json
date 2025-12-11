@@ -11,7 +11,7 @@
 	"scripts": {},
 	"devDependencies": {},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcws/reset.css",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcws/reset.css",
 	"author": {
 		"name": "Kamontat Chantrachirathumrong",
 		"email": "kcws@kc.in.th",

@@ -22,7 +22,7 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kctypes/package_json",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kctypes/package_json",
 	"repository": {
 		"type": "git",
 		"directory": "@kctypes/package_json",

@@ -15,7 +15,7 @@
 	"scripts": {},
 	"devDependencies": {},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/hello",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcexamples/hello",
 	"author": {
 		"name": "Kamontat Chantrachirathumrong",
 		"email": "kcws@kc.in.th",

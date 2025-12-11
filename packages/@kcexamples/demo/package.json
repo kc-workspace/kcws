@@ -50,7 +50,7 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcexamples/demo",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcexamples/demo",
 	"repository": {
 		"type": "git",
 		"directory": "@kcexamples/demo",

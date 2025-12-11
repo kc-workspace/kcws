@@ -43,7 +43,7 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/@kcconfigs/commitlint",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/commitlint",
 	"repository": {
 		"type": "git",
 		"directory": "@kcconfigs/commitlint",
