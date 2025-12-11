@@ -184,7 +184,7 @@ ignore: []
 #   cache-dir: "~/Library/Caches/grype/db"
 
 #   # URL of the vulnerability database (env: GRYPE_DB_UPDATE_URL)
-#   update-url: "https://grype.anchore.io/databases"
+#   update-url: "https://grype.anchore.io/databases/v6/latest.json"
 
 #   # certificate to trust download the database and listing file (env: GRYPE_DB_CA_CERT)
 #   ca-cert: ""
