@@ -4,6 +4,9 @@ ls:
   ## All yml must convert to yaml
   .yml: exists:0
 
+  .github:
+    .yml: regex:mergify | exists:1
+
   ## workflows directory must contains only <kebab-case>.yaml files
   ## and no directory
   .github/workflows:
