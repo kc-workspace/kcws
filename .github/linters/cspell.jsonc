@@ -15,10 +15,10 @@
 		"**/pnpm-workspace.yaml",
 		// Ignore dependencies and package file
 		"**/package.json",
-		// Ignore build reports
+		// Ignore test reports
 		"**/reports",
 		// Ignore meta-linter report
-		"**/report",
+		"**/megalinter-reports",
 		// Ignore GitHub configs
 		"**/.github"
 	],

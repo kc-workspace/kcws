@@ -9,7 +9,7 @@ out
 dist
 *.tgz
 
-# code coverage
+# Test reports
 reports
 coverage
 *.lcov
@@ -41,7 +41,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 super-linter-output
 super-linter.log
 
+# Mega-linter reports
+megalinter-reports/
+
 # GitHub Actions leftovers
 github_conf
-
-megalinter-reports/
