@@ -8,16 +8,15 @@ import {
 
 const baseConfig: UserConfig = {
 	test: {
-		reporters: ["default", "json", "html", "junit"],
+		reporters: ["default", "html", "junit"],
 		outputFile: {
-			json: "reports/test-results/index.json",
 			html: "reports/test-results/index.html",
-			junit: "reports/test-results/index.xml",
+			junit: "reports/test-results/junit.xml",
 		},
 		coverage: {
 			enabled: true,
 			provider: "v8",
-			reporter: ["text", "lcov", "html", "clover", "json"],
+			reporter: ["text", "lcov", "html"],
 			reportsDirectory: "reports/coverage",
 			include: ["src/**/*.{ts,tsx}"],
 		},
