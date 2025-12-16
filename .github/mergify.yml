@@ -65,8 +65,15 @@ pull_request_rules:
     actions:
       queue:
 
+merge_queue:
+  max_parallel_checks: 1
+  queued_label: status/queued
+  dequeued_label: status/dequeued
+
 queue_rules:
   - name: default
+    batch_size: 1
     merge_method: squash
     update_method: rebase
     branch_protection_injection_mode: queue
+    update_bot_account: kc-bot
