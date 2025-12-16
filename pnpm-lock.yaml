@@ -47,8 +47,8 @@ catalogs:
       specifier: 0.3.16
       version: 0.3.16
     tsdown:
-      specifier: 0.17.1
-      version: 0.17.1
+      specifier: 0.18.0
+      version: 0.18.0
     typedoc:
       specifier: 0.28.15
       version: 0.28.15
@@ -194,7 +194,7 @@ importers:
         version: link:../tsdown
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -228,7 +228,7 @@ importers:
         version: 0.3.16
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       unplugin-unused:
         specifier: 'catalog:'
         version: 0.5.6
@@ -263,7 +263,7 @@ importers:
         version: link:../tsdown
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
 
   packages/@kcexamples/demo:
     devDependencies:
@@ -287,7 +287,7 @@ importers:
         version: 0.18.3(rolldown@1.0.0-beta.54)(typescript@5.9.3)
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       vite:
         specifier: 'catalog:'
         version: 8.0.0-beta.2(@types/node@24.10.2)(esbuild@0.25.12)(jiti@2.6.1)(yaml@2.8.2)
@@ -319,7 +319,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       vitest:
         specifier: 'catalog:'
         version: 4.0.15(@types/node@24.10.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -2094,6 +2094,9 @@ packages:
   defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
 
+  defu@6.1.4:
+    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+
   del@6.1.1:
     resolution: {integrity: sha512-ua8BhapfP0JUJKC/zV9yHHDW/rDoDxP4Zhn3AkA6/xT6gY7jYXJiaeyBZznYVujhZZET+UgcbZiQ7sN3WqcImg==}
     engines: {node: '>=10'}
@@ -2464,8 +2467,8 @@ packages:
   import-meta-resolve@4.2.0:
     resolution: {integrity: sha512-Iqv2fzaTQN28s/FwZAoFq0ZSs/7hMAHJVX+w8PZl3cY19Pxk6jFFalxQoIfW2826i/fDLXv8IiEZRIT0lDuWcg==}
 
-  import-without-cache@0.2.2:
-    resolution: {integrity: sha512-4TTuRrZ0jBULXzac3EoX9ZviOs8Wn9iAbNhJEyLhTpAGF9eNmYSruaMMN/Tec/yqaO7H6yS2kALfQDJ5FxfatA==}
+  import-without-cache@0.2.4:
+    resolution: {integrity: sha512-b/Ke0y4n26ffQhkLvgBxV/NVO/QEE6AZlrMj8DYuxBWNAAu4iMQWZTFWzKcCTEmv7VQ0ae0j8KwrlGzSy8sYQQ==}
     engines: {node: '>=20.19.0'}
 
   imurmurhash@0.1.4:
@@ -3668,8 +3671,8 @@ packages:
   truncate-utf8-bytes@1.0.2:
     resolution: {integrity: sha512-95Pu1QXQvruGEhv62XCMO3Mm90GscOCClvrIUwCM0PYOXK3kaF3l3sIHxx71ThJfcbM2O5Au6SO3AWCSEfW4mQ==}
 
-  tsdown@0.17.1:
-    resolution: {integrity: sha512-SqRyd/wliY0CgOhxbE3gJVUQioHVWMibeiswOruBa9XxJuFTy7xEuC9vqCCkuJ6Owqt2/F7S3vG9tXCQWQN+Fg==}
+  tsdown@0.18.0:
+    resolution: {integrity: sha512-Yotdh3NzizysnqR96xfpHFYtEntk1cZvSRHz8A+Pn3ZHNdTQa4fBQxh6HHzWZwfjdQv47xb7GCv6vEWMtxBirw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -6154,6 +6157,8 @@ snapshots:
     dependencies:
       clone: 1.0.4
 
+  defu@6.1.4: {}
+
   del@6.1.1:
     dependencies:
       globby: 11.1.0
@@ -6550,7 +6555,7 @@ snapshots:
 
   import-meta-resolve@4.2.0: {}
 
-  import-without-cache@0.2.2: {}
+  import-without-cache@0.2.4: {}
 
   imurmurhash@0.1.4: {}
 
@@ -7702,13 +7707,14 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  tsdown@0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6):
+  tsdown@0.18.0(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
+      defu: 6.1.4
       empathic: 2.0.0
       hookable: 5.5.3
-      import-without-cache: 0.2.2
+      import-without-cache: 0.2.4
       obug: 2.1.1
       rolldown: 1.0.0-beta.53
       rolldown-plugin-dts: 0.18.3(rolldown@1.0.0-beta.53)(typescript@5.9.3)
