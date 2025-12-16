@@ -1,12 +1,4 @@
 pull_request_rules:
-  - name: Label queued pull requests
-    description: Toggle the queue label when a pull request is (un)queued.
-    conditions:
-      - queue-position > 0
-    actions:
-      label:
-        toggle:
-          - mergify/queued
   - name: Label conflicting pull requests
     description: Toggle the conflict label when got conflicted
     conditions:
@@ -25,45 +17,51 @@ pull_request_rules:
       label:
         toggle:
           - status/draft
-  - name: Queue the maintainer pull requests
-    description: Automatically queue maintainer pull requests
+  - name: Label approved pull requests
+    description: Toggle the approve label when got reviewed and approved
     conditions:
       - -draft
       - -closed
       - -conflict
-      - author=kamontat
+      - "#approved-reviews-by>0"
     actions:
-      queue:
-  - name: Ask for review the dependabot pull requests
-    description: Automatically ask maintainer to review dependabot pull requests
-    conditions:
-      - -draft
-      - -closed
-      - -conflict
-      - author=dependabot[bot]
-    actions:
-      request_reviews:
-        users:
-          - kamontat
+      label:
+        toggle:
+          - status/approved
   - name: Queue the dependabot pull requests
-    description: Automatically queue dependabot pull requests when reviewed
+    description: Automatically queue dependabot pull requests when approved
     conditions:
       - -draft
       - -closed
       - -conflict
       - author=dependabot[bot]
-      - approved-reviews-by=kamontat
+      - label=status/approved
     actions:
       queue:
+        name: default
   - name: Queue the contributors pull requests
-    description: Queue contributors pull requests when reviewed
+    description: Automatically queue dependabot pull requests when approved by maintainers
     conditions:
       - -draft
       - -closed
       - -conflict
-      - approved-reviews-by=kamontat
+      - label=status/approved
+      - or:
+        - approved-reviews-by=kamontat
     actions:
       queue:
+        name: default
+  - name: Queue the maintainer pull requests
+    description: Automatically queue maintainers pull requests
+    conditions:
+      - -draft
+      - -closed
+      - -conflict
+      - or:
+        - author=kamontat
+    actions:
+      queue:
+        name: default
 
 merge_queue:
   max_parallel_checks: 1
@@ -74,6 +72,6 @@ queue_rules:
   - name: default
     batch_size: 1
     merge_method: squash
+    branch_protection_injection_mode: merge
     update_method: rebase
-    branch_protection_injection_mode: queue
     update_bot_account: kc-bot
