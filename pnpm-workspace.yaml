@@ -15,7 +15,7 @@ catalog:
   "@vitest/coverage-v8": 4.0.15
   "@vitest/ui": 4.0.15
   lefthook: 2.0.9
-  publint: 0.3.15
+  publint: 0.3.16
   tsdown: 0.17.1
   typedoc: 0.28.15
   typedoc-plugin-dt-links: 2.0.32

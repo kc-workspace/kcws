@@ -44,8 +44,8 @@ catalogs:
       specifier: 2.0.9
       version: 2.0.9
     publint:
-      specifier: 0.3.15
-      version: 0.3.15
+      specifier: 0.3.16
+      version: 0.3.16
     tsdown:
       specifier: 0.17.1
       version: 0.17.1
@@ -194,7 +194,7 @@ importers:
         version: link:../tsdown
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -225,10 +225,10 @@ importers:
         version: 0.18.2
       publint:
         specifier: 'catalog:'
-        version: 0.3.15
+        version: 0.3.16
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       unplugin-unused:
         specifier: 'catalog:'
         version: 0.5.6
@@ -263,7 +263,7 @@ importers:
         version: link:../tsdown
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
 
   packages/@kcexamples/demo:
     devDependencies:
@@ -287,7 +287,7 @@ importers:
         version: 0.18.3(rolldown@1.0.0-beta.54)(typescript@5.9.3)
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       vite:
         specifier: 'catalog:'
         version: 8.0.0-beta.2(@types/node@24.10.2)(esbuild@0.25.12)(jiti@2.6.1)(yaml@2.8.2)
@@ -319,7 +319,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6)
+        version: 0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
       vitest:
         specifier: 'catalog:'
         version: 4.0.15(@types/node@24.10.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -3272,8 +3272,8 @@ packages:
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
 
-  publint@0.3.15:
-    resolution: {integrity: sha512-xPbRAPW+vqdiaKy5sVVY0uFAu3LaviaPO3pZ9FaRx59l9+U/RKR1OEbLhkug87cwiVKxPXyB4txsv5cad67u+A==}
+  publint@0.3.16:
+    resolution: {integrity: sha512-MFqyfRLAExPVZdTQFwkAQELzA8idyXzROVOytg6nEJ/GEypXBUmMGrVaID8cTuzRS1U5L8yTOdOJtMXgFUJAeA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7268,7 +7268,7 @@ snapshots:
 
   proto-list@1.2.4: {}
 
-  publint@0.3.15:
+  publint@0.3.16:
     dependencies:
       '@publint/pack': 0.1.2
       package-manager-detector: 1.6.0
@@ -7702,7 +7702,7 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  tsdown@0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.15)(typescript@5.9.3)(unplugin-unused@0.5.6):
+  tsdown@0.17.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
@@ -7720,7 +7720,7 @@ snapshots:
       unrun: 0.2.19
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.2
-      publint: 0.3.15
+      publint: 0.3.16
       typescript: 5.9.3
       unplugin-unused: 0.5.6
     transitivePeerDependencies:
