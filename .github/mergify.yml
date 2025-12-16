@@ -28,6 +28,20 @@ pull_request_rules:
       label:
         toggle:
           - status/approved
+  - name: Add owner as reviewer
+    description: Automatically add owner on pull request without any reviewers
+    conditions:
+      - -draft
+      - -closed
+      - -conflict
+      - "#review-requested=0"
+      - "#approved-reviews-by=0"
+      - or:
+          - not: author=kamontat
+    actions:
+      request_reviews:
+        users:
+          - kamontat
   - name: Queue the dependabot pull requests
     description: Automatically queue dependabot pull requests when approved
     conditions:
