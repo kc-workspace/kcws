@@ -6,7 +6,7 @@ export interface TypeEnum {
 
 export type TypeObject = Record<string, TypeEnum>;
 
-export type TypeMode = "standard" | "kc" | string[] | TypeObject;
+export type TypeMode = "standard" | string[] | TypeObject;
 
 const STANDARD_TYPES = {
 	feat: {
@@ -21,7 +21,7 @@ const STANDARD_TYPES = {
 	},
 	fix: {
 		description: "A bug fix",
-		title: "Bug Fixes",
+		title: "Bugfixes",
 		emoji: "🐛",
 	},
 	docs: {
@@ -29,27 +29,27 @@ const STANDARD_TYPES = {
 		title: "Documentation",
 		emoji: "📚",
 	},
+	test: {
+		description: "Adding missing tests or correcting existing tests",
+		title: "Tests",
+		emoji: "🚨",
+	},
 	style: {
 		description:
 			"Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
 		title: "Styles",
 		emoji: "💎",
 	},
-	refactor: {
-		description: "A code change that neither fixes a bug nor adds a feature",
-		title: "Code Refactoring",
-		emoji: "📦",
-	},
-	test: {
-		description: "Adding missing tests or correcting existing tests",
-		title: "Tests",
-		emoji: "🚨",
-	},
 	build: {
 		description:
 			"Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
 		title: "Builds",
 		emoji: "🛠",
+	},
+	refactor: {
+		description: "A code change that neither fixes a bug nor adds a feature",
+		title: "Code Refactoring",
+		emoji: "📦",
 	},
 	ci: {
 		description:
@@ -59,7 +59,7 @@ const STANDARD_TYPES = {
 	},
 	chore: {
 		description: "Other changes that don't modify src or test files",
-		title: "Chores",
+		title: "Miscellaneous Chores",
 		emoji: "♻️",
 	},
 	revert: {
@@ -92,20 +92,5 @@ export const getTypes = (mode: TypeMode): TypeObject => {
 	switch (mode) {
 		case "standard":
 			return STANDARD_TYPES;
-		case "kc": {
-			const types: string[] = [
-				"feat",
-				"perf",
-				"fix",
-				"ci",
-				"docs",
-				"refactor",
-				"test",
-				"chore",
-			] satisfies Array<keyof typeof STANDARD_TYPES>;
-			return Object.fromEntries(
-				Object.entries(STANDARD_TYPES).filter(([key]) => types.includes(key)),
-			);
-		}
 	}
 };

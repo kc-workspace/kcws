@@ -10,9 +10,8 @@ export interface DefineConfigParams {
 	/**
 	 * Commit types configuration
 	 * - `"standard"`: Use standard conventional commit types
-	 * - `"kc"`: Use custom kc types
 	 * - `string[]`: Use custom types
-	 * @default "kc"
+	 * @default "standard"
 	 */
 	types?: TypeMode;
 	/**
@@ -46,7 +45,7 @@ export const defineConfig = async (
 		},
 	} = await import("@commitlint/config-conventional");
 
-	const types = getTypes(params?.types ?? "kc");
+	const types = getTypes(params?.types ?? "standard");
 	const scopes = await getScopes(params?.autoScopes ?? true, params?.scopes);
 
 	return {
