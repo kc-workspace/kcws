@@ -5,6 +5,8 @@
 	"language": "en",
 	"allowCompoundWords": true,
 	"ignorePaths": [
+		// Ignore dictionary files
+		"**/*.dict.txt",
 		// Ignore node modules
 		"**/node_modules",
 		// Ignore vscode workspace settings
@@ -23,16 +25,16 @@
 		"**/.github"
 	],
 	"dictionaries": [
+		"en_US",
 		"softwareTerms",
+		"misc",
 		"typescript",
 		"node",
+		"npm",
 		"bash",
 		"filetypes",
-		"npm",
 		"customCommons",
-		"customApps",
-		"customSoftwares",
-		"customNames"
+		"customApps"
 	],
 	"dictionaryDefinitions": [
 		{ "name": "customCommons", "path": "./cspell-commons.dict.txt" },
