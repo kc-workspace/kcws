@@ -5,11 +5,12 @@
 
 	"tag-separator": "@",
 
-	"group-pull-request-title-pattern": "chore: release all packages 🤖",
+	"separate-pull-requests": true,
 	"include-v-in-tag": true,
 
 	"packages": {
 		"packages/@kcconfigs/biome": {
+			"versioning": "prerelease",
 			"prerelease": true,
 			"prerelease-type": "beta"
 		}
