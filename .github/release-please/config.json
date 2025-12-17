@@ -5,7 +5,7 @@
 
 	"tag-separator": "@",
 
-	"pull-request-title-pattern": "chore: release ${component} ${version} (${scope})",
+	"pull-request-title-pattern": "chore: release ${component} ${version} ${scope}",
 	"separate-pull-requests": true,
 	"include-v-in-tag": true,
 	"changelog-sections": [
