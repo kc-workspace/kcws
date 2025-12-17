@@ -63,7 +63,7 @@ ENABLE_LINTERS:
   ## [✅] Check dependencies vulnerabilities
   ## https://megalinter.io/9.2.0/descriptors/repository_grype/
   - REPOSITORY_GRYPE
-  ## [❌] Check file and directory names
+  ## [✅] Check file and directory names
   ## https://megalinter.io/9.2.0/descriptors/repository_ls_lint/
   - REPOSITORY_LS_LINT
   ## [✅] Check secrets
@@ -93,7 +93,7 @@ ENABLE_LINTERS:
   ## [✅] Check YAML schema
   ## https://megalinter.io/9.2.0/descriptors/yaml_v8r/
   - YAML_V8R
-  ## [❌] Check YAML files
+  ## [✅] Check YAML files
   ## https://megalinter.io/9.2.0/descriptors/yaml_yamllint/
   - YAML_YAMLLINT
 
