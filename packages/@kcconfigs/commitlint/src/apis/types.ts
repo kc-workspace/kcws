@@ -6,7 +6,7 @@ export interface TypeEnum {
 
 export type TypeObject = Record<string, TypeEnum>;
 
-export type TypeMode = "standard" | string[] | TypeObject;
+export type TypeMode = "standard" | "minimal" | string[] | TypeObject;
 
 const STANDARD_TYPES = {
 	feat: {
@@ -92,5 +92,12 @@ export const getTypes = (mode: TypeMode): TypeObject => {
 	switch (mode) {
 		case "standard":
 			return STANDARD_TYPES;
+		case "minimal":
+			return {
+				feat: STANDARD_TYPES.feat,
+				perf: STANDARD_TYPES.perf,
+				fix: STANDARD_TYPES.fix,
+				chore: STANDARD_TYPES.chore,
+			};
 	}
 };
