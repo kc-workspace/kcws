@@ -17,12 +17,6 @@ catalog:
   lefthook: 2.0.9
   publint: 0.3.16
   tsdown: 0.18.0
-  typedoc: 0.28.15
-  typedoc-plugin-dt-links: 2.0.32
-  typedoc-plugin-extras: 4.0.1
-  typedoc-plugin-include-example: 3.0.2
-  typedoc-plugin-mdn-links: 5.0.10
-  typedoc-plugin-missing-exports: 4.1.2
   typescript: 5.9.3
   unplugin-unused: 0.5.6
   vite: 8.0.0-beta.2
@@ -30,7 +24,21 @@ catalog:
   zshy: 0.6.0
 
 catalogs:
-  commitlint:
+  typedoc:latest:
+    typedoc: 0.28.15
+    typedoc-plugin-dt-links: 2.0.32
+    typedoc-plugin-extras: 4.0.1
+    typedoc-plugin-include-example: 3.0.2
+    typedoc-plugin-mdn-links: 5.0.10
+    typedoc-plugin-missing-exports: 4.1.2
+
+  textlint:latest:
+    textlint: 15.5.0
+    textlint-filter-rule-allowlist: 4.0.0
+    textlint-filter-rule-comments: 1.2.2
+    textlint-rule-terminology: 5.2.16
+
+  commitlint:latest:
     "@commitlint/cli": 20.2.0
     "@commitlint/config-conventional": 20.2.0
     "@commitlint/cz-commitlint": 20.2.0
@@ -39,6 +47,7 @@ catalogs:
     inquirer: ^9.3.8
   commitlint:peer:
     "@commitlint/cli": ^20.0.0
+
   peer:
     "@arethetypeswrong/core": ^0.18.0
     "@biomejs/biome": ^2.0.0

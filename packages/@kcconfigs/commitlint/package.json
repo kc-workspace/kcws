@@ -19,8 +19,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
-		"@commitlint/config-conventional": "catalog:commitlint",
-		"@commitlint/types": "catalog:commitlint",
+		"@commitlint/config-conventional": "catalog:commitlint:latest",
+		"@commitlint/types": "catalog:commitlint:latest",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
