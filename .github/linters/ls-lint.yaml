@@ -3,6 +3,15 @@
 ls:
   ## All yml must convert to yaml
   .yml: exists:0
+  ## All markdown must convert to md
+  .markdown: exists:0
+  .mkdown: exists:0
+  .mdown: exists:0
+  .mdwn: exists:0
+  .mkdn: exists:0
+  .mkd: exists:0
+  ## All text files must convert to txt
+  .text: exists:0
 
   .github:
     .yml: regex:mergify | exists:1
