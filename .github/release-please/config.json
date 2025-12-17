@@ -5,8 +5,60 @@
 
 	"tag-separator": "@",
 
+	"pull-request-title-pattern": "chore: release ${component} ${version} (${scope})",
 	"separate-pull-requests": true,
 	"include-v-in-tag": true,
+	"changelog-sections": [
+		{
+			"type": "feat",
+			"section": "Features"
+		},
+		{
+			"type": "perf",
+			"section": "Performance Improvements"
+		},
+		{
+			"type": "fix",
+			"section": "Bugfixes"
+		},
+		{
+			"type": "docs",
+			"section": "Documentation"
+		},
+		{
+			"type": "test",
+			"section": "Tests",
+			"hidden": true
+		},
+		{
+			"type": "style",
+			"section": "Styles",
+			"hidden": true
+		},
+		{
+			"type": "build",
+			"section": "Builds",
+			"hidden": true
+		},
+		{
+			"type": "refactor",
+			"section": "Code Refactoring"
+		},
+		{
+			"type": "ci",
+			"section": "Continuous Integrations",
+			"hidden": true
+		},
+		{
+			"type": "chore",
+			"section": "Miscellaneous Chores",
+			"hidden": true
+		},
+		{
+			"type": "revert",
+			"section": "Reverts"
+		}
+	],
 
 	"packages": {
 		"packages/@kcconfigs/biome": {
