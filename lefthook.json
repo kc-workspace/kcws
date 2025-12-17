@@ -4,8 +4,8 @@
 	"min_version": "2.0.0",
 	"commit-msg": {
 		"commands": {
-			"check": {
-				"run": "pnpm commit:check --edit {1}",
+			"check:msg": {
+				"run": "pnpm check:commit --edit {1}",
 				"env": {
 					"LEFTHOOK": "0"
 				}
@@ -14,7 +14,7 @@
 	},
 	"pre-commit": {
 		"commands": {
-			"check": {
+			"check:biome": {
 				"glob": [
 					"*.js",
 					"*.ts",
@@ -27,7 +27,12 @@
 					"*.json",
 					"*.jsonc"
 				],
-				"run": "pnpm hooks:pre-commit:check {staged_files}",
+				"run": "pnpm hooks:pre-commit:check:biome {staged_files}",
+				"stage_fixed": true
+			},
+			"check:text": {
+				"glob": ["*.md", "*.txt"],
+				"run": "pnpm hooks:pre-commit:check:text {staged_files}",
 				"stage_fixed": true
 			}
 		}
