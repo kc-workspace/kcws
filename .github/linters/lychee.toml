@@ -24,16 +24,16 @@ max_cache_age = "2d"
 
 # Number of threads to utilize.
 # Defaults to number of cores available to the system if omitted.
-threads = 2
+threads = 1
 
 # Maximum number of allowed redirects.
-max_redirects = 10
+max_redirects = 5
 
 # Maximum number of allowed retries before a link is declared dead.
-max_retries = 2
+max_retries = 5
 
 # Maximum number of concurrent link checks.
-max_concurrency = 10
+max_concurrency = 4
 
 #############################  Requests  ############################
 
@@ -41,10 +41,10 @@ max_concurrency = 10
 # user_agent = "curl/7.83.1"
 
 # Website timeout from connect to response finished.
-timeout = 20
+timeout = 10
 
 # Minimum wait time in seconds between retries of failed requests.
-retry_wait_time = 2
+retry_wait_time = 3
 
 # Comma-separated list of accepted status codes for valid links.
 # Supported values are:
@@ -112,9 +112,9 @@ exclude = [
 
 # Exclude paths from getting checked. The values are treated as regular expressions
 exclude_path = [
-  "\\.txt$",      # skip .txt extensions
-  "(^|/)test/",   # skip directories named "test"
-  "[aeiouAEIOU]", # exclude paths containing vowels
+  # "\\.txt$",      # skip .txt extensions
+  # "(^|/)test/",   # skip directories named "test"
+  # "[aeiouAEIOU]", # exclude paths containing vowels
 ]
 
 # URLs to check (supports regex). Has preference over all excludes.
@@ -123,16 +123,16 @@ include = ['gist\.github\.com.*']
 # Exclude all private IPs from checking.
 # Equivalent to setting `exclude_private`, `exclude_link_local`, and
 # `exclude_loopback` to true.
-exclude_all_private = false
+exclude_all_private = true
 
 # Exclude private IP address ranges from checking.
-exclude_private = false
+exclude_private = true
 
 # Exclude link-local IP address range from checking.
-exclude_link_local = false
+exclude_link_local = true
 
 # Exclude loopback IP address range and localhost from checking.
-exclude_loopback = false
+exclude_loopback = true
 
 # Check mail addresses
 include_mail = true
