@@ -1,0 +1,28 @@
+# Changelog
+
+## 0.1.0-beta.0 (2025-12-18)
+
+
+### Features
+
+* **core:** move all packages into packages/* directory ([58230cd](https://github.com/kc-workspace/kcws/commit/58230cd286d0dea953d232806c91508ebfc57701))
+* **kcconfigs/tsdown:** add source and typedoc conditions in exports ([6911d45](https://github.com/kc-workspace/kcws/commit/6911d4557f67362d78e959b88af8f110a78ee3a0))
+
+
+### Performance Improvements
+
+* **kcconfigs/tsdown:** add [@generated](https://github.com/generated) to generated file ([f3efbca](https://github.com/kc-workspace/kcws/commit/f3efbca38e221ad9445e09fd4b772d3cc07c3027))
+* **kcconfigs/tsdown:** enabled publint, unused, and arethetypewrong validators by default ([fd8a89e](https://github.com/kc-workspace/kcws/commit/fd8a89edfa6385c1211f5077499c56adf18f4b2c))
+
+
+### Bugfixes
+
+* homepage contains invalid url ([0ee37d6](https://github.com/kc-workspace/kcws/commit/0ee37d641fe5b04fb019099915c8aa3ddfed3be7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.1.0-beta.0
+    * @kcconfigs/tsconfig bumped to 0.1.0-beta.0
