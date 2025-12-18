@@ -1,4 +1,4 @@
-name: Publish
+name: Publish packages
 
 on:
   release:
@@ -12,6 +12,10 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      ## Use outputs from publish script to set the URL dynamically
+      url: https://www.npmjs.com/package/@kcconfigs/biome/v/0.0.1
     steps:
       - name: Set up source code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
