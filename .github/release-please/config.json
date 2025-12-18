@@ -7,10 +7,8 @@
 	"bump-patch-for-minor-pre-major": true,
 	"bump-minor-pre-major": true,
 
-	"pull-request-title-pattern": "chore: release ${component} ${version} ${scope}",
-	"separate-pull-requests": true,
 	"include-v-in-tag": true,
-	"tag-separator": "@",
+	"tag-separator": ":",
 	"changelog-sections": [
 		{
 			"type": "feat",
