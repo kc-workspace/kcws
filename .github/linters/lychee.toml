@@ -112,9 +112,10 @@ exclude = [
 
 # Exclude paths from getting checked. The values are treated as regular expressions
 exclude_path = [
-  # "\\.txt$",      # skip .txt extensions
-  # "(^|/)test/",   # skip directories named "test"
-  # "[aeiouAEIOU]", # exclude paths containing vowels
+  "(^|/).github/workflows" # skip GitHub Workflow files
+  # "\\.txt$",             # skip .txt extensions
+  # "(^|/)test/",          # skip directories named "test"
+  # "[aeiouAEIOU]",        # exclude paths containing vowels
 ]
 
 # URLs to check (supports regex). Has preference over all excludes.
