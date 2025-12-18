@@ -8,7 +8,7 @@
 	"bump-minor-pre-major": true,
 
 	"include-v-in-tag": true,
-	"tag-separator": ":",
+	"tag-separator": "#",
 	"changelog-sections": [
 		{
 			"type": "feat",
