@@ -95,10 +95,6 @@ Command-line tools for KC's projects (personal)
 
 TypeScript type definition utilities helper
 
-### @kcutils/*
-
-JavaScript utilities functions
-
 ### @kcws/*
 
 Generic packages for full-stack development (including both Frontend and Backend).

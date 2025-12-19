@@ -4,7 +4,6 @@ packages:
   - packages/@kcinternals/*
   - packages/@kctools/*
   - packages/@kctypes/*
-  - packages/@kcutils/*
   - packages/@kcws/*
   - "!packages/**/.*.old/**"
 
