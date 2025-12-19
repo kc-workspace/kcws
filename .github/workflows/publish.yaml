@@ -15,7 +15,7 @@ jobs:
     environment:
       name: production
       ## Use outputs from publish script to set the URL dynamically
-      url: https://www.npmjs.com/package/@kcconfigs/biome/v/0.0.1
+      url: https://www.npmjs.com/package/@kcconfigs/biome/v/${{ github.ref_name }}
     steps:
       - name: Set up source code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -35,3 +35,6 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_PATH: ${{ github.event_path }}
+          ## Testing, EVENT_PATH should be enough
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
