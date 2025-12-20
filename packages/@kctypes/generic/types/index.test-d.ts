@@ -1,6 +1,36 @@
 import { describe, expectTypeOf, it } from "vitest";
 import ".";
 
+describe("Constructor type", () => {
+	it("should accept a class constructor", () => {
+		class TestClass {
+			constructor(public value: number) {}
+		}
+
+		expectTypeOf<Constructor<TestClass>>(TestClass).toEqualTypeOf<
+			new (
+				// biome-ignore lint/suspicious/noExplicitAny: For testing purpose
+				...args: any[]
+			) => TestClass
+		>();
+	});
+
+	it("should work with built-in constructors", () => {
+		expectTypeOf<Constructor<Date>>(Date).toEqualTypeOf<
+			new (
+				// biome-ignore lint/suspicious/noExplicitAny: For testing purpose
+				...args: any[]
+			) => Date
+		>();
+		expectTypeOf<Constructor<Error>>(Error).toEqualTypeOf<
+			new (
+				// biome-ignore lint/suspicious/noExplicitAny: For testing purpose
+				...args: any[]
+			) => Error
+		>();
+	});
+});
+
 describe("WithNull type", () => {
 	it("should accept number and null", () => {
 		expectTypeOf<WithNull<number>>().toEqualTypeOf<number | null>();

@@ -1,6 +1,27 @@
 declare global {
+	/**
+	 * A constructor type that creates instances of type T.
+	 *
+	 * @template T - The type of object that the constructor creates. Defaults to an empty object type.
+	 */
+	// biome-ignore lint/suspicious/noExplicitAny: argument and class can be anything so unknown or object won't work
+	type Constructor<T = any> = new (...args: any[]) => T;
+
+	/**
+	 * A type that extends T to include null as a possible value.
+	 *
+	 * @template T - The base type to extend with null.
+	 */
 	type WithNull<T> = T | null;
+	/**
+	 * A type that extends T to include undefined as a possible value.
+	 *
+	 * @template T - The base type to extend with undefined.
+	 */
 	type WithUndefined<T> = T | undefined;
+	/**
+	 * A type representing the absence of a value, either undefined or null.
+	 */
 	type Null = undefined | null;
 
 	/**
