@@ -15,7 +15,7 @@ jobs:
     environment:
       name: production
       ## Use outputs from publish script to set the URL dynamically
-      url: https://www.npmjs.com/package/@kcconfigs/biome/v/${{ github.ref_name }}
+      url: https://www.npmjs.com/package/${{ steps.publish.outputs.package }}/v/${{ steps.publish.outputs.full_version }}
     steps:
       - name: Set up source code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -31,6 +31,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Publish version
+        id: publish
         run: bash ./scripts/publish.sh
         env:
           EVENT_NAME: ${{ github.event_name }}
