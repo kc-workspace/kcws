@@ -33,9 +33,3 @@ jobs:
       - name: Publish version
         id: publish
         run: bash ./scripts/publish.sh
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          EVENT_PATH: ${{ github.event_path }}
-          ## Testing, EVENT_PATH should be enough
-          REF_TYPE: ${{ github.ref_type }}
-          REF_NAME: ${{ github.ref_name }}

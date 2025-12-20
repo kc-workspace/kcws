@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-export REF_TYPE=tag
-export EVENT_NAME=release
-export EVENT_PATH="/dev/null"
-export DRYRUN=true
 export TEST_MODE=true
 
 show_start() {

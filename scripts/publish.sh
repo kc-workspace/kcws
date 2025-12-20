@@ -1,39 +1,82 @@
 #!/usr/bin/env bash
 
-# REF_TYPE: tag
-export REF_TYPE="${REF_TYPE:?REF_TYPE is required}"
-# REF_NAME: @kcconfigs/biome#v0.1.0-beta.0
-export REF_NAME="${REF_NAME:?REF_NAME is required}"
+set -euo pipefail
 
-# EVENT_NAME: release
-export EVENT_NAME="${EVENT_NAME:?EVENT_NAME is required}"
-# EVENT_PATH: /home/runner/work/_temp/_github_workflow/event.json
-export EVENT_PATH="${EVENT_PATH:?EVENT_PATH is required}"
+## Usage:
+## <env>=<value>... ./scripts/publish.sh
+## Environment Variables:
+##   GITHUB_MODE=true      - whether running in GitHub mode (additional checks and outputs)
+##   TEST_MODE=true        - whether running in test mode
+##   DEBUG=true            - whether to enable debug mode
+##   DRYRUN=true           - whether to enable dry-run mode
 
-: "${DRYRUN:=false}"
+## https://docs.github.com/en/actions/reference/workflows-and-actions/variables
+: "${GITHUB_MODE:=${GITHUB_ACTIONS:-false}}"
+: "${TEST_MODE:=${TEST:-false}}"
+
+: "${SETTING_DRYRUN:=${DRYRUN:-$([[ $GITHUB_MODE == true ]] && printf 'false' || printf 'true')}}"
+: "${SETTING_DEBUG:=${DEBUG:-$([[ ${RUNNER_DEBUG:-} == 1 ]] && printf 'true' || printf 'false')}}"
+
+_is_github() {
+  [[ "$GITHUB_MODE" == "true" ]]
+}
+
+_is_test() {
+  [[ "$TEST_MODE" == "true" ]]
+}
+
+_is_dryrun() {
+  [[ "$SETTING_DRYRUN" == "true" ]]
+}
+
+_is_debug() {
+  [[ "$SETTING_DEBUG" == "true" ]]
+}
 
 _print() {
   local key="$1" value="$2"
-
-  if test -f "$GITHUB_OUTPUT" && test -z "$TEST_MODE"; then
-    echo "$key=$value" >>"$GITHUB_OUTPUT"
+  if _is_github; then
+    echo "$key=$value" >>"${GITHUB_OUTPUT:?GITHUB_OUTPUT is missing on GitHub mode}"
+    if _is_debug; then
+      echo "[DBG] $key = '$value'" >&2
+    fi
   else
     echo "$key = '$value'"
   fi
 }
 
+_print_on_test() {
+  local key="$1" value="$2"
+  if _is_test; then
+    _print "$key" "$value"
+  elif _is_debug; then
+    echo "[DBG] $key = '$value'" >&2
+  fi
+}
+
+_pnpm() {
+  echo "$ pnpm $*"
+  if ! _is_dryrun; then
+    pnpm "$@"
+  fi
+}
+
 verify() {
-  if [[ "$REF_TYPE" != "tag" ]]; then
-    echo "Skipping publish: REF_TYPE is not 'tag' (got '$REF_TYPE')"
-    exit 0
+  : "${GITHUB_REF_NAME:=${REF_NAME:?REF_NAME or GITHUB_REF_NAME is required}}"
+  if _is_github; then
+    if [[ "${GITHUB_EVENT_NAME:?GITHUB_EVENT_NAME is missing on GitHub mode}" != "release" ]]; then
+      echo "Invalid event: '$GITHUB_EVENT_NAME' (only 'release' is allowed)" >&2
+      return 1
+    fi
+    if [[ "${GITHUB_REF_TYPE:?GITHUB_REF_TYPE is missing on GitHub mode}" != "tag" ]]; then
+      echo "Invalid ref type: '$GITHUB_REF_TYPE' (only 'tag' is allowed)" >&2
+      return 1
+    fi
   fi
-  if [[ "$EVENT_NAME" != "release" ]]; then
-    echo "Skipping publish: EVENT_NAME is not 'release' (got '$EVENT_NAME')"
-    exit 0
-  fi
-  if ! [[ "$REF_NAME" =~ ^@kc[a-z]+/[a-z-]+#v[0-9]+\.[0-9]+\.[0-9]+(-[a-z]+\.[0-9]+)?$ ]]; then
-    echo "Invalid REF_NAME: '$REF_NAME' does not match expected pattern"
-    exit 1
+
+  if ! [[ "$GITHUB_REF_NAME" =~ ^@kc[a-z]+/[a-z-]+#v[0-9]+\.[0-9]+\.[0-9]+(-[a-z]+\.[0-9]+)?$ ]]; then
+    echo "Invalid ref name: '$GITHUB_REF_NAME' does not match expected pattern" >&2
+    return 1
   fi
 }
 
@@ -51,11 +94,11 @@ publish() {
   ## prerelease=<prerelease-identifier> (e.g. beta or empty)
   ## prerelease_version=<prerelease-number> (e.g. .beta or empty)
   local package scope name full_version version prerelease prerelease_version
-  package="${REF_NAME%%#*}"
+  package="${GITHUB_REF_NAME%%#*}"
   scope="${package%%/*}"
   name="${package##*/}"
 
-  full_version="${REF_NAME##*#v}"
+  full_version="${GITHUB_REF_NAME##*#v}"
   version="${full_version%%-*}"
   prerelease="${full_version#*-}"
   if [[ "$prerelease" != "$version" ]]; then
@@ -66,13 +109,15 @@ publish() {
     prerelease_version=""
   fi
 
+  printf '[INF] Releasing "%s" version "%s"\n' "$package" "$full_version"
+
   _print "package" "$package"
-  _print "scope" "$scope"
-  _print "name" "$name"
+  _print_on_test "scope" "$scope"
+  _print_on_test "name" "$name"
   _print "full_version" "$full_version"
-  _print "version" "$version"
-  _print "prerelease" "$prerelease"
-  _print "prerelease_version" "$prerelease_version"
+  _print_on_test "version" "$version"
+  _print_on_test "prerelease" "$prerelease"
+  _print_on_test "prerelease_version" "$prerelease_version"
 
   if test -n "$package"; then
     args+=(--filter "$package")
@@ -86,15 +131,13 @@ publish() {
     args+=(--tag latest)
   fi
 
+  if _is_github; then
+    ## https://github.com/pnpm/pnpm/issues/9011
+    args+=(--no-git-checks)
+  fi
+
   args+=("$@")
   _pnpm "${args[@]}"
-}
-
-_pnpm() {
-  echo "$ pnpm $*"
-  if [[ "$DRYRUN" != "true" ]]; then
-    pnpm "$@"
-  fi
 }
 
 verify
