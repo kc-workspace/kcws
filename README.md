@@ -48,6 +48,11 @@
 - [X] tsconfig.json typeRoots didn't works when extends with package name
   - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
 - [X] typedoc didn't works with @kcconfigs/tsdown; when dts resolve is true, no custom function is export; when it's false, only custom function is exported
+- [ ] release-please repository status (googleapis/release-please#2545)
+- [ ] right now you cannot convert prerelease to stable version easily (googleapis/release-please#2515)
+  - Workaround 1: use release-as commit to force which version to deploy
+  - Workaround 2: use multiple config (https://github.com/sonderformat-llc/release-please-prerelease-example)
+  - Workaround 3: manually update manifest.json file to previous version
 
 ## Get start
 
