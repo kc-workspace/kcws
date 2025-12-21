@@ -111,21 +111,30 @@
 
 	// Plugins: https://typedoc.org/documents/Plugins.html
 	"plugin": [
+		// https://github.com/marcmarine/varvara-js/tree/main/packages/typedoc-theme
 		"varvara-typedoc-theme",
 
 		// FIXME: https://github.com/balthild/typedoc-theme-oxide/issues/3
+		// https://github.com/balthild/typedoc-theme-oxide
 		// "typedoc-theme-oxide",
 
 		// Default theme with UI matches GitHub
+		// https://github.com/JulianWowra/typedoc-github-theme
 		// "typedoc-github-theme",
 
 		// Margin is too wide for reading, needs to custom css to fix it
+		// https://github.com/dmnsgn/typedoc-material-theme
 		// "typedoc-material-theme",
 
+		// https://github.com/Gerrit0/typedoc-plugin-missing-exports
 		"typedoc-plugin-missing-exports",
+		// https://github.com/ferdodo/typedoc-plugin-include-example
 		"typedoc-plugin-include-example",
+		// https://github.com/Drarig29/typedoc-plugin-extras
 		"typedoc-plugin-extras",
+		// https://github.com/Gerrit0/typedoc-plugin-dt-links
 		"typedoc-plugin-dt-links",
+		// https://github.com/Gerrit0/typedoc-plugin-mdn-links
 		"typedoc-plugin-mdn-links"
 	],
 
