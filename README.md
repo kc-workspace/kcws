@@ -34,12 +34,12 @@
 - [X] Support Biome
 - [X] Support commitlint && commitizen
 - [X] Support Git hooks via [lefthook](https://lefthook.dev/)
-- [ ] Support superlinter
-- [ ] Support CSpell check
-- [ ] Support SonarQube Cloud
+- [X] Support Superlinter and configured linters
+- [X] Support Megalinter and configured linters
+- [X] Support SonarQube Cloud
 - [ ] Support new package generator
-- [ ] Automatically update dependencies via [dependabot](https://github.com/dependabot)
-- [ ] Automatically merge PRs via [mergify](https://mergify.com/)
+- [X] Automatically update dependencies via [dependabot](https://github.com/dependabot)
+- [X] Automatically merge PRs via [mergify](https://mergify.com/)
 - [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
 - [ ] Set GitHub release to immutable
 
