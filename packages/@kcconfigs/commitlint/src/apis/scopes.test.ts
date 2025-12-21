@@ -16,7 +16,9 @@ describe("Scopes APIs", () => {
 		test("should return default scopes when auto is false and no scopes provided", async () => {
 			const scopes = await getScopes(false);
 
-			expect(scopes).toEqual(["core", "config", "script", "deps", "deps-dev"]);
+			expect(scopes.sort()).toEqual(
+				["core", "config", "script", "deps", "deps-dev"].sort(),
+			);
 		});
 
 		test("should return user-provided scopes when auto is false", async () => {
