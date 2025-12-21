@@ -7,7 +7,7 @@
 	},
 	"dependencies": {
 		"typescript": "catalog:",
-		"vitest": "catalog:"
+		"vitest": "catalog:test:latest"
 	},
 	"peerDependencies": {
 		"typescript": "catalog:peer"
