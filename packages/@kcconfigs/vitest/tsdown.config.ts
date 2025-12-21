@@ -1,4 +1,6 @@
-import { defineConfig, type UserConfig } from "@kcconfigs/tsdown";
+import { defineConfig } from "@kcconfigs/tsdown";
 
-const config: UserConfig = defineConfig();
-export default config;
+export default defineConfig({
+	platform: "node",
+	entry: ["./src/index.ts", "./src/mockHelpers/index.ts"],
+});

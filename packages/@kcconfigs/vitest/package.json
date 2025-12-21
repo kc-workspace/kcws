@@ -14,7 +14,8 @@
 		"type:check": "tsc --build"
 	},
 	"dependencies": {
-		"vitest": "catalog:"
+		"vitest": "catalog:test:latest",
+		"memfs": "catalog:test:latest"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
@@ -24,7 +25,7 @@
 		"tsdown": "catalog:"
 	},
 	"peerDependencies": {
-		"vitest": "catalog:peer"
+		"vitest": "catalog:test:peer"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
@@ -39,6 +40,18 @@
 			"default": {
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
+			}
+		},
+		"./mocks": {
+			"source": "./src/mockHelpers/index.ts",
+			"typedoc": "./src/mockHelpers/index.ts",
+			"require": {
+				"types": "./dist/mockHelpers/index.d.cts",
+				"default": "./dist/mockHelpers/index.cjs"
+			},
+			"default": {
+				"types": "./dist/mockHelpers/index.d.ts",
+				"default": "./dist/mockHelpers/index.js"
 			}
 		}
 	},
@@ -64,7 +77,8 @@
 		"CHANGELOG.json",
 		"CHANGELOG.md",
 		"dist",
-		"src"
+		"src",
+		"mocks"
 	],
 	"engines": {
 		"node": ">=14"
