@@ -24,7 +24,9 @@
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"tsdown": "catalog:"
+		"@kcconfigs/vitest": "workspace:*",
+		"tsdown": "catalog:",
+		"vitest": "catalog:test:latest"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",

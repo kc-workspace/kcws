@@ -1,14 +1,13 @@
 import { readFile } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { cwd as wd } from "node:process";
-
 import { findWorkspacePackagesNoCheck } from "@pnpm/workspace.find-packages";
 import { parse } from "yaml";
 
 const findPackages = async (
 	cwd: string,
-	patterns?: WithUndefined<string[]>,
-	includeRoot?: WithUndefined<boolean>,
+	patterns: WithUndefined<string[]>,
+	includeRoot: WithUndefined<boolean>,
 ) => {
 	const packages = await findWorkspacePackagesNoCheck(cwd, {
 		patterns: patterns ?? ["**"],
@@ -21,7 +20,7 @@ const findPackages = async (
 };
 
 export const findPnpmPackages = async (
-	includeRoot: boolean,
+	includeRoot?: boolean,
 ): Promise<string[]> => {
 	const cwd = wd();
 
@@ -34,7 +33,7 @@ export const findPnpmPackages = async (
 };
 
 export const findNpmPackages = async (
-	includeRoot: boolean,
+	includeRoot?: boolean,
 ): Promise<string[]> => {
 	const cwd = wd();
 
@@ -47,7 +46,7 @@ export const findNpmPackages = async (
 };
 
 export const findBunPackages = async (
-	includeRoot: boolean,
+	includeRoot?: boolean,
 ): Promise<string[]> => {
 	return findNpmPackages(includeRoot);
 };
