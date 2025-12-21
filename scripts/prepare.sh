@@ -10,7 +10,7 @@ set -euo pipefail
 ## Usage:
 ## ./scripts/prepare.sh <name>
 ## Arguments:
-##   name                  - name of the package to prepare first release (e.g. @kcconfig/biome)
+##   name                  - name of the package to prepare first release (e.g. @kcconfigs/biome)
 
 NAME="${1:?name of the package is required as the first argument}"
 TEMP_DIR="$(mktemp -d)"
