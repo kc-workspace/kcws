@@ -83,7 +83,10 @@ export const defineConfig = (
 		},
 		attw: {
 			enabled: true,
-			level: "warn",
+			level: "error",
+			// We don't build package for node older than 10
+			// https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/NoResolution.md#true-positive-node-10-doesnt-support-packagejson-exports
+			profile: "node16",
 		},
 		format: _format,
 		dts: _dts,
