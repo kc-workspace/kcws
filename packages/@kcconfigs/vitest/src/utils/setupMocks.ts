@@ -11,7 +11,7 @@ export type MockFlagKey = keyof MockFlag;
 
 const resolvePath = (name: string) => {
 	// import.meta.dirname is resolved to `dist` directory
-	return join(import.meta.dirname, "..", "mocks", `${name}.ts`);
+	return join(import.meta.dirname, "..", "__mocks__", `${name}.ts`);
 };
 
 export const setupMocks = (flag: MockFlag): string[] => {
