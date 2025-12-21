@@ -12,6 +12,7 @@
 		"**/hardis-report/**",
 		"**/*cache*/**",
 		"**/package.json",
-		"**/.github/workflows/**"
+		"**/.github/workflows/**",
+		"**/*.test.ts"
 	]
 }
