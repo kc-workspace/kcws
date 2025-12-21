@@ -51,7 +51,7 @@
 - [ ] release-please repository status (googleapis/release-please#2545)
 - [ ] right now you cannot convert prerelease to stable version easily (googleapis/release-please#2515)
   - Workaround 1: use release-as commit to force which version to deploy
-  - Workaround 2: use multiple config (https://github.com/sonderformat-llc/release-please-prerelease-example)
+  - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
 
 ## Get start

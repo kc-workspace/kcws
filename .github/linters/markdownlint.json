@@ -18,5 +18,9 @@
 		"code_block_line_length": 120,
 		"tables": false
 	},
+	"MD024": {
+		"enabled": true,
+		"siblings_only": true
+	},
 	"MD033": false
 }
