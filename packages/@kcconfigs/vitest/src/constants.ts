@@ -28,7 +28,6 @@ export const baseRootConfig: UserConfig = {
 				"**/[.]**",
 				// Ignored test files
 				"**/*{.,-}{test,spec}?(-d).?(c|m)[jt]s?(x)",
-				"**/__tests__/**",
 				"**/__mocks__/**",
 				// Ignored dist files
 				"**/dist/**",
