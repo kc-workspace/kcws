@@ -34,6 +34,9 @@
 				"glob": ["*.md", "*.txt"],
 				"run": "pnpm hooks:pre-commit:check:text {staged_files}",
 				"stage_fixed": true
+			},
+			"check:file": {
+				"run": "pnpm hooks:pre-commit:check:file {staged_files}"
 			}
 		}
 	},

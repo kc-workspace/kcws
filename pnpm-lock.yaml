@@ -31,6 +31,9 @@ catalogs:
     '@biomejs/biome':
       specifier: 2.3.8
       version: 2.3.8
+    '@ls-lint/ls-lint':
+      specifier: 2.3.1
+      version: 2.3.1
     '@types/node':
       specifier: ^24.0.0
       version: 24.10.2
@@ -134,6 +137,9 @@ importers:
       '@kcconfigs/vitest':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/vitest
+      '@ls-lint/ls-lint':
+        specifier: 'catalog:'
+        version: 2.3.1
       '@vitest/coverage-v8':
         specifier: catalog:test:latest
         version: 4.0.15(vitest@4.0.15)
@@ -833,6 +839,12 @@ packages:
 
   '@loaderkit/resolve@1.0.4':
     resolution: {integrity: sha512-rJzYKVcV4dxJv+vW6jlvagF8zvGxHJ2+HTr1e2qOejfmGhAApgJHl8Aog4mMszxceTRiKTTbnpgmTO1bEZHV/A==}
+
+  '@ls-lint/ls-lint@2.3.1':
+    resolution: {integrity: sha512-vPe6IDByQnQRTxcAYjTxrmga/tSIui50VBFTB5KIJWY3OOFmxE2VtymjeSEfQfiMbhZV/ZPAqYy2lt8pZFQ0Rw==}
+    cpu: [x64, arm64, s390x, ppc64le]
+    os: [darwin, linux, win32]
+    hasBin: true
 
   '@modelcontextprotocol/sdk@1.25.1':
     resolution: {integrity: sha512-yO28oVFFC7EBoiKdAn+VqRm+plcfv4v0xp6osG/VsCB0NlPZWi87ajbCZZ8f/RvOFLEu7//rSRmuZZ7lMoe3gQ==}
@@ -5274,6 +5286,8 @@ snapshots:
   '@loaderkit/resolve@1.0.4':
     dependencies:
       '@braidai/lang': 1.1.2
+
+  '@ls-lint/ls-lint@2.3.1': {}
 
   '@modelcontextprotocol/sdk@1.25.1(hono@4.11.1)(zod@3.25.76)':
     dependencies:
