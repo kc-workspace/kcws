@@ -146,7 +146,6 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     needs:
-      - megalintcheck
       - main
     strategy:
       matrix:
