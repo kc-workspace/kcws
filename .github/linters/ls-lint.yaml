@@ -14,6 +14,7 @@ ls:
   .text: exists:0
 
   .github:
+    ## mergify config extension must be yml
     .yml: regex:mergify | exists:1
 
   ## workflows directory must contains only <kebab-case>.yaml files
@@ -39,8 +40,38 @@ ls:
     .*: exists:0
     .json: regex:(config|manifest) | exists:2
 
+  ## @kctypes/* name must be lower case with underscore allowed
+  packages/@kctypes:
+    "*":
+      .dir: regex:[a-z][a-z_]+
+  ## @kctypes/*/src must contains only .d.ts files in PascalCase or camelCase
+  packages/@kctypes/*/src:
+    .dir: camelCase
+    .*: exists:0
+    .d.ts: camelCase | PascalCase
+
+  packages/*:
+    ## Scope name must start with @ and all lowercase with dash or dot only
+    .dir: regex:@[a-z-.]+
+    "*":
+      ## Package name must be lower case with dot, and dash allowed
+      .dir: regex:[a-z][a-z-.]+
+      "*":
+        .dir: regex:.*
+  packages/**/src:
+    "*":
+      ## Source code directory must be camelCase or special __mocks__ folder
+      .dir: camelCase | regex:__mocks__
+      .{ts,tsx}: camelCase | PascalCase
+      .{js,jsx}: exists:0
+
 ignore:
-  - assets/**
-  - docs/**
-  - "**/dist/**"
-  - "**/reports/**"
+  - "**/assets"
+  - "**/docs"
+  - "**/node_modules"
+  - "**/dist"
+  - "**/dist.dts"
+  - "**/dist.tsdown"
+  - "**/dist.vite"
+  - "**/dist.zshy"
+  - "**/reports"
