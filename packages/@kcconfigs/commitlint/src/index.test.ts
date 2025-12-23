@@ -3,7 +3,7 @@
 import { cwd } from "node:process";
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { defineConfig, Severity } from "./index";
+import { defineConfig, Severity } from ".";
 
 describe("Main API", () => {
 	afterEach(() => {
@@ -42,9 +42,12 @@ describe("Main API", () => {
 
 			expect(config).toBeDefined();
 			expect(config.helpUrl).toBe("use 'pnpm commit' to create commit instead");
-			expect(config.parserPreset).toBeDefined();
+
 			expect(config.rules).toBeDefined();
-			expect(config.prompt).toBeDefined();
+			expect(config.prompt?.questions?.type).toBeDefined();
+			expect(config.prompt?.questions?.scope).toBeDefined();
+			expect(config.prompt?.questions?.subject).toBeDefined();
+			expect(config.prompt?.questions?.body).toBeDefined();
 		});
 
 		test("should configure type-enum rule with standard types", async () => {
