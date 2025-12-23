@@ -2,6 +2,7 @@ import type * as fsPromisesType from "node:fs/promises";
 import { fs } from "memfs";
 import { vi } from "vitest";
 
+/* jscpd:ignore-start */
 vi.mock(import("node:fs/promises"), async () => {
 	return fs.promises as unknown as typeof fsPromisesType;
 });
@@ -16,7 +17,6 @@ vi.hoisted(async () => {
 	const { fs: mockFS, vol } = await import("memfs");
 	vol.fromJSON(
 		{
-			".gitkeep": "",
 			"./tmp/.gitkeep": "",
 		},
 		"/mock",
@@ -24,3 +24,4 @@ vi.hoisted(async () => {
 
 	require.cache["fs/promises"] = { exports: mockFS.promises } as never;
 });
+/* jscpd:ignore-end */
