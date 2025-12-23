@@ -4,6 +4,7 @@
 	"description": "Common vitest configuration for kc's",
 	"type": "module",
 	"scripts": {
+		"test": "vitest run",
 		"build": "tsdown",
 		"fix": "biome check --fix --unsafe",
 		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
