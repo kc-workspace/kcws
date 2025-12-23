@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
+
 import type * as fsType from "node:fs";
 import { fs } from "memfs";
 import { vi } from "vitest";
@@ -21,6 +23,5 @@ vi.hoisted(async () => {
 		},
 		"/mock",
 	);
-	// biome-ignore lint/complexity/useLiteralKeys: Conflict with ts(4111)
 	require.cache["fs"] = { exports: mockFS } as never;
 });

@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
+
 import type * as processType from "node:process";
 import { vi } from "vitest";
 
@@ -26,7 +28,6 @@ vi.mock(import("process"), async (importOriginal) => {
 vi.hoisted(async () => {
 	const originalProcess = await import("node:process");
 
-	// biome-ignore lint/complexity/useLiteralKeys: Conflict with ts(4111)
 	require.cache["process"] = {
 		exports: {
 			...originalProcess,

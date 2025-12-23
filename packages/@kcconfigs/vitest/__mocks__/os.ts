@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
+
 import type * as osType from "node:os";
 import { vi } from "vitest";
 
@@ -20,7 +22,6 @@ vi.mock(import("os"), async (importOriginal) => {
 vi.hoisted(async () => {
 	const originalOs = await import("node:os");
 
-	// biome-ignore lint/complexity/useLiteralKeys: Conflict with ts(4111)
 	require.cache["os"] = {
 		exports: {
 			...originalOs,
