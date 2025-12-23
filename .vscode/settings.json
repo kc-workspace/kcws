@@ -24,5 +24,9 @@
 	"editor.codeActionsOnSave": {
 		"source.organizeImports.biome": "explicit",
 		"source.fixAll.biome": "explicit"
+	},
+	"chat.tools.terminal.autoApprove": {
+		"/^pnpm --filter @kc[a-z]+/[a-z-._]+ (install|build|check|fix|test)$/": true,
+		"/^pnpm (install|build:all|test:all|check:all|fix:all)$/": true
 	}
 }
