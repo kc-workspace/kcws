@@ -12,6 +12,7 @@ This is a **pnpm monorepo** containing libraries, tools, and configuration packa
 - **@kcws**: Generic full-stack development packages
 
 **Key Technologies:**
+
 - TypeScript 5.9.3
 - Node.js 24.12.0 (managed via mise)
 - pnpm 10.25.0 (workspace protocol enabled)
@@ -21,6 +22,7 @@ This is a **pnpm monorepo** containing libraries, tools, and configuration packa
 - TypeDoc for documentation
 
 **Architecture:**
+
 - Isolated node linker for dependency resolution
 - Shared workspace lockfile
 - Automatic post-install builds for @kcconfigs packages
@@ -67,6 +69,7 @@ pnpm --filter @kcconfigs/commitlint build
 ### Package Structure
 
 Each package typically has:
+
 - `src/` - Source TypeScript files
 - `dist/` - Built output (ESM and CJS)
 - `package.json` - Package configuration with exports
@@ -194,7 +197,7 @@ pnpm --filter <package-name> fix
 
 **Note:** Folder structure inside `src/` depends on the package itself and is not standardized across packages.
 
-```
+```text
 packages/
   @kcconfigs/
     <package-name>/
@@ -248,6 +251,7 @@ export type { Type1 } from "./apis/feature1";
 **Important:** Avoid using biome-ignore comments as much as possible. Write proper code that doesn't require suppressions.
 
 Only use suppressions in rare cases when:
+
 1. Testing specific edge cases that require unsafe operations
 2. Working with third-party types that are incompatible with strict rules
 3. Temporary workarounds that are documented with todo comments
@@ -283,6 +287,7 @@ pnpm clean && pnpm build:all
 ### Package Exports
 
 Each package defines exports in `package.json`:
+
 ```json
 {
   "main": "./dist/index.js",
@@ -408,6 +413,7 @@ git commit -m "type(scope): subject"
 ### Commit Scopes
 
 Available scopes (configured in commitlint.config.ts):
+
 - `core`: Core functionality
 - `config`: Configuration changes
 - `script`: Script changes
@@ -429,11 +435,13 @@ chore(deps-dev): update typescript to 5.9.3
 ### PR Title Format
 
 Follow the same format as commit messages:
-```
+
+```text
 type(scope): Brief description
 ```
 
 Examples:
+
 - `feat(commitlint): add new configuration option`
 - `fix(vitest): resolve test timeout issue`
 - `docs(agents): create comprehensive AGENTS.md`
@@ -441,6 +449,7 @@ Examples:
 ### Required Checks
 
 All PRs must pass:
+
 - ✅ Type checking
 - ✅ Linting (Biome)
 - ✅ Formatting (Biome)
@@ -488,6 +497,7 @@ pnpm recursive run --if-present --stream build
 ### Dependency Management
 
 **Important Rules:**
+
 1. **Always ask user before adding new dependencies** to any package
 2. **Use exact versions** (no `^` or `~`) except for peer dependencies
 3. **Peer dependencies** should use `^` with major version only
@@ -542,7 +552,8 @@ Examples:
 
 ### Common Issues
 
-**Issue: Package not found**
+**Issue**: Package not found
+
 ```bash
 # Reinstall dependencies
 pnpm install
@@ -554,7 +565,8 @@ pnpm store prune
 pnpm build:all
 ```
 
-**Issue: Type errors in imports**
+**Issue**: Type errors in imports
+
 ```bash
 # Ensure config packages are built
 pnpm --filter "@kcconfigs/*" build
@@ -563,7 +575,8 @@ pnpm --filter "@kcconfigs/*" build
 pnpm --filter <package-name> build
 ```
 
-**Issue: Tests failing with module not found**
+**Issue**: Tests failing with module not found
+
 ```bash
 # Ensure dependencies are installed
 pnpm install
@@ -575,13 +588,15 @@ pnpm --filter <package-name> build
 pnpm vitest run --clearCache
 ```
 
-**Issue: Git hooks not running**
+**Issue**: Git hooks not running
+
 ```bash
 # Reinstall lefthook hooks
 lefthook install
 ```
 
-**Issue: Biome check failures**
+**Issue**: Biome check failures
+
 ```bash
 # Auto-fix most issues
 biome check --fix --unsafe
@@ -644,11 +659,13 @@ No special environment variables required for basic development.
 ### IDE Setup (Recommended)
 
 **Visual Studio Code:**
+
 - Install Biome extension
 - TypeScript version: Use workspace version
 - Enable formatOnSave with Biome
 
 **Settings:**
+
 ```json
 {
   "editor.defaultFormatter": "biomejs.biome",
@@ -659,12 +676,12 @@ No special environment variables required for basic development.
 
 ## Additional Resources
 
-- **Conventional Commits:** https://www.conventionalcommits.org/
-- **pnpm Workspace:** https://pnpm.io/workspaces
-- **Vitest:** https://vitest.dev/
-- **Biome:** https://biomejs.dev/
-- **TSDown:** https://tsdown.js.org/
-- **Lefthook:** https://github.com/evilmartians/lefthook
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [pnpm Workspace](https://pnpm.io/workspaces)
+- [Vitest](https://vitest.dev/)
+- [Biome](https://biomejs.dev/)
+- [TSDown](https://tsdown.js.org/)
+- [Lefthook](https://github.com/evilmartians/lefthook)
 
 ## Package-Specific Notes
 
