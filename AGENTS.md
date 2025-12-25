@@ -344,6 +344,7 @@ Git hooks are managed by Lefthook and run automatically:
 ### Pre-commit
 
 Runs on staged files:
+
 - **Biome check:** Auto-fixes formatting and linting issues
 - **Textlint:** Checks and fixes markdown/text files
 
@@ -354,6 +355,7 @@ Runs on staged files:
 ### Pre-push
 
 Runs before pushing:
+
 - **Type check:** `pnpm hooks:pre-push:check:type`
 - **Lint check:** Biome lint validation
 - **Format check:** Biome format validation
@@ -378,6 +380,7 @@ pnpm hooks:pre-push:test
 ### Install Hooks
 
 Hooks are installed automatically on `pnpm install`. To reinstall:
+
 ```bash
 lefthook install
 ```
@@ -527,15 +530,18 @@ pnpm outdated
 ### Package Catalog
 
 This workspace uses pnpm catalog for shared dependency versions:
+
 - Defined in `pnpm-workspace.yaml` under `catalog` and `catalogs`
 - Use `catalog:` protocol in package.json
 
 **Catalog Usage Guidelines:**
+
 1. **Use default catalog** (`catalog:`) as much as possible
 2. Use named catalogs (`catalog:<name>:latest`) only when package requires multiple dependencies at specific versions
 3. **All peer dependencies** must use `:peer` suffix (e.g., `catalog:test:peer`)
 
 Examples:
+
 ```json
 {
   "dependencies": {
