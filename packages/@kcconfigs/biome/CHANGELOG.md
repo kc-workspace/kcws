@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome#v0.1.0-beta.0...@kcconfigs/biome#v0.1.0) (2025-12-26)
+
+
+### Performance Improvements
+
+* **kcconfigs/biome:** disable fix for useLiteralKeys rule for now ([e777f5c](https://github.com/kc-workspace/kcws/commit/e777f5c8b104e402892de74816f4e38be1f66d74))
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** disable useLiteralKeys as conflicts with ts(4111) ([dc8a8ce](https://github.com/kc-workspace/kcws/commit/dc8a8ce354ecf234c00989e95b0585e51a434ba9))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/biome:** force package version out of beta ([d9a4fb7](https://github.com/kc-workspace/kcws/commit/d9a4fb79c32115298dc329923e6f45033c0242b2))
+
 ## 0.1.0-beta.0 (2025-12-20)
 
 
