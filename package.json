@@ -50,7 +50,7 @@
 		"typedoc-plugin-include-example": "catalog:typedoc:latest",
 		"typedoc-plugin-mdn-links": "catalog:typedoc:latest",
 		"typedoc-plugin-missing-exports": "catalog:typedoc:latest",
-		"varvara-typedoc-theme": "0.3.8",
+		"varvara-typedoc-theme": "0.3.9",
 		"vitest": "catalog:test:latest"
 	},
 	"config": {
