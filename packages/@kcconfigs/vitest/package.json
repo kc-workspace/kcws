@@ -1,7 +1,7 @@
 {
 	"name": "@kcconfigs/vitest",
 	"version": "0.1.0-beta.0",
-	"description": "Common vitest configuration for kc's",
+	"description": "Shared vitest configuration",
 	"type": "module",
 	"scripts": {
 		"test": "vitest run",

@@ -1,7 +1,7 @@
 {
 	"name": "@kcconfigs/commitlint",
 	"version": "0.1.0-beta.0",
-	"description": "Commitlint configuration",
+	"description": "Shared commitlint configuration",
 	"type": "module",
 	"scripts": {
 		"build": "tsdown",

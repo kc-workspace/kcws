@@ -1,7 +1,7 @@
 {
 	"name": "@kcconfigs/biome",
 	"version": "0.1.0",
-	"description": "Common biome configuration for kc's",
+	"description": "Shared biome configuration",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",
 		"format": "biome format --fix",
