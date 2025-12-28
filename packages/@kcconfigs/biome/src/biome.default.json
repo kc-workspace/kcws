@@ -8,7 +8,9 @@
 			"!reports/coverage",
 			"!dist",
 			"!dist.*",
-			"!.*.old"
+			"!.*.old",
+			"!.release-please-manifest.json",
+			"!.github/release-please/manifest.json"
 		]
 	},
 	"formatter": {
