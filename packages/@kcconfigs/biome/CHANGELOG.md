@@ -1,17 +1,5 @@
 # Changelog
 
-## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome#v0.1.0...@kcconfigs/biome+v0.1.1) (2025-12-28)
-
-
-### Bugfixes
-
-* update all [@kcconfigs](https://github.com/kcconfigs) description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
-
-
-### Documentation
-
-* fix invalid link in changelog ([79a6b46](https://github.com/kc-workspace/kcws/commit/79a6b4664d6405c0a3c54875dc4769e6da2b7d94))
-
 ## [0.1.0](https://github.com/kc-workspace/kcws/compare/%40kcconfigs/biome%23v0.1.0-beta.0...%40kcconfigs/biome%23v0.1.0) (2025-12-26)
 
 
