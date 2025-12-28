@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.1.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown#v0.1.0-beta.0...@kcconfigs/tsdown+v0.1.0-beta.1) (2025-12-28)
+
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** use outputOptions.postBanner and postFooter instead ([89c8369](https://github.com/kc-workspace/kcws/commit/89c836950926fa04db5f5007fa0274f128ee18bb))
+* update all [@kcconfigs](https://github.com/kcconfigs) description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.1.1
+    * @kcconfigs/tsconfig bumped to 0.1.0-beta.1
+
 ## 0.1.0-beta.0 (2025-12-26)
 
 
