@@ -74,7 +74,7 @@ verify() {
     fi
   fi
 
-  if ! [[ "$GITHUB_REF_NAME" =~ ^@kc[a-z]+/[a-z-]+#v[0-9]+\.[0-9]+\.[0-9]+(-[a-z]+\.[0-9]+)?$ ]]; then
+  if ! [[ "$GITHUB_REF_NAME" =~ ^@kc[a-z]+/[a-z-]+[+]v[0-9]+\.[0-9]+\.[0-9]+(-[a-z]+\.[0-9]+)?$ ]]; then
     echo "Invalid ref name: '$GITHUB_REF_NAME' does not match expected pattern" >&2
     return 1
   fi

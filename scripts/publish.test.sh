@@ -95,25 +95,26 @@ assert_fail() {
 }
 
 assert_fail "v0.1.0"                              ## missing package
-assert_fail "kcexamples/package1#v0.1.0"          ## invalid scope (missing @)
-assert_fail "@kcconfigs/tsdown@v0.1.0"            ## invalid separator (@ instead of #)
-assert_fail "@kcconfigs/tsdown#0.1.0"             ## missing 'v' prefix
-assert_fail "@kcconfigs/tsdown#v0.1.0-beta-1"     ## invalid prerelease separator (hyphen instead of dot)
-assert_fail "@kctools/pkg#v0.1"                   ## incomplete version (missing patch)
-assert_fail "@kctools/pkg#v1.0.0.0"               ## too many version parts
-assert_fail "@kcinternals/pkg#v1.0"               ## missing patch version
-assert_fail "@kcinternals/pkg#Va.b.c"             ## uppercase V prefix
-assert_fail "@kcexamples/Tsdown#v0.1.0"           ## uppercase package name
-assert_fail "@kctypes/pkg#v0.1.0-BETA.0"          ## uppercase prerelease type
-assert_fail "@kcws/pkg#v0.1.0-"                   ## prerelease hyphen without identifier
-assert_fail "@kctools/pkg2#v0.1.0-beta"           ## prerelease without version number
-assert_fail "@kcconfigs/pkg#v0.1.0-1.0"           ## prerelease starting with number
-assert_fail "@other/tsdown#v0.1.0"                ## invalid scope (not @kc prefix)
-assert_fail "@kcconfigs/#v0.1.0"                  ## missing package name
+assert_fail "kcexamples/package1+v0.1.0"          ## invalid scope (missing @)
+assert_fail "@kcconfigs/tsdown@v0.1.0"            ## invalid separator (@ instead of +)
+assert_fail "@kcconfigs/tsdown+0.1.0"             ## missing 'v' prefix
+assert_fail "@kcconfigs/tsdown+v0.1.0-beta-1"     ## invalid prerelease separator (hyphen instead of dot)
+assert_fail "@kctools/pkg+v0.1"                   ## incomplete version (missing patch)
+assert_fail "@kctools/pkg+v1.0.0.0"               ## too many version parts
+assert_fail "@kcinternals/pkg+v1.0"               ## missing patch version
+assert_fail "@kcinternals/pkg+Va.b.c"             ## uppercase V prefix
+assert_fail "@kcexamples/Tsdown+v0.1.0"           ## uppercase package name
+assert_fail "@kctypes/pkg+v0.1.0-BETA.0"          ## uppercase prerelease type
+assert_fail "@kcws/pkg+v0.1.0-"                   ## prerelease hyphen without identifier
+assert_fail "@kctools/pkg2+v0.1.0-beta"           ## prerelease without version number
+assert_fail "@kcconfigs/pkg+v0.1.0-1.0"           ## prerelease starting with number
+assert_fail "@other/tsdown+v0.1.0"                ## invalid scope (not @kc prefix)
+assert_fail "@kcconfigs/+v0.1.0"                  ## missing package name
+assert_fail "@kcexamples/pkg2+v0.1.0-beta.0-rc.1" ## multiple prerelease segments
 assert_fail "@kcexamples/pkg2#v0.1.0-beta.0-rc.1" ## multiple prerelease segments
 
 ## Test case: Beta prerelease version
-assert_pass "@kcconfigs/biome#v0.1.0-beta.0" \
+assert_pass "@kcconfigs/biome+v0.1.0-beta.0" \
   "@kcconfigs/biome" \
   "@kcconfigs" \
   "biome" \
@@ -123,7 +124,7 @@ assert_pass "@kcconfigs/biome#v0.1.0-beta.0" \
   "0"
 
 ## Test case: Stable release (no prerelease)
-assert_pass "@kcconfigs/tsdown#v1.0.0" \
+assert_pass "@kcconfigs/tsdown+v1.0.0" \
   "@kcconfigs/tsdown" \
   "@kcconfigs" \
   "tsdown" \
@@ -133,7 +134,7 @@ assert_pass "@kcconfigs/tsdown#v1.0.0" \
   ""
 
 ## Test case: Alpha prerelease version
-assert_pass "@kcconfigs/tsdown#v1.2.3-alpha.0" \
+assert_pass "@kcconfigs/tsdown+v1.2.3-alpha.0" \
   "@kcconfigs/tsdown" \
   "@kcconfigs" \
   "tsdown" \
@@ -143,7 +144,7 @@ assert_pass "@kcconfigs/tsdown#v1.2.3-alpha.0" \
   "0"
 
 ## Test case: Release candidate (RC) with different scope
-assert_pass "@kctools/package#v0.0.1-rc.1" \
+assert_pass "@kctools/package+v0.0.1-rc.1" \
   "@kctools/package" \
   "@kctools" \
   "package" \
@@ -153,7 +154,7 @@ assert_pass "@kctools/package#v0.0.1-rc.1" \
   "1"
 
 ## Test case: Higher version numbers with different scope
-assert_pass "@kcinternals/core#v2.5.0" \
+assert_pass "@kcinternals/core+v2.5.0" \
   "@kcinternals/core" \
   "@kcinternals" \
   "core" \
@@ -163,7 +164,7 @@ assert_pass "@kcinternals/core#v2.5.0" \
   ""
 
 ## Test case: Double-digit prerelease version number
-assert_pass "@kcconfigs/biome#v0.1.0-beta.10" \
+assert_pass "@kcconfigs/biome+v0.1.0-beta.10" \
   "@kcconfigs/biome" \
   "@kcconfigs" \
   "biome" \
@@ -173,7 +174,7 @@ assert_pass "@kcconfigs/biome#v0.1.0-beta.10" \
   "10"
 
 ## Test case: @kcexamples scope
-assert_pass "@kcexamples/sample#v2.0.0" \
+assert_pass "@kcexamples/sample+v2.0.0" \
   "@kcexamples/sample" \
   "@kcexamples" \
   "sample" \
@@ -183,7 +184,7 @@ assert_pass "@kcexamples/sample#v2.0.0" \
   ""
 
 ## Test case: @kctypes scope with prerelease
-assert_pass "@kctypes/definitions#v1.5.0-alpha.2" \
+assert_pass "@kctypes/definitions+v1.5.0-alpha.2" \
   "@kctypes/definitions" \
   "@kctypes" \
   "definitions" \
@@ -193,7 +194,7 @@ assert_pass "@kctypes/definitions#v1.5.0-alpha.2" \
   "2"
 
 ## Test case: @kcws scope
-assert_pass "@kcws/workspace#v0.5.0-rc.0" \
+assert_pass "@kcws/workspace+v0.5.0-rc.0" \
   "@kcws/workspace" \
   "@kcws" \
   "workspace" \
