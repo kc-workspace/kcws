@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome#v0.1.0-beta.0...@kcconfigs/biome#v0.1.0) (2025-12-26)
+## [0.1.0](https://github.com/kc-workspace/kcws/compare/%40kcconfigs/biome%23v0.1.0-beta.0...%40kcconfigs/biome%23v0.1.0) (2025-12-26)
 
 
 ### Performance Improvements
