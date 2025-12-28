@@ -93,8 +93,8 @@ catalogs:
       specifier: 0.28.15
       version: 0.28.15
     typedoc-plugin-dt-links:
-      specifier: 2.0.32
-      version: 2.0.32
+      specifier: 2.0.34
+      version: 2.0.34
     typedoc-plugin-extras:
       specifier: 4.0.1
       version: 4.0.1
@@ -175,7 +175,7 @@ importers:
         version: 0.28.15(typescript@5.9.3)
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.32(typedoc@0.28.15(typescript@5.9.3))
+        version: 2.0.34(typedoc@0.28.15(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
         version: 4.0.1(typedoc@0.28.15(typescript@5.9.3))
@@ -4554,8 +4554,8 @@ packages:
     resolution: {integrity: sha512-OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==}
     engines: {node: '>= 0.6'}
 
-  typedoc-plugin-dt-links@2.0.32:
-    resolution: {integrity: sha512-rxs5pAhcavvKmezfjYb5y/kmK5tLPFj9geS7IvmQJgYu1o5JCStCccGXTcdZYtU12+zh9YM9vVhmnBHd4M8wFg==}
+  typedoc-plugin-dt-links@2.0.34:
+    resolution: {integrity: sha512-avmACsJKPelxaVRwRkdnyZb8Junav6qjzi9UBt/C+8FFfQ6YBLxUUdvoYBZUGTGzUGVjIAiThLPwRnbUKjdaeg==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -9627,7 +9627,7 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-plugin-dt-links@2.0.32(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.34(typedoc@0.28.15(typescript@5.9.3)):
     dependencies:
       typedoc: 0.28.15(typescript@5.9.3)
 
