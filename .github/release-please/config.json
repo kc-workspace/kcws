@@ -10,7 +10,7 @@
 	"group-pull-request-title-pattern": "chore: release grouped packages ${scope}",
 	"pull-request-title-pattern": "chore: release package ${component} ${version} ${scope}",
 	"include-v-in-tag": true,
-	"tag-separator": "#",
+	"tag-separator": "+",
 	"changelog-sections": [
 		{
 			"type": "feat",
@@ -75,6 +75,18 @@
 		},
 		"packages/@kcconfigs/tsdown": {
 			"component": "@kcconfigs/tsdown",
+			"versioning": "prerelease",
+			"prerelease": true,
+			"prerelease-type": "beta"
+		},
+		"packages/@kcconfigs/vitest": {
+			"component": "@kcconfigs/vitest",
+			"versioning": "prerelease",
+			"prerelease": true,
+			"prerelease-type": "beta"
+		},
+		"packages/@kcconfigs/commitlint": {
+			"component": "@kcconfigs/commitlint",
 			"versioning": "prerelease",
 			"prerelease": true,
 			"prerelease-type": "beta"

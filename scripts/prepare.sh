@@ -15,6 +15,15 @@ set -euo pipefail
 NAME="${1:?name of the package is required as the first argument}"
 TEMP_DIR="$(mktemp -d)"
 
+check_auth() {
+  echo ">> Checking... authentication to npm registry"
+  if ! pnpm whoami >/dev/null 2>&1; then
+    pnpm login
+  fi
+
+  echo "    Authenticated as '$(pnpm whoami)'"
+}
+
 prepare_pkg() {
   local name="$1"
   local temp="$TEMP_DIR/${name//\//-}"
@@ -57,8 +66,17 @@ publish_pkg() {
 
 wait_configure() {
   local name="$1"
+  echo ""
   echo ">> Waiting... for trusted-publishers configuration"
   echo "    Please configure trusted-publishers for the package '$name' in npm registry."
+  echo "      1. https://www.npmjs.com/package/$name/access"
+  echo "      2. Select 'GitHub Actions' as trusted publisher"
+  echo "      3. Enter 'kc-workspace/kcws' as repository"
+  echo "      4. Enter 'publish.yaml' as workflow file"
+  echo "      5. Enter 'production' as environment"
+  echo "      6. Click 'Set up connection' button"
+  echo "      7. On 'Publishing access' section"
+  echo "        - Select 'Require two-factor authentication and disallow tokens (recommended)'"
   echo "    Visit: https://docs.npmjs.com/trusted-publishers"
   printf "    Press ENTER to continue after configuration..."
   read -r _
@@ -69,6 +87,7 @@ cleanup() {
   rm -rf "$TEMP_DIR"
 }
 
+check_auth
 prepare_pkg "$NAME"
 publish_pkg "$NAME"
 wait_configure "$NAME"

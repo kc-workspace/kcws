@@ -94,11 +94,11 @@ publish() {
   ## prerelease=<prerelease-identifier> (e.g. beta or empty)
   ## prerelease_version=<prerelease-number> (e.g. .beta or empty)
   local package scope name full_version version prerelease prerelease_version
-  package="${GITHUB_REF_NAME%%#*}"
+  package="${GITHUB_REF_NAME%%+*}"
   scope="${package%%/*}"
   name="${package##*/}"
 
-  full_version="${GITHUB_REF_NAME##*#v}"
+  full_version="${GITHUB_REF_NAME##*+v}"
   version="${full_version%%-*}"
   prerelease="${full_version#*-}"
   if [[ "$prerelease" != "$version" ]]; then
