@@ -37,13 +37,17 @@ export const defineConfig = (
 		_format = {
 			esm: {
 				sourcemap: true,
-				banner,
-				footer,
+				outputOptions: {
+					postBanner: banner,
+					postFooter: footer,
+				},
 			},
 			cjs: {
 				sourcemap: true,
-				banner,
-				footer,
+				outputOptions: {
+					postBanner: banner,
+					postFooter: footer,
+				},
 			},
 		};
 	} else if (Array.isArray(_format)) {
@@ -51,8 +55,10 @@ export const defineConfig = (
 			(obj, fmt) => {
 				obj[fmt] = {
 					sourcemap: true,
-					banner,
-					footer,
+					outputOptions: {
+						postBanner: banner,
+						postFooter: footer,
+					},
 				};
 				return obj;
 			},
