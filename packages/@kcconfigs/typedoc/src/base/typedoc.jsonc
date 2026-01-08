@@ -2,7 +2,6 @@
 	"$schema": "https://typedoc.org/schema.json",
 
 	// Input: https://typedoc.org/documents/Options.Input.html
-	"out": "docs",
 	"includeVersion": false,
 
 	// Output: https://typedoc.org/documents/Options.Output.html
