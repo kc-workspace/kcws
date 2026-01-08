@@ -1,11 +1,11 @@
 # Changelog
 
-## [0.1.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig#v0.1.0-beta.0...@kcconfigs/tsconfig+v0.1.0-beta.1) (2025-12-28)
+## 0.1.0-beta.1 (2025-12-28)
 
 
 ### Bugfixes
 
-* update all [@kcconfigs](https://github.com/kcconfigs) description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
+* update all `@kcconfigs` description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
 
 
 ### Dependencies

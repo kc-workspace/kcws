@@ -22,7 +22,7 @@
 * homepage contains invalid url ([0ee37d6](https://github.com/kc-workspace/kcws/commit/0ee37d641fe5b04fb019099915c8aa3ddfed3be7))
 * **kcconfigs/commitlint:** remove unused dependencies from package.json file ([3d627ee](https://github.com/kc-workspace/kcws/commit/3d627eef7b9d48da3f080a89dc796b23da2d7140))
 * trigger re-release please ([65447a7](https://github.com/kc-workspace/kcws/commit/65447a776ed2f8638f6f35a4d00277d407143114))
-* update all [@kcconfigs](https://github.com/kcconfigs) description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
+* update all `@kcconfigs` description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
 
 
 ### Dependencies

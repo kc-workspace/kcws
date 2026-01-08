@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome#v0.1.0...@kcconfigs/biome+v0.1.1) (2025-12-28)
+## 0.1.1 (2025-12-28)
 
 
 ### Bugfixes
 
 * **kcconfigs/biome:** release-please manifest files to ignore config ([800e2df](https://github.com/kc-workspace/kcws/commit/800e2df4f4522825276d6bc142c1b2ccef59a98e))
-* update all [@kcconfigs](https://github.com/kcconfigs) description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
+* update all `@kcconfigs` description so it trigger new deployment with new tag separator ([cf5be8c](https://github.com/kc-workspace/kcws/commit/cf5be8cc02fba8becb7e8f31fd6f3a741c0f0b95))
 
 
 ### Documentation
