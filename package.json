@@ -32,8 +32,8 @@
 		"@kcconfigs/biome": "workspace:",
 		"@kcconfigs/commitlint": "workspace:",
 		"@kcconfigs/tsconfig": "workspace:",
-		"@kcconfigs/vitest": "workspace:",
 		"@kcconfigs/typedoc": "workspace:",
+		"@kcconfigs/vitest": "workspace:",
 		"@ls-lint/ls-lint": "catalog:",
 		"@vitest/coverage-v8": "catalog:test:latest",
 		"@vitest/ui": "catalog:test:latest",
@@ -46,12 +46,12 @@
 		"textlint-filter-rule-comments": "catalog:textlint:latest",
 		"textlint-rule-terminology": "catalog:textlint:latest",
 		"typedoc": "catalog:typedoc:latest",
+		"typedoc-github-theme": "catalog:typedoc:latest",
 		"typedoc-plugin-dt-links": "catalog:typedoc:latest",
 		"typedoc-plugin-extras": "catalog:typedoc:latest",
 		"typedoc-plugin-include-example": "catalog:typedoc:latest",
 		"typedoc-plugin-mdn-links": "catalog:typedoc:latest",
 		"typedoc-plugin-missing-exports": "catalog:typedoc:latest",
-		"varvara-typedoc-theme": "catalog:typedoc:latest",
 		"vitest": "catalog:test:latest"
 	},
 	"config": {

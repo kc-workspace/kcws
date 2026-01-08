@@ -3,7 +3,7 @@
 	"extends": ["./base/typedoc.jsonc"],
 
 	// Input: https://typedoc.org/documents/Options.Input.html
-	"exclude": ["**/*+(index|.e2e).ts"],
+	"exclude": ["**/*+.(index|e2e).ts"],
 
 	// Output: https://typedoc.org/documents/Options.Output.html
 	"navigation": {
