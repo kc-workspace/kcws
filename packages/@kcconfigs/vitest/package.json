@@ -46,7 +46,6 @@
 		},
 		"./mocks": {
 			"source": "./src/mockHelpers/index.ts",
-			"typedoc": "./src/mockHelpers/index.ts",
 			"require": {
 				"types": "./dist/mockHelpers/index.d.cts",
 				"default": "./dist/mockHelpers/index.cjs"
