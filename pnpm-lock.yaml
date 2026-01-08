@@ -189,8 +189,8 @@ importers:
         specifier: catalog:typedoc:latest
         version: 4.1.2(typedoc@0.28.15(typescript@5.9.3))
       varvara-typedoc-theme:
-        specifier: 0.3.8
-        version: 0.3.8(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3)
+        specifier: 0.3.9
+        version: 0.3.9(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3)
       vitest:
         specifier: catalog:test:latest
         version: 4.0.15(@types/node@24.10.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -4690,13 +4690,13 @@ packages:
     resolution: {integrity: sha512-YuKoXDAhBYxY7SfOKxHBDoSyENFeW5VvIIQp2TGQuit8gpK6MnWaQelBKxso72DoxTZfZdcP3W90LqpSkgPzLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  varvara-css@0.8.0:
-    resolution: {integrity: sha512-uWDixKQw2ZN7xwWvUg2hyeycxDo2IvIed6Esx14wGWU9kwTkk8MLrij28rwMFWbvj1kvB0PMKmviNVIXroKjVg==}
+  varvara-css@0.9.0:
+    resolution: {integrity: sha512-I4gdKGEgmgfyMsBDfOkMKtUQQCLkvnM+C9s5HIF8ePlKHanlQ5IKhgB3DuWJGg9rFWdZOWxFEU5QKQkxC9EXqA==}
     peerDependencies:
       typescript: ^5.0.0
 
-  varvara-typedoc-theme@0.3.8:
-    resolution: {integrity: sha512-Rj51pkN27M575zBXVAcIH+V55xVOiUlGM1/6wAo0pa4U1eGEzPv86JkUmjOsPjCFKdcrvNOiQ02x9w/v7XVBmg==}
+  varvara-typedoc-theme@0.3.9:
+    resolution: {integrity: sha512-HuACQ1g2vnbNjY4nW/Fkp15Hummf0RQzaNtykRNcNYcd8Vyg1XgfDpcKWOjWIFVUmbvreK4RXNIhDky8DUofbw==}
     peerDependencies:
       typedoc: ^0.28.0
       typescript: ^5.0.0
@@ -9771,15 +9771,15 @@ snapshots:
     dependencies:
       builtins: 5.1.0
 
-  varvara-css@0.8.0(typescript@5.9.3):
+  varvara-css@0.9.0(typescript@5.9.3):
     dependencies:
       typescript: 5.9.3
 
-  varvara-typedoc-theme@0.3.8(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3):
+  varvara-typedoc-theme@0.3.9(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
       typedoc: 0.28.15(typescript@5.9.3)
       typescript: 5.9.3
-      varvara-css: 0.8.0(typescript@5.9.3)
+      varvara-css: 0.9.0(typescript@5.9.3)
 
   vary@1.1.2: {}
 
