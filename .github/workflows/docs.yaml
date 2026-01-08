@@ -1,9 +1,10 @@
 name: Documentation
 
+## Only build docs when a new release is published or manually triggered
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
   workflow_dispatch:
 
 permissions:
