@@ -24,7 +24,10 @@
 		// Ignore GitHub configs
 		"**/.github",
 		// Ignore VSCode settings
-		"**/.vscode"
+		"**/.vscode",
+		// Ignore Typedoc config files
+		"**/typedoc.json",
+		"**/typedoc.*.json"
 	],
 	"dictionaries": [
 		"en_US",
