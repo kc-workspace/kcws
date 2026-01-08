@@ -19,11 +19,11 @@ catalog:
   typescript: 5.9.3
   unplugin-unused: 0.5.6
   vite: 8.0.0-beta.5
-  zshy: 0.6.0
+  zshy: 0.7.0
 
 catalogs:
   commitlint:latest:
-    "@commitlint/cli": 20.2.0
+    "@commitlint/cli": 20.3.0
     "@commitlint/config-conventional": 20.2.0
     "@commitlint/cz-commitlint": 20.2.0
     "@commitlint/types": 20.2.0
@@ -43,7 +43,7 @@ catalogs:
     typedoc-plugin-include-example: 3.0.2
     typedoc-plugin-mdn-links: 5.0.10
     typedoc-plugin-missing-exports: 4.1.2
-    varvara-typedoc-theme: 0.3.8
+    varvara-typedoc-theme: 0.3.9
   typedoc:peer:
     typedoc: ^0.28.0
     typedoc-plugin-dt-links: ^2.0.0
