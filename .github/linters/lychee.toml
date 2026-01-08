@@ -53,7 +53,7 @@ retry_wait_time = 3
 # accept = "200..=204, 429"
 # accept = ["200", "429"]
 # accept = "200, 429"
-accept = ["200", "429"]
+accept = ["200", "401", "403", "405", "406", "429"]
 
 # Proceed for server connections considered insecure (invalid TLS).
 insecure = false
@@ -114,6 +114,7 @@ exclude = [
 # Exclude paths from getting checked. The values are treated as regular expressions
 ## FIXME: This setting seems to not work inside GitHub Actions with Mega-Linter
 exclude_path = [
+  "\\.vscode",            # skip VSCode settings folder
   # "\\.github/workflows" # skip GitHub Workflow files
   # "\\.txt$",            # skip .txt extensions
   # "(^|/)test/",         # skip directories named "test"
@@ -121,7 +122,7 @@ exclude_path = [
 ]
 
 # URLs to check (supports regex). Has preference over all excludes.
-include = ['gist\.github\.com.*']
+# include = ['gist\.github\.com.*']
 
 # Exclude all private IPs from checking.
 # Equivalent to setting `exclude_private`, `exclude_link_local`, and

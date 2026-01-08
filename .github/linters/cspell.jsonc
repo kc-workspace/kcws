@@ -22,7 +22,9 @@
 		// Ignore meta-linter report
 		"**/megalinter-reports",
 		// Ignore GitHub configs
-		"**/.github"
+		"**/.github",
+		// Ignore VSCode settings
+		"**/.vscode"
 	],
 	"dictionaries": [
 		"en_US",
