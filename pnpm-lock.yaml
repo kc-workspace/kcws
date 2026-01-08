@@ -56,8 +56,8 @@ catalogs:
       specifier: 8.0.0-beta.5
       version: 8.0.0-beta.5
     zshy:
-      specifier: 0.6.0
-      version: 0.6.0
+      specifier: 0.7.0
+      version: 0.7.0
   peer:
     typescript:
       specifier: ^5.0.0
@@ -341,7 +341,7 @@ importers:
         version: 4.0.15(@types/node@24.10.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
       zshy:
         specifier: 'catalog:'
-        version: 0.6.0(typescript@5.9.3)
+        version: 0.7.0(typescript@5.9.3)
 
   packages/@kcinternals/starter:
     devDependencies:
@@ -4934,8 +4934,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zshy@0.6.0:
-    resolution: {integrity: sha512-Z44cazaJFGvl+Db0yxKMfJoKq6CKXh7MLWqkLZH6Yo3ZmjO3HD+mF2+L5qZS8/Gk2nTKttf2YZungk8QPapeaw==}
+  zshy@0.7.0:
+    resolution: {integrity: sha512-nBQv7JaVC+lUMK9+uD9LgXNHPsz3uo5gdk33ojCndY8hT4EkrGovwjacPsvB7BlTuV++i9bPQFFzWYrQyTH3DA==}
     hasBin: true
     peerDependencies:
       typescript: '>5.5.0'
@@ -9948,7 +9948,7 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zshy@0.6.0(typescript@5.9.3):
+  zshy@0.7.0(typescript@5.9.3):
     dependencies:
       arg: 5.0.2
       fast-glob: 3.3.3
