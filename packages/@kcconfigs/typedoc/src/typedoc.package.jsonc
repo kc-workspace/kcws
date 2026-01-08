@@ -1,0 +1,12 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"extends": ["./typedoc.base.jsonc"]
+
+	// Input: https://typedoc.org/documents/Options.Input.html
+
+	// Output: https://typedoc.org/documents/Options.Output.html
+
+	// Comments: https://typedoc.org/documents/Options.Comments.html
+
+	// Other: https://typedoc.org/documents/Options.Other.html
+}

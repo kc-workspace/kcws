@@ -1,0 +1,62 @@
+{
+	"name": "@kcconfigs/typedoc",
+	"version": "0.1.0-beta.0",
+	"description": "Shared typedoc configuration",
+	"scripts": {
+		"fix": "biome check --fix --unsafe",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint"
+	},
+	"devDependencies": {
+		"@kcconfigs/biome": "workspace:*"
+	},
+	"peerDependencies": {
+		"typedoc": "catalog:typedoc:peer",
+		"typedoc-plugin-dt-links": "catalog:typedoc:peer",
+		"typedoc-plugin-extras": "catalog:typedoc:peer",
+		"typedoc-plugin-include-example": "catalog:typedoc:peer",
+		"typedoc-plugin-mdn-links": "catalog:typedoc:peer",
+		"typedoc-plugin-missing-exports": "catalog:typedoc:peer",
+		"varvara-typedoc-theme": "catalog:typedoc:peer"
+	},
+	"main": "./src/typedoc.root.jsonc",
+	"exports": {
+		".": "./src/typedoc.root.jsonc",
+		"./default": "./src/typedoc.root.jsonc",
+		"./package": "./src/typedoc.package.jsonc",
+		"./base": "./src/typedoc.base.jsonc"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/typedoc",
+	"repository": {
+		"type": "git",
+		"directory": "@kcconfigs/typedoc",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"typedoc",
+		"doc",
+		"document",
+		"documentation",
+		"typescript",
+		"config"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"src"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

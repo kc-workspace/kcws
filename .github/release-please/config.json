@@ -67,6 +67,12 @@
 		"packages/@kcconfigs/biome": {
 			"component": "@kcconfigs/biome"
 		},
+		"packages/@kcconfigs/typedoc": {
+			"component": "@kcconfigs/typedoc",
+			"versioning": "prerelease",
+			"prerelease": true,
+			"prerelease-type": "beta"
+		},
 		"packages/@kcconfigs/tsconfig": {
 			"component": "@kcconfigs/tsconfig",
 			"versioning": "prerelease",
