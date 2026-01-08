@@ -107,6 +107,31 @@ catalogs:
     typedoc-plugin-missing-exports:
       specifier: 4.1.2
       version: 4.1.2
+    varvara-typedoc-theme:
+      specifier: 0.3.8
+      version: 0.3.8
+  typedoc:peer:
+    typedoc:
+      specifier: ^0.28.0
+      version: 0.28.15
+    typedoc-plugin-dt-links:
+      specifier: ^2.0.0
+      version: 2.0.34
+    typedoc-plugin-extras:
+      specifier: ^4.0.0
+      version: 4.0.1
+    typedoc-plugin-include-example:
+      specifier: ^3.0.0
+      version: 3.0.2
+    typedoc-plugin-mdn-links:
+      specifier: ^5.0.0
+      version: 5.0.10
+    typedoc-plugin-missing-exports:
+      specifier: ^4.0.0
+      version: 4.1.2
+    varvara-typedoc-theme:
+      specifier: ^0.3.0
+      version: 0.3.8
 
 overrides:
   cross-spawn@>=7.0.0 <7.0.5: '>=7.0.5'
@@ -134,6 +159,9 @@ importers:
       '@kcconfigs/tsconfig':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/tsconfig
+      '@kcconfigs/typedoc':
+        specifier: 'workspace:'
+        version: link:packages/@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/vitest
@@ -189,7 +217,7 @@ importers:
         specifier: catalog:typedoc:latest
         version: 4.1.2(typedoc@0.28.15(typescript@5.9.3))
       varvara-typedoc-theme:
-        specifier: 0.3.8
+        specifier: catalog:typedoc:latest
         version: 0.3.8(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3)
       vitest:
         specifier: catalog:test:latest
@@ -228,6 +256,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../tsdown
+      '@kcconfigs/typedoc':
+        specifier: workspace:*
+        version: link:../typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../vitest
@@ -284,6 +315,37 @@ importers:
       '@kcconfigs/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@kcconfigs/typedoc':
+        specifier: workspace:*
+        version: link:../typedoc
+
+  packages/@kcconfigs/typedoc:
+    dependencies:
+      typedoc:
+        specifier: catalog:typedoc:peer
+        version: 0.28.15(typescript@5.9.3)
+      typedoc-plugin-dt-links:
+        specifier: catalog:typedoc:peer
+        version: 2.0.34(typedoc@0.28.15(typescript@5.9.3))
+      typedoc-plugin-extras:
+        specifier: catalog:typedoc:peer
+        version: 4.0.1(typedoc@0.28.15(typescript@5.9.3))
+      typedoc-plugin-include-example:
+        specifier: catalog:typedoc:peer
+        version: 3.0.2(typedoc@0.28.15(typescript@5.9.3))
+      typedoc-plugin-mdn-links:
+        specifier: catalog:typedoc:peer
+        version: 5.0.10(typedoc@0.28.15(typescript@5.9.3))
+      typedoc-plugin-missing-exports:
+        specifier: catalog:typedoc:peer
+        version: 4.1.2(typedoc@0.28.15(typescript@5.9.3))
+      varvara-typedoc-theme:
+        specifier: catalog:typedoc:peer
+        version: 0.3.8(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3)
+    devDependencies:
+      '@kcconfigs/biome':
+        specifier: workspace:*
+        version: link:../biome
 
   packages/@kcconfigs/vitest:
     dependencies:
@@ -306,6 +368,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../tsdown
+      '@kcconfigs/typedoc':
+        specifier: workspace:*
+        version: link:../typedoc
       tsdown:
         specifier: 'catalog:'
         version: 0.18.1(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
@@ -324,6 +389,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
+      '@kcconfigs/typedoc':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
@@ -357,6 +425,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
+      '@kcconfigs/typedoc':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest

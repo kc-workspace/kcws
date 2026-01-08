@@ -29,6 +29,8 @@ catalogs:
     "@commitlint/types": 20.2.0
     commitizen: 4.3.1
     inquirer: ^9.3.8
+  commitlint:peer:
+    "@commitlint/cli": ^20.0.0
   textlint:latest:
     textlint: 15.5.0
     textlint-filter-rule-allowlist: 4.0.0
@@ -41,6 +43,15 @@ catalogs:
     typedoc-plugin-include-example: 3.0.2
     typedoc-plugin-mdn-links: 5.0.10
     typedoc-plugin-missing-exports: 4.1.2
+    varvara-typedoc-theme: 0.3.8
+  typedoc:peer:
+    typedoc: ^0.28.0
+    typedoc-plugin-dt-links: ^2.0.0
+    typedoc-plugin-extras: ^4.0.0
+    typedoc-plugin-include-example: ^3.0.0
+    typedoc-plugin-mdn-links: ^5.0.0
+    typedoc-plugin-missing-exports: ^4.0.0
+    varvara-typedoc-theme: ^0.3.0
   test:latest:
     "@vitest/coverage-v8": 4.0.15
     "@vitest/ui": 4.0.15
@@ -51,8 +62,6 @@ catalogs:
     "@vitest/ui": ^4.0.0
     memfs: ^4.0.0
     vitest: ^4.0.0
-  commitlint:peer:
-    "@commitlint/cli": ^20.0.0
   peer:
     "@arethetypeswrong/core": ^0.18.0
     "@biomejs/biome": ^2.0.0

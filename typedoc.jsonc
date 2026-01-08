@@ -1,10 +1,9 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
+	"extends": ["@kcconfigs/typedoc"],
 
 	// Input: https://typedoc.org/documents/Options.Input.html
 	"name": "KC's Workspace",
-	"entryPointStrategy": "packages",
-	"exclude": ["**/*+(index|.e2e).ts"],
 	"entryPoints": [
 		"packages/@kcconfigs/*",
 		"packages/@kcexamples/*",
@@ -13,147 +12,20 @@
 		"packages/@kctypes/*",
 		"packages/@kcws/*"
 	],
-	"out": "docs",
-	"includeVersion": false,
 
 	// Output: https://typedoc.org/documents/Options.Output.html
-	"emit": "docs",
 	"favicon": "assets/docs/favicon.ico",
-	"sourceLinkExternal": true,
-	"markdownLinkExternal": true,
-	"cleanOutputDir": true,
-	// NOTE: This might increase search index
-	"searchInDocuments": true,
-	// NOTE: This might increase search index
-	"searchInComments": true,
 	"navigationLinks": {
 		"Github": "https://github.com/kc-workspace/kcws"
 	},
 	"sidebarLinks": {
 		"Github": "https://github.com/kc-workspace/kcws"
 	},
-	"navigation": {
-		"includeCategories": true,
-		"includeGroups": true,
-		"includeFolders": false
-	},
-	"visibilityFilters": {
-		"protected": true,
-		"private": false,
-		"external": true,
-		"@internal": true,
-		"@beta": true,
-		"@alpha": false
-	},
 
 	// Comments: https://typedoc.org/documents/Options.Comments.html
-	"useTsLinkResolution": true,
 	"externalSymbolLinkMappings": {
 		"rolldown": { "transform": "#" }
-	},
-
-	// Organization: https://typedoc.org/documents/Options.Organization.html
-	"categorizeByGroup": true,
-	"sort": [
-		"visibility",
-		"static-first",
-		"enum-value-ascending",
-		"alphabetical-ignoring-documents"
-	],
-	"kindSortOrder": [
-		"Reference",
-		"Project",
-		"Module",
-		"Namespace",
-		"Enum",
-		"EnumMember",
-		"Class",
-		"Interface",
-		"TypeAlias",
-		"Constructor",
-		"Property",
-		"Variable",
-		"Function",
-		"Accessor",
-		"Method",
-		"Parameter",
-		"TypeParameter",
-		"TypeLiteral",
-		"CallSignature",
-		"ConstructorSignature",
-		"IndexSignature",
-		"GetSignature",
-		"SetSignature"
-	],
-
-	// Validation: https://typedoc.org/documents/Options.Validation.html
-	"validation": {
-		"notExported": true,
-		"invalidLink": true,
-		"invalidPath": true,
-		"rewrittenLink": true,
-		"notDocumented": false,
-		"unusedMergeModuleWith": true
-	},
-	"treatWarningsAsErrors": false,
-	"treatValidationWarningsAsErrors": false,
-	// "requiredToBeDocumented": [
-	//   "Namespace",
-	//   "Enum",
-	//   "EnumMember",
-	//   "Function",
-	//   "Class",
-	//   "Method",
-	//   "Reference"
-	// ],
+	}
 
 	// Other: https://typedoc.org/documents/Options.Other.html
-
-	// Plugins: https://typedoc.org/documents/Plugins.html
-	"plugin": [
-		// https://github.com/marcmarine/varvara-js/tree/main/packages/typedoc-theme
-		"varvara-typedoc-theme",
-
-		// FIXME: https://github.com/balthild/typedoc-theme-oxide/issues/3
-		// https://github.com/balthild/typedoc-theme-oxide
-		// "typedoc-theme-oxide",
-
-		// Default theme with UI matches GitHub
-		// https://github.com/JulianWowra/typedoc-github-theme
-		// "typedoc-github-theme",
-
-		// Margin is too wide for reading, needs to custom css to fix it
-		// https://github.com/dmnsgn/typedoc-material-theme
-		// "typedoc-material-theme",
-
-		// https://github.com/Gerrit0/typedoc-plugin-missing-exports
-		"typedoc-plugin-missing-exports",
-		// https://github.com/ferdodo/typedoc-plugin-include-example
-		"typedoc-plugin-include-example",
-		// https://github.com/Drarig29/typedoc-plugin-extras
-		"typedoc-plugin-extras",
-		// https://github.com/Gerrit0/typedoc-plugin-dt-links
-		"typedoc-plugin-dt-links",
-		// https://github.com/Gerrit0/typedoc-plugin-mdn-links
-		"typedoc-plugin-mdn-links"
-	],
-
-	// Themes: https://typedoc.org/documents/Themes.html
-	"theme": "varvara-css",
-
-	// typedoc-plugin-missing-exports
-	// https://github.com/Gerrit0/typedoc-plugin-missing-exports#options
-	"internalModule": "[internal]",
-	"collapseInternalModule": true,
-	"includeDocCommentReferences": true,
-	"placeInternalsInOwningModule": false,
-
-	// typedoc-plugin-extras
-	// https://github.com/Drarig29/typedoc-plugin-extras#arguments
-	"customDescription": "kamontat's workspace for javascript ecosystem",
-	"footerTypedocVersion": true,
-	"footerLastModified": true,
-
-	// https://github.com/Gerrit0/typedoc-plugin-mdn-links#options
-	"resolveUtilityTypes": true
 }
