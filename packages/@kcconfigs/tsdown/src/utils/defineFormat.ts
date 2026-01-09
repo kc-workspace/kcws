@@ -20,7 +20,6 @@ export const defineFormat = (
 		},
 		cjs: {
 			sourcemap: true,
-			cjsDefault: false,
 			outputOptions: {
 				postBanner: banner,
 				postFooter: footer,
