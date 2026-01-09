@@ -22,7 +22,6 @@
 		"@biomejs/biome": "catalog:",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"@kcconfigs/typedoc": "workspace:*",
 		"@kcconfigs/biome": "workspace:*",
 		"tsdown": "catalog:"
 	},
