@@ -96,8 +96,8 @@ catalogs:
       specifier: 0.3.1
       version: 0.3.1
     typedoc-plugin-dt-links:
-      specifier: 2.0.34
-      version: 2.0.34
+      specifier: 2.0.36
+      version: 2.0.36
     typedoc-plugin-extras:
       specifier: 4.0.1
       version: 4.0.1
@@ -111,9 +111,6 @@ catalogs:
       specifier: 4.1.2
       version: 4.1.2
   typedoc:peer:
-    typedoc:
-      specifier: ^0.28.0
-      version: 0.28.15
     typedoc-github-theme:
       specifier: ^0.3.0
       version: 0.3.1
@@ -218,7 +215,7 @@ importers:
         version: 0.3.1(typedoc@0.28.15(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.34(typedoc@0.28.15(typescript@5.9.3))
+        version: 2.0.36(typedoc@0.28.15(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
         version: 4.0.1(typedoc@0.28.15(typescript@5.9.3))
@@ -268,9 +265,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../vitest
@@ -331,7 +325,7 @@ importers:
   packages/@kcconfigs/typedoc:
     dependencies:
       typedoc:
-        specifier: catalog:typedoc:peer
+        specifier: catalog:typedoc:latest
         version: 0.28.15(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
@@ -425,9 +419,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
@@ -461,9 +452,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
@@ -4728,6 +4716,11 @@ packages:
 
   typedoc-plugin-dt-links@2.0.34:
     resolution: {integrity: sha512-avmACsJKPelxaVRwRkdnyZb8Junav6qjzi9UBt/C+8FFfQ6YBLxUUdvoYBZUGTGzUGVjIAiThLPwRnbUKjdaeg==}
+    peerDependencies:
+      typedoc: 0.28.x
+
+  typedoc-plugin-dt-links@2.0.36:
+    resolution: {integrity: sha512-hOhDr2ZmHwVK5SjmrGPrBC7IG3C9TPcJGvSnOBYTD1SFW+2X3hXN4YAi0aZVMkFvUwQt3a5iVkPHkXsZE+X6Ng==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -9947,6 +9940,10 @@ snapshots:
       typedoc: 0.28.15(typescript@5.9.3)
 
   typedoc-plugin-dt-links@2.0.34(typedoc@0.28.15(typescript@5.9.3)):
+    dependencies:
+      typedoc: 0.28.15(typescript@5.9.3)
+
+  typedoc-plugin-dt-links@2.0.36(typedoc@0.28.15(typescript@5.9.3)):
     dependencies:
       typedoc: 0.28.15(typescript@5.9.3)
 
