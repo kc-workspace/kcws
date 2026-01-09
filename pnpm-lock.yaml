@@ -111,9 +111,6 @@ catalogs:
       specifier: 4.1.2
       version: 4.1.2
   typedoc:peer:
-    typedoc:
-      specifier: ^0.28.0
-      version: 0.28.15
     typedoc-github-theme:
       specifier: ^0.3.0
       version: 0.3.1
@@ -268,9 +265,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../vitest
@@ -331,7 +325,7 @@ importers:
   packages/@kcconfigs/typedoc:
     dependencies:
       typedoc:
-        specifier: catalog:typedoc:peer
+        specifier: catalog:typedoc:latest
         version: 0.28.15(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
@@ -425,9 +419,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
@@ -461,9 +452,6 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/typedoc':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/typedoc
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
