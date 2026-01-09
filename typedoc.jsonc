@@ -1,6 +1,6 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
-	"extends": ["@kcconfigs/typedoc"],
+	"extends": ["@kcconfigs/typedoc/root"],
 
 	// Input: https://typedoc.org/documents/Options.Input.html
 	"name": "KC's Workspace",
@@ -18,14 +18,12 @@
 	"navigationLinks": {
 		"Github": "https://github.com/kc-workspace/kcws"
 	},
-	"sidebarLinks": {
-		"Github": "https://github.com/kc-workspace/kcws"
-	},
 
 	// Comments: https://typedoc.org/documents/Options.Comments.html
 	"externalSymbolLinkMappings": {
 		"rolldown": { "transform": "#" }
-	}
+	},
 
-	// Other: https://typedoc.org/documents/Options.Other.html
+	// https://github.com/Drarig29/typedoc-plugin-extras#arguments
+	"customDescription": "kamontat's workspace for javascript ecosystem"
 }
