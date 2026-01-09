@@ -17,8 +17,14 @@
 	},
 	"main": "./src/biome.default.json",
 	"exports": {
-		"./default": "./src/biome.default.json",
-		"./base": "./src/biome.base.json"
+		".": {
+			"typedoc": "./src/biome.default.json",
+			"default": "./src/biome.default.json"
+		},
+		"./base": {
+			"typedoc": "./src/biome.base.json",
+			"default": "./src/biome.base.json"
+		}
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/biome",
