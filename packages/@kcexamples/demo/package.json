@@ -26,7 +26,6 @@
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"@kcconfigs/typedoc": "workspace:*",
 		"rolldown-plugin-dts": "0.20.0",
 		"tsdown": "catalog:",
 		"vite": "catalog:",

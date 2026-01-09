@@ -25,7 +25,6 @@
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"@kcconfigs/typedoc": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"tsdown": "catalog:",
 		"vitest": "catalog:test:latest"
