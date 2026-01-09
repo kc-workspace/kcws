@@ -56,6 +56,19 @@ declare global {
 		Pick<T, Extract<keyof T, K>>
 	> &
 		Required<Omit<T, K>>;
+
+	/**
+	 * A utility type that makes all properties of T deeply optional.
+	 * This means that not only the properties of T are optional,
+	 * but also all nested properties within those properties are optional as well.
+	 *
+	 * @beta
+	 */
+	type DeepPartial<T> = T extends object
+		? {
+				[P in keyof T]?: DeepPartial<T[P]>;
+			}
+		: T;
 }
 
 export {};
