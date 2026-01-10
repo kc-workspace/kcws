@@ -9,7 +9,9 @@ APPLY_FIXES: none
 VALIDATE_ALL_CODEBASE: true
 
 LINTER_RULES_PATH: .github/linters
-SARIF_REPORTER: true
+GITHUB_COMMENT_REPORTER: true
+GITHUB_STATUS_REPORTER: true
+SARIF_REPORTER: false ## This provides too many stdout logs in GitHub Actions
 
 FAIL_IF_MISSING_LINTER_IN_FLAVOR: true
 FAIL_IF_UPDATED_SOURCES: true

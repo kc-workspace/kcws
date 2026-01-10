@@ -87,11 +87,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MEGALINTER_CONFIG: .github/linters/.mega-linter.yaml
-      - name: Upload MegaLinter results to GitHub Security tab
-        if: success() || failure()
-        uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
-        with:
-          sarif_file: "megalinter-reports/megalinter-report.sarif"
+      ## disable for now as it creates too much noise in the logs
+      # - name: Upload MegaLinter results to GitHub Security tab
+      #   if: success() || failure()
+      #   uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9
+      #   with:
+      #     sarif_file: "megalinter-reports/megalinter-report.sarif"
       - name: Upload MegaLinter reports
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: success() || failure()
