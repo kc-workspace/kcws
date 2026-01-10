@@ -7,6 +7,7 @@ const config: UserConfig = defineConfig({
 		"./src/presets/*.ts",
 		"./src/plugins/*.ts",
 		"./src/themes/*.ts",
+		"!./src/**/*.test.ts",
 	],
 });
 export default config;
