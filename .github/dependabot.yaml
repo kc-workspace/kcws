@@ -23,3 +23,22 @@ updates:
     commit-message:
       prefix: perf
       include: scope
+    groups:
+      vitest:
+        patterns:
+          - "@vitest/*"
+          - vitest
+          - memfs
+      typedoc:
+        patterns:
+          - typedoc
+          - typedoc-*
+          - varvara-typedoc-theme
+      textlint:
+        patterns:
+          - textlint
+          - textlint-*
+      commitlint:
+        patterns:
+          - "@commitlint/*"
+          - commitizen
