@@ -34,7 +34,7 @@ catalogs:
   textlint:latest:
     textlint: 15.5.0
     textlint-filter-rule-allowlist: 4.0.0
-    textlint-filter-rule-comments: 1.2.2
+    textlint-filter-rule-comments: 1.3.0
     textlint-rule-terminology: 5.2.16
   typedoc:latest:
     typedoc: 0.28.15
