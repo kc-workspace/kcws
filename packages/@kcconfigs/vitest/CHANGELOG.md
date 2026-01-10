@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.1.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.0-beta.0...@kcconfigs/vitest+v0.1.0-beta.1) (2026-01-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** Use @kcconfigs/biome instead of @kcconfigs/biome/default when use shared config
+
+### Features
+
+* **config:** use shared typedoc config instead of manually config on every packages ([fd4cdc6](https://github.com/kc-workspace/kcws/commit/fd4cdc607f0fde49e5863c77aa7e0627676d0c42))
+
+
+### Performance Improvements
+
+* **kcconfigs/biome:** remove /default exports and add typedoc conditions ([5e1ab7d](https://github.com/kc-workspace/kcws/commit/5e1ab7d9be478fedbb29d2e68801c7689cd39882))
+
+
+### Bugfixes
+
+* **config:** update schema version from 2.3.8 to 2.3.10 across all biome configuration files ([751ee20](https://github.com/kc-workspace/kcws/commit/751ee207527ed05720ad415927e0b0f27bdf9bdf))
+* **kcconfigs/vitest:** remove cycle dependencies ([240156b](https://github.com/kc-workspace/kcws/commit/240156bae0a7beb2fcece14dbef4cad1f19c78ee))
+
+
+### Documentation
+
+* **kcconfigs/vitest:** remove mocks from document ([c907ff3](https://github.com/kc-workspace/kcws/commit/c907ff32304377c37c216fd4f5550b7a2ff15e52))
+* update changelog to fix invalid url ([7f14bb5](https://github.com/kc-workspace/kcws/commit/7f14bb520342dc1dfb546a166bf64ef8a357451e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 0.1.0-beta.2
+    * @kcconfigs/tsdown bumped to 0.1.0-beta.2
+    * @kcconfigs/biome bumped to 0.2.0
+
 ## 0.1.0-beta.0 (2025-12-28)
 
 
