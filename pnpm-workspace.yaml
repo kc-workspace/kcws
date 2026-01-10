@@ -94,8 +94,14 @@ onlyBuiltDependencies:
   - lefthook
 
 overrides:
-  cross-spawn@>=7.0.0 <7.0.5: ">=7.0.5"
-  tmp@<=0.2.3: ">=0.2.4"
+  ## @pnpm/workspace.find-packages>...>@yarnpkg/shell>cross-spawn
+  "cross-spawn@>=7.0.0 <7.0.5": ">=7.0.5"
+  ## commitizen>inquirer>external-editor>tmp
+  "tmp@<0.2.4": ">=0.2.4"
+  ## textlint>@modelcontextprotocol/sdk>express>body-parser>qs
+  "qs@<6.14.1": ">=6.14.1"
+  ## textlint>@modelcontextprotocol/sdk
+  "@modelcontextprotocol/sdk@<1.25.2": ">=1.25.2"
 
 packageManagerStrict: true
 
