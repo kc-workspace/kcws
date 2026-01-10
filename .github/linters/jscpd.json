@@ -11,8 +11,9 @@
 		"**/megalinter-reports/**",
 		"**/hardis-report/**",
 		"**/*cache*/**",
-		"**/package.json",
 		"**/.github/workflows/**",
-		"**/*.test.ts"
+		"**/package.json",
+		"**/*.test.ts",
+		"**/CHANGELOG.md"
 	]
 }
