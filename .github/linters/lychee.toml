@@ -3,7 +3,7 @@
 
 # Verbose program output
 # Accepts log level: "error", "warn", "info", "debug", "trace"
-verbose = "debug"
+# verbose = "debug"
 
 # Don't show interactive progress bar while checking links.
 # no_progress = false
