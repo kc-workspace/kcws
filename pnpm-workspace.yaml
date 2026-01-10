@@ -9,7 +9,7 @@ packages:
 
 catalog:
   "@arethetypeswrong/core": 0.18.2
-  "@biomejs/biome": 2.3.10
+  "@biomejs/biome": 2.3.11
   "@types/node": ^24.0.0
   "@ls-lint/ls-lint": 2.3.1
   rimraf: 6.1.2
