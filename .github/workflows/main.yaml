@@ -87,9 +87,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MEGALINTER_CONFIG: .github/linters/.mega-linter.yaml
-          ## This is because when release-please create a PR, link on the changelog file is not valid yet
-          ## So we will report as warning, not error.
-          SPELL_LYCHEE_DISABLE_ERRORS: "${{ github.event_name == 'pull_request' && github.actor == 'kc-bot' && 'true' || 'false' }}"
       - name: Upload MegaLinter results to GitHub Security tab
         if: success() || failure()
         uses: github/codeql-action/upload-sarif@5d4e8d1aca955e8d8589aabd499c5cae939e33c7 # v4.31.9

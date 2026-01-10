@@ -3,7 +3,7 @@
 
 # Verbose program output
 # Accepts log level: "error", "warn", "info", "debug", "trace"
-# verbose = "info"
+verbose = "debug"
 
 # Don't show interactive progress bar while checking links.
 # no_progress = false
@@ -115,6 +115,7 @@ exclude = [
 ## FIXME: This setting seems to not work inside GitHub Actions with Mega-Linter
 exclude_path = [
   "\\.vscode",            # skip VSCode settings folder
+  "CHANGELOG\\.md$",      # skip changelog files
   # "\\.github/workflows" # skip GitHub Workflow files
   # "\\.txt$",            # skip .txt extensions
   # "(^|/)test/",         # skip directories named "test"
