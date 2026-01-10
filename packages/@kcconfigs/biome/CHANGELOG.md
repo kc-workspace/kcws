@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.1.1...@kcconfigs/biome+v0.2.0) (2026-01-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** Use @kcconfigs/biome instead of @kcconfigs/biome/default when use shared config
+
+### Performance Improvements
+
+* **config:** remove typedoc on package level, only use root level ([b24e48f](https://github.com/kc-workspace/kcws/commit/b24e48f5c03ee8e095dc795f3b7643d5adce406a))
+* **kcconfigs/biome:** remove /default exports and add typedoc conditions ([5e1ab7d](https://github.com/kc-workspace/kcws/commit/5e1ab7d9be478fedbb29d2e68801c7689cd39882))
+* **kcconfigs/biome:** simplify config ([92e6f77](https://github.com/kc-workspace/kcws/commit/92e6f7768b96d4231a3045cf1957b7f71dc60418))
+
+
+### Bugfixes
+
+* **config:** update schema version from 2.3.8 to 2.3.10 across all biome configuration files ([751ee20](https://github.com/kc-workspace/kcws/commit/751ee207527ed05720ad415927e0b0f27bdf9bdf))
+
+
+### Documentation
+
+* **kcconfigs/biome:** add readme guide how to use the package ([0c71272](https://github.com/kc-workspace/kcws/commit/0c712725a63712955cc31ecc52f5a51766200b33))
+* remove tab from readme file ([24614a3](https://github.com/kc-workspace/kcws/commit/24614a327a62c7e3f01e59539e6c927f86b7c8bd))
+* update changelog to fix invalid url ([7f14bb5](https://github.com/kc-workspace/kcws/commit/7f14bb520342dc1dfb546a166bf64ef8a357451e))
+
 ## 0.1.1 (2025-12-28)
 
 
