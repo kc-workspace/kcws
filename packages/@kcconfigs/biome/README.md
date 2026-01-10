@@ -8,8 +8,8 @@ Add a `biome.json` (or `biome.jsonc`) that extends the default preset:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
-	"extends": ["@kcconfigs/biome"]
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
+  "extends": ["@kcconfigs/biome"]
 }
 ```
 
@@ -25,15 +25,15 @@ Example using the base preset with custom overrides:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
-	"extends": ["@kcconfigs/biome/base"],
-	"files": { "includes": ["src/**/*.ts", "tests/**/*.ts"] },
-	"linter": {
-		"rules": {
-			"complexity": {
-				"noUselessSwitchCase": "warn"
-			}
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
+  "extends": ["@kcconfigs/biome/base"],
+  "files": { "includes": ["src/**/*.ts", "tests/**/*.ts"] },
+  "linter": {
+    "rules": {
+      "complexity": {
+        "noUselessSwitchCase": "warn"
+      }
+    }
+  }
 }
 ```
