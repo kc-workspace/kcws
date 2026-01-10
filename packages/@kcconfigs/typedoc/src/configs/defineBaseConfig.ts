@@ -5,8 +5,11 @@ export const defineBaseConfig = (config?: UserConfig): UserConfig => {
 	const baseConfig: UserConfig = {
 		// Input: https://typedoc.org/documents/Options.Input.html
 		entryPointStrategy: "resolve",
-		includeVersion: true,
+		includeVersion: false,
 		exclude: ["**/*+.(index|e2e).ts"],
+		packageOptions: {
+			includeVersion: true,
+		},
 
 		// Output: https://typedoc.org/documents/Options.Output.html
 		emit: "docs",
