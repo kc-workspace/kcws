@@ -5,6 +5,7 @@ export type AnyObject = Record<string, any>;
 // biome-ignore lint/suspicious/noExplicitAny: any array type
 export type AnyArray = any[];
 
+// biome-ignore lint/suspicious/noExplicitAny: use any for intersection utility
 export type Intersection<U> = (U extends any ? (k: U) => void : never) extends (
 	k: infer I,
 ) => void
