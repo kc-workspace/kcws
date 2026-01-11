@@ -1,5 +1,5 @@
 {
-	"extends": "./node_modules/@kcconfigs/tsconfig/src/tsconfig.zshy.json",
+	"extends": "@kcconfigs/tsconfig/zshy",
 	"compilerOptions": {
 		"rootDir": "./src",
 		"outDir": "./dist.zshy"

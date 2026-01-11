@@ -11,6 +11,7 @@
 		"build:vite:cjs": "vite build --config vite-cjs.config.ts",
 		"build:tsdown": "tsdown",
 		"build:zshy": "zshy --project tsconfig.zshy.json",
+		"build:all": "pnpm run build:dts && pnpm run build:vite && pnpm run build:tsdown && pnpm run build:zshy",
 		"test": "vitest run",
 		"fix": "biome check --fix --unsafe",
 		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
