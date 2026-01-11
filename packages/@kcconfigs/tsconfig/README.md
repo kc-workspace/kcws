@@ -72,21 +72,21 @@ Example use presets
 
 ### Features
 
-| Name                                           | Description                                        |
-| ---------------------------------------------- | -------------------------------------------------- |
-| `@kcconfigs/tsconfig/features/bundler`         | Set for bundler mode                               |
-| `@kcconfigs/tsconfig/features/declaration`     | Add declaration files                              |
-| `@kcconfigs/tsconfig/features/declarationOnly` | Only emit declaration files                        |
-| `@kcconfigs/tsconfig/features/diagnostics`     | Add diagnostics output for debugging               |
+| Name                                           | Description                                         |
+| ---------------------------------------------- | --------------------------------------------------- |
+| `@kcconfigs/tsconfig/features/bundler`         | Set for bundler mode                                |
+| `@kcconfigs/tsconfig/features/declaration`     | Add declaration files                               |
+| `@kcconfigs/tsconfig/features/declarationOnly` | Only emit declaration files                         |
+| `@kcconfigs/tsconfig/features/diagnostics`     | Add diagnostics output for debugging                |
 | `@kcconfigs/tsconfig/features/nodeRuntime`     | Set typescript to support directly run from Node.js |
-| `@kcconfigs/tsconfig/features/noIncremental`   | Disable incremental from base config               |
+| `@kcconfigs/tsconfig/features/noIncremental`   | Disable incremental from base config                |
 | `@kcconfigs/tsconfig/features/noSourcemap`     | Disable source map and declaration maps output      |
-| `@kcconfigs/tsconfig/features/noStrict`        | Disable strict mode when type checks               |
-| `@kcconfigs/tsconfig/features/tslib`           | Enable using helpers from `tslib`                  |
-| `@kcconfigs/tsconfig/features/types`           | Support custom `@kctypes/*` packages as types      |
-| `@kcconfigs/tsconfig/features/es5`             | Set target to es5 (2009) for backward compatible   |
-| `@kcconfigs/tsconfig/features/es6`             | Set target to ECMAScript 2015 (ECMAScript 2015) for backward compatible |
-| `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                    |
+| `@kcconfigs/tsconfig/features/noStrict`        | Disable strict mode when type checks                |
+| `@kcconfigs/tsconfig/features/tslib`           | Enable using helpers from `tslib`                   |
+| `@kcconfigs/tsconfig/features/types`           | Support custom `@kctypes/*` packages as types       |
+| `@kcconfigs/tsconfig/features/es5`             | Set target to ES5 (2009) for backward compatible    |
+| `@kcconfigs/tsconfig/features/es6`             | Set target to ES6 (ES2015) for backward compatible  |
+| `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                     |
 
 Example use features
 
