@@ -20,9 +20,6 @@
 		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
 		"sourceMap": true,
 
-		// JavaScript Support - https://www.typescriptlang.org/tsconfig/#JavaScript_Support_6247
-		"checkJs": true,
-
 		// Editor Support - https://www.typescriptlang.org/tsconfig/#Editor_Support_6249
 
 		// Interop Constraints - https://www.typescriptlang.org/tsconfig/#Interop_Constraints_6252

@@ -1,0 +1,11 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Interop Constraints - https://www.typescriptlang.org/tsconfig/#Interop_Constraints_6252
+		"isolatedDeclarations": false,
+
+		// JavaScript Support - https://www.typescriptlang.org/tsconfig/#JavaScript_Support_6247
+		"allowJs": true,
+		"checkJs": true
+	}
+}

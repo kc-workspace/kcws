@@ -84,6 +84,7 @@ Example use presets
 | `@kcconfigs/tsconfig/features/noStrict`        | Disable strict mode when type checks                |
 | `@kcconfigs/tsconfig/features/tslib`           | Enable using helpers from `tslib`                   |
 | `@kcconfigs/tsconfig/features/types`           | Support custom `@kctypes/*` packages as types       |
+| `@kcconfigs/tsconfig/features/js`              | Allow JavaScript files to be imported               |
 | `@kcconfigs/tsconfig/features/es5`             | Set target to ES5 (2009) for backward compatible    |
 | `@kcconfigs/tsconfig/features/es6`             | Set target to ES6 (ES2015) for backward compatible  |
 | `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                     |
