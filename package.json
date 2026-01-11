@@ -14,7 +14,7 @@
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"docs:all": "typedoc",
-		"clean": "rimraf --verbose --glob -- **/dist docs reports",
+		"clean": "rimraf --verbose --glob -- **/*.tsbuildinfo **/dist docs reports",
 		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml",
 		"commit": "git-cz",
 		"hooks:pre-commit:check:biome": "biome check --fix --unsafe --no-errors-on-unmatched --colors=off",
