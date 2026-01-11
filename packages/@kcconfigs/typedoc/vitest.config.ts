@@ -1,5 +1,3 @@
 import { defineProject } from "@kcconfigs/vitest";
 
-export default defineProject({
-	test: {},
-});
+export default defineProject();

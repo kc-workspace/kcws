@@ -23,6 +23,7 @@
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
+		"@kctypes/generic": "workspace:*",
 		"tsdown": "catalog:",
 		"vitest": "catalog:test:latest"
 	},

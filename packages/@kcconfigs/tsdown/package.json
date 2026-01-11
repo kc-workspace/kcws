@@ -22,7 +22,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
 		"@kcconfigs/biome": "workspace:*",
-		"@kcconfigs/tsconfig": "workspace:*"
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kctypes/generic": "workspace:*"
 	},
 	"peerDependencies": {
 		"tsdown": "catalog:peer",
