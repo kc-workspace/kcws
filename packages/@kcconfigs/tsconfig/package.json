@@ -21,11 +21,11 @@
 	},
 	"main": "./src/tsconfig.default.json",
 	"exports": {
+		".": "./src/tsconfig.default.json",
 		"./base": "./src/tsconfig.base.json",
 		"./root": "./src/tsconfig.root.json",
-		"./default": "./src/tsconfig.default.json",
-		"./dts": "./src/tsconfig.dts.json",
 		"./bundler": "./src/tsconfig.bundler.json",
+		"./dts": "./src/tsconfig.dts.json",
 		"./zshy": "./src/tsconfig.zshy.json"
 	},
 	"license": "AGPL-3.0-only",
