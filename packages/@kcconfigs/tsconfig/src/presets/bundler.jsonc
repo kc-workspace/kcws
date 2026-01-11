@@ -1,8 +1,0 @@
-{
-	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": [
-		"./default.jsonc",
-		"../features/declaration.jsonc",
-		"../features/bundler.jsonc"
-	]
-}

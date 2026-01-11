@@ -1,12 +1,13 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": ["./base.jsonc", "../features/types.jsonc"],
+	"extends": ["./base.json", "../features/types.json"],
 	"include": ["${configDir}/package.json", "${configDir}/src/**/*.ts"],
 	"exclude": [
-		"${configDir}/src/**/*.test.ts",
-		"${configDir}/src/**/*.spec.ts",
-		"${configDir}/src/**/*.test-d.ts",
-		"${configDir}/src/**/*.spec-d.ts"
+		"${configDir}/**/node_modules/**",
+		"${configDir}/**/*.test.ts",
+		"${configDir}/**/*.spec.ts",
+		"${configDir}/**/*.test-d.ts",
+		"${configDir}/**/*.spec-d.ts"
 	],
 	"compilerOptions": {
 		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
