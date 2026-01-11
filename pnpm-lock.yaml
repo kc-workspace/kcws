@@ -34,9 +34,6 @@ catalogs:
     '@ls-lint/ls-lint':
       specifier: 2.3.1
       version: 2.3.1
-    '@types/node':
-      specifier: ^24.0.0
-      version: 24.10.2
     lefthook:
       specifier: 2.0.12
       version: 2.0.12
@@ -60,7 +57,7 @@ catalogs:
       version: 0.7.0
   peer:
     typescript:
-      specifier: ^5.0.0
+      specifier: ^5.5.0
       version: 5.9.3
   test:latest:
     '@vitest/coverage-v8':
@@ -270,6 +267,9 @@ importers:
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../vitest
+      '@kctypes/generic':
+        specifier: workspace:*
+        version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
         version: 0.18.4(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
@@ -289,15 +289,6 @@ importers:
       '@kcconfigs/biome':
         specifier: workspace:*
         version: link:../biome
-      '@kctypes/generic':
-        specifier: workspace:*
-        version: link:../../@kctypes/generic
-      '@kctypes/package_json':
-        specifier: workspace:*
-        version: link:../../@kctypes/package_json
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.10.2
 
   packages/@kcconfigs/tsdown:
     dependencies:
@@ -323,6 +314,9 @@ importers:
       '@kcconfigs/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@kctypes/generic':
+        specifier: workspace:*
+        version: link:../../@kctypes/generic
 
   packages/@kcconfigs/typedoc:
     dependencies:
@@ -375,6 +369,9 @@ importers:
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../vitest
+      '@kctypes/generic':
+        specifier: workspace:*
+        version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
         version: 0.18.4(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
@@ -403,6 +400,9 @@ importers:
       '@kcconfigs/tsdown':
         specifier: workspace:*
         version: link:../tsdown
+      '@kctypes/generic':
+        specifier: workspace:*
+        version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
         version: 0.18.4(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
