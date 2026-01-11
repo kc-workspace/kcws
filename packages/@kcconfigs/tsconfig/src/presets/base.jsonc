@@ -1,0 +1,53 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Type Checking - https://www.typescriptlang.org/tsconfig/#Type_Checking_6248
+		"strict": true,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
+		"module": "preserve",
+		"noUncheckedSideEffectImports": true,
+		"resolveJsonModule": true,
+
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
+		"sourceMap": true,
+
+		// JavaScript Support - https://www.typescriptlang.org/tsconfig/#JavaScript_Support_6247
+		"checkJs": true,
+
+		// Editor Support - https://www.typescriptlang.org/tsconfig/#Editor_Support_6249
+
+		// Interop Constraints - https://www.typescriptlang.org/tsconfig/#Interop_Constraints_6252
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+
+		// Language and Environment - https://www.typescriptlang.org/tsconfig/#Language_and_Environment_6254
+		"moduleDetection": "force",
+		"target": "esnext",
+
+		// Compiler Diagnostics - https://www.typescriptlang.org/tsconfig/#Compiler_Diagnostics_6251
+		"extendedDiagnostics": false,
+		"listEmittedFiles": false,
+
+		// Projects - https://www.typescriptlang.org/tsconfig/#Projects_6255
+		"composite": false,
+		"incremental": true,
+
+		// Output Formatting - https://www.typescriptlang.org/tsconfig/#Output_Formatting_6256
+		"noErrorTruncation": true,
+
+		// Completeness - https://www.typescriptlang.org/tsconfig/#Completeness_6257
+		"skipLibCheck": true
+	}
+}

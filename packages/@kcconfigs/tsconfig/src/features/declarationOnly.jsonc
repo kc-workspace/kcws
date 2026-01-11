@@ -1,0 +1,10 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Projects - https://www.typescriptlang.org/tsconfig/#Projects_6255
+		"composite": true,
+
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
+		"emitDeclarationOnly": true
+	}
+}

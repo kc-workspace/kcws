@@ -1,0 +1,7 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
+		"importHelpers": true
+	}
+}

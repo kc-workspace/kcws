@@ -1,0 +1,13 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Type Checking - https://www.typescriptlang.org/tsconfig/#Type_Checking_6248
+		"strict": false,
+		"exactOptionalPropertyTypes": false,
+		"noFallthroughCasesInSwitch": false,
+		"noImplicitOverride": false,
+		"noImplicitReturns": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"noUncheckedIndexedAccess": false
+	}
+}

@@ -16,15 +16,12 @@
 	"peerDependencies": {
 		"typescript": "catalog:peer"
 	},
-	"main": "./src/tsconfig.default.json",
+	"main": "./src/presets/default.jsonc",
 	"exports": {
-		".": "./src/tsconfig.default.json",
-		"./base": "./src/tsconfig.base.json",
-		"./root": "./src/tsconfig.root.json",
-		"./library": "./src/tsconfig.library.json",
-		"./bundler": "./src/tsconfig.bundler.json",
-		"./dts": "./src/tsconfig.dts.json",
-		"./zshy": "./src/tsconfig.zshy.json"
+		".": "./src/presets/default.jsonc",
+		"./*": "./src/presets/*.jsonc",
+		"./envs/*": "./src/envs/*.jsonc",
+		"./features/*": "./src/features/*.jsonc"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/tsconfig",

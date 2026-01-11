@@ -1,0 +1,14 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Projects - https://www.typescriptlang.org/tsconfig/#Projects_6255
+		"composite": true,
+
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
+		"declaration": true,
+		"declarationMap": true,
+
+		// Interop Constraints - https://www.typescriptlang.org/tsconfig/#Interop_Constraints_6252
+		"isolatedDeclarations": true
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Compiler Diagnostics - https://www.typescriptlang.org/tsconfig/#Compiler_Diagnostics_6251
+		"extendedDiagnostics": true,
+		"listEmittedFiles": true
+	}
+}

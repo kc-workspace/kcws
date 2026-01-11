@@ -1,0 +1,11 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
+		"customConditions": ["source"],
+		"moduleResolution": "bundler",
+
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6205
+		"noEmit": true
+	}
+}

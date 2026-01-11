@@ -1,6 +1,6 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": "./tsconfig.base.json",
+	"extends": ["./base.jsonc", "../features/types.jsonc"],
 	"include": ["${configDir}/package.json", "${configDir}/src/**/*.ts"],
 	"exclude": [
 		"${configDir}/src/**/*.test.ts",
@@ -9,9 +9,10 @@
 		"${configDir}/src/**/*.spec-d.ts"
 	],
 	"compilerOptions": {
+		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
 		"rootDir": "${configDir}/src",
-		"outDir": "${configDir}/dist",
 
-		"verbatimModuleSyntax": true
+		// Emit - https://www.typescriptlang.org/tsconfig/#Emit_6246
+		"outDir": "${configDir}/dist"
 	}
 }
