@@ -19,7 +19,7 @@ export const defineConfig = (
 	config?: _UserConfig,
 	...configs: UserConfig[]
 ): UserConfig => {
-	const { format, dts, ...rest } = config ?? ({} as _UserConfig);
+	const { format: _format, dts: _dts, ...rest } = config ?? ({} as _UserConfig);
 
 	const baseConfig: _UserConfig = {
 		entry: ["./src/index.ts"],
@@ -44,9 +44,13 @@ export const defineConfig = (
 			// https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/NoResolution.md#true-positive-node-10-doesnt-support-packagejson-exports
 			profile: "node16",
 		},
-		format: defineFormat(format),
-		dts: defineDts(dts),
 	};
+
+	const format = defineFormat(_format);
+	if (format) baseConfig.format = format;
+
+	const dts = defineDts(_dts);
+	if (dts) baseConfig.dts = dts;
 
 	return [rest, ...configs].reduce(_mergeConfig, baseConfig);
 };
