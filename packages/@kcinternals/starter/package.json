@@ -12,7 +12,7 @@
 		"format:check": "biome format",
 		"lint": "biome lint --fix --unsafe",
 		"lint:check": "biome lint",
-		"type:check": "tsc --build"
+		"type:check": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
