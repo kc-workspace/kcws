@@ -3,7 +3,6 @@
 	"compilerOptions": {
 		// Project performance optimizations
 		"incremental": true,
-		"composite": true,
 
 		// Environment setup & latest features
 		"target": "ESNext",

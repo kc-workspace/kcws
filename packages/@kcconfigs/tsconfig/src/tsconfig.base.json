@@ -2,6 +2,10 @@
 	"$schema": "https://www.schemastore.org/tsconfig",
 	"extends": "./base/tsconfig.json",
 	"compilerOptions": {
-		"lib": ["ESNext", "DOM"]
+		"lib": ["ESNext", "DOM"],
+		"typeRoots": [
+			"${configDir}/node_modules/@types",
+			"${configDir}/node_modules/@kctypes"
+		]
 	}
 }

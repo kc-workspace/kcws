@@ -24,6 +24,7 @@
 		".": "./src/tsconfig.default.json",
 		"./base": "./src/tsconfig.base.json",
 		"./root": "./src/tsconfig.root.json",
+		"./library": "./src/tsconfig.library.json",
 		"./bundler": "./src/tsconfig.bundler.json",
 		"./dts": "./src/tsconfig.dts.json",
 		"./zshy": "./src/tsconfig.zshy.json"

@@ -1,17 +1,16 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
 	"extends": "./tsconfig.base.json",
-	"include": ["../../../../package.json", "../../../../src/**/*.ts"],
-	"exclude": ["../../../../src/**/*.test.ts"],
+	"include": ["${configDir}/package.json", "${configDir}/src/**/*.ts"],
+	"exclude": [
+		"${configDir}/src/**/*.test.ts",
+		"${configDir}/src/**/*.spec.ts",
+		"${configDir}/src/**/*.test-d.ts",
+		"${configDir}/src/**/*.spec-d.ts"
+	],
 	"compilerOptions": {
-		"rootDir": "../../../..",
-		"outDir": "../../../../dist",
-		"typeRoots": [
-			"../node_modules/@types",
-			"../node_modules/@kctypes",
-			"../../../../node_modules/@types",
-			"../../../../node_modules/@kctypes"
-		],
+		"rootDir": "${configDir}/src",
+		"outDir": "${configDir}/dist",
 
 		"verbatimModuleSyntax": true
 	}
