@@ -11,6 +11,10 @@ trim_trailing_whitespace = true
 [*.{ts,cts,mts,tsx,js,cjs,mjs,jsx,json,jsonc,css,scss,less}]
 indent_style = tab
 
+[.github/release-please/*.json]
+indent_style = space
+indent_size = 2
+
 [*.{yml,yaml}]
 indent_style = space
 indent_size = 2
