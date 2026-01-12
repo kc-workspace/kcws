@@ -1,98 +1,97 @@
 {
-	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-	"plugins": ["node-workspace"],
-	"release-type": "node",
-	"initial-version": "0.1.0",
-
-	"bump-patch-for-minor-pre-major": true,
-	"bump-minor-pre-major": true,
-
-	"group-pull-request-title-pattern": "chore: release grouped packages ${scope}",
-	"pull-request-title-pattern": "chore: release package ${component} ${version} ${scope}",
-	"include-v-in-tag": true,
-	"tag-separator": "+",
-	"changelog-sections": [
-		{
-			"type": "feat",
-			"section": "Features"
-		},
-		{
-			"type": "perf",
-			"section": "Performance Improvements"
-		},
-		{
-			"type": "fix",
-			"section": "Bugfixes"
-		},
-		{
-			"type": "docs",
-			"section": "Documentation"
-		},
-		{
-			"type": "test",
-			"section": "Tests",
-			"hidden": true
-		},
-		{
-			"type": "style",
-			"section": "Styles",
-			"hidden": true
-		},
-		{
-			"type": "build",
-			"section": "Builds",
-			"hidden": true
-		},
-		{
-			"type": "refactor",
-			"section": "Code Refactoring"
-		},
-		{
-			"type": "ci",
-			"section": "Continuous Integrations",
-			"hidden": true
-		},
-		{
-			"type": "chore",
-			"section": "Miscellaneous Chores",
-			"hidden": true
-		},
-		{
-			"type": "revert",
-			"section": "Reverts"
-		}
-	],
-
-	"packages": {
-		"packages/@kcconfigs/biome": {
-			"component": "@kcconfigs/biome"
-		},
-		"packages/@kcconfigs/typedoc": {
-			"component": "@kcconfigs/typedoc",
-			"versioning": "prerelease",
-			"prerelease": true,
-			"prerelease-type": "beta"
-		},
-		"packages/@kcconfigs/tsconfig": {
-			"component": "@kcconfigs/tsconfig"
-		},
-		"packages/@kcconfigs/tsdown": {
-			"component": "@kcconfigs/tsdown",
-			"versioning": "prerelease",
-			"prerelease": true,
-			"prerelease-type": "beta"
-		},
-		"packages/@kcconfigs/vitest": {
-			"component": "@kcconfigs/vitest",
-			"versioning": "prerelease",
-			"prerelease": true,
-			"prerelease-type": "beta"
-		},
-		"packages/@kcconfigs/commitlint": {
-			"component": "@kcconfigs/commitlint",
-			"versioning": "prerelease",
-			"prerelease": true,
-			"prerelease-type": "beta"
-		}
-	}
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "plugins": [
+    "node-workspace"
+  ],
+  "release-type": "node",
+  "initial-version": "0.1.0",
+  "bump-patch-for-minor-pre-major": true,
+  "bump-minor-pre-major": true,
+  "group-pull-request-title-pattern": "chore: release grouped packages ${scope}",
+  "pull-request-title-pattern": "chore: release package ${component} ${version} ${scope}",
+  "include-v-in-tag": true,
+  "tag-separator": "+",
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "Features"
+    },
+    {
+      "type": "perf",
+      "section": "Performance Improvements"
+    },
+    {
+      "type": "fix",
+      "section": "Bugfixes"
+    },
+    {
+      "type": "docs",
+      "section": "Documentation"
+    },
+    {
+      "type": "test",
+      "section": "Tests",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "section": "Styles",
+      "hidden": true
+    },
+    {
+      "type": "build",
+      "section": "Builds",
+      "hidden": true
+    },
+    {
+      "type": "refactor",
+      "section": "Code Refactoring"
+    },
+    {
+      "type": "ci",
+      "section": "Continuous Integrations",
+      "hidden": true
+    },
+    {
+      "type": "chore",
+      "section": "Miscellaneous Chores",
+      "hidden": true
+    },
+    {
+      "type": "revert",
+      "section": "Reverts"
+    }
+  ],
+  "packages": {
+    "packages/@kcconfigs/biome": {
+      "component": "@kcconfigs/biome"
+    },
+    "packages/@kcconfigs/typedoc": {
+      "component": "@kcconfigs/typedoc",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
+    },
+    "packages/@kcconfigs/tsconfig": {
+      "component": "@kcconfigs/tsconfig"
+    },
+    "packages/@kcconfigs/tsdown": {
+      "component": "@kcconfigs/tsdown",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
+    },
+    "packages/@kcconfigs/vitest": {
+      "component": "@kcconfigs/vitest",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
+    },
+    "packages/@kcconfigs/commitlint": {
+      "component": "@kcconfigs/commitlint",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
+    }
+  }
 }
