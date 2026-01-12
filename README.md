@@ -10,7 +10,7 @@
 
 <!-- Description section -->
 <p align="center">
-    <strong>This monorepo included libraries, tools, and helpers that will make my life easier.</strong>
+  <strong>This monorepo included libraries, tools, and helpers that will make my life easier.</strong>
 </p>
 
 <!-- Badge setup -->
@@ -39,21 +39,21 @@
 ## Terminology
 
 - **package** - package name (e.g. `@kcconfigs/tsconfig`, `@kcexamples/demo`)
-    - Use on package.json#name field and release-please/config.json#component field
+  - Use on package.json#name field and release-please/config.json#component field
 - **component** - package name without at(@) sign (e.g. `kcconfigs/tsconfig`)
-    - Use on Git commit scope and Git tag prefix
+  - Use on Git commit scope and Git tag prefix
 - **package version** || **version** - package version (e.g. `0.2.0`, `1.2.3`, `1.0.0-beta.1`)
-    - Use on package.json#version field
+  - Use on package.json#version field
 - **prerelease** - package version contains prerelease identifier (e.g. `1.0.0-beta.1`)
-    - Similar to **package version**; more specific to **prerelease** only
+  - Similar to **package version**; more specific to **prerelease** only
 - **prerelease version** - number at the end of **prerelease** (e.g. `1`, `2`)
-    - If package version is `1.0.0`, then **prerelease version** is empty
-    - If package version is `0.1.2-beta.2`, then **prerelease version** is `2`
+  - If package version is `1.0.0`, then **prerelease version** is empty
+  - If package version is `0.1.2-beta.2`, then **prerelease version** is `2`
 - **Git tag** || **tag** - Git tag string (e.g. `kcconfigs/tsconfig+v1.2.3`)
-    - Syntax: `<component>+v<version>`
+  - Syntax: `<component>+v<version>`
 - **npm tag** - npm tag string (e.g. `latest`, `rc`, `beta`, `alpha`)
-    - Use with install package (e.g. `npm install @kcconfigs/tsconfig@beta`)
-    - Node will use `latest` when not specify
+  - Use with install package (e.g. `npm install @kcconfigs/tsconfig@beta`)
+  - Node will use `latest` when not specify
 
 ## Todo list
 
