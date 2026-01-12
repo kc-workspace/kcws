@@ -46,9 +46,9 @@
   - Use on package.json#version field
 - **prerelease** - package version contains prerelease identifier (e.g. `1.0.0-beta.1`)
   - Similar to **package version**; more specific to **prerelease** only
-- **prerelease version** - number at the end of **prerelease** (e.g. `1`, `2`)
-  - If package version is `1.0.0`, then **prerelease version** is empty
-  - If package version is `0.1.2-beta.2`, then **prerelease version** is `2`
+- **prerelease number** - number at the end of **prerelease** (e.g. `1`, `2`)
+  - If package version is `1.0.0`, then **prerelease number** is empty
+  - If package version is `0.1.2-beta.2`, then **prerelease number** is `2`
 - **Git tag** || **tag** - Git tag string (e.g. `kcconfigs/tsconfig+v1.2.3`)
   - Syntax: `<component>+v<version>`
 - **npm tag** - npm tag string (e.g. `latest`, `rc`, `beta`, `alpha`)
