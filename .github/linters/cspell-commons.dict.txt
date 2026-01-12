@@ -12,3 +12,5 @@ npmjs
 npmrc
 pnpm
 pnpmfile
+releasep
+release-please

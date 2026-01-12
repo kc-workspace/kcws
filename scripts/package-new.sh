@@ -8,7 +8,7 @@
 ##   2. Update package.json file
 ##   3. Build package
 ##   4. Add package to release-please/config.json
-##   5. Initize package in npm registry
+##   5. Initialize package in npm registry
 
 set -euo pipefail
 

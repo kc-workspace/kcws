@@ -6,7 +6,7 @@
   - Create package from `@kcinternals/starter`
   - Update package.json file
   - Add package to release-please/config.json
-  - Initize package in npm registry
+  - Initialize package in npm registry
 2. `./scripts/package-version.sh <package> <version>`
   - Force set version on package
   - Update release-please/config.json depends on input version
