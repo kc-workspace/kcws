@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.1.0-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.0-beta.1...@kcconfigs/commitlint+v0.1.0-beta.2) (2026-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves
+
+### Features
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves ([5f2989d](https://github.com/kc-workspace/kcws/commit/5f2989d1c091a3ae78f43ce5320ff232246e035f))
+
+
+### Performance Improvements
+
+* **deps:** bump @pnpm/workspace.find-packages ([6ee1db9](https://github.com/kc-workspace/kcws/commit/6ee1db95072cc91366712206ddf4c54fb764ccb6))
+* **deps:** bump @pnpm/workspace.find-packages from 1000.0.49 to 1000.0.52 ([#54](https://github.com/kc-workspace/kcws/issues/54)) ([6ee1db9](https://github.com/kc-workspace/kcws/commit/6ee1db95072cc91366712206ddf4c54fb764ccb6))
+
+
+### Bugfixes
+
+* **script:** pnpm type:check should use tsc --noEmit instead of tsc --build ([e92504c](https://github.com/kc-workspace/kcws/commit/e92504ca6fca6bcfa2a863303000a5ba61d2dd40))
+
+
+### Documentation
+
+* add package version and changelog to documentation site ([722fab5](https://github.com/kc-workspace/kcws/commit/722fab5e2472b7d4e4fd5ba446c369f36bd1b4f1))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.2.1
+    * @kcconfigs/tsconfig bumped to 0.1.0
+    * @kcconfigs/tsdown bumped to 0.1.0-beta.3
+    * @kcconfigs/vitest bumped to 0.1.0-beta.2
+
 ## [0.1.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.0-beta.0...@kcconfigs/commitlint+v0.1.0-beta.1) (2026-01-10)
 
 

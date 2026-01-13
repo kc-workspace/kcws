@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.1.0-beta.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.0-beta.2...@kcconfigs/tsdown+v0.1.0-beta.3) (2026-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves
+
+### Features
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves ([5f2989d](https://github.com/kc-workspace/kcws/commit/5f2989d1c091a3ae78f43ce5320ff232246e035f))
+* **kcconfigs/tsdown:** tsdown output is now minify by default ([2a1080c](https://github.com/kc-workspace/kcws/commit/2a1080cf438c73e6142a827708d3f31f25c3bc8f))
+
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** fix type error due to stricter rules ([ca046a8](https://github.com/kc-workspace/kcws/commit/ca046a86dd9578a9212f0fb2383beada36ed70d8))
+* **script:** pnpm type:check should use tsc --noEmit instead of tsc --build ([e92504c](https://github.com/kc-workspace/kcws/commit/e92504ca6fca6bcfa2a863303000a5ba61d2dd40))
+
+
+### Documentation
+
+* add package version and changelog to documentation site ([722fab5](https://github.com/kc-workspace/kcws/commit/722fab5e2472b7d4e4fd5ba446c369f36bd1b4f1))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.2.1
+    * @kcconfigs/tsconfig bumped to 0.1.0
+
 ## [0.1.0-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.0-beta.1...@kcconfigs/tsdown+v0.1.0-beta.2) (2026-01-10)
 
 
