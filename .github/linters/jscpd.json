@@ -14,7 +14,7 @@
 		"**/.github/workflows/**",
 		"**/package.json",
 		"**/*.test.ts",
-		"**/*.spec.sh",
+		"**/*.test.sh",
 		"**/CHANGELOG.md"
 	]
 }
