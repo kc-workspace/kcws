@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.0-beta.2...@kcconfigs/tsconfig+v0.1.0) (2026-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves
+* **kcconfigs/tsconfig:** remove /default and use `@kcconfigs/tsconfig` instead
+
+### Features
+
+* **kcconfigs/tsconfig:** remove default types and kctypes, user must install themselves ([5f2989d](https://github.com/kc-workspace/kcws/commit/5f2989d1c091a3ae78f43ce5320ff232246e035f))
+* **kcconfigs/tsconfig:** rewrite the config and utilize ts5.5 features ([cf661d5](https://github.com/kc-workspace/kcws/commit/cf661d5c52e23d4a3e6d0c3ea5fe33e7cbd56060))
+* **kcconfigs/tsconfig:** utilize typescript v5.5 features to support relative from root config ([48cd74a](https://github.com/kc-workspace/kcws/commit/48cd74a3a0e4a5e64530a22865d8c5a2f948cf5e))
+
+
+### Performance Improvements
+
+* **kcconfigs/tsconfig:** remove /default and use `@kcconfigs/tsconfig` instead ([bfec7e6](https://github.com/kc-workspace/kcws/commit/bfec7e6ea78c38019b267376e2f576cd6c9b79d5))
+
+
+### Bugfixes
+
+* **kcconfigs/tsconfig:** move checkJs to features/js instead of base preset ([0316897](https://github.com/kc-workspace/kcws/commit/0316897d7533a2eddf6c5510c1eb59d7731e1341))
+* **kcconfigs/tsconfig:** update docs ([89a39e1](https://github.com/kc-workspace/kcws/commit/89a39e1f30db14854bbfe56b2c8a5163db84d96d))
+
+
+### Documentation
+
+* add package version and changelog to documentation site ([722fab5](https://github.com/kc-workspace/kcws/commit/722fab5e2472b7d4e4fd5ba446c369f36bd1b4f1))
+* **kcconfigs/tsconfig:** add readme for installation, usage, and example ([87e9069](https://github.com/kc-workspace/kcws/commit/87e90699de4f26bb0c4c934f30894b2b640fc060))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/tsconfig:** force update v0.1.0-beta.2 =&gt; v0.1.0 ([6a2d78d](https://github.com/kc-workspace/kcws/commit/6a2d78dec4efaaf9a816618a558179a39d6c4e15))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.2.1
+
 ## [0.1.0-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.0-beta.1...@kcconfigs/tsconfig+v0.1.0-beta.2) (2026-01-10)
 
 

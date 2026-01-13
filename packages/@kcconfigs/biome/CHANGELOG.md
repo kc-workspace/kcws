@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.0...@kcconfigs/biome+v0.2.1) (2026-01-13)
+
+
+### Performance Improvements
+
+* **kcconfigs/biome:** ignore release-please config from biome by default ([15fda2e](https://github.com/kc-workspace/kcws/commit/15fda2ee3821371456cb3093597825716c3b279f))
+
+
+### Documentation
+
+* add package version and changelog to documentation site ([722fab5](https://github.com/kc-workspace/kcws/commit/722fab5e2472b7d4e4fd5ba446c369f36bd1b4f1))
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.1.1...@kcconfigs/biome+v0.2.0) (2026-01-10)
 
 
