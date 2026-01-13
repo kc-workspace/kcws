@@ -8,7 +8,7 @@
 ##   2. Update package.json file
 ##   3. Build package
 ##   4. Add package to release-please/config.json
-##   5. Initialize package in npm registry
+##   5. Initializing package in npm registry
 
 set -euo pipefail
 
@@ -43,7 +43,7 @@ _main() {
   log_info "Step 4: Adding package to release-please/config.json"
   release_please_refresh "$package"
 
-  log_info "Step 5: Initizing package in npm registry"
+  log_info "Step 5: Initializing package in npm registry"
   registry_setup "$package_path"
 }
 

@@ -1,15 +1,27 @@
 # Scripts
 
-## Lifecycle
+## New package
 
-1. `./scripts/package-new.sh <package>`
-  - Create package from `@kcinternals/starter`
-  - Update package.json file
-  - Add package to release-please/config.json
-  - Initialize package in npm registry
-2. `./scripts/package-version.sh <package> <version>`
-  - Force set version on package
-  - Update release-please/config.json depends on input version
-  - Make a commit with Release-As body to force next version
-3. `./scripts/package-publish.sh [git-tag]`
-  - Publish package to npm registry
+> `./scripts/package-new.sh <package>`
+
+1. Create package from `@kcinternals/starter`
+2. Update package.json file
+3. Build package
+4. Add package to release-please/config.json
+5. Initializing package in npm registry
+
+## Update package version
+
+> `./scripts/package-version.sh <package> <version>`
+
+1. Update package.json#version field
+2. Update release-please/config.json (if needed)
+3. Create a commit with Release-As body
+
+## Publish package
+
+> `./scripts/package-publish.sh [git-tag]`
+
+1. If name is provided, use it to publish specific package
+2. If run on GitHub Actions, use REF_NAME to determine package and version
+3. If none provide, publish all packages to npm registry
