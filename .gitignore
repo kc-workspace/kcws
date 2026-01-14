@@ -9,6 +9,9 @@ out
 dist
 *.tgz
 
+# pnpm output
+pnpm-publish-summary.json
+
 # Test reports
 reports
 coverage
