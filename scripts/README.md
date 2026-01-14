@@ -5,10 +5,11 @@
 > `./scripts/package-new.sh <package>`
 
 1. Create package from `@kcinternals/starter`
-2. Update package.json file
+2. Update package.json file (set version to beta)
 3. Build package
 4. Add package to release-please/config.json
 5. Initializing package in npm registry
+6. Set package back to stable on release-please
 
 ## Update package version
 

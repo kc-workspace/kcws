@@ -5,10 +5,11 @@
 ##   name - name of the new package (e.g. @kcconfigs/example)
 ## Description:
 ##   1. Create package from `@kcinternals/starter`
-##   2. Update package.json file
+##   2. Update package.json file (set version to beta)
 ##   3. Build package
 ##   4. Add package to release-please/config.json
 ##   5. Initializing package in npm registry
+##   6. Set package back to stable on release-please
 
 set -euo pipefail
 
@@ -46,6 +47,9 @@ _main() {
 
   log_info "Step 5: Initializing package in npm registry"
   registry_setup "$package_path"
+
+  ## After initialized, we can set package to stable release
+  release_please_to_stable "$package"
 }
 
 exec_main "${1:?name of the package is required as the first argument}"

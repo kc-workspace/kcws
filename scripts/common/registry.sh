@@ -4,10 +4,16 @@ registry_setup() {
   local package
   package="$(pnpm_package_name "$1")"
 
-  __registry_check_auth
-
-  __registry_publish "$package"
+  registry_publish "$package"
   __registry_waiting "$package"
+}
+
+registry_publish() {
+  local package
+  package="$(pnpm_package_name "$1")"
+
+  __registry_check_auth
+  __registry_publish "$package"
 }
 
 __registry_check_auth() {

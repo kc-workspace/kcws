@@ -14,10 +14,10 @@ pkg_create_json() {
   printf '[ASK] Enter package name: %s\n' "$name"
   __pkg_set_json "$package" .name "$name"
 
-  local version
-  printf '[ASK] Enter package version (default 0.1.0-beta.0): '
-  read -r version
-  pkg_set_version "$package" "${version:-0.1.0-beta.0}"
+  ## Cannot use initial version from release-please as it will conflict
+  ## when publish next version; so we set to version before initial version
+  printf '[ASK] Enter package version: 0.0.0-beta.0\n'
+  pkg_set_version "$package" "0.0.0-beta.0"
 
   local description
   printf '[ASK] Enter package description: '

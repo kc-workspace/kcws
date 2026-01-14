@@ -17,6 +17,13 @@ release_please_refresh() {
   fi
 }
 
+release_please_to_stable() {
+  local package="$1"
+
+  __release_please_reset "$package"
+  __release_please_add_stable "$package"
+}
+
 __release_please_add_stable() {
   local package="$1"
 
