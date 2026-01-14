@@ -27,6 +27,13 @@ pnpm_package_exist() {
   fi
 }
 
+## Delete existed node_modules and dist, then freshly install dependencies
+pnpm_fresh_on() {
+  local package="$1"
+  pnpm_run_on "$package" exec rm -rf node_modules dist
+  cmd_run pnpm install
+}
+
 pnpm_build_on() {
   local package="$1"
   pnpm_run_on "$package" build

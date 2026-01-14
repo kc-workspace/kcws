@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 registry_setup() {
-  local package="$1"
+  local package
+  package="$(pnpm_package_name "$1")"
 
   __registry_check_auth
 

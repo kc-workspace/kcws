@@ -38,6 +38,7 @@ _main() {
   fi
 
   log_info "Step 3: Building package %s" "$package"
+  pnpm_fresh_on "$package"
   pnpm_build_on "$package"
 
   log_info "Step 4: Adding package to release-please/config.json"
