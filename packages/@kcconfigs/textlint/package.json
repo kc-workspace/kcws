@@ -1,5 +1,5 @@
 {
-	"name": "@kcconfigs/textlint-rule-preset",
+	"name": "@kcconfigs/textlint",
 	"version": "0.1.0-beta.0",
 	"description": "Shared textlint rule configuration",
 	"type": "module",
@@ -14,6 +14,11 @@
 		"lint:check": "biome lint",
 		"type:check": "tsc --noEmit"
 	},
+	"dependencies": {
+		"textlint-filter-rule-allowlist": "catalog:textlint:latest",
+		"textlint-filter-rule-comments": "catalog:textlint:latest",
+		"textlint-rule-terminology": "catalog:textlint:latest"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
 		"@kcconfigs/biome": "workspace:*",
@@ -22,6 +27,9 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"tsdown": "catalog:",
 		"vitest": "catalog:test:latest"
+	},
+	"peerDependencies": {
+		"textlint": "catalog:textlint:peer"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
@@ -37,13 +45,25 @@
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
 			}
+		},
+		"./preset-*": {
+			"source": "./src/presets/*.ts",
+			"typedoc": "./src/presets/*.ts",
+			"require": {
+				"types": "./dist/presets/*.d.cts",
+				"default": "./dist/presets/*.cjs"
+			},
+			"default": {
+				"types": "./dist/presets/*.d.ts",
+				"default": "./dist/presets/*.js"
+			}
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/textlint-rule-preset",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/textlint",
 	"repository": {
 		"type": "git",
-		"directory": "@kcconfigs/textlint-rule-preset",
+		"directory": "@kcconfigs/textlint",
 		"url": "git+https://github.com/kc-workspace/kcws.git"
 	},
 	"author": {
