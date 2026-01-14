@@ -92,6 +92,12 @@
       "versioning": "prerelease",
       "prerelease": true,
       "prerelease-type": "beta"
+    },
+    "packages/@kcconfigs/textlint-rule-preset": {
+      "component": "@kcconfigs/textlint-rule-preset",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
     }
   }
 }
