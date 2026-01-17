@@ -1,11 +1,11 @@
-import type { UserConfig } from "../models/config";
-import { allowlist, comments, terminology } from "../rules";
-import { defineConfig } from "../utils/defineConfig";
+import type { Preset } from "../models";
+import { type TerminologyRule, terminology } from "../rules/terminology";
+import { definePreset } from "../utils/definePreset";
 
-const config: UserConfig = defineConfig(
-	comments(true),
-	allowlist(),
-	terminology(),
-);
+const name = "@kcconfigs/textlint/preset-default";
 
-export = config;
+type DefaultPreset = Preset<typeof name, [TerminologyRule]>;
+
+const config: DefaultPreset = definePreset(name, terminology());
+
+export default config;

@@ -1,41 +1,28 @@
-import type { UserConfig } from "../models/config";
-import type { AnyRule, RuleConfig, RuleRule } from "../models/rule";
+import type { AnyConfig, UserConfig } from "../models";
 
-export const defineConfig = <RS extends AnyRule[]>(
-	...inputs: RS
-): UserConfig<RS> => {
-	type Filters = UserConfig<RS>["filters"];
-	type Rules = UserConfig<RS>["rules"];
-	type RulesConfig = UserConfig<RS>["rulesConfig"];
-
-	const filters = {} as Filters;
-	const rules = {} as Rules;
-	const rulesConfig = {} as RulesConfig;
-
-	for (const input of inputs) {
-		if (input.config === false) continue;
-
-		switch (input.type) {
-			case "filter": {
-				type Name = keyof Filters;
-				type Config = Filters[Name];
-				filters[input.name as Name] = input.config as Config;
-				break;
-			}
-			case "rule": {
-				const rule = input as RuleRule<string, RuleConfig>;
-				type Name = keyof Rules;
-				type Config = RuleConfig[Name];
-				rules[rule.name as Name] = rule.module;
-				rulesConfig[rule.name as Name] = rule.config as Config;
-				break;
-			}
-		}
+export const defineConfig = <C extends AnyConfig>(c: C): UserConfig<C> => {
+	type Rules = NonNullable<UserConfig<C>["rules"]>;
+	const config = {} as UserConfig<C>;
+	if (c.plugins) config.plugins = c.plugins;
+	if (c.filters) config.filters = c.filters;
+	if (c.presets) {
+		config.rules = c.presets.reduce(
+			(acc, preset) => {
+				return Object.assign(acc, preset.rulesConfig);
+			},
+			config.rules ?? ({} as Rules),
+		);
+	}
+	if (c.rules) {
+		config.rules = c.rules.reduce(
+			(acc, rule) => {
+				return Object.assign(acc, {
+					[rule.name]: rule.config,
+				});
+			},
+			config.rules ?? ({} as Rules),
+		);
 	}
 
-	return {
-		filters,
-		rules,
-		rulesConfig,
-	};
+	return config;
 };

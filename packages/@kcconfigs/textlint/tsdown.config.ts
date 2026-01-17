@@ -1,10 +1,14 @@
 import { defineConfig, type UserConfig } from "@kcconfigs/tsdown";
 
 const config: UserConfig = defineConfig({
-	entry: ["./src/index.ts", "./src/presets/*.ts"],
+	entry: ["./src/index.ts", "./src/configs/*.ts", "./src/presets/*.ts"],
 	minify: false,
 	unused: {
-		ignore: ["textlint-filter-rule-comments", "textlint-filter-rule-allowlist"],
+		ignore: [
+			"textlint",
+			"textlint-filter-rule-comments",
+			"textlint-filter-rule-allowlist",
+		],
 	},
 });
 export default config;

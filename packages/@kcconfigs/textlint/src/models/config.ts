@@ -1,35 +1,39 @@
-import type { AnyRule, AnyRuleFilters, AnyRuleRules, ToRuleMap } from "./rule";
+import type { AnyFilter } from "./filter";
+import type { AnyPlugin } from "./plugin";
+import type { AnyPreset, UserPreset } from "./preset";
+import type { AnyRule, UserRule } from "./rule";
 
-// type RulesKeyByType<R extends Rules, T extends RuleType> = {
-// 	[K in keyof R]: R[K] extends Rule<T, RuleConfig>
-// 		? K extends string
-// 			? K
-// 			: never
-// 		: never;
-// }[keyof R];
-
-// export type UserConfigRules<R extends Rules> = {
-// 	[Key in RulesKeyByType<R, "rule">]: R[Key] extends { module: infer M }
-// 		? M
-// 		: never;
-// };
-
-// export type UserConfigConfig<R extends Rules, T extends RuleType> = {
-// 	[Key in RulesKeyByType<R, T>]: R[Key]["config"];
-// };
-
-type UserConfigFilter<R extends AnyRuleFilters> = {
-	[K in keyof R]: R[K]["config"];
-};
-type UserConfigRule<R extends AnyRuleRules> = {
-	[K in keyof R]: R[K]["module"];
-};
-type UserConfigRuleConfig<R extends AnyRuleRules> = {
-	[K in keyof R]: R[K]["config"];
-};
-
-export interface UserConfig<RS extends AnyRule[] = AnyRule[]> {
-	filters: UserConfigFilter<ToRuleMap<RS, "filter">>;
-	rules: UserConfigRule<ToRuleMap<RS, "rule">>;
-	rulesConfig: UserConfigRuleConfig<ToRuleMap<RS, "rule">>;
+export interface Config<
+	PL extends AnyPlugin[],
+	PR extends AnyPreset[],
+	RU extends AnyRule[],
+	FL extends AnyFilter[],
+> {
+	plugins: PL;
+	presets: PR;
+	rules: RU;
+	filters: FL;
 }
+
+export type AnyConfig = Config<
+	AnyPlugin[],
+	AnyPreset[],
+	AnyRule[],
+	AnyFilter[]
+>;
+
+type UserConfigRule<C extends AnyConfig> = C["presets"] extends never[]
+	? C["rules"] extends never[]
+		? Record<string, never>
+		: UserRule<C["rules"], "config">
+	: C["rules"] extends never[]
+		? UserPreset<C["presets"]>
+		: UserPreset<C["presets"]> & UserRule<C["rules"], "config">;
+
+export interface UserConfig<C extends AnyConfig> {
+	plugins?: C["plugins"];
+	filters?: C["filters"];
+	rules?: UserConfigRule<C>;
+}
+
+export type AnyUserConfig = UserConfig<AnyConfig>;
