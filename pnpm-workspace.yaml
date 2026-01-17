@@ -61,10 +61,10 @@ catalogs:
     typedoc-plugin-mdn-links: ^5.0.0
     typedoc-plugin-missing-exports: ^4.0.0
   test:latest:
-    "@vitest/coverage-v8": 4.0.15
-    "@vitest/ui": 4.0.15
+    "@vitest/coverage-v8": 4.0.16
+    "@vitest/ui": 4.0.16
     memfs: 4.51.1
-    vitest: 4.0.15
+    vitest: 4.0.16
   test:peer:
     "@vitest/coverage-v8": ^4.0.0
     "@vitest/ui": ^4.0.0
