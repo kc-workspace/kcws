@@ -59,10 +59,10 @@ catalogs:
   textlint:peer:
     textlint: ^15.0.0
   typedoc:latest:
-    typedoc: 0.28.15
+    typedoc: 0.28.16
     typedoc-github-theme: 0.3.1
     typedoc-material-theme: 1.4.1
-    typedoc-plugin-dt-links: 2.0.36
+    typedoc-plugin-dt-links: 2.0.37
     typedoc-plugin-extras: 4.0.1
     typedoc-plugin-include-example: 3.0.2
     typedoc-plugin-mdn-links: 5.0.10
