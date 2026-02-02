@@ -12,7 +12,7 @@ catalog:
   '@biomejs/biome': 2.3.10
   '@ls-lint/ls-lint': 2.3.1
   '@types/node': ^24.0.0
-  lefthook: 2.0.12
+  lefthook: 2.0.15
   publint: 0.3.16
   rimraf: 6.1.2
   tsdown: 0.18.4
