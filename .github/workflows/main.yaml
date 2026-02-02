@@ -87,8 +87,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MEGALINTER_CONFIG: .github/linters/.mega-linter.yaml
-          ## Disable lychee errors on pull requests to reduce noise
+          ## Disable lychee (broken links checker) errors on release pull requests
           SPELL_LYCHEE_DISABLE_ERRORS: "${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'autorelease: pending') && 'true' || 'false' }}"
+          ## Disable grype (vulnerability scanner) errors on Dependabot pull requests
+          REPOSITORY_GRYPE_DISABLE_ERRORS: "${{ github.event_name == 'pull_request' && github.actor == 'dependabot[bot]' && 'true' || 'false' }}"
       ## NOTE: disable for now as it creates too much noise in the logs
       # - name: Upload MegaLinter results to GitHub Security tab
       #   if: success() || failure()

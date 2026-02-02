@@ -29,7 +29,7 @@
 # check-for-app-update: true
 
 # ignore matches for vulnerabilities that are not fixed (env: GRYPE_ONLY_FIXED)
-# only-fixed: false
+only-fixed: true
 
 # ignore matches for vulnerabilities that are fixed (env: GRYPE_ONLY_NOTFIXED)
 # only-notfixed: false
