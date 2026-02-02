@@ -75,8 +75,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      statuses: write
-      issues: write
+      statuses: write ## Write commit statuses
+      pull-requests: write ## Write pull-request comments
       security-events: write
     steps:
       - name: Checkout Code
