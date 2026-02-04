@@ -91,14 +91,14 @@ catalogs:
       version: 15.5.0
   typedoc:latest:
     typedoc:
-      specifier: 0.28.15
-      version: 0.28.15
+      specifier: 0.28.16
+      version: 0.28.16
     typedoc-github-theme:
       specifier: 0.3.1
       version: 0.3.1
     typedoc-plugin-dt-links:
-      specifier: 2.0.36
-      version: 2.0.36
+      specifier: 2.0.38
+      version: 2.0.38
     typedoc-plugin-extras:
       specifier: 4.0.1
       version: 4.0.1
@@ -106,8 +106,8 @@ catalogs:
       specifier: 3.0.2
       version: 3.0.2
     typedoc-plugin-mdn-links:
-      specifier: 5.0.10
-      version: 5.0.10
+      specifier: 5.1.0
+      version: 5.1.0
     typedoc-plugin-missing-exports:
       specifier: 4.1.2
       version: 4.1.2
@@ -212,26 +212,26 @@ importers:
         specifier: catalog:textlint:latest
         version: 1.3.0
       typedoc:
-        specifier: catalog:typedoc:latest
-        version: 0.28.15(typescript@5.9.3)
+        specifier: 0.28.16
+        version: 0.28.16(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:latest
-        version: 0.3.1(typedoc@0.28.15(typescript@5.9.3))
+        version: 0.3.1(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.36(typedoc@0.28.15(typescript@5.9.3))
+        version: 2.0.38(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
-        version: 4.0.1(typedoc@0.28.15(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:latest
-        version: 3.0.2(typedoc@0.28.15(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:latest
-        version: 5.0.10(typedoc@0.28.15(typescript@5.9.3))
+        version: 5.1.0(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:latest
-        version: 4.1.2(typedoc@0.28.15(typescript@5.9.3))
+        version: 4.1.2(typedoc@0.28.16(typescript@5.9.3))
       vitest:
         specifier: catalog:test:latest
         version: 4.0.15(@types/node@25.0.8)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
@@ -364,37 +364,37 @@ importers:
     dependencies:
       typedoc:
         specifier: catalog:typedoc:latest
-        version: 0.28.15(typescript@5.9.3)
+        version: 0.28.16(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.1(typedoc@0.28.15(typescript@5.9.3))
+        version: 0.3.1(typedoc@0.28.16(typescript@5.9.3))
       typedoc-material-theme:
         specifier: catalog:typedoc:peer
-        version: 1.4.1(typedoc@0.28.15(typescript@5.9.3))
+        version: 1.4.1(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:peer
-        version: 2.0.37(typedoc@0.28.15(typescript@5.9.3))
+        version: 2.0.37(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:peer
-        version: 4.0.1(typedoc@0.28.15(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:peer
-        version: 3.0.2(typedoc@0.28.15(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:peer
-        version: 5.0.10(typedoc@0.28.15(typescript@5.9.3))
+        version: 5.0.10(typedoc@0.28.16(typescript@5.9.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:peer
-        version: 4.1.2(typedoc@0.28.15(typescript@5.9.3))
+        version: 4.1.2(typedoc@0.28.16(typescript@5.9.3))
       typedoc-rhineai-theme:
         specifier: catalog:typedoc:peer
-        version: 1.2.0(typedoc@0.28.15(typescript@5.9.3))
+        version: 1.2.0(typedoc@0.28.16(typescript@5.9.3))
       typedoc-theme-oxide:
         specifier: catalog:typedoc:peer
-        version: 0.2.0(typedoc@0.28.15(typescript@5.9.3))
+        version: 0.2.0(typedoc@0.28.16(typescript@5.9.3))
       varvara-typedoc-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.9(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3)
+        version: 0.3.9(typedoc@0.28.16(typescript@5.9.3))(typescript@5.9.3)
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -877,8 +877,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@gerrit0/mini-shiki@3.21.0':
-    resolution: {integrity: sha512-9PrsT5DjZA+w3lur/aOIx3FlDeHdyCEFlv9U+fmsVyjPZh61G5SYURQ/1ebe2U63KbDmI2V8IhIUegWb8hjOyg==}
+  '@gerrit0/mini-shiki@3.22.0':
+    resolution: {integrity: sha512-jMpciqEVUBKE1QwU64S4saNMzpsSza6diNCk4MWAeCxO2+LFi2FIFmL2S0VDLzEJCxuvCbU783xi8Hp/gkM5CQ==}
 
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
@@ -907,8 +907,8 @@ packages:
     resolution: {integrity: sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==}
     engines: {node: 20 || >=22}
 
-  '@isaacs/brace-expansion@5.0.0':
-    resolution: {integrity: sha512-ZT55BDLV0yv0RBm2czMiZ+SqCGO7AvmOM3G/w2xhVPH+te0aKgFjmBvGlL1dH+ql2tgGO3MVrbb3jCKyvpgnxA==}
+  '@isaacs/brace-expansion@5.0.1':
+    resolution: {integrity: sha512-WMz71T1JS624nWj2n2fnYAuPovhv7EUhk69R6i9dsVyzxt5eM3bjwvgk9L+APE1TRscGysAVMANkB0jh0LQZrQ==}
     engines: {node: 20 || >=22}
 
   '@isaacs/cliui@8.0.2':
@@ -1979,17 +1979,17 @@ packages:
       '@types/node':
         optional: true
 
-  '@shikijs/engine-oniguruma@3.21.0':
-    resolution: {integrity: sha512-OYknTCct6qiwpQDqDdf3iedRdzj6hFlOPv5hMvI+hkWfCKs5mlJ4TXziBG9nyabLwGulrUjHiCq3xCspSzErYQ==}
+  '@shikijs/engine-oniguruma@3.22.0':
+    resolution: {integrity: sha512-DyXsOG0vGtNtl7ygvabHd7Mt5EY8gCNqR9Y7Lpbbd/PbJvgWrqaKzH1JW6H6qFkuUa8aCxoiYVv8/YfFljiQxA==}
 
-  '@shikijs/langs@3.21.0':
-    resolution: {integrity: sha512-g6mn5m+Y6GBJ4wxmBYqalK9Sp0CFkUqfNzUy2pJglUginz6ZpWbaWjDB4fbQ/8SHzFjYbtU6Ddlp1pc+PPNDVA==}
+  '@shikijs/langs@3.22.0':
+    resolution: {integrity: sha512-x/42TfhWmp6H00T6uwVrdTJGKgNdFbrEdhaDwSR5fd5zhQ1Q46bHq9EO61SCEWJR0HY7z2HNDMaBZp8JRmKiIA==}
 
-  '@shikijs/themes@3.21.0':
-    resolution: {integrity: sha512-BAE4cr9EDiZyYzwIHEk7JTBJ9CzlPuM4PchfcA5ao1dWXb25nv6hYsoDiBq2aZK9E3dlt3WB78uI96UESD+8Mw==}
+  '@shikijs/themes@3.22.0':
+    resolution: {integrity: sha512-o+tlOKqsr6FE4+mYJG08tfCFDS+3CG20HbldXeVoyP+cYSUxDhrFf3GPjE60U55iOkkjbpY2uC3It/eeja35/g==}
 
-  '@shikijs/types@3.21.0':
-    resolution: {integrity: sha512-zGrWOxZ0/+0ovPY7PvBU2gIS9tmhSUUt30jAcNV0Bq0gb2S98gwfjIs1vxlmH5zM7/4YxLamT6ChlqqAJmPPjA==}
+  '@shikijs/types@3.22.0':
+    resolution: {integrity: sha512-491iAekgKDBFE67z70Ok5a8KBMsQ2IJwOWw3us/7ffQkIBCyOQfm/aNwVMBUriP02QshIfgHCBSIYAl3u2eWjg==}
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
@@ -3064,6 +3064,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@13.0.0:
@@ -3072,12 +3073,12 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   global-directory@4.0.1:
     resolution: {integrity: sha512-wHTUcDUoZ1H5/0iVqEudYW4/kAlN5cZ3j/bXn0Dpbizl9iaUVeWSHqiOjsgk6OW2bkLclbBjzewBz6weQ1zA2Q==}
@@ -3826,8 +3827,8 @@ packages:
     resolution: {integrity: sha512-Ysbi9uYW9hFyfrThdDEQuykN4Ey6BuwPD2kpI5ES/nFTDn/98yxYNLZJcgUAKPT/mcrLLKaGzJR9YVxJrIdASQ==}
     engines: {node: '>=8'}
 
-  minimatch@10.1.1:
-    resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
+  minimatch@10.1.2:
+    resolution: {integrity: sha512-fu656aJ0n2kcXwsnwnv9g24tkU5uSmOlTjd6WyyaKm2Z+h1qmY6bAjrcaIxF/BslFqbZ8UBtbJi7KgQOZD2PTw==}
     engines: {node: 20 || >=22}
 
   minimatch@3.1.2:
@@ -4677,7 +4678,7 @@ packages:
   tar@7.5.2:
     resolution: {integrity: sha512-7NyxrTE4Anh8km8iEy7o0QYPs+0JKBTj5ZaqHg6B39erLg0qYXN3BijtShwbsNSvQ+LN75+KV+C4QR/f6Gwnpg==}
     engines: {node: '>=18'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   temp-dir@2.0.0:
     resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
@@ -4845,13 +4846,13 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.36:
-    resolution: {integrity: sha512-hOhDr2ZmHwVK5SjmrGPrBC7IG3C9TPcJGvSnOBYTD1SFW+2X3hXN4YAi0aZVMkFvUwQt3a5iVkPHkXsZE+X6Ng==}
+  typedoc-plugin-dt-links@2.0.37:
+    resolution: {integrity: sha512-Ho9diWkw0cikNHWLZcGu3jCABtNDI8RLc5k/qXAj3YpJD+LPIYGEXCvCeMCeM4h3vYi9FXTiMGr+Ybl5uybVSA==}
     peerDependencies:
       typedoc: 0.28.x
 
-  typedoc-plugin-dt-links@2.0.37:
-    resolution: {integrity: sha512-Ho9diWkw0cikNHWLZcGu3jCABtNDI8RLc5k/qXAj3YpJD+LPIYGEXCvCeMCeM4h3vYi9FXTiMGr+Ybl5uybVSA==}
+  typedoc-plugin-dt-links@2.0.38:
+    resolution: {integrity: sha512-fcL/bi3lo5T++DS+lX4ZkY52PoDGhUwTJK0TNVQNvd3VeHz6WkiBCozozQhGUjOr3Z2Nfi/UwWe22NF9uC22hA==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -4867,6 +4868,11 @@ packages:
 
   typedoc-plugin-mdn-links@5.0.10:
     resolution: {integrity: sha512-TOMj1+fyhqhdJaMwfkw7ANz+0KHjRVUnE/SorPW83wghElmsMxxCZhDSBgF2hRB9+qsf/qIjDw65RDay94E2Wg==}
+    peerDependencies:
+      typedoc: 0.27.x || 0.28.x
+
+  typedoc-plugin-mdn-links@5.1.0:
+    resolution: {integrity: sha512-fItGuNMvDXAQhtXk4q8tk8DinMODPeoyA7XLjqhXoq1q8bPccdxgFtZMHKbg+XnFAeCzIuYcJuZQgtNMOH3uTg==}
     peerDependencies:
       typedoc: 0.27.x || 0.28.x
 
@@ -4886,8 +4892,8 @@ packages:
     peerDependencies:
       typedoc: ^0.28.4
 
-  typedoc@0.28.15:
-    resolution: {integrity: sha512-mw2/2vTL7MlT+BVo43lOsufkkd2CJO4zeOSuWQQsiXoV2VuEn7f6IZp2jsUDPmBMABpgR0R5jlcJ2OGEFYmkyg==}
+  typedoc@0.28.16:
+    resolution: {integrity: sha512-x4xW77QC3i5DUFMBp0qjukOTnr/sSg+oEs86nB3LjDslvAmwe/PUGDWbe3GrIqt59oTqoXK5GRK9tAa0sYMiog==}
     engines: {node: '>= 18', pnpm: '>= 10'}
     hasBin: true
     peerDependencies:
@@ -5580,12 +5586,12 @@ snapshots:
   '@esbuild/win32-x64@0.27.2':
     optional: true
 
-  '@gerrit0/mini-shiki@3.21.0':
+  '@gerrit0/mini-shiki@3.22.0':
     dependencies:
-      '@shikijs/engine-oniguruma': 3.21.0
-      '@shikijs/langs': 3.21.0
-      '@shikijs/themes': 3.21.0
-      '@shikijs/types': 3.21.0
+      '@shikijs/engine-oniguruma': 3.22.0
+      '@shikijs/langs': 3.22.0
+      '@shikijs/themes': 3.22.0
+      '@shikijs/types': 3.22.0
       '@shikijs/vscode-textmate': 10.0.2
 
   '@gwhitney/detect-indent@7.0.1': {}
@@ -5605,7 +5611,7 @@ snapshots:
 
   '@isaacs/balanced-match@4.0.1': {}
 
-  '@isaacs/brace-expansion@5.0.0':
+  '@isaacs/brace-expansion@5.0.1':
     dependencies:
       '@isaacs/balanced-match': 4.0.1
 
@@ -7010,20 +7016,20 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.8
 
-  '@shikijs/engine-oniguruma@3.21.0':
+  '@shikijs/engine-oniguruma@3.22.0':
     dependencies:
-      '@shikijs/types': 3.21.0
+      '@shikijs/types': 3.22.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@shikijs/langs@3.21.0':
+  '@shikijs/langs@3.22.0':
     dependencies:
-      '@shikijs/types': 3.21.0
+      '@shikijs/types': 3.22.0
 
-  '@shikijs/themes@3.21.0':
+  '@shikijs/themes@3.22.0':
     dependencies:
-      '@shikijs/types': 3.21.0
+      '@shikijs/types': 3.22.0
 
-  '@shikijs/types@3.21.0':
+  '@shikijs/types@3.22.0':
     dependencies:
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
@@ -8252,7 +8258,7 @@ snapshots:
 
   glob@13.0.0:
     dependencies:
-      minimatch: 10.1.1
+      minimatch: 10.1.2
       minipass: 7.1.2
       path-scurry: 2.0.1
 
@@ -9023,9 +9029,9 @@ snapshots:
 
   mimic-fn@3.1.0: {}
 
-  minimatch@10.1.1:
+  minimatch@10.1.2:
     dependencies:
-      '@isaacs/brace-expansion': 5.0.0
+      '@isaacs/brace-expansion': 5.0.1
 
   minimatch@3.1.2:
     dependencies:
@@ -10130,53 +10136,57 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-github-theme@0.3.1(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-github-theme@0.3.1(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-material-theme@1.4.1(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-material-theme@1.4.1(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
       '@material/material-color-utilities': 0.3.0
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-dt-links@2.0.36(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.37(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-dt-links@2.0.37(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.38(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-extras@4.0.1(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-extras@4.0.1(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-include-example@3.0.2(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-include-example@3.0.2(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-mdn-links@5.0.10(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-mdn-links@5.0.10(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-plugin-missing-exports@4.1.2(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-mdn-links@5.1.0(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-rhineai-theme@1.2.0(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-plugin-missing-exports@4.1.2(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc-theme-oxide@0.2.0(typedoc@0.28.15(typescript@5.9.3)):
+  typedoc-rhineai-theme@1.2.0(typedoc@0.28.16(typescript@5.9.3)):
+    dependencies:
+      typedoc: 0.28.16(typescript@5.9.3)
+
+  typedoc-theme-oxide@0.2.0(typedoc@0.28.16(typescript@5.9.3)):
     dependencies:
       cheerio: 1.1.2
       flexsearch: 0.8.212
       slug: 10.0.0
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
 
-  typedoc@0.28.15(typescript@5.9.3):
+  typedoc@0.28.16(typescript@5.9.3):
     dependencies:
-      '@gerrit0/mini-shiki': 3.21.0
+      '@gerrit0/mini-shiki': 3.22.0
       lunr: 2.3.9
       markdown-it: 14.1.0
       minimatch: 9.0.5
@@ -10286,9 +10296,9 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  varvara-typedoc-theme@0.3.9(typedoc@0.28.15(typescript@5.9.3))(typescript@5.9.3):
+  varvara-typedoc-theme@0.3.9(typedoc@0.28.16(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      typedoc: 0.28.15(typescript@5.9.3)
+      typedoc: 0.28.16(typescript@5.9.3)
       typescript: 5.9.3
       varvara-css: 0.9.0(typescript@5.9.3)
 
