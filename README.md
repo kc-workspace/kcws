@@ -72,7 +72,7 @@
 - [ ] Support new package generator
 - [X] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [X] Automatically merge PRs via [mergify](https://mergify.com/)
-- [ ] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
+- [X] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
 - [ ] Set GitHub release to immutable
 
 ## Known issues
@@ -85,6 +85,8 @@
   - Workaround 1: use release-as commit to force which version to deploy
   - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
+- [ ] @kcconfigs/textlint didn't works at all (textlint/textlint#1896)
+- [ ] @kcconfigs/biome/features/* didn't works (biomejs/biome#9370)
 
 ## Get start
 
