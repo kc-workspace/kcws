@@ -30,7 +30,7 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
       - name: Validate current commit
         if: github.event_name == 'push'
         run: pnpm check:commit --last --verbose
@@ -128,7 +128,7 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
       - name: Check terminology
         run: pnpm check:text:ci
       - name: Check code styles
@@ -174,10 +174,40 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
 
       - name: Build packages
         run: pnpm build:all
 
       - name: Test packages
         run: pnpm test:all
+
+  ## dependabot/dependabot-core#12244
+  mitigate-dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Set up source code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Set up pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
+      - name: Set up nodejs
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          node-version-file: package.json
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: Commit changes back
+        run: |
+          git add pnpm-lock.yaml
+          git commit --no-verify \
+            -m "fix: update pnpm-lock.yaml to mitigate dependabot/dependabot-core#12244 [skip ci]" ||
+            exit 0
+          git push --no-verify
