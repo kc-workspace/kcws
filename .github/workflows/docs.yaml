@@ -30,7 +30,7 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
       - name: Build documentation
         run: pnpm docs:all
       - name: Upload documentation artifact
