@@ -15,10 +15,11 @@
 	"peerDependencies": {
 		"@biomejs/biome": "catalog:peer"
 	},
-	"main": "./src/biome.default.json",
+	"main": "./src/presets/default.json",
 	"exports": {
-		".": "./src/biome.default.json",
-		"./base": "./src/biome.base.json"
+		".": "./src/presets/default.json",
+		"./*": "./src/presets/*.json",
+		"./features/*": "./src/features/*.json"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/biome",
