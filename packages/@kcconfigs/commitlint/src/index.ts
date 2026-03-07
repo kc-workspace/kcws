@@ -1,3 +1,4 @@
+import baseConfig from "@commitlint/config-conventional";
 import {
 	RuleConfigSeverity as Severity,
 	type UserConfig,
@@ -35,15 +36,13 @@ export const defineConfig = async (
 	params?: DefineConfigParams,
 ): Promise<UserConfig> => {
 	const {
-		default: {
-			parserPreset,
-			prompt: {
-				questions: { type, scope, ...questions },
-				...prompt
-			},
-			rules,
+		parserPreset,
+		prompt: {
+			questions: { type, scope, ...questions },
+			...prompt
 		},
-	} = await import("@commitlint/config-conventional");
+		rules,
+	} = baseConfig;
 
 	const types = getTypes(params?.types ?? "standard");
 	const scopes = await getScopes(params?.autoScopes ?? true, params?.scopes);
