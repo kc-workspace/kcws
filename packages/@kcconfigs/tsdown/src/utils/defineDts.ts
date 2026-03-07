@@ -9,11 +9,9 @@ export const defineDts = (
 
 	const defaultDts = {
 		sourcemap: true,
-		resolve: false,
 	} satisfies DtsOptions;
 
 	if (typeof dts === "object") {
-		delete dts.resolve;
 		return {
 			...defaultDts,
 			...dts,

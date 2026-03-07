@@ -9,6 +9,9 @@
 		"lint": "biome lint --fix --unsafe",
 		"lint:check": "biome lint"
 	},
+	"dependencies": {
+		"@types/node": "catalog:"
+	},
 	"devDependencies": {
 		"@kcconfigs/biome": "workspace:*",
 		"@biomejs/biome": "catalog:"

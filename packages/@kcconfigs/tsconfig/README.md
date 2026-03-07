@@ -14,6 +14,7 @@ Provides multiple tsconfig.json templates for different project types and use ca
 - [Compiler Options](#compiler-options)
 - [Example](#example)
   - [TSDown](#tsdown)
+- [Investigate](#investigate)
 - [References](#references)
 
 ## Prerequisites
@@ -79,6 +80,7 @@ Example use presets
 | `@kcconfigs/tsconfig/features/declarationOnly` | Only emit declaration files                         |
 | `@kcconfigs/tsconfig/features/diagnostics`     | Add diagnostics output for debugging                |
 | `@kcconfigs/tsconfig/features/nodeRuntime`     | Set typescript to support directly run from Node.js |
+| `@kcconfigs/tsconfig/features/noDefaultTypes`  | Disable small set of default types                  |
 | `@kcconfigs/tsconfig/features/noIncremental`   | Disable incremental from base config                |
 | `@kcconfigs/tsconfig/features/noSourcemap`     | Disable source map and declaration maps output      |
 | `@kcconfigs/tsconfig/features/noStrict`        | Disable strict mode when type checks                |
@@ -139,6 +141,11 @@ Below are the example configuration per tools or frameworks.
 ```
 
 <!-- TODO: Add more -->
+
+## Investigate
+
+You can use `tsc --showConfig` command to show the full config
+after resolved **extends** path.
 
 ## References
 
