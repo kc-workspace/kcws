@@ -14,7 +14,7 @@ Add a `biome.json` (or `biome.jsonc`) that extends the default preset:
 ```
 
 The default preset extends the base rules and excludes generated artifacts such as `dist`, coverage, and test reports.
-See [biome.default.json](./src/biome.default.json) for the full list.
+See [biome.default.json](./src/presets/default.json) for the full list.
 
 ## Variants
 
