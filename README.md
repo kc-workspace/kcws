@@ -73,21 +73,18 @@
 - [X] Automatically update dependencies via [dependabot](https://github.com/dependabot)
 - [X] Automatically merge PRs via [mergify](https://mergify.com/)
 - [X] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
-- [ ] Set GitHub release to immutable
+- [X] Set GitHub release to immutable
 
 ## Known issues
 
-- [X] tsconfig.json typeRoots didn't works when extends with package name
-  - Workaround: using relative path (e.g. ./node_modules/xx/yy/zz.json)
-- [X] typedoc didn't works with @kcconfigs/tsdown; when dts resolve is true, no custom function is export; when it's false, only custom function is exported
-- [ ] release-please repository status (googleapis/release-please#2545)
-- [ ] right now you cannot convert prerelease to stable version easily (googleapis/release-please#2515)
+- release-please repository status (googleapis/release-please#2545)
+- right now you cannot convert prerelease to stable version easily (googleapis/release-please#2515)
   - Workaround 1: use release-as commit to force which version to deploy
   - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
-- [ ] @kcconfigs/textlint didn't works at all (textlint/textlint#1896)
-- [ ] @kcconfigs/biome/features/* didn't works (biomejs/biome#9370)
-- [ ] Dependabot generate invalid pnpm-lock.yaml file cause ci to failed (dependabot/dependabot-core#12244)
+- @kcconfigs/textlint didn't works at all (textlint/textlint#1896)
+- @kcconfigs/biome/features/* didn't works (biomejs/biome#9370)
+- Dependabot generate invalid pnpm-lock.yaml file cause ci to failed (dependabot/dependabot-core#12244)
 
 ## Get start
 
