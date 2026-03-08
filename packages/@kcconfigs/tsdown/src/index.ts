@@ -52,5 +52,8 @@ export const defineConfig = (
 	const dts = defineDts(_dts);
 	if (dts) baseConfig.dts = dts;
 
-	return [rest, ...configs].reduce(_mergeConfig, baseConfig);
+	return [rest, ...configs].reduce(
+		(prev, curr) => _mergeConfig(prev, curr),
+		baseConfig,
+	);
 };
