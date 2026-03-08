@@ -10,6 +10,7 @@
   "group-pull-request-title-pattern": "chore: release grouped packages ${scope}",
   "pull-request-title-pattern": "chore: release package ${component} ${version} ${scope}",
   "include-v-in-tag": true,
+  "always-update": true,
   "tag-separator": "+",
   "changelog-sections": [
     {
