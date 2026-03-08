@@ -16,13 +16,13 @@ export type UserConfig = _UserConfig;
  * @returns The merged UserConfig
  */
 export const defineConfig = (
-	config?: _UserConfig,
+	config?: UserConfig,
 	...configs: UserConfig[]
 ): UserConfig => {
-	const { format: _format, dts: _dts, ...rest } = config ?? ({} as _UserConfig);
+	const { format: _format, dts: _dts, ...rest } = config ?? ({} as UserConfig);
 
 	const baseConfig: _UserConfig = {
-		entry: ["./src/index.ts"],
+		entry: ["./src/index.ts", "!./src/**/*.test.ts", "!./src/**/*.spec.ts"],
 		platform: "neutral",
 		fixedExtension: false,
 		outDir: "dist",

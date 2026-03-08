@@ -1,7 +1,12 @@
 import { defineConfig, type UserConfig } from "@kcconfigs/tsdown";
 
 const config: UserConfig = defineConfig({
-	entry: ["./src/index.ts", "./src/configs/*.ts", "./src/presets/*.ts"],
+	entry: [
+		"./src/index.ts",
+		"./src/configs/*.ts",
+		"./src/presets/*.ts",
+		"!./src/**/*.test.ts",
+	],
 	minify: false,
 	unused: {
 		ignore: [
