@@ -13,11 +13,11 @@ This is a **pnpm monorepo** containing libraries, tools, and configuration packa
 
 **Key Technologies:**
 
-- TypeScript 5.9.3
-- Node.js 24.12.0 (managed via mise)
-- pnpm 10.25.0 (workspace protocol enabled)
-- Vitest 4.0.15 for testing
-- Biome 2.3.8 for linting/formatting
+- TypeScript (version is defined on package.json)
+- Node.js managed via mise;
+- pnpm (workspace protocol enabled via Corepack)
+- Vitest v4 for testing
+- Biome v2 for linting/formatting
 - TSDown for building
 - TypeDoc for documentation
 
@@ -27,6 +27,8 @@ This is a **pnpm monorepo** containing libraries, tools, and configuration packa
 - Shared workspace lockfile
 - Automatic post-install builds for @kcconfigs packages
 - Workspace catalog for dependency version management
+- `@kctools/*` is currently reserved and effectively empty
+- `@kctypes/*` packages can be type-only packages and do not always follow the same build/check script pattern as the runtime packages
 
 ## Setup Commands
 
@@ -41,7 +43,7 @@ cd kcws
 # Install Node.js (option 1: using mise - recommended)
 mise install
 
-# Enable pnpm (package manager is pinned to 10.25.0)
+# Enable pnpm (package manager is pinned via Corepack)
 corepack enable
 
 # Install all dependencies
@@ -79,6 +81,12 @@ Each package typically has:
 - `biome.json` - Biome configuration
 - `typedoc.jsonc` - Typedoc configuration (if needed to document)
 
+Important exceptions:
+
+- `@kcconfigs/biome` and `@kcconfigs/tsconfig` are config-first packages and do not use the full `src/` plus build-output layout
+- `@kctypes/*` packages can expose declaration files from `types/` and may only provide `test` scripts
+- `@kcexamples/demo` is intentionally a multi-builder example package and includes TSDown, Vite, Zshy, and DTS-specific build commands
+
 ### Common Commands
 
 ```bash
@@ -93,6 +101,14 @@ pnpm check:all
 
 # Fix all lint/format issues
 pnpm fix:all
+
+# Root-level text and file naming checks
+pnpm check:text
+pnpm check:text:fix
+pnpm check:file
+
+# Generate docs
+pnpm docs:all
 
 # Clean built artifacts
 pnpm clean
@@ -121,6 +137,19 @@ pnpm test:all --project '@kcconfigs/commitlint' src/index.test.ts
 pnpm test src/index.test.ts
 ```
 
+Most runtime packages follow a shared script shape:
+
+- `build`
+- `test`
+- `fix`
+- `check`
+- `lint`, `lint:check`, `format`, `format:check`, `type:check`
+
+Notable exceptions:
+
+- `@kctypes/*` packages can be test-only declaration packages
+- `@kcexamples/demo` has extra build entrypoints such as `build:tsdown`, `build:vite`, `build:vite:mjs`, `build:vite:cjs`, `build:zshy`, and `build:dts`
+
 ### Test File Conventions
 
 - Test files: **Always use `*.test.ts`** (never `*.spec.ts`)
@@ -132,9 +161,9 @@ pnpm test src/index.test.ts
 ### Coverage Requirements
 
 - **Coverage is enabled by default** for all test runs
-- Coverage reports generated in `reports/coverage/`
-- JUnit reports in `reports/test-results/junit.xml`
-- HTML reports available via `npx vite preview --outDir reports/test-results`
+- Coverage reports generated in the root `reports/coverage/`
+- JUnit reports in the root `reports/test-results/junit.xml`
+- HTML reports are written under `reports/test-results/`
 - No strict coverage thresholds enforced (currently set to 0%)
 
 ### Test Patterns
@@ -158,6 +187,12 @@ describe("Feature", () => {
   });
 });
 ```
+
+Additional testing notes:
+
+- Many filesystem-oriented tests use `@kcconfigs/vitest/mocks` with `vol.reset()` in `afterEach`
+- `@kcconfigs/vitest` also exposes `setupMocks()` helpers for `fs`, `fsPromises`, `process`, and `os` mocks
+- Rare suppressions in tests use targeted Biome ignore comments rather than broad lint disable blocks
 
 ## Code Style Guidelines
 
@@ -295,6 +330,7 @@ Each package defines exports in `package.json`:
   "exports": {
     ".": {
       "source": "./src/index.ts",
+      "typedoc": "./src/index.ts",
       "require": {
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
@@ -337,6 +373,23 @@ pnpm build:all
 # No need to run them manually
 ```
 
+### Utility Scripts
+
+The `scripts/` directory contains repository maintenance helpers:
+
+```bash
+# Create a new package from the starter template
+./scripts/package-new.sh <package>
+
+# Update a package version and release-please config
+./scripts/package-version.sh <package> <version>
+
+# Publish one or more packages to npm
+./scripts/package-publish.sh [git-tag]
+```
+
+These scripts also update release-please metadata, so prefer them over ad hoc manual edits when working on package lifecycle changes.
+
 ## Git Hooks (Lefthook)
 
 Git hooks are managed by Lefthook and run automatically:
@@ -347,10 +400,12 @@ Runs on staged files:
 
 - **Biome check:** Auto-fixes formatting and linting issues
 - **Textlint:** Checks and fixes markdown/text files
+- **ls-lint:** Validates file naming and layout rules
 
 ### Commit-msg
 
 - **CommitLint:** Validates commit message format (conventional commits)
+- Lefthook sets `LEFTHOOK=0` for this step to avoid recursive hook execution
 
 ### Pre-push
 
@@ -367,6 +422,7 @@ Runs before pushing:
 # Run pre-commit checks manually
 pnpm hooks:pre-commit:check:biome <files>
 pnpm hooks:pre-commit:check:text <files>
+pnpm hooks:pre-commit:check:file <files>
 
 # Run pre-push checks manually
 pnpm hooks:pre-push:check:type
@@ -558,6 +614,13 @@ Examples:
 
 ### Common Issues
 
+Known repo-specific pitfalls:
+
+- `@kcconfigs/textlint` currently has upstream breakage (`textlint/textlint#1896`)
+- `@kcconfigs/biome/features/*` currently has upstream breakage (`biomejs/biome#9370`)
+- release-please cannot easily convert prerelease packages back to stable versions
+- Dependabot can generate an invalid `pnpm-lock.yaml`; inspect lockfile changes carefully on dependency PRs
+
 **Issue**: Package not found
 
 ```bash
@@ -647,8 +710,8 @@ This provides full breakpoint support, variable inspection, and step-through deb
 
 ### Required Tools
 
-- **Node.js:** 24.12.0 (LTS) - specified in mise.toml
-- **pnpm:** 10.25.0 (managed by corepack)
+- **Node.js:** use the version from `mise.toml`; root package engines currently allow `^20.9.0 || ^22.11.0 || ^24.11.0 || >=25.0.0`
+- **pnpm:** 10.30.3 (managed by Corepack)
 - **Git:** For version control
 - **mise:** (Optional) For automatic Node.js version management
 
