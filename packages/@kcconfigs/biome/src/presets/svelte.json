@@ -1,0 +1,24 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+	"extends": ["./base.json", "../features/svelte.json"],
+	"files": {
+		"includes": [
+			"**",
+			"!*.tsbuildinfo",
+			"!reports/test-results",
+			"!reports/coverage",
+			"!build",
+			"!build.*",
+			"!dist",
+			"!dist.*",
+			"!.*.old",
+			"!.release-please-config.json",
+			"!.github/release-please/config.json",
+			"!.release-please-manifest.json",
+			"!.github/release-please/manifest.json"
+		]
+	},
+	"formatter": {
+		"useEditorconfig": true
+	}
+}
