@@ -19,7 +19,7 @@
 	"exports": {
 		".": "./src/presets/default.json",
 		"./*": "./src/presets/*.json",
-		"./features/*": "./src/features/*.json"
+		"./features/svelte": "./src/features/svelte.json"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/biome",
