@@ -84,6 +84,15 @@
     },
     "packages/@kcconfigs/textlint": {
       "component": "@kcconfigs/textlint"
+    },
+    "packages/@kcws/reset.css": {
+      "component": "@kcws/reset.css"
+    },
+    "packages/@kctypes/generic": {
+      "component": "@kctypes/generic"
+    },
+    "packages/@kctypes/package_json": {
+      "component": "@kctypes/package_json"
     }
   }
 }
