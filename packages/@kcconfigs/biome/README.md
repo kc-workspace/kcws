@@ -40,7 +40,7 @@ Example using the base preset with custom overrides:
 
 ## Features
 
-> It didn't works right now.
+> It didn't works right now (FIXME: biomejs/biome#9370).
 >
 > It will always show `Could not resolve @kcconfigs/biome/features/*: module not found`
 > even it existed
