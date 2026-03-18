@@ -1,6 +1,6 @@
 {
 	"name": "@kcws/reset.css",
-	"version": "1.38.2",
+	"version": "1.38.3",
 	"description": "A CSS reset for consistent styling across browsers",
 	"main": "./dist/index.css",
 	"exports": {
