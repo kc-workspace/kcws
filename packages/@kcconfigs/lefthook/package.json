@@ -1,0 +1,56 @@
+{
+	"name": "@kcconfigs/lefthook",
+	"version": "0.0.0-beta.0",
+	"description": "Shared lefthook configuration",
+	"scripts": {
+		"fix": "biome check --fix --unsafe",
+		"format": "biome format --fix",
+		"format:check": "biome format",
+		"lint": "biome lint --fix --unsafe",
+		"lint:check": "biome lint"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "catalog:",
+		"@kcconfigs/biome": "workspace:*",
+		"@kcconfigs/vitest": "workspace:*",
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kcconfigs/tsdown": "workspace:*",
+		"tsdown": "catalog:",
+		"vitest": "catalog:test:latest"
+	},
+	"main": "./src/presets/default.yaml",
+	"exports": {
+		".": "./src/presets/default.yaml",
+		"./*": "./src/presets/*.yaml",
+		"./features/*": "./src/features/*.yaml"
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/lefthook",
+	"repository": {
+		"type": "git",
+		"directory": "@kcconfigs/lefthook",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"config",
+		"git-hook",
+		"git",
+		"hooks"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"src"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

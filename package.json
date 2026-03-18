@@ -33,6 +33,7 @@
 		"@kcconfigs/commitlint": "workspace:",
 		"@kcconfigs/tsconfig": "workspace:",
 		"@kcconfigs/typedoc": "workspace:",
+		"@kcconfigs/lefthook": "workspace:",
 		"@kcconfigs/vitest": "workspace:",
 		"@kcconfigs/textlint": "workspace:",
 		"@ls-lint/ls-lint": "catalog:",

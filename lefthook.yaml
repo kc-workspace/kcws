@@ -1,0 +1,80 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+extends:
+  - ./node_modules/@kcconfigs/lefthook/src/presets/default.yaml
+templates:
+  name: root
+
+commit-msg:
+  commands:
+    check:msg:
+      run: pnpm check:commit --edit {1}
+      env:
+        LEFTHOOK: "0"
+
+pre-commit:
+  commands:
+    check:biome:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+      run: pnpm hooks:pre-commit:check:biome {staged_files}
+      stage_fixed: true
+    check:text:
+      glob:
+        - "*.md"
+        - "*.txt"
+      run: pnpm hooks:pre-commit:check:text {staged_files}
+      stage_fixed: true
+    check:file:
+      run: pnpm hooks:pre-commit:check:file {staged_files}
+
+pre-push:
+  commands:
+    check:type:
+      run: pnpm hooks:pre-push:check:type
+    check:lint:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+      run: pnpm hooks:pre-push:check:lint {push_files}
+    check:format:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+      run: pnpm hooks:pre-push:check:format {push_files}
+    test:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+      run: pnpm hooks:pre-push:test

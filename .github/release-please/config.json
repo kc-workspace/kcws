@@ -96,6 +96,9 @@
     },
     "packages/@kctypes/package_json": {
       "component": "@kctypes/package_json"
+    },
+    "packages/@kcconfigs/lefthook": {
+      "component": "@kcconfigs/lefthook"
     }
   }
 }
