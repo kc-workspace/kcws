@@ -16,7 +16,7 @@
 
 ### Bugfixes
 
-* **kcconfigs/biome:** use exact file instead of glob (mitigate biomejs/biome[#9370](https://github.com/kc-workspace/kcws/issues/9370)) for now ([0112559](https://github.com/kc-workspace/kcws/commit/0112559d88599891ece777979f05c2327d3d72da))
+* **kcconfigs/biome:** use exact file instead of glob (mitigate biomejs/biome#9370) for now ([0112559](https://github.com/kc-workspace/kcws/commit/0112559d88599891ece777979f05c2327d3d72da))
 
 
 ### Documentation
