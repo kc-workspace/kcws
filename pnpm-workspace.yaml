@@ -131,6 +131,3 @@ saveWorkspaceProtocol: rolling
 sharedWorkspaceLockfile: true
 
 strictPeerDependencies: true
-peerDependencyRules:
-  allowedVersions:
-    hono: 4.11.4
