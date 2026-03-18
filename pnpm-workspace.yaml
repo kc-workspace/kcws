@@ -96,6 +96,9 @@ onlyBuiltDependencies:
   - lefthook
 
 overrides:
+  ## force all @types/node to be v24
+  '@types/node@>=25.0.0': '^24.0.0'
+  '@types/node@<24.0.0': '^24.0.0'
   ## textlint>@modelcontextprotocol/sdk
   '@modelcontextprotocol/sdk@<1.25.2': '>=1.25.2'
   ## @pnpm/workspace.find-packages>...>@yarnpkg/shell>cross-spawn
