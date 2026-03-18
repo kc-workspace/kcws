@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.1.1-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.0-beta.2...@kcconfigs/commitlint+v0.1.1-beta.2) (2026-03-18)
+
+
+### Features
+
+* **kcconfigs/commitlint:** set inlineOnly to bundle shared config instead of externalize ([3890ecc](https://github.com/kc-workspace/kcws/commit/3890ecc9bf3f094f1e6ab710ee5e23d525a6372b))
+
+
+### Performance Improvements
+
+* **deps:** bump tsdown from 0.18.4 to 0.20.1 ([#70](https://github.com/kc-workspace/kcws/issues/70)) ([24a3e06](https://github.com/kc-workspace/kcws/commit/24a3e0689e5b512d7a80fb6719387ab777662bb7))
+* **deps:** update biome schema version from 2.3.10 to 2.4.6 across all packages ([909ff7e](https://github.com/kc-workspace/kcws/commit/909ff7ede64869a571dac9969169067e8d4b7fbc))
+
+
+### Code Refactoring
+
+* **kcconfigs/commitlint:** simplify import of baseConfig and destructure properties ([b00ec83](https://github.com/kc-workspace/kcws/commit/b00ec8309684080b2f59c78a5b0f6da60d948b7e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.2.2
+    * @kcconfigs/tsconfig bumped to 0.1.1
+    * @kcconfigs/tsdown bumped to 0.1.1-beta.3
+    * @kcconfigs/vitest bumped to 0.1.1-beta.2
+
 ## [0.1.0-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.0-beta.1...@kcconfigs/commitlint+v0.1.0-beta.2) (2026-01-13)
 
 
