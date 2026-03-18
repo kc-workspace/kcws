@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.0...@kcconfigs/tsconfig+v0.1.1) (2026-03-18)
+
+
+### Features
+
+* **kcconfigs/tsconfig:** add @types/node as default types ([d3a748d](https://github.com/kc-workspace/kcws/commit/d3a748d3deb77fdd8d721b9447738bb8c2dfee54))
+* **kcconfigs/tsconfig:** add noDefaultTypes feature to disable default type from presets ([070d13b](https://github.com/kc-workspace/kcws/commit/070d13b96fbcc24f0fffd607b4337210e4e15c8a))
+
+
+### Performance Improvements
+
+* **deps:** bump tsdown from 0.18.4 to 0.20.1 ([#70](https://github.com/kc-workspace/kcws/issues/70)) ([24a3e06](https://github.com/kc-workspace/kcws/commit/24a3e0689e5b512d7a80fb6719387ab777662bb7))
+* **deps:** update biome schema version from 2.3.10 to 2.4.6 across all packages ([909ff7e](https://github.com/kc-workspace/kcws/commit/909ff7ede64869a571dac9969169067e8d4b7fbc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 0.2.2
+
 ## [0.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.0-beta.2...@kcconfigs/tsconfig+v0.1.0) (2026-01-13)
 
 

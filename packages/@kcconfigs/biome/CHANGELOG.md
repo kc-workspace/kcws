@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.1...@kcconfigs/biome+v0.2.2) (2026-03-18)
+
+
+### Features
+
+* **kcconfigs/biome:** add new preset for Svelte ([481a767](https://github.com/kc-workspace/kcws/commit/481a7677e2b3a2a905be72e8e54ef0a74a68e2ca))
+* **kcconfigs/biome:** restructure presets and add features support ([79657d6](https://github.com/kc-workspace/kcws/commit/79657d6b37da47cbecd062ef10c9a42f3f99d873))
+
+
+### Performance Improvements
+
+* **deps:** update biome schema version from 2.3.10 to 2.4.6 across all packages ([909ff7e](https://github.com/kc-workspace/kcws/commit/909ff7ede64869a571dac9969169067e8d4b7fbc))
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** use exact file instead of glob (mitigate biomejs/biome[#9370](https://github.com/kc-workspace/kcws/issues/9370)) for now ([0112559](https://github.com/kc-workspace/kcws/commit/0112559d88599891ece777979f05c2327d3d72da))
+
+
+### Documentation
+
+* **kcconfigs/biome:** update invalid link ([87c4431](https://github.com/kc-workspace/kcws/commit/87c44319756f7e6bfd412d438b8d8009bd8758df))
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.0...@kcconfigs/biome+v0.2.1) (2026-01-13)
 
 
