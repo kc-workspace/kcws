@@ -383,9 +383,6 @@ The `scripts/` directory contains repository maintenance helpers:
 
 # Update a package version and release-please config
 ./scripts/package-version.sh <package> <version>
-
-# Publish one or more packages to npm
-./scripts/package-publish.sh [git-tag]
 ```
 
 These scripts also update release-please metadata, so prefer them over ad hoc manual edits when working on package lifecycle changes.
