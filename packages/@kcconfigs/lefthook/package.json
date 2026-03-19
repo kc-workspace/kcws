@@ -11,12 +11,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
-		"@kcconfigs/biome": "workspace:*",
-		"@kcconfigs/vitest": "workspace:*",
-		"@kcconfigs/tsconfig": "workspace:*",
-		"@kcconfigs/tsdown": "workspace:*",
-		"tsdown": "catalog:",
-		"vitest": "catalog:test:latest"
+		"@kcconfigs/biome": "workspace:*"
 	},
 	"main": "./src/presets/default.yaml",
 	"exports": {
