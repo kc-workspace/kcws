@@ -302,21 +302,6 @@ importers:
       '@kcconfigs/biome':
         specifier: workspace:*
         version: link:../biome
-      '@kcconfigs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@kcconfigs/tsdown':
-        specifier: workspace:*
-        version: link:../tsdown
-      '@kcconfigs/vitest':
-        specifier: workspace:*
-        version: link:../vitest
-      tsdown:
-        specifier: 'catalog:'
-        version: 0.20.3(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)(unplugin-unused@0.5.6)
-      vitest:
-        specifier: catalog:test:latest
-        version: 4.0.15(@types/node@24.12.0)(@vitest/ui@4.0.15)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.2)
 
   packages/@kcconfigs/textlint:
     dependencies:
