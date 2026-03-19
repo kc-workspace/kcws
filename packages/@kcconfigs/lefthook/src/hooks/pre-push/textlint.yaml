@@ -1,0 +1,13 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+pre-push:
+  commands:
+    textlint:
+      glob:
+        - "*.md"
+        - "*.txt"
+      run: >
+        {pm_cmd} textlint
+        --config .github/linters/textlintrc.yaml
+        --ignore-path .github/linters/textlintrc.ignore.txt
+        --no-color {staged_files}
