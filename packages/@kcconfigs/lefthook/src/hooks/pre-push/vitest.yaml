@@ -1,0 +1,16 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+pre-push:
+  commands:
+    vitest:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+      run: >
+        {pm_cmd} vitest run --no-color

@@ -1,0 +1,9 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+pre-commit:
+  commands:
+    ls-lint:
+      run: >
+        {pm_cmd} ls-lint
+        --config .github/linters/ls-lint.yaml
+        {staged_files}

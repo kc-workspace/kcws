@@ -22,6 +22,7 @@
 	"exports": {
 		".": "./src/presets/default.yaml",
 		"./*": "./src/presets/*.yaml",
+		"./hooks/*": "./src/hooks/*.yaml",
 		"./features/*": "./src/features/*.yaml"
 	},
 	"license": "AGPL-3.0-only",

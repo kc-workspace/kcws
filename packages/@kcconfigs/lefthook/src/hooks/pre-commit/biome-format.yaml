@@ -1,0 +1,22 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+pre-commit:
+  commands:
+    biome-format:
+      glob:
+        - "*.js"
+        - "*.ts"
+        - "*.cjs"
+        - "*.mjs"
+        - "*.d.cts"
+        - "*.d.mts"
+        - "*.jsx"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+      run: >
+        {pm_cmd} biome format
+        --fix --unsafe --colors=off
+        --no-errors-on-unmatched
+        {staged_files}
+      stage_fixed: true

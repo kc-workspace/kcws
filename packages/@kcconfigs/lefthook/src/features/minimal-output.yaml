@@ -1,7 +1,3 @@
 # $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
 
 output: ["meta", "summary", "execution_out"]
-custom-hook:
-  commands:
-    example:
-      run: echo {name}
