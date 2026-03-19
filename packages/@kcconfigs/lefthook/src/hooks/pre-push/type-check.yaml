@@ -1,0 +1,12 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+pre-push:
+  commands:
+    type-check:
+      glob:
+        - "*.ts"
+        - "*.tsx"
+        - "*.d.cts"
+        - "*.d.mts"
+      run: >
+        {pm_cmd} tsc --noEmit
