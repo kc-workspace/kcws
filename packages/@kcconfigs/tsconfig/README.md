@@ -8,6 +8,7 @@ Provides multiple tsconfig.json templates for different project types and use ca
 - [Recommended settings](#recommended-settings)
 - [Usage](#usage)
   - [Presets](#presets)
+    - [Root](#root)
   - [Environments](#environments)
   - [Features](#features)
   - [Custom settings](#custom-settings)
@@ -42,7 +43,7 @@ This package provides multiple tsconfig presets, environments, and features:
 | `@kcconfigs/tsconfig/base`     | Base configuration for general typescript  |
 | `@kcconfigs/tsconfig`          | Default configuration                      |
 | `@kcconfigs/tsconfig/commonjs` | Default but for CommonJS (not recommended) |
-| `@kcconfigs/tsconfig/root`     | Use monorepo root                          |
+| `@kcconfigs/tsconfig/root`     | Use monorepo root with /packages           |
 | `@kcconfigs/tsconfig/bundler`  | Use for with bundler (vite, tsdown, etc.)  |
 | `@kcconfigs/tsconfig/dts`      | Use for generate declaration and maps      |
 | `@kcconfigs/tsconfig/zshy`     | Use with [zshy][zshy]                      |
@@ -52,6 +53,18 @@ Example use presets
 ```json
 {
   "extends": "@kcconfigs/tsconfig"
+}
+```
+
+#### Root
+
+We are have some restriction:
+
+1. Your packages must be on `packages` directory
+
+```json
+{
+  "extends": "@kcconfigs/tsconfig/root"
 }
 ```
 

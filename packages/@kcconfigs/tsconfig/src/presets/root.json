@@ -1,4 +1,17 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": ["./default.json"]
+	"extends": ["./default.json"],
+	"include": ["${configDir}/package.json", "${configDir}/packages/**/*.ts"],
+	"exclude": [
+		"${configDir}/**/node_modules/**",
+		"${configDir}/**/*.config.ts",
+		"${configDir}/**/*.test.ts",
+		"${configDir}/**/*.spec.ts",
+		"${configDir}/**/*.test-d.ts",
+		"${configDir}/**/*.spec-d.ts"
+	],
+	"compilerOptions": {
+		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
+		"rootDir": "${configDir}/packages"
+	}
 }
