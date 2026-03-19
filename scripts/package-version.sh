@@ -23,6 +23,11 @@ _main() {
   previous="$(pkg_get_version "$package")"
   package_path="$(pkg_path "$package")"
 
+  if [[ "$previous" == "$version" ]]; then
+    log_info "Version %s is already set for package %s, skipping" "$version" "$package"
+    return 0
+  fi
+
   log_info "Step 1: Setting version %s for package %s" "$version" "$package"
   pkg_set_version "$package" "$version"
 
