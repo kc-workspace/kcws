@@ -63,7 +63,7 @@ Presets bundle multiple features together for convenience.
 
 ### Features
 
-Features configure Lefthook behaviour and can be extended individually.
+Features configure Lefthook behavior and can be extended individually.
 
 | Name             | Import path                                   | Description                                                               |
 | ---------------- | --------------------------------------------- | ------------------------------------------------------------------------- |
