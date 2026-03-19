@@ -3,7 +3,7 @@
 
 # Verbose program output
 # Accepts log level: "error", "warn", "info", "debug", "trace"
-verbose = "trace"
+# verbose = "trace"
 
 # Don't show interactive progress bar while checking links.
 # no_progress = false
@@ -112,7 +112,7 @@ exclude = [
 ]
 
 # Exclude paths from getting checked. The values are treated as regular expressions
-## FIXME: This setting seems to not work inside GitHub Actions with Mega-Linter
+## FIXME: This setting seems to not work inside GitHub Actions with Mega-Linter (see oxsecurity/megalinter#7409)
 exclude_path = [
   "\\.vscode/",           # skip VSCode settings folder
   "CHANGELOG\\.md$",      # skip changelog files
