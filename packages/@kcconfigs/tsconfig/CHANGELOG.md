@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.0.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.1...@kcconfigs/tsconfig+v1.0.0-beta.1) (2026-03-20)
+
+
+### Features
+
+* **kcconfigs/tsconfig:** update root preset with monorepo structure layout ([73dc55d](https://github.com/kc-workspace/kcws/commit/73dc55dbf3f95702fd469340b2234a84e1e1b192))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/tsconfig:** force update v0.1.1 =&gt; v1.0.0-beta.1 ([707ae11](https://github.com/kc-workspace/kcws/commit/707ae116a0e7f534c054a6d4eca827b34191919f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.0-beta.1
+
 ## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.0...@kcconfigs/tsconfig+v0.1.1) (2026-03-18)
 
 

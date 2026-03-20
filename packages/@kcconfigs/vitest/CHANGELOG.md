@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.2-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.1-beta.2...@kcconfigs/vitest+v0.1.2-beta.2) (2026-03-20)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.0.0-beta.1
+    * @kcconfigs/tsdown bumped to 0.1.2-beta.3
+    * @kcconfigs/biome bumped to 1.0.0-beta.1
+    * @kctypes/generic bumped to 1.30.4
+
 ## [0.1.1-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.0-beta.2...@kcconfigs/vitest+v0.1.1-beta.2) (2026-03-18)
 
 

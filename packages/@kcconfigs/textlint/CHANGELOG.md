@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.0...@kcconfigs/textlint+v0.1.1) (2026-03-20)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.0-beta.1
+    * @kcconfigs/vitest bumped to 0.1.2-beta.2
+    * @kcconfigs/tsconfig bumped to 1.0.0-beta.1
+    * @kcconfigs/tsdown bumped to 0.1.2-beta.3
+
 ## 0.1.0 (2026-03-18)
 
 
