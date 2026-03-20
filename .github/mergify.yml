@@ -59,8 +59,6 @@ pull_request_rules:
       - -closed
       - -conflict
       - label=status/approved
-      - or:
-          - approved-reviews-by=kamontat
     actions:
       queue:
         name: default
