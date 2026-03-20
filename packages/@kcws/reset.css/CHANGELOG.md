@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.39.0](https://github.com/kc-workspace/kcws/compare/@kcws/reset.css+v1.38.3...@kcws/reset.css+v1.39.0) (2026-03-20)
+
+
+### Miscellaneous Chores
+
+* **kcws/reset.css:** force update v1.38.3 =&gt; v1.39.0 ([9253d24](https://github.com/kc-workspace/kcws/commit/9253d24590660af7be40413744fd1ba5d474346a))
+
 ## 1.38.3 (2026-03-20)
 
 
