@@ -28,7 +28,8 @@
 	"git.branchProtectionPrompt": "alwaysCommit",
 	"chat.tools.terminal.autoApprove": {
 		"/^pnpm --filter @kc[a-z]+/[a-z-._]+ (install|build|check|fix|test)$/": true,
-		"/^pnpm (install|build:all|test:all|check:all|fix:all)$/": true
+		"/^pnpm (install|build:all|test:all|check:all|fix:all)$/": true,
+		"git add": true
 	},
 	"json.schemaDownload.trustedDomains": {
 		"https://schemastore.azurewebsites.net/": true,
@@ -39,6 +40,8 @@
 		"https://json-schema.org/": true,
 		"https://developer.microsoft.com/json-schemas/": true,
 		"https://raw.githubusercontent.com/evilmartians/lefthook": true,
+		"https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json": true,
+		"https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json": true,
 		"https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json": true
 	}
 }
