@@ -163,6 +163,16 @@ _test_runner() {
   _check_tag_parse "@kcws/workspace+v0.5.0-rc.0" 0 \
     "@kcws/workspace" "@kcws" "workspace" \
     "0.5.0-rc.0" "0.5.0" "rc" "0"
+
+  ## Test case: when package name contains .
+  _check_tag_parse "@kcws/reset.css+v1.0.0" 0 \
+    "@kcws/reset.css" "@kcws" "reset.css" \
+    "1.0.0" "1.0.0" "" ""
+
+  ## Test case: when package name contains _
+  _check_tag_parse "@kctypes/package_json+v0.2.3" 0 \
+    "@kctypes/package_json" "@kctypes" "package_json" \
+    "0.2.3" "0.2.3" "" ""
 }
 
 test_run "$@"
