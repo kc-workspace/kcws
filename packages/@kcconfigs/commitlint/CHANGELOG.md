@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.1-beta.2...@kcconfigs/commitlint+v0.2.0) (2026-03-20)
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/commitlint:** force update v0.1.1-beta.2 =&gt; v0.2.0 ([02ca4c7](https://github.com/kc-workspace/kcws/commit/02ca4c7a2b1a7de3aae5968d8af12fb61638b8c7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.0-beta.1
+    * @kcconfigs/tsconfig bumped to 1.0.0-beta.1
+    * @kcconfigs/tsdown bumped to 0.1.2-beta.3
+    * @kcconfigs/vitest bumped to 0.1.2-beta.2
+    * @kctypes/generic bumped to 1.30.4
+
 ## [0.1.1-beta.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.0-beta.2...@kcconfigs/commitlint+v0.1.1-beta.2) (2026-03-18)
 
 

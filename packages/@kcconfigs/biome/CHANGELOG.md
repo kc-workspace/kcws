@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.2...@kcconfigs/biome+v1.0.0-beta.1) (2026-03-20)
+
+
+### Documentation
+
+* fix generated changelog have wrong issue repository link ([29da8b4](https://github.com/kc-workspace/kcws/commit/29da8b42cc6e65a5fae3d82c5019ca1218d6b2ee))
+* **kcconfigs/biome:** add FIXME note regarding unresolved module issue ([f848cb9](https://github.com/kc-workspace/kcws/commit/f848cb9dd05eee2f16cc27b5ea6f616d59332988))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/biome:** force update v0.2.2 =&gt; v1.0.0-beta.1 ([1103936](https://github.com/kc-workspace/kcws/commit/11039368f188407692effb6ea5f3041b28b58fdb))
+
 ## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.1...@kcconfigs/biome+v0.2.2) (2026-03-18)
 
 

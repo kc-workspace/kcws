@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.2-beta.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.1-beta.3...@kcconfigs/tsdown+v0.1.2-beta.3) (2026-03-20)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.0-beta.1
+    * @kcconfigs/tsconfig bumped to 1.0.0-beta.1
+    * @kctypes/generic bumped to 1.30.4
+
 ## [0.1.1-beta.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.0-beta.3...@kcconfigs/tsdown+v0.1.1-beta.3) (2026-03-18)
 
 
