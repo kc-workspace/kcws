@@ -32,6 +32,7 @@
   - [@kcconfigs/\*](#kcconfigs)
   - [@kcexamples/\*](#kcexamples)
   - [@kcinternals/\*](#kcinternals)
+  - [@kcstyles/\*](#kcstyles)
   - [@kctools/\*](#kctools)
   - [@kctypes/\*](#kctypes)
   - [@kcws/\*](#kcws)
@@ -123,6 +124,10 @@ Example project for testing and Proof of concept
 ### @kcinternals/*
 
 Internal packages specifically for `@kc*/*` packages
+
+### @kcstyles/*
+
+Cascading Style Sheets for KC's projects (personal)
 
 ### @kctools/*
 

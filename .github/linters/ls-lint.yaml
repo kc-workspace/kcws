@@ -76,6 +76,7 @@ ignore:
   - packages/@kcconfigs/*/node_modules
   - packages/@kcexamples/*/node_modules
   - packages/@kcinternals/*/node_modules
+  - packages/@kcstyles/*/node_modules
   - packages/@kctools/*/node_modules
   - packages/@kctypes/*/node_modules
   - packages/@kcws/*/node_modules
@@ -86,12 +87,14 @@ ignore:
   - packages/@kcexamples/*/dist.vite
   - packages/@kcexamples/*/dist.zshy
   - packages/@kcinternals/*/dist
+  - packages/@kcstyles/*/dist
   - packages/@kctools/*/dist
   - packages/@kctypes/*/dist
   - packages/@kcws/*/dist
   - packages/@kcconfigs/*/reports
   - packages/@kcexamples/*/reports
   - packages/@kcinternals/*/reports
+  - packages/@kcstyles/*/reports
   - packages/@kctools/*/reports
   - packages/@kctypes/*/reports
   - packages/@kcws/*/reports
