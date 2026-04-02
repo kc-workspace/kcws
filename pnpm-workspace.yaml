@@ -44,7 +44,7 @@ catalogs:
   test:latest:
     '@vitest/coverage-v8': 4.0.15
     '@vitest/ui': 4.0.15
-    memfs: 4.56.4
+    memfs: 4.56.11
     vitest: 4.0.15
   test:peer:
     '@vitest/coverage-v8': ^4.0.0
