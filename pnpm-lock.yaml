@@ -102,6 +102,9 @@ catalogs:
     typedoc-github-theme:
       specifier: 0.4.0
       version: 0.4.0
+    typedoc-plugin-dt-links:
+      specifier: 2.0.46
+      version: 2.0.46
     typedoc-plugin-extras:
       specifier: 4.0.1
       version: 4.0.1
@@ -229,7 +232,7 @@ importers:
         specifier: catalog:typedoc:latest
         version: 0.4.0(typedoc@0.28.17(typescript@5.9.3))
       typedoc-plugin-dt-links:
-        specifier: 2.0.46
+        specifier: catalog:typedoc:latest
         version: 2.0.46(typedoc@0.28.17(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
