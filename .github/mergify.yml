@@ -1,6 +1,10 @@
 # $schema: https://docs.mergify.com/mergify-configuration-schema.json
 
 shared:
+  is_a_bot: &is_a_bot
+    - or:
+        - "author=github-actions[bot]"
+        - "author=dependabot[bot]"
   not_a_bot: &not_a_bot
     - and:
         - "-author=kc-bot"
@@ -23,9 +27,14 @@ shared:
   not_wip: &not_wip
     - and:
         - -title~=^(wip|WIP)
-        - -label~=(status/draft|stage/help)
+        - -label~=(status/draft|stage/help|status/triage)
         - -draft
         - and: *is_open
+  is_maintainer: &is_maintainer
+    - author=kamontat
+  not_maintainer: &not_maintainer
+    - and:
+        - -author=kamontat
 
 pull_request_rules:
   - name: Label stale pull requests after 30 days
@@ -83,6 +92,7 @@ pull_request_rules:
       - and: *is_default_branch
       - and: *not_wip
       - and: *not_a_bot
+      - and: *not_maintainer
       - "#approved-reviews-by=0"
       - or:
           - created-at > 5 minutes ago
@@ -102,6 +112,31 @@ pull_request_rules:
         users:
           - kamontat
 
+  - name: Label bot pull requests after 14 days for automerge
+    conditions:
+      - and: *is_open
+      - and: *not_wip
+      - and: *is_default_branch
+      - and: *is_a_bot
+      - updated-at < 14 days ago
+    actions:
+      label:
+        add:
+          - trigger/merge
+      review:
+        bot_account: kc-bot
+        type: APPROVE
+        message: Automatically approving bot pull request
+
+  - name: Queue pull requests on merge label
+    conditions:
+      - and: *is_open
+      - and: *not_wip
+      - label=trigger/merge
+    actions:
+      queue:
+        name: default
+
   - name: Queue pull requests after approved
     conditions:
       - and: *is_open
@@ -111,15 +146,28 @@ pull_request_rules:
     actions:
       queue:
         name: default
+
   - name: Queue the maintainer pull requests
     conditions:
       - and: *is_open
       - and: *not_wip
       - and: *is_default_branch
-      - author=kamontat
+      - and: *is_maintainer
     actions:
       queue:
         name: default
+
+  - name: Trigger rebase on label
+    conditions:
+      - and: *is_open
+      - label=trigger/rebase
+    actions:
+      rebase:
+        autosquash: true
+        bot_account: kc-bot
+      label:
+        remove:
+          - trigger/rebase
 
 merge_queue:
   max_parallel_checks: 1
