@@ -6,6 +6,7 @@ kcexamples
 kcinternals
 kctools
 kctypes
+kcstyles
 kcinth
 devkit
 npmjs
