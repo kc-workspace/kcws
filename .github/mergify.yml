@@ -76,7 +76,7 @@ pull_request_rules:
       - "#approved-reviews-by>0"
     actions:
       label:
-        toggle:
+        add:
           - status/approved
   - name: Label conflict pull requests
     conditions:
