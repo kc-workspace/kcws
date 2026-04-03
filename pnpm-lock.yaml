@@ -79,6 +79,9 @@ catalogs:
       specifier: 4.1.2
       version: 4.1.2
   textlint:latest:
+    textlint:
+      specifier: 15.5.2
+      version: 15.5.2
     textlint-filter-rule-allowlist:
       specifier: 4.0.0
       version: 4.0.0
@@ -214,7 +217,7 @@ importers:
         specifier: 'catalog:'
         version: 6.1.3
       textlint:
-        specifier: 15.5.2
+        specifier: catalog:textlint:latest
         version: 15.5.2
       textlint-filter-rule-allowlist:
         specifier: catalog:textlint:latest
