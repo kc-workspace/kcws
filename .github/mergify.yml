@@ -163,7 +163,6 @@ pull_request_rules:
       - label=trigger/rebase
     actions:
       rebase:
-        autosquash: true
         bot_account: kc-bot
       label:
         remove:
