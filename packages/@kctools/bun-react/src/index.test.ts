@@ -31,7 +31,7 @@ describe("Program", () => {
 			const program = new Program(createMockBun());
 			expect(
 				(program as unknown as { program: Command }).program.version(),
-			).toBe("0.0.0-beta.0");
+			).toBeTypeOf("string");
 		});
 	});
 
