@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.0...@kcconfigs/commitlint+v0.2.1) (2026-04-05)
+
+
+### Performance Improvements
+
+* **deps:** bump @pnpm/workspace.find-packages ([742ed61](https://github.com/kc-workspace/kcws/commit/742ed615d8f32d067173e185f79b3766b575e2e5))
+* **deps:** bump @pnpm/workspace.find-packages from 1000.0.52 to 1000.0.64 ([#93](https://github.com/kc-workspace/kcws/issues/93)) ([742ed61](https://github.com/kc-workspace/kcws/commit/742ed615d8f32d067173e185f79b3766b575e2e5))
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.1.1-beta.2...@kcconfigs/commitlint+v0.2.0) (2026-03-20)
 
 
