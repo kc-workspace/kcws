@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/tsconfig",
-	"version": "1.0.0-beta.1",
+	"version": "1.0.0",
 	"description": "Shared tsconfig.json",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",
