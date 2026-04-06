@@ -68,16 +68,25 @@
       "component": "@kcconfigs/biome"
     },
     "packages/@kcconfigs/typedoc": {
-      "component": "@kcconfigs/typedoc"
+      "component": "@kcconfigs/typedoc",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "packages/@kcconfigs/tsconfig": {
       "component": "@kcconfigs/tsconfig"
     },
     "packages/@kcconfigs/tsdown": {
-      "component": "@kcconfigs/tsdown"
+      "component": "@kcconfigs/tsdown",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "packages/@kcconfigs/vitest": {
-      "component": "@kcconfigs/vitest"
+      "component": "@kcconfigs/vitest",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "packages/@kcconfigs/commitlint": {
       "component": "@kcconfigs/commitlint"
