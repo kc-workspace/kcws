@@ -534,29 +534,7 @@ importers:
         specifier: catalog:test:latest
         version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
 
-  packages/@kcstyles/reset.css:
-    devDependencies:
-      '@biomejs/biome':
-        specifier: 'catalog:'
-        version: 2.4.10
-      '@kcconfigs/biome':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/biome
-      '@kcconfigs/tsconfig':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsconfig
-      '@kcconfigs/tsdown':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/vitest':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/vitest
-      tsdown:
-        specifier: 'catalog:'
-        version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
-      vitest:
-        specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+  packages/@kcstyles/reset.css: {}
 
   packages/@kctools/bun-react:
     dependencies:
