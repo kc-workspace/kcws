@@ -65,10 +65,7 @@
   ],
   "packages": {
     "packages/@kcconfigs/biome": {
-      "component": "@kcconfigs/biome",
-      "versioning": "prerelease",
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "component": "@kcconfigs/biome"
     },
     "packages/@kcconfigs/typedoc": {
       "component": "@kcconfigs/typedoc"
