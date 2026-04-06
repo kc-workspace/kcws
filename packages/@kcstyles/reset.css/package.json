@@ -1,6 +1,6 @@
 {
 	"name": "@kcstyles/reset.css",
-	"version": "0.0.0-beta.0",
+	"version": "0.1.0",
 	"description": "A CSS reset for consistent styling across browsers",
 	"main": "./dist/index.css",
 	"exports": {

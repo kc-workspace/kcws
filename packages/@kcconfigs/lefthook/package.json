@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/lefthook",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Shared lefthook configuration",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",

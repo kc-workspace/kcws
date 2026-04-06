@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.0-beta.1...@kcconfigs/biome+v1.0.0) (2026-04-06)
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/biome:** force update v1.0.0-beta.1 =&gt; v1.0.0 ([7746712](https://github.com/kc-workspace/kcws/commit/77467128ce5f0c3bfa1422a52ef8f666241ed35b))
+
 ## [1.0.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v0.2.2...@kcconfigs/biome+v1.0.0-beta.1) (2026-03-20)
 
 

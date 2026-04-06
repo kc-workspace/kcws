@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.39.1](https://github.com/kc-workspace/kcws/compare/@kcws/reset.css+v1.39.0...@kcws/reset.css+v1.39.1) (2026-04-06)
+
+
+### Documentation
+
+* **kcws/reset.css:** add deprecation notice ([b5342de](https://github.com/kc-workspace/kcws/commit/b5342decadbbf2bcbad46a41484e746ecb1c6f20))
+
 ## [1.39.0](https://github.com/kc-workspace/kcws/compare/@kcws/reset.css+v1.38.3...@kcws/reset.css+v1.39.0) (2026-03-20)
 
 
