@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.0-beta.1...@kcconfigs/tsconfig+v1.0.0) (2026-04-06)
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/tsconfig:** force update v1.0.0-beta.1 =&gt; v1.0.0 ([df53073](https://github.com/kc-workspace/kcws/commit/df53073f38b1cc20d0afd8d922a59415a70fe2f3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.0
+
 ## [1.0.0-beta.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v0.1.1...@kcconfigs/tsconfig+v1.0.0-beta.1) (2026-03-20)
 
 
