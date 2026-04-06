@@ -2,6 +2,7 @@ packages:
   - packages/@kcconfigs/*
   - packages/@kcexamples/*
   - packages/@kcinternals/*
+  - packages/@kcstyles/*
   - packages/@kctools/*
   - packages/@kctypes/*
   - packages/@kcws/*

@@ -4,9 +4,9 @@ kcws
 kcconfigs
 kcexamples
 kcinternals
+kcstyles
 kctools
 kctypes
-kcstyles
 kcinth
 devkit
 npmjs
