@@ -2,7 +2,7 @@
 
 ## ./scripts/package-publish.sh [name]
 ## Arguments:
-##   name - name of the new package (e.g. @kcconfigs/example)
+##   name - name of the package build and publish (e.g. @kcconfigs/example)
 ## Description:
 ##   1. If name is provided, use it to publish specific package
 ##   2. If run on GitHub Actions, use REF_NAME to determine package and version
@@ -46,9 +46,7 @@ _main() {
   if test -n "$package"; then
     version="$(pkg_get_version "$package")"
     read -r _ _ identifier _ <<<"$(version_parse "$version")"
-  fi
-
-  if __is_github; then
+  elif __is_github; then
     __verify_release_mode
     read -r package _ _ version _ identifier _ <<<"$(tag_parse "$GITHUB_REF_NAME")"
     local expected_version
@@ -58,31 +56,44 @@ _main() {
         "$package" "$expected_version" "$version"
       return $?
     fi
+
+    {
+      echo "package=$package"
+      echo "version=$version"
+      echo "identifier=$identifier"
+    } >>"$GITHUB_OUTPUT"
   fi
 
-  local args=(
+  local publish_args=(
     publish
     --report-summary
   )
+  local build_args=(
+    run --if-present --stream
+  )
 
   if test -n "$package"; then
-    args+=(--filter "$package")
+    publish_args+=(--filter "$package")
+    build_args+=(--filter "$package")
   else
-    args+=(--recursive)
+    publish_args+=(--recursive)
+    build_args+=(--recursive)
   fi
 
   if test -n "$identifier"; then
-    args+=(--tag "$identifier")
+    publish_args+=(--tag "$identifier")
   else
-    args+=(--tag latest)
+    publish_args+=(--tag latest)
   fi
 
   if __is_github; then
     ## https://github.com/pnpm/pnpm/issues/9011
-    args+=(--no-git-checks)
+    publish_args+=(--no-git-checks)
   fi
+  build_args+=(build)
 
-  cmd_run pnpm "${args[@]}"
+  cmd_run pnpm "${build_args[@]}"
+  cmd_run pnpm "${publish_args[@]}"
 }
 
 exec_main "${1:-}"
