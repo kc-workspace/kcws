@@ -1,0 +1,40 @@
+{
+	"name": "@kcstyles/reset.css",
+	"version": "0.0.0-beta.0",
+	"description": "A CSS reset for consistent styling across browsers",
+	"main": "./dist/index.css",
+	"exports": {
+		".": {
+			"default": "./dist/index.css"
+		}
+	},
+	"license": "AGPL-3.0-only",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcstyles/reset.css",
+	"repository": {
+		"type": "git",
+		"directory": "@kcstyles/reset.css",
+		"url": "git+https://github.com/kc-workspace/kcws.git"
+	},
+	"author": {
+		"name": "Kamontat Chantrachirathumrong",
+		"email": "kcws@kc.in.th",
+		"url": "https://github.com/kamontat"
+	},
+	"keywords": [
+		"reset.css",
+		"css",
+		"stylesheet",
+		"frontend"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"src"
+	],
+	"engines": {
+		"node": ">=14"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
