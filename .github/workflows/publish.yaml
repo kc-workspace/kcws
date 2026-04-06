@@ -15,7 +15,7 @@ jobs:
     environment:
       name: production
       ## Use outputs from publish script to set the URL dynamically
-      url: https://www.npmjs.com/package/${{ steps.publish.outputs.package }}/v/${{ steps.publish.outputs.full_version }}
+      url: https://www.npmjs.com/package/${{ steps.publish.outputs.package }}/v/${{ steps.publish.outputs.version }}
     steps:
       - name: Set up source code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
