@@ -105,6 +105,9 @@
     },
     "packages/@kctools/bun-react": {
       "component": "@kctools/bun-react"
+    },
+    "packages/@kcstyles/reset.css": {
+      "component": "@kcstyles/reset.css"
     }
   }
 }
