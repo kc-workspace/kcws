@@ -1,0 +1,12 @@
+# $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
+
+commit-msg:
+  commands:
+    textlint:
+      run: >
+        {pm_cmd} textlint
+        --config .github/linters/textlintrc.yaml
+        --ignore-path .github/linters/textlintrc.ignore.txt
+         --no-color --cache --fix {1}
+      env:
+        LEFTHOOK: "0"
