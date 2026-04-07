@@ -7,6 +7,6 @@ commit-msg:
         {pm_cmd} textlint
         --config .github/linters/textlintrc.yaml
         --ignore-path .github/linters/textlintrc.ignore.txt
-         --no-color --cache --fix {1}
+        --cache --fix --no-color {1}
       env:
         LEFTHOOK: "0"
