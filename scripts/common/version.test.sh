@@ -165,8 +165,8 @@ _test_runner() {
     "0.5.0-rc.0" "0.5.0" "rc" "0"
 
   ## Test case: when package name contains .
-  _check_tag_parse "@kcws/reset.css+v1.0.0" 0 \
-    "@kcws/reset.css" "@kcws" "reset.css" \
+  _check_tag_parse "@kcstyles/reset.css+v1.0.0" 0 \
+    "@kcstyles/reset.css" "@kcstyles" "reset.css" \
     "1.0.0" "1.0.0" "" ""
 
   ## Test case: when package name contains _

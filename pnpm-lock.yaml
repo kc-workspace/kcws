@@ -588,8 +588,6 @@ importers:
         specifier: catalog:test:latest
         version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.1(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
 
-  packages/@kcws/reset.css: {}
-
 packages:
 
   '@andrewbranch/untar.js@1.0.3':
