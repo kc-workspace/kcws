@@ -45,6 +45,7 @@ This package provides multiple tsconfig presets, environments, and features:
 | `@kcconfigs/tsconfig/commonjs` | Default but for CommonJS (not recommended) |
 | `@kcconfigs/tsconfig/root`     | Use monorepo root with /packages           |
 | `@kcconfigs/tsconfig/bundler`  | Use for with bundler (vite, tsdown, etc.)  |
+| `@kcconfigs/tsconfig/react`    | Use for React projects (extends bundler)   |
 | `@kcconfigs/tsconfig/dts`      | Use for generate declaration and maps      |
 | `@kcconfigs/tsconfig/zshy`     | Use with [zshy][zshy]                      |
 
@@ -102,6 +103,7 @@ We are have some restriction:
 | `@kcconfigs/tsconfig/features/js`              | Allow JavaScript files to be imported               |
 | `@kcconfigs/tsconfig/features/es5`             | Set target to ES5 (2009) for backward compatible    |
 | `@kcconfigs/tsconfig/features/es6`             | Set target to ES6 (ES2015) for backward compatible  |
+| `@kcconfigs/tsconfig/features/react`           | Enable JSX support with `react-jsx` transform       |
 | `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                     |
 
 Example use features
@@ -150,6 +152,17 @@ Below are the example configuration per tools or frameworks.
 ```json
 {
   "extends": "@kcconfigs/tsconfig/bundler"
+}
+```
+
+### React
+
+The react preset extends from bundler with React support,
+including JSX transform (`react-jsx`) and `.tsx` file inclusion.
+
+```json
+{
+  "extends": "@kcconfigs/tsconfig/react"
 }
 ```
 
