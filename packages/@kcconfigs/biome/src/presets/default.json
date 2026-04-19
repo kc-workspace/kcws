@@ -13,7 +13,8 @@
 			"!.release-please-config.json",
 			"!.github/release-please/config.json",
 			"!.release-please-manifest.json",
-			"!.github/release-please/manifest.json"
+			"!.github/release-please/manifest.json",
+			"!.claude/settings.local.json"
 		]
 	},
 	"formatter": {
