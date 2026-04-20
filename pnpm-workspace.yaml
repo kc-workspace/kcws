@@ -60,14 +60,14 @@ catalogs:
   textlint:peer:
     textlint: ^15.0.0
   typedoc:latest:
-    typedoc: 0.28.17
+    typedoc: 0.28.18
     typedoc-github-theme: 0.4.0
     typedoc-material-theme: 1.4.1
-    typedoc-plugin-dt-links: 2.0.46
+    typedoc-plugin-dt-links: 2.0.48
     typedoc-plugin-extras: 4.0.1
     typedoc-plugin-include-example: 3.0.2
     typedoc-plugin-mdn-links: 5.1.1
-    typedoc-plugin-missing-exports: 4.1.2
+    typedoc-plugin-missing-exports: 4.1.3
     typedoc-rhineai-theme: 1.2.0
     typedoc-theme-oxide: 0.2.5
     varvara-typedoc-theme: 0.3.9
