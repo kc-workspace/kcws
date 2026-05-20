@@ -3,7 +3,7 @@
 pnpm_package_path() {
   local package="$1"
   if pnpm_package_exist "$package"; then
-    cmd_exec_silent pnpm --filter "$(__pnpm_to_filter "$package")" exec pwd
+    cmd_exec_silent pnpm --silent --filter "$(__pnpm_to_filter "$package")" exec pwd
   else
     printf '%s/%s' "$PACKAGE_PATH" "$package"
   fi
