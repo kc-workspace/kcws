@@ -58,23 +58,7 @@
 
 ## Todo list
 
-- [x] Support Pnpm monorepo
-- [X] Move `@kc*` to `packages/@kc*` to simplify number of directories
-- [X] Support run dts test using [vitest](https://vitest.dev/guide/testing-types.html)
-- [X] Support test junit output (reports/test-results)
-- [X] Support test coverage output (reports/coverage)
-- [X] Support [TypeDocs](https://typedoc.org/)
-- [X] Support Biome
-- [X] Support commitlint && commitizen
-- [X] Support Git hooks via [lefthook](https://lefthook.dev/)
-- [X] Support Superlinter and configured linters
-- [X] Support Megalinter and configured linters
-- [X] Support SonarQube Cloud
-- [ ] Support new package generator
-- [X] Automatically update dependencies via [dependabot](https://github.com/dependabot)
-- [X] Automatically merge PRs via [mergify](https://mergify.com/)
-- [X] Automatically increase version using [release-please](https://github.com/googleapis/release-please)
-- [X] Set GitHub release to immutable
+- [ ] `<empty>`
 
 ## Known issues
 
