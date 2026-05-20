@@ -8,7 +8,7 @@ Add a `biome.json` (or `biome.jsonc`) that extends the default preset:
 
 ```jsonc
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
   "extends": ["@kcconfigs/biome"]
 }
 ```
@@ -25,7 +25,7 @@ Example using the base preset with custom overrides:
 
 ```jsonc
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
   "extends": ["@kcconfigs/biome/base"],
   "files": { "includes": ["src/**/*.ts", "tests/**/*.ts"] },
   "linter": {
@@ -50,7 +50,7 @@ aspect of the configuration.
 
 ```jsonc
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
   "extends": ["@kcconfigs/biome/base", "@kcconfigs/biome/features/svelte"]
 }
 ```
