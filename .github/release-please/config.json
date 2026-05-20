@@ -108,6 +108,9 @@
     },
     "packages/@kcstyles/reset.css": {
       "component": "@kcstyles/reset.css"
+    },
+    "packages/@kcws/actkits": {
+      "component": "@kcws/actkits"
     }
   }
 }
