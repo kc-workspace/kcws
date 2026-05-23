@@ -97,14 +97,14 @@ catalogs:
       version: 15.5.2
   typedoc:latest:
     typedoc:
-      specifier: 0.28.18
-      version: 0.28.18
+      specifier: 0.28.19
+      version: 0.28.19
     typedoc-github-theme:
       specifier: 0.4.0
       version: 0.4.0
     typedoc-plugin-dt-links:
-      specifier: 2.0.48
-      version: 2.0.48
+      specifier: 2.0.53
+      version: 2.0.53
     typedoc-plugin-extras:
       specifier: 4.0.1
       version: 4.0.1
@@ -228,29 +228,29 @@ importers:
         specifier: catalog:textlint:latest
         version: 1.3.0
       typedoc:
-        specifier: catalog:typedoc:latest
-        version: 0.28.18(typescript@5.9.3)
+        specifier: 0.28.19
+        version: 0.28.19(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:latest
-        version: 0.4.0(typedoc@0.28.18(typescript@5.9.3))
+        version: 0.4.0(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.48(typedoc@0.28.18(typescript@5.9.3))
+        version: 2.0.53(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
-        version: 4.0.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:latest
-        version: 3.0.2(typedoc@0.28.18(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:latest
-        version: 5.1.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 5.1.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:latest
-        version: 4.1.3(typedoc@0.28.18(typescript@5.9.3))
+        version: 4.1.3(typedoc@0.28.19(typescript@5.9.3))
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/biome:
     devDependencies:
@@ -342,7 +342,7 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -392,37 +392,37 @@ importers:
     dependencies:
       typedoc:
         specifier: catalog:typedoc:latest
-        version: 0.28.18(typescript@5.9.3)
+        version: 0.28.19(typescript@5.9.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 0.3.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-material-theme:
         specifier: catalog:typedoc:peer
-        version: 1.4.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 1.4.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:peer
-        version: 2.0.49(typedoc@0.28.18(typescript@5.9.3))
+        version: 2.0.49(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:peer
-        version: 4.0.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:peer
-        version: 3.0.2(typedoc@0.28.18(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:peer
-        version: 5.1.1(typedoc@0.28.18(typescript@5.9.3))
+        version: 5.1.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:peer
-        version: 4.1.3(typedoc@0.28.18(typescript@5.9.3))
+        version: 4.1.3(typedoc@0.28.19(typescript@5.9.3))
       typedoc-rhineai-theme:
         specifier: catalog:typedoc:peer
-        version: 1.2.0(typedoc@0.28.18(typescript@5.9.3))
+        version: 1.2.0(typedoc@0.28.19(typescript@5.9.3))
       typedoc-theme-oxide:
         specifier: catalog:typedoc:peer
-        version: 0.2.5(typedoc@0.28.18(typescript@5.9.3))
+        version: 0.2.5(typedoc@0.28.19(typescript@5.9.3))
       varvara-typedoc-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.9(typedoc@0.28.18(typescript@5.9.3))(typescript@5.9.3)
+        version: 0.3.9(typedoc@0.28.19(typescript@5.9.3))(typescript@5.9.3)
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -447,7 +447,7 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/vitest:
     dependencies:
@@ -456,7 +456,7 @@ importers:
         version: 4.57.1(tslib@2.8.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -502,10 +502,10 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vite:
         specifier: 'catalog:'
-        version: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)
+        version: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
       zshy:
         specifier: 'catalog:'
         version: 0.7.0(typescript@5.9.3)
@@ -532,7 +532,7 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcstyles/reset.css: {}
 
@@ -568,7 +568,7 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kctypes/generic:
     dependencies:
@@ -577,7 +577,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kctypes/package_json:
     dependencies:
@@ -586,7 +586,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcws/actkits:
     devDependencies:
@@ -610,7 +610,7 @@ importers:
         version: 0.20.3(@arethetypeswrong/core@0.18.2)(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
 packages:
 
@@ -2249,8 +2249,8 @@ packages:
     resolution: {integrity: sha512-oP5VkATKlNwcgvxi0vM0p/D3n2C3EReYVX+DNYs5TjZFn/oQt2j+4sVJtSMr18pdRr8wjTcBl6LoV+FUwzPmNA==}
     engines: {node: '>=18'}
 
-  bole@5.0.28:
-    resolution: {integrity: sha512-l+yybyZLV7zTD6EuGxoXsilpER1ctMCpdOqjSYNigJJma39ha85fzCtYccPx06oR1u7uCQLOcUAFFzvfXVBmuQ==}
+  bole@5.0.29:
+    resolution: {integrity: sha512-eYR9i2ubLv5/4TFGyZsQ1cVH4jF9+qLJA72Aow+E7ZZQfqHqQNUZeX3w+pVWF76PQyjl5eDKf2xylyOOX76ozA==}
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
@@ -2264,8 +2264,8 @@ packages:
   brace-expansion@2.1.0:
     resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
 
-  brace-expansion@5.0.5:
-    resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
+  brace-expansion@5.0.6:
+    resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
     engines: {node: 18 || 20 || >=22}
 
   braces@3.0.3:
@@ -4824,13 +4824,13 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.48:
-    resolution: {integrity: sha512-zP6bWuY0Y9EOOQEmWyt/JZw9qJTUwkwATBRwmdFkJYPKGK6JwqSHUxHbMDoyQquTqQHoM8oMM80G4Qotm+RHfA==}
+  typedoc-plugin-dt-links@2.0.49:
+    resolution: {integrity: sha512-mztJ1mp2pfcjacwFf8/oCUr17+HWt+dBXcZzMv0qwJSgy+GiZDhN2UlOKmu3TT6QKGPMDxwmEF+b2GuTTCB2yw==}
     peerDependencies:
       typedoc: 0.28.x
 
-  typedoc-plugin-dt-links@2.0.49:
-    resolution: {integrity: sha512-mztJ1mp2pfcjacwFf8/oCUr17+HWt+dBXcZzMv0qwJSgy+GiZDhN2UlOKmu3TT6QKGPMDxwmEF+b2GuTTCB2yw==}
+  typedoc-plugin-dt-links@2.0.53:
+    resolution: {integrity: sha512-WnUh7ypAh+vegxmtphoVVZt5XowWEHA26Xj/sRcGuwLseED9jD8xTtZxBuu9abHXyY+6BpcErS6yxAv+YNMqmA==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -4865,8 +4865,8 @@ packages:
     peerDependencies:
       typedoc: ^0.28.4
 
-  typedoc@0.28.18:
-    resolution: {integrity: sha512-NTWTUOFRQ9+SGKKTuWKUioUkjxNwtS3JDRPVKZAXGHZy2wCA8bdv2iJiyeePn0xkmK+TCCqZFT0X7+2+FLjngA==}
+  typedoc@0.28.19:
+    resolution: {integrity: sha512-wKh+lhdmMFivMlc6vRRcMGXeGEHGU2g8a2CkPTJjJlwRf1iXbimWIPcFolCqe4E0d/FRtGszpIrsp3WLpDB8Pw==}
     engines: {node: '>= 18', pnpm: '>= 10'}
     hasBin: true
     peerDependencies:
@@ -5171,6 +5171,11 @@ packages:
 
   yaml@2.8.3:
     resolution: {integrity: sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
+  yaml@2.9.0:
+    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
     engines: {node: '>= 14.6'}
     hasBin: true
 
@@ -6212,7 +6217,7 @@ snapshots:
 
   '@pnpm/logger@1001.0.1':
     dependencies:
-      bole: 5.0.28
+      bole: 5.0.29
       split2: 4.2.0
 
   '@pnpm/manifest-utils@1002.0.5(@pnpm/logger@1001.0.1)':
@@ -7114,7 +7119,7 @@ snapshots:
       obug: 2.1.1
       std-env: 4.0.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+      vitest: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   '@vitest/expect@4.1.2':
     dependencies:
@@ -7132,6 +7137,14 @@ snapshots:
       magic-string: 0.30.21
     optionalDependencies:
       vite: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)
+
+  '@vitest/mocker@4.1.2(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))':
+    dependencies:
+      '@vitest/spy': 4.1.2
+      estree-walker: 3.0.3
+      magic-string: 0.30.21
+    optionalDependencies:
+      vite: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.2':
     dependencies:
@@ -7160,7 +7173,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
-      vitest: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+      vitest: 4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
 
   '@vitest/utils@4.1.2':
     dependencies:
@@ -7364,7 +7377,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  bole@5.0.28:
+  bole@5.0.29:
     dependencies:
       fast-safe-stringify: 2.1.1
       individual: 3.0.0
@@ -7382,7 +7395,7 @@ snapshots:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.5:
+  brace-expansion@5.0.6:
     dependencies:
       balanced-match: 4.0.4
 
@@ -8944,7 +8957,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.5
+      brace-expansion: 5.0.6
 
   minimatch@3.1.5:
     dependencies:
@@ -10016,62 +10029,62 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-github-theme@0.3.1(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-github-theme@0.3.1(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-github-theme@0.4.0(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-github-theme@0.4.0(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-material-theme@1.4.1(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-material-theme@1.4.1(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
       '@material/material-color-utilities': 0.3.0
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-dt-links@2.0.48(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.49(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-dt-links@2.0.49(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.53(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-extras@4.0.1(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-extras@4.0.1(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-include-example@3.0.2(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-include-example@3.0.2(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-missing-exports@4.1.3(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-plugin-missing-exports@4.1.3(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-rhineai-theme@1.2.0(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-rhineai-theme@1.2.0(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-theme-oxide@0.2.5(typedoc@0.28.18(typescript@5.9.3)):
+  typedoc-theme-oxide@0.2.5(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
       cheerio: 1.2.0
       flexsearch: 0.8.212
       slug: 11.0.1
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc@0.28.18(typescript@5.9.3):
+  typedoc@0.28.19(typescript@5.9.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.1.1
       minimatch: 10.2.5
       typescript: 5.9.3
-      yaml: 2.8.3
+      yaml: 2.9.0
 
   typescript@5.6.1-rc: {}
 
@@ -10178,9 +10191,9 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  varvara-typedoc-theme@0.3.9(typedoc@0.28.18(typescript@5.9.3))(typescript@5.9.3):
+  varvara-typedoc-theme@0.3.9(typedoc@0.28.19(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      typedoc: 0.28.18(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@5.9.3)
       typescript: 5.9.3
       varvara-css: 0.9.0(typescript@5.9.3)
 
@@ -10218,6 +10231,22 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
+  vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0):
+    dependencies:
+      lightningcss: 1.32.0
+      picomatch: 4.0.4
+      postcss: 8.5.8
+      rolldown: 1.0.0-rc.12(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
+      tinyglobby: 0.2.15
+    optionalDependencies:
+      '@types/node': 24.12.2
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      yaml: 2.9.0
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
+
   vitest@4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)):
     dependencies:
       '@vitest/expect': 4.1.2
@@ -10239,6 +10268,34 @@ snapshots:
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
       vite: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 24.12.2
+      '@vitest/ui': 4.1.2(vitest@4.1.2)
+    transitivePeerDependencies:
+      - msw
+
+  vitest@4.1.2(@types/node@24.12.2)(@vitest/ui@4.1.2)(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)):
+    dependencies:
+      '@vitest/expect': 4.1.2
+      '@vitest/mocker': 4.1.2(vite@8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+      '@vitest/pretty-format': 4.1.2
+      '@vitest/runner': 4.1.2
+      '@vitest/snapshot': 4.1.2
+      '@vitest/spy': 4.1.2
+      '@vitest/utils': 4.1.2
+      es-module-lexer: 2.0.0
+      expect-type: 1.3.0
+      magic-string: 0.30.21
+      obug: 2.1.1
+      pathe: 2.0.3
+      picomatch: 4.0.4
+      std-env: 4.0.0
+      tinybench: 2.9.0
+      tinyexec: 1.0.4
+      tinyglobby: 0.2.15
+      tinyrainbow: 3.1.0
+      vite: 8.0.5(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.12.2
@@ -10327,6 +10384,8 @@ snapshots:
   yallist@5.0.0: {}
 
   yaml@2.8.3: {}
+
+  yaml@2.9.0: {}
 
   yargs-parser@21.1.1: {}
 
