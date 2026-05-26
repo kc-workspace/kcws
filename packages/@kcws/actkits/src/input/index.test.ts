@@ -15,8 +15,26 @@ describe("input module exports", () => {
 		expect(inputModule.parseInput).toBeTypeOf("function");
 	});
 
+	test("should export ztype helpers", () => {
+		expect(inputModule.zNumber).toBeDefined();
+		expect(inputModule.zBoolean).toBeDefined();
+		expect(inputModule.zJsonObject).toBeDefined();
+		expect(inputModule.zYamlObject).toBeDefined();
+		expect(inputModule.zStringArray).toBeDefined();
+		expect(inputModule.zNumberArray).toBeDefined();
+	});
+
 	test("should not have unexpected exports", () => {
-		const expectedExports = ["z", "parseInput"];
+		const expectedExports = [
+			"z",
+			"parseInput",
+			"zNumber",
+			"zBoolean",
+			"zJsonObject",
+			"zYamlObject",
+			"zStringArray",
+			"zNumberArray",
+		];
 		const actualExports = Object.keys(inputModule);
 
 		expect(actualExports.sort()).toEqual(expectedExports.sort());
