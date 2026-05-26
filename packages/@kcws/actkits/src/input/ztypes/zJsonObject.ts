@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { createObjectParser } from "./createObjectParser";
 
 /**
  * Zod schema for parsing JSON string input to object.
@@ -10,19 +10,4 @@ import { z } from "zod";
  * schema.parse({ config: '{"key": "value"}' }); // { config: { key: "value" } }
  * ```
  */
-export const zJsonObject: z.ZodEffects<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>,
-	Record<string, unknown>,
-	unknown
-> = z.preprocess((val) => {
-	if (val === "" || val === undefined || val === null) return undefined;
-	if (typeof val === "object") return val;
-	if (typeof val === "string") {
-		try {
-			return JSON.parse(val);
-		} catch {
-			return val;
-		}
-	}
-	return val;
-}, z.record(z.unknown()));
+export const zJsonObject = createObjectParser(JSON.parse);

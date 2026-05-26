@@ -1,5 +1,6 @@
 import { parse as parseYaml } from "yaml";
-import { z } from "zod";
+
+import { createObjectParser } from "./createObjectParser";
 
 /**
  * Zod schema for parsing YAML string input to object.
@@ -11,19 +12,4 @@ import { z } from "zod";
  * schema.parse({ config: "key: value" }); // { config: { key: "value" } }
  * ```
  */
-export const zYamlObject: z.ZodEffects<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>,
-	Record<string, unknown>,
-	unknown
-> = z.preprocess((val) => {
-	if (val === "" || val === undefined || val === null) return undefined;
-	if (typeof val === "object") return val;
-	if (typeof val === "string") {
-		try {
-			return parseYaml(val);
-		} catch {
-			return val;
-		}
-	}
-	return val;
-}, z.record(z.unknown()));
+export const zYamlObject = createObjectParser(parseYaml);

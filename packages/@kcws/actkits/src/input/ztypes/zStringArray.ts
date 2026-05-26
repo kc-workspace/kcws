@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { createStringArrayParser } from "./createArrayParser";
 
 /**
  * Zod schema for parsing comma/newline-separated string to array of strings.
@@ -12,19 +12,4 @@ import { z } from "zod";
  * schema.parse({ tags: "a\nb\nc" }); // { tags: ["a", "b", "c"] }
  * ```
  */
-export const zStringArray: z.ZodEffects<
-	z.ZodArray<z.ZodString>,
-	string[],
-	unknown
-> = z.preprocess((val) => {
-	if (val === "" || val === undefined || val === null) return undefined;
-	if (Array.isArray(val)) return val;
-	if (typeof val === "string") {
-		const separator = val.includes("\n") ? "\n" : ",";
-		return val
-			.split(separator)
-			.map((s) => s.trim())
-			.filter((s) => s.length > 0);
-	}
-	return val;
-}, z.array(z.string()));
+export const zStringArray = createStringArrayParser();
