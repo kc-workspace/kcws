@@ -1,3 +1,5 @@
+import type { z } from "zod";
+
 import { createStringArrayParser } from "./createArrayParser";
 
 /**
@@ -12,4 +14,8 @@ import { createStringArrayParser } from "./createArrayParser";
  * schema.parse({ tags: "a\nb\nc" }); // { tags: ["a", "b", "c"] }
  * ```
  */
-export const zStringArray = createStringArrayParser();
+export const zStringArray: z.ZodEffects<
+	z.ZodArray<z.ZodString>,
+	string[],
+	unknown
+> = createStringArrayParser();

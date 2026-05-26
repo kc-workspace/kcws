@@ -1,3 +1,5 @@
+import type { z } from "zod";
+
 import { createObjectParser } from "./createObjectParser";
 
 /**
@@ -10,4 +12,8 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: '{"key": "value"}' }); // { config: { key: "value" } }
  * ```
  */
-export const zJsonObject = createObjectParser(JSON.parse);
+export const zJsonObject: z.ZodEffects<
+	z.ZodRecord<z.ZodString, z.ZodUnknown>,
+	Record<string, unknown>,
+	unknown
+> = createObjectParser(JSON.parse);

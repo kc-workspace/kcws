@@ -1,3 +1,5 @@
+import type { z } from "zod";
+
 import { createNumberArrayParser } from "./createArrayParser";
 
 /**
@@ -12,4 +14,8 @@ import { createNumberArrayParser } from "./createArrayParser";
  * schema.parse({ ids: "1\n2\n3" }); // { ids: [1, 2, 3] }
  * ```
  */
-export const zNumberArray = createNumberArrayParser();
+export const zNumberArray: z.ZodEffects<
+	z.ZodArray<z.ZodNumber>,
+	number[],
+	unknown
+> = createNumberArrayParser();

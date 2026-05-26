@@ -1,4 +1,5 @@
 import { parse as parseYaml } from "yaml";
+import type { z } from "zod";
 
 import { createObjectParser } from "./createObjectParser";
 
@@ -12,4 +13,8 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: "key: value" }); // { config: { key: "value" } }
  * ```
  */
-export const zYamlObject = createObjectParser(parseYaml);
+export const zYamlObject: z.ZodEffects<
+	z.ZodRecord<z.ZodString, z.ZodUnknown>,
+	Record<string, unknown>,
+	unknown
+> = createObjectParser(parseYaml);
