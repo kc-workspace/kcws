@@ -707,7 +707,7 @@ This provides full breakpoint support, variable inspection, and step-through deb
 
 ### Required Tools
 
-- **Node.js:** use the version from `mise.toml`; root package engines currently allow `^20.9.0 || ^22.11.0 || ^24.11.0 || >=25.0.0`
+- **Node.js:** use the version from `mise.toml`; root package engines currently allow `^22.11.0 || ^24.11.0 || ^25.0.0 || ^26.0.0`
 - **pnpm:** 10.30.3 (managed by Corepack)
 - **Git:** For version control
 - **mise:** (Optional) For automatic Node.js version management
