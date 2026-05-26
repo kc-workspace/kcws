@@ -14,6 +14,11 @@
 		"lint:check": "biome lint",
 		"type:check": "tsc --noEmit"
 	},
+	"dependencies": {
+		"zod": "catalog:",
+		"yaml": "catalog:",
+		"@actions/core": "catalog:actions:latest"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
 		"@kcconfigs/biome": "workspace:*",
@@ -36,6 +41,18 @@
 			"default": {
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
+			}
+		},
+		"./*": {
+			"source": "./src/*/index.ts",
+			"typedoc": "./src/*/index.ts",
+			"require": {
+				"types": "./dist/*/index.d.cts",
+				"default": "./dist/*/index.cjs"
+			},
+			"default": {
+				"types": "./dist/*/index.d.ts",
+				"default": "./dist/*/index.js"
 			}
 		}
 	},
