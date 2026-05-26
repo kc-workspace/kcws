@@ -22,7 +22,14 @@ export const defineConfig = (
 	const { format: _format, dts: _dts, ...rest } = config ?? ({} as UserConfig);
 
 	const baseConfig: _UserConfig = {
-		entry: ["./src/index.ts", "!./src/**/*.test.ts", "!./src/**/*.spec.ts"],
+		entry: [
+			"./src/index.ts",
+			"!./src/**/*.example.ts",
+			"!./src/**/*.test.ts",
+			"!./src/**/*.spec.ts",
+			"!./src/**/*.test-d.ts",
+			"!./src/**/*.spec-d.ts",
+		],
 		platform: "neutral",
 		fixedExtension: false,
 		outDir: "dist",

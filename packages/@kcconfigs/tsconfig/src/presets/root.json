@@ -5,6 +5,7 @@
 	"exclude": [
 		"${configDir}/**/node_modules/**",
 		"${configDir}/**/*.config.ts",
+		"${configDir}/**/*.example.ts",
 		"${configDir}/**/*.test.ts",
 		"${configDir}/**/*.spec.ts",
 		"${configDir}/**/*.test-d.ts",

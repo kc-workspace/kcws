@@ -13,6 +13,7 @@
 		"**/*cache*/**",
 		"**/.github/workflows/**",
 		"**/package.json",
+		"**/*.example.ts",
 		"**/*.test.ts",
 		"**/*.test.sh",
 		"**/CHANGELOG.md"
