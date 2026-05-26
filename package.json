@@ -46,6 +46,7 @@
 		"typedoc-plugin-include-example": "catalog:typedoc:latest",
 		"typedoc-plugin-mdn-links": "catalog:typedoc:latest",
 		"typedoc-plugin-missing-exports": "catalog:typedoc:latest",
+		"typescript": "catalog:",
 		"vitest": "catalog:test:latest"
 	},
 	"config": {
