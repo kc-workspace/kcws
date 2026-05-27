@@ -9,4 +9,4 @@ const varvara: ThemeConfig = defineTheme({
 	theme: "varvara-css",
 });
 
-export = varvara;
+export default varvara;

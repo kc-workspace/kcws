@@ -8,4 +8,4 @@ const oxide: ThemeConfig = defineTheme({
 	plugin: ["typedoc-theme-oxide"],
 });
 
-export = oxide;
+export default oxide;

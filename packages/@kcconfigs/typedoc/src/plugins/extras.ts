@@ -19,4 +19,4 @@ const extras: PluginConfig<ExtrasConfig> = definePlugin<ExtrasConfig>({
 	footerLastModified: true,
 });
 
-export = extras;
+export default extras;

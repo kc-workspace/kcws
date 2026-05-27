@@ -15,4 +15,4 @@ const all: PluginConfig = mergeConfig(
 	mdnLinks,
 );
 
-export = all;
+export default all;
