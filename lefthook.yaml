@@ -3,10 +3,8 @@
 extends:
   - ./node_modules/@kcconfigs/lefthook/src/presets/default.yaml
   - ./node_modules/@kcconfigs/lefthook/src/hooks/commit-msg/commitlint.yaml
-  - ./node_modules/@kcconfigs/lefthook/src/hooks/commit-msg/textlint.yaml
   - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-commit/type-check.yaml
   - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-commit/biome-check.yaml
-  - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-commit/textlint.yaml
   - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-commit/ls-lint.yaml
   - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-push/vitest.yaml
 
