@@ -16,6 +16,9 @@ catalogs:
     '@commitlint/config-conventional':
       specifier: 20.5.3
       version: 20.5.3
+    '@commitlint/cz-commitlint':
+      specifier: 20.5.3
+      version: 20.5.3
     '@commitlint/types':
       specifier: 20.5.0
       version: 20.5.0
@@ -182,7 +185,7 @@ importers:
         specifier: catalog:commitlint:latest
         version: 20.5.3(@types/node@24.12.2)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
       '@commitlint/cz-commitlint':
-        specifier: 20.5.3
+        specifier: catalog:commitlint:latest
         version: 20.5.3(@types/node@24.12.2)(commitizen@4.3.1(@types/node@24.12.2)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.2))(typescript@5.9.3)
       '@kcconfigs/biome':
         specifier: 'workspace:'
