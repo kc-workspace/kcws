@@ -16,9 +16,10 @@ catalog:
   lefthook: 2.1.8
   publint: 0.3.18
   rimraf: 6.1.3
-  tsdown: 0.21.10
+  tsdown: 0.22.0
   typescript: 5.9.3
   unplugin-unused: 0.5.7
+  unrun: 0.3.0
   vite: 8.0.5
   yaml: 2.9.0
   zshy: 0.7.0
@@ -38,9 +39,10 @@ catalogs:
     '@arethetypeswrong/core': ^0.18.0
     '@biomejs/biome': ^2.0.0
     publint: ^0.3.0
-    tsdown: ^0.21.10
+    tsdown: ^0.22.0
     typescript: ^5.5.0
     unplugin-unused: ^0.5.0
+    unrun: ^0.3.0
     vite: ^8.0.0-beta
     vitest: ^4.0.0
     zshy: ^0.6.0
