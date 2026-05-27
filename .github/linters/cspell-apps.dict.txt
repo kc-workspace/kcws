@@ -15,3 +15,4 @@ vale
 zizmor
 textlintrc
 rhineai
+ztypes
