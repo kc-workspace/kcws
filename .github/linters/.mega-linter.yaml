@@ -20,83 +20,83 @@ CLEAR_REPORT_FOLDER: true
 FLAVOR_SUGGESTIONS: false
 SHOW_ELAPSED_TIME: true
 PRINT_ALL_FILES: false
-PRINT_ALPACA: true
+PRINT_ALPACA: false
 
 IGNORE_GENERATED_FILES: true
 IGNORE_GITIGNORED_FILES: true
 
 ENABLE_LINTERS:
   ## [✅] Check GitHub Actions workflows
-  ## https://megalinter.io/9.2.0/descriptors/action_actionlint/
+  ## https://megalinter.io/9.5.0/descriptors/action_actionlint/
   - ACTION_ACTIONLINT
   ## [✅] Check bash scripts execution
-  ## https://megalinter.io/9.2.0/descriptors/bash_bash_exec/
+  ## https://megalinter.io/9.5.0/descriptors/bash_bash_exec/
   - BASH_EXEC
   ## [✅] Check bash scripts
-  ## https://megalinter.io/9.2.0/descriptors/bash_shellcheck/
+  ## https://megalinter.io/9.5.0/descriptors/bash_shellcheck/
   - BASH_SHELLCHECK
   ## [✅] Format bash scripts
-  ## https://megalinter.io/9.2.0/descriptors/bash_shfmt/
+  ## https://megalinter.io/9.5.0/descriptors/bash_shfmt/
   - BASH_SHFMT
   ## [✅] Check for duplicate code
-  ## https://megalinter.io/9.2.0/descriptors/copypaste_jscpd/
+  ## https://megalinter.io/9.5.0/descriptors/copypaste_jscpd/
   - COPYPASTE_JSCPD
   ## [✅] Check Dockerfiles
-  ## https://megalinter.io/9.2.0/descriptors/dockerfile_hadolint/
+  ## https://megalinter.io/9.5.0/descriptors/dockerfile_hadolint/
   - DOCKERFILE_HADOLINT
   ## [✅] Check .env files
-  ## https://megalinter.io/9.2.0/descriptors/env_dotenv_linter/
+  ## https://megalinter.io/9.5.0/descriptors/env_dotenv_linter/
   - ENV_DOTENV_LINTER
   ## [✅] Check package.json files
-  ## https://megalinter.io/9.2.0/descriptors/json_npm_package_json_lint/
+  ## https://megalinter.io/9.5.0/descriptors/json_npm_package_json_lint/
   - JSON_NPM_PACKAGE_JSON_LINT
   ## [✅] Check JSON schema
-  ## https://megalinter.io/9.2.0/descriptors/json_v8r/
+  ## https://megalinter.io/9.5.0/descriptors/json_v8r/
   - JSON_V8R
   ## [✅] Check markdown files
-  ## https://megalinter.io/9.2.0/descriptors/markdown_markdownlint/
+  ## https://megalinter.io/9.5.0/descriptors/markdown_markdownlint/
   - MARKDOWN_MARKDOWNLINT
   ## [✅] Check merge conflict markers
-  ## https://megalinter.io/9.2.0/descriptors/repository_git_diff/
+  ## https://megalinter.io/9.5.0/descriptors/repository_git_diff/
   - REPOSITORY_GIT_DIFF
   ## [✅] Check git leaks
-  ## https://megalinter.io/9.2.0/descriptors/repository_gitleaks/
+  ## https://megalinter.io/9.5.0/descriptors/repository_gitleaks/
   - REPOSITORY_GITLEAKS
   ## [✅] Check dependencies vulnerabilities
-  ## https://megalinter.io/9.2.0/descriptors/repository_grype/
+  ## https://megalinter.io/9.5.0/descriptors/repository_grype/
   - REPOSITORY_GRYPE
   ## [✅] Check file and directory names
-  ## https://megalinter.io/9.2.0/descriptors/repository_ls_lint/
+  ## https://megalinter.io/9.5.0/descriptors/repository_ls_lint/
   - REPOSITORY_LS_LINT
   ## [✅] Check secrets
-  ## https://megalinter.io/9.2.0/descriptors/repository_secretlint/
+  ## https://megalinter.io/9.5.0/descriptors/repository_secretlint/
   - REPOSITORY_SECRETLINT
   ## [✅] Generate SBOM
-  ## https://megalinter.io/9.2.0/descriptors/repository_syft/
+  ## https://megalinter.io/9.5.0/descriptors/repository_syft/
   - REPOSITORY_SYFT
   ## [✅] Check secrets
-  ## https://megalinter.io/9.2.0/descriptors/repository_trufflehog/
+  ## https://megalinter.io/9.5.0/descriptors/repository_trufflehog/
   - REPOSITORY_TRUFFLEHOG
   ## [✅] Check spelling
-  ## https://megalinter.io/9.2.0/descriptors/spell_cspell/
+  ## https://megalinter.io/9.5.0/descriptors/spell_cspell/
   - SPELL_CSPELL
   ## [✅] Check broken links
-  ## https://megalinter.io/9.2.0/descriptors/spell_lychee/
+  ## https://megalinter.io/9.5.0/descriptors/spell_lychee/
   - SPELL_LYCHEE
   ## [✅] Check prose
-  ## https://megalinter.io/9.2.0/descriptors/spell_proselint/
+  ## https://megalinter.io/9.5.0/descriptors/spell_proselint/
   - SPELL_PROSELINT
   ## [✅] Check spelling
-  ## https://megalinter.io/9.2.0/descriptors/spell_vale/
+  ## https://megalinter.io/9.5.0/descriptors/spell_vale/
   - SPELL_VALE
   ## [✅] Check XML files
-  ## https://megalinter.io/9.2.0/descriptors/xml_xmllint/
+  ## https://megalinter.io/9.5.0/descriptors/xml_xmllint/
   - XML_XMLLINT
   ## [✅] Check YAML schema
-  ## https://megalinter.io/9.2.0/descriptors/yaml_v8r/
+  ## https://megalinter.io/9.5.0/descriptors/yaml_v8r/
   - YAML_V8R
   ## [✅] Check YAML files
-  ## https://megalinter.io/9.2.0/descriptors/yaml_yamllint/
+  ## https://megalinter.io/9.5.0/descriptors/yaml_yamllint/
   - YAML_YAMLLINT
 
 COPYPASTE_JSCPD_CONFIG_FILE: jscpd.json
@@ -109,8 +109,6 @@ REPOSITORY_SYFT_CONFIG_FILE: syft.yaml
 REPOSITORY_TRUFFLEHOG_CONFIG_FILE: trufflehog.yaml
 SPELL_CSPELL_CONFIG_FILE: cspell.jsonc
 SPELL_LYCHEE_CONFIG_FILE: lychee.toml
-## FIXME: Remove next line after oxsecurity/megalinter#7409 pr is merged
-SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: (\.vscode|CHANGELOG\.md)
 SPELL_PROSELINT_CONFIG_FILE: proselint.json
 SPELL_VALE_CONFIG_FILE: vale.ini
 YAML_YAMLLINT_CONFIG_FILE: yamllint.yml
