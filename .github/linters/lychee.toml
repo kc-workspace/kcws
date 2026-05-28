@@ -80,7 +80,7 @@ method = "get"
 # fallback_extensions = ["md", "html"]
 
 # Base URL or website root directory to check relative URLs.
-base_url = "https://github.com/kc-workspace/kcws/tree/main"
+# base_url = "https://github.com/kc-workspace/kcws/tree/main"
 
 # Root path to use when checking absolute local links, must be an absolute path
 # root_dir = "/"
@@ -108,14 +108,13 @@ include_verbatim = true
 # Exclude URLs and mail addresses from checking. The values are treated as regular expressions
 exclude = [
   "^git+https://",  # git URLs
-  "^https://.*\\$", # URLs with GitHub Actions variables
+  # "^https://.*\\$", # URLs with GitHub Actions variables
 ]
 
 # Exclude paths from getting checked. The values are treated as regular expressions
-## FIXME: This setting seems to not work inside GitHub Actions with Mega-Linter (see oxsecurity/megalinter#7409)
 exclude_path = [
-  "\\.vscode/",           # skip VSCode settings folder
-  "CHANGELOG\\.md$",      # skip changelog files
+  # "\\.vscode/",         # skip VSCode settings folder
+  # "CHANGELOG\\.md$",    # skip changelog files
   # "\\.github/workflows" # skip GitHub Workflow files
   # "\\.txt$",            # skip .txt extensions
   # "(^|/)test/",         # skip directories named "test"
