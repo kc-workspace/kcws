@@ -9,6 +9,12 @@ import type { NS_SEP } from "./namespace";
  */
 export type AnnotationProperties = CoreAnnotationProperties;
 
+/**
+ * Joins namespace segments using `:` at type level.
+ *
+ * @typeParam NS - Base namespace.
+ * @typeParam SS - Additional segments.
+ */
 export type ExtendNamespace<
 	NS extends string,
 	SS extends string[] = [],
@@ -18,5 +24,8 @@ export type ExtendNamespace<
 		: `${NS}${typeof NS_SEP}${F & string}`
 	: NS;
 
+/** Function with no parameters that returns a value. */
 export type Getter<TValue> = () => TValue;
+
+/** Annotation-capable logger function signature. */
 export type Log = (msg: string, properties?: AnnotationProperties) => void;

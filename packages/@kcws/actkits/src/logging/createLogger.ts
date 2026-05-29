@@ -21,7 +21,10 @@ import type { ILogger } from "./types";
  * The returned logger provides printf-style formatting and namespace support
  * for organizing log output in GitHub Actions workflows.
  *
- * @param namespace - Optional namespace for log messages (colon-separated segments)
+ * @typeParam NS - Root namespace segment.
+ * @typeParam SS - Additional namespace segments.
+ * @param parent - Root namespace segment.
+ * @param segments - Additional namespace segments to append using `:`.
  * @returns A logger instance with all logging methods
  */
 export const createLogger = <NS extends string, SS extends string[]>(

@@ -12,6 +12,14 @@ export {
 	warning as coreWarn,
 } from "@actions/core";
 
+/**
+ * Wraps annotation logs to support optional trailing annotation properties.
+ *
+ * @param log - Underlying annotation logger function.
+ * @param ns - Optional namespace prefix.
+ * @param format - Message format string.
+ * @param args - Format arguments and optional trailing annotation properties.
+ */
 export const coreWrap = (
 	log: Log,
 	ns: string,
