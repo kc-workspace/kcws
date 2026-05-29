@@ -8,4 +8,4 @@ const rhineai: ThemeConfig = defineTheme({
 	plugin: ["typedoc-rhineai-theme"],
 });
 
-export = rhineai;
+export default rhineai;

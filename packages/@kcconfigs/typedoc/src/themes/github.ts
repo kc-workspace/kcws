@@ -8,4 +8,4 @@ const github: ThemeConfig = defineTheme({
 	plugin: ["typedoc-github-theme"],
 });
 
-export = github;
+export default github;

@@ -22,4 +22,4 @@ const missingExports: PluginConfig<MissingExportsConfig> =
 		placeInternalsInOwningModule: false,
 	});
 
-export = missingExports;
+export default missingExports;

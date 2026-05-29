@@ -8,4 +8,4 @@ const material: ThemeConfig = defineTheme({
 	plugin: ["typedoc-material-theme"],
 });
 
-export = material;
+export default material;

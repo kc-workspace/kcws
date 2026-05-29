@@ -16,9 +16,10 @@ catalog:
   lefthook: 2.1.8
   publint: 0.3.18
   rimraf: 6.1.3
-  tsdown: 0.20.3
+  tsdown: 0.22.0
   typescript: 5.9.3
   unplugin-unused: 0.5.7
+  unrun: 0.3.0
   vite: 8.0.5
   yaml: 2.9.0
   zshy: 0.7.0
@@ -38,9 +39,10 @@ catalogs:
     '@arethetypeswrong/core': ^0.18.0
     '@biomejs/biome': ^2.0.0
     publint: ^0.3.0
-    tsdown: ^0.20.0
+    tsdown: ^0.22.0
     typescript: ^5.5.0
     unplugin-unused: ^0.5.0
+    unrun: ^0.3.0
     vite: ^8.0.0-beta
     vitest: ^4.0.0
     zshy: ^0.6.0
@@ -54,13 +56,6 @@ catalogs:
     '@vitest/ui': ^4.0.0
     memfs: ^4.0.0
     vitest: ^4.0.0
-  textlint:latest:
-    textlint: 15.7.1
-    textlint-filter-rule-allowlist: 4.0.0
-    textlint-filter-rule-comments: 1.3.0
-    textlint-rule-terminology: 5.2.16
-  textlint:peer:
-    textlint: ^15.0.0
   typedoc:latest:
     typedoc: 0.28.19
     typedoc-github-theme: 0.4.0
@@ -102,10 +97,6 @@ overrides:
   '@types/node@<24.0.0': '^24.0.0'
   ## commitizen>glob>minimatch>brace-expansion
   brace-expansion@<1.1.13: '>=1.1.13 <2.0.0'
-  ## textlint>glob>minimatch>brace-expansion
-  brace-expansion@>=2.0.0 <2.0.3: '>=2.0.3 <3.0.0'
-  ## kcconfigs__textlint>textlint>glob>minimatch>brace-expansion
-  brace-expansion@>=4.0.0 <5.0.5: '>=5.0.5 <6.0.0'
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>cross-spawn
   cross-spawn@>=7.0.0 <7.0.5: '>=7.0.5 <8.0.0'
   ## @commitlint/cli>@commitlint/load>...>ajv>fast-uri
@@ -113,14 +104,12 @@ overrides:
   ## commitizen>lodash
   ## commitizen>inquirer>lodash
   lodash@>=4.0.0 <=4.17.23: '>=4.18.0 <5.0.0'
-  ## textlint>@modelcontextprotocol/sdk>express>router>path-to-regexp
-  path-to-regexp@>=8.0.0 <8.4.0: '>=8.4.0 <9.0.0'
   ## commitizen>find-node-modules>findup-sync>micromatch>picomatch
   picomatch@<2.3.2: '>=2.3.2 <3.0.0'
   ## @vitest/ui>tinyglobby>picomatch
   picomatch@>=4.0.0 <4.0.4: '>=4.0.4 <5.0.0'
   ## commitizen>inquirer>external-editor>tmp
-  tmp@<=0.2.3: '>=0.2.4 <1.0.0'
+  tmp@<0.2.6: '>=0.2.6 <1.0.0'
   ## typedoc>yaml
   yaml@>=2.0.0 <2.8.3: '>=2.8.3 <3.0.0'
 
@@ -140,3 +129,6 @@ allowBuilds:
   lefthook: true
 
 pmOnFail: error
+
+minimumReleaseAgeExclude:
+  - tmp@0.2.6

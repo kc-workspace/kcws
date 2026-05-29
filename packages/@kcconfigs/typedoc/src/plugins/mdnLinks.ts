@@ -16,4 +16,4 @@ const mdnLinks: PluginConfig<MdnLinksConfig> = definePlugin<MdnLinksConfig>({
 	resolveUtilityTypes: true,
 });
 
-export = mdnLinks;
+export default mdnLinks;

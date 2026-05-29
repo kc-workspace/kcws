@@ -67,7 +67,6 @@
   - Workaround 1: use release-as commit to force which version to deploy
   - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
-- @kcconfigs/textlint didn't works at all (textlint/textlint#1896)
 - @kcconfigs/biome/features/* didn't works (biomejs/biome#9370)
 - Dependabot generate invalid pnpm-lock.yaml file cause ci to failed (dependabot/dependabot-core#12244)
 

@@ -6,4 +6,4 @@ const config: UserConfig = defineConfig(github, all, {
 	highlightLanguages: ["http"],
 });
 
-export = config;
+export default config;

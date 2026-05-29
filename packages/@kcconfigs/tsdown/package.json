@@ -14,10 +14,11 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"tsdown": "catalog:",
+		"@arethetypeswrong/core": "catalog:",
 		"publint": "catalog:",
+		"tsdown": "catalog:",
 		"unplugin-unused": "catalog:",
-		"@arethetypeswrong/core": "catalog:"
+		"unrun": "catalog:"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
@@ -26,10 +27,11 @@
 		"@kctypes/generic": "workspace:*"
 	},
 	"peerDependencies": {
-		"tsdown": "catalog:peer",
+		"@arethetypeswrong/core": "catalog:peer",
 		"publint": "catalog:peer",
+		"tsdown": "catalog:peer",
 		"unplugin-unused": "catalog:peer",
-		"@arethetypeswrong/core": "catalog:peer"
+		"unrun": "catalog:peer"
 	},
 	"peerDependenciesMeta": {
 		"publint": {

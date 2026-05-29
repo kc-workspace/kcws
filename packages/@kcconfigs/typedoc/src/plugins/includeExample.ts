@@ -12,4 +12,4 @@ const includeExample: PluginConfig = definePlugin({
 	},
 });
 
-export = includeExample;
+export default includeExample;

@@ -35,6 +35,7 @@ export const defineConfig = (
 		outDir: "dist",
 		clean: true,
 		minify: true,
+		failOnWarn: true,
 		publint: {
 			enabled: true,
 			level: "warning",

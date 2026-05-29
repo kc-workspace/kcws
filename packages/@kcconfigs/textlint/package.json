@@ -15,9 +15,9 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"textlint-filter-rule-allowlist": "catalog:textlint:latest",
-		"textlint-filter-rule-comments": "catalog:textlint:latest",
-		"textlint-rule-terminology": "catalog:textlint:latest"
+		"textlint-filter-rule-allowlist": "4.0.0",
+		"textlint-filter-rule-comments": "1.3.0",
+		"textlint-rule-terminology": "5.2.16"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
@@ -29,7 +29,7 @@
 		"vitest": "catalog:test:latest"
 	},
 	"peerDependencies": {
-		"textlint": "catalog:textlint:peer"
+		"textlint": "^15.0.0"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
@@ -46,7 +46,7 @@
 				"default": "./dist/index.js"
 			}
 		},
-		"./preset-*": {
+		"./presets/*": {
 			"source": "./src/presets/*.ts",
 			"typedoc": "./src/presets/*.ts",
 			"require": {
@@ -56,6 +56,18 @@
 			"default": {
 				"types": "./dist/presets/*.d.ts",
 				"default": "./dist/presets/*.js"
+			}
+		},
+		"./configs/*": {
+			"source": "./src/configs/*.ts",
+			"typedoc": "./src/configs/*.ts",
+			"require": {
+				"types": "./dist/configs/*.d.cts",
+				"default": "./dist/configs/*.cjs"
+			},
+			"default": {
+				"types": "./dist/configs/*.d.ts",
+				"default": "./dist/configs/*.js"
 			}
 		}
 	},

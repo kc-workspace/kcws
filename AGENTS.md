@@ -103,8 +103,6 @@ pnpm check:all
 pnpm fix:all
 
 # Root-level text and file naming checks
-pnpm check:text
-pnpm check:text:fix
 pnpm check:file
 
 # Generate docs
@@ -418,7 +416,6 @@ Runs before pushing:
 ```bash
 # Run pre-commit checks manually
 pnpm hooks:pre-commit:check:biome <files>
-pnpm hooks:pre-commit:check:text <files>
 pnpm hooks:pre-commit:check:file <files>
 
 # Run pre-push checks manually
@@ -613,7 +610,6 @@ Examples:
 
 Known repo-specific pitfalls:
 
-- `@kcconfigs/textlint` currently has upstream breakage (`textlint/textlint#1896`)
 - `@kcconfigs/biome/features/*` currently has upstream breakage (`biomejs/biome#9370`)
 - release-please cannot easily convert prerelease packages back to stable versions
 - Dependabot can generate an invalid `pnpm-lock.yaml`; inspect lockfile changes carefully on dependency PRs

@@ -8,4 +8,4 @@ const dtLinks: PluginConfig = definePlugin({
 	plugin: ["typedoc-plugin-dt-links"],
 });
 
-export = dtLinks;
+export default dtLinks;
