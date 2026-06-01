@@ -1,5 +1,7 @@
 import { setOutput as coreSetOutput } from "@actions/core";
 
+import type { OutputMap } from "./types";
+
 /**
  * Serializes a value to a string representation for GitHub Actions output.
  * @internal
@@ -53,5 +55,32 @@ const serializeOutput = (value: unknown): string => {
 export const setOutput = (name: string, value: unknown): string => {
 	const serialized = serializeOutput(value);
 	coreSetOutput(name, serialized);
+	return serialized;
+};
+
+/**
+ * Sets multiple output values for GitHub Actions.
+ *
+ * @param outputs - A record of output names to values
+ * @returns A record of output names to their serialized string values
+ *
+ * @example
+ * ```ts
+ * const results = setOutputs({
+ *   name: "my-package",
+ *   version: "1.0.0",
+ *   published: true
+ * });
+ * // Returns { name: "my-package", version: "1.0.0", published: "true" }
+ * ```
+ */
+export const setOutputs = <TOutputs extends OutputMap>(
+	outputs: TOutputs,
+): { [K in keyof TOutputs]: string } => {
+	const serialized = {} as { [K in keyof TOutputs]: string };
+	for (const [name, value] of Object.entries(outputs)) {
+		serialized[name as keyof TOutputs] = setOutput(name, value);
+	}
+
 	return serialized;
 };

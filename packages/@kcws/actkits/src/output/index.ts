@@ -8,4 +8,6 @@
  * @packageDocumentation
  */
 
-export { setOutput } from "./setOutput";
+export { setOutput, setOutputs } from "./setOutput";
+
+export type { OutputMap } from "./types";

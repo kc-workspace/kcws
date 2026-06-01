@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import { setOutput } from "./setOutput";
+import { setOutput, setOutputs } from "./setOutput";
 
 vi.mock("@actions/core", () => ({
 	setOutput: vi.fn(),
@@ -29,5 +29,16 @@ describe("output helpers", () => {
 		expect(setOutput("undefined", undefined)).toBe("");
 		expect(setOutput("object", { a: 1 })).toBe('{"a":1}');
 		expect(setOutput("bigint", BigInt(123))).toBe("123");
+	});
+
+	test("should serialize output maps", async () => {
+		const { setOutput: mockSetOutput } =
+			await vi.importMock<typeof import("@actions/core")>("@actions/core");
+
+		const result = setOutputs({ name: "demo", stable: false });
+
+		expect(result).toEqual({ name: "demo", stable: "false" });
+		expect(mockSetOutput).toHaveBeenCalledWith("name", "demo");
+		expect(mockSetOutput).toHaveBeenCalledWith("stable", "false");
 	});
 });
