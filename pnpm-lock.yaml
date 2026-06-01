@@ -122,7 +122,7 @@ catalogs:
       version: 1.4.1
     typedoc-plugin-dt-links:
       specifier: ^2.0.0
-      version: 2.0.49
+      version: 2.0.56
     typedoc-plugin-extras:
       specifier: ^4.0.0
       version: 4.0.1
@@ -166,10 +166,10 @@ importers:
         version: 2.4.10
       '@commitlint/cli':
         specifier: catalog:commitlint:latest
-        version: 20.5.3(@types/node@24.12.2)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
+        version: 20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
       '@commitlint/cz-commitlint':
         specifier: catalog:commitlint:latest
-        version: 20.5.3(@types/node@24.12.2)(commitizen@4.3.1(@types/node@24.12.2)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.2))(typescript@5.9.3)
+        version: 20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@5.9.3)
       '@kcconfigs/biome':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/biome
@@ -199,10 +199,10 @@ importers:
         version: 4.1.7(vitest@4.1.7)
       commitizen:
         specifier: catalog:commitlint:latest
-        version: 4.3.1(@types/node@24.12.2)(typescript@5.9.3)
+        version: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
       inquirer:
         specifier: catalog:commitlint:latest
-        version: 9.3.8(@types/node@24.12.2)
+        version: 9.3.8(@types/node@24.12.4)
       lefthook:
         specifier: 'catalog:'
         version: 2.1.8
@@ -235,7 +235,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/biome:
     devDependencies:
@@ -247,7 +247,7 @@ importers:
     dependencies:
       '@pnpm/workspace.find-packages':
         specifier: 1000.0.65
-        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       yaml:
         specifier: 2.8.3
         version: 2.8.3
@@ -281,7 +281,7 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3))
 
   packages/@kcconfigs/lefthook:
     devDependencies:
@@ -327,7 +327,7 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -389,7 +389,7 @@ importers:
         version: 1.4.1(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:peer
-        version: 2.0.49(typedoc@0.28.19(typescript@5.9.3))
+        version: 2.0.56(typedoc@0.28.19(typescript@5.9.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:peer
         version: 4.0.1(typedoc@0.28.19(typescript@5.9.3))
@@ -435,7 +435,7 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcconfigs/vitest:
     dependencies:
@@ -444,7 +444,7 @@ importers:
         version: 4.57.2(tslib@2.8.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -490,10 +490,10 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vite:
         specifier: 'catalog:'
-        version: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
+        version: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
       zshy:
         specifier: 'catalog:'
         version: 0.7.0(typescript@5.9.3)
@@ -520,15 +520,15 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcstyles/reset.css: {}
 
   packages/@kctools/bun-react:
     dependencies:
       '@types/bun':
-        specifier: 1.3.11
-        version: 1.3.11
+        specifier: 1.3.14
+        version: 1.3.14
       bun-plugin-tailwind:
         specifier: 0.1.2
         version: 0.1.2(bun@1.3.11)
@@ -556,7 +556,7 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kctypes/generic:
     dependencies:
@@ -565,7 +565,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kctypes/package_json:
     dependencies:
@@ -574,7 +574,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   packages/@kcws/actkits:
     dependencies:
@@ -608,7 +608,7 @@ importers:
         version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
 packages:
 
@@ -2040,8 +2040,8 @@ packages:
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
-  '@types/bun@1.3.11':
-    resolution: {integrity: sha512-5vPne5QvtpjGpsGYXiFyycfpDF2ECyPcTSsFBMa0fraoxiQyMJ3SmuQIGhzPg2WJuWxVBoxWJ2kClYTcw/4fAg==}
+  '@types/bun@1.3.14':
+    resolution: {integrity: sha512-h1hFqFVcvAvD9j9K7ZW7vd82aSA+rTdznZa+5bwvCwqSB1jmmfLcbIWhOLx1/+boy/xmjgCs/OMUL8hRJSmnPw==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -2063,6 +2063,9 @@ packages:
 
   '@types/node@24.12.2':
     resolution: {integrity: sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==}
+
+  '@types/node@24.12.4':
+    resolution: {integrity: sha512-GUUEShf+PBCGW2KaXwcIt3Yk+e3pkKwWKb9GSyM9WQVE+ep2jzmHdGsHzu4wgcZy5fN9FBdVzjpBQsYlpfpgLA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2345,8 +2348,8 @@ packages:
     peerDependencies:
       bun: '>=1.0.0'
 
-  bun-types@1.3.11:
-    resolution: {integrity: sha512-1KGPpoxQWl9f6wcZh57LvrPIInQMn2TQ7jsgxqpRzg+l0QPOFvJVH7HmvHo/AiPgwXy+/Thf6Ov3EdVn1vOabg==}
+  bun-types@1.3.14:
+    resolution: {integrity: sha512-4N0ig0fEomHt5R0KCFWjovxow98rIoRwKolrYdCcknNwMekCXRnWEUvgu5soYV8QXtVsrUD8B95MBOZGPvr6KQ==}
 
   bun@1.3.11:
     resolution: {integrity: sha512-AvXWYFO6j/ZQ7bhGm4X6eilq2JHsDVC90ZM32k2B7/srhC2gs3Sdki1QTbwrdRCo8o7eT+167vcB1yzOvPdbjA==}
@@ -4895,11 +4898,6 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.49:
-    resolution: {integrity: sha512-mztJ1mp2pfcjacwFf8/oCUr17+HWt+dBXcZzMv0qwJSgy+GiZDhN2UlOKmu3TT6QKGPMDxwmEF+b2GuTTCB2yw==}
-    peerDependencies:
-      typedoc: 0.28.x
-
   typedoc-plugin-dt-links@2.0.56:
     resolution: {integrity: sha512-dQX13ffU3F1kqLBooROGnzS1t5yeoJD1w/TjraBwTfFj90U1Celzs+r+LvqTii6QIHOuYUILqBFkthqVhDTUqw==}
     peerDependencies:
@@ -5453,11 +5451,11 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@commitlint/cli@20.5.3(@types/node@24.12.2)(conventional-commits-parser@6.4.0)(typescript@5.9.3)':
+  '@commitlint/cli@20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.5.0
       '@commitlint/lint': 20.5.3
-      '@commitlint/load': 20.5.3(@types/node@24.12.2)(typescript@5.9.3)
+      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@5.9.3)
       '@commitlint/read': 20.5.0(conventional-commits-parser@6.4.0)
       '@commitlint/types': 20.5.0
       tinyexec: 1.2.2
@@ -5484,13 +5482,13 @@ snapshots:
       ajv: 8.20.0
     optional: true
 
-  '@commitlint/cz-commitlint@20.5.3(@types/node@24.12.2)(commitizen@4.3.1(@types/node@24.12.2)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.2))(typescript@5.9.3)':
+  '@commitlint/cz-commitlint@20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@5.9.3)':
     dependencies:
       '@commitlint/ensure': 20.5.3
-      '@commitlint/load': 20.5.3(@types/node@24.12.2)(typescript@5.9.3)
+      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@5.9.3)
       '@commitlint/types': 20.5.0
-      commitizen: 4.3.1(@types/node@24.12.2)(typescript@5.9.3)
-      inquirer: 9.3.8(@types/node@24.12.2)
+      commitizen: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
+      inquirer: 9.3.8(@types/node@24.12.4)
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
       word-wrap: 1.2.5
@@ -5525,14 +5523,14 @@ snapshots:
       '@commitlint/rules': 20.5.3
       '@commitlint/types': 20.5.0
 
-  '@commitlint/load@20.5.3(@types/node@24.12.2)(typescript@5.9.3)':
+  '@commitlint/load@20.5.3(@types/node@24.12.4)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 20.5.0
       '@commitlint/execute-rule': 20.0.0
       '@commitlint/resolve-extends': 20.5.3
       '@commitlint/types': 20.5.0
       cosmiconfig: 9.0.1(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.2)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
       es-toolkit: 1.47.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -5540,14 +5538,14 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/load@21.0.1(@types/node@24.12.2)(typescript@5.9.3)':
+  '@commitlint/load@21.0.1(@types/node@24.12.4)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 21.0.1
       '@commitlint/execute-rule': 21.0.1
       '@commitlint/resolve-extends': 21.0.1
       '@commitlint/types': 21.0.1
       cosmiconfig: 9.0.1(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.2)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
       es-toolkit: 1.47.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -5655,12 +5653,12 @@ snapshots:
     dependencies:
       hono: 4.12.10
 
-  '@inquirer/external-editor@1.0.3(@types/node@24.12.2)':
+  '@inquirer/external-editor@1.0.3(@types/node@24.12.4)':
     dependencies:
       chardet: 2.1.1
       iconv-lite: 0.7.2
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   '@inquirer/figures@1.0.15': {}
 
@@ -5959,11 +5957,11 @@ snapshots:
       '@pnpm/types': 1001.3.0
       load-json-file: 6.2.0
 
-  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
-      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
+      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
       '@pnpm/default-reporter': 1002.1.14(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
@@ -5971,7 +5969,7 @@ snapshots:
       '@pnpm/package-is-installable': 1000.0.21(@pnpm/logger@1001.0.1)
       '@pnpm/pnpmfile': 1002.1.13(@pnpm/logger@1001.0.1)
       '@pnpm/read-project-manifest': 1001.2.6(@pnpm/logger@1001.0.1)
-      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       '@pnpm/util.lex-comparator': 3.0.2
       chalk: 4.1.2
@@ -5982,18 +5980,18 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
-      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/directory-fetcher': 1000.1.24(@pnpm/logger@1001.0.1)
       '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
-      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
+      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/network.auth-header': 1000.0.7
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       ramda: '@pnpm/ramda@0.28.1'
     transitivePeerDependencies:
@@ -6012,7 +6010,7 @@ snapshots:
     transitivePeerDependencies:
       - '@pnpm/logger'
 
-  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))':
+  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))':
     dependencies:
       '@pnpm/config.config-writer': 1000.1.3(@pnpm/logger@1001.0.1)
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
@@ -6021,7 +6019,7 @@ snapshots:
       '@pnpm/logger': 1001.0.1
       '@pnpm/network.auth-header': 1000.0.7
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
-      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
+      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
       '@pnpm/parse-wanted-dependency': 1001.0.0
       '@pnpm/pick-registry-for-package': 1000.0.16
       '@pnpm/read-modules-dir': 1000.0.0
@@ -6139,7 +6137,7 @@ snapshots:
       stacktracey: 2.2.0
       string-length: 4.0.2
 
-  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetching-types': 1000.2.1
@@ -6148,8 +6146,8 @@ snapshots:
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
-      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
+      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/tarball-resolver': 1002.2.1
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6214,12 +6212,12 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/fetching.binary-fetcher@1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))':
+  '@pnpm/fetching.binary-fetcher@1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       adm-zip: 0.5.17
       is-subdir: 1.2.0
       rename-overwrite: 6.0.6
@@ -6264,14 +6262,14 @@ snapshots:
     dependencies:
       npm-packlist: 5.1.3
 
-  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fs.packlist': 1000.0.0
       '@pnpm/logger': 1001.0.1
       '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(typanion@3.14.0)
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       '@zkochan/rimraf': 3.0.2
       execa: safe-execa@0.1.2
     transitivePeerDependencies:
@@ -6421,15 +6419,15 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       detect-libc: 2.1.2
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6534,7 +6532,7 @@ snapshots:
       mem: 8.1.1
       semver: 7.8.1
 
-  '@pnpm/package-requester@1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))':
+  '@pnpm/package-requester@1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/dependency-path': 1001.1.10
@@ -6549,7 +6547,7 @@ snapshots:
       '@pnpm/store-controller-types': 1004.5.1
       '@pnpm/store.cafs': 1000.1.4
       '@pnpm/types': 1001.3.0
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       detect-libc: 2.1.2
       p-defer: 3.0.0
       p-limit: 3.1.0
@@ -6559,19 +6557,19 @@ snapshots:
       semver: 7.8.1
       ssri: 10.0.5
 
-  '@pnpm/package-store@1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))':
+  '@pnpm/package-store@1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))':
     dependencies:
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
       '@pnpm/crypto.hash': 1000.2.2
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/logger': 1001.0.1
-      '@pnpm/package-requester': 1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
+      '@pnpm/package-requester': 1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/store-controller-types': 1004.5.1
       '@pnpm/store.cafs': 1000.1.4
       '@pnpm/types': 1001.3.0
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       '@zkochan/rimraf': 3.0.2
       is-subdir: 1.2.0
       load-json-file: 6.2.0
@@ -6675,20 +6673,20 @@ snapshots:
     dependencies:
       '@pnpm/types': 1001.3.0
 
-  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
       '@pnpm/util.lex-comparator': 3.0.2
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       semver: 7.8.1
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6696,20 +6694,20 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
       '@pnpm/util.lex-comparator': 3.0.2
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       semver: 7.8.1
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6738,14 +6736,14 @@ snapshots:
       - domexception
       - supports-color
 
-  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
-      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
-      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))
+      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))
       '@pnpm/server': 1001.0.20(@pnpm/logger@1001.0.1)
       '@pnpm/store-path': 1000.0.6
       '@zkochan/diable': 1.0.2
@@ -6794,7 +6792,7 @@ snapshots:
       '@pnpm/types': 1001.3.0
       symlink-dir: 6.0.5
 
-  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
@@ -6805,7 +6803,7 @@ snapshots:
       '@pnpm/logger': 1001.0.1
       '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
-      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)
+      '@pnpm/worker': 1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)
       '@zkochan/retry': 0.2.0
       lodash.throttle: 4.1.1
       p-map-values: 1.0.0
@@ -6838,7 +6836,7 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  '@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2)':
+  '@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4)':
     dependencies:
       '@pnpm/cafs-types': 1000.1.0
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
@@ -6850,16 +6848,16 @@ snapshots:
       '@pnpm/logger': 1001.0.1
       '@pnpm/store.cafs': 1000.1.4
       '@pnpm/symlink-dependency': 1000.0.17(@pnpm/logger@1001.0.1)
-      '@rushstack/worker-pool': 0.4.9(@types/node@24.12.2)
+      '@rushstack/worker-pool': 0.4.9(@types/node@24.12.4)
       is-windows: 1.0.2
       load-json-file: 6.2.0
       p-limit: 3.1.0
     transitivePeerDependencies:
       - '@types/node'
 
-  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)':
+  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)':
     dependencies:
-      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.2))(typanion@3.14.0)
+      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.7(@pnpm/logger@1001.0.1)(@types/node@24.12.4))(typanion@3.14.0)
       '@pnpm/constants': 1001.3.1
       '@pnpm/fs.find-packages': 1000.0.24(@pnpm/logger@1001.0.1)
       '@pnpm/logger': 1001.0.1
@@ -7051,9 +7049,9 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@rushstack/worker-pool@0.4.9(@types/node@24.12.2)':
+  '@rushstack/worker-pool@0.4.9(@types/node@24.12.4)':
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   '@shikijs/engine-oniguruma@3.23.0':
     dependencies:
@@ -7224,9 +7222,9 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/bun@1.3.11':
+  '@types/bun@1.3.14':
     dependencies:
-      bun-types: 1.3.11
+      bun-types: 1.3.14
 
   '@types/chai@5.2.3':
     dependencies:
@@ -7251,11 +7249,15 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  '@types/node@24.12.4':
+    dependencies:
+      undici-types: 7.16.0
+
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/ssri@7.1.5':
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   '@types/unist@2.0.11': {}
 
@@ -7273,7 +7275,7 @@ snapshots:
       obug: 2.1.1
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+      vitest: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   '@vitest/expect@4.1.7':
     dependencies:
@@ -7284,21 +7286,21 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))':
+  '@vitest/mocker@4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3))':
     dependencies:
       '@vitest/spy': 4.1.7
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)
+      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3)
 
-  '@vitest/mocker@4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.7
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
+      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.7':
     dependencies:
@@ -7327,7 +7329,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+      vitest: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
 
   '@vitest/utils@4.1.7':
     dependencies:
@@ -7577,9 +7579,9 @@ snapshots:
     dependencies:
       bun: 1.3.11
 
-  bun-types@1.3.11:
+  bun-types@1.3.14:
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
 
   bun@1.3.11:
     optionalDependencies:
@@ -7774,10 +7776,10 @@ snapshots:
 
   commander@14.0.3: {}
 
-  commitizen@4.3.1(@types/node@24.12.2)(typescript@5.9.3):
+  commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@24.12.2)(typescript@5.9.3)
+      cz-conventional-changelog: 3.3.0(@types/node@24.12.4)(typescript@5.9.3)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -7836,9 +7838,9 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@24.12.2)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       cosmiconfig: 9.0.1(typescript@5.9.3)
       jiti: 2.6.1
       typescript: 5.9.3
@@ -7872,16 +7874,16 @@ snapshots:
 
   css-what@6.2.2: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@24.12.2)(typescript@5.9.3):
+  cz-conventional-changelog@3.3.0(@types/node@24.12.4)(typescript@5.9.3):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.1(@types/node@24.12.2)(typescript@5.9.3)
+      commitizen: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 21.0.1(@types/node@24.12.2)(typescript@5.9.3)
+      '@commitlint/load': 21.0.1(@types/node@24.12.4)(typescript@5.9.3)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -8534,9 +8536,9 @@ snapshots:
       through: 2.3.8
       wrap-ansi: 7.0.0
 
-  inquirer@9.3.8(@types/node@24.12.2):
+  inquirer@9.3.8(@types/node@24.12.4):
     dependencies:
-      '@inquirer/external-editor': 1.0.3(@types/node@24.12.2)
+      '@inquirer/external-editor': 1.0.3(@types/node@24.12.4)
       '@inquirer/figures': 1.0.15
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -10185,10 +10187,6 @@ snapshots:
       '@material/material-color-utilities': 0.3.0
       typedoc: 0.28.19(typescript@5.9.3)
 
-  typedoc-plugin-dt-links@2.0.49(typedoc@0.28.19(typescript@5.9.3)):
-    dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
-
   typedoc-plugin-dt-links@2.0.56(typedoc@0.28.19(typescript@5.9.3)):
     dependencies:
       typedoc: 0.28.19(typescript@5.9.3)
@@ -10357,7 +10355,7 @@ snapshots:
       unist-util-stringify-position: 2.0.3
       vfile-message: 2.0.4
 
-  vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3):
+  vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -10365,7 +10363,7 @@ snapshots:
       rolldown: 1.0.0-rc.12(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       fsevents: 2.3.3
       jiti: 2.6.1
       yaml: 2.8.3
@@ -10373,7 +10371,7 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0):
+  vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -10381,7 +10379,7 @@ snapshots:
       rolldown: 1.0.0-rc.12(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       fsevents: 2.3.3
       jiti: 2.6.1
       yaml: 2.9.0
@@ -10389,10 +10387,10 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  vitest@4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)):
+  vitest@4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3)):
     dependencies:
       '@vitest/expect': 4.1.7
-      '@vitest/mocker': 4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3))
+      '@vitest/mocker': 4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3))
       '@vitest/pretty-format': 4.1.7
       '@vitest/runner': 4.1.7
       '@vitest/snapshot': 4.1.7
@@ -10409,19 +10407,19 @@ snapshots:
       tinyexec: 1.2.2
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.8.3)
+      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.8.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       '@vitest/coverage-v8': 4.1.7(vitest@4.1.7)
       '@vitest/ui': 4.1.7(vitest@4.1.7)
     transitivePeerDependencies:
       - msw
 
-  vitest@4.1.7(@types/node@24.12.2)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)):
+  vitest@4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.7
-      '@vitest/mocker': 4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.7(vite@8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.7
       '@vitest/runner': 4.1.7
       '@vitest/snapshot': 4.1.7
@@ -10438,10 +10436,10 @@ snapshots:
       tinyexec: 1.2.2
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.2)(jiti@2.6.1)(yaml@2.9.0)
+      vite: 8.0.5(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 24.12.2
+      '@types/node': 24.12.4
       '@vitest/coverage-v8': 4.1.7(vitest@4.1.7)
       '@vitest/ui': 4.1.7(vitest@4.1.7)
     transitivePeerDependencies:
