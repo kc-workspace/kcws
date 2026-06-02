@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.1...@kcconfigs/lefthook+v0.1.2) (2026-06-02)
+
+
+### Performance Improvements
+
+* **kcconfigs/lefthook:** add new textlint on commit-msg hook ([1102814](https://github.com/kc-workspace/kcws/commit/1102814014ad5cbcfffac6e57879462066b4db03))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.1
+
 ## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.0...@kcconfigs/lefthook+v0.1.1) (2026-04-06)
 
 
