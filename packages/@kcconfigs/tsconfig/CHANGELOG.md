@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.0.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.0...@kcconfigs/tsconfig+v1.0.1) (2026-06-02)
+
+
+### Bugfixes
+
+* **@kcconfigs/tsconfig:** exclude *.example.ts files from tsconfig and compile time ([acc32c2](https://github.com/kc-workspace/kcws/commit/acc32c2c97f002f81a547b0976aea2bcefc07a86))
+
+
+### Documentation
+
+* **kcconfigs/tsconfig:** add react preset and feature documentation ([de54af2](https://github.com/kc-workspace/kcws/commit/de54af2570635badbad50edf7034818fafc7b778))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.1
+
 ## [1.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.0-beta.1...@kcconfigs/tsconfig+v1.0.0) (2026-04-06)
 
 

@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.2...@kcconfigs/commitlint+v0.2.3) (2026-06-02)
+
+
+### Performance Improvements
+
+* **deps:** bump @pnpm/workspace.find-packages ([612aec1](https://github.com/kc-workspace/kcws/commit/612aec1a3e9ccc89111a2fae58a404d8ead66de0))
+* **deps:** bump @pnpm/workspace.find-packages from 1000.0.64 to 1000.0.65 ([#105](https://github.com/kc-workspace/kcws/issues/105)) ([612aec1](https://github.com/kc-workspace/kcws/commit/612aec1a3e9ccc89111a2fae58a404d8ead66de0))
+* **deps:** bump tsdown from 0.20.3 to 0.22.0 ([#131](https://github.com/kc-workspace/kcws/issues/131)) ([d1782f8](https://github.com/kc-workspace/kcws/commit/d1782f850e1dd62ad1de4d52eba9ad322c946833))
+
+
+### Bugfixes
+
+* update lint error ([40af0d8](https://github.com/kc-workspace/kcws/commit/40af0d886db352e14270c8fb308b877d53769449))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.1
+    * @kcconfigs/tsconfig bumped to 1.0.1
+    * @kcconfigs/tsdown bumped to 0.1.2-beta.5
+    * @kcconfigs/vitest bumped to 0.1.2-beta.4
+
 ## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.1...@kcconfigs/commitlint+v0.2.2) (2026-04-06)
 
 

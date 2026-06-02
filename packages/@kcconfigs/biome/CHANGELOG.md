@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.0...@kcconfigs/biome+v1.0.1) (2026-06-02)
+
+
+### Performance Improvements
+
+* **kcconfigs/biome:** ignore claude local settings by default ([#112](https://github.com/kc-workspace/kcws/issues/112)) ([1730826](https://github.com/kc-workspace/kcws/commit/1730826bc5086f227cd54fc8a3df492cc4495706))
+* **kcconfigs/biome:** update schema version in configuration to 2.4.10 ([9729c1a](https://github.com/kc-workspace/kcws/commit/9729c1a1cbfa514ac7e67678ce8d1f371e720a2e))
+
 ## [1.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.0-beta.1...@kcconfigs/biome+v1.0.0) (2026-04-06)
 
 

@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.1.2-beta.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.2-beta.4...@kcconfigs/tsdown+v0.1.2-beta.5) (2026-06-02)
+
+
+### Performance Improvements
+
+* **deps:** bump tsdown from 0.20.3 to 0.22.0 ([#131](https://github.com/kc-workspace/kcws/issues/131)) ([d1782f8](https://github.com/kc-workspace/kcws/commit/d1782f850e1dd62ad1de4d52eba9ad322c946833))
+* **kcconfigs/tsdown:** dynamically set attw profile when only have esm format ([2e9185d](https://github.com/kc-workspace/kcws/commit/2e9185da8c96e2f21a229429715aaf12b2d827ca))
+
+
+### Bugfixes
+
+* **@kcconfigs/tsconfig:** exclude *.example.ts files from tsconfig and compile time ([acc32c2](https://github.com/kc-workspace/kcws/commit/acc32c2c97f002f81a547b0976aea2bcefc07a86))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.1
+    * @kcconfigs/tsconfig bumped to 1.0.1
+
 ## [0.1.2-beta.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.2-beta.3...@kcconfigs/tsdown+v0.1.2-beta.4) (2026-04-06)
 
 

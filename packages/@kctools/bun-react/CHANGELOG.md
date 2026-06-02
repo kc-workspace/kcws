@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.1.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.2...@kctools/bun-react+v0.1.3) (2026-06-02)
+
+
+### Performance Improvements
+
+* **deps:** bump @types/bun from 1.3.11 to 1.3.14 ([#139](https://github.com/kc-workspace/kcws/issues/139)) ([d28ae9b](https://github.com/kc-workspace/kcws/commit/d28ae9b0b4f18038b8ed057f845505ae464508f7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.1
+    * @kcconfigs/tsconfig bumped to 1.0.1
+    * @kcconfigs/tsdown bumped to 0.1.2-beta.5
+    * @kcconfigs/vitest bumped to 0.1.2-beta.4
+
 ## [0.1.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.1...@kctools/bun-react+v0.1.2) (2026-04-06)
 
 
