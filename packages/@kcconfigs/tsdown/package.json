@@ -1,95 +1,95 @@
 {
-	"name": "@kcconfigs/tsdown",
-	"version": "0.1.2-beta.5",
-	"description": "Shared tsdown configuration",
-	"type": "module",
-	"scripts": {
-		"build": "tsdown --config-loader unrun",
-		"fix": "biome check --fix --unsafe",
-		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
-		"format": "biome format --fix",
-		"format:check": "biome format",
-		"lint": "biome lint --fix --unsafe",
-		"lint:check": "biome lint",
-		"type:check": "tsc --noEmit"
-	},
-	"dependencies": {
-		"@arethetypeswrong/core": "catalog:",
-		"publint": "catalog:",
-		"tsdown": "catalog:",
-		"unplugin-unused": "catalog:",
-		"unrun": "catalog:"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"@kcconfigs/biome": "workspace:*",
-		"@kcconfigs/tsconfig": "workspace:*",
-		"@kctypes/generic": "workspace:*"
-	},
-	"peerDependencies": {
-		"@arethetypeswrong/core": "catalog:peer",
-		"publint": "catalog:peer",
-		"tsdown": "catalog:peer",
-		"unplugin-unused": "catalog:peer",
-		"unrun": "catalog:peer"
-	},
-	"peerDependenciesMeta": {
-		"publint": {
-			"optional": true
-		},
-		"unplugin-unused": {
-			"optional": true
-		},
-		"@arethetypeswrong/core": {
-			"optional": true
-		}
-	},
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.cts",
-	"exports": {
-		".": {
-			"source": "./src/index.ts",
-			"typedoc": "./src/index.ts",
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			},
-			"default": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			}
-		}
-	},
-	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/tsdown",
-	"repository": {
-		"type": "git",
-		"directory": "@kcconfigs/tsdown",
-		"url": "git+https://github.com/kc-workspace/kcws.git"
-	},
-	"author": {
-		"name": "Kamontat Chantrachirathumrong",
-		"email": "kcws@kc.in.th",
-		"url": "https://github.com/kamontat"
-	},
-	"keywords": [
-		"config",
-		"typescript",
-		"tsdown",
-		"library",
-		"compiler",
-		"bundler"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src"
-	],
-	"engines": {
-		"node": ">=14"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "@kcconfigs/tsdown",
+  "version": "0.2.0",
+  "description": "Shared tsdown configuration",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown --config-loader unrun",
+    "fix": "biome check --fix --unsafe",
+    "check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
+    "format": "biome format --fix",
+    "format:check": "biome format",
+    "lint": "biome lint --fix --unsafe",
+    "lint:check": "biome lint",
+    "type:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@arethetypeswrong/core": "catalog:",
+    "publint": "catalog:",
+    "tsdown": "catalog:",
+    "unplugin-unused": "catalog:",
+    "unrun": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@kcconfigs/biome": "workspace:*",
+    "@kcconfigs/tsconfig": "workspace:*",
+    "@kctypes/generic": "workspace:*"
+  },
+  "peerDependencies": {
+    "@arethetypeswrong/core": "catalog:peer",
+    "publint": "catalog:peer",
+    "tsdown": "catalog:peer",
+    "unplugin-unused": "catalog:peer",
+    "unrun": "catalog:peer"
+  },
+  "peerDependenciesMeta": {
+    "publint": {
+      "optional": true
+    },
+    "unplugin-unused": {
+      "optional": true
+    },
+    "@arethetypeswrong/core": {
+      "optional": true
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "typedoc": "./src/index.ts",
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "license": "AGPL-3.0-only",
+  "homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/tsdown",
+  "repository": {
+    "type": "git",
+    "directory": "@kcconfigs/tsdown",
+    "url": "git+https://github.com/kc-workspace/kcws.git"
+  },
+  "author": {
+    "name": "Kamontat Chantrachirathumrong",
+    "email": "kcws@kc.in.th",
+    "url": "https://github.com/kamontat"
+  },
+  "keywords": [
+    "config",
+    "typescript",
+    "tsdown",
+    "library",
+    "compiler",
+    "bundler"
+  ],
+  "files": [
+    "CHANGELOG.json",
+    "CHANGELOG.md",
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
