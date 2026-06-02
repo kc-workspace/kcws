@@ -40,6 +40,7 @@
 		"https://json.schemastore.org/": true,
 		"https://json-schema.org/": true,
 		"https://developer.microsoft.com/json-schemas/": true,
+		"https://biomejs.dev/schemas/*/schema.json": true,
 		"https://raw.githubusercontent.com/evilmartians/lefthook": true,
 		"https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json": true,
 		"https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json": true,
