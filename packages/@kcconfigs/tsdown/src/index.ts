@@ -2,6 +2,7 @@ import {
 	mergeConfig as _mergeConfig,
 	type UserConfig as _UserConfig,
 } from "tsdown";
+import { defineAttw } from "./utils/defineAttw";
 import { defineDts } from "./utils/defineDts";
 import { defineFormat } from "./utils/defineFormat";
 
@@ -20,6 +21,9 @@ export const defineConfig = (
 	...configs: UserConfig[]
 ): UserConfig => {
 	const { format: _format, dts: _dts, ...rest } = config ?? ({} as UserConfig);
+
+	const format = defineFormat(_format);
+	const dts = defineDts(_dts);
 
 	const baseConfig: _UserConfig = {
 		entry: [
@@ -45,19 +49,10 @@ export const defineConfig = (
 			level: "warning",
 			depKinds: ["dependencies", "peerDependencies"],
 		},
-		attw: {
-			enabled: true,
-			level: "error",
-			// We don't build package for node older than 10
-			// https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/NoResolution.md#true-positive-node-10-doesnt-support-packagejson-exports
-			profile: "node16",
-		},
+		attw: defineAttw(format),
 	};
 
-	const format = defineFormat(_format);
 	if (format) baseConfig.format = format;
-
-	const dts = defineDts(_dts);
 	if (dts) baseConfig.dts = dts;
 
 	return [rest, ...configs].reduce(
