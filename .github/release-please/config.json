@@ -77,10 +77,7 @@
       "component": "@kcconfigs/tsconfig"
     },
     "packages/@kcconfigs/tsdown": {
-      "component": "@kcconfigs/tsdown",
-      "versioning": "prerelease",
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "component": "@kcconfigs/tsdown"
     },
     "packages/@kcconfigs/vitest": {
       "component": "@kcconfigs/vitest",
