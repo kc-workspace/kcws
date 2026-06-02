@@ -77,5 +77,5 @@ export const defineConfig = async (
 	};
 };
 
-export { Severity };
 export type { UserConfig };
+export { Severity };
