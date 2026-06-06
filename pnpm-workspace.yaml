@@ -23,7 +23,7 @@ catalog:
   vite: 8.0.13
   yaml: 2.9.0
   zshy: 0.7.2
-  zod: 3.23.8
+  zod: 4.3.6
 
 catalogs:
   commitlint:latest:
