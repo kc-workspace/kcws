@@ -45,8 +45,8 @@ catalogs:
       specifier: 2.1.8
       version: 2.1.8
     publint:
-      specifier: 0.3.18
-      version: 0.3.18
+      specifier: 0.3.21
+      version: 0.3.21
     rimraf:
       specifier: 6.1.3
       version: 6.1.3
@@ -278,7 +278,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -324,7 +324,7 @@ importers:
         version: link:../vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -352,10 +352,10 @@ importers:
         version: 0.18.2
       publint:
         specifier: 'catalog:'
-        version: 0.3.18
+        version: 0.3.21
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       unplugin-unused:
         specifier: 'catalog:'
         version: 0.5.7
@@ -432,7 +432,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -463,7 +463,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
 
   packages/@kcexamples/demo:
     devDependencies:
@@ -487,7 +487,7 @@ importers:
         version: 0.25.1(rolldown@1.0.2)(typescript@5.9.3)
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vite:
         specifier: 'catalog:'
         version: 8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)
@@ -517,7 +517,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -553,7 +553,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -605,7 +605,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.13(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -4206,8 +4206,8 @@ packages:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
 
-  publint@0.3.18:
-    resolution: {integrity: sha512-JRJFeBTrfx4qLwEuGFPk+haJOJN97KnPuK01yj+4k/Wj5BgoOK5uNsivporiqBjk2JDaslg7qJOhGRnpltGeog==}
+  publint@0.3.21:
+    resolution: {integrity: sha512-OqejcnMV6E9zel2oCrUOJEiiFkGiAAni0A6ibfQNh1k9Gu5z4F+Yso8lllam7AzmV6Do0vp7u3UpZNRBwuXaHQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9356,7 +9356,7 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
-  publint@0.3.18:
+  publint@0.3.21:
     dependencies:
       '@publint/pack': 0.1.4
       package-manager-detector: 1.6.0
@@ -9973,7 +9973,7 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.18)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0):
+  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -9992,7 +9992,7 @@ snapshots:
       unconfig-core: 7.5.0
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.2
-      publint: 0.3.18
+      publint: 0.3.21
       typescript: 5.9.3
       unplugin-unused: 0.5.7
       unrun: 0.3.0
