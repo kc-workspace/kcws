@@ -20,7 +20,7 @@ catalog:
   typescript: 5.9.3
   unplugin-unused: 0.5.7
   unrun: 0.3.0
-  vite: 8.0.13
+  vite: 8.0.16
   yaml: 2.9.0
   zshy: 0.7.2
   zod: 4.3.6
@@ -93,25 +93,32 @@ nodeLinker: isolated
 
 overrides:
   ## force all @types/node to be v24
-  '@types/node@>=25.0.0': '^24.0.0'
-  '@types/node@<24.0.0': '^24.0.0'
+  '@types/node@*': ^24.0.0
   ## commitizen>glob>minimatch>brace-expansion
-  brace-expansion@<1.1.13: '>=1.1.13 <2.0.0'
+  brace-expansion@<1.1.13: ^1.1.13
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>cross-spawn
-  cross-spawn@>=7.0.0 <7.0.5: '>=7.0.5 <8.0.0'
+  cross-spawn@>=7.0.0 <7.0.5: ^7.0.5
   ## @commitlint/cli>@commitlint/load>...>ajv>fast-uri
-  fast-uri@<3.1.2: '^3.1.2'
+  fast-uri@<3.1.2: ^3.1.2
   ## commitizen>lodash
   ## commitizen>inquirer>lodash
-  lodash@>=4.0.0 <=4.17.23: '>=4.18.0 <5.0.0'
+  lodash@>=4.0.0 <4.17.24: ^4.18.0
   ## commitizen>find-node-modules>findup-sync>micromatch>picomatch
-  picomatch@<2.3.2: '>=2.3.2 <3.0.0'
+  picomatch@<2.3.2: ^2.3.2
   ## @vitest/ui>tinyglobby>picomatch
-  picomatch@>=4.0.0 <4.0.4: '>=4.0.4 <5.0.0'
+  picomatch@>=4.0.0 <4.0.4: ^4.0.4
   ## commitizen>inquirer>external-editor>tmp
-  tmp@<0.2.6: '>=0.2.6 <1.0.0'
+  tmp@<0.2.7: ^0.2.7
   ## typedoc>yaml
-  yaml@>=2.0.0 <2.8.3: '>=2.8.3 <3.0.0'
+  yaml@>=2.0.0 <2.8.3: ^2.8.3
+  ## textlint>@modelcontextprotocol/sdk>@hono/node-server>hono
+  hono@<4.12.25: ^4.12.25
+  ## @actions/core>@actions/http-client>undici
+  undici@<6.27.0: ^6.27.0
+  ## typedoc-theme-oxide>cheerio>undici
+  undici@>=7.0.0 <7.28.0: ^7.28.0
+  ## @vitest/ui>vitest>@vitest/mocker>vite
+  vite@>=8.0.0 <8.0.16: ^8.0.16
 
 preferWorkspacePackages: true
 
@@ -132,3 +139,8 @@ pmOnFail: error
 
 minimumReleaseAgeExclude:
   - tmp@0.2.6
+  - lodash@4.17.24
+  - vite@8.0.16
+  - hono@4.12.25
+  - undici@7.28.0
+  - undici@6.27.0
