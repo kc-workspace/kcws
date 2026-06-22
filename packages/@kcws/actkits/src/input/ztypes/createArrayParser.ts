@@ -17,43 +17,20 @@ const splitString = (val: string): string[] => {
 };
 
 /**
- * Creates a Zod schema for parsing comma/newline-separated string to array of strings.
+ * Creates a Zod schema for parsing string to array.
  *
- * @returns Zod schema that parses string input to string[]
+ * @returns Zod schema that parses string input to array
  * @internal
  */
-export const createStringArrayParser = (): z.ZodEffects<
-	z.ZodArray<z.ZodString>,
-	string[],
-	unknown
+export const createArrayParser = <T extends z.ZodType>(
+	type: T,
+	parser: (val: string | string[]) => z.input<z.ZodOptional<z.ZodArray<T>>>,
+): z.ZodPipe<
+	z.ZodTransform<ReturnType<typeof parser>, Parameters<typeof parser>[0]>,
+	z.ZodArray<T>
 > =>
 	z.preprocess((val) => {
 		if (val === "" || val === undefined || val === null) return undefined;
-		if (Array.isArray(val)) return val;
-		if (typeof val === "string") return splitString(val);
-		return val;
-	}, z.array(z.string()));
-
-/**
- * Creates a Zod schema for parsing comma/newline-separated string to array of numbers.
- *
- * @returns Zod schema that parses string input to number[]
- * @internal
- */
-export const createNumberArrayParser = (): z.ZodEffects<
-	z.ZodArray<z.ZodNumber>,
-	number[],
-	unknown
-> =>
-	z.preprocess((val) => {
-		if (val === "" || val === undefined || val === null) return undefined;
-
-		const toNumber = (v: unknown): unknown => {
-			const num = Number(v);
-			return Number.isNaN(num) ? v : num;
-		};
-
-		if (Array.isArray(val)) return val.map(toNumber);
-		if (typeof val === "string") return splitString(val).map(toNumber);
-		return val;
-	}, z.array(z.number()));
+		if (typeof val === "string") return parser(splitString(val));
+		return parser(val);
+	}, z.array(type));

@@ -13,8 +13,7 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: "key: value" }); // { config: { key: "value" } }
  * ```
  */
-export const zYamlObject: z.ZodEffects<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>,
-	Record<string, unknown>,
-	unknown
+export const zYamlObject: z.ZodPipe<
+	z.ZodTransform,
+	z.ZodRecord<z.ZodString, z.ZodUnknown>
 > = createObjectParser(parseYaml);

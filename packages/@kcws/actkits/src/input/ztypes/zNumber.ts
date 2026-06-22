@@ -10,7 +10,7 @@ import { z } from "zod";
  * schema.parse({ count: "42" }); // { count: 42 }
  * ```
  */
-export const zNumber: z.ZodEffects<z.ZodNumber, number, unknown> = z.preprocess(
+export const zNumber: z.ZodPipe<z.ZodTransform, z.ZodNumber> = z.preprocess(
 	(val) => {
 		if (val === "" || val === undefined || val === null) return undefined;
 		const num = Number(val);
