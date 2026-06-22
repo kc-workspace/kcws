@@ -17,8 +17,8 @@ import { z } from "zod";
  * schema.parse({ enabled: "FALSE" }); // { enabled: false }
  * ```
  */
-export const zBoolean: z.ZodEffects<z.ZodBoolean, boolean, unknown> =
-	z.preprocess((val) => {
+export const zBoolean: z.ZodPipe<z.ZodTransform, z.ZodBoolean> = z.preprocess(
+	(val) => {
 		if (val === "" || val === undefined || val === null) return undefined;
 		if (typeof val === "boolean") return val;
 		if (typeof val === "string") {
@@ -27,4 +27,6 @@ export const zBoolean: z.ZodEffects<z.ZodBoolean, boolean, unknown> =
 			if (["false", "False", "FALSE"].includes(trimmed)) return false;
 		}
 		return val;
-	}, z.boolean());
+	},
+	z.boolean(),
+);

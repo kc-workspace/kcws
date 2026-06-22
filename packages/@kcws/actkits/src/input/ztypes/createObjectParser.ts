@@ -9,20 +9,19 @@ import { z } from "zod";
  */
 export const createObjectParser = (
 	parser: (value: string) => unknown,
-): z.ZodEffects<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>,
-	Record<string, unknown>,
-	unknown
-> =>
-	z.preprocess((val) => {
-		if (val === "" || val === undefined || val === null) return undefined;
-		if (typeof val === "object") return val;
-		if (typeof val === "string") {
-			try {
-				return parser(val);
-			} catch {
-				return val;
+): z.ZodPipe<z.ZodTransform, z.ZodRecord<z.ZodString, z.ZodUnknown>> =>
+	z.preprocess(
+		(val) => {
+			if (val === "" || val === undefined || val === null) return undefined;
+			if (typeof val === "object") return val;
+			if (typeof val === "string") {
+				try {
+					return parser(val);
+				} catch {
+					return val;
+				}
 			}
-		}
-		return val;
-	}, z.record(z.unknown()));
+			return val;
+		},
+		z.record(z.string(), z.unknown()),
+	);
