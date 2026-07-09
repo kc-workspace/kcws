@@ -30,8 +30,8 @@ catalogs:
       version: 9.3.8
   default:
     '@arethetypeswrong/core':
-      specifier: 0.18.2
-      version: 0.18.2
+      specifier: 0.18.4
+      version: 0.18.4
     '@biomejs/biome':
       specifier: 2.4.15
       version: 2.4.15
@@ -54,8 +54,8 @@ catalogs:
       specifier: 0.22.0
       version: 0.22.0
     typescript:
-      specifier: 5.9.3
-      version: 5.9.3
+      specifier: 6.0.3
+      version: 6.0.3
     unplugin-unused:
       specifier: 0.5.7
       version: 0.5.7
@@ -76,8 +76,8 @@ catalogs:
       version: 0.7.2
   peer:
     typescript:
-      specifier: ^5.5.0
-      version: 5.9.3
+      specifier: ^6.0.0
+      version: 6.0.3
   test:latest:
     '@vitest/coverage-v8':
       specifier: 4.1.7
@@ -141,9 +141,6 @@ catalogs:
     typedoc-theme-oxide:
       specifier: ^0.2.0
       version: 0.2.5
-    varvara-typedoc-theme:
-      specifier: ^0.3.0
-      version: 0.3.9
 
 overrides:
   '@types/node@*': ^24.0.0
@@ -169,10 +166,10 @@ importers:
         version: 2.4.15
       '@commitlint/cli':
         specifier: catalog:commitlint:latest
-        version: 20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@5.9.3)
+        version: 20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@6.0.3)
       '@commitlint/cz-commitlint':
         specifier: catalog:commitlint:latest
-        version: 20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@5.9.3)
+        version: 20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@6.0.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@6.0.3)
       '@kcconfigs/biome':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/biome
@@ -202,7 +199,7 @@ importers:
         version: 4.1.7(vitest@4.1.7)
       commitizen:
         specifier: catalog:commitlint:latest
-        version: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
+        version: 4.3.1(@types/node@24.12.4)(typescript@6.0.3)
       inquirer:
         specifier: catalog:commitlint:latest
         version: 9.3.8(@types/node@24.12.4)
@@ -214,28 +211,28 @@ importers:
         version: 6.1.3
       typedoc:
         specifier: catalog:typedoc:latest
-        version: 0.28.19(typescript@5.9.3)
+        version: 0.28.19(typescript@6.0.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:latest
-        version: 0.4.0(typedoc@0.28.19(typescript@5.9.3))
+        version: 0.4.0(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.56(typedoc@0.28.19(typescript@5.9.3))
+        version: 2.0.56(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
-        version: 4.0.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:latest
-        version: 3.0.2(typedoc@0.28.19(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:latest
-        version: 5.1.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 5.1.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:latest
-        version: 4.1.3(typedoc@0.28.19(typescript@5.9.3))
+        version: 4.1.3(typedoc@0.28.19(typescript@6.0.3))
       typescript:
         specifier: 'catalog:'
-        version: 5.9.3
+        version: 6.0.3
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -281,7 +278,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -327,7 +324,7 @@ importers:
         version: link:../vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -339,7 +336,7 @@ importers:
         version: 24.12.2
       typescript:
         specifier: catalog:peer
-        version: 5.9.3
+        version: 6.0.3
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -352,13 +349,13 @@ importers:
     dependencies:
       '@arethetypeswrong/core':
         specifier: 'catalog:'
-        version: 0.18.2
+        version: 0.18.4
       publint:
         specifier: 'catalog:'
         version: 0.3.21
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       unplugin-unused:
         specifier: 'catalog:'
         version: 0.5.7
@@ -383,37 +380,34 @@ importers:
     dependencies:
       typedoc:
         specifier: catalog:typedoc:latest
-        version: 0.28.19(typescript@5.9.3)
+        version: 0.28.19(typescript@6.0.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 0.3.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-material-theme:
         specifier: catalog:typedoc:peer
-        version: 1.4.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 1.4.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:peer
-        version: 2.0.56(typedoc@0.28.19(typescript@5.9.3))
+        version: 2.0.56(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-extras:
         specifier: catalog:typedoc:peer
-        version: 4.0.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 4.0.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:peer
-        version: 3.0.2(typedoc@0.28.19(typescript@5.9.3))
+        version: 3.0.2(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:peer
-        version: 5.1.1(typedoc@0.28.19(typescript@5.9.3))
+        version: 5.1.1(typedoc@0.28.19(typescript@6.0.3))
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:peer
-        version: 4.1.3(typedoc@0.28.19(typescript@5.9.3))
+        version: 4.1.3(typedoc@0.28.19(typescript@6.0.3))
       typedoc-rhineai-theme:
         specifier: catalog:typedoc:peer
-        version: 1.2.0(typedoc@0.28.19(typescript@5.9.3))
+        version: 1.2.0(typedoc@0.28.19(typescript@6.0.3))
       typedoc-theme-oxide:
         specifier: catalog:typedoc:peer
-        version: 0.2.5(typedoc@0.28.19(typescript@5.9.3))
-      varvara-typedoc-theme:
-        specifier: catalog:typedoc:peer
-        version: 0.3.9(typedoc@0.28.19(typescript@5.9.3))(typescript@5.9.3)
+        version: 0.2.5(typedoc@0.28.19(typescript@6.0.3))
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -435,7 +429,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -466,7 +460,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
 
   packages/@kcexamples/demo:
     devDependencies:
@@ -487,10 +481,10 @@ importers:
         version: link:../../@kcconfigs/vitest
       rolldown-plugin-dts:
         specifier: 0.25.1
-        version: 0.25.1(rolldown@1.0.3)(typescript@5.9.3)
+        version: 0.25.1(rolldown@1.0.3)(typescript@6.0.3)
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vite:
         specifier: 'catalog:'
         version: 8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0)
@@ -499,7 +493,7 @@ importers:
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
       zshy:
         specifier: 'catalog:'
-        version: 0.7.2(typescript@5.9.3)
+        version: 0.7.2(typescript@6.0.3)
 
   packages/@kcinternals/starter:
     devDependencies:
@@ -520,7 +514,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -556,7 +550,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -565,7 +559,7 @@ importers:
     dependencies:
       typescript:
         specifier: 'catalog:'
-        version: 5.9.3
+        version: 6.0.3
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -574,7 +568,7 @@ importers:
     dependencies:
       typescript:
         specifier: 'catalog:'
-        version: 5.9.3
+        version: 6.0.3
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -608,7 +602,7 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
+        version: 0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0)
       vitest:
         specifier: catalog:test:latest
         version: 4.1.7(@types/node@24.12.4)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.0.16(@types/node@24.12.4)(jiti@2.6.1)(yaml@2.9.0))
@@ -630,8 +624,8 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/core@0.18.2':
-    resolution: {integrity: sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==}
+  '@arethetypeswrong/core@0.18.4':
+    resolution: {integrity: sha512-M5F0ePyN6h2Z6XxRiyIPqjGbltotXLjR0CKA0uKspsDu0QmgTNYvRb4RSQPMUs2ZXZHCCYpbaZbFbYOXLxCjUA==}
     engines: {node: '>=20'}
 
   '@azu/format-text@1.0.2':
@@ -4878,8 +4872,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4985,17 +4979,6 @@ packages:
   validate-npm-package-name@5.0.1:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
-  varvara-css@0.9.0:
-    resolution: {integrity: sha512-I4gdKGEgmgfyMsBDfOkMKtUQQCLkvnM+C9s5HIF8ePlKHanlQ5IKhgB3DuWJGg9rFWdZOWxFEU5QKQkxC9EXqA==}
-    peerDependencies:
-      typescript: ^5.0.0
-
-  varvara-typedoc-theme@0.3.9:
-    resolution: {integrity: sha512-HuACQ1g2vnbNjY4nW/Fkp15Hummf0RQzaNtykRNcNYcd8Vyg1XgfDpcKWOjWIFVUmbvreK4RXNIhDky8DUofbw==}
-    peerDependencies:
-      typedoc: ^0.28.0
-      typescript: ^5.0.0
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -5241,7 +5224,7 @@ snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/core@0.18.2':
+  '@arethetypeswrong/core@0.18.4':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.4
@@ -5356,11 +5339,11 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
-  '@commitlint/cli@20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@5.9.3)':
+  '@commitlint/cli@20.5.3(@types/node@24.12.4)(conventional-commits-parser@6.4.0)(typescript@6.0.3)':
     dependencies:
       '@commitlint/format': 20.5.0
       '@commitlint/lint': 20.5.3
-      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@5.9.3)
+      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@6.0.3)
       '@commitlint/read': 20.5.0(conventional-commits-parser@6.4.0)
       '@commitlint/types': 20.5.0
       tinyexec: 1.2.2
@@ -5387,12 +5370,12 @@ snapshots:
       ajv: 8.20.0
     optional: true
 
-  '@commitlint/cz-commitlint@20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@5.9.3)':
+  '@commitlint/cz-commitlint@20.5.3(@types/node@24.12.4)(commitizen@4.3.1(@types/node@24.12.4)(typescript@6.0.3))(inquirer@9.3.8(@types/node@24.12.4))(typescript@6.0.3)':
     dependencies:
       '@commitlint/ensure': 20.5.3
-      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@5.9.3)
+      '@commitlint/load': 20.5.3(@types/node@24.12.4)(typescript@6.0.3)
       '@commitlint/types': 20.5.0
-      commitizen: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
+      commitizen: 4.3.1(@types/node@24.12.4)(typescript@6.0.3)
       inquirer: 9.3.8(@types/node@24.12.4)
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -5428,14 +5411,14 @@ snapshots:
       '@commitlint/rules': 20.5.3
       '@commitlint/types': 20.5.0
 
-  '@commitlint/load@20.5.3(@types/node@24.12.4)(typescript@5.9.3)':
+  '@commitlint/load@20.5.3(@types/node@24.12.4)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-validator': 20.5.0
       '@commitlint/execute-rule': 20.0.0
       '@commitlint/resolve-extends': 20.5.3
       '@commitlint/types': 20.5.0
-      cosmiconfig: 9.0.1(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig: 9.0.1(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3)
       es-toolkit: 1.47.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -5443,14 +5426,14 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/load@21.0.1(@types/node@24.12.4)(typescript@5.9.3)':
+  '@commitlint/load@21.0.1(@types/node@24.12.4)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-validator': 21.0.1
       '@commitlint/execute-rule': 21.0.1
       '@commitlint/resolve-extends': 21.0.1
       '@commitlint/types': 21.0.1
-      cosmiconfig: 9.0.1(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig: 9.0.1(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3)
       es-toolkit: 1.47.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -7656,10 +7639,10 @@ snapshots:
 
   commander@14.0.3: {}
 
-  commitizen@4.3.1(@types/node@24.12.4)(typescript@5.9.3):
+  commitizen@4.3.1(@types/node@24.12.4)(typescript@6.0.3):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@24.12.4)(typescript@5.9.3)
+      cz-conventional-changelog: 3.3.0(@types/node@24.12.4)(typescript@6.0.3)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -7718,21 +7701,21 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@24.12.4)(cosmiconfig@9.0.1(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
       '@types/node': 24.12.4
-      cosmiconfig: 9.0.1(typescript@5.9.3)
+      cosmiconfig: 9.0.1(typescript@6.0.3)
       jiti: 2.6.1
-      typescript: 5.9.3
+      typescript: 6.0.3
 
-  cosmiconfig@9.0.1(typescript@5.9.3):
+  cosmiconfig@9.0.1(typescript@6.0.3):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.1
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
 
   cross-spawn@7.0.6:
     dependencies:
@@ -7754,16 +7737,16 @@ snapshots:
 
   css-what@6.2.2: {}
 
-  cz-conventional-changelog@3.3.0(@types/node@24.12.4)(typescript@5.9.3):
+  cz-conventional-changelog@3.3.0(@types/node@24.12.4)(typescript@6.0.3):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.1(@types/node@24.12.4)(typescript@5.9.3)
+      commitizen: 4.3.1(@types/node@24.12.4)(typescript@6.0.3)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 21.0.1(@types/node@24.12.4)(typescript@5.9.3)
+      '@commitlint/load': 21.0.1(@types/node@24.12.4)(typescript@6.0.3)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -9497,7 +9480,7 @@ snapshots:
       glob: 13.0.6
       package-json-from-dist: 1.0.1
 
-  rolldown-plugin-dts@0.25.1(rolldown@1.0.2)(typescript@5.9.3):
+  rolldown-plugin-dts@0.25.1(rolldown@1.0.2)(typescript@6.0.3):
     dependencies:
       '@babel/generator': 8.0.0-rc.5
       '@babel/helper-validator-identifier': 8.0.0-rc.5
@@ -9509,11 +9492,11 @@ snapshots:
       obug: 2.1.2
       rolldown: 1.0.2
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - oxc-resolver
 
-  rolldown-plugin-dts@0.25.1(rolldown@1.0.3)(typescript@5.9.3):
+  rolldown-plugin-dts@0.25.1(rolldown@1.0.3)(typescript@6.0.3):
     dependencies:
       '@babel/generator': 8.0.0-rc.5
       '@babel/helper-validator-identifier': 8.0.0-rc.5
@@ -9525,7 +9508,7 @@ snapshots:
       obug: 2.1.2
       rolldown: 1.0.3
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - oxc-resolver
 
@@ -9984,7 +9967,7 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@5.9.3)(unplugin-unused@0.5.7)(unrun@0.3.0):
+  tsdown@0.22.0(@arethetypeswrong/core@0.18.4)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.0):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -9995,16 +9978,16 @@ snapshots:
       obug: 2.1.1
       picomatch: 4.0.4
       rolldown: 1.0.2
-      rolldown-plugin-dts: 0.25.1(rolldown@1.0.2)(typescript@5.9.3)
+      rolldown-plugin-dts: 0.25.1(rolldown@1.0.2)(typescript@6.0.3)
       semver: 7.8.1
       tinyexec: 1.2.2
       tinyglobby: 0.2.16
       tree-kill: 1.2.2
       unconfig-core: 7.5.0
     optionalDependencies:
-      '@arethetypeswrong/core': 0.18.2
+      '@arethetypeswrong/core': 0.18.4
       publint: 0.3.21
-      typescript: 5.9.3
+      typescript: 6.0.3
       unplugin-unused: 0.5.7
       unrun: 0.3.0
     transitivePeerDependencies:
@@ -10039,62 +10022,62 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-github-theme@0.3.1(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-github-theme@0.3.1(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-github-theme@0.4.0(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-github-theme@0.4.0(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-material-theme@1.4.1(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-material-theme@1.4.1(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
       '@material/material-color-utilities': 0.3.0
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.56(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-dt-links@2.0.56(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-plugin-extras@4.0.1(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-extras@4.0.1(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-plugin-include-example@3.0.2(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-include-example@3.0.2(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-plugin-missing-exports@4.1.3(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-plugin-missing-exports@4.1.3(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-rhineai-theme@1.2.0(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-rhineai-theme@1.2.0(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc-theme-oxide@0.2.5(typedoc@0.28.19(typescript@5.9.3)):
+  typedoc-theme-oxide@0.2.5(typedoc@0.28.19(typescript@6.0.3)):
     dependencies:
       cheerio: 1.2.0
       flexsearch: 0.8.212
       slug: 11.0.1
-      typedoc: 0.28.19(typescript@5.9.3)
+      typedoc: 0.28.19(typescript@6.0.3)
 
-  typedoc@0.28.19(typescript@5.9.3):
+  typedoc@0.28.19(typescript@6.0.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.2.0
       minimatch: 10.2.5
-      typescript: 5.9.3
+      typescript: 6.0.3
       yaml: 2.9.0
 
   typescript@5.6.1-rc: {}
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   uc.micro@2.1.0: {}
 
@@ -10191,16 +10174,6 @@ snapshots:
       builtins: 5.1.0
 
   validate-npm-package-name@5.0.1: {}
-
-  varvara-css@0.9.0(typescript@5.9.3):
-    dependencies:
-      typescript: 5.9.3
-
-  varvara-typedoc-theme@0.3.9(typedoc@0.28.19(typescript@5.9.3))(typescript@5.9.3):
-    dependencies:
-      typedoc: 0.28.19(typescript@5.9.3)
-      typescript: 5.9.3
-      varvara-css: 0.9.0(typescript@5.9.3)
 
   vary@1.1.2: {}
 
@@ -10368,11 +10341,11 @@ snapshots:
 
   zod@4.3.6: {}
 
-  zshy@0.7.2(typescript@5.9.3):
+  zshy@0.7.2(typescript@6.0.3):
     dependencies:
       arg: 5.0.2
       fast-glob: 3.3.3
       table: 6.9.0
-      typescript: 5.9.3
+      typescript: 6.0.3
 
   zwitch@1.0.5: {}
