@@ -10,7 +10,8 @@
 		"lint:check": "biome lint"
 	},
 	"dependencies": {
-		"@types/node": "catalog:"
+		"@types/node": "catalog:",
+		"@kctypes/generic": "workspace:*"
 	},
 	"devDependencies": {
 		"@kcconfigs/biome": "workspace:*",

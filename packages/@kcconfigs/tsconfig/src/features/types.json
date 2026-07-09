@@ -4,9 +4,10 @@
 		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
 		"typeRoots": [
 			"../../node_modules/@types",
-			"../../node_modules/@kctypes",
+			"../../node_modules",
 			"${configDir}/node_modules/@types",
-			"${configDir}/node_modules/@kctypes"
-		]
+			"${configDir}/node_modules"
+		],
+		"types": ["node", "@kctypes/generic"]
 	}
 }
