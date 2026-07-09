@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.2-beta.5...@kcconfigs/tsdown+v0.2.0) (2026-07-06)
+
+
+### Performance Improvements
+
+* **deps:** bump @biomejs/biome from 2.4.10 to 2.4.15 ([#141](https://github.com/kc-workspace/kcws/issues/141)) ([dbbe17a](https://github.com/kc-workspace/kcws/commit/dbbe17a334f1ee2e43eb049ebeb0698c63e1d428))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/tsdown:** force update v0.1.2-beta.5 =&gt; v0.2.0 ([7b03767](https://github.com/kc-workspace/kcws/commit/7b03767646ea6bd9788e3e2fd62ec112691ecc8b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.2
+    * @kcconfigs/tsconfig bumped to 1.0.2
+
 ## [0.1.2-beta.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.2-beta.4...@kcconfigs/tsdown+v0.1.2-beta.5) (2026-06-02)
 
 
