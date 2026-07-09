@@ -13,9 +13,11 @@
 		"**/*cache*/**",
 		"**/.github/workflows/**",
 		"**/package.json",
+		"**/pnpm-lock.yaml",
 		"**/*.example.ts",
 		"**/*.test.ts",
 		"**/*.test.sh",
-		"**/CHANGELOG.md"
+		"**/CHANGELOG.md",
+		"**/AGENTS.md"
 	]
 }
