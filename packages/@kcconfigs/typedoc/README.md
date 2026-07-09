@@ -29,7 +29,6 @@ pnpm add --save-dev typedoc-github-theme
 pnpm add --save-dev typedoc-material-theme
 pnpm add --save-dev typedoc-theme-oxide
 pnpm add --save-dev typedoc-rhineai-theme
-pnpm add --save-dev varvara-typedoc-theme
 
 # Plugins (all optional)
 pnpm add --save-dev typedoc-plugin-dt-links
@@ -84,7 +83,6 @@ Themes are imported from `@kcconfigs/typedoc/themes/*`:
 | `@kcconfigs/typedoc/themes/material`     | Material Design style   | `typedoc-material-theme`     |
 | `@kcconfigs/typedoc/themes/oxide`        | Rustdoc-like style      | `typedoc-theme-oxide`        |
 | `@kcconfigs/typedoc/themes/rhineai`      | RhineAI style           | `typedoc-rhineai-theme`      |
-| `@kcconfigs/typedoc/themes/varvara`      | Varvara CSS style       | `varvara-typedoc-theme`      |
 
 All theme peer dependencies are optional.
 

@@ -49,14 +49,4 @@ describe("themes", () => {
 			expect(typeof config).toBe("object");
 		});
 	});
-
-	describe("varvara theme", () => {
-		test("should export a theme config", async () => {
-			const varvara = await import("./varvara");
-			const config = varvara.default;
-
-			expect(config).toBeDefined();
-			expect(typeof config).toBe("object");
-		});
-	});
 });

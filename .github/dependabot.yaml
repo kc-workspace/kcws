@@ -33,7 +33,6 @@ updates:
         patterns:
           - typedoc
           - typedoc-*
-          - varvara-typedoc-theme
       textlint:
         patterns:
           - textlint

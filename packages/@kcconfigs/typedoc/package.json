@@ -33,7 +33,6 @@
 		"typedoc-material-theme": "catalog:typedoc:peer",
 		"typedoc-theme-oxide": "catalog:typedoc:peer",
 		"typedoc-rhineai-theme": "catalog:typedoc:peer",
-		"varvara-typedoc-theme": "catalog:typedoc:peer",
 		"typedoc-plugin-dt-links": "catalog:typedoc:peer",
 		"typedoc-plugin-extras": "catalog:typedoc:peer",
 		"typedoc-plugin-include-example": "catalog:typedoc:peer",
@@ -51,9 +50,6 @@
 			"optional": true
 		},
 		"typedoc-rhineai-theme": {
-			"optional": true
-		},
-		"varvara-typedoc-theme": {
 			"optional": true
 		}
 	},
