@@ -41,8 +41,9 @@ __registry_waiting() {
   echo "      3. Enter 'kc-workspace/kcws' as repository"
   echo "      4. Enter 'publish.yaml' as workflow file"
   echo "      5. Enter 'production' as environment"
-  echo "      6. Click 'Set up connection' button"
-  echo "      7. On 'Publishing access' section"
+  echo "      6. Select 'Allow npm publish' only as Allowed actions"
+  echo "      7. Click 'Set up connection' button"
+  echo "      8. On 'Publishing access' section"
   echo "        - Select 'Require two-factor authentication and disallow tokens (recommended)'"
   echo "    Visit: https://docs.npmjs.com/trusted-publishers"
 
