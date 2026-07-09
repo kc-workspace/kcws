@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.1.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.3...@kcconfigs/textlint+v0.1.4) (2026-07-06)
+
+
+### Performance Improvements
+
+* **deps:** bump @biomejs/biome from 2.4.10 to 2.4.15 ([#141](https://github.com/kc-workspace/kcws/issues/141)) ([dbbe17a](https://github.com/kc-workspace/kcws/commit/dbbe17a334f1ee2e43eb049ebeb0698c63e1d428))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 1.0.2
+    * @kcconfigs/vitest bumped to 0.1.2-beta.5
+    * @kcconfigs/tsconfig bumped to 1.0.2
+    * @kcconfigs/tsdown bumped to 0.2.0
+
 ## [0.1.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.2...@kcconfigs/textlint+v0.1.3) (2026-06-02)
 
 
