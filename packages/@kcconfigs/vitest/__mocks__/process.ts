@@ -27,15 +27,7 @@ vi.mock(import("process"), async (importOriginal) => {
 // Support CJS require() method since vi.mock didn't support require()
 vi.hoisted(async () => {
 	const originalProcess = await import("node:process");
-
 	require.cache["process"] = {
-		exports: {
-			...originalProcess,
-			// mock functions
-			cwd: vi.fn(() => "/mock"),
-			exit: vi.fn<typeof process.exit>(),
-			arch: "x64" as const,
-			platform: "linux" as const,
-		},
+		exports: processMock(originalProcess),
 	} as never;
 });
