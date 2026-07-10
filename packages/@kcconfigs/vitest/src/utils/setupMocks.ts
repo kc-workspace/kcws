@@ -5,6 +5,7 @@ export interface MockFlag {
 	fsPromises?: true;
 	process?: true;
 	os?: true;
+	console?: true;
 }
 
 export type MockFlagKey = keyof MockFlag;
