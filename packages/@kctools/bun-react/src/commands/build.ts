@@ -1,3 +1,4 @@
+import { error, info, log } from "node:console";
 import { resolve } from "node:path";
 import tailwind from "bun-plugin-tailwind";
 import type { CommandFn } from "./types";
@@ -38,16 +39,16 @@ export const build: CommandFn = (program, Bun) => {
 				plugins,
 			});
 
-			console.log("Build output:");
+			log("Build output:");
 			output.logs.forEach((l) => {
-				console.log(`${l.level}: ${l.name} - ${l.message}`);
+				log(`${l.level}: ${l.name} - ${l.message}`);
 			});
 
-			console.log();
+			log();
 			if (output.success) {
-				console.info("\nBuild succeeded");
+				info("\nBuild succeeded");
 			} else {
-				console.error("\nBuild failed!");
+				error("\nBuild failed!");
 			}
 		});
 };

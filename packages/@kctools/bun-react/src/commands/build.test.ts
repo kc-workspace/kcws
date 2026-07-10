@@ -1,3 +1,4 @@
+import { error, info, log } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { Command } from "commander";
@@ -9,20 +10,22 @@ vi.mock("bun-plugin-tailwind", () => ({
 
 import { build } from "./build";
 
-type MockBuildOutput = {
-	success: boolean;
-	logs: { level: string; name: string; message: string }[];
-	outputs: unknown[];
+const createMockBun = (output?: Promise<BunType.BuildOutput>) => {
+	const build = vi.fn();
+	if (output) build.mockReturnValueOnce(output);
+	return { build } as unknown as typeof BunType;
 };
 
-const createMockBun = () =>
-	({
-		build: vi.fn(),
-	}) as unknown as typeof BunType;
-
-const createBuildOutput = (success: boolean): MockBuildOutput => ({
+const createMockOutput = (success: boolean): BunType.BuildOutput => ({
 	success,
-	logs: [{ level: "info", name: "entry.html", message: "processed" }],
+	logs: [
+		{
+			level: "info",
+			name: "BuildMessage",
+			message: "processed",
+			position: null,
+		},
+	],
 	outputs: [],
 });
 
@@ -61,7 +64,6 @@ describe("build command registration", () => {
 		build(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "build");
-		// Commander defaults --no-minify → minify=true when flag is absent
 		expect(cmd?.opts().minify).toBe(true);
 	});
 
@@ -77,10 +79,7 @@ describe("build command registration", () => {
 describe("build command action", () => {
 	test("calls Bun.build with default html entrypoint resolved from cwd", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build"], { from: "user" });
@@ -98,10 +97,7 @@ describe("build command action", () => {
 
 	test("calls Bun.build with custom html entrypoint", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build", "./src/app.html"], { from: "user" });
@@ -115,10 +111,7 @@ describe("build command action", () => {
 
 	test("disables minification when --no-minify is passed", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build", "--no-minify"], { from: "user" });
@@ -130,10 +123,7 @@ describe("build command action", () => {
 
 	test("uses custom output directory when --out is provided", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build", "--out", "public"], { from: "user" });
@@ -147,10 +137,7 @@ describe("build command action", () => {
 
 	test("includes plugins array in build options", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build"], { from: "user" });
@@ -164,57 +151,37 @@ describe("build command action", () => {
 
 	test("logs 'Build output:' header before log entries", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
-		const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 		await program.parseAsync(["build"], { from: "user" });
-
-		expect(logSpy).toHaveBeenCalledWith("Build output:");
+		expect(log).toHaveBeenCalledWith("Build output:");
 	});
 
 	test("logs each build log entry with level, name, and message", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
-		const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 		await program.parseAsync(["build"], { from: "user" });
-
-		expect(logSpy).toHaveBeenCalledWith("info: entry.html - processed");
+		expect(log).toHaveBeenCalledWith("info: BuildMessage - processed");
 	});
 
 	test("logs success message when build succeeds", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(true) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
-		const infoSpy = vi.spyOn(console, "info").mockImplementation(() => {});
 		await program.parseAsync(["build"], { from: "user" });
-
-		expect(infoSpy).toHaveBeenCalledWith("\nBuild succeeded");
+		expect(info).toHaveBeenCalledWith("\nBuild succeeded");
 	});
 
 	test("logs error message when build fails", async () => {
 		const program = new Command();
-		const mockBun = createMockBun();
-		vi.mocked(mockBun.build).mockResolvedValue(
-			createBuildOutput(false) as never,
-		);
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(false)));
 		build(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["build"], { from: "user" });
-
-		expect(errorSpy).toHaveBeenCalledWith("\nBuild failed!");
+		expect(error).toHaveBeenCalledWith("\nBuild failed!");
 	});
 });
