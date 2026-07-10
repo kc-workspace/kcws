@@ -95,4 +95,14 @@ describe("zBoolean", () => {
 		const schema = z.object({ enabled: zBoolean });
 		expect(schema.parse({ enabled: "  true  " })).toEqual({ enabled: true });
 	});
+
+	test("should throw on non-string non-boolean input (number)", () => {
+		const schema = z.object({ enabled: zBoolean });
+		expect(() => schema.parse({ enabled: 42 })).toThrow();
+	});
+
+	test("should throw on non-string non-boolean input (object)", () => {
+		const schema = z.object({ enabled: zBoolean });
+		expect(() => schema.parse({ enabled: {} })).toThrow();
+	});
 });

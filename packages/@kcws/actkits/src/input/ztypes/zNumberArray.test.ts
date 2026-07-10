@@ -43,6 +43,11 @@ describe("zNumberArray", () => {
 		expect(schema.parse({ ids: "42" })).toEqual({ ids: [42] });
 	});
 
+	test("should handle single raw number input", () => {
+		const schema = z.object({ ids: zNumberArray });
+		expect(schema.parse({ ids: 42 })).toEqual({ ids: [42] });
+	});
+
 	test("should pass through actual array of numbers", () => {
 		const schema = z.object({ ids: zNumberArray });
 		expect(schema.parse({ ids: [1, 2, 3] })).toEqual({ ids: [1, 2, 3] });
@@ -81,5 +86,19 @@ describe("zNumberArray", () => {
 	test("should throw when newline separator produces non-numeric values", () => {
 		const schema = z.object({ ids: zNumberArray });
 		expect(() => schema.parse({ ids: "1,2\n3,4" })).toThrow();
+	});
+
+	test("should handle NaN input from invalid parse", () => {
+		const schema = z.object({ ids: zNumberArray });
+		// When a non-array, non-number value is provided, it fails.
+		// Number({}) = NaN, Number.isFinite(NaN) = false → returns undefined
+		expect(() => schema.parse({ ids: {} })).toThrow();
+		// NaN itself also fails
+		expect(() => schema.parse({ ids: NaN })).toThrow();
+	});
+
+	test("should throw on null in required field", () => {
+		const schema = z.object({ ids: zNumberArray });
+		expect(() => schema.parse({ ids: null })).toThrow();
 	});
 });

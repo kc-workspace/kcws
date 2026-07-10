@@ -61,4 +61,14 @@ describe("zJsonObject", () => {
 		const schema = z.object({ config: zJsonObject.optional() });
 		expect(schema.parse({})).toEqual({});
 	});
+
+	test("should throw on non-object non-string input (number)", () => {
+		const schema = z.object({ config: zJsonObject });
+		expect(() => schema.parse({ config: 42 })).toThrow();
+	});
+
+	test("should throw on non-object non-string input (boolean)", () => {
+		const schema = z.object({ config: zJsonObject });
+		expect(() => schema.parse({ config: true })).toThrow();
+	});
 });

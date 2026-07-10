@@ -68,4 +68,18 @@ describe("zStringArray", () => {
 			tags: ["a,b", "c,d"],
 		});
 	});
+
+	test("should throw on null (required)", () => {
+		const schema = z.object({ tags: zStringArray });
+		expect(() => schema.parse({ tags: null })).toThrow();
+	});
+
+	test("should throw on non-string non-array input", () => {
+		const schema = z.object({ tags: zStringArray });
+		// Non-array, non-string input triggers "return undefined"
+		// which causes zod to report "Required"
+		expect(() => schema.parse({ tags: 42 })).toThrow();
+		expect(() => schema.parse({ tags: true })).toThrow();
+		expect(() => schema.parse({ tags: {} })).toThrow();
+	});
 });
