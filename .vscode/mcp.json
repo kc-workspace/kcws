@@ -10,15 +10,6 @@
 		"cognitionai/deepwiki": {
 			"type": "http",
 			"url": "https://mcp.deepwiki.com/mcp"
-		},
-		"modelcontextprotocol/time": {
-			"type": "stdio",
-			"command": "mise",
-			"args": ["exec", "pipx:mcp-server-time@latest", "--", "mcp-server-time"]
-		},
-		"github/github-mcp-server": {
-			"type": "http",
-			"url": "https://api.githubcopilot.com/mcp"
 		}
 	},
 	"inputs": [
