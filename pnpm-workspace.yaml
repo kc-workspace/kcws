@@ -37,6 +37,10 @@ catalogs:
     vite: ^8.0.0-beta
     vitest: ^4.0.0
     zshy: ^0.6.0
+  css:latest:
+    '@tsdown/css': 0.22.0
+    lightningcss: 1.32.0
+    sass-embedded: 1.100.0
   commitlint:latest:
     '@commitlint/cli': 20.5.3
     '@commitlint/config-conventional': 20.5.3
@@ -128,9 +132,10 @@ saveWorkspaceProtocol: rolling
 sharedWorkspaceLockfile: true
 
 allowBuilds:
-  bun: false
   esbuild: true
   lefthook: true
+  '@parcel/watcher': false
+  bun: false
 
 pmOnFail: error
 
