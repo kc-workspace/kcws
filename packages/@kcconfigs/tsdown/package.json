@@ -15,6 +15,7 @@
 	},
 	"dependencies": {
 		"@arethetypeswrong/core": "catalog:",
+		"@kcconfigs/_builder": "workspace:*",
 		"publint": "catalog:",
 		"tsdown": "catalog:",
 		"unplugin-unused": "catalog:",
