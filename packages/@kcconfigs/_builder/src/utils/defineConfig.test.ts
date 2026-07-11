@@ -1,10 +1,9 @@
 import { debug } from "node:console";
 import { describe, expect, test } from "vitest";
-import { defineConfig } from ".";
+import defineConfig from "./defineConfig";
 
 describe(defineConfig.name, () => {
 	test("should define config correctly", () => {
-		// Example test for defineConfig
 		const base = { key: "value" };
 		const plugin = {
 			name: "testPlugin",
@@ -15,7 +14,6 @@ describe(defineConfig.name, () => {
 	});
 
 	test("should write debug log when provides", () => {
-		// Example test for defineConfig
 		const base = { key: "value" };
 		const plugins = [
 			{
