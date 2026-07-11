@@ -16,7 +16,7 @@ catalog:
   lefthook: 2.1.8
   publint: 0.3.21
   rimraf: 6.1.3
-  tsdown: 0.22.0
+  tsdown: 0.22.3
   typescript: 6.0.3
   unplugin-unused: 0.5.7
   unrun: 0.3.0
