@@ -108,6 +108,9 @@
     },
     "packages/@kcws/actkits": {
       "component": "@kcws/actkits"
+    },
+    "packages/@kcconfigs/_builder": {
+      "component": "@kcconfigs/_builder"
     }
   }
 }
