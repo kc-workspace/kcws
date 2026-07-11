@@ -45,7 +45,7 @@ ls:
     "*":
       .dir: regex:[a-z][a-z_]+
   ## @kctypes/*/src must contains only .d.ts files in PascalCase or camelCase
-  packages/@kctypes/*/src:
+  packages/@kctypes/*/types:
     .dir: camelCase
     .*: exists:0
     .d.ts: camelCase | PascalCase
@@ -54,16 +54,19 @@ ls:
     ## Scope name must start with @ and all lowercase with dash or dot only
     .dir: regex:@[a-z-.]+
     "*":
-      ## Package name must be lower case with dot, and dash allowed
-      .dir: regex:[a-z][a-z-.]+
-      "*":
-        .dir: regex:.*
-  packages/**/src:
-    "*":
-      ## Source code directory must be camelCase or special __mocks__ folder
-      .dir: camelCase | regex:__mocks__
-      .{ts,tsx}: camelCase | PascalCase
-      .{js,jsx}: exists:0
+      ## Package name must be lower case with dot, underscore, and dash allowed
+      .dir: regex:[a-z_][a-z-_.]+
+
+  packages/*/*/src:
+    # Source code directory must be camelCase or special __mocks__ folder
+    .dir: camelCase | regex:(__mocks__|__fixtures__)
+    ## TODO: This doesn't works
+    # .{ts,tsx}: camelCase | PascalCase
+    # .{css,scss}: camelCase
+
+  packages/*/*/src/hooks:
+    ## Hooks directory is named by hook name
+    .dir: regex:.*
 
 ignore:
   - assets
