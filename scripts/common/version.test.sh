@@ -173,6 +173,11 @@ _test_runner() {
   _check_tag_parse "@kctypes/package_json+v0.2.3" 0 \
     "@kctypes/package_json" "@kctypes" "package_json" \
     "0.2.3" "0.2.3" "" ""
+
+  ## Test case: when package name begin with _
+  _check_tag_parse "@kcws/_example+v1.0.1" 0 \
+    "@kcws/_example" "@kcws" "_example" \
+    "1.0.1" "1.0.1" "" ""
 }
 
 test_run "$@"
