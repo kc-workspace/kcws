@@ -64,3 +64,5 @@ export const defineConfig = (
 import { defineFormat } from "./utils/defineFormat";
 export { default as browserPlugin } from "./plugins/browser";
 export { default as nodePlugin } from "./plugins/node";
+export { default as publintPlugin } from "./plugins/publint";
+export { default as unusedPlugin } from "./plugins/unused";
