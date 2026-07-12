@@ -2,6 +2,18 @@
 	"name": "@kcstyles/reset.css",
 	"version": "0.1.0",
 	"description": "A CSS reset for consistent styling across browsers",
+	"type": "module",
+	"scripts": {
+		"build": "tsdown"
+	},
+	"devDependencies": {
+		"@kcconfigs/tsconfig": "workspace:*",
+		"@kcconfigs/tsdown": "workspace:*",
+		"@tsdown/css": "catalog:css:latest",
+		"lightningcss": "catalog:css:latest",
+		"sass-embedded": "catalog:css:latest",
+		"tsdown": "catalog:"
+	},
 	"main": "./dist/index.css",
 	"exports": {
 		".": {
