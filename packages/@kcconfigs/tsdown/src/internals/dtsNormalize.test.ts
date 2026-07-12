@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import dtsNormalize from "./dtsNormalize";
+import dtsNormalize from "../plugins/dtsNormalize";
 
 describe("dtsNormalize", () => {
 	test("should have correct plugin name", () => {

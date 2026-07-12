@@ -1,4 +1,4 @@
-import type { Config } from "@kcconfigs/_builder";
+import type { Config } from "@kcinternals/config-builder";
 import type { UserConfig, WithEnabled } from "tsdown";
 
 export type TsdownConfig = Config<UserConfig>;

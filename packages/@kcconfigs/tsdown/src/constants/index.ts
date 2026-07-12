@@ -1,14 +1,15 @@
 import type { TsdownConfig } from "../models";
 
+export const defaultIgnoreEntry = [
+	"!./src/**/*.example.ts",
+	"!./src/**/*.test.ts",
+	"!./src/**/*.spec.ts",
+	"!./src/**/*.test-d.ts",
+	"!./src/**/*.spec-d.ts",
+] as const;
+
 export const baseConfig: TsdownConfig = {
-	entry: [
-		"./src/index.ts",
-		"!./src/**/*.example.ts",
-		"!./src/**/*.test.ts",
-		"!./src/**/*.spec.ts",
-		"!./src/**/*.test-d.ts",
-		"!./src/**/*.spec-d.ts",
-	],
+	entry: ["./src/index.ts", ...defaultIgnoreEntry],
 	platform: "neutral",
 	fixedExtension: false,
 	outDir: "dist",

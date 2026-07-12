@@ -1,9 +1,9 @@
-import { defineConfig as _defineConfig } from "@kcconfigs/_builder";
+import { defineConfig as _defineConfig } from "@kcinternals/config-builder";
 import { baseConfig } from "../constants";
+import attwNormalize from "../internals/attwNormalize";
+import dtsNormalize from "../internals/dtsNormalize";
+import formatNormalize from "../internals/formatNormalize";
 import type { TsdownConfig, TsdownPlugin } from "../models";
-import attwNormalize from "../plugins/attwNormalize";
-import dtsNormalize from "../plugins/dtsNormalize";
-import formatNormalize from "../plugins/formatNormalize";
 
 const defineConfig = (...plugins: TsdownPlugin<string>[]): TsdownConfig => {
 	const _plugins = [
