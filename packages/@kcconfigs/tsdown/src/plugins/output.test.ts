@@ -9,7 +9,7 @@ describe("outputPlugin", () => {
 
 	test("should set outDir to the given value", () => {
 		const plugin = outputPlugin("dist.tsdown");
-		const base = { outDir: undefined as string | undefined };
+		const base = { outDir: undefined } as any;
 		const result = plugin.apply?.(base, {});
 		expect(result?.outDir).toBe("dist.tsdown");
 	});
@@ -23,7 +23,10 @@ describe("outputPlugin", () => {
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = outputPlugin("dist");
-		const base = { entry: ["./src/index.ts"], outDir: undefined as string | undefined };
+		const base = {
+			entry: ["./src/index.ts"],
+			outDir: undefined,
+		} as any;
 		const result = plugin.apply?.(base, {});
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.outDir).toBe("dist");

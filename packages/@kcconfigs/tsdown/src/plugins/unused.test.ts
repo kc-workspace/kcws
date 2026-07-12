@@ -22,7 +22,10 @@ describe("unusedPlugin", () => {
 	});
 
 	test("should apply unused config with object options", () => {
-		const unusedConfig = { level: "error" as const, depKinds: ["dependencies"] as const };
+		const unusedConfig = {
+			level: "error",
+			depKinds: ["dependencies"],
+		} as any;
 		const plugin = unusedPlugin(unusedConfig);
 		const base = { unused: undefined };
 		const result = plugin.apply?.(base, {});

@@ -9,14 +9,17 @@ describe("browserPlugin", () => {
 
 	test("should set platform to browser", () => {
 		const plugin = browserPlugin();
-		const base = { platform: undefined as string | undefined };
+		const base = { platform: undefined } as any;
 		const result = plugin.apply?.(base, {});
 		expect(result?.platform).toBe("browser");
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = browserPlugin();
-		const base = { entry: ["./src/index.ts"], platform: undefined as string | undefined };
+		const base = {
+			entry: ["./src/index.ts"],
+			platform: undefined,
+		} as any;
 		const result = plugin.apply?.(base, {});
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.platform).toBe("browser");

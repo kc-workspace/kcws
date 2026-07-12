@@ -16,9 +16,7 @@ describe("publintNormalize", () => {
 
 	test("should set default enabled=true with level warning when publint is null", () => {
 		const plugin = publintNormalize();
-		const config = { publint: null } as unknown as {
-			publint: undefined;
-		};
+		const config = { publint: null } as any;
 		const result = plugin.normalize?.(config, {});
 		expect(result?.publint).toEqual({ enabled: true, level: "warning" });
 	});
