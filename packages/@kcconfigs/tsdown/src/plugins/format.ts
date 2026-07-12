@@ -1,3 +1,4 @@
+import { definePlugin } from "@kcinternals/config-builder";
 import { type Format, mergeConfig, type ResolvedConfig } from "tsdown";
 import type { TsdownPlugin } from "../models";
 
@@ -16,8 +17,8 @@ const getFormatValue = (
 	return value;
 };
 
-const formatPlugin = (format: MinimalFormatObject): TsdownPlugin<"format"> => {
-	return {
+const formatPlugin = (format: MinimalFormatObject): TsdownPlugin<"format"> =>
+	definePlugin({
 		name: "format",
 		apply: (base) => {
 			const output = {} as Record<MinimalFormat, FormatValue>;
@@ -34,6 +35,5 @@ const formatPlugin = (format: MinimalFormatObject): TsdownPlugin<"format"> => {
 				format: output,
 			});
 		},
-	};
-};
+	});
 export default formatPlugin;

@@ -1,3 +1,4 @@
+import { definePlugin } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import type { TsdownPlugin } from "../models";
 
@@ -8,8 +9,8 @@ export interface CssPluginOption {
 	lang?: "css" | "scss";
 }
 
-const cssPlugin = (option?: CssPluginOption): TsdownPlugin<"css"> => {
-	return {
+const cssPlugin = (option?: CssPluginOption): TsdownPlugin<"css"> =>
+	definePlugin({
 		name: "css",
 		apply: (base) => {
 			return mergeConfig(base, {
@@ -23,6 +24,5 @@ const cssPlugin = (option?: CssPluginOption): TsdownPlugin<"css"> => {
 				],
 			});
 		},
-	};
-};
+	});
 export default cssPlugin;

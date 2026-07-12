@@ -1,3 +1,4 @@
+import { definePlugin } from "@kcinternals/config-builder";
 import { type AttwOptions, mergeConfig } from "tsdown";
 import type { EnableOption, TsdownConfig, TsdownPlugin } from "../models";
 
@@ -42,8 +43,8 @@ const normalize = (config: TsdownConfig): EnableOption<AttwOptions> => {
 	};
 };
 
-const attwNormalize = (): TsdownPlugin<"attw"> => {
-	return {
+const attwNormalize = (): TsdownPlugin<"attw"> =>
+	definePlugin({
 		name: "attw",
 		normalize: (config) => {
 			const attw = normalize(config);
@@ -51,6 +52,5 @@ const attwNormalize = (): TsdownPlugin<"attw"> => {
 				attw: attw.enabled ? attw : { enabled: false },
 			});
 		},
-	};
-};
+	});
 export default attwNormalize;

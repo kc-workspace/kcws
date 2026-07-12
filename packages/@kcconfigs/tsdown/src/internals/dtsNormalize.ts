@@ -1,3 +1,4 @@
+import { definePlugin } from "@kcinternals/config-builder";
 import { type DtsOptions, mergeConfig } from "tsdown";
 import type { EnableOption, TsdownConfig, TsdownPlugin } from "../models";
 
@@ -30,8 +31,8 @@ const normalize = (config: TsdownConfig): EnableOption<DtsOptions> => {
 	};
 };
 
-const dtsNormalize = (): TsdownPlugin<"dts"> => {
-	return {
+const dtsNormalize = (): TsdownPlugin<"dts"> =>
+	definePlugin({
 		name: "dts",
 		normalize: (config) => {
 			const dts = normalize(config);
@@ -39,6 +40,5 @@ const dtsNormalize = (): TsdownPlugin<"dts"> => {
 				dts: dts.enabled ? dts : { enabled: false },
 			});
 		},
-	};
-};
+	});
 export default dtsNormalize;
