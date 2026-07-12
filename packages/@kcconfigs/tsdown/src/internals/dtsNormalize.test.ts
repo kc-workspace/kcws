@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import dtsNormalize from "../plugins/dtsNormalize";
+import dtsNormalize from "./dtsNormalize";
 
 describe("dtsNormalize", () => {
 	test("should have correct plugin name", () => {
@@ -16,7 +16,7 @@ describe("dtsNormalize", () => {
 
 	test("should set default enabled=true with sourcemap when dts is null", () => {
 		const plugin = dtsNormalize();
-		const config = { dts: null };
+		const config = { dts: null } as any;
 		const result = plugin.normalize?.(config, {});
 		expect(result?.dts).toEqual({ enabled: true, sourcemap: true });
 	});
@@ -37,7 +37,7 @@ describe("dtsNormalize", () => {
 
 	test("should normalize string dts to enabled with sourcemap", () => {
 		const plugin = dtsNormalize();
-		const config = { dts: "ci-only" };
+		const config = { dts: "ci-only" } as any;
 		const result = plugin.normalize?.(config, {});
 		expect(result?.dts).toEqual({ enabled: "ci-only", sourcemap: true });
 	});
