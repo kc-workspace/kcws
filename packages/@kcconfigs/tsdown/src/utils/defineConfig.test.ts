@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import type { TsdownConfig } from "../models";
 import defineConfig from "./defineConfig";
 
 describe("defineConfig", () => {
@@ -22,12 +23,12 @@ describe("defineConfig", () => {
 	test("should apply user plugins alongside built-in normalizers", () => {
 		const plugin = {
 			name: "testPlugin",
-			apply: (c: { outDir: string }) => ({
+			apply: (c: TsdownConfig) => ({
 				...c,
 				outDir: `${c.outDir}/override`,
 			}),
 		};
-		const config = defineConfig(plugin);
+		const config = defineConfig({}, plugin);
 		expect(config.outDir).toBe("dist/override");
 		// normalize plugins should also have run
 		expect(config.attw).toBeDefined();
