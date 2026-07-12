@@ -19,5 +19,19 @@
 	},
 	"formatter": {
 		"useEditorconfig": true
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.test.*", "**/*.spec.*"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noExplicitAny": {
+							"level": "off"
+						}
+					}
+				}
+			}
+		}
+	]
 }
