@@ -37,20 +37,3 @@ Example using the base preset with custom overrides:
   }
 }
 ```
-
-## Features
-
-> It didn't works right now (FIXME: biomejs/biome#9370).
->
-> It will always show `Could not resolve @kcconfigs/biome/features/*: module not found`
-> even it existed
-
-There are additional features to further customize
-aspect of the configuration.
-
-```jsonc
-{
-  "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
-  "extends": ["@kcconfigs/biome/base", "@kcconfigs/biome/features/svelte"]
-}
-```
