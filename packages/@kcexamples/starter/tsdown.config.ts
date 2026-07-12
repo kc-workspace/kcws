@@ -1,4 +1,4 @@
-import { defineConfig, type UserConfig } from "@kcconfigs/tsdown";
+import { defineConfig, type TsdownConfig } from "@kcconfigs/tsdown";
 
-const config: UserConfig = defineConfig();
+const config: TsdownConfig = defineConfig();
 export default config;

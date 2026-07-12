@@ -1,7 +1,10 @@
-import { defineConfig, type UserConfig } from "@kcconfigs/tsdown";
+import { defineConfig, type TsdownConfig } from "@kcconfigs/tsdown";
+import nodePlugin from "@kcconfigs/tsdown/plugins/node";
+import outputPlugin from "@kcconfigs/tsdown/plugins/output";
 
-const config: UserConfig = defineConfig({
-	platform: "node",
-	outDir: "dist.tsdown",
-});
+const config: TsdownConfig = defineConfig(
+	{},
+	nodePlugin(),
+	outputPlugin("dist.tsdown"),
+);
 export default config;
