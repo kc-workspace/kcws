@@ -1,7 +1,7 @@
 {
 	"name": "@kcinternals/config-builder",
 	"version": "0.1.0-beta.0",
-	"description": "Starter package for creating new packages in KC Workspace",
+	"description": "A config builder for @kc packages using plugin system",
 	"type": "module",
 	"scripts": {
 		"build": "tsdown --config-loader unrun",
@@ -38,10 +38,10 @@
 		}
 	},
 	"license": "AGPL-3.0-only",
-	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcinternals/starter",
+	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcinternals/config-builder",
 	"repository": {
 		"type": "git",
-		"directory": "@kcinternals/starter",
+		"directory": "@kcinternals/config-builder",
 		"url": "git+https://github.com/kc-workspace/kcws.git"
 	},
 	"author": {
@@ -50,13 +50,10 @@
 		"url": "https://github.com/kamontat"
 	},
 	"keywords": [
-		"starter",
-		"package",
-		"example",
-		"tsdown",
-		"vitest",
-		"biome",
-		"typedoc"
+		"config",
+		"builder",
+		"plugin",
+		"kcconfigs"
 	],
 	"files": [
 		"CHANGELOG.json",
