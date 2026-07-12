@@ -1,3 +1,4 @@
+import { format } from "node:util";
 import type { Config, ConfigPluginAny, DefineOption } from "../models";
 
 const defineConfig = <C>(
@@ -14,11 +15,13 @@ const defineConfig = <C>(
 		_option.debug?.(`Applying plugin: ${plugin.name || "unknown"}`);
 		return plugin.apply(acc, _option);
 	}, base);
+	_option.debug?.(format("All plugins applied: %O", applied));
 	const normalized = plugins.reduce((acc, plugin) => {
 		if (!plugin.normalize) return acc;
 		_option.debug?.(`Normalizing plugin: ${plugin.name || "unknown"}`);
 		return plugin.normalize(acc, _option);
 	}, applied);
+	_option.debug?.(format("All plugins normalized: %O", normalized));
 	return normalized;
 };
 
