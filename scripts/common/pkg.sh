@@ -19,6 +19,11 @@ pkg_create_json() {
   printf '[ASK] Enter package version: 0.0.0-beta.0\n'
   pkg_set_version "$package" "0.0.0-beta.0"
 
+  local private
+  printf '[ASK] Is package private? (true/false): '
+  read -r private
+  __pkg_set_json "$package" .private "$private"
+
   local description
   printf '[ASK] Enter package description: '
   read -r description
@@ -51,6 +56,10 @@ pkg_get_version() {
 pkg_set_version() {
   local package="$1" version="$2"
   __pkg_set_json "$package" .version "$version"
+}
+pkg_is_private() {
+  local package="$1"
+  __pkg_get_json "$package" .private
 }
 
 __pkg_get_json() {

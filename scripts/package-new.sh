@@ -42,14 +42,18 @@ _main() {
   pnpm_fresh_on "$package"
   pnpm_build_on "$package"
 
-  log_info "Step 4: Adding package to release-please/config.json"
-  release_please_refresh "$package"
+  local is_private=false
+  is_private="$(pkg_is_private "$package_path")"
+  if ! "$is_private"; then
+    log_info "Step 4: Adding package to release-please/config.json"
+    release_please_refresh "$package"
 
-  log_info "Step 5: Initializing package in npm registry"
-  registry_setup "$package_path"
+    log_info "Step 5: Initializing package in npm registry"
+    registry_setup "$package_path"
 
-  ## After initialized, we can set package to stable release
-  release_please_to_stable "$package"
+    ## After initialized, we can set package to stable release
+    release_please_to_stable "$package"
+  fi
 }
 
 exec_main "${1:?name of the package is required as the first argument}"
