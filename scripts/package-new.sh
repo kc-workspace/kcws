@@ -4,7 +4,7 @@
 ## Arguments:
 ##   name - name of the new package (e.g. @kcconfigs/example)
 ## Description:
-##   1. Create package from `@kcinternals/starter`
+##   1. Create package from `@kcexamples/starter`
 ##   2. Update package.json file (set version to beta)
 ##   3. Build package
 ##   4. Add package to release-please/config.json
@@ -25,7 +25,7 @@ _main() {
   package_path="$(pnpm_package_path "$package")"
 
   if ! pnpm_package_exist "$package_path"; then
-    local starter="@kcinternals/starter" starter_path
+    local starter="@kcexamples/starter" starter_path
     starter_path="$(pnpm_package_path "$starter")"
 
     log_info "Step 1: Copying starter package to %s" "$package"

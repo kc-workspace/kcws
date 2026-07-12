@@ -1,5 +1,6 @@
 {
-	"name": "@kcinternals/starter",
+	"private": true,
+	"name": "@kcexamples/starter",
 	"version": "0.1.0-beta.0",
 	"description": "Starter package for creating new packages in KC Workspace",
 	"type": "module",
@@ -19,7 +20,7 @@
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
-		"@kcconfigs/tsdown": "workspace:*",
+		"@kcconfigs/tsdown": "0.2.0",
 		"tsdown": "catalog:",
 		"vitest": "catalog:test:latest"
 	},

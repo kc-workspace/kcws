@@ -4,7 +4,7 @@
 
 > `./scripts/package-new.sh <package>`
 
-1. Create package from `@kcinternals/starter`
+1. Create package from `@kcexamples/starter`
 2. Update package.json file (set version to beta)
 3. Build package
 4. Add package to release-please/config.json
