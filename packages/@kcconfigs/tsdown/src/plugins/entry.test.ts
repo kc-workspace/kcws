@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import { defaultIgnoreEntry } from "../constants";
 import entryPlugin from "./entry";
 
 describe("entryPlugin", () => {
@@ -11,14 +12,18 @@ describe("entryPlugin", () => {
 		const plugin = entryPlugin(["./src/index.ts", "./src/cli.ts"]);
 		const base = { entry: undefined };
 		const result = plugin.apply?.(base, {});
-		expect(result?.entry).toEqual(["./src/index.ts", "./src/cli.ts"]);
+		expect(result?.entry).toEqual([
+			"./src/index.ts",
+			"./src/cli.ts",
+			...defaultIgnoreEntry,
+		]);
 	});
 
 	test("should override existing entry", () => {
 		const plugin = entryPlugin(["./src/other.ts"]);
 		const base = { entry: ["./src/index.ts"] };
 		const result = plugin.apply?.(base, {});
-		expect(result?.entry).toEqual(["./src/other.ts"]);
+		expect(result?.entry).toEqual(["./src/other.ts", ...defaultIgnoreEntry]);
 	});
 
 	test("should preserve existing base config when applying", () => {
@@ -26,6 +31,6 @@ describe("entryPlugin", () => {
 		const base = { outDir: "dist", entry: undefined };
 		const result = plugin.apply?.(base, {});
 		expect(result?.outDir).toBe("dist");
-		expect(result?.entry).toEqual(["./src/index.ts"]);
+		expect(result?.entry).toEqual(["./src/index.ts", ...defaultIgnoreEntry]);
 	});
 });
