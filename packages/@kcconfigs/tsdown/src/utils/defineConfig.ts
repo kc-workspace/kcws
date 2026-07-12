@@ -6,6 +6,7 @@ import { baseConfig } from "../constants";
 import attwNormalize from "../internals/attwNormalize";
 import dtsNormalize from "../internals/dtsNormalize";
 import formatNormalize from "../internals/formatNormalize";
+import publintNormalize from "../internals/publintNormalize";
 import type { TsdownConfig, TsdownPlugin } from "../models";
 
 const defineConfig = (
@@ -17,6 +18,7 @@ const defineConfig = (
 		attwNormalize(),
 		dtsNormalize(),
 		formatNormalize(),
+		publintNormalize(),
 	];
 	return _defineConfig(baseConfig, _plugins, option);
 };
