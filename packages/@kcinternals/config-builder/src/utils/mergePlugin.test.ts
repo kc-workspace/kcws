@@ -3,6 +3,12 @@ import { describe, expect, test, vi } from "vitest";
 import type { ConfigPlugin } from "../models";
 import mergePlugin from "./mergePlugin";
 
+vi.mock("node:console", () => {
+	return {
+		debug: vi.fn(),
+	};
+});
+
 describe(mergePlugin.name, () => {
 	test("should return a plugin with the given name", () => {
 		const result = mergePlugin("merged");

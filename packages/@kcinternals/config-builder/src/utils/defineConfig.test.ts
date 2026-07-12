@@ -1,6 +1,12 @@
 import { debug } from "node:console";
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import defineConfig from "./defineConfig";
+
+vi.mock("node:console", () => {
+	return {
+		debug: vi.fn(),
+	};
+});
 
 describe(defineConfig.name, () => {
 	test("should define config correctly", () => {
