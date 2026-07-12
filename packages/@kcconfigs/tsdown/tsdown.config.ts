@@ -4,6 +4,7 @@ import nodePlugin from "./src/plugins/node";
 import unusedPlugin from "./src/plugins/unused";
 
 const config: TsdownConfig = defineConfig(
+	{},
 	entryPlugin(["./src/index.ts", "./src/plugins/*.ts"]),
 	nodePlugin(),
 	unusedPlugin({

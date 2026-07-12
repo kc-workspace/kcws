@@ -3,6 +3,7 @@ import entryPlugin from "@kcconfigs/tsdown/plugins/entry";
 import nodePlugin from "@kcconfigs/tsdown/plugins/node";
 
 const config: TsdownConfig = defineConfig(
+	{},
 	entryPlugin(["./src/index.ts", "./src/mockHelpers/index.ts"]),
 	nodePlugin(),
 );
