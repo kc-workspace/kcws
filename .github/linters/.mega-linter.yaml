@@ -115,3 +115,8 @@ SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: ([.]vscode/|CHANGELOG[.]md$)
 SPELL_PROSELINT_CONFIG_FILE: proselint.json
 SPELL_VALE_CONFIG_FILE: vale.ini
 YAML_YAMLLINT_CONFIG_FILE: yamllint.yml
+
+## Workaround for https://github.com/oxsecurity/megalinter/issues/8416
+REPOSITORY_LS_LINT_RULES_PATH: .github/linters
+SPELL_PROSELINT_RULES_PATH: .github/linters
+SPELL_VALE_RULES_PATH: .github/linters
