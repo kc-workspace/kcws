@@ -113,7 +113,6 @@ Example use features
 {
   "extends": [
     "@kcconfigs/tsconfig",
-    "@kcconfigs/tsconfig/envs/node",
     "@kcconfigs/tsconfig/features/noSourcemap"
   ]
 }
