@@ -2,6 +2,7 @@
 	"$schema": "https://www.schemastore.org/jscpd.json",
 	"threshold": 0,
 	"reporters": ["html", "markdown"],
+	"blame": true,
 	"ignore": [
 		"**/node_modules/**",
 		"**/.git/**",
@@ -12,6 +13,7 @@
 		"**/hardis-report/**",
 		"**/*cache*/**",
 		"**/.github/workflows/**",
+		"**/.github/linters/**",
 		"**/package.json",
 		"**/pnpm-lock.yaml",
 		"**/tsconfig.json",

@@ -72,7 +72,7 @@
 		"terms.venery": true,
 		"typography.diacritical_marks": true,
 		"typography.exclamation": true,
-		"typography.symbols": true,
+		"typography.symbols": false,
 		"uncomparables.misc": true,
 		"weasel_words.misc": true,
 		"weasel_words.very": true
