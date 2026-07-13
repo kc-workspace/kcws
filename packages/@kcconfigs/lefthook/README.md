@@ -45,9 +45,6 @@ along with the hooks you need:
 
 extends:
   - ./node_modules/@kcconfigs/lefthook/src/presets/default.yaml
-  - ./node_modules/@kcconfigs/lefthook/src/hooks/commit-msg/commitlint.yaml
-  - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-commit/biome-check.yaml
-  - ./node_modules/@kcconfigs/lefthook/src/hooks/pre-push/vitest.yaml
 
 templates:
   pm_cmd: pnpm
@@ -67,8 +64,8 @@ Features configure Lefthook behavior and can be extended individually.
 
 | Name             | Import path                                   | Description                                                               |
 | ---------------- | --------------------------------------------- | ------------------------------------------------------------------------- |
-| `strict`         | `@kcconfigs/lefthook/features/strict`         | Asserts Lefthook is installed and enforces minimum version 2.0.0          |
-| `minimal-output` | `@kcconfigs/lefthook/features/minimal-output` | Limits output to metadata, summary, and execution output for cleaner logs |
+| `strict`         | `features/strict`         | Asserts Lefthook is installed and enforces minimum version 2.0.0          |
+| `minimal-output` | `features/minimal-output` | Limits output to metadata, summary, and execution output for cleaner logs |
 
 ### Hooks
 
@@ -80,35 +77,33 @@ All hooks use the `{pm_cmd}` template variable for the package manager command
 
 | Hook         | Import path                                       | Description                               |
 | ------------ | ------------------------------------------------- | ----------------------------------------- |
-| `commitlint` | `@kcconfigs/lefthook/hooks/commit-msg/commitlint` | Validates commit messages with commitlint |
+| `commitlint` | `hooks/commit-msg/commitlint` | Validates commit messages with commitlint |
 
 #### pre-commit
 
 Pre-commit hooks run on staged files and autofix where possible
 (`stage_fixed: true`).
 
-| Hook           | Import path                                         | Glob                           | Description                         |
-| -------------- | --------------------------------------------------- | ------------------------------ | ----------------------------------- |
-| `biome-check`  | `@kcconfigs/lefthook/hooks/pre-commit/biome-check`  | JS/TS/JSON files               | Runs `biome check --fix --unsafe`   |
-| `biome-format` | `@kcconfigs/lefthook/hooks/pre-commit/biome-format` | JS/TS/JSON files               | Runs `biome format --fix --unsafe`  |
-| `biome-lint`   | `@kcconfigs/lefthook/hooks/pre-commit/biome-lint`   | JS/TS/JSON files               | Runs `biome lint --fix --unsafe`    |
-| `ls-lint`      | `@kcconfigs/lefthook/hooks/pre-commit/ls-lint`      | All staged files               | Validates file naming conventions   |
-| `textlint`     | `@kcconfigs/lefthook/hooks/pre-commit/textlint`     | `*.md`, `*.txt`                | Lints and fixes text/Markdown files |
-| `type-check`   | `@kcconfigs/lefthook/hooks/pre-commit/type-check`   | `*.ts`, `*.tsx`, `*.d.cts/mts` | Runs `tsc --noEmit`                 |
-| `vitest`       | `@kcconfigs/lefthook/hooks/pre-commit/vitest`       | JS/TS files                    | Runs the test suite via Vitest      |
+| Hook           | Import path                                         | Description                         |
+| -------------- | --------------------------------------------------- | ----------------------------------- |
+| `biome-check`  | `hooks/pre-commit/biome-check`  | Runs `biome check --fix --unsafe`   |
+| `biome-format` | `hooks/pre-commit/biome-format` | Runs `biome format --fix --unsafe`  |
+| `biome-lint`   | `hooks/pre-commit/biome-lint`   | Runs `biome lint --fix --unsafe`    |
+| `ls-lint`      | `hooks/pre-commit/ls-lint`      | Validates file naming conventions   |
+| `textlint`     | `hooks/pre-commit/textlint`     | Lints and fixes text/Markdown files |
+| `type-check`   | `hooks/pre-commit/type-check`   | Runs `tsc --noEmit`                 |
+| `vitest`       | `hooks/pre-commit/vitest`       | Runs the test suite via Vitest      |
 
 #### pre-push
 
 Pre-push hooks run broader validation checks before pushing.
 Unlike pre-commit hooks, these do **not** autofix files.
 
-| Hook           | Import path                                       | Glob                           | Description                         |
-| -------------- | ------------------------------------------------- | ------------------------------ | ----------------------------------- |
-| `biome-check`  | `@kcconfigs/lefthook/hooks/pre-push/biome-check`  | JS/TS/JSON files               | Runs `biome check` (read-only)      |
-| `biome-format` | `@kcconfigs/lefthook/hooks/pre-push/biome-format` | JS/TS/JSON files               | Runs `biome format` (read-only)     |
-| `biome-lint`   | `@kcconfigs/lefthook/hooks/pre-push/biome-lint`   | JS/TS/JSON files               | Runs `biome lint` (read-only)       |
-| `type-check`   | `@kcconfigs/lefthook/hooks/pre-push/type-check`   | `*.ts`, `*.tsx`, `*.d.cts/mts` | Runs `tsc --noEmit`                 |
-| `vitest`       | `@kcconfigs/lefthook/hooks/pre-push/vitest`       | JS/TS files                    | Runs the full test suite via Vitest |
+| Hook           | Import path                                       | Description                         |
+| -------------- | ------------------------------------------------- | ----------------------------------- |
+| `biome-check`  | `hooks/pre-push/biome-check`  | Runs `biome check` (read-only)      |
+| `biome-format` | `hooks/pre-push/biome-format` | Runs `biome format` (read-only)     |
+| `biome-lint`   | `hooks/pre-push/biome-lint`   | Runs `biome lint` (read-only)       |
 
 ## Templates
 
