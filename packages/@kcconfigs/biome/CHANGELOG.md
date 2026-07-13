@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.2...@kcconfigs/biome+v2.0.0) (2026-07-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** remove @kcconfigs/biome/features
+
+### Features
+
+* **kcconfigs/biome:** remove @kcconfigs/biome/features ([8ba6848](https://github.com/kc-workspace/kcws/commit/8ba68489e01c0139fe539bda59264daf050bbe93))
+
+
+### Performance Improvements
+
+* **kcconfigs/biome:** add *.test.* and *.spec.* relex rules ([f6a0138](https://github.com/kc-workspace/kcws/commit/f6a0138b888586a1dbfb1a02b0b523bad22a89a0))
+
 ## [1.0.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.1...@kcconfigs/biome+v1.0.2) (2026-07-06)
 
 

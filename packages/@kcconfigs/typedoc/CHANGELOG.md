@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.2.0-beta.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.1.2-beta.4...@kcconfigs/typedoc+v0.2.0-beta.4) (2026-07-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/typedoc:** remove varvara-theme from typedoc as it not support typescript v6
+
+### Features
+
+* **kcconfigs/typedoc:** remove varvara-theme from typedoc as it not support typescript v6 ([9ed9814](https://github.com/kc-workspace/kcws/commit/9ed981444fd37d8a1c9412fa1ac4bd738a2325a3))
+
+
+### Code Refactoring
+
+* **kcconfigs/tsconfig:** relocate @kctypes/generic to tsconfig deps for TS 6 type resolution ([6a556ae](https://github.com/kc-workspace/kcws/commit/6a556aefb8872db0084fe43b5aa27e5f806f6d2b))
+* **kcconfigs/typedoc:** migrate tsdown config to plugin-based ([618d5a2](https://github.com/kc-workspace/kcws/commit/618d5a26ba952935ed81832bc489248cf89deaaa))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+    * @kcconfigs/vitest bumped to 0.1.2-beta.6
+
 ## [0.1.2-beta.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.1.2-beta.3...@kcconfigs/typedoc+v0.1.2-beta.4) (2026-07-06)
 
 

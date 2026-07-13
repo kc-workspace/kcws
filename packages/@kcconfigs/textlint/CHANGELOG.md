@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.1.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.4...@kcconfigs/textlint+v0.1.5) (2026-07-13)
+
+
+### Bugfixes
+
+* **kcconfigs/textlint:** update sonar issue ([ad69304](https://github.com/kc-workspace/kcws/commit/ad69304b8443519d5fe11288db014a27f9725ffe))
+
+
+### Documentation
+
+* improve prose quality and fix grammar in documentation ([9d7a6f0](https://github.com/kc-workspace/kcws/commit/9d7a6f0695dd7dadb3f3dc058d2a85d593deb083))
+
+
+### Code Refactoring
+
+* **kcconfigs/textlint:** migrate tsdown config to plugin-based ([ad2c9a2](https://github.com/kc-workspace/kcws/commit/ad2c9a2517d9ea81e77a52bf2c7171bf35c42e1f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/vitest bumped to 0.1.2-beta.6
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+
 ## [0.1.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.3...@kcconfigs/textlint+v0.1.4) (2026-07-06)
 
 

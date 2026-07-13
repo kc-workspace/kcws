@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.3...@kcconfigs/lefthook+v0.1.4) (2026-07-13)
+
+
+### Documentation
+
+* format table ([8f2c2ce](https://github.com/kc-workspace/kcws/commit/8f2c2ceacf06ad8514502c50db7f5ae80848063a))
+* **kcconfigs/lefthook:** simplify hook import paths and update docs tables ([13717eb](https://github.com/kc-workspace/kcws/commit/13717ebd4c86dc0800811d6d2d9ff8e8837cc3b9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+
 ## [0.1.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.2...@kcconfigs/lefthook+v0.1.3) (2026-07-06)
 
 

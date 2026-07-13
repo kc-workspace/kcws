@@ -1,6 +1,6 @@
 {
 	"name": "@kcinternals/config-builder",
-	"version": "0.1.0-beta.0",
+	"version": "0.1.0",
 	"description": "A config builder for @kc packages using plugin system",
 	"type": "module",
 	"scripts": {

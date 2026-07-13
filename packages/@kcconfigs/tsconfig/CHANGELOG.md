@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.0.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.2...@kcconfigs/tsconfig+v1.0.3) (2026-07-13)
+
+
+### Documentation
+
+* **kcconfigs/tsconfig:** add jscpd ignore markers to reduce false positives ([2b11147](https://github.com/kc-workspace/kcws/commit/2b111477af65a80c3ac882b23b12d35a02f0122f))
+* **kcconfigs/tsconfig:** add React section to table of contents ([87a7335](https://github.com/kc-workspace/kcws/commit/87a73358aa58227b99b9bc6107333c806e87ce4d))
+* **kcconfigs/tsconfig:** remove stale envs/node from example ([df26baf](https://github.com/kc-workspace/kcws/commit/df26baf6bdb061b1df7f59b2428cb486c2988ba0))
+
+
+### Code Refactoring
+
+* **kcconfigs/tsconfig:** relocate @kctypes/generic to tsconfig deps for TS 6 type resolution ([6a556ae](https://github.com/kc-workspace/kcws/commit/6a556aefb8872db0084fe43b5aa27e5f806f6d2b))
+* **kcconfigs/tsconfig:** remove deprecated es5 target feature ([c35731f](https://github.com/kc-workspace/kcws/commit/c35731fdb3603064fa13d7ed1ee47ddaca899295))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+
 ## [1.0.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.1...@kcconfigs/tsconfig+v1.0.2) (2026-07-06)
 
 
