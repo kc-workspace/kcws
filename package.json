@@ -13,7 +13,7 @@
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"docs:all": "typedoc",
-		"clean": "rimraf --verbose --glob -- **/*.tsbuildinfo **/dist docs reports",
+		"clean": "rimraf --verbose --glob -- docs **/*.tsbuildinfo **/dist **/reports",
 		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml",
 		"commit": "git-cz"
 	},
