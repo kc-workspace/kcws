@@ -1,6 +1,6 @@
 {
 	"name": "@kctools/bun-react",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Use bun to start dev or prod server for react website",
 	"type": "module",
 	"scripts": {

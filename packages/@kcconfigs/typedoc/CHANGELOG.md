@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.0-beta.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.2.0-beta.4...@kcconfigs/typedoc+v0.2.0-beta.5) (2026-07-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.2.2
+    * @kcconfigs/vitest bumped to 0.1.2-beta.7
+
 ## [0.2.0-beta.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.1.2-beta.4...@kcconfigs/typedoc+v0.2.0-beta.4) (2026-07-13)
 
 
