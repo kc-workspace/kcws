@@ -45,21 +45,21 @@
 
 ## Terminology
 
-- **package** - package name (e.g. `@kcconfigs/tsconfig`, `@kcexamples/demo`)
+- **package** - package name (for example `@kcconfigs/tsconfig`, `@kcexamples/demo`)
   - Use on package.json#name field and release-please/config.json#component field
-- **component** - package name without at(@) sign (e.g. `kcconfigs/tsconfig`)
+- **component** - package name without at(@) sign (for example `kcconfigs/tsconfig`)
   - Use on Git commit scope and Git tag prefix
-- **package version** || **version** - package version (e.g. `0.2.0`, `1.2.3`, `1.0.0-beta.1`)
+- **package version** || **version** - package version (for example `0.2.0`, `1.2.3`, `1.0.0-beta.1`)
   - Use on package.json#version field
-- **prerelease** - package version contains prerelease identifier (e.g. `1.0.0-beta.1`)
+- **prerelease** - package version contains prerelease identifier (for example `1.0.0-beta.1`)
   - Similar to **package version**; more specific to **prerelease** only
-- **prerelease number** - number at the end of **prerelease** (e.g. `1`, `2`)
+- **prerelease number** - number at the end of **prerelease** (for example `1`, `2`)
   - If package version is `1.0.0`, then **prerelease number** is empty
   - If package version is `0.1.2-beta.2`, then **prerelease number** is `2`
-- **Git tag** || **tag** - Git tag string (e.g. `kcconfigs/tsconfig+v1.2.3`)
+- **Git tag** || **tag** - Git tag string (for example `kcconfigs/tsconfig+v1.2.3`)
   - Syntax: `<component>+v<version>`
-- **npm tag** - npm tag string (e.g. `latest`, `rc`, `beta`, `alpha`)
-  - Use with install package (e.g. `npm install @kcconfigs/tsconfig@beta`)
+- **npm tag** - npm tag string (for example `latest`, `rc`, `beta`, `alpha`)
+  - Use with install package (for example `npm install @kcconfigs/tsconfig@beta`)
   - Node will use `latest` when not specify
 
 ## Todo list
@@ -68,13 +68,14 @@
 
 ## Known issues
 
-- release-please repository status (googleapis/release-please#2545)
-- right now you cannot convert prerelease to stable version easily (googleapis/release-please#2515)
-  - Workaround 1: use release-as commit to force which version to deploy
+- release-please repository status ([googleapis/release-please#2545][googleapis/release-please#2545])
+- right now you cannot convert prerelease to stable version ([googleapis/release-please#2515][googleapis/release-please#2515])
+  - **Workaround 1**: use release-as commit to force which version to deploy (go with this on ./scripts/package-*.sh)
   - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
-- @kcconfigs/biome/features/* didn't works (biomejs/biome#9370)
-- Dependabot generate invalid pnpm-lock.yaml file cause ci to failed (dependabot/dependabot-core#12244)
+
+[googleapis/release-please#2545]: https://github.com/googleapis/release-please/issues/2545
+[googleapis/release-please#2515]: https://github.com/googleapis/release-please/issues/2515
 
 ## Get start
 

@@ -39,5 +39,5 @@ import "@kcstyles/reset.css";
 
 ## References
 
-- [CSS Reset — MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
+- [MDN: CSS Reset](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
 - [A Modern CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset/)

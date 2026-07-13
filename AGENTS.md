@@ -214,7 +214,7 @@ pnpm --filter <package-name> fix
 
 ### Language Conventions
 
-- **TypeScript only** - Never use JavaScript unless absolutely necessary
+- **TypeScript only** - Never use JavaScript unless necessary
 - **TypeScript strict mode enabled**
 - **No non-null assertions** - Use optional chaining or type guards instead
 - **Avoid biome-ignore comments** - Write proper code instead of suppressing warnings
@@ -290,9 +290,9 @@ Only use suppressions in rare cases when:
 3. Temporary workarounds that are documented with todo comments
 
 ```typescript
-// Only when absolutely necessary
+// Only when necessary
 // biome-ignore lint/style/noNonNullAssertion: testing known structure with TODO to refactor
-const value = config!.rules!["type-enum"];
+const value = config.rules!["type-enum"];
 ```
 
 ## Build and Deployment
@@ -588,7 +588,7 @@ This workspace uses pnpm catalog for shared dependency versions:
 
 1. **Use default catalog** (`catalog:`) as much as possible
 2. Use named catalogs (`catalog:<name>:latest`) only when package requires multiple dependencies at specific versions
-3. **All peer dependencies** must use `:peer` suffix (e.g., `catalog:test:peer`)
+3. **All peer dependencies** must use `:peer` suffix (for example `catalog:test:peer`)
 
 Examples:
 
@@ -611,7 +611,7 @@ Examples:
 Known repo-specific pitfalls:
 
 - `@kcconfigs/biome/features/*` currently has upstream breakage (`biomejs/biome#9370`)
-- release-please cannot easily convert prerelease packages back to stable versions
+- release-please cannot convert prerelease packages back to stable versions using config (need commit body)
 - Dependabot can generate an invalid `pnpm-lock.yaml`; inspect lockfile changes carefully on dependency PRs
 
 **Issue**: Package not found
