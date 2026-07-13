@@ -5,10 +5,18 @@
 	"language": "en",
 	"allowCompoundWords": true,
 	"ignorePaths": [
+		// Ignore node modules
+		"node_modules/**",
+		// Ignore GitHub configs
+		".github/**",
+		// Ignore VSCode settings
+		".vscode/**",
+		// Ignore test reports
+		"**/reports/**",
+		// Ignore meta-linter report
+		"**/megalinter-reports/**",
 		// Ignore dictionary files
 		"**/*.dict.txt",
-		// Ignore node modules
-		"**/node_modules",
 		// Ignore vscode workspace settings
 		"**/*.code-workspace",
 		// Ignore Pnpm lock file
@@ -17,14 +25,6 @@
 		"**/pnpm-workspace.yaml",
 		// Ignore dependencies and package file
 		"**/package.json",
-		// Ignore test reports
-		"**/reports",
-		// Ignore meta-linter report
-		"**/megalinter-reports",
-		// Ignore GitHub configs
-		"**/.github",
-		// Ignore VSCode settings
-		"**/.vscode",
 		// Ignore Typedoc config files
 		"**/typedoc.json",
 		"**/typedoc.*.json"
