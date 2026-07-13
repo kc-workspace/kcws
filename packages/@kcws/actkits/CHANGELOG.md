@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.3](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.2...@kcws/actkits+v0.1.3) (2026-07-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.1.2-beta.7
+    * @kcconfigs/tsdown bumped to 0.2.2
+
 ## [0.1.2](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.1...@kcws/actkits+v0.1.2) (2026-07-13)
 
 

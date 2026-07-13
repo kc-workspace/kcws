@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.1...@kcconfigs/tsdown+v0.2.2) (2026-07-13)
+
+
+### Features
+
+* **kcconfigs/tsdown:** add CSS output configuration to css and debug plugins ([7f58915](https://github.com/kc-workspace/kcws/commit/7f5891530bfd55d9593c1ed4eb5d9d3b2bef91a9))
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.0...@kcconfigs/tsdown+v0.2.1) (2026-07-13)
 
 

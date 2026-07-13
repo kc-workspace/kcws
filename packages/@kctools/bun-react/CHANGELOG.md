@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.6](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.5...@kctools/bun-react+v0.1.6) (2026-07-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.2.2
+    * @kcconfigs/vitest bumped to 0.1.2-beta.7
+
 ## [0.1.5](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.4...@kctools/bun-react+v0.1.5) (2026-07-13)
 
 
