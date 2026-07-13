@@ -29,6 +29,10 @@ updates:
           - "@vitest/*"
           - vitest
           - memfs
+      tsdown:
+        patterns:
+          - "@tsdown/*"
+          - tsdown
       typedoc:
         patterns:
           - typedoc
