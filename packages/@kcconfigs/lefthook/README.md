@@ -62,8 +62,8 @@ Presets bundle multiple features together for convenience.
 
 Features configure Lefthook behavior and can be extended individually.
 
-| Name             | Import path                                   | Description                                                               |
-| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------- |
+| Name             | Import path               | Description                                                               |
+| ---------------- | ------------------------- | ------------------------------------------------------------------------- |
 | `strict`         | `features/strict`         | Asserts Lefthook is installed and enforces minimum version 2.0.0          |
 | `minimal-output` | `features/minimal-output` | Limits output to metadata, summary, and execution output for cleaner logs |
 
@@ -75,8 +75,8 @@ All hooks use the `{pm_cmd}` template variable for the package manager command
 
 #### commit-msg
 
-| Hook         | Import path                                       | Description                               |
-| ------------ | ------------------------------------------------- | ----------------------------------------- |
+| Hook         | Import path                   | Description                               |
+| ------------ | ----------------------------- | ----------------------------------------- |
 | `commitlint` | `hooks/commit-msg/commitlint` | Validates commit messages with commitlint |
 
 #### pre-commit
@@ -84,8 +84,8 @@ All hooks use the `{pm_cmd}` template variable for the package manager command
 Pre-commit hooks run on staged files and autofix where possible
 (`stage_fixed: true`).
 
-| Hook           | Import path                                         | Description                         |
-| -------------- | --------------------------------------------------- | ----------------------------------- |
+| Hook           | Import path                     | Description                         |
+| -------------- | ------------------------------- | ----------------------------------- |
 | `biome-check`  | `hooks/pre-commit/biome-check`  | Runs `biome check --fix --unsafe`   |
 | `biome-format` | `hooks/pre-commit/biome-format` | Runs `biome format --fix --unsafe`  |
 | `biome-lint`   | `hooks/pre-commit/biome-lint`   | Runs `biome lint --fix --unsafe`    |
@@ -99,11 +99,11 @@ Pre-commit hooks run on staged files and autofix where possible
 Pre-push hooks run broader validation checks before pushing.
 Unlike pre-commit hooks, these do **not** autofix files.
 
-| Hook           | Import path                                       | Description                         |
-| -------------- | ------------------------------------------------- | ----------------------------------- |
-| `biome-check`  | `hooks/pre-push/biome-check`  | Runs `biome check` (read-only)      |
-| `biome-format` | `hooks/pre-push/biome-format` | Runs `biome format` (read-only)     |
-| `biome-lint`   | `hooks/pre-push/biome-lint`   | Runs `biome lint` (read-only)       |
+| Hook           | Import path                   | Description                     |
+| -------------- | ----------------------------- | ------------------------------- |
+| `biome-check`  | `hooks/pre-push/biome-check`  | Runs `biome check` (read-only)  |
+| `biome-format` | `hooks/pre-push/biome-format` | Runs `biome format` (read-only) |
+| `biome-lint`   | `hooks/pre-push/biome-lint`   | Runs `biome lint` (read-only)   |
 
 ## Templates
 
