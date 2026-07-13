@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.1.2](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.1...@kcws/actkits+v0.1.2) (2026-07-13)
+
+
+### Performance Improvements
+
+* **kcconfigs/tsdown:** migrate all dependent to new plugin structure ([55862c3](https://github.com/kc-workspace/kcws/commit/55862c39506ae6ba08e0d98029fcb71c5191b075))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/vitest bumped to 0.1.2-beta.6
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+
 ## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.0...@kcws/actkits+v0.1.1) (2026-07-06)
 
 

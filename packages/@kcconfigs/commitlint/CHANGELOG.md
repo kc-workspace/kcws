@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.4...@kcconfigs/commitlint+v0.2.5) (2026-07-13)
+
+
+### Performance Improvements
+
+* **deps:** bump the commitlint group across 1 directory with 5 updates ([#159](https://github.com/kc-workspace/kcws/issues/159)) ([456e4e0](https://github.com/kc-workspace/kcws/commit/456e4e0937dcfb22f6263a2bc9efd7b5a4863e03))
+
+
+### Code Refactoring
+
+* **kcconfigs/commitlint:** migrate tsdown config to plugin-based ([745a2a8](https://github.com/kc-workspace/kcws/commit/745a2a880cfe25187e62e0dbe0e9aae517fb6146))
+* **kcconfigs/tsconfig:** relocate @kctypes/generic to tsconfig deps for TS 6 type resolution ([6a556ae](https://github.com/kc-workspace/kcws/commit/6a556aefb8872db0084fe43b5aa27e5f806f6d2b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+    * @kcconfigs/vitest bumped to 0.1.2-beta.6
+
 ## [0.2.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.3...@kcconfigs/commitlint+v0.2.4) (2026-07-06)
 
 

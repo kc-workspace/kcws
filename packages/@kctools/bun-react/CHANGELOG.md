@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.1.5](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.4...@kctools/bun-react+v0.1.5) (2026-07-13)
+
+
+### Performance Improvements
+
+* **kcconfigs/tsdown:** migrate all dependent to new plugin structure ([55862c3](https://github.com/kc-workspace/kcws/commit/55862c39506ae6ba08e0d98029fcb71c5191b075))
+* **kctools/bun-react:** use share mocks instead for console ([7ba84fb](https://github.com/kc-workspace/kcws/commit/7ba84fb122ad7651bedbe42f4e5eb5d380a9b7ad))
+
+
+### Bugfixes
+
+* **kctools/bun-react:** use node:console instead of global console ([56327fb](https://github.com/kc-workspace/kcws/commit/56327fbfe82e0ddafc9c0b6244756e25594cc638))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+    * @kcconfigs/vitest bumped to 0.1.2-beta.6
+
 ## [0.1.4](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.3...@kctools/bun-react+v0.1.4) (2026-07-06)
 
 

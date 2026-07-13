@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.1.2-beta.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.2-beta.5...@kcconfigs/vitest+v0.1.2-beta.6) (2026-07-13)
+
+
+### Performance Improvements
+
+* **kcconfigs/vitest:** add console mock for minimize junk output ([e9c65b4](https://github.com/kc-workspace/kcws/commit/e9c65b48c4bb1359b2e00987f1e66f336d8e07d4))
+* **kcconfigs/vitest:** migrate tsdown to new plugin system ([50e66a9](https://github.com/kc-workspace/kcws/commit/50e66a9f6aa5950b380aa940a746746b1d586cd9))
+
+
+### Code Refactoring
+
+* **kcconfigs/vitest:** reduce duplicate code on os and process mock ([7948c6c](https://github.com/kc-workspace/kcws/commit/7948c6c473261b207b8012408c3da81d1cbfde32))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.0.3
+    * @kcconfigs/tsdown bumped to 0.2.1
+    * @kcconfigs/biome bumped to 2.0.0
+
 ## [0.1.2-beta.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.2-beta.4...@kcconfigs/vitest+v0.1.2-beta.5) (2026-07-06)
 
 

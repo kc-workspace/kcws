@@ -1,5 +1,57 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.0...@kcconfigs/tsdown+v0.2.1) (2026-07-13)
+
+
+### Features
+
+* **kcconfigs/tsdown:** add attw and attw-normalize plugins ([3f2ea88](https://github.com/kc-workspace/kcws/commit/3f2ea88c68928920cefd0214ecb1413b4cdc106b))
+* **kcconfigs/tsdown:** add css plugin ([46c559b](https://github.com/kc-workspace/kcws/commit/46c559b08e6c03b0eb54526e9aacb0cfe6c106a3))
+* **kcconfigs/tsdown:** add deps and debug plugins ([5e5a1de](https://github.com/kc-workspace/kcws/commit/5e5a1de83a40c93743c3cbd3aca955512100bc29))
+* **kcconfigs/tsdown:** add dts and dts-normalize plugins ([83b57b7](https://github.com/kc-workspace/kcws/commit/83b57b7a93f663b01c4257e75de1e1445952afb6))
+* **kcconfigs/tsdown:** add format and format-normalize plugins ([d585947](https://github.com/kc-workspace/kcws/commit/d585947ef5f54b77d06e6d2c0f1814f7c5af9dd9))
+* **kcconfigs/tsdown:** add node and browser platform plugins ([805416b](https://github.com/kc-workspace/kcws/commit/805416b64a7918f30af8cdca2c421d832980fb91))
+* **kcconfigs/tsdown:** add override plugin ([9a2f1c1](https://github.com/kc-workspace/kcws/commit/9a2f1c16bb14a3661586a1fd1cdccee74aef87cd))
+* **kcconfigs/tsdown:** add plugin config models, constants, and test setup ([3206de0](https://github.com/kc-workspace/kcws/commit/3206de0eabeb103c3274d2664a668b4d391c830e))
+* **kcconfigs/tsdown:** add tests for node and browser platform plugins ([a61950b](https://github.com/kc-workspace/kcws/commit/a61950b7e077ae6c153d7e76e507ff4489781bb4))
+* **kcconfigs/tsdown:** add tests for unused and publint plugins ([9cdef0e](https://github.com/kc-workspace/kcws/commit/9cdef0e52b2e1f89dd83ccf0c7c9744304f8043f))
+* **kcconfigs/tsdown:** add unused and publint plugins ([431bc50](https://github.com/kc-workspace/kcws/commit/431bc50425d19eb51c175963def3a5fa01eb3fb2))
+* **kcconfigs/tsdown:** export platform plugins from main entry point ([3b30835](https://github.com/kc-workspace/kcws/commit/3b30835a70c817b8b1c68b27c2f3f8ef4bfede6a))
+* **kcconfigs/tsdown:** export unused and publint plugins from main entry point ([3400b54](https://github.com/kc-workspace/kcws/commit/3400b54f29420fb684679a288847b8d7eeee802a))
+* **kcconfigs/tsdown:** migrate to use internals/config-builder with plugin instead ([d87b242](https://github.com/kc-workspace/kcws/commit/d87b2427938df7e7feeb60c4a24858df9c9a602f))
+* **kcconfigs/tsdown:** normalize publint config before return from define ([ce4faee](https://github.com/kc-workspace/kcws/commit/ce4faeef45de9d9ab6930a4f80b8df17ae08589e))
+
+
+### Performance Improvements
+
+* **kcconfigs/tsdown:** add new outputPlugin to custom outDir ([4d13a94](https://github.com/kc-workspace/kcws/commit/4d13a94e21efca693825c86552188f593307a848))
+* **kcconfigs/tsdown:** add publint config normalize and fix format ([faf556a](https://github.com/kc-workspace/kcws/commit/faf556a0fe409f98092771a88599ce1d1d2b6856))
+
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** cssPlugin now work with css and scss ([c71e1b3](https://github.com/kc-workspace/kcws/commit/c71e1b320579c1149dbf02fa9c52df0f53223b1e))
+
+
+### Code Refactoring
+
+* **kcconfigs/tsconfig:** relocate @kctypes/generic to tsconfig deps for TS 6 type resolution ([6a556ae](https://github.com/kc-workspace/kcws/commit/6a556aefb8872db0084fe43b5aa27e5f806f6d2b))
+* **kcconfigs/tsdown:** build itself using node and unused plugins ([9a1ae62](https://github.com/kc-workspace/kcws/commit/9a1ae62c9554a2845b1783cca415bc82bef8799e))
+* **kcconfigs/tsdown:** improve isEsm to handle array and object formats ([d2e859b](https://github.com/kc-workspace/kcws/commit/d2e859b12c0c84336759699cc71043de0cb34328))
+* **kcconfigs/tsdown:** rewrite defineConfig using plugin architecture ([24cdcb6](https://github.com/kc-workspace/kcws/commit/24cdcb69acc6b9358f2bfc1e227707cec1624004))
+* **kcconfigs/tsdown:** simplify format plugin to pass through format values ([149075e](https://github.com/kc-workspace/kcws/commit/149075ee153b5a974bd7889fef6ab9279c5dcee2))
+* **kcconfigs/tsdown:** use definePlugin for all internal and public plugins ([9d4fbb1](https://github.com/kc-workspace/kcws/commit/9d4fbb18e0fe22d51c40d50235697dbc8ff33161))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.1.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.0
+    * @kcconfigs/tsconfig bumped to 1.0.3
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.1.2-beta.5...@kcconfigs/tsdown+v0.2.0) (2026-07-06)
 
 

@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/commitlint",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "Shared commitlint configuration",
 	"type": "module",
 	"scripts": {
