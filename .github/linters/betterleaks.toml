@@ -1,0 +1,7 @@
+title = "betterleaks config"
+
+[extend]
+# useDefault will extend the base configuration with the default betterleaks config
+# (compatible with the gitleaks default config):
+# https://github.com/betterleaks/betterleaks
+useDefault = true

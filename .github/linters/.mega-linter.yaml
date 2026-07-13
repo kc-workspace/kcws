@@ -7,6 +7,7 @@
 APPLY_FIXES: none
 
 VALIDATE_ALL_CODEBASE: true
+LOG_LEVEL: DEBUG ## INFO, DEBUG, WARNING or ERROR.
 
 LINTER_RULES_PATH: .github/linters
 GITHUB_COMMENT_REPORTER: true
@@ -61,8 +62,8 @@ ENABLE_LINTERS:
   ## https://megalinter.io/9.5.0/descriptors/repository_git_diff/
   - REPOSITORY_GIT_DIFF
   ## [✅] Check git leaks
-  ## https://megalinter.io/9.5.0/descriptors/repository_gitleaks/
-  - REPOSITORY_GITLEAKS
+  ## https://megalinter.io/9.5.0/descriptors/repository_betterleaks/
+  - REPOSITORY_BETTERLEAKS
   ## [✅] Check dependencies vulnerabilities
   ## https://megalinter.io/9.5.0/descriptors/repository_grype/
   - REPOSITORY_GRYPE
@@ -103,7 +104,7 @@ ENABLE_LINTERS:
 COPYPASTE_JSCPD_CONFIG_FILE: jscpd.json
 MARKDOWN_MARKDOWNLINT_CONFIG_FILE: markdownlint.json
 MARKDOWN_MARKDOWNLINT_ARGUMENTS: --ignore-path .github/linters/markdownlint.gitignore
-REPOSITORY_GITLEAKS_CONFIG_FILE: gitleaks.toml
+REPOSITORY_BETTERLEAKS_CONFIG_FILE: betterleaks.toml
 REPOSITORY_GRYPE_CONFIG_FILE: grype.yaml
 REPOSITORY_LS_LINT_CONFIG_FILE: ls-lint.yaml
 REPOSITORY_SYFT_CONFIG_FILE: syft.yaml
