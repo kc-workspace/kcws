@@ -42,10 +42,10 @@ catalogs:
     lightningcss: 1.32.0
     sass-embedded: 1.100.0
   commitlint:latest:
-    '@commitlint/cli': 21.0.1
-    '@commitlint/config-conventional': 21.0.1
-    '@commitlint/cz-commitlint': 21.0.1
-    '@commitlint/types': 21.0.1
+    '@commitlint/cli': 21.1.0
+    '@commitlint/config-conventional': 21.1.0
+    '@commitlint/cz-commitlint': 21.1.0
+    '@commitlint/types': 21.1.0
     commitizen: 4.3.2
     inquirer: ^9.3.8
   commitlint:peer:
