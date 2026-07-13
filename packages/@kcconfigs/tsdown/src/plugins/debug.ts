@@ -11,6 +11,9 @@ const debugPlugin = (): TsdownPlugin<"debug"> =>
 		apply: (base) => {
 			return mergeConfig(base, {
 				minify: false,
+				css: {
+					minify: false,
+				},
 				env: {
 					DEBUG: true,
 					NODE_ENV: "debug",

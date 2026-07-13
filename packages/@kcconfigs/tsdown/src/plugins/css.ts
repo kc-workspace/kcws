@@ -22,6 +22,11 @@ const cssPlugin = (option?: CssPluginOption): TsdownPlugin<"css"> =>
 					"!./src/**/*.test-d.ts",
 					"!./src/**/*.spec-d.ts",
 				],
+				css: {
+					fileName: "index.css",
+					splitting: false,
+					minify: true,
+				},
 				format: "esm",
 				publint: false,
 				attw: false,
