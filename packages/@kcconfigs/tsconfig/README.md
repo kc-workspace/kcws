@@ -15,6 +15,7 @@ Provides multiple tsconfig.json templates for different project types and use ca
 - [Compiler Options](#compiler-options)
 - [Example](#example)
   - [TSDown](#tsdown)
+  - [React](#react)
 - [Investigate](#investigate)
 - [References](#references)
 
