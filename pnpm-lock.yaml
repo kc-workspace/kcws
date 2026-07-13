@@ -22,6 +22,9 @@ catalogs:
     '@commitlint/types':
       specifier: 21.0.1
       version: 21.0.1
+    commitizen:
+      specifier: 4.3.2
+      version: 4.3.2
     inquirer:
       specifier: ^9.3.8
       version: 9.3.8
@@ -205,7 +208,7 @@ importers:
         specifier: catalog:test:latest
         version: 4.1.7(vitest@4.1.7)
       commitizen:
-        specifier: 4.3.2
+        specifier: catalog:commitlint:latest
         version: 4.3.2(@types/node@24.13.3)(typescript@6.0.3)
       inquirer:
         specifier: catalog:commitlint:latest
