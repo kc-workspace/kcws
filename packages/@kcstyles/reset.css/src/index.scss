@@ -1,5 +1,6 @@
 // START Tailwind reset.css
 // https://unpkg.com/tailwindcss@3.2.4/src/css/preflight.css
+/* jscpd:ignore-start */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -404,3 +405,5 @@ div[row=""] {
 div[block=""] {
   display: block;
 }
+
+/* jscpd:ignore-end */
