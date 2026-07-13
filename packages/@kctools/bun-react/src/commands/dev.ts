@@ -1,3 +1,4 @@
+import { error, log, warn } from "node:console";
 import type { CommandFn } from "./types";
 
 const text = {
@@ -31,7 +32,7 @@ export const dev: CommandFn = (program, Bun) => {
 		.action(async (html, options) => {
 			let port = parseInt(options.port, 10);
 			if (Number.isNaN(port) || port <= 0 || port > 65535) {
-				console.error(`Invalid port number: ${options.port}`);
+				error(`Invalid port number: ${options.port}`);
 				return;
 			}
 
@@ -51,14 +52,14 @@ export const dev: CommandFn = (program, Bun) => {
 						},
 					});
 
-					console.log(`Listening on ${server.url}`);
+					log(`Listening on ${server.url}`);
 					return;
 				} catch (e) {
 					if (options.nextPort) {
-						console.warn(`Port ${port} is in use, trying ${port + 1}...`);
+						warn(`Port ${port} is in use, trying ${port + 1}...`);
 						port++;
 					} else {
-						console.error(e);
+						error(e);
 						return;
 					}
 				}

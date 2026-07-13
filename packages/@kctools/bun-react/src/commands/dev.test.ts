@@ -1,3 +1,4 @@
+import { error, log, warn } from "node:console";
 import type * as BunType from "bun";
 import { Command } from "commander";
 import { describe, expect, test, vi } from "vitest";
@@ -76,10 +77,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "abc"], { from: "user" });
 
-		expect(errorSpy).toHaveBeenCalledWith("Invalid port number: abc");
+		expect(error).toHaveBeenCalledWith("Invalid port number: abc");
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
@@ -88,10 +88,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "0"], { from: "user" });
 
-		expect(errorSpy).toHaveBeenCalledWith("Invalid port number: 0");
+		expect(error).toHaveBeenCalledWith("Invalid port number: 0");
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
@@ -100,10 +99,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "-1"], { from: "user" });
 
-		expect(errorSpy).toHaveBeenCalledWith("Invalid port number: -1");
+		expect(error).toHaveBeenCalledWith("Invalid port number: -1");
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
@@ -112,10 +110,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "65536"], { from: "user" });
 
-		expect(errorSpy).toHaveBeenCalledWith("Invalid port number: 65536");
+		expect(error).toHaveBeenCalledWith("Invalid port number: 65536");
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
@@ -124,10 +121,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "1"], { from: "user" });
 
-		expect(errorSpy).not.toHaveBeenCalledWith(
+		expect(error).not.toHaveBeenCalledWith(
 			expect.stringContaining("Invalid port"),
 		);
 	});
@@ -137,10 +133,9 @@ describe("dev command action - port validation", () => {
 		const mockBun = createMockBun();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--port", "65535"], { from: "user" });
 
-		expect(errorSpy).not.toHaveBeenCalledWith(
+		expect(error).not.toHaveBeenCalledWith(
 			expect.stringContaining("Invalid port"),
 		);
 	});
@@ -223,10 +218,9 @@ describe("dev command action - server", () => {
 		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") });
 		dev(program, mockBun);
 
-		const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 		await program.parseAsync(["dev"], { from: "user" });
 
-		expect(logSpy).toHaveBeenCalledWith("Listening on http://127.0.0.1:3000/");
+		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:3000/");
 	});
 
 	test("logs error and does not retry when port is in use without --next-port", async () => {
@@ -240,10 +234,9 @@ describe("dev command action - server", () => {
 		const program = new Command();
 		dev(program, mockBun);
 
-		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		await program.parseAsync(["dev"], { from: "user" });
 
-		expect(errorSpy).toHaveBeenCalledWith(portError);
+		expect(error).toHaveBeenCalledWith(portError);
 		expect(mockBun.serve).toHaveBeenCalledTimes(1);
 	});
 
@@ -261,17 +254,15 @@ describe("dev command action - server", () => {
 		const program = new Command();
 		dev(program, mockBun);
 
-		const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
-		const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--next-port"], { from: "user" });
 
-		expect(warnSpy).toHaveBeenCalledWith("Port 3000 is in use, trying 3001...");
+		expect(warn).toHaveBeenCalledWith("Port 3000 is in use, trying 3001...");
 		expect(mockBun.serve).toHaveBeenCalledTimes(2);
 		expect(mockBun.serve).toHaveBeenNthCalledWith(
 			2,
 			expect.objectContaining({ port: 3001 }),
 		);
-		expect(logSpy).toHaveBeenCalledWith("Listening on http://127.0.0.1:3001/");
+		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:3001/");
 	});
 
 	test("stops after 9 retry attempts when all ports are in use (limit=10, ++count)", async () => {
@@ -285,7 +276,6 @@ describe("dev command action - server", () => {
 		const program = new Command();
 		dev(program, mockBun);
 
-		vi.spyOn(console, "warn").mockImplementation(() => {});
 		await program.parseAsync(["dev", "--next-port"], { from: "user" });
 
 		// while (++count < 10) runs for count 1..9 = 9 iterations
