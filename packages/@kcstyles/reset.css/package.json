@@ -41,7 +41,7 @@
 	"files": [
 		"CHANGELOG.json",
 		"CHANGELOG.md",
-		"src"
+		"dist"
 	],
 	"engines": {
 		"node": ">=14"
