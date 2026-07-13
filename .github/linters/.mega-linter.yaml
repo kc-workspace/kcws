@@ -101,6 +101,12 @@ ENABLE_LINTERS:
   ## https://megalinter.io/9.6.0/descriptors/yaml_yamllint/
   - YAML_YAMLLINT
 
+ADDITIONAL_EXCLUDED_DIRECTORIES:
+  - .vscode
+  - .github
+  - reports
+  - docs
+
 COPYPASTE_JSCPD_CONFIG_FILE: jscpd.json
 MARKDOWN_MARKDOWNLINT_CONFIG_FILE: markdownlint.json
 MARKDOWN_MARKDOWNLINT_ARGUMENTS: --ignore-path .github/linters/markdownlint.gitignore
@@ -113,9 +119,7 @@ SPELL_CSPELL_CONFIG_FILE: cspell.jsonc
 SPELL_LYCHEE_CONFIG_FILE: lychee.toml
 SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: ([.]vscode/|CHANGELOG[.]md$)
 SPELL_PROSELINT_CONFIG_FILE: proselint.json
-SPELL_PROSELINT_FILTER_REGEX_EXCLUDE: .github/linters
 SPELL_VALE_CONFIG_FILE: vale.ini
-SPELL_VALE_FILTER_REGEX_EXCLUDE: .github/linters
 YAML_YAMLLINT_CONFIG_FILE: yamllint.yml
 
 ## Workaround for https://github.com/oxsecurity/megalinter/issues/8416

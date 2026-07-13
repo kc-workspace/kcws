@@ -37,11 +37,6 @@ Create clear, reviewable commits from the current working tree.
      `git diff --cached`.
    - Commit with `git commit -m "<header>"` and optional body in a second
      `-m`.
-   - If the commit fails with a 1Password agent error (for example
-     `1Password: agent returned an error` or `failed to write commit
-     object`), it usually means the signing request timed out because the
-     user did not approve the 1Password prompt in time. Just run the same
-     `git commit` command again to re-trigger the prompt.
    - Repeat for each group until all intended changes are committed.
 
 1. Verify and report.
@@ -60,22 +55,17 @@ Create clear, reviewable commits from the current working tree.
 - Ask for confirmation before committing if grouping intent is
   ambiguous.
 
-## Output Format
-
-Return:
-
-1. Commit plan (group -> files -> message)
-2. Commands executed
-3. Created commits (hash + subject)
-4. Remaining changes
-
 ## Troubleshooting
 
 - **1Password signing timeout:** A commit may fail with `1Password: agent
-  returned an error` or `fatal: failed to write commit object`. This is
-  typically a transient signing timeout because the user did not approve
-  the 1Password prompt in time. Simply retry the same `git commit` command;
-  it normally succeeds on the next attempt once the prompt is approved.
+  returned an error` or `fatal: failed to write commit object` because the
+  user did not approve the 1Password prompt in time.
+  1. Retry the **same** `git commit` command up to **2 times**. Each
+     retry re-triggers the 1Password prompt.
+  2. If it still fails after 2 retries, **stop retrying** — do not attempt
+     alternative workarounds. Inform the user that repeated 1Password
+     timeouts occurred and ask them to run `git commit` manually in their
+     own terminal. Leave changes staged so they can commit immediately.
 
 ## References
 
