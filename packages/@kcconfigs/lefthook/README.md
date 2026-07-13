@@ -119,6 +119,7 @@ templates:
 
 A full working configuration used in this monorepo:
 
+<!-- jscpd:ignore-start -->
 ```yaml
 # $schema: https://raw.githubusercontent.com/evilmartians/lefthook/v2.0.9/schema.json
 
@@ -141,3 +142,4 @@ extends:
 templates:
   pm_cmd: pnpm
 ```
+<!-- jscpd:ignore-end -->
