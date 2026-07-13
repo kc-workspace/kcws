@@ -6,11 +6,11 @@
 	"allowCompoundWords": true,
 	"ignorePaths": [
 		// Ignore node modules
-		"node_modules/**",
+		"**/node_modules/**",
 		// Ignore GitHub configs
-		".github/**",
+		"**/.github/**",
 		// Ignore VSCode settings
-		".vscode/**",
+		"**/.vscode/**",
 		// Ignore test reports
 		"**/reports/**",
 		// Ignore meta-linter report
