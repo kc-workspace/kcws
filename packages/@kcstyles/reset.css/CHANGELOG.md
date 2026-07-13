@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.0...@kcstyles/reset.css+v1.0.1) (2026-07-13)
+
+
+### Bugfixes
+
+* **kcstyles/reset.css:** wrong include file whitelist on publish ([9c03941](https://github.com/kc-workspace/kcws/commit/9c03941ed8ef5fe0f5861b8d97698702c9d168b3))
+
 ## [1.0.0](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v0.1.0...@kcstyles/reset.css+v1.0.0) (2026-07-13)
 
 
