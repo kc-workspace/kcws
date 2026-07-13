@@ -2,7 +2,7 @@
 	"max_errors": 200,
 	"checks": {
 		"airlinese.misc": true,
-		"annotations.misc": true,
+		"annotations.misc": false,
 		"archaism.misc": true,
 		"cliches.hell": true,
 		"cliches.misc": true,
@@ -10,7 +10,7 @@
 		"consistency.spelling": true,
 		"corporate_speak.misc": true,
 		"cursing.filth": true,
-		"cursing.nfl": true,
+		"cursing.nfl": false,
 		"dates_times.am_pm": true,
 		"dates_times.dates": true,
 		"hedging.misc": true,
