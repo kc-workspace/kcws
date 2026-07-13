@@ -19,6 +19,8 @@ Provides multiple tsconfig.json templates for different project types and use ca
 - [Investigate](#investigate)
 - [References](#references)
 
+<!-- jscpd:ignore-start -->
+
 ## Prerequisites
 
 - **TypeScript**: 5.5.0 or higher (as peer dependency)
@@ -180,3 +182,5 @@ after resolved **extends** path.
 [package.json#type]: https://nodejs.org/api/packages.html#type
 [zshy]: https://github.com/colinhacks/zshy
 [tsconfig]: https://www.typescriptlang.org/tsconfig
+
+<!-- jscpd:ignore-end -->
