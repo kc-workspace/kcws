@@ -31,6 +31,8 @@ ls:
     "*":
       .dir: exists:0
     .*: kebab-case
+  .github/linters/vale-styles:
+    .dir: exists:1
 
   ## release-please config must contains only config.json and manifest.json
   ## no additional file or directory allowed
