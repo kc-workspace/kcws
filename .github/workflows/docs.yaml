@@ -31,6 +31,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
+      - name: Build configurations
+        run: pnpm build:config
       - name: Build documentation
         run: pnpm docs:all
       - name: Upload documentation artifact

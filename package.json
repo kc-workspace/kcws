@@ -3,7 +3,9 @@
 	"version": "0.0.0-development",
 	"private": true,
 	"scripts": {
-		"postinstall": "pnpm run --filter '@kcconfigs/*' build",
+		"postinstall": "pnpm build:internal",
+		"build:internal": "pnpm recursive run --if-present --stream --filter @kcinternals/* build",
+		"build:config": "pnpm recursive run --if-present --stream --filter @kcconfigs/* build",
 		"build:all": "pnpm recursive run --if-present --stream build",
 		"test:all": "vitest run",
 		"check:commit": "commitlint",

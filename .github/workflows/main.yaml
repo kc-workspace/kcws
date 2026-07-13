@@ -30,7 +30,9 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
+        run: pnpm install
+      - name: Build configurations
+        run: pnpm build:config
       - name: Validate current commit
         if: github.event_name == 'push'
         run: pnpm check:commit --last --verbose
@@ -128,7 +130,9 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
+        run: pnpm install
+      - name: Build configurations
+        run: pnpm build:config
       - name: Check code styles
         run: pnpm check:all
       - name: Build packages
@@ -172,11 +176,11 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile ## (dependabot/dependabot-core#12244)
-
+        run: pnpm install
+      - name: Build configurations
+        run: pnpm build:config
       - name: Build packages
         run: pnpm build:all
-
       - name: Test packages
         run: pnpm test:all
 
@@ -202,7 +206,9 @@ jobs:
   #         node-version-file: package.json
   #         cache: pnpm
   #     - name: Install dependencies
-  #       run: pnpm install --no-frozen-lockfile
+  #       run: pnpm install
+  #     - name: Build configurations
+  #       run: pnpm build:config
   #     - name: Commit changes back
   #       run: |
   #         git add pnpm-lock.yaml

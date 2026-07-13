@@ -30,6 +30,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
+      - name: Build configurations
+        run: pnpm build:config
       - name: Publish version
         id: publish
         run: bash ./scripts/package-publish.sh
