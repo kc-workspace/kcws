@@ -71,7 +71,7 @@
 		"terms.eponymous_adjectives": true,
 		"terms.venery": true,
 		"typography.diacritical_marks": true,
-		"typography.exclamation": true,
+		"typography.exclamation": false,
 		"typography.symbols": false,
 		"uncomparables.misc": true,
 		"weasel_words.misc": true,

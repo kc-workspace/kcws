@@ -2,6 +2,9 @@
 	"$schema": "https://www.schemastore.org/jscpd.json",
 	"threshold": 0,
 	"reporters": ["html", "markdown"],
+	"minTokens": 50,
+	"minLines": 5,
+	"mode": "weak",
 	"blame": true,
 	"ignore": [
 		"**/node_modules/**",
