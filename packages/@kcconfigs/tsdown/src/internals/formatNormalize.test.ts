@@ -25,121 +25,107 @@ describe("formatNormalize", () => {
 		);
 	});
 
-	test("should default to esm + cjs when format is null", () => {
+	test.each([
+		[
+			"should default to esm + cjs when format is null",
+			{ format: null },
+			["esm", "cjs"],
+			[],
+		],
+		[
+			"should normalize 'esm' string to esm format object",
+			{ format: "esm" },
+			["esm"],
+			["cjs"],
+		],
+		[
+			"should normalize 'es' alias to esm format object",
+			{ format: "es" },
+			["esm"],
+			[],
+		],
+		[
+			"should normalize 'module' alias to esm format object",
+			{ format: "module" },
+			["esm"],
+			[],
+		],
+		[
+			"should normalize 'cjs' string to cjs format object",
+			{ format: "cjs" },
+			["cjs"],
+			["esm"],
+		],
+		[
+			"should normalize 'commonjs' alias to cjs format object",
+			{ format: "commonjs" },
+			["cjs"],
+			[],
+		],
+		[
+			"should normalize 'iife' string to iife format object",
+			{ format: "iife" },
+			["iife"],
+			[],
+		],
+		[
+			"should normalize 'umd' string to umd format object",
+			{ format: "umd" },
+			["umd"],
+			[],
+		],
+		[
+			"should normalize array of formats",
+			{ format: ["esm", "cjs"] },
+			["esm", "cjs"],
+			[],
+		],
+		[
+			"should normalize array with aliases",
+			{ format: ["es", "commonjs"] },
+			["esm", "cjs"],
+			[],
+		],
+	])("%s", (_name, input, hasProps, notHasProps) => {
 		const plugin = formatNormalize();
-		const config = { format: null };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-		expect(result?.format).toHaveProperty("cjs");
+		const result = plugin.normalize?.(input as any, {});
+		for (const prop of hasProps) {
+			expect(result?.format).toHaveProperty(prop);
+		}
+		for (const prop of notHasProps) {
+			expect(result?.format).not.toHaveProperty(prop);
+		}
 	});
 
-	test("should normalize 'esm' string to esm format object", () => {
+	test.each([
+		[
+			"should normalize object format with aliases",
+			{ format: { es: { minify: false }, commonjs: { sourcemap: false } } },
+			[
+				["esm", "minify", false],
+				["cjs", "sourcemap", false],
+			] as const,
+		],
+		[
+			"should normalize object format with standard keys",
+			{ format: { esm: { minify: false }, cjs: { sourcemap: false } } },
+			[
+				["esm", "minify", false],
+				["cjs", "sourcemap", false],
+			] as const,
+		],
+		[
+			"should normalize object format with module alias",
+			{ format: { module: { minify: false } } },
+			[["esm", "minify", false]] as const,
+		],
+	])("%s", (_name, input, checks) => {
 		const plugin = formatNormalize();
-		const config = { format: "esm" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-		expect(result?.format).not.toHaveProperty("cjs");
-	});
-
-	test("should normalize 'es' alias to esm format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "es" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-	});
-
-	test("should normalize 'module' alias to esm format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "module" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-	});
-
-	test("should normalize 'cjs' string to cjs format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "cjs" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("cjs");
-		expect(result?.format).not.toHaveProperty("esm");
-	});
-
-	test("should normalize 'commonjs' alias to cjs format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "commonjs" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("cjs");
-	});
-
-	test("should normalize 'iife' string to iife format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "iife" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("iife");
-	});
-
-	test("should normalize 'umd' string to umd format object", () => {
-		const plugin = formatNormalize();
-		const config = { format: "umd" };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("umd");
-	});
-
-	test("should normalize array of formats", () => {
-		const plugin = formatNormalize();
-		const config = { format: ["esm", "cjs"] };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-		expect(result?.format).toHaveProperty("cjs");
-	});
-
-	test("should normalize array with aliases", () => {
-		const plugin = formatNormalize();
-		const config = { format: ["es", "commonjs"] };
-		const result = plugin.normalize?.(config, {});
-		expect(result?.format).toHaveProperty("esm");
-		expect(result?.format).toHaveProperty("cjs");
-	});
-
-	test("should normalize object format with aliases", () => {
-		const plugin = formatNormalize();
-		const config = {
-			format: {
-				es: { minify: false },
-				commonjs: { sourcemap: false },
-			},
-		};
-		const result = plugin.normalize?.(config, {});
-		// @ts-expect-error format is an object here
-		expect(result?.format.esm.minify).toBe(false);
-		// @ts-expect-error format is an object here
-		expect(result?.format.cjs.sourcemap).toBe(false);
-	});
-
-	test("should normalize object format with standard keys", () => {
-		const plugin = formatNormalize();
-		const config = {
-			format: {
-				esm: { minify: false },
-				cjs: { sourcemap: false },
-			},
-		};
-		const result = plugin.normalize?.(config, {});
-		// @ts-expect-error format is an object here
-		expect(result?.format.esm.minify).toBe(false);
-		// @ts-expect-error format is an object here
-		expect(result?.format.cjs.sourcemap).toBe(false);
-	});
-
-	test("should normalize object format with module alias", () => {
-		const plugin = formatNormalize();
-		const config = {
-			format: {
-				module: { minify: false },
-			},
-		};
-		const result = plugin.normalize?.(config, {});
-		// @ts-expect-error format is an object here
-		expect(result?.format.esm.minify).toBe(false);
+		const result = plugin.normalize?.(input as any, {});
+		const format = result?.format as Record<string, Record<string, unknown>>;
+		for (const [key, prop, value] of checks) {
+			expect(format[key][prop]).toBe(value);
+		}
 	});
 
 	test("should handle empty object format", () => {
@@ -153,7 +139,7 @@ describe("formatNormalize", () => {
 
 	test("should preserve other config properties", () => {
 		const plugin = formatNormalize();
-		const config = { entry: ["./src/index.ts"], format: "esm" };
+		const config = { entry: ["./src/index.ts"], format: "esm" as const };
 		const result = plugin.normalize?.(config, {});
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.format).toHaveProperty("esm");
