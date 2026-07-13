@@ -28,7 +28,7 @@ export const allowlist = (config?: AllowListConfig): AllowListRule => {
 		});
 	}
 
-	if (!config.allow) config.allow = DEFAULT_ALLOWLIST;
+	config.allow ??= DEFAULT_ALLOWLIST;
 	return defineFilter({
 		name,
 		config,
