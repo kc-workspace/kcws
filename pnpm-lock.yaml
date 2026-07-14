@@ -85,9 +85,9 @@ catalogs:
       specifier: 0.7.3
       version: 0.7.3
   peer:
-    tsdown:
-      specifier: ^0.22.7
-      version: 0.22.7
+    typescript:
+      specifier: ^6.0.0
+      version: 6.0.3
   test:latest:
     '@vitest/coverage-v8':
       specifier: 4.1.7
@@ -123,6 +123,34 @@ catalogs:
     typedoc-plugin-missing-exports:
       specifier: 4.1.3
       version: 4.1.3
+  typedoc:peer:
+    typedoc-github-theme:
+      specifier: ^0.3.0
+      version: 0.3.1
+    typedoc-material-theme:
+      specifier: ^1.0.0
+      version: 1.4.1
+    typedoc-plugin-dt-links:
+      specifier: ^2.0.0
+      version: 2.0.63
+    typedoc-plugin-extras:
+      specifier: ^4.0.0
+      version: 4.0.1
+    typedoc-plugin-include-example:
+      specifier: ^3.0.0
+      version: 3.0.2
+    typedoc-plugin-mdn-links:
+      specifier: ^5.0.0
+      version: 5.1.1
+    typedoc-plugin-missing-exports:
+      specifier: ^4.0.0
+      version: 4.1.4
+    typedoc-rhineai-theme:
+      specifier: ^1.0.0
+      version: 1.2.0
+    typedoc-theme-oxide:
+      specifier: ^0.2.0
+      version: 0.2.5
 
 overrides:
   '@types/node@*': ^24.0.0
@@ -339,7 +367,7 @@ importers:
         specifier: 'catalog:'
         version: 0.3.21
       tsdown:
-        specifier: catalog:peer
+        specifier: 'catalog:'
         version: 0.22.7(@arethetypeswrong/core@0.18.4)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.0(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.0)
       unplugin-unused:
         specifier: 'catalog:'
