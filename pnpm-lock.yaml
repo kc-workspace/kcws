@@ -79,8 +79,8 @@ catalogs:
       specifier: 2.9.0
       version: 2.9.0
     zod:
-      specifier: 4.3.6
-      version: 4.3.6
+      specifier: 4.4.3
+      version: 4.4.3
     zshy:
       specifier: 0.7.3
       version: 0.7.3
@@ -627,7 +627,7 @@ importers:
         version: 2.9.0
       zod:
         specifier: 'catalog:'
-        version: 4.3.6
+        version: 4.4.3
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -5654,8 +5654,8 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
   zshy@0.7.3:
     resolution: {integrity: sha512-MLCAh1mwonX25z58SJEAvHGY8j4xSMsNGM1XCgYwYZgBWEO/4YeH1u+EejJlUbHbz21N2YQ0Dgg8WznKMEU26w==}
@@ -11111,7 +11111,7 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.3.6: {}
+  zod@4.4.3: {}
 
   zshy@0.7.3(typescript@6.0.3):
     dependencies:
