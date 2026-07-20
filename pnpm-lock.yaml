@@ -48,6 +48,9 @@ catalogs:
     '@ls-lint/ls-lint':
       specifier: 2.3.1
       version: 2.3.1
+    '@types/bun':
+      specifier: ^1.3.14
+      version: 1.3.14
     '@types/node':
       specifier: ^24.0.0
       version: 24.13.3
@@ -341,6 +344,9 @@ importers:
       '@kctypes/generic':
         specifier: workspace:*
         version: link:../../@kctypes/generic
+      '@types/bun':
+        specifier: 'catalog:'
+        version: 1.3.14
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3

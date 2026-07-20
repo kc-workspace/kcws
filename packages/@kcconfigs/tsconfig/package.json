@@ -10,6 +10,7 @@
 		"lint:check": "biome lint"
 	},
 	"dependencies": {
+		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"@kctypes/generic": "workspace:*"
 	},
