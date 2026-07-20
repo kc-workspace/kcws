@@ -17,16 +17,13 @@ import { z } from "zod";
  * schema.parse({ enabled: "FALSE" }); // { enabled: false }
  * ```
  */
-export const zBoolean: z.ZodPipe<z.ZodTransform, z.ZodBoolean> = z.preprocess(
-	(val) => {
-		if (val === "" || val === undefined || val === null) return undefined;
-		if (typeof val === "boolean") return val;
-		if (typeof val === "string") {
-			const trimmed = val.trim();
-			if (["true", "True", "TRUE"].includes(trimmed)) return true;
-			if (["false", "False", "FALSE"].includes(trimmed)) return false;
-		}
-		return val;
-	},
-	z.boolean(),
-);
+export const zBoolean: z.ZodPreprocess<z.ZodBoolean> = z.preprocess((val) => {
+	if (val === "" || val === undefined || val === null) return undefined;
+	if (typeof val === "boolean") return val;
+	if (typeof val === "string") {
+		const trimmed = val.trim();
+		if (["true", "True", "TRUE"].includes(trimmed)) return true;
+		if (["false", "False", "FALSE"].includes(trimmed)) return false;
+	}
+	return val;
+}, z.boolean());

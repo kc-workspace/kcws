@@ -12,7 +12,6 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: '{"key": "value"}' }); // { config: { key: "value" } }
  * ```
  */
-export const zJsonObject: z.ZodPipe<
-	z.ZodTransform,
+export const zJsonObject: z.ZodPreprocess<
 	z.ZodRecord<z.ZodString, z.ZodUnknown>
 > = createObjectParser(JSON.parse);

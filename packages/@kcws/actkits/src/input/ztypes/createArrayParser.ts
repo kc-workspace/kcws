@@ -25,12 +25,9 @@ const splitString = (val: string): string[] => {
 export const createArrayParser = <T extends z.ZodType>(
 	type: T,
 	parser: (val: string | string[]) => z.input<z.ZodOptional<z.ZodArray<T>>>,
-): z.ZodPipe<
-	z.ZodTransform<ReturnType<typeof parser>, Parameters<typeof parser>[0]>,
-	z.ZodArray<T>
-> =>
+): z.ZodPreprocess<z.ZodArray<T>> =>
 	z.preprocess((val) => {
 		if (val === "" || val === undefined || val === null) return undefined;
 		if (typeof val === "string") return parser(splitString(val));
-		return parser(val);
+		return parser(val as string | string[]);
 	}, z.array(type));
