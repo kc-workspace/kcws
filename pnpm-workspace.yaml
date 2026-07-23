@@ -103,7 +103,7 @@ overrides:
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>cross-spawn
   cross-spawn@>=7.0.0 <7.0.5: ^7.0.5
   ## @commitlint/cli>@commitlint/load>...>ajv>fast-uri
-  fast-uri@<3.1.2: ^3.1.2
+  fast-uri@<3.1.4: ^3.1.4
   ## commitizen>lodash
   ## commitizen>inquirer>lodash
   lodash@>=4.0.0 <4.17.24: ^4.18.0
@@ -143,5 +143,4 @@ allowBuilds:
 pmOnFail: error
 
 minimumReleaseAge: 1440 ## 1 day in minutes
-minimumReleaseAgeExclude: []
-
+minimumReleaseAgeExclude: [ fast-uri@3.1.4 ]
