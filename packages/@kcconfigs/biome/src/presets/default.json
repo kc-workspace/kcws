@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
 	"extends": ["./base.json"],
 	"files": {
 		"includes": [
@@ -7,9 +7,13 @@
 			"!*.tsbuildinfo",
 			"!reports/test-results",
 			"!reports/coverage",
+			"!.dist",
 			"!dist",
 			"!dist.*",
 			"!.*.old",
+			"!package-lock.json",
+			"!yarn.lock",
+			"!pnpm-lock.yaml",
 			"!.release-please-config.json",
 			"!.github/release-please/config.json",
 			"!.release-please-manifest.json",

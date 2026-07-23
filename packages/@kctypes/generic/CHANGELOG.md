@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.30.4...@kctypes/generic+v1.31.0) (2026-07-23)
+
+
+### Miscellaneous Chores
+
+* **kctypes/generic:** force update v1.30.4 =&gt; v1.31.0 ([d7d1965](https://github.com/kc-workspace/kcws/commit/d7d1965e192a4dc87f058237ebb47a6e7df8ba8a))
+
 ## 1.30.4 (2026-03-20)
 
 

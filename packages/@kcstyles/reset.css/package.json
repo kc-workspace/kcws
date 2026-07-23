@@ -1,6 +1,6 @@
 {
 	"name": "@kcstyles/reset.css",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A CSS reset for consistent styling across browsers",
 	"type": "module",
 	"scripts": {

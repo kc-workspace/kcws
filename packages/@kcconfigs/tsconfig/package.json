@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/tsconfig",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"description": "Shared tsconfig.json",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",
@@ -19,7 +19,21 @@
 		"@biomejs/biome": "catalog:"
 	},
 	"peerDependencies": {
-		"typescript": "catalog:peer"
+		"typescript": "catalog:peer",
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"@kctypes/generic": "workspace:*"
+	},
+	"peerDependenciesMeta": {
+		"@types/bun": {
+			"optional": true
+		},
+		"@types/node": {
+			"optional": true
+		},
+		"@kctypes/generic": {
+			"optional": true
+		}
 	},
 	"main": "./src/presets/default.json",
 	"exports": {
