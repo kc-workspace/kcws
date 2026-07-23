@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.0...@kcconfigs/biome+v2.0.1) (2026-07-23)
+
+
+### Performance Improvements
+
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **kcconfigs/biome:** ignore .dist and lock files ([b0cbbcc](https://github.com/kc-workspace/kcws/commit/b0cbbcc2334f65524da8d4f52190e0ff4012d0d6))
+
 ## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v1.0.2...@kcconfigs/biome+v2.0.0) (2026-07-13)
 
 
