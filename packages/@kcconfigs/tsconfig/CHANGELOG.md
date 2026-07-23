@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.3...@kcconfigs/tsconfig+v1.1.0) (2026-07-23)
+
+
+### Features
+
+* **kcconfigs/tsconfig:** add bun feature and preset configs ([ccbf7f3](https://github.com/kc-workspace/kcws/commit/ccbf7f3d56cbc1f03dc37d69841d321796aec7b2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kctypes/generic bumped to 1.31.0
+
 ## [1.0.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.0.2...@kcconfigs/tsconfig+v1.0.3) (2026-07-13)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.0](https://github.com/kc-workspace/kcws/compare/@kctypes/package_json+v1.30.5...@kctypes/package_json+v1.31.0) (2026-07-23)
+
+
+### Miscellaneous Chores
+
+* **kctypes/package_json:** force update v1.30.5 =&gt; v1.31.0 ([a76909a](https://github.com/kc-workspace/kcws/commit/a76909acb75890460f80c3ee508f33c0316f1139))
+
 ## [1.30.5](https://github.com/kc-workspace/kcws/compare/@kctypes/package_json+v1.30.4...@kctypes/package_json+v1.30.5) (2026-03-20)
 
 
