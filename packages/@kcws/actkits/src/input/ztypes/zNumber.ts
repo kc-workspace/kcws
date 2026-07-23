@@ -10,11 +10,8 @@ import { z } from "zod";
  * schema.parse({ count: "42" }); // { count: 42 }
  * ```
  */
-export const zNumber: z.ZodPipe<z.ZodTransform, z.ZodNumber> = z.preprocess(
-	(val) => {
-		if (val === "" || val === undefined || val === null) return undefined;
-		const num = Number(val);
-		return Number.isNaN(num) ? val : num;
-	},
-	z.number(),
-);
+export const zNumber: z.ZodPreprocess<z.ZodNumber> = z.preprocess((val) => {
+	if (val === "" || val === undefined || val === null) return undefined;
+	const num = Number(val);
+	return Number.isNaN(num) ? val : num;
+}, z.number());

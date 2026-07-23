@@ -9,7 +9,7 @@ import { z } from "zod";
  */
 export const createObjectParser = (
 	parser: (value: string) => unknown,
-): z.ZodPipe<z.ZodTransform, z.ZodRecord<z.ZodString, z.ZodUnknown>> =>
+): z.ZodPreprocess<z.ZodRecord<z.ZodString, z.ZodUnknown>> =>
 	z.preprocess(
 		(val) => {
 			if (val === "" || val === undefined || val === null) return undefined;
