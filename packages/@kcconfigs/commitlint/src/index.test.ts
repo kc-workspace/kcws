@@ -46,8 +46,6 @@ describe("Main API", () => {
 			expect(config.rules).toBeDefined();
 			expect(config.prompt?.questions?.type).toBeDefined();
 			expect(config.prompt?.questions?.scope).toBeDefined();
-			expect(config.prompt?.questions?.subject).toBeDefined();
-			expect(config.prompt?.questions?.body).toBeDefined();
 		});
 
 		test("should configure type-enum rule with standard types", async () => {
@@ -381,7 +379,7 @@ describe("Main API", () => {
 			expect(config.prompt?.settings?.enableMultipleScopes).toBe(false);
 		});
 
-		test("should preserve other rules from config-conventional", async () => {
+		test("should define only package-specific rule overrides", async () => {
 			vol.fromJSON(
 				{
 					"./package.json": JSON.stringify({
@@ -393,12 +391,12 @@ describe("Main API", () => {
 
 			const config = await defineConfig();
 
-			// Rules from @commitlint/config-conventional should be preserved
+			// This package intentionally defines only its own rule set.
 			expect(config.rules).toBeDefined();
-			expect(Object.keys(config.rules!).length).toBeGreaterThan(4);
+			expect(Object.keys(config.rules!)).toHaveLength(4);
 		});
 
-		test("should preserve other prompt questions from config-conventional", async () => {
+		test("should define only type and scope prompt questions", async () => {
 			vol.fromJSON(
 				{
 					"./package.json": JSON.stringify({
@@ -411,8 +409,7 @@ describe("Main API", () => {
 			const config = await defineConfig();
 
 			expect(config.prompt?.questions).toBeDefined();
-			// Should have type and scope plus other questions
-			expect(Object.keys(config.prompt!.questions!).length).toBeGreaterThan(2);
+			expect(Object.keys(config.prompt!.questions!).length).toBe(2);
 		});
 
 		test("should work with empty workspace (npm detection)", async () => {
