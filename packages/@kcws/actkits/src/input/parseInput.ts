@@ -28,15 +28,22 @@ export const parseInput = <S extends z.ZodType>(
 ): z.infer<S> => {
 	const data: ActionEnv = {};
 	if (schema instanceof z.ZodObject) {
-		const shape = schema.shape as Record<string, z.ZodSchema>;
+		const shape = schema.shape as Record<string, z.ZodType>;
 		for (const [key] of Object.entries(shape)) {
 			const envValue = getEnv(key, prefix, env);
+			// inputValue is always returns a string
 			const inputValue = getInput(key, {
 				trimWhitespace: true,
 				required: false,
 			});
-			data[key] = envValue ?? inputValue ?? undefined;
+
+			if ((envValue?.length ?? 0) > 0) data[key] = envValue;
+			else if (inputValue.length > 0) data[key] = inputValue;
+			else data[key] = undefined;
 		}
+	} else {
+		const msg = `schema must be a ZodObject, got ${schema.constructor.name}`;
+		throw new Error(msg);
 	}
 	return schema.parse(data);
 };
