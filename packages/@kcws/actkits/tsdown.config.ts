@@ -4,7 +4,7 @@ import formatPlugin from "@kcconfigs/tsdown/plugins/format";
 import nodePlugin from "@kcconfigs/tsdown/plugins/node";
 
 const config: TsdownConfig = defineConfig(
-	{ debug: console.debug },
+	{},
 	nodePlugin(),
 	entryPlugin(["src/index.ts", "src/*/index.ts"]),
 	formatPlugin(["esm"]),
