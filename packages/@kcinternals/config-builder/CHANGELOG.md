@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.2](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.1.1...@kcinternals/config-builder+v0.1.2) (2026-07-23)
+
+
+### Performance Improvements
+
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.1
+    * @kcconfigs/tsconfig bumped to 1.1.1
+
 ## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.1.0...@kcinternals/config-builder+v0.1.1) (2026-07-23)
 
 
