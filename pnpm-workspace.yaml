@@ -21,7 +21,7 @@ catalog:
   typescript: 6.0.3
   unplugin-unused: 0.5.7
   unrun: 0.3.0
-  vite: 8.1.0
+  vite: 8.1.3
   yaml: 2.9.0
   zshy: 0.7.3
   zod: 4.3.6
