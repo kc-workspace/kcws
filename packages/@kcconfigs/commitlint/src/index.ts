@@ -1,4 +1,3 @@
-import baseConfig from "@commitlint/config-conventional";
 import {
 	RuleConfigSeverity as Severity,
 	type UserConfig,
@@ -35,38 +34,24 @@ export interface DefineConfigParams {
 export const defineConfig = async (
 	params?: DefineConfigParams,
 ): Promise<UserConfig> => {
-	const {
-		parserPreset,
-		prompt: {
-			questions: { type, scope, ...questions },
-			...prompt
-		},
-		rules,
-	} = baseConfig;
-
 	const types = getTypes(params?.types ?? "standard");
 	const scopes = await getScopes(params?.autoScopes ?? true, params?.scopes);
 
 	return {
 		helpUrl: "use 'pnpm commit' to create commit instead",
-		parserPreset,
+		parserPreset: "@commitlint/config-conventional",
 		rules: {
-			...rules,
 			"type-enum": [Severity.Error, "always", Object.keys(types)],
 			"scope-enum": () => [Severity.Error, "always", scopes],
 			"subject-max-length": [Severity.Warning, "always", 80],
 			"body-max-line-length": [Severity.Warning, "always", 300],
 		},
 		prompt: {
-			...prompt,
 			questions: {
-				...questions,
 				type: {
-					...type,
 					enum: types,
 				},
 				scope: {
-					...scope,
 					enum: Object.fromEntries(scopes.map((s) => [s, {}])),
 				},
 			},
