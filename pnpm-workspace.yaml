@@ -9,7 +9,7 @@ packages:
   - "!packages/**/.*.old/**"
 
 catalog:
-  "@arethetypeswrong/core": 0.18.4
+  "@arethetypeswrong/core": 0.18.5
   "@biomejs/biome": 2.5.3
   "@ls-lint/ls-lint": 2.3.1
   "@types/node": ^24.0.0
