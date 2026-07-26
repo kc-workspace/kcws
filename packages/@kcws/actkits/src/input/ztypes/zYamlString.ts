@@ -9,10 +9,10 @@ import { createObjectParser } from "./createObjectParser";
  *
  * @example
  * ```ts
- * const schema = z.object({ config: zYamlObject });
+ * const schema = z.object({ config: zYamlString });
  * schema.parse({ config: "key: value" }); // { config: { key: "value" } }
  * ```
  */
-export const zYamlObject: z.ZodPreprocess<
+export const zYamlString: z.ZodPreprocess<
 	z.ZodRecord<z.ZodString, z.ZodUnknown>
 > = createObjectParser(parseYaml);

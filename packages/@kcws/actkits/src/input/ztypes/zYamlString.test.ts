@@ -1,18 +1,18 @@
 import { describe, expect, test } from "vitest";
 import { z } from "zod";
 
-import { zYamlObject } from "./zYamlObject";
+import { zYamlString } from "./zYamlString";
 
-describe("zYamlObject", () => {
+describe("zYamlString", () => {
 	test("should parse simple YAML string to object", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(schema.parse({ config: "key: value" })).toEqual({
 			config: { key: "value" },
 		});
 	});
 
 	test("should parse multi-line YAML", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		const yaml = `
 name: test
 version: 1.0.0
@@ -23,7 +23,7 @@ version: 1.0.0
 	});
 
 	test("should parse nested YAML object", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		const yaml = `
 nested:
   a: 1
@@ -35,7 +35,7 @@ nested:
 	});
 
 	test("should parse YAML with array values", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		const yaml = `
 items:
   - 1
@@ -48,39 +48,39 @@ items:
 	});
 
 	test("should pass through actual object", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(schema.parse({ config: { key: "value" } })).toEqual({
 			config: { key: "value" },
 		});
 	});
 
 	test("should throw on empty string (required)", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(() => schema.parse({ config: "" })).toThrow();
 	});
 
 	test("should throw on undefined (required)", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(() => schema.parse({ config: undefined })).toThrow();
 	});
 
 	test("should allow undefined with optional", () => {
-		const schema = z.object({ config: zYamlObject.optional() });
+		const schema = z.object({ config: zYamlString.optional() });
 		expect(schema.parse({ config: undefined })).toEqual({ config: undefined });
 	});
 
 	test("should allow missing field with optional", () => {
-		const schema = z.object({ config: zYamlObject.optional() });
+		const schema = z.object({ config: zYamlString.optional() });
 		expect(schema.parse({})).toEqual({});
 	});
 
 	test("should throw on non-object non-string input (number)", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(() => schema.parse({ config: 42 })).toThrow();
 	});
 
 	test("should throw on non-object non-string input (boolean)", () => {
-		const schema = z.object({ config: zYamlObject });
+		const schema = z.object({ config: zYamlString });
 		expect(() => schema.parse({ config: true })).toThrow();
 	});
 });

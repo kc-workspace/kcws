@@ -8,10 +8,10 @@ import { createObjectParser } from "./createObjectParser";
  *
  * @example
  * ```ts
- * const schema = z.object({ config: zJsonObject });
+ * const schema = z.object({ config: zJsonString });
  * schema.parse({ config: '{"key": "value"}' }); // { config: { key: "value" } }
  * ```
  */
-export const zJsonObject: z.ZodPreprocess<
+export const zJsonString: z.ZodPreprocess<
 	z.ZodRecord<z.ZodString, z.ZodUnknown>
 > = createObjectParser(JSON.parse);

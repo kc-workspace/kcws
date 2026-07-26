@@ -16,9 +16,11 @@ export { z } from "zod";
 export { parseInput } from "./parseInput";
 export {
 	zBoolean,
-	zJsonObject,
+	zJsonFile,
+	zJsonString,
 	zNumber,
 	zNumberArray,
 	zStringArray,
-	zYamlObject,
+	zYamlFile,
+	zYamlString,
 } from "./ztypes";

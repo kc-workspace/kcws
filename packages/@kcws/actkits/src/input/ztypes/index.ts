@@ -5,8 +5,10 @@
  */
 
 export { zBoolean } from "./zBoolean";
-export { zJsonObject } from "./zJsonObject";
+export { zJsonFile } from "./zJsonFile";
+export { zJsonString } from "./zJsonString";
 export { zNumber } from "./zNumber";
 export { zNumberArray } from "./zNumberArray";
 export { zStringArray } from "./zStringArray";
-export { zYamlObject } from "./zYamlObject";
+export { zYamlFile } from "./zYamlFile";
+export { zYamlString } from "./zYamlString";

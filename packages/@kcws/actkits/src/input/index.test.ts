@@ -18,8 +18,10 @@ describe("input module exports", () => {
 	test("should export ztype helpers", () => {
 		expect(inputModule.zNumber).toBeDefined();
 		expect(inputModule.zBoolean).toBeDefined();
-		expect(inputModule.zJsonObject).toBeDefined();
-		expect(inputModule.zYamlObject).toBeDefined();
+		expect(inputModule.zJsonString).toBeDefined();
+		expect(inputModule.zYamlString).toBeDefined();
+		expect(inputModule.zJsonFile).toBeDefined();
+		expect(inputModule.zYamlFile).toBeDefined();
 		expect(inputModule.zStringArray).toBeDefined();
 		expect(inputModule.zNumberArray).toBeDefined();
 	});
@@ -30,8 +32,10 @@ describe("input module exports", () => {
 			"parseInput",
 			"zNumber",
 			"zBoolean",
-			"zJsonObject",
-			"zYamlObject",
+			"zJsonString",
+			"zYamlString",
+			"zJsonFile",
+			"zYamlFile",
 			"zStringArray",
 			"zNumberArray",
 		];
