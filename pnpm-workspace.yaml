@@ -99,7 +99,7 @@ overrides:
   ## force all @types/node to be v24
   "@types/node@*": ^24.0.0
   ## commitizen>glob>minimatch>brace-expansion
-  brace-expansion@<1.1.13: ^1.1.13
+  brace-expansion@<5.0.8: ^5.0.8
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>cross-spawn
   cross-spawn@>=7.0.0 <7.0.5: ^7.0.5
   ## @commitlint/cli>@commitlint/load>...>ajv>fast-uri
