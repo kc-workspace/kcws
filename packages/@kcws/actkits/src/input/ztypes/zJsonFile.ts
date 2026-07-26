@@ -1,6 +1,6 @@
+import { readFileSync } from "node:fs";
 import type { z } from "zod";
-
-import { createFileObjectParser } from "./createFileObjectParser";
+import { createObjectParser } from "./createObjectParser";
 
 /**
  * Zod schema for parsing JSON file path input to object.
@@ -14,4 +14,4 @@ import { createFileObjectParser } from "./createFileObjectParser";
  */
 export const zJsonFile: z.ZodPreprocess<
 	z.ZodRecord<z.ZodString, z.ZodUnknown>
-> = createFileObjectParser(JSON.parse);
+> = createObjectParser((file) => JSON.parse(readFileSync(file, "utf-8")));
