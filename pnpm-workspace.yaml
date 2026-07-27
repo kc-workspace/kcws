@@ -88,12 +88,21 @@ catalogs:
 
 engineStrict: true
 strictPeerDependencies: true
+dedupePeerDependents: true
+dedupePeers: true
 
-failIfNoMatch: true
+publishBranch: main
 
+sharedWorkspaceLockfile: true
+preferWorkspacePackages: true
 includeWorkspaceRoot: false
-
+saveWorkspaceProtocol: rolling
 nodeLinker: isolated
+failIfNoMatch: true
+pmOnFail: error
+
+minimumReleaseAge: 1440 ## 1 day in minutes
+minimumReleaseAgeExclude: []
 
 overrides:
   ## force all @types/node to be v24
@@ -126,21 +135,8 @@ overrides:
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>adm-zip
   adm-zip@<0.6.0: ^0.6.0
 
-preferWorkspacePackages: true
-
-publishBranch: main
-
-saveWorkspaceProtocol: rolling
-
-sharedWorkspaceLockfile: true
-
 allowBuilds:
   esbuild: true
   lefthook: true
   "@parcel/watcher": false
   bun: false
-
-pmOnFail: error
-
-minimumReleaseAge: 1440 ## 1 day in minutes
-minimumReleaseAgeExclude: [fast-uri@3.1.4]

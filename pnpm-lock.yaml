@@ -2,6 +2,7 @@ lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
+  dedupePeers: true
   excludeLinksFromLockfile: false
 
 catalogs:
@@ -183,7 +184,7 @@ importers:
         version: 21.2.1(@types/node@24.13.3)(conventional-commits-parser@7.1.0)(typescript@6.0.3)
       '@commitlint/cz-commitlint':
         specifier: catalog:commitlint:latest
-        version: 21.2.0(@types/node@24.13.3)(commitizen@4.3.2(@types/node@24.13.3)(typescript@6.0.3))(inquirer@9.3.8(@types/node@24.13.3))(typescript@6.0.3)
+        version: 21.2.0(@types/node@24.13.3)(commitizen@4.3.2)(inquirer@9.3.8)(typescript@6.0.3)
       '@kcconfigs/biome':
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/biome
@@ -228,28 +229,28 @@ importers:
         version: 0.28.20(typescript@6.0.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:latest
-        version: 0.4.0(typedoc@0.28.20(typescript@6.0.3))
+        version: 0.4.0(typedoc@0.28.20)
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:latest
-        version: 2.0.63(typedoc@0.28.20(typescript@6.0.3))
+        version: 2.0.63(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: catalog:typedoc:latest
-        version: 4.0.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 4.0.1(typedoc@0.28.20)
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:latest
-        version: 3.0.2(typedoc@0.28.20(typescript@6.0.3))
+        version: 3.0.2(typedoc@0.28.20)
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:latest
-        version: 5.1.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 5.1.1(typedoc@0.28.20)
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:latest
-        version: 4.1.4(typedoc@0.28.20(typescript@6.0.3))
+        version: 4.1.4(typedoc@0.28.20)
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/biome:
     devDependencies:
@@ -261,7 +262,7 @@ importers:
     dependencies:
       '@pnpm/workspace.find-packages':
         specifier: 1000.0.65
-        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       yaml:
         specifier: 2.9.0
         version: 2.9.0
@@ -289,10 +290,10 @@ importers:
         version: link:../vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/lefthook:
     devDependencies:
@@ -335,10 +336,10 @@ importers:
         version: link:../vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -375,10 +376,10 @@ importers:
         version: 0.3.21
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       unplugin-unused:
         specifier: 'catalog:'
-        version: 0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 0.5.7(rolldown@1.2.0)(vite@8.1.3)
       unrun:
         specifier: 'catalog:'
         version: 0.3.1
@@ -400,31 +401,31 @@ importers:
         version: 0.28.20(typescript@6.0.3)
       typedoc-github-theme:
         specifier: catalog:typedoc:peer
-        version: 0.3.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 0.3.1(typedoc@0.28.20)
       typedoc-material-theme:
         specifier: catalog:typedoc:peer
-        version: 1.4.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 1.4.1(typedoc@0.28.20)
       typedoc-plugin-dt-links:
         specifier: catalog:typedoc:peer
-        version: 2.0.64(typedoc@0.28.20(typescript@6.0.3))
+        version: 2.0.64(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: catalog:typedoc:peer
-        version: 4.0.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 4.0.1(typedoc@0.28.20)
       typedoc-plugin-include-example:
         specifier: catalog:typedoc:peer
-        version: 3.0.2(typedoc@0.28.20(typescript@6.0.3))
+        version: 3.0.2(typedoc@0.28.20)
       typedoc-plugin-mdn-links:
         specifier: catalog:typedoc:peer
-        version: 5.1.1(typedoc@0.28.20(typescript@6.0.3))
+        version: 5.1.1(typedoc@0.28.20)
       typedoc-plugin-missing-exports:
         specifier: catalog:typedoc:peer
-        version: 4.1.4(typedoc@0.28.20(typescript@6.0.3))
+        version: 4.1.4(typedoc@0.28.20)
       typedoc-rhineai-theme:
         specifier: catalog:typedoc:peer
-        version: 1.2.0(typedoc@0.28.20(typescript@6.0.3))
+        version: 1.2.0(typedoc@0.28.20)
       typedoc-theme-oxide:
         specifier: catalog:typedoc:peer
-        version: 0.2.5(typedoc@0.28.20(typescript@6.0.3))
+        version: 0.2.5(typedoc@0.28.20)
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -443,10 +444,10 @@ importers:
         version: link:../vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/vitest:
     dependencies:
@@ -455,7 +456,7 @@ importers:
         version: 4.64.0(tslib@2.8.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -474,7 +475,7 @@ importers:
         version: link:../../@kctypes/generic
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
 
   packages/@kcexamples/demo:
     devDependencies:
@@ -498,13 +499,13 @@ importers:
         version: 0.27.4(rolldown@1.2.0)(typescript@6.0.3)
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vite:
         specifier: 'catalog:'
         version: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
       zshy:
         specifier: 'catalog:'
         version: 0.7.3(typescript@6.0.3)
@@ -528,10 +529,10 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcinternals/config-builder:
     devDependencies:
@@ -546,10 +547,10 @@ importers:
         version: link:../../@kcconfigs/tsconfig
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcstyles/reset.css:
     devDependencies:
@@ -570,7 +571,7 @@ importers:
         version: 1.100.0
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
 
   packages/@kctools/bun-react:
     dependencies:
@@ -601,10 +602,10 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kctypes/generic:
     dependencies:
@@ -613,7 +614,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kctypes/package_json:
     dependencies:
@@ -622,7 +623,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcws/actkits:
     dependencies:
@@ -653,10 +654,10 @@ importers:
         version: link:../../@kcconfigs/vitest
       tsdown:
         specifier: 'catalog:'
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: catalog:test:latest
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
 packages:
 
@@ -5953,7 +5954,7 @@ snapshots:
       '@commitlint/types': 21.2.0
       ajv: 8.20.0
 
-  '@commitlint/cz-commitlint@21.2.0(@types/node@24.13.3)(commitizen@4.3.2(@types/node@24.13.3)(typescript@6.0.3))(inquirer@9.3.8(@types/node@24.13.3))(typescript@6.0.3)':
+  '@commitlint/cz-commitlint@21.2.0(@types/node@24.13.3)(commitizen@4.3.2)(inquirer@9.3.8)(typescript@6.0.3)':
     dependencies:
       '@commitlint/ensure': 21.2.0
       '@commitlint/load': 21.2.0(@types/node@24.13.3)(typescript@6.0.3)
@@ -5998,7 +5999,7 @@ snapshots:
       '@commitlint/resolve-extends': 21.2.0
       '@commitlint/types': 21.2.0
       cosmiconfig: 9.0.2(typescript@6.0.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.13.3)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@24.13.3)(cosmiconfig@9.0.2)(typescript@6.0.3)
       es-toolkit: 1.49.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -6475,11 +6476,11 @@ snapshots:
       '@pnpm/types': 1001.3.0
       load-json-file: 6.2.0
 
-  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
-      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
+      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
       '@pnpm/default-reporter': 1002.1.14(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
@@ -6487,7 +6488,7 @@ snapshots:
       '@pnpm/package-is-installable': 1000.0.21(@pnpm/logger@1001.0.1)
       '@pnpm/pnpmfile': 1002.1.13(@pnpm/logger@1001.0.1)
       '@pnpm/read-project-manifest': 1001.2.6(@pnpm/logger@1001.0.1)
-      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       '@pnpm/util.lex-comparator': 3.0.2
       chalk: 4.1.2
@@ -6498,18 +6499,18 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
-      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/directory-fetcher': 1000.1.24(@pnpm/logger@1001.0.1)
       '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
-      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
+      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/network.auth-header': 1000.0.7
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       ramda: '@pnpm/ramda@0.28.1'
     transitivePeerDependencies:
@@ -6528,7 +6529,7 @@ snapshots:
     transitivePeerDependencies:
       - '@pnpm/logger'
 
-  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))':
+  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)':
     dependencies:
       '@pnpm/config.config-writer': 1000.1.3(@pnpm/logger@1001.0.1)
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
@@ -6537,7 +6538,7 @@ snapshots:
       '@pnpm/logger': 1001.0.1
       '@pnpm/network.auth-header': 1000.0.7
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
-      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
+      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
       '@pnpm/parse-wanted-dependency': 1001.0.0
       '@pnpm/pick-registry-for-package': 1000.0.16
       '@pnpm/read-modules-dir': 1000.0.0
@@ -6672,7 +6673,7 @@ snapshots:
       stacktracey: 2.2.0
       string-length: 4.0.2
 
-  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetching-types': 1000.2.1
@@ -6681,8 +6682,8 @@ snapshots:
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
-      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/tarball-resolver': 1002.2.1
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6757,7 +6758,7 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/fetching.binary-fetcher@1005.0.4(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))':
+  '@pnpm/fetching.binary-fetcher@1005.0.4(@pnpm/worker@1000.6.11)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
@@ -6822,7 +6823,7 @@ snapshots:
     dependencies:
       npm-packlist: 5.1.3
 
-  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
@@ -6979,15 +6980,15 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       detect-libc: 2.1.2
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -7092,7 +7093,7 @@ snapshots:
       mem: 8.1.1
       semver: 7.8.5
 
-  '@pnpm/package-requester@1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))':
+  '@pnpm/package-requester@1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/dependency-path': 1001.1.10
@@ -7117,14 +7118,14 @@ snapshots:
       semver: 7.8.5
       ssri: 10.0.5
 
-  '@pnpm/package-store@1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))':
+  '@pnpm/package-store@1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)':
     dependencies:
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
       '@pnpm/crypto.hash': 1000.2.2
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/logger': 1001.0.1
-      '@pnpm/package-requester': 1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
+      '@pnpm/package-requester': 1011.2.4(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/store-controller-types': 1004.5.1
       '@pnpm/store.cafs': 1000.1.4
@@ -7237,15 +7238,15 @@ snapshots:
     dependencies:
       '@pnpm/types': 1001.3.1
 
-  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
@@ -7258,15 +7259,15 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
@@ -7300,14 +7301,14 @@ snapshots:
       - domexception
       - supports-color
 
-  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
-      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
-      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))
+      '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
       '@pnpm/server': 1001.0.20(@pnpm/logger@1001.0.1)
       '@pnpm/store-path': 1000.0.6
       '@zkochan/diable': 1.0.2
@@ -7376,7 +7377,7 @@ snapshots:
       symlink-dir: 6.0.5
       validate-npm-package-name: 5.0.0
 
-  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
@@ -7441,9 +7442,9 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)':
+  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
     dependencies:
-      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3))(typanion@3.14.0)
+      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
       '@pnpm/constants': 1001.3.1
       '@pnpm/fs.find-packages': 1000.0.24(@pnpm/logger@1001.0.1)
       '@pnpm/logger': 1001.0.1
@@ -7807,7 +7808,7 @@ snapshots:
       lightningcss: 1.32.0
       postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.22)(yaml@2.9.0)
       rolldown: 1.1.5
-      tsdown: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1)
+      tsdown: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
     optionalDependencies:
       postcss: 8.5.22
       sass: 1.100.0
@@ -7869,7 +7870,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   '@vitest/expect@4.1.7':
     dependencies:
@@ -7880,7 +7881,7 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.7(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.7(vite@8.1.3)':
     dependencies:
       '@vitest/spy': 4.1.7
       estree-walker: 3.0.3
@@ -7915,7 +7916,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   '@vitest/utils@4.1.7':
     dependencies:
@@ -8538,7 +8539,7 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@24.13.3)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@24.13.3)(cosmiconfig@9.0.2)(typescript@6.0.3):
     dependencies:
       '@types/node': 24.13.3
       cosmiconfig: 9.0.2(typescript@6.0.3)
@@ -10897,7 +10898,7 @@ snapshots:
     dependencies:
       utf8-byte-length: 1.0.5
 
-  tsdown@0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1):
+  tsdown@0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0
@@ -10919,37 +10920,7 @@ snapshots:
       '@tsdown/css': 0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
       publint: 0.3.21
       typescript: 6.0.3
-      unplugin-unused: 0.5.7(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
-      unrun: 0.3.1
-    transitivePeerDependencies:
-      - '@typescript/native-preview'
-      - '@volar/typescript'
-      - oxc-resolver
-      - vue-tsc
-
-  tsdown@0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)))(unrun@0.3.1):
-    dependencies:
-      ansis: 4.3.1
-      cac: 7.0.0
-      defu: 6.1.7
-      empathic: 2.0.1
-      hookable: 6.1.1
-      import-without-cache: 0.4.0
-      obug: 2.1.4
-      picomatch: 4.0.5
-      rolldown: 1.1.5
-      rolldown-plugin-dts: 0.27.12(rolldown@1.1.5)(typescript@6.0.3)
-      semver: 7.8.5
-      tinyexec: 1.2.4
-      tinyglobby: 0.2.17
-      tree-kill: 1.2.2
-      unconfig-core: 7.5.0
-    optionalDependencies:
-      '@arethetypeswrong/core': 0.18.5
-      '@tsdown/css': 0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
-      publint: 0.3.21
-      typescript: 6.0.3
-      unplugin-unused: 0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      unplugin-unused: 0.5.7(rolldown@1.1.5)(vite@8.1.3)
       unrun: 0.3.1
     transitivePeerDependencies:
       - '@typescript/native-preview'
@@ -10983,48 +10954,48 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typedoc-github-theme@0.3.1(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-github-theme@0.3.1(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-github-theme@0.4.0(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-github-theme@0.4.0(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-material-theme@1.4.1(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-material-theme@1.4.1(typedoc@0.28.20):
     dependencies:
       '@material/material-color-utilities': 0.3.0
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.63(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-dt-links@2.0.63(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.64(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-dt-links@2.0.64(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-extras@4.0.1(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-extras@4.0.1(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-include-example@3.0.2(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-include-example@3.0.2(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-mdn-links@5.1.1(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-missing-exports@4.1.4(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-plugin-missing-exports@4.1.4(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-rhineai-theme@1.2.0(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-rhineai-theme@1.2.0(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-theme-oxide@0.2.5(typedoc@0.28.20(typescript@6.0.3)):
+  typedoc-theme-oxide@0.2.5(typedoc@0.28.20):
     dependencies:
       cheerio: 1.2.0
       flexsearch: 0.8.212
@@ -11106,12 +11077,12 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3):
     dependencies:
       empathic: 2.0.1
       escape-string-regexp: 5.0.0
       js-tokens: 10.0.0
-      unplugin: 3.3.0(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      unplugin: 3.3.0(rolldown@1.1.5)(vite@8.1.3)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rspack/core'
@@ -11124,12 +11095,12 @@ snapshots:
       - webpack
     optional: true
 
-  unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3):
     dependencies:
       empathic: 2.0.1
       escape-string-regexp: 5.0.0
       js-tokens: 10.0.0
-      unplugin: 3.3.0(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      unplugin: 3.3.0(rolldown@1.2.0)(vite@8.1.3)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rspack/core'
@@ -11141,7 +11112,7 @@ snapshots:
       - vite
       - webpack
 
-  unplugin@3.3.0(rolldown@1.1.5)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  unplugin@3.3.0(rolldown@1.1.5)(vite@8.1.3):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
@@ -11151,7 +11122,7 @@ snapshots:
       vite: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
     optional: true
 
-  unplugin@3.3.0(rolldown@1.2.0)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  unplugin@3.3.0(rolldown@1.2.0)(vite@8.1.3):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
@@ -11216,10 +11187,10 @@ snapshots:
       sass-embedded: 1.100.0
       yaml: 2.9.0
 
-  vitest@4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)):
+  vitest@4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3):
     dependencies:
       '@vitest/expect': 4.1.7
-      '@vitest/mocker': 4.1.7(vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.7(vite@8.1.3)
       '@vitest/pretty-format': 4.1.7
       '@vitest/runner': 4.1.7
       '@vitest/snapshot': 4.1.7
