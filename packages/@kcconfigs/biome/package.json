@@ -10,10 +10,10 @@
 		"lint:check": "biome lint"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:"
+		"@biomejs/biome": "2.5.2"
 	},
 	"peerDependencies": {
-		"@biomejs/biome": "catalog:peer"
+		"@biomejs/biome": "^2.0.0"
 	},
 	"main": "./src/presets/default.json",
 	"exports": {

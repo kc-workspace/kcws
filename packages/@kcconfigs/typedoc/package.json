@@ -15,28 +15,28 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"typedoc": "catalog:typedoc:latest"
+		"typedoc": "0.28.20"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
+		"@biomejs/biome": "2.5.3",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
-		"tsdown": "catalog:",
-		"vitest": "catalog:test:latest"
+		"tsdown": "0.22.7",
+		"vitest": "4.1.7"
 	},
 	"peerDependencies": {
-		"typedoc": "catalog:typedoc:peer",
-		"typedoc-github-theme": "catalog:typedoc:peer",
-		"typedoc-material-theme": "catalog:typedoc:peer",
-		"typedoc-theme-oxide": "catalog:typedoc:peer",
-		"typedoc-rhineai-theme": "catalog:typedoc:peer",
-		"typedoc-plugin-dt-links": "catalog:typedoc:peer",
-		"typedoc-plugin-extras": "catalog:typedoc:peer",
-		"typedoc-plugin-include-example": "catalog:typedoc:peer",
-		"typedoc-plugin-mdn-links": "catalog:typedoc:peer",
-		"typedoc-plugin-missing-exports": "catalog:typedoc:peer"
+		"typedoc": "^0.28.0",
+		"typedoc-github-theme": "^0.3.0",
+		"typedoc-material-theme": "^1.0.0",
+		"typedoc-theme-oxide": "^0.2.0",
+		"typedoc-rhineai-theme": "^1.0.0",
+		"typedoc-plugin-dt-links": "^2.0.0",
+		"typedoc-plugin-extras": "^4.0.0",
+		"typedoc-plugin-include-example": "^3.0.0",
+		"typedoc-plugin-mdn-links": "^5.0.0",
+		"typedoc-plugin-missing-exports": "^4.0.0"
 	},
 	"peerDependenciesMeta": {
 		"typedoc-github-theme": {

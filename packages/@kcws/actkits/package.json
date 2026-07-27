@@ -15,18 +15,18 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"zod": "catalog:",
-		"yaml": "catalog:",
-		"@actions/core": "catalog:actions:latest"
+		"zod": "4.4.3",
+		"yaml": "2.9.0",
+		"@actions/core": "3.0.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
+		"@biomejs/biome": "2.5.3",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"tsdown": "catalog:",
-		"vitest": "catalog:test:latest"
+		"tsdown": "0.22.7",
+		"vitest": "4.1.7"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",

@@ -20,13 +20,13 @@
 		"textlint-rule-terminology": "5.2.16"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
+		"@biomejs/biome": "2.5.3",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"tsdown": "catalog:",
-		"vitest": "catalog:test:latest"
+		"tsdown": "0.22.7",
+		"vitest": "4.1.7"
 	},
 	"peerDependencies": {
 		"textlint": "^15.0.0"

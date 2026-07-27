@@ -10,18 +10,18 @@
 		"lint:check": "biome lint"
 	},
 	"dependencies": {
-		"@types/bun": "catalog:",
-		"@types/node": "catalog:",
+		"@types/bun": "^1.3.14",
+		"@types/node": "^24.0.0",
 		"@kctypes/generic": "workspace:*"
 	},
 	"devDependencies": {
 		"@kcconfigs/biome": "workspace:*",
-		"@biomejs/biome": "catalog:"
+		"@biomejs/biome": "2.5.3"
 	},
 	"peerDependencies": {
-		"typescript": "catalog:peer",
-		"@types/bun": "catalog:",
-		"@types/node": "catalog:",
+		"typescript": "^6.0.0",
+		"@types/bun": "^1.3.14",
+		"@types/node": "^24.0.0",
 		"@kctypes/generic": "workspace:*"
 	},
 	"peerDependenciesMeta": {

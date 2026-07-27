@@ -5,157 +5,6 @@ settings:
   dedupePeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  actions:latest:
-    '@actions/core':
-      specifier: 3.0.1
-      version: 3.0.1
-  commitlint:latest:
-    '@commitlint/cli':
-      specifier: 21.2.1
-      version: 21.2.1
-    '@commitlint/config-conventional':
-      specifier: 21.2.0
-      version: 21.2.0
-    '@commitlint/cz-commitlint':
-      specifier: 21.2.0
-      version: 21.2.0
-    '@commitlint/types':
-      specifier: 21.2.0
-      version: 21.2.0
-    commitizen:
-      specifier: 4.3.2
-      version: 4.3.2
-    inquirer:
-      specifier: ^9.3.8
-      version: 9.3.8
-  css:latest:
-    '@tsdown/css':
-      specifier: 0.22.7
-      version: 0.22.7
-    lightningcss:
-      specifier: 1.32.0
-      version: 1.32.0
-    sass-embedded:
-      specifier: 1.100.0
-      version: 1.100.0
-  default:
-    '@arethetypeswrong/core':
-      specifier: 0.18.5
-      version: 0.18.5
-    '@biomejs/biome':
-      specifier: 2.5.3
-      version: 2.5.3
-    '@ls-lint/ls-lint':
-      specifier: 2.3.1
-      version: 2.3.1
-    '@types/bun':
-      specifier: ^1.3.14
-      version: 1.3.14
-    '@types/node':
-      specifier: ^24.0.0
-      version: 24.13.3
-    lefthook:
-      specifier: 2.1.10
-      version: 2.1.10
-    publint:
-      specifier: 0.3.21
-      version: 0.3.21
-    rimraf:
-      specifier: 6.1.3
-      version: 6.1.3
-    tsdown:
-      specifier: 0.22.7
-      version: 0.22.7
-    typescript:
-      specifier: 6.0.3
-      version: 6.0.3
-    unplugin-unused:
-      specifier: 0.5.7
-      version: 0.5.7
-    unrun:
-      specifier: 0.3.1
-      version: 0.3.1
-    vite:
-      specifier: 8.1.3
-      version: 8.1.3
-    yaml:
-      specifier: 2.9.0
-      version: 2.9.0
-    zod:
-      specifier: 4.4.3
-      version: 4.4.3
-    zshy:
-      specifier: 0.7.3
-      version: 0.7.3
-  peer:
-    typescript:
-      specifier: ^6.0.0
-      version: 6.0.3
-  test:latest:
-    '@vitest/coverage-v8':
-      specifier: 4.1.7
-      version: 4.1.7
-    '@vitest/ui':
-      specifier: 4.1.7
-      version: 4.1.7
-    memfs:
-      specifier: 4.64.0
-      version: 4.64.0
-    vitest:
-      specifier: 4.1.7
-      version: 4.1.7
-  typedoc:latest:
-    typedoc:
-      specifier: 0.28.20
-      version: 0.28.20
-    typedoc-github-theme:
-      specifier: 0.4.0
-      version: 0.4.0
-    typedoc-plugin-dt-links:
-      specifier: 2.0.63
-      version: 2.0.63
-    typedoc-plugin-extras:
-      specifier: 4.0.1
-      version: 4.0.1
-    typedoc-plugin-include-example:
-      specifier: 3.0.2
-      version: 3.0.2
-    typedoc-plugin-mdn-links:
-      specifier: 5.1.1
-      version: 5.1.1
-    typedoc-plugin-missing-exports:
-      specifier: 4.1.4
-      version: 4.1.4
-  typedoc:peer:
-    typedoc-github-theme:
-      specifier: ^0.3.0
-      version: 0.3.1
-    typedoc-material-theme:
-      specifier: ^1.0.0
-      version: 1.4.1
-    typedoc-plugin-dt-links:
-      specifier: ^2.0.0
-      version: 2.0.64
-    typedoc-plugin-extras:
-      specifier: ^4.0.0
-      version: 4.0.1
-    typedoc-plugin-include-example:
-      specifier: ^3.0.0
-      version: 3.0.2
-    typedoc-plugin-mdn-links:
-      specifier: ^5.0.0
-      version: 5.1.1
-    typedoc-plugin-missing-exports:
-      specifier: ^4.0.0
-      version: 4.1.4
-    typedoc-rhineai-theme:
-      specifier: ^1.0.0
-      version: 1.2.0
-    typedoc-theme-oxide:
-      specifier: ^0.2.0
-      version: 0.2.5
-
 overrides:
   '@types/node@*': ^24.0.0
   brace-expansion@<5.0.8: ^5.0.8
@@ -177,13 +26,13 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@commitlint/cli':
-        specifier: catalog:commitlint:latest
+        specifier: 21.2.1
         version: 21.2.1(@types/node@24.13.3)(conventional-commits-parser@7.1.0)(typescript@6.0.3)
       '@commitlint/cz-commitlint':
-        specifier: catalog:commitlint:latest
+        specifier: 21.2.0
         version: 21.2.0(@types/node@24.13.3)(commitizen@4.3.2)(inquirer@9.3.8)(typescript@6.0.3)
       '@kcconfigs/biome':
         specifier: 'workspace:'
@@ -204,59 +53,59 @@ importers:
         specifier: 'workspace:'
         version: link:packages/@kcconfigs/vitest
       '@ls-lint/ls-lint':
-        specifier: 'catalog:'
+        specifier: 2.3.1
         version: 2.3.1
       '@vitest/coverage-v8':
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(vitest@4.1.7)
       '@vitest/ui':
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(vitest@4.1.7)
       commitizen:
-        specifier: catalog:commitlint:latest
+        specifier: 4.3.2
         version: 4.3.2(@types/node@24.13.3)(typescript@6.0.3)
       inquirer:
-        specifier: catalog:commitlint:latest
+        specifier: ^9.3.8
         version: 9.3.8(@types/node@24.13.3)
       lefthook:
-        specifier: 'catalog:'
+        specifier: 2.1.10
         version: 2.1.10
       rimraf:
-        specifier: 'catalog:'
+        specifier: 6.1.3
         version: 6.1.3
       typedoc:
-        specifier: catalog:typedoc:latest
+        specifier: 0.28.20
         version: 0.28.20(typescript@6.0.3)
       typedoc-github-theme:
-        specifier: catalog:typedoc:latest
+        specifier: 0.4.0
         version: 0.4.0(typedoc@0.28.20)
       typedoc-plugin-dt-links:
-        specifier: catalog:typedoc:latest
+        specifier: 2.0.63
         version: 2.0.63(typedoc@0.28.20)
       typedoc-plugin-extras:
-        specifier: catalog:typedoc:latest
+        specifier: 4.0.1
         version: 4.0.1(typedoc@0.28.20)
       typedoc-plugin-include-example:
-        specifier: catalog:typedoc:latest
+        specifier: 3.0.2
         version: 3.0.2(typedoc@0.28.20)
       typedoc-plugin-mdn-links:
-        specifier: catalog:typedoc:latest
+        specifier: 5.1.1
         version: 5.1.1(typedoc@0.28.20)
       typedoc-plugin-missing-exports:
-        specifier: catalog:typedoc:latest
+        specifier: 4.1.4
         version: 4.1.4(typedoc@0.28.20)
       typescript:
-        specifier: 'catalog:'
+        specifier: 6.0.3
         version: 6.0.3
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/biome:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
-        version: 2.5.3
+        specifier: 2.5.2
+        version: 2.5.2
 
   packages/@kcconfigs/commitlint:
     dependencies:
@@ -268,13 +117,13 @@ importers:
         version: 2.9.0
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@commitlint/config-conventional':
-        specifier: catalog:commitlint:latest
+        specifier: 21.2.0
         version: 21.2.0
       '@commitlint/types':
-        specifier: catalog:commitlint:latest
+        specifier: 21.2.0
         version: 21.2.0
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -289,16 +138,16 @@ importers:
         specifier: workspace:*
         version: link:../vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/lefthook:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -320,7 +169,7 @@ importers:
         version: 5.2.16
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -335,10 +184,10 @@ importers:
         specifier: workspace:*
         version: link:../vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/tsconfig:
@@ -347,17 +196,17 @@ importers:
         specifier: workspace:*
         version: link:../../@kctypes/generic
       '@types/bun':
-        specifier: 'catalog:'
+        specifier: ^1.3.14
         version: 1.3.14
       '@types/node':
-        specifier: 'catalog:'
+        specifier: ^24.0.0
         version: 24.13.3
       typescript:
-        specifier: catalog:peer
+        specifier: ^6.0.0
         version: 6.0.3
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -366,26 +215,26 @@ importers:
   packages/@kcconfigs/tsdown:
     dependencies:
       '@arethetypeswrong/core':
-        specifier: 'catalog:'
+        specifier: 0.18.5
         version: 0.18.5
       '@kcinternals/config-builder':
         specifier: workspace:*
         version: link:../../@kcinternals/config-builder
       publint:
-        specifier: 'catalog:'
+        specifier: 0.3.21
         version: 0.3.21
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       unplugin-unused:
-        specifier: 'catalog:'
+        specifier: 0.5.7
         version: 0.5.7(rolldown@1.2.0)(vite@8.1.3)
       unrun:
-        specifier: 'catalog:'
+        specifier: 0.3.1
         version: 0.3.1
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -397,38 +246,38 @@ importers:
   packages/@kcconfigs/typedoc:
     dependencies:
       typedoc:
-        specifier: catalog:typedoc:latest
+        specifier: 0.28.20
         version: 0.28.20(typescript@6.0.3)
       typedoc-github-theme:
-        specifier: catalog:typedoc:peer
+        specifier: ^0.3.0
         version: 0.3.1(typedoc@0.28.20)
       typedoc-material-theme:
-        specifier: catalog:typedoc:peer
+        specifier: ^1.0.0
         version: 1.4.1(typedoc@0.28.20)
       typedoc-plugin-dt-links:
-        specifier: catalog:typedoc:peer
-        version: 2.0.64(typedoc@0.28.20)
+        specifier: ^2.0.0
+        version: 2.0.63(typedoc@0.28.20)
       typedoc-plugin-extras:
-        specifier: catalog:typedoc:peer
+        specifier: ^4.0.0
         version: 4.0.1(typedoc@0.28.20)
       typedoc-plugin-include-example:
-        specifier: catalog:typedoc:peer
+        specifier: ^3.0.0
         version: 3.0.2(typedoc@0.28.20)
       typedoc-plugin-mdn-links:
-        specifier: catalog:typedoc:peer
+        specifier: ^5.0.0
         version: 5.1.1(typedoc@0.28.20)
       typedoc-plugin-missing-exports:
-        specifier: catalog:typedoc:peer
+        specifier: ^4.0.0
         version: 4.1.4(typedoc@0.28.20)
       typedoc-rhineai-theme:
-        specifier: catalog:typedoc:peer
+        specifier: ^1.0.0
         version: 1.2.0(typedoc@0.28.20)
       typedoc-theme-oxide:
-        specifier: catalog:typedoc:peer
+        specifier: ^0.2.0
         version: 0.2.5(typedoc@0.28.20)
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -443,23 +292,23 @@ importers:
         specifier: workspace:*
         version: link:../vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcconfigs/vitest:
     dependencies:
       memfs:
-        specifier: catalog:test:latest
+        specifier: 4.64.0
         version: 4.64.0(tslib@2.8.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -474,13 +323,13 @@ importers:
         specifier: workspace:*
         version: link:../../@kctypes/generic
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
 
   packages/@kcexamples/demo:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -498,22 +347,22 @@ importers:
         specifier: 0.27.4
         version: 0.27.4(rolldown@1.2.0)(typescript@6.0.3)
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vite:
-        specifier: 'catalog:'
+        specifier: 8.1.3
         version: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
       zshy:
-        specifier: 'catalog:'
+        specifier: 0.7.3
         version: 0.7.3(typescript@6.0.3)
 
   packages/@kcexamples/starter:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -528,16 +377,16 @@ importers:
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcinternals/config-builder:
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -546,10 +395,10 @@ importers:
         specifier: workspace:*
         version: link:../../@kcconfigs/tsconfig
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcstyles/reset.css:
@@ -561,16 +410,16 @@ importers:
         specifier: workspace:*
         version: link:../../@kcconfigs/tsdown
       '@tsdown/css':
-        specifier: catalog:css:latest
+        specifier: 0.22.7
         version: 0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
       lightningcss:
-        specifier: catalog:css:latest
+        specifier: 1.32.0
         version: 1.32.0
       sass-embedded:
-        specifier: catalog:css:latest
+        specifier: 1.100.0
         version: 1.100.0
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
 
   packages/@kctools/bun-react:
@@ -586,7 +435,7 @@ importers:
         version: 14.0.3
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -601,44 +450,44 @@ importers:
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kctypes/generic:
     dependencies:
       typescript:
-        specifier: 'catalog:'
+        specifier: 6.0.3
         version: 6.0.3
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kctypes/package_json:
     dependencies:
       typescript:
-        specifier: 'catalog:'
+        specifier: 6.0.3
         version: 6.0.3
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
   packages/@kcws/actkits:
     dependencies:
       '@actions/core':
-        specifier: catalog:actions:latest
+        specifier: 3.0.1
         version: 3.0.1
       yaml:
-        specifier: 'catalog:'
+        specifier: 2.9.0
         version: 2.9.0
       zod:
-        specifier: 'catalog:'
+        specifier: 4.4.3
         version: 4.4.3
     devDependencies:
       '@biomejs/biome':
-        specifier: 'catalog:'
+        specifier: 2.5.3
         version: 2.5.3
       '@kcconfigs/biome':
         specifier: workspace:*
@@ -653,10 +502,10 @@ importers:
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
       tsdown:
-        specifier: 'catalog:'
+        specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
-        specifier: catalog:test:latest
+        specifier: 4.1.7
         version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
 
 packages:
@@ -711,15 +560,32 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
+  '@biomejs/biome@2.5.2':
+    resolution: {integrity: sha512-VQ3RCqr7JmDIX+w6stWYl+g/3bYofN3q2wDBHUKKc/c7i5QWrFKFBZYCYPWTE6agsUPMIZZe6/CMmVUfUAhkKA==}
+    engines: {node: '>=14.21.3'}
+    hasBin: true
+
   '@biomejs/biome@2.5.3':
     resolution: {integrity: sha512-MrJswFdei9EfDwwUy2tQrPDpK0AO+RmMFvBoaaJ6ayBc3sUbHdCE+XG5N8vp+5So41ZupZJQm0roHFFhMGVD7A==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
+  '@biomejs/cli-darwin-arm64@2.5.2':
+    resolution: {integrity: sha512-e7P3P7EkwFc/KiX2AHw4YDLIBOMfG9CPCAwy52k5Bp0dfhkozx9hf6wCmIr2QeXy2XeccJ3V/Sg+hDmzYEqxSg==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [darwin]
+
   '@biomejs/cli-darwin-arm64@2.5.3':
     resolution: {integrity: sha512-QhYP9muVQ0nUO5zztFuPbEwi4+94sJWVjaZds9aMi1l/KNZBiUjdiSUrGHsTaMGDXrYl+r4AS2sUKfgH3w+V3g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
+    os: [darwin]
+
+  '@biomejs/cli-darwin-x64@2.5.2':
+    resolution: {integrity: sha512-ymzMvjC1Jg0b9K0D26ZdARqFQXs7MocfLC5FOCGfkC0Ss+ACUJkX5364ZM5nT4NLZanHRZNVrZEy+Ibwcvux/g==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
     os: [darwin]
 
   '@biomejs/cli-darwin-x64@2.5.3':
@@ -728,12 +594,26 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  '@biomejs/cli-linux-arm64-musl@2.5.2':
+    resolution: {integrity: sha512-w+ANG0ZvTu9IeEg9QnstoOnk6L0fpwJifW6aHR18+cb5Z39bkANItYjAfMrnvce5tmMK+IQ6nPX7/kQFdam5iw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
   '@biomejs/cli-linux-arm64-musl@2.5.3':
     resolution: {integrity: sha512-fccix0w6xp6csCXgxeC0dU/3ecgRQal0y+cv2SP9ajNlhe7Yrk2Ug7UDe2j9AT9ZDYitkXpvUKgZjjuoYeP4Vg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
+
+  '@biomejs/cli-linux-arm64@2.5.2':
+    resolution: {integrity: sha512-t7sseOmqND57uUWTwlawU6BYj+J06T/9EkydzBhkrgw/FK3QVhjU2wsJR0frljrKZ0/I8A/rYw7284QgqjQfIQ==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-arm64@2.5.3':
     resolution: {integrity: sha512-ksx1KWeyYW18ILL04msF/J4ZBtBDN33znYK8Z/aNv/vlBVxL9/g3mGP+omgHJKy4+KWbK87vcmmpmurfNjSgiA==}
@@ -742,12 +622,26 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  '@biomejs/cli-linux-x64-musl@2.5.2':
+    resolution: {integrity: sha512-VArNLAzND063tF+XY0yPyM+DyahpzOMzOAvb7qs259nhjJWRjvjZdssuA+Rfl+l07+NOesKZ0Xu2yFrXyBMtzw==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
   '@biomejs/cli-linux-x64-musl@2.5.3':
     resolution: {integrity: sha512-O/yU9YKRUiHhmcjF2f38PSjseVk3G4VLWYc0G2HWpzdBVREV6G8IGWIVEFf7MFPfWIzNUIvPsEjeAZQIOgnLcQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
+
+  '@biomejs/cli-linux-x64@2.5.2':
+    resolution: {integrity: sha512-M/lOZrewzTCRDINbjhQ1gYYru37KlD3kJBQwwKCG0ckz5E9IZwIoJ3X0wBwRXA+yBDIwWUuPBHS67HzJY4dTfA==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64@2.5.3':
     resolution: {integrity: sha512-yMkJtilsgvILDcVkh187aVLTb64xYsrxYajx5kym+r1ULkO5HUOfu9AYKLGQbOVLwJtT2utNw7hhFNg+17mUYA==}
@@ -756,10 +650,22 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  '@biomejs/cli-win32-arm64@2.5.2':
+    resolution: {integrity: sha512-kbjFFKyZlzYnAuw7sRy5qDoFG6zrP40UK08oPQsWK0ct3NMnGSt+Bs1iviEEyEIP57N5MrykGXdO/wRiaR4lww==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [win32]
+
   '@biomejs/cli-win32-arm64@2.5.3':
     resolution: {integrity: sha512-cX5z+GYwRcqEok0AH3KSfQGgqYd0Nomfp6Fbe1uiTtELE38hdH2k842wQ9wLNaF/JJ7r4rjJQ4VR+ce+fRmQbw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
+    os: [win32]
+
+  '@biomejs/cli-win32-x64@2.5.2':
+    resolution: {integrity: sha512-4InchVpdVmdkkkgjQqKpgvyu+VPnoF/7RPSw5YATgEVpt2j72wcCAeV5TwaE9ZGJUZWZn7v2CwSAj6CrMJEx8A==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
     os: [win32]
 
   '@biomejs/cli-win32-x64@2.5.3':
@@ -5385,11 +5291,6 @@ packages:
     peerDependencies:
       typedoc: 0.28.x
 
-  typedoc-plugin-dt-links@2.0.64:
-    resolution: {integrity: sha512-Ht0vdoCtIkIMTsVHrGBZ+n3treD64l6+aEeotQY1EjI3tRagAVSN9dpzQUbovtr1j9Mlkd6Gv1StKOeEeYcxNA==}
-    peerDependencies:
-      typedoc: 0.28.x
-
   typedoc-plugin-extras@4.0.1:
     resolution: {integrity: sha512-ab3T37ukHCwBjwBJpAcWdxy/XAaLdUyy5pwbgF9WDqCRN0DTJmJPLew9Kv6qrx5qnxiyfe6F4Og+PUp15kJWLw==}
     peerDependencies:
@@ -5877,6 +5778,17 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
+  '@biomejs/biome@2.5.2':
+    optionalDependencies:
+      '@biomejs/cli-darwin-arm64': 2.5.2
+      '@biomejs/cli-darwin-x64': 2.5.2
+      '@biomejs/cli-linux-arm64': 2.5.2
+      '@biomejs/cli-linux-arm64-musl': 2.5.2
+      '@biomejs/cli-linux-x64': 2.5.2
+      '@biomejs/cli-linux-x64-musl': 2.5.2
+      '@biomejs/cli-win32-arm64': 2.5.2
+      '@biomejs/cli-win32-x64': 2.5.2
+
   '@biomejs/biome@2.5.3':
     optionalDependencies:
       '@biomejs/cli-darwin-arm64': 2.5.3
@@ -5888,25 +5800,49 @@ snapshots:
       '@biomejs/cli-win32-arm64': 2.5.3
       '@biomejs/cli-win32-x64': 2.5.3
 
+  '@biomejs/cli-darwin-arm64@2.5.2':
+    optional: true
+
   '@biomejs/cli-darwin-arm64@2.5.3':
+    optional: true
+
+  '@biomejs/cli-darwin-x64@2.5.2':
     optional: true
 
   '@biomejs/cli-darwin-x64@2.5.3':
     optional: true
 
+  '@biomejs/cli-linux-arm64-musl@2.5.2':
+    optional: true
+
   '@biomejs/cli-linux-arm64-musl@2.5.3':
+    optional: true
+
+  '@biomejs/cli-linux-arm64@2.5.2':
     optional: true
 
   '@biomejs/cli-linux-arm64@2.5.3':
     optional: true
 
+  '@biomejs/cli-linux-x64-musl@2.5.2':
+    optional: true
+
   '@biomejs/cli-linux-x64-musl@2.5.3':
+    optional: true
+
+  '@biomejs/cli-linux-x64@2.5.2':
     optional: true
 
   '@biomejs/cli-linux-x64@2.5.3':
     optional: true
 
+  '@biomejs/cli-win32-arm64@2.5.2':
+    optional: true
+
   '@biomejs/cli-win32-arm64@2.5.3':
+    optional: true
+
+  '@biomejs/cli-win32-x64@2.5.2':
     optional: true
 
   '@biomejs/cli-win32-x64@2.5.3':
@@ -10968,10 +10904,6 @@ snapshots:
       typedoc: 0.28.20(typescript@6.0.3)
 
   typedoc-plugin-dt-links@2.0.63(typedoc@0.28.20):
-    dependencies:
-      typedoc: 0.28.20(typescript@6.0.3)
-
-  typedoc-plugin-dt-links@2.0.64(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 

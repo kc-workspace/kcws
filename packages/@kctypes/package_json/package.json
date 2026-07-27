@@ -6,11 +6,11 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"typescript": "catalog:",
-		"vitest": "catalog:test:latest"
+		"typescript": "6.0.3",
+		"vitest": "4.1.7"
 	},
 	"peerDependencies": {
-		"typescript": "catalog:peer"
+		"typescript": "^6.0.0"
 	},
 	"main": "types/index.d.ts",
 	"types": "types/index.d.ts",

@@ -15,19 +15,19 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"vitest": "catalog:test:latest",
-		"memfs": "catalog:test:latest"
+		"vitest": "4.1.7",
+		"memfs": "4.64.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
+		"@biomejs/biome": "2.5.3",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/biome": "workspace:*",
 		"@kctypes/generic": "workspace:*",
-		"tsdown": "catalog:"
+		"tsdown": "0.22.7"
 	},
 	"peerDependencies": {
-		"vitest": "catalog:test:peer"
+		"vitest": "^4.0.0"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",

@@ -15,24 +15,24 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@arethetypeswrong/core": "catalog:",
+		"@arethetypeswrong/core": "0.18.5",
 		"@kcinternals/config-builder": "workspace:*",
-		"publint": "catalog:",
-		"tsdown": "catalog:",
-		"unplugin-unused": "catalog:",
-		"unrun": "catalog:"
+		"publint": "0.3.21",
+		"tsdown": "0.22.7",
+		"unplugin-unused": "0.5.7",
+		"unrun": "0.3.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
+		"@biomejs/biome": "2.5.3",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*"
 	},
 	"peerDependencies": {
-		"@arethetypeswrong/core": "catalog:peer",
-		"publint": "catalog:peer",
-		"tsdown": "catalog:peer",
-		"unplugin-unused": "catalog:peer",
-		"unrun": "catalog:peer"
+		"@arethetypeswrong/core": "^0.18.0",
+		"publint": "^0.3.0",
+		"tsdown": "^0.22.7",
+		"unplugin-unused": "^0.5.0",
+		"unrun": "^0.3.0"
 	},
 	"peerDependenciesMeta": {
 		"publint": {

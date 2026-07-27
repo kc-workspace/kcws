@@ -19,15 +19,15 @@
 		"yaml": "2.9.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"@commitlint/config-conventional": "catalog:commitlint:latest",
-		"@commitlint/types": "catalog:commitlint:latest",
+		"@biomejs/biome": "2.5.3",
+		"@commitlint/config-conventional": "21.2.0",
+		"@commitlint/types": "21.2.0",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
-		"tsdown": "catalog:",
-		"vitest": "catalog:test:latest"
+		"tsdown": "0.22.7",
+		"vitest": "4.1.7"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
