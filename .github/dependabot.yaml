@@ -11,7 +11,9 @@ updates:
       prefix: perf
       include: scope
   - package-ecosystem: npm
-    directory: /
+    directories:
+      - /
+      - packages/*
     versioning-strategy: increase
     schedule:
       interval: weekly
