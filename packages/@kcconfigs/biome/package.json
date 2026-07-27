@@ -10,7 +10,7 @@
 		"lint:check": "biome lint"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.2"
+		"@biomejs/biome": "2.5.3"
 	},
 	"peerDependencies": {
 		"@biomejs/biome": "^2.0.0"
