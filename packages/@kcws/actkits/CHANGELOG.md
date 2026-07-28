@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.1.6](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.5...@kcws/actkits+v0.1.6) (2026-07-28)
+
+
+### Features
+
+* **kcws/actkits:** add json/yaml string and file ztypes ([bae7726](https://github.com/kc-workspace/kcws/commit/bae77266f34b25077777f2f83bb93c9ccd00a784))
+
+
+### Code Refactoring
+
+* **kcws/actkits:** replace createFileObjectParser with createObjectParser in zJsonFile and zYamlFile ([bc8e067](https://github.com/kc-workspace/kcws/commit/bc8e06711ee14d18e055ef46238618f305c782a7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.2
+    * @kcconfigs/vitest bumped to 0.2.0
+    * @kcconfigs/tsconfig bumped to 1.1.2
+    * @kcconfigs/tsdown bumped to 0.2.5
+
 ## [0.1.5](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.4...@kcws/actkits+v0.1.5) (2026-07-23)
 
 

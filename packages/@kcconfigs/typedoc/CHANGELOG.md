@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.2.0-beta.7...@kcconfigs/typedoc+v0.3.0) (2026-07-28)
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/typedoc:** force update v0.2.0-beta.7 =&gt; v0.3.0 ([e53b908](https://github.com/kc-workspace/kcws/commit/e53b908a8d1501df795dcd06fb58a5935106ca78))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.2
+    * @kcconfigs/tsconfig bumped to 1.1.2
+    * @kcconfigs/tsdown bumped to 0.2.5
+    * @kcconfigs/vitest bumped to 0.2.0
+
 ## [0.2.0-beta.7](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.2.0-beta.6...@kcconfigs/typedoc+v0.2.0-beta.7) (2026-07-23)
 
 

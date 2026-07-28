@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.1...@kcconfigs/biome+v2.0.2) (2026-07-28)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.2 to 2.5.3 ([#186](https://github.com/kc-workspace/kcws/issues/186)) ([d742128](https://github.com/kc-workspace/kcws/commit/d7421284811bcd905d5024b947c3ceb52dffbaa0))
+
 ## [2.0.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.0...@kcconfigs/biome+v2.0.1) (2026-07-23)
 
 
