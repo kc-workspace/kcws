@@ -77,10 +77,7 @@
       "component": "@kcconfigs/tsdown"
     },
     "packages/@kcconfigs/vitest": {
-      "component": "@kcconfigs/vitest",
-      "versioning": "prerelease",
-      "prerelease": true,
-      "prerelease-type": "beta"
+      "component": "@kcconfigs/vitest"
     },
     "packages/@kcconfigs/commitlint": {
       "component": "@kcconfigs/commitlint"
