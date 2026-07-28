@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.5...@kcconfigs/lefthook+v0.1.6) (2026-07-28)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.2
+
 ## [0.1.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.4...@kcconfigs/lefthook+v0.1.5) (2026-07-23)
 
 

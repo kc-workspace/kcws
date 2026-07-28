@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.2-beta.9...@kcconfigs/vitest+v0.2.0) (2026-07-28)
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/vitest:** force update v0.1.2-beta.9 =&gt; v0.2.0 ([fbab386](https://github.com/kc-workspace/kcws/commit/fbab38668d9f63d6b73a0ab7f32496ea29a2c04b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.2
+    * @kcconfigs/tsdown bumped to 0.2.5
+    * @kcconfigs/biome bumped to 2.0.2
+
 ## [0.1.2-beta.9](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.2-beta.8...@kcconfigs/vitest+v0.1.2-beta.9) (2026-07-23)
 
 
