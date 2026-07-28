@@ -99,7 +99,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcconfigs/biome:
     devDependencies:
@@ -142,7 +142,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcconfigs/lefthook:
     devDependencies:
@@ -188,7 +188,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcconfigs/tsconfig:
     dependencies:
@@ -228,7 +228,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       unplugin-unused:
         specifier: 0.5.7
-        version: 0.5.7(rolldown@1.2.0)(vite@8.1.3)
+        version: 0.5.7(rolldown@1.2.0)(vite@8.1.4)
       unrun:
         specifier: 0.3.1
         version: 0.3.1
@@ -296,7 +296,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcconfigs/vitest:
     dependencies:
@@ -305,7 +305,7 @@ importers:
         version: 4.64.0(tslib@2.8.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.3
@@ -350,11 +350,11 @@ importers:
         specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vite:
-        specifier: 8.1.3
-        version: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
+        specifier: 8.1.4
+        version: 8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
       zshy:
         specifier: 0.7.3
         version: 0.7.3(typescript@6.0.3)
@@ -381,7 +381,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcinternals/config-builder:
     devDependencies:
@@ -399,7 +399,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcstyles/reset.css:
     devDependencies:
@@ -411,7 +411,7 @@ importers:
         version: link:../../@kcconfigs/tsdown
       '@tsdown/css':
         specifier: 0.22.7
-        version: 0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
+        version: 0.22.7(jiti@2.6.1)(postcss@8.5.23)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
       lightningcss:
         specifier: 1.32.0
         version: 1.32.0
@@ -454,7 +454,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kctypes/generic:
     dependencies:
@@ -463,7 +463,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kctypes/package_json:
     dependencies:
@@ -472,7 +472,7 @@ importers:
         version: 6.0.3
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   packages/@kcws/actkits:
     dependencies:
@@ -506,7 +506,7 @@ importers:
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.7
-        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+        version: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
 packages:
 
@@ -4414,8 +4414,8 @@ packages:
       yaml:
         optional: true
 
-  postcss@8.5.22:
-    resolution: {integrity: sha512-KBDEIpLrvpv16pp3K0Fw+UCoZfopFjjgeB+0tA/aaThfEE74kKDLrgg603YvOWJyg3+WYtyq3xYsQWsIyZlPqQ==}
+  postcss@8.5.23:
+    resolution: {integrity: sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg==}
     engines: {node: ^10 || ^12 || >=14}
 
   preferred-pm@3.1.4:
@@ -5437,8 +5437,8 @@ packages:
   vfile@4.2.1:
     resolution: {integrity: sha512-O6AE4OskCG5S1emQ/4gl8zK586RqA3srz3nfK/Viy0UPToBc5Trp9BVFb1u0CjsKrAWwnpr4ifM/KBXPWwJbCA==}
 
-  vite@8.1.3:
-    resolution: {integrity: sha512-Ds+gBRbj0lwRO2Y5hwnUBdxSwlAve9LeRyU4sNnAr0ewW0gWF0n5bgXgUzbgZ49MV9BVUAQUFYVcDUcilUExMA==}
+  vite@8.1.4:
+    resolution: {integrity: sha512-bTT9PsdWO+MQMNG9ZXIP/qM9wGh37DFxTV/sPq9cFpHr3w4jkgef032PkAL9jAqhk3Nz8NQw3O8n6/xFkqO4QQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -7656,14 +7656,14 @@ snapshots:
 
   '@textlint/utils@15.7.1': {}
 
-  '@tsdown/css@0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)':
+  '@tsdown/css@0.22.7(jiti@2.6.1)(postcss@8.5.23)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)':
     dependencies:
       lightningcss: 1.32.0
-      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.22)(yaml@2.9.0)
+      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.23)(yaml@2.9.0)
       rolldown: 1.1.5
       tsdown: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
     optionalDependencies:
-      postcss: 8.5.22
+      postcss: 8.5.23
       sass: 1.100.0
       sass-embedded: 1.100.0
     transitivePeerDependencies:
@@ -7723,7 +7723,7 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   '@vitest/expect@4.1.7':
     dependencies:
@@ -7734,13 +7734,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.7(vite@8.1.3)':
+  '@vitest/mocker@4.1.7(vite@8.1.4)':
     dependencies:
       '@vitest/spy': 4.1.7
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
+      vite: 8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.7':
     dependencies:
@@ -7769,7 +7769,7 @@ snapshots:
       sirv: 3.0.2
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3)
+      vitest: 4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4)
 
   '@vitest/utils@4.1.7':
     dependencies:
@@ -9965,15 +9965,15 @@ snapshots:
 
   pluralize@2.0.0: {}
 
-  postcss-load-config@6.0.1(jiti@2.6.1)(postcss@8.5.22)(yaml@2.9.0):
+  postcss-load-config@6.0.1(jiti@2.6.1)(postcss@8.5.23)(yaml@2.9.0):
     dependencies:
       lilconfig: 3.1.3
     optionalDependencies:
       jiti: 2.6.1
-      postcss: 8.5.22
+      postcss: 8.5.23
       yaml: 2.9.0
 
-  postcss@8.5.22:
+  postcss@8.5.23:
     dependencies:
       nanoid: 3.3.16
       picocolors: 1.1.1
@@ -10774,10 +10774,10 @@ snapshots:
       unconfig-core: 7.5.0
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.5
-      '@tsdown/css': 0.22.7(jiti@2.6.1)(postcss@8.5.22)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
+      '@tsdown/css': 0.22.7(jiti@2.6.1)(postcss@8.5.23)(sass-embedded@1.100.0)(sass@1.100.0)(tsdown@0.22.7)(yaml@2.9.0)
       publint: 0.3.21
       typescript: 6.0.3
-      unplugin-unused: 0.5.7(rolldown@1.1.5)(vite@8.1.3)
+      unplugin-unused: 0.5.7(rolldown@1.1.5)(vite@8.1.4)
       unrun: 0.3.1
     transitivePeerDependencies:
       - '@typescript/native-preview'
@@ -10930,12 +10930,12 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.3):
+  unplugin-unused@0.5.7(rolldown@1.1.5)(vite@8.1.4):
     dependencies:
       empathic: 2.0.1
       escape-string-regexp: 5.0.0
       js-tokens: 10.0.0
-      unplugin: 3.3.0(rolldown@1.1.5)(vite@8.1.3)
+      unplugin: 3.3.0(rolldown@1.1.5)(vite@8.1.4)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rspack/core'
@@ -10948,12 +10948,12 @@ snapshots:
       - webpack
     optional: true
 
-  unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.3):
+  unplugin-unused@0.5.7(rolldown@1.2.0)(vite@8.1.4):
     dependencies:
       empathic: 2.0.1
       escape-string-regexp: 5.0.0
       js-tokens: 10.0.0
-      unplugin: 3.3.0(rolldown@1.2.0)(vite@8.1.3)
+      unplugin: 3.3.0(rolldown@1.2.0)(vite@8.1.4)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rspack/core'
@@ -10965,24 +10965,24 @@ snapshots:
       - vite
       - webpack
 
-  unplugin@3.3.0(rolldown@1.1.5)(vite@8.1.3):
+  unplugin@3.3.0(rolldown@1.1.5)(vite@8.1.4):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
       rolldown: 1.1.5
-      vite: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
+      vite: 8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
     optional: true
 
-  unplugin@3.3.0(rolldown@1.2.0)(vite@8.1.3):
+  unplugin@3.3.0(rolldown@1.2.0)(vite@8.1.4):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
       rolldown: 1.2.0
-      vite: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
+      vite: 8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
 
   unrun@0.3.1:
     dependencies:
@@ -11025,11 +11025,11 @@ snapshots:
       unist-util-stringify-position: 2.0.3
       vfile-message: 2.0.4
 
-  vite@8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0):
+  vite@8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
-      postcss: 8.5.22
+      postcss: 8.5.23
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -11040,10 +11040,10 @@ snapshots:
       sass-embedded: 1.100.0
       yaml: 2.9.0
 
-  vitest@4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.3):
+  vitest@4.1.7(@types/node@24.13.3)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(vite@8.1.4):
     dependencies:
       '@vitest/expect': 4.1.7
-      '@vitest/mocker': 4.1.7(vite@8.1.3)
+      '@vitest/mocker': 4.1.7(vite@8.1.4)
       '@vitest/pretty-format': 4.1.7
       '@vitest/runner': 4.1.7
       '@vitest/snapshot': 4.1.7
@@ -11060,7 +11060,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.1.3(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
+      vite: 8.1.4(@types/node@24.13.3)(jiti@2.6.1)(sass-embedded@1.100.0)(sass@1.100.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.3
