@@ -1,11 +1,17 @@
-import type { Config } from "./config";
-import type { DefineOption } from "./option";
+import type { BaseConfig } from "./config";
+
+/** Plugin priority */
+export type Priority = number;
+
+export type ConfigPluginAction<C> = (base: BaseConfig<C>) => BaseConfig<C>;
 
 export interface ConfigPlugin<N extends string, C> {
+	/** Plugin name for identification */
 	readonly name: N;
+	/** Priority of the plugin (default to 0) */
+	readonly priority: Priority;
 	/** Apply the plugin to the base configuration */
-	apply?: (base: Config<C>, option: DefineOption) => Config<C>;
-	/** Normalize the config */
-	normalize?: (config: Config<C>, option: DefineOption) => Config<C>;
+	apply: ConfigPluginAction<C>;
 }
-export type ConfigPluginAny<C> = ConfigPlugin<string, C>;
+
+export type AnyConfigPlugin<C> = ConfigPlugin<string, C>;
