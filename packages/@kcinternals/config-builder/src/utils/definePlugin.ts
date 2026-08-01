@@ -13,7 +13,8 @@ const definePlugin = <N extends string, C>(
 	return {
 		name,
 		priority: plugin.priority ?? 0,
-		apply: plugin.apply ?? ((base) => base),
+		applySetting: plugin.applySetting,
+		applyConfig: plugin.applyConfig,
 	};
 };
 

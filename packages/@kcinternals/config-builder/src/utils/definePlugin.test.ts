@@ -1,7 +1,10 @@
 import { describe, expect, test } from "vitest";
-import type { ConfigPluginAction } from "../models";
-import defineBaseConfig from "./defineBaseConfig";
+import type { BaseSetting, ConfigPluginAction } from "../models";
 import definePlugin from "./definePlugin";
+
+interface MockConfig {
+	value: number;
+}
 
 describe(definePlugin.name, () => {
 	test("should return a plugin with the given name", () => {
@@ -19,30 +22,60 @@ describe(definePlugin.name, () => {
 		expect(plugin.priority).toBe(5);
 	});
 
-	test("should default apply to identity function", () => {
-		const input = { value: 42 };
-		const plugin = definePlugin<"test", typeof input>("test", {});
-		const { config: output } = plugin.apply(defineBaseConfig(input));
-		expect(output).toBe(input);
+	test("should default apply* to undefined", () => {
+		const plugin = definePlugin<"test", MockConfig>("test", {});
+		expect(plugin.applyConfig).toBeUndefined();
+		expect(plugin.applySetting).toBeUndefined();
 	});
 
-	test("should use provided apply function", () => {
-		const input = { x: 5 };
-		const plugin = definePlugin<"double", typeof input>("double", {
-			apply: (base) => ({ ...base, config: { x: base.config.x * 2 } }),
+	test("should use provided applyConfig function", () => {
+		const input: MockConfig = { value: 5 };
+		const plugin = definePlugin<"double", MockConfig>("double", {
+			applyConfig: (config) => ({ value: config.value * 2 }),
 		});
-		const { config: output } = plugin.apply(defineBaseConfig(input));
-		expect(output).toEqual({ x: 10 });
+		const output = plugin.applyConfig?.(input);
+		expect(output).toEqual({ value: 10 });
 	});
 
 	test("should return object matching ConfigPlugin shape", () => {
 		const name = "myPlugin";
-		const apply: ConfigPluginAction<string> = (config) => config;
+		const applyConfig: ConfigPluginAction<string> = (config) => config;
 		const result = definePlugin(name, {
 			priority: 1,
-			apply,
+			applyConfig,
 		});
 
-		expect(result).toEqual({ name, priority: 1, apply });
+		expect(result).toEqual({
+			name,
+			priority: 1,
+			applyConfig,
+			applySetting: undefined,
+		});
+	});
+
+	test("should use provided applySetting function", () => {
+		const plugin = definePlugin<"debug", MockConfig>("debug", {
+			applySetting: (_) => ({ debug: true }),
+		});
+		const output = plugin.applySetting?.({});
+		expect(output).toEqual({ debug: true });
+	});
+
+	test("should return object matching ConfigPlugin shape", () => {
+		const name = "myPlugin";
+		const applySetting: ConfigPluginAction<BaseSetting> = (_) => ({
+			debug: true,
+		});
+		const result = definePlugin(name, {
+			priority: Number.POSITIVE_INFINITY,
+			applySetting,
+		});
+
+		expect(result).toEqual({
+			name,
+			priority: Number.POSITIVE_INFINITY,
+			applySetting,
+			applyConfig: undefined,
+		});
 	});
 });
