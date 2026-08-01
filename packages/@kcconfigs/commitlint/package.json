@@ -68,7 +68,8 @@
 		"CHANGELOG.json",
 		"CHANGELOG.md",
 		"dist",
-		"src"
+		"src",
+		"!*.test.*"
 	],
 	"engines": {
 		"node": ">=22"

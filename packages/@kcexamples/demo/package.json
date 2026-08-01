@@ -78,7 +78,8 @@
 		"dist.tsc",
 		"dist.tsdown",
 		"dist.vite",
-		"dist.zshy"
+		"dist.zshy",
+		"!*.test.*"
 	],
 	"engines": {
 		"node": ">=14"

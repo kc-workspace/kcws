@@ -43,7 +43,8 @@
 		"CHANGELOG.json",
 		"CHANGELOG.md",
 		"types",
-		"!**/*.test-d.ts"
+		"!**/*.test-d.ts",
+		"!*.test.*"
 	],
 	"engines": {
 		"node": ">=12"
