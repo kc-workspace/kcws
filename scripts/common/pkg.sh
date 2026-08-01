@@ -22,7 +22,7 @@ pkg_create_json() {
   local private
   printf '[ASK] Is package private? (true/false): '
   read -r private
-  __pkg_set_json "$package" .private "$private"
+  __pkg_set_json "$package" .private "$private" 'argjson'
 
   local description
   printf '[ASK] Enter package description: '
