@@ -105,6 +105,9 @@
     },
     "packages/@kcinternals/config-builder": {
       "component": "@kcinternals/config-builder"
+    },
+    "packages/@kcws/zconfig": {
+      "component": "@kcws/zconfig"
     }
   }
 }
