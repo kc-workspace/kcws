@@ -15,7 +15,7 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"vitest": "4.1.7",
+		"vitest": "4.1.10",
 		"memfs": "4.64.0"
 	},
 	"devDependencies": {

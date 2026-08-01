@@ -28,8 +28,8 @@
 		"@kcconfigs/typedoc": "workspace:",
 		"@kcconfigs/vitest": "workspace:",
 		"@ls-lint/ls-lint": "2.3.1",
-		"@vitest/coverage-v8": "4.1.7",
-		"@vitest/ui": "4.1.7",
+		"@vitest/coverage-v8": "4.1.10",
+		"@vitest/ui": "4.1.10",
 		"commitizen": "4.3.2",
 		"inquirer": "^9.3.8",
 		"lefthook": "2.1.10",
@@ -42,7 +42,7 @@
 		"typedoc-plugin-mdn-links": "5.1.1",
 		"typedoc-plugin-missing-exports": "4.1.4",
 		"typescript": "6.0.3",
-		"vitest": "4.1.7"
+		"vitest": "4.1.10"
 	},
 	"config": {
 		"commitizen": {
