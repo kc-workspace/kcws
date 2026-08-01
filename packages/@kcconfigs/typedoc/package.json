@@ -24,7 +24,7 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.7"
+		"vitest": "4.1.10"
 	},
 	"peerDependencies": {
 		"typedoc": "^0.28.0",
