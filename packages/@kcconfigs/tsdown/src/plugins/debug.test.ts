@@ -28,4 +28,22 @@ describe("debugPlugin", () => {
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.minify).toBe(false);
 	});
+
+	test("should set debug flag in applySetting", () => {
+		const plugin = debugPlugin();
+		const result = plugin.applySetting?.({});
+		expect(result?.debug).toBe(true);
+	});
+
+	test("should set verbose to true when verbose option is provided", () => {
+		const plugin = debugPlugin({ verbose: true });
+		const result = plugin.applySetting?.({});
+		expect(result?.verbose).toBe(true);
+	});
+
+	test("should inherit verbose from base setting when not specified", () => {
+		const plugin = debugPlugin();
+		const result = plugin.applySetting?.({ verbose: true });
+		expect(result?.verbose).toBe(true);
+	});
 });

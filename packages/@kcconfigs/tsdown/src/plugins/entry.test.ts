@@ -33,4 +33,11 @@ describe("entryPlugin", () => {
 		expect(result?.outDir).toBe("dist");
 		expect(result?.entry).toEqual(["./src/index.ts", ...defaultIgnoreEntry]);
 	});
+
+	test("should not add default ignore entries when useDefault is false", () => {
+		const plugin = entryPlugin(["./src/index.ts"], false);
+		const base = { entry: undefined };
+		const result = plugin.applyConfig?.(base);
+		expect(result?.entry).toEqual(["./src/index.ts"]);
+	});
 });

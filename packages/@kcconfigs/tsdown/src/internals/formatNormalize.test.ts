@@ -119,6 +119,16 @@ describe("formatNormalize", () => {
 			{ format: { module: { minify: false } } },
 			[["esm", "minify", false]] as const,
 		],
+		[
+			"should normalize object format with iife key",
+			{ format: { iife: { minify: false } } },
+			[["iife", "minify", false]] as const,
+		],
+		[
+			"should normalize object format with umd key",
+			{ format: { umd: { minify: false } } },
+			[["umd", "minify", false]] as const,
+		],
 	])("%s", (_name, input, checks) => {
 		const plugin = formatNormalize();
 		const result = plugin.applyConfig?.(input as any);
@@ -134,6 +144,12 @@ describe("formatNormalize", () => {
 			format: {},
 		};
 		const result = plugin.applyConfig?.(config as any);
+		expect(result?.format).toEqual({});
+	});
+
+	test("should return empty object for unknown format string", () => {
+		const plugin = formatNormalize();
+		const result = plugin.applyConfig?.({ format: "unknown" as any });
 		expect(result?.format).toEqual({});
 	});
 

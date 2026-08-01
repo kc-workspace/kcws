@@ -61,6 +61,16 @@ describe("attwNormalize", () => {
 			{ attw: "ci-only" as const, format: "esm" },
 			{ enabled: "ci-only", profile: "esm-only" },
 		],
+		[
+			"should use esm-only profile when format array contains esm",
+			{ attw: undefined, format: ["esm", "cjs"] },
+			{ enabled: true, profile: "esm-only" },
+		],
+		[
+			"should use node16 profile when format array contains no esm",
+			{ attw: undefined, format: ["cjs"] },
+			{ enabled: true, profile: "node16" },
+		],
 	])("%s", (_, input, expected) => {
 		const plugin = attwNormalize();
 		const result = plugin.applyConfig?.(input as any);
