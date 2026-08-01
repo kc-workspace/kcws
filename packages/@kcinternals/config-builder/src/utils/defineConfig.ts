@@ -1,43 +1,62 @@
 import { format } from "node:util";
-import type { AnyConfigPlugin, BaseSetting } from "../models";
+import type { AnyConfigPlugin, BaseConfig, BaseSetting } from "../models";
 import defineBaseConfig from "./defineBaseConfig";
 import { withEnabled } from "./enabled";
 
+const debug = (setting: BaseSetting, msg: string) =>
+	withEnabled(setting?.debug, console.debug.bind(console))?.(msg);
+const verbose = (setting: BaseSetting, msg: string) =>
+	withEnabled(setting?.verbose, console.debug.bind(console))?.(msg);
+
+const applyPlugins = <C>(
+	base: BaseConfig<C>,
+	plugins: AnyConfigPlugin<C>[],
+	apply: (base: BaseConfig<C>, plugin: AnyConfigPlugin<C>) => BaseConfig<C>,
+): BaseConfig<C> => {
+	return plugins.reduce((acc, plugin) => {
+		return apply(acc, plugin);
+	}, base);
+};
+
 const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
-	const config = defineBaseConfig(base);
+	const baseConfig = defineBaseConfig(base);
 
-	const debug = (setting: BaseSetting, msg: string) =>
-		withEnabled(setting?.debug, console.debug.bind(console))?.(msg);
-	const verbose = (setting: BaseSetting, msg: string) =>
-		withEnabled(setting?.verbose, console.debug.bind(console))?.(msg);
+	const appliedSettingConfig = applyPlugins(
+		baseConfig,
+		plugins.sort((a, b) => a.settingPriority - b.settingPriority),
+		(base, plugin) => {
+			const name = plugin.name;
+			const beforeSetting = base.setting;
+			const afterSetting = plugin?.applySetting?.(beforeSetting);
+			const setting = afterSetting ?? beforeSetting;
 
-	const sortedPlugins = plugins.sort((a, b) => a.priority - b.priority);
+			debug(setting, `applying setting: ${name} (${plugin.settingPriority})`);
+			verbose(setting, format(`[%s] before setting: %O`, name, beforeSetting));
+			verbose(setting, format(`[%s] after setting: %O`, name, afterSetting));
+			return Object.assign(base, { setting });
+		},
+	);
 
-	const applied = sortedPlugins.reduce((acc, plugin) => {
-		const name = plugin.name;
+	const appliedConfig = applyPlugins(
+		appliedSettingConfig,
+		plugins.sort((a, b) => a.configPriority - b.configPriority),
+		(base, plugin) => {
+			const name = plugin.name;
+			const setting = base.setting;
+			const beforeConfig = base.config;
+			const afterConfig = plugin?.applyConfig?.(beforeConfig);
 
-		const { config: beforeConfig, setting: beforeSetting } = acc;
+			debug(setting, `applying config: ${name} (${plugin.configPriority})`);
+			verbose(setting, format(`[%s] before config: %O`, name, beforeConfig));
+			verbose(setting, format(`[%s] after config: %O`, name, afterConfig));
+			return Object.assign(base, { config: afterConfig ?? beforeConfig });
+		},
+	);
 
-		const afterSetting = plugin?.applySetting?.(beforeSetting);
-		const setting = afterSetting ?? beforeSetting;
+	const { setting, config } = appliedConfig;
 
-		debug(setting, `applying plugin: ${name} (${plugin.priority})`);
-		verbose(setting, format(`[%s] before setting: %O`, name, beforeSetting));
-		verbose(setting, format(`[%s] after setting: %O`, name, afterSetting));
-
-		const afterConfig = plugin?.applyConfig?.(beforeConfig);
-		const config = afterConfig ?? beforeConfig;
-		verbose(setting, format(`[%s] before config: %O`, name, beforeConfig));
-		verbose(setting, format(`[%s] after config: %O`, name, afterConfig));
-
-		return {
-			setting,
-			config,
-		};
-	}, config);
-
-	debug(applied.setting, format("all plugins applied: %O", applied));
-	return applied.config;
+	debug(setting, format("all plugins applied: %O", config));
+	return config;
 };
 
 export default defineConfig;

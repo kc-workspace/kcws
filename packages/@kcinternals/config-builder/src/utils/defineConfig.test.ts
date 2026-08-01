@@ -24,7 +24,8 @@ describe(defineConfig.name, () => {
 		const base: MockConfig = { value: 1 };
 
 		const plugin = definePlugin<"testPlugin", MockConfig>("testPlugin", {
-			priority: 1,
+				settingPriority: 1,
+				configPriority: 1,
 			// enables debug for subsequent steps via returned setting
 			applySetting: (_) => ({ debug: debugFn, verbose: verboseFn }),
 			applyConfig: (config) => ({ value: config.value + 1 }),
@@ -35,13 +36,17 @@ describe(defineConfig.name, () => {
 		const result = defineConfig(base, ...plugins);
 		expect(result).toEqual({ value: 2 });
 
-		expect(debugFn).toHaveBeenCalledTimes(2);
+		expect(debugFn).toHaveBeenCalledTimes(3);
 		expect(debugFn).toHaveBeenNthCalledWith(
 			1,
-			"applying plugin: testPlugin (1)",
+			"applying setting: testPlugin (1)",
 		);
 		expect(debugFn).toHaveBeenNthCalledWith(
 			2,
+			"applying config: testPlugin (1)",
+		);
+		expect(debugFn).toHaveBeenNthCalledWith(
+			3,
 			expect.stringContaining("all plugins applied"),
 		);
 
@@ -72,10 +77,10 @@ describe(defineConfig.name, () => {
 		expect(result).toEqual(base);
 	});
 
-	test("should apply plugins in priority order (highest first)", () => {
-		const mockPlugin = <N extends string>(name: N, priority: number) =>
+	test("should apply plugins in configPriority order (lowest first)", () => {
+		const mockPlugin = <N extends string>(name: N, configPriority: number) =>
 			definePlugin<N, string[]>(name, {
-				priority,
+				configPriority,
 				applyConfig: (config) => {
 					config.push(name);
 					return config;
@@ -98,7 +103,76 @@ describe(defineConfig.name, () => {
 			"medium",
 			"high",
 			"pos_inf",
-			"nan", // NaN always treats as highest priority, so it will be applied last
+			"nan", // NaN compare is unordered and effectively remains in insertion order
 		]);
+	});
+
+	test("should apply all settings before any configs", () => {
+		const order: string[] = [];
+		const mk = <N extends string>(
+			name: N,
+			settingPriority: number,
+			configPriority: number,
+		) =>
+			definePlugin<N, { steps: string[] }>(name, {
+				settingPriority,
+				configPriority,
+				applySetting: (setting) => {
+					order.push(`setting:${name}`);
+					return setting;
+				},
+				applyConfig: (config) => {
+					order.push(`config:${name}`);
+					config.steps.push(name);
+					return config;
+				},
+			});
+
+		const result = defineConfig(
+			{ steps: [] as string[] },
+			mk("a", 100, 0),
+			mk("b", 0, 100),
+		);
+
+		expect(result.steps).toEqual(["a", "b"]);
+		expect(order).toEqual([
+			"setting:b",
+			"setting:a",
+			"config:a",
+			"config:b",
+		]);
+	});
+
+	test("should use setting pass output for all config plugins", () => {
+		const execution: string[] = [];
+		const debugFn = (msg: string) => execution.push(`debug:${msg}`);
+
+		const enableDebug = definePlugin<"enableDebug", { value: number }>(
+			"enableDebug",
+			{
+				settingPriority: 0,
+				applySetting: (_) => ({ debug: debugFn }),
+			},
+		);
+
+		const configA = definePlugin<"configA", { value: number }>("configA", {
+			configPriority: 0,
+			applyConfig: (config) => ({ value: config.value + 1 }),
+		});
+
+		const configB = definePlugin<"configB", { value: number }>("configB", {
+			configPriority: 1,
+			applyConfig: (config) => ({ value: config.value + 1 }),
+		});
+
+		const result = defineConfig({ value: 1 }, enableDebug, configA, configB);
+
+		expect(result).toEqual({ value: 3 });
+		expect(execution).toEqual(
+			expect.arrayContaining([
+				"debug:applying config: configA (0)",
+				"debug:applying config: configB (1)",
+			]),
+		);
 	});
 });
