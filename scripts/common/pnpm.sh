@@ -21,7 +21,7 @@ pnpm_package_name() {
 pnpm_package_exist() {
   local package="$1"
   if __pnpm_is_path "$package"; then
-    test -d "$package"
+    test -d "$package" && test -f "$package/package.json"
   else
     cmd_exec_silent pnpm ls -r --depth -1 | grep -q "^$package@"
   fi

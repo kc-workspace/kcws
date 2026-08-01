@@ -28,6 +28,11 @@ _main() {
     local starter="@kcexamples/starter" starter_path
     starter_path="$(pnpm_package_path "$starter")"
 
+    if test -d "$package_path"; then
+      log_info "Prerequisite: Clean up existing package path %s" "$package_path"
+      cmd_run rm -rf "$package_path"
+    fi
+
     log_info "Step 1: Copying starter package to %s" "$package"
     cmd_run cp -r "$starter_path" "$package_path"
 
