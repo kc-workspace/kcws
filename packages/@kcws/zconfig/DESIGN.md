@@ -1,20 +1,22 @@
 # @kcws/zconfig Design Spec
 
-**Date:** 2026-08-01  
-**Package:** `@kcws/zconfig`  
+**Date:** 2026-08-01
+**Package:** `@kcws/zconfig`
 **Status:** Approved
 
 ---
 
 ## Overview
 
-`@kcws/zconfig` is a type-safe configuration loader built on Zod v4. It loads config from multiple sources (files and environment variables), deep-merges them in adapter order (later wins), then validates the merged result against a Zod schema. Invalid config throws a typed error with full Zod issue details.
+`@kcws/zconfig` is a type-safe configuration loader built on Zod v4. It loads config from multiple sources
+(files and environment variables), deep-merges them in adapter order (later wins), then validates the merged
+result against a Zod schema. Invalid config throws a typed error with full Zod issue details.
 
 ---
 
 ## Architecture
 
-```
+```text
 src/
   core/
     index.ts          — loadConfig, loadConfigSync
@@ -39,7 +41,7 @@ src/
 
 ### Data Flow
 
-```
+```text
 loadConfig(schema, [adapter1, adapter2, ...])
   → for each adapter: adapter.load() → RawConfig (plain object)
   → deepMerge all RawConfigs in order (later adapters win on conflict)
@@ -63,6 +65,7 @@ const config = loadConfigSync(schema, adapters);
 ```
 
 Both accept:
+
 - `schema`: a Zod schema (`ZodType<T>`)
 - `adapters`: `Adapter[]` — ordered list, later adapters override earlier ones
 
@@ -88,7 +91,8 @@ interface BaseAdapterOptions {
 }
 ```
 
-`transform` is called per leaf value after the adapter has parsed its source into a nested structure. The `key` is the full path as a string array (e.g. `["database", "host"]`). Returning `undefined` drops the key.
+`transform` is called per leaf value after the adapter has parsed its source into a nested structure.
+The `key` is the full path as a string array (e.g. `["database", "host"]`). Returning `undefined` drops the key.
 
 ---
 
@@ -109,7 +113,7 @@ envAdapter(options?: BaseAdapterOptions & {
 }): Adapter
 ```
 
-**Key mapping:** `APP_DATABASE_HOST` with `prefix: "APP"` and `separator: "_"` → key path `["database", "host"]`.  
+**Key mapping:** `APP_DATABASE_HOST` with `prefix: "APP"` and `separator: "_"` → key path `["database", "host"]`.
 **Custom mapping:** provide `transform` to override or augment key path logic.
 
 ### `jsonAdapter`
@@ -227,7 +231,7 @@ import tomlAdapter  from '@kcws/zconfig/adapters/toml';
 ## Dependencies
 
 | Package | Type | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `zod` | direct | Schema validation |
 | `yaml` | direct | YAML parsing |
 | `smol-toml` | direct | TOML parsing |
@@ -241,7 +245,7 @@ All are direct dependencies. Format libraries are imported lazily (dynamic `impo
 
 ## Testing Strategy
 
-**Framework:** Vitest  
+**Framework:** Vitest
 **Filesystem:** `setupMocks()` + `vol` from `@kcconfigs/vitest/mocks` (memfs, no real FS I/O)
 
 ```typescript
@@ -254,7 +258,7 @@ afterEach(() => vol.reset());
 
 ### Test file layout
 
-```
+```text
 src/
   core/index.test.ts
   utils/deepMerge.test.ts
