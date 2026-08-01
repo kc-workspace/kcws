@@ -27,7 +27,7 @@
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"rolldown-plugin-dts": "0.27.8",
+		"rolldown-plugin-dts": "0.27.11",
 		"tsdown": "0.22.7",
 		"vite": "8.1.4",
 		"vitest": "4.1.10",
