@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 
-## ./scripts/package-publish.sh [name]
+## ./scripts/package-publish.sh [name] [publish-args]
 ## Arguments:
-##   name - name of the package build and publish (e.g. @kcconfigs/example)
+##   name         - name of the package build and publish (e.g. @kcconfigs/example)
+##   publish-args - additional arguments to pass to the `pnpm publish` command
 ## Description:
 ##   1. If name is provided, use it to publish specific package
 ##   2. If run on GitHub Actions, use REF_NAME to determine package and version
 ##   3. If none provide, publish all packages to npm registry
 ## Examples:
-##   ./scripts/package-publish.sh @kcconfigs/biome
-##   GITHUB_REF_NAME=@kcexamples/test+v1.0.0 ./scripts/package-publish.sh
 ##   ./scripts/package-publish.sh
+##   ./scripts/package-publish.sh '' --no-git-checks
+##   ./scripts/package-publish.sh @kcconfigs/biome
+##   GITHUB_ACTIONS=true \
+##     GITHUB_EVENT_NAME=release \
+##     GITHUB_REF_TYPE=tag \
+##     GITHUB_REF_NAME=@kcexamples/test+v1.0.0 \
+##     ./scripts/package-publish.sh
 
 set -euo pipefail
 
@@ -41,7 +47,10 @@ __verify_release_mode() {
 }
 
 _main() {
-  local package="$1" version identifier
+  local package="${1:-}" version identifier
+  if [ $# -gt 0 ]; then
+    shift
+  fi
 
   if test -n "$package"; then
     version="$(pkg_get_version "$package")"
@@ -64,21 +73,23 @@ _main() {
     } >>"$GITHUB_OUTPUT"
   fi
 
+  local build_args=(
+    run --if-present --stream
+  )
   local publish_args=(
     publish
     --report-summary
   )
-  local build_args=(
-    run --if-present --stream
-  )
 
   if test -n "$package"; then
-    publish_args+=(--filter "$package")
     build_args+=(--filter "$package")
+    publish_args+=(--filter "$package")
   else
-    publish_args+=(--recursive)
     build_args+=(--recursive)
+    publish_args+=(--recursive)
   fi
+
+  build_args+=(build)
 
   if test -n "$identifier"; then
     publish_args+=(--tag "$identifier")
@@ -90,10 +101,9 @@ _main() {
     ## https://github.com/pnpm/pnpm/issues/9011
     publish_args+=(--no-git-checks)
   fi
-  build_args+=(build)
 
   cmd_run pnpm "${build_args[@]}"
-  cmd_run pnpm "${publish_args[@]}"
+  cmd_run pnpm "${publish_args[@]}" "$@"
 }
 
-exec_main "${1:-}"
+exec_main "$@"
