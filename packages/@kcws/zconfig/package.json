@@ -70,8 +70,7 @@
 		"CHANGELOG.md",
 		"dist",
 		"src",
-		"!*.test.*",
-		"!*.spec.*"
+		"!*.test.*"
 	],
 	"engines": {
 		"node": ">=14"
