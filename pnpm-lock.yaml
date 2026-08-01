@@ -111,7 +111,7 @@ importers:
     dependencies:
       '@pnpm/workspace.find-packages':
         specifier: 1000.0.65
-        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+        version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       yaml:
         specifier: 2.9.0
         version: 2.9.0
@@ -157,7 +157,7 @@ importers:
     dependencies:
       textlint:
         specifier: ^15.0.0
-        version: 15.7.1
+        version: 15.7.1(supports-color@8.1.1)
       textlint-filter-rule-allowlist:
         specifier: 4.0.0
         version: 4.0.0(textlint@15.7.1)
@@ -485,6 +485,30 @@ importers:
       zod:
         specifier: 4.4.3
         version: 4.4.3
+    devDependencies:
+      '@biomejs/biome':
+        specifier: 2.5.3
+        version: 2.5.3
+      '@kcconfigs/biome':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/biome
+      '@kcconfigs/tsconfig':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/tsconfig
+      '@kcconfigs/tsdown':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/tsdown
+      '@kcconfigs/vitest':
+        specifier: workspace:*
+        version: link:../../@kcconfigs/vitest
+      tsdown:
+        specifier: 0.22.7
+        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
+      vitest:
+        specifier: 4.1.10
+        version: 4.1.10(@types/node@24.13.3)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(vite@8.1.4)
+
+  packages/@kcws/zconfig:
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.3
@@ -6143,7 +6167,7 @@ snapshots:
 
   '@material/material-color-utilities@0.3.0': {}
 
-  '@modelcontextprotocol/sdk@1.29.0(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.29.0(supports-color@8.1.1)(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.14(hono@4.12.31)
       ajv: 8.20.0
@@ -6153,8 +6177,8 @@ snapshots:
       cross-spawn: 7.0.6
       eventsource: 3.0.7
       eventsource-parser: 3.1.0
-      express: 5.2.1
-      express-rate-limit: 8.6.0(express@5.2.1)
+      express: 5.2.1(supports-color@8.1.1)
+      express-rate-limit: 8.6.0(express@5.2.1)(supports-color@8.1.1)
       hono: 4.12.31
       jose: 6.2.4
       json-schema-typed: 8.0.2
@@ -6191,13 +6215,13 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@npmcli/agent@3.0.0':
+  '@npmcli/agent@3.0.0(supports-color@8.1.1)':
     dependencies:
       agent-base: 7.1.4
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      http-proxy-agent: 7.0.2(supports-color@8.1.1)
+      https-proxy-agent: 7.0.6(supports-color@8.1.1)
       lru-cache: 10.4.3
-      socks-proxy-agent: 8.0.5
+      socks-proxy-agent: 8.0.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -6332,11 +6356,11 @@ snapshots:
       '@pnpm/types': 1001.3.0
       load-json-file: 6.2.0
 
-  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/cli-utils@1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
-      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
+      '@pnpm/config.deps-installer': 1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)
       '@pnpm/default-reporter': 1002.1.14(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
@@ -6344,7 +6368,7 @@ snapshots:
       '@pnpm/package-is-installable': 1000.0.21(@pnpm/logger@1001.0.1)
       '@pnpm/pnpmfile': 1002.1.13(@pnpm/logger@1001.0.1)
       '@pnpm/read-project-manifest': 1001.2.6(@pnpm/logger@1001.0.1)
-      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/store-connection-manager': 1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       '@pnpm/util.lex-comparator': 3.0.2
       chalk: 4.1.2
@@ -6355,18 +6379,18 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/client@1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
-      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/default-resolver': 1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/directory-fetcher': 1000.1.24(@pnpm/logger@1001.0.1)
-      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
+      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
-      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/git-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/network.auth-header': 1000.0.7
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       ramda: '@pnpm/ramda@0.28.1'
     transitivePeerDependencies:
@@ -6385,12 +6409,12 @@ snapshots:
     transitivePeerDependencies:
       - '@pnpm/logger'
 
-  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)':
+  '@pnpm/config.deps-installer@1000.1.5(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)':
     dependencies:
       '@pnpm/config.config-writer': 1000.1.3(@pnpm/logger@1001.0.1)
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
-      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
+      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/logger': 1001.0.1
       '@pnpm/network.auth-header': 1000.0.7
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
@@ -6529,17 +6553,17 @@ snapshots:
       stacktracey: 2.2.0
       string-length: 4.0.2
 
-  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/default-resolver@1002.3.8(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetching-types': 1000.2.1
-      '@pnpm/git-resolver': 1001.2.2(@pnpm/logger@1001.0.1)
+      '@pnpm/git-resolver': 1001.2.2(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/local-resolver': 1002.1.13(@pnpm/logger@1001.0.1)
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
-      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
-      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/resolving.bun-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
+      '@pnpm/resolving.deno-resolver': 1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/tarball-resolver': 1002.2.1
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6582,12 +6606,12 @@ snapshots:
     dependencies:
       '@pnpm/types': 1001.3.1
 
-  '@pnpm/fetch@1001.0.0(@pnpm/logger@1001.0.1)':
+  '@pnpm/fetch@1001.0.0(@pnpm/logger@1001.0.1)(supports-color@8.1.1)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/logger': 1001.0.1
-      '@pnpm/network.agent': 2.0.3
+      '@pnpm/network.agent': 2.0.3(supports-color@8.1.1)
       '@pnpm/types': 1001.3.0
       '@zkochan/retry': 0.2.0
       node-fetch: '@pnpm/node-fetch@1.0.0'
@@ -6679,13 +6703,13 @@ snapshots:
     dependencies:
       npm-packlist: 5.1.3
 
-  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/git-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fs.packlist': 1000.0.0
       '@pnpm/logger': 1001.0.1
-      '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(typanion@3.14.0)
+      '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/worker': 1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3)
       '@zkochan/rimraf': 3.0.2
       execa: safe-execa@0.1.2
@@ -6693,10 +6717,10 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/git-resolver@1001.2.2(@pnpm/logger@1001.0.1)':
+  '@pnpm/git-resolver@1001.2.2(@pnpm/logger@1001.0.1)(supports-color@8.1.1)':
     dependencies:
       '@pnpm/error': 1000.1.0
-      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
+      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/resolver-base': 1005.4.1
       graceful-git: 4.0.0
       hosted-git-info: '@pnpm/hosted-git-info@1.0.0'
@@ -6723,14 +6747,14 @@ snapshots:
     dependencies:
       lru-cache: 6.0.0
 
-  '@pnpm/lifecycle@1001.0.37(@pnpm/logger@1001.0.1)(typanion@3.14.0)':
+  '@pnpm/lifecycle@1001.0.37(@pnpm/logger@1001.0.1)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/directory-fetcher': 1000.1.24(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/link-bins': 1000.3.8(@pnpm/logger@1001.0.1)
       '@pnpm/logger': 1001.0.1
-      '@pnpm/npm-lifecycle': 1001.0.0(typanion@3.14.0)
+      '@pnpm/npm-lifecycle': 1001.0.0(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/read-package-json': 1000.1.8
       '@pnpm/store-controller-types': 1004.5.1
       '@pnpm/types': 1001.3.0
@@ -6797,10 +6821,10 @@ snapshots:
     dependencies:
       escape-string-regexp: 4.0.0
 
-  '@pnpm/network.agent@2.0.3':
+  '@pnpm/network.agent@2.0.3(supports-color@8.1.1)':
     dependencies:
       '@pnpm/network.config': 2.1.0
-      '@pnpm/network.proxy-agent': 2.0.3
+      '@pnpm/network.proxy-agent': 2.0.3(supports-color@8.1.1)
       agentkeepalive: 4.6.0
       lru-cache: 7.18.3
     transitivePeerDependencies:
@@ -6819,13 +6843,13 @@ snapshots:
     dependencies:
       '@pnpm/config.nerf-dart': 1.0.1
 
-  '@pnpm/network.proxy-agent@2.0.3':
+  '@pnpm/network.proxy-agent@2.0.3(supports-color@8.1.1)':
     dependencies:
       '@pnpm/error': 1000.1.0
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      http-proxy-agent: 7.0.2(supports-color@8.1.1)
+      https-proxy-agent: 7.0.6(supports-color@8.1.1)
       lru-cache: 7.18.3
-      socks-proxy-agent: 8.0.5
+      socks-proxy-agent: 8.0.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -6836,7 +6860,7 @@ snapshots:
     transitivePeerDependencies:
       - domexception
 
-  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/node.fetcher@1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/create-cafs-store': 1000.0.33(@pnpm/logger@1001.0.1)
       '@pnpm/crypto.shasums-file': 1001.0.5
@@ -6844,7 +6868,7 @@ snapshots:
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
       '@pnpm/node.resolver': 1001.0.23(@pnpm/logger@1001.0.1)
-      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/tarball-fetcher': 1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       detect-libc: 2.1.2
     transitivePeerDependencies:
       - '@pnpm/logger'
@@ -6874,13 +6898,13 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@pnpm/npm-lifecycle@1001.0.0(typanion@3.14.0)':
+  '@pnpm/npm-lifecycle@1001.0.0(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/byline': 1.0.0
       '@pnpm/error': 1000.1.0
       '@yarnpkg/fslib': 3.1.5
       '@yarnpkg/shell': 4.0.0(typanion@3.14.0)
-      node-gyp: 11.5.0
+      node-gyp: 11.5.0(supports-color@8.1.1)
       resolve-from: 5.0.0
       slide: 1.1.6
       uid-number: 0.0.6
@@ -7019,10 +7043,10 @@ snapshots:
       chalk: 4.1.2
       path-absolute: 1.0.1
 
-  '@pnpm/prepare-package@1001.0.7(@pnpm/logger@1001.0.1)(typanion@3.14.0)':
+  '@pnpm/prepare-package@1001.0.7(@pnpm/logger@1001.0.1)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/error': 1000.1.0
-      '@pnpm/lifecycle': 1001.0.37(@pnpm/logger@1001.0.1)(typanion@3.14.0)
+      '@pnpm/lifecycle': 1001.0.37(@pnpm/logger@1001.0.1)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/read-package-json': 1000.1.8
       '@pnpm/types': 1001.3.0
       '@zkochan/rimraf': 3.0.2
@@ -7094,7 +7118,7 @@ snapshots:
     dependencies:
       '@pnpm/types': 1001.3.1
 
-  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/resolving.bun-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
@@ -7102,7 +7126,7 @@ snapshots:
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
@@ -7115,7 +7139,7 @@ snapshots:
       - supports-color
       - typanion
 
-  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/resolving.deno-resolver@1005.0.11(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/constants': 1001.3.1
       '@pnpm/crypto.shasums-file': 1001.0.5
@@ -7123,7 +7147,7 @@ snapshots:
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/fetching.binary-fetcher': 1005.0.4(@pnpm/worker@1000.6.11)
-      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/node.fetcher': 1001.0.27(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/npm-resolver': 1005.2.3(@pnpm/logger@1001.0.1)
       '@pnpm/resolver-base': 1005.4.1
       '@pnpm/types': 1001.3.0
@@ -7144,9 +7168,9 @@ snapshots:
     dependencies:
       semver: 7.8.5
 
-  '@pnpm/server@1001.0.20(@pnpm/logger@1001.0.1)':
+  '@pnpm/server@1001.0.20(@pnpm/logger@1001.0.1)(supports-color@8.1.1)':
     dependencies:
-      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)
+      '@pnpm/fetch': 1001.0.0(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/logger': 1001.0.1
       '@pnpm/store-controller-types': 1004.5.1
       '@pnpm/types': 1001.3.0
@@ -7157,15 +7181,15 @@ snapshots:
       - domexception
       - supports-color
 
-  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/store-connection-manager@1002.3.19(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/cli-meta': 1000.0.16
-      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/client': 1001.1.24(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/config': 1004.11.0(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
       '@pnpm/logger': 1001.0.1
       '@pnpm/package-store': 1007.1.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)
-      '@pnpm/server': 1001.0.20(@pnpm/logger@1001.0.1)
+      '@pnpm/server': 1001.0.20(@pnpm/logger@1001.0.1)(supports-color@8.1.1)
       '@pnpm/store-path': 1000.0.6
       '@zkochan/diable': 1.0.2
       delay: 5.0.0
@@ -7233,7 +7257,7 @@ snapshots:
       symlink-dir: 6.0.5
       validate-npm-package-name: 5.0.0
 
-  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/tarball-fetcher@1006.0.6(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
       '@pnpm/core-loggers': 1001.0.9(@pnpm/logger@1001.0.1)
       '@pnpm/error': 1000.1.0
@@ -7242,7 +7266,7 @@ snapshots:
       '@pnpm/fs.packlist': 1000.0.0
       '@pnpm/graceful-fs': 1000.1.0
       '@pnpm/logger': 1001.0.1
-      '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(typanion@3.14.0)
+      '@pnpm/prepare-package': 1001.0.7(@pnpm/logger@1001.0.1)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/types': 1001.3.0
       '@pnpm/worker': 1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3)
       '@zkochan/retry': 0.2.0
@@ -7298,9 +7322,9 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)':
+  '@pnpm/workspace.find-packages@1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)':
     dependencies:
-      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(typanion@3.14.0)
+      '@pnpm/cli-utils': 1001.3.10(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
       '@pnpm/constants': 1001.3.1
       '@pnpm/fs.find-packages': 1000.0.24(@pnpm/logger@1001.0.1)
       '@pnpm/logger': 1001.0.1
@@ -7527,10 +7551,10 @@ snapshots:
 
   '@textlint/ast-node-types@15.7.1': {}
 
-  '@textlint/ast-tester@15.7.1':
+  '@textlint/ast-tester@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@textlint/ast-node-types': 15.7.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -7538,27 +7562,27 @@ snapshots:
     dependencies:
       '@textlint/ast-node-types': 15.7.1
 
-  '@textlint/config-loader@15.7.1':
+  '@textlint/config-loader@15.7.1(supports-color@8.1.1)':
     dependencies:
-      '@textlint/kernel': 15.7.1
+      '@textlint/kernel': 15.7.1(supports-color@8.1.1)
       '@textlint/module-interop': 15.7.1
       '@textlint/resolver': 15.7.1
       '@textlint/types': 15.7.1
       '@textlint/utils': 15.7.1
-      debug: 4.4.3
-      rc-config-loader: 4.1.4
+      debug: 4.4.3(supports-color@8.1.1)
+      rc-config-loader: 4.1.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
   '@textlint/feature-flag@15.7.1': {}
 
-  '@textlint/fixer-formatter@15.7.1':
+  '@textlint/fixer-formatter@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@textlint/module-interop': 15.7.1
       '@textlint/resolver': 15.7.1
       '@textlint/types': 15.7.1
       chalk: 4.1.2
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       diff: 8.0.4
       string-width: 4.2.3
       strip-ansi: 6.0.1
@@ -7568,22 +7592,22 @@ snapshots:
 
   '@textlint/get-config-base-dir@2.0.0': {}
 
-  '@textlint/kernel@15.7.1':
+  '@textlint/kernel@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@textlint/ast-node-types': 15.7.1
-      '@textlint/ast-tester': 15.7.1
+      '@textlint/ast-tester': 15.7.1(supports-color@8.1.1)
       '@textlint/ast-traverse': 15.7.1
       '@textlint/feature-flag': 15.7.1
-      '@textlint/source-code-fixer': 15.7.1
+      '@textlint/source-code-fixer': 15.7.1(supports-color@8.1.1)
       '@textlint/types': 15.7.1
       '@textlint/utils': 15.7.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       fast-equals: 4.0.3
       structured-source: 4.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@textlint/linter-formatter@15.7.1':
+  '@textlint/linter-formatter@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@azu/format-text': 1.0.2
       '@azu/style-format': 1.0.1
@@ -7591,7 +7615,7 @@ snapshots:
       '@textlint/resolver': 15.7.1
       '@textlint/types': 15.7.1
       chalk: 4.1.2
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       js-yaml: 4.3.0
       lodash: 4.18.1
       pluralize: 2.0.0
@@ -7602,16 +7626,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@textlint/markdown-to-ast@15.7.1':
+  '@textlint/markdown-to-ast@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@textlint/ast-node-types': 15.7.1
-      debug: 4.4.3
-      mdast-util-gfm-autolink-literal: 0.1.3
+      debug: 4.4.3(supports-color@8.1.1)
+      mdast-util-gfm-autolink-literal: 0.1.3(supports-color@8.1.1)
       neotraverse: 0.6.18
-      remark-footnotes: 3.0.0
+      remark-footnotes: 3.0.0(supports-color@8.1.1)
       remark-frontmatter: 3.0.0
-      remark-gfm: 1.0.0
-      remark-parse: 9.0.0
+      remark-gfm: 1.0.0(supports-color@8.1.1)
+      remark-parse: 9.0.0(supports-color@8.1.1)
       structured-source: 4.0.0
       unified: 9.2.2
     transitivePeerDependencies:
@@ -7630,10 +7654,10 @@ snapshots:
 
   '@textlint/resolver@15.7.1': {}
 
-  '@textlint/source-code-fixer@15.7.1':
+  '@textlint/source-code-fixer@15.7.1(supports-color@8.1.1)':
     dependencies:
       '@textlint/types': 15.7.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -7641,9 +7665,9 @@ snapshots:
     dependencies:
       '@textlint/ast-node-types': 15.7.1
 
-  '@textlint/textlint-plugin-markdown@15.7.1':
+  '@textlint/textlint-plugin-markdown@15.7.1(supports-color@8.1.1)':
     dependencies:
-      '@textlint/markdown-to-ast': 15.7.1
+      '@textlint/markdown-to-ast': 15.7.1(supports-color@8.1.1)
       '@textlint/types': 15.7.1
     transitivePeerDependencies:
       - supports-color
@@ -8092,11 +8116,11 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  body-parser@2.3.0:
+  body-parser@2.3.0(supports-color@8.1.1):
     dependencies:
       bytes: 3.1.2
       content-type: 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       http-errors: 2.0.1
       iconv-lite: 0.7.3
       on-finished: 2.4.1
@@ -8453,9 +8477,11 @@ snapshots:
 
   data-uri-to-buffer@3.0.1: {}
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@8.1.1):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 8.1.1
 
   dedent@0.7.0: {}
 
@@ -8635,28 +8661,28 @@ snapshots:
 
   exponential-backoff@3.1.3: {}
 
-  express-rate-limit@8.6.0(express@5.2.1):
+  express-rate-limit@8.6.0(express@5.2.1)(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
-      express: 5.2.1
+      debug: 4.4.3(supports-color@8.1.1)
+      express: 5.2.1(supports-color@8.1.1)
       ip-address: 10.2.0
     transitivePeerDependencies:
       - supports-color
 
-  express@5.2.1:
+  express@5.2.1(supports-color@8.1.1):
     dependencies:
       accepts: 2.0.0
-      body-parser: 2.3.0
+      body-parser: 2.3.0(supports-color@8.1.1)
       content-disposition: 1.1.0
       content-type: 1.0.5
       cookie: 0.7.2
       cookie-signature: 1.2.2
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
-      finalhandler: 2.1.1
+      finalhandler: 2.1.1(supports-color@8.1.1)
       fresh: 2.0.0
       http-errors: 2.0.1
       merge-descriptors: 2.0.0
@@ -8667,9 +8693,9 @@ snapshots:
       proxy-addr: 2.0.7
       qs: 6.15.3
       range-parser: 1.3.0
-      router: 2.2.0
-      send: 1.2.1
-      serve-static: 2.2.1
+      router: 2.2.0(supports-color@8.1.1)
+      send: 1.2.1(supports-color@8.1.1)
+      serve-static: 2.2.1(supports-color@8.1.1)
       statuses: 2.0.2
       type-is: 2.1.0
       vary: 1.1.2
@@ -8729,9 +8755,9 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
-  finalhandler@2.1.1:
+  finalhandler@2.1.1(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       encodeurl: 2.0.0
       escape-html: 1.0.3
       on-finished: 2.4.1
@@ -8990,17 +9016,17 @@ snapshots:
       statuses: 2.0.2
       toidentifier: 1.0.1
 
-  http-proxy-agent@7.0.2:
+  http-proxy-agent@7.0.2(supports-color@8.1.1):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@7.0.6:
+  https-proxy-agent@7.0.6(supports-color@8.1.1):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -9417,9 +9443,9 @@ snapshots:
     dependencies:
       '@zkochan/rimraf': 3.0.2
 
-  make-fetch-happen@14.0.3:
+  make-fetch-happen@14.0.3(supports-color@8.1.1):
     dependencies:
-      '@npmcli/agent': 3.0.0
+      '@npmcli/agent': 3.0.0(supports-color@8.1.1)
       cacache: 19.0.1
       http-cache-semantics: 4.2.0
       minipass: 7.1.3
@@ -9466,18 +9492,18 @@ snapshots:
       unist-util-is: 4.1.0
       unist-util-visit-parents: 3.1.1
 
-  mdast-util-footnote@0.1.7:
+  mdast-util-footnote@0.1.7(supports-color@8.1.1):
     dependencies:
       mdast-util-to-markdown: 0.6.5
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-from-markdown@0.8.5:
+  mdast-util-from-markdown@0.8.5(supports-color@8.1.1):
     dependencies:
       '@types/mdast': 3.0.15
       mdast-util-to-string: 2.0.0
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
       parse-entities: 2.0.0
       unist-util-stringify-position: 2.0.3
     transitivePeerDependencies:
@@ -9487,11 +9513,11 @@ snapshots:
     dependencies:
       micromark-extension-frontmatter: 0.2.2
 
-  mdast-util-gfm-autolink-literal@0.1.3:
+  mdast-util-gfm-autolink-literal@0.1.3(supports-color@8.1.1):
     dependencies:
       ccount: 1.1.0
       mdast-util-find-and-replace: 1.1.1
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -9508,9 +9534,9 @@ snapshots:
     dependencies:
       mdast-util-to-markdown: 0.6.5
 
-  mdast-util-gfm@0.1.2:
+  mdast-util-gfm@0.1.2(supports-color@8.1.1):
     dependencies:
-      mdast-util-gfm-autolink-literal: 0.1.3
+      mdast-util-gfm-autolink-literal: 0.1.3(supports-color@8.1.1)
       mdast-util-gfm-strikethrough: 0.2.3
       mdast-util-gfm-table: 0.1.6
       mdast-util-gfm-task-list-item: 0.1.6
@@ -9568,9 +9594,9 @@ snapshots:
 
   merge@2.1.1: {}
 
-  micromark-extension-footnote@0.3.2:
+  micromark-extension-footnote@0.3.2(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -9578,46 +9604,46 @@ snapshots:
     dependencies:
       fault: 1.0.4
 
-  micromark-extension-gfm-autolink-literal@0.5.7:
+  micromark-extension-gfm-autolink-literal@0.5.7(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  micromark-extension-gfm-strikethrough@0.6.5:
+  micromark-extension-gfm-strikethrough@0.6.5(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  micromark-extension-gfm-table@0.4.3:
+  micromark-extension-gfm-table@0.4.3(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
   micromark-extension-gfm-tagfilter@0.3.0: {}
 
-  micromark-extension-gfm-task-list-item@0.3.3:
+  micromark-extension-gfm-task-list-item@0.3.3(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
+      micromark: 2.11.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  micromark-extension-gfm@0.3.3:
+  micromark-extension-gfm@0.3.3(supports-color@8.1.1):
     dependencies:
-      micromark: 2.11.4
-      micromark-extension-gfm-autolink-literal: 0.5.7
-      micromark-extension-gfm-strikethrough: 0.6.5
-      micromark-extension-gfm-table: 0.4.3
+      micromark: 2.11.4(supports-color@8.1.1)
+      micromark-extension-gfm-autolink-literal: 0.5.7(supports-color@8.1.1)
+      micromark-extension-gfm-strikethrough: 0.6.5(supports-color@8.1.1)
+      micromark-extension-gfm-table: 0.4.3(supports-color@8.1.1)
       micromark-extension-gfm-tagfilter: 0.3.0
-      micromark-extension-gfm-task-list-item: 0.3.3
+      micromark-extension-gfm-task-list-item: 0.3.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  micromark@2.11.4:
+  micromark@2.11.4(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       parse-entities: 2.0.0
     transitivePeerDependencies:
       - supports-color
@@ -9710,12 +9736,12 @@ snapshots:
   node-addon-api@7.1.1:
     optional: true
 
-  node-gyp@11.5.0:
+  node-gyp@11.5.0(supports-color@8.1.1):
     dependencies:
       env-paths: 2.2.1
       exponential-backoff: 3.1.3
       graceful-fs: 4.2.11
-      make-fetch-happen: 14.0.3
+      make-fetch-happen: 14.0.3(supports-color@8.1.1)
       nopt: 8.1.0
       proc-log: 5.0.0
       semver: 7.8.5
@@ -10054,9 +10080,9 @@ snapshots:
       iconv-lite: 0.7.3
       unpipe: 1.0.0
 
-  rc-config-loader@4.1.4:
+  rc-config-loader@4.1.4(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       js-yaml: 4.3.0
       json5: 2.2.3
       require-from-string: 2.0.2
@@ -10105,10 +10131,10 @@ snapshots:
       extend-shallow: 3.0.2
       safe-regex: 1.1.0
 
-  remark-footnotes@3.0.0:
+  remark-footnotes@3.0.0(supports-color@8.1.1):
     dependencies:
-      mdast-util-footnote: 0.1.7
-      micromark-extension-footnote: 0.3.2
+      mdast-util-footnote: 0.1.7(supports-color@8.1.1)
+      micromark-extension-footnote: 0.3.2(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -10117,16 +10143,16 @@ snapshots:
       mdast-util-frontmatter: 0.2.0
       micromark-extension-frontmatter: 0.2.2
 
-  remark-gfm@1.0.0:
+  remark-gfm@1.0.0(supports-color@8.1.1):
     dependencies:
-      mdast-util-gfm: 0.1.2
-      micromark-extension-gfm: 0.3.3
+      mdast-util-gfm: 0.1.2(supports-color@8.1.1)
+      micromark-extension-gfm: 0.3.3(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  remark-parse@9.0.0:
+  remark-parse@9.0.0(supports-color@8.1.1):
     dependencies:
-      mdast-util-from-markdown: 0.8.5
+      mdast-util-from-markdown: 0.8.5(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -10248,9 +10274,9 @@ snapshots:
       next-path: 1.0.0
       path-temp: 2.0.0
 
-  router@2.2.0:
+  router@2.2.0(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       depd: 2.0.0
       is-promise: 4.0.0
       parseurl: 1.3.3
@@ -10402,9 +10428,9 @@ snapshots:
 
   semver@7.8.5: {}
 
-  send@1.2.1:
+  send@1.2.1(supports-color@8.1.1):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
@@ -10418,12 +10444,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  serve-static@2.2.1:
+  serve-static@2.2.1(supports-color@8.1.1):
     dependencies:
       encodeurl: 2.0.0
       escape-html: 1.0.3
       parseurl: 1.3.3
-      send: 1.2.1
+      send: 1.2.1(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -10497,10 +10523,10 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  socks-proxy-agent@8.0.5:
+  socks-proxy-agent@8.0.5(supports-color@8.1.1):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       socks: 2.8.9
     transitivePeerDependencies:
       - supports-color
@@ -10667,7 +10693,7 @@ snapshots:
       '@textlint/get-config-base-dir': 2.0.0
       '@textlint/regexp-string-matcher': 1.1.1
       js-yaml: 4.3.0
-      textlint: 15.7.1
+      textlint: 15.7.1(supports-color@8.1.1)
 
   textlint-filter-rule-comments@1.3.0: {}
 
@@ -10682,29 +10708,29 @@ snapshots:
       strip-json-comments: 5.0.3
       textlint-rule-helper: 2.5.0
 
-  textlint@15.7.1:
+  textlint@15.7.1(supports-color@8.1.1):
     dependencies:
-      '@modelcontextprotocol/sdk': 1.29.0(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.29.0(supports-color@8.1.1)(zod@3.25.76)
       '@textlint/ast-node-types': 15.7.1
       '@textlint/ast-traverse': 15.7.1
-      '@textlint/config-loader': 15.7.1
+      '@textlint/config-loader': 15.7.1(supports-color@8.1.1)
       '@textlint/feature-flag': 15.7.1
-      '@textlint/fixer-formatter': 15.7.1
-      '@textlint/kernel': 15.7.1
-      '@textlint/linter-formatter': 15.7.1
+      '@textlint/fixer-formatter': 15.7.1(supports-color@8.1.1)
+      '@textlint/kernel': 15.7.1(supports-color@8.1.1)
+      '@textlint/linter-formatter': 15.7.1(supports-color@8.1.1)
       '@textlint/module-interop': 15.7.1
       '@textlint/resolver': 15.7.1
-      '@textlint/textlint-plugin-markdown': 15.7.1
+      '@textlint/textlint-plugin-markdown': 15.7.1(supports-color@8.1.1)
       '@textlint/textlint-plugin-text': 15.7.1
       '@textlint/types': 15.7.1
       '@textlint/utils': 15.7.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@8.1.1)
       file-entry-cache: 10.1.4
       glob: 13.0.6
       md5: 2.3.0
       optionator: 0.9.4
       path-to-glob-pattern: 2.0.1
-      rc-config-loader: 4.1.4
+      rc-config-loader: 4.1.4(supports-color@8.1.1)
       read-package-up: 11.0.0
       structured-source: 4.0.0
       zod: 3.25.76
