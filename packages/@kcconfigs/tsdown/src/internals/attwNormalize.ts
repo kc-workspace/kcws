@@ -1,6 +1,7 @@
 import { definePlugin } from "@kcinternals/config-builder";
-import { type AttwOptions, mergeConfig } from "tsdown";
-import type { EnableOption, TsdownConfig, TsdownPlugin } from "../models";
+import { type AttwOptions, type CIOption, mergeConfig } from "tsdown";
+import { normalizePriority } from "../constants";
+import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models";
 
 const isEsm = (format: TsdownConfig["format"]): boolean => {
 	if (typeof format === "string")
@@ -34,7 +35,7 @@ const normalize = (config: TsdownConfig): EnableOption<AttwOptions> => {
 		};
 	if (typeof attw === "string")
 		return {
-			enabled: attw,
+			enabled: attw as CIOption,
 			...baseConfig,
 		};
 	return {
@@ -44,10 +45,10 @@ const normalize = (config: TsdownConfig): EnableOption<AttwOptions> => {
 	};
 };
 
-const attwNormalize = (): TsdownPlugin<"attw"> =>
-	definePlugin({
-		name: "attw",
-		normalize: (config) => {
+const attwNormalize = (): TsdownConfigPlugin<"attw"> =>
+	definePlugin("attw", {
+		configPriority: normalizePriority,
+		applyConfig: (config) => {
 			const attw = normalize(config);
 			return mergeConfig(config, {
 				attw: attw.enabled ? attw : { enabled: false },

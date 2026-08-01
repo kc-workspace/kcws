@@ -1,6 +1,7 @@
 import { definePlugin } from "@kcinternals/config-builder";
 import { type Format, mergeConfig, type ResolvedConfig } from "tsdown";
-import type { TsdownConfig, TsdownPlugin } from "../models";
+import { normalizePriority } from "../constants";
+import type { TsdownConfig, TsdownConfigPlugin } from "../models";
 
 type MinimalFormat = Exclude<Format, "es" | "module" | "commonjs">;
 type FormatValue = Partial<ResolvedConfig>;
@@ -42,7 +43,7 @@ const normalize = (config: TsdownConfig): MinimalFormatObject => {
 		esm: defaultValue,
 	};
 	if (format === undefined || format === null) return defaultFormat;
-	if (typeof format === "string") return normalizeFormat(format);
+	if (typeof format === "string") return normalizeFormat(format as Format);
 	if (Array.isArray(format))
 		return format.reduce(
 			(acc, f) => Object.assign(acc, normalizeFormat(f)),
@@ -62,10 +63,10 @@ const normalize = (config: TsdownConfig): MinimalFormatObject => {
 	return emptyFormat;
 };
 
-const formatNormalize = (): TsdownPlugin<"format"> =>
-	definePlugin({
-		name: "format",
-		normalize: (config) => {
+const formatNormalize = (): TsdownConfigPlugin<"format"> =>
+	definePlugin("format", {
+		configPriority: normalizePriority,
+		applyConfig: (config) => {
 			return mergeConfig(config, {
 				format: normalize(config),
 			});

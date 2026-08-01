@@ -50,7 +50,7 @@ describe("dtsNormalize", () => {
 		],
 	])("%s", (_name, input, expected) => {
 		const plugin = dtsNormalize();
-		const result = plugin.normalize?.(input as any, {});
+		const result = plugin.applyConfig?.(input as any);
 		expect(result?.dts).toEqual(expected);
 		if ("entry" in input) {
 			expect(result?.entry).toEqual(input.entry);

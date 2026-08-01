@@ -10,7 +10,7 @@ describe("formatNormalize", () => {
 	test("should default to esm + cjs when format is undefined", () => {
 		const plugin = formatNormalize();
 		const config = { format: undefined };
-		const result = plugin.normalize?.(config, {});
+		const result = plugin.applyConfig?.(config as any);
 		expect(result?.format).toHaveProperty("esm");
 		expect(result?.format).toHaveProperty("cjs");
 		// @ts-expect-error format is an object here
@@ -88,7 +88,7 @@ describe("formatNormalize", () => {
 		],
 	])("%s", (_name, input, hasProps, notHasProps) => {
 		const plugin = formatNormalize();
-		const result = plugin.normalize?.(input as any, {});
+		const result = plugin.applyConfig?.(input as any);
 		for (const prop of hasProps) {
 			expect(result?.format).toHaveProperty(prop);
 		}
@@ -121,7 +121,7 @@ describe("formatNormalize", () => {
 		],
 	])("%s", (_name, input, checks) => {
 		const plugin = formatNormalize();
-		const result = plugin.normalize?.(input as any, {});
+		const result = plugin.applyConfig?.(input as any);
 		const format = result?.format as Record<string, Record<string, unknown>>;
 		for (const [key, prop, value] of checks) {
 			expect(format[key][prop]).toBe(value);
@@ -133,14 +133,14 @@ describe("formatNormalize", () => {
 		const config = {
 			format: {},
 		};
-		const result = plugin.normalize?.(config, {});
+		const result = plugin.applyConfig?.(config as any);
 		expect(result?.format).toEqual({});
 	});
 
 	test("should preserve other config properties", () => {
 		const plugin = formatNormalize();
 		const config = { entry: ["./src/index.ts"], format: "esm" as const };
-		const result = plugin.normalize?.(config, {});
+		const result = plugin.applyConfig?.(config as any);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.format).toHaveProperty("esm");
 	});

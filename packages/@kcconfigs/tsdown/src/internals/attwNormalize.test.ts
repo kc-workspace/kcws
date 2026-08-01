@@ -63,7 +63,7 @@ describe("attwNormalize", () => {
 		],
 	])("%s", (_, input, expected) => {
 		const plugin = attwNormalize();
-		const result = plugin.normalize?.(input as any, {});
+		const result = plugin.applyConfig?.(input as any);
 		expect(result?.attw).toEqual(expected);
 	});
 });

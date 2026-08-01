@@ -1,6 +1,8 @@
 import { definePlugin } from "@kcinternals/config-builder";
+import type { CIOption } from "tsdown";
 import { mergeConfig, type PublintOptions } from "tsdown";
-import type { EnableOption, TsdownConfig, TsdownPlugin } from "../models";
+import { normalizePriority } from "../constants";
+import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models";
 
 const normalize = (config: TsdownConfig): EnableOption<PublintOptions> => {
 	const publint = config.publint;
@@ -20,7 +22,7 @@ const normalize = (config: TsdownConfig): EnableOption<PublintOptions> => {
 		};
 	if (typeof publint === "string")
 		return {
-			enabled: publint,
+			enabled: publint as CIOption,
 			...baseConfig,
 		};
 
@@ -31,10 +33,10 @@ const normalize = (config: TsdownConfig): EnableOption<PublintOptions> => {
 	};
 };
 
-const publintNormalize = (): TsdownPlugin<"publint"> =>
-	definePlugin({
-		name: "publint",
-		normalize: (config) => {
+const publintNormalize = (): TsdownConfigPlugin<"publint"> =>
+	definePlugin("publint", {
+		configPriority: normalizePriority,
+		applyConfig: (config) => {
 			const publint = normalize(config);
 			return mergeConfig(config, {
 				publint: publint.enabled ? publint : { enabled: false },

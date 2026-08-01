@@ -50,7 +50,7 @@ describe("publintNormalize", () => {
 		],
 	])("%s", (_name, input, expected) => {
 		const plugin = publintNormalize();
-		const result = plugin.normalize?.(input as any, {});
+		const result = plugin.applyConfig?.(input as any);
 		expect(result?.publint).toEqual(expected);
 		if ("entry" in input) {
 			expect(result?.entry).toEqual(input.entry);
