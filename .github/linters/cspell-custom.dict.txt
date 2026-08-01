@@ -1,6 +1,7 @@
 arethetypewrong
 attw
 chantrachirathumrong
+configrc
 devkit
 grype
 jscpd
@@ -23,13 +24,16 @@ pnpmfile
 release-please
 releasep
 rhineai
+smol
 sonar
 sonarcloud
 sonarqube
 syft
 textlintrc
 unplugin
+unrun
 vale
 zconfig
+ztypes
 zizmor
 zshy
