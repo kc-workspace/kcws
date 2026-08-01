@@ -1,40 +1,30 @@
 import { format } from "node:util";
-import type { Config, ConfigPluginAny, DefineOption } from "../models";
+import type { AnyConfigPlugin, BaseConfig } from "../models";
+import defineBaseConfig from "./defineBaseConfig";
+import { withEnabled } from "./enabled";
 
-const defineConfig = <C>(
-	base: Config<C>,
-	plugins: ConfigPluginAny<C>[],
-	option?: DefineOption,
-): Config<C> => {
-	const _option: DefineOption = {
-		debug: option?.debug,
-		verbose: option?.verbose,
-	};
+const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
+	const config = defineBaseConfig(base);
 
-	const applied = plugins.reduce((acc, plugin) => {
-		if (!plugin.apply) return acc;
-		const name = plugin.name || "unknown";
-		_option.debug?.(`Applying plugin: ${name}`);
+	const debug = ({ setting }: BaseConfig<C>, msg: string) =>
+		withEnabled(setting?.debug, console.debug.bind(console))?.(msg);
+	const verbose = ({ setting }: BaseConfig<C>, msg: string) =>
+		withEnabled(setting?.verbose, console.debug.bind(console))?.(msg);
+
+	const sortedPlugins = plugins.sort((a, b) => b.priority - a.priority);
+	const applied = sortedPlugins.reduce((acc, plugin) => {
+		const name = plugin.name;
+		debug(acc, `applying plugin: ${name} (${plugin.priority})`);
 		const before = acc;
-		const after = plugin.apply(acc, _option);
-		_option.verbose?.(format(`[%s] Before: %O`, name, before));
-		_option.verbose?.(format(`[%s] After: %O`, name, after));
-		return after;
-	}, base);
-	_option.debug?.(format("All plugins applied: %O", applied));
+		const after = plugin.apply(before);
+		verbose(acc, format(`[%s] before: %O`, name, before));
+		verbose(acc, format(`[%s] after: %O`, name, after));
 
-	const normalized = plugins.reduce((acc, plugin) => {
-		if (!plugin.normalize) return acc;
-		const name = plugin.name || "unknown";
-		_option.debug?.(`Normalizing plugin: ${name}`);
-		const before = acc;
-		const after = plugin.normalize(acc, _option);
-		_option.verbose?.(format(`[%s] Before: %O`, name, before));
-		_option.verbose?.(format(`[%s] After: %O`, name, after));
 		return after;
-	}, applied);
-	_option.debug?.(format("All plugins normalized: %O", normalized));
-	return normalized;
+	}, config);
+
+	debug(applied, format("all plugins applied: %O", applied));
+	return applied.config;
 };
 
 export default defineConfig;
