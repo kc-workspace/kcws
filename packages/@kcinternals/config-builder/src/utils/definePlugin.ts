@@ -12,8 +12,9 @@ const definePlugin = <N extends string, C>(
 ): ConfigPlugin<N, C> => {
 	return {
 		name,
-		priority: plugin.priority ?? 0,
+		settingPriority: plugin.settingPriority ?? 0,
 		applySetting: plugin.applySetting,
+		configPriority: plugin.configPriority ?? 0,
 		applyConfig: plugin.applyConfig,
 	};
 };

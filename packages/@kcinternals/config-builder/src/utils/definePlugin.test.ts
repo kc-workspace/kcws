@@ -14,12 +14,29 @@ describe(definePlugin.name, () => {
 
 	test("should default priority to 0", () => {
 		const plugin = definePlugin("test", {});
-		expect(plugin.priority).toBe(0);
+		expect(plugin.settingPriority).toBe(0);
+		expect(plugin.configPriority).toBe(0);
 	});
 
-	test("should use provided priority", () => {
-		const plugin = definePlugin("test", { priority: 5 });
-		expect(plugin.priority).toBe(5);
+	test("should use provided priorities", () => {
+		const plugin = definePlugin("test", {
+			settingPriority: 5,
+			configPriority: 7,
+		});
+		expect(plugin.settingPriority).toBe(5);
+		expect(plugin.configPriority).toBe(7);
+	});
+
+	test("should default configPriority when only settingPriority provided", () => {
+		const plugin = definePlugin("test", { settingPriority: 5 });
+		expect(plugin.settingPriority).toBe(5);
+		expect(plugin.configPriority).toBe(0);
+	});
+
+	test("should default settingPriority when only configPriority provided", () => {
+		const plugin = definePlugin("test", { configPriority: 7 });
+		expect(plugin.settingPriority).toBe(0);
+		expect(plugin.configPriority).toBe(7);
 	});
 
 	test("should default apply* to undefined", () => {
@@ -37,17 +54,19 @@ describe(definePlugin.name, () => {
 		expect(output).toEqual({ value: 10 });
 	});
 
-	test("should return object matching ConfigPlugin shape", () => {
+	test("should return object matching ConfigPlugin shape with applyConfig", () => {
 		const name = "myPlugin";
 		const applyConfig: ConfigPluginAction<string> = (config) => config;
 		const result = definePlugin(name, {
-			priority: 1,
+			settingPriority: 1,
+			configPriority: 2,
 			applyConfig,
 		});
 
 		expect(result).toEqual({
 			name,
-			priority: 1,
+			settingPriority: 1,
+			configPriority: 2,
 			applyConfig,
 			applySetting: undefined,
 		});
@@ -61,19 +80,20 @@ describe(definePlugin.name, () => {
 		expect(output).toEqual({ debug: true });
 	});
 
-	test("should return object matching ConfigPlugin shape", () => {
+	test("should return object matching ConfigPlugin shape with applySetting", () => {
 		const name = "myPlugin";
 		const applySetting: ConfigPluginAction<BaseSetting> = (_) => ({
 			debug: true,
 		});
 		const result = definePlugin(name, {
-			priority: Number.POSITIVE_INFINITY,
+			settingPriority: Number.POSITIVE_INFINITY,
 			applySetting,
 		});
 
 		expect(result).toEqual({
 			name,
-			priority: Number.POSITIVE_INFINITY,
+			settingPriority: Number.POSITIVE_INFINITY,
+			configPriority: 0,
 			applySetting,
 			applyConfig: undefined,
 		});
