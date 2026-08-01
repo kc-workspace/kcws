@@ -10,21 +10,21 @@ describe("debugPlugin", () => {
 	test("should disable minify", () => {
 		const plugin = debugPlugin();
 		const base = {};
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.minify).toBe(false);
 	});
 
 	test("should override existing minify config", () => {
 		const plugin = debugPlugin();
 		const base = { minify: true };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.minify).toBe(false);
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = debugPlugin();
 		const base = { entry: ["./src/index.ts"] };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.minify).toBe(false);
 	});
