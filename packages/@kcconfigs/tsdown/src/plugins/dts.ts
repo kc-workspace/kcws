@@ -1,11 +1,12 @@
 import { definePlugin } from "@kcinternals/config-builder";
 import { type DtsOptions, mergeConfig, type WithEnabled } from "tsdown";
-import type { TsdownPlugin } from "../models";
+import type { TsdownConfigPlugin } from "../models";
 
-const dtsPlugin = (config: WithEnabled<DtsOptions>): TsdownPlugin<"dts"> =>
-	definePlugin({
-		name: "dts",
-		apply: (base) => {
+const dtsPlugin = (
+	config: WithEnabled<DtsOptions>,
+): TsdownConfigPlugin<"dts"> =>
+	definePlugin("dts", {
+		applyConfig: (base) => {
 			return mergeConfig(base, {
 				dts: config,
 			});

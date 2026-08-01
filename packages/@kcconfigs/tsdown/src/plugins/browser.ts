@@ -1,11 +1,10 @@
 import { definePlugin } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
-import type { TsdownPlugin } from "../models";
+import type { TsdownConfigPlugin } from "../models";
 
-const browserPlugin = (): TsdownPlugin<"browser"> =>
-	definePlugin({
-		name: "browser",
-		apply: (base) => {
+const browserPlugin = (): TsdownConfigPlugin<"browser"> =>
+	definePlugin("browser", {
+		applyConfig: (base) => {
 			return mergeConfig(base, { platform: "browser" });
 		},
 	});

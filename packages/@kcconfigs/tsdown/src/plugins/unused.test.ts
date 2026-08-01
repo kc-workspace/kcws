@@ -10,14 +10,14 @@ describe("unusedPlugin", () => {
 	test("should apply unused config when true", () => {
 		const plugin = unusedPlugin(true);
 		const base = { unused: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.unused).toBe(true);
 	});
 
 	test("should apply unused config when false", () => {
 		const plugin = unusedPlugin(false);
 		const base = { unused: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.unused).toBe(false);
 	});
 
@@ -28,14 +28,14 @@ describe("unusedPlugin", () => {
 		} as any;
 		const plugin = unusedPlugin(unusedConfig);
 		const base = { unused: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.unused).toEqual(unusedConfig);
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = unusedPlugin(true);
 		const base = { entry: ["./src/index.ts"], unused: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.unused).toBe(true);
 	});

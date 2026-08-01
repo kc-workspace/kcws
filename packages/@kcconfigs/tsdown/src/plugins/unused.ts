@@ -1,13 +1,12 @@
 import { definePlugin } from "@kcinternals/config-builder";
 import { mergeConfig, type UnusedOptions, type WithEnabled } from "tsdown";
-import type { TsdownPlugin } from "../models";
+import type { TsdownConfigPlugin } from "../models";
 
 const unusedPlugin = (
 	config: WithEnabled<UnusedOptions>,
-): TsdownPlugin<"unused"> =>
-	definePlugin({
-		name: "unused",
-		apply: (base) => {
+): TsdownConfigPlugin<"unused"> =>
+	definePlugin("unused", {
+		applyConfig: (base) => {
 			return mergeConfig(base, {
 				unused: config,
 			});

@@ -1,11 +1,10 @@
 import { definePlugin } from "@kcinternals/config-builder";
 import { type DepsConfig, mergeConfig } from "tsdown";
-import type { TsdownPlugin } from "../models";
+import type { TsdownConfigPlugin } from "../models";
 
-const depsPlugin = (config: DepsConfig): TsdownPlugin<"deps"> =>
-	definePlugin({
-		name: "deps",
-		apply: (base) => {
+const depsPlugin = (config: DepsConfig): TsdownConfigPlugin<"deps"> =>
+	definePlugin("deps", {
+		applyConfig: (base) => {
 			return mergeConfig(base, {
 				deps: config,
 			});

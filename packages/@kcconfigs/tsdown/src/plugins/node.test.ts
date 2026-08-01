@@ -10,7 +10,7 @@ describe("nodePlugin", () => {
 	test("should set platform to node", () => {
 		const plugin = nodePlugin();
 		const base = { platform: undefined } as any;
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.platform).toBe("node");
 	});
 
@@ -20,7 +20,7 @@ describe("nodePlugin", () => {
 			entry: ["./src/index.ts"],
 			platform: undefined,
 		} as any;
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.platform).toBe("node");
 	});

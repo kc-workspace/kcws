@@ -10,7 +10,7 @@ describe("browserPlugin", () => {
 	test("should set platform to browser", () => {
 		const plugin = browserPlugin();
 		const base = { platform: undefined } as any;
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.platform).toBe("browser");
 	});
 
@@ -20,7 +20,7 @@ describe("browserPlugin", () => {
 			entry: ["./src/index.ts"],
 			platform: undefined,
 		} as any;
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.platform).toBe("browser");
 	});

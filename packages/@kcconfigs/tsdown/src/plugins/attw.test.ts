@@ -10,14 +10,14 @@ describe("attwPlugin", () => {
 	test("should apply attw config when true", () => {
 		const plugin = attwPlugin(true);
 		const base = { attw: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.attw).toBe(true);
 	});
 
 	test("should apply attw config when false", () => {
 		const plugin = attwPlugin(false);
 		const base = { attw: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.attw).toBe(false);
 	});
 
@@ -25,21 +25,21 @@ describe("attwPlugin", () => {
 		const attwConfig = { enabled: true, profile: "node16" as const };
 		const plugin = attwPlugin(attwConfig);
 		const base = { attw: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.attw).toEqual(attwConfig);
 	});
 
 	test("should apply attw with CIOption string", () => {
 		const plugin = attwPlugin("ci-only" as const);
 		const base = { attw: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.attw).toBe("ci-only");
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = attwPlugin(true);
 		const base = { entry: ["./src/index.ts"], attw: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.attw).toBe(true);
 	});

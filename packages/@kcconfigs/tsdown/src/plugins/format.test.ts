@@ -10,35 +10,35 @@ describe("formatPlugin", () => {
 	test("should apply esm format when provided", () => {
 		const plugin = formatPlugin({ esm: true });
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ esm: true });
 	});
 
 	test("should apply cjs format when provided", () => {
 		const plugin = formatPlugin({ cjs: true });
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ cjs: true });
 	});
 
 	test("should apply multiple formats", () => {
 		const plugin = formatPlugin({ esm: true, cjs: true });
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ esm: true, cjs: true });
 	});
 
 	test("should handle iife format with true value", () => {
 		const plugin = formatPlugin({ iife: true });
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ iife: true });
 	});
 
 	test("should handle umd format with true value", () => {
 		const plugin = formatPlugin({ umd: true });
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ umd: true });
 	});
 
@@ -48,7 +48,7 @@ describe("formatPlugin", () => {
 			cjs: false,
 		});
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ esm: true, cjs: false });
 	});
 
@@ -58,7 +58,7 @@ describe("formatPlugin", () => {
 			cjs: undefined,
 		});
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual({ esm: true, cjs: undefined });
 	});
 
@@ -69,14 +69,14 @@ describe("formatPlugin", () => {
 		};
 		const plugin = formatPlugin(customFormat);
 		const base = { format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual(customFormat);
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = formatPlugin({ esm: true });
 		const base = { entry: ["./src/index.ts"], format: undefined };
-		const result = plugin.apply?.(base, {});
+		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 		expect(result?.format).toEqual({ esm: true });
 	});
