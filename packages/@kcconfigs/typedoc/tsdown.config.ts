@@ -1,9 +1,7 @@
 import { defineConfig, type TsdownConfig } from "@kcconfigs/tsdown";
-import entryPlugin from "@kcconfigs/tsdown/plugins/entry";
-import nodePlugin from "@kcconfigs/tsdown/plugins/node";
+import { entryPlugin, nodePlugin } from "@kcconfigs/tsdown/plugins";
 
 const config: TsdownConfig = defineConfig(
-	{},
 	nodePlugin(),
 	entryPlugin([
 		"./src/index.ts",
