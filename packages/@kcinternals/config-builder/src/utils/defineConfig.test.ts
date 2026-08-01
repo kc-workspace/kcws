@@ -24,8 +24,8 @@ describe(defineConfig.name, () => {
 		const base: MockConfig = { value: 1 };
 
 		const plugin = definePlugin<"testPlugin", MockConfig>("testPlugin", {
-				settingPriority: 1,
-				configPriority: 1,
+			settingPriority: 1,
+			configPriority: 1,
 			// enables debug for subsequent steps via returned setting
 			applySetting: (_) => ({ debug: debugFn, verbose: verboseFn }),
 			applyConfig: (config) => ({ value: config.value + 1 }),
@@ -135,12 +135,7 @@ describe(defineConfig.name, () => {
 		);
 
 		expect(result.steps).toEqual(["a", "b"]);
-		expect(order).toEqual([
-			"setting:b",
-			"setting:a",
-			"config:a",
-			"config:b",
-		]);
+		expect(order).toEqual(["setting:b", "setting:a", "config:a", "config:b"]);
 	});
 
 	test("should use setting pass output for all config plugins", () => {

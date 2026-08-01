@@ -27,7 +27,11 @@ const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
 		(base, plugin) => {
 			const name = plugin.name;
 			const beforeSetting = base.setting;
-			const afterSetting = plugin?.applySetting?.(beforeSetting);
+
+			const settingFn = plugin?.applySetting;
+			if (settingFn === undefined) return base;
+
+			const afterSetting = settingFn(beforeSetting);
 			const setting = afterSetting ?? beforeSetting;
 
 			debug(setting, `applying setting: ${name} (${plugin.settingPriority})`);
@@ -44,7 +48,11 @@ const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
 			const name = plugin.name;
 			const setting = base.setting;
 			const beforeConfig = base.config;
-			const afterConfig = plugin?.applyConfig?.(beforeConfig);
+
+			const configFn = plugin?.applyConfig;
+			if (configFn === undefined) return base;
+
+			const afterConfig = configFn(beforeConfig);
 
 			debug(setting, `applying config: ${name} (${plugin.configPriority})`);
 			verbose(setting, format(`[%s] before config: %O`, name, beforeConfig));
