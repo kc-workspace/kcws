@@ -60,6 +60,18 @@
 				"default": "./dist/index.js"
 			}
 		},
+		"./plugins": {
+			"source": "./src/plugins/index.ts",
+			"typedoc": "./src/plugins/index.ts",
+			"require": {
+				"types": "./dist/plugins/index.d.cts",
+				"default": "./dist/plugins/index.cjs"
+			},
+			"default": {
+				"types": "./dist/plugins/index.d.ts",
+				"default": "./dist/plugins/index.js"
+			}
+		},
 		"./plugins/*": {
 			"source": "./src/plugins/*.ts",
 			"typedoc": "./src/plugins/*.ts",
