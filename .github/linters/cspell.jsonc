@@ -38,12 +38,10 @@
 		"npm",
 		"bash",
 		"filetypes",
-		"customCommons",
-		"customApps"
+		"customDict"
 	],
 	"dictionaryDefinitions": [
-		{ "name": "customCommons", "path": "./cspell-commons.dict.txt" },
-		{ "name": "customApps", "path": "./cspell-apps.dict.txt" }
+		{ "name": "customDict", "path": "./cspell-custom.dict.txt" }
 	],
 	"useGitignore": true,
 	"gitignoreRoot": "../.."
