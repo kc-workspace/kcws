@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.5...@kcconfigs/tsdown+v0.2.6) (2026-08-02)
+
+
+### Features
+
+* **kcconfigs/tsdown:** add output option to cssPlugin ([92abc60](https://github.com/kc-workspace/kcws/commit/92abc60c6a432d7948789898b11ff04c2184cd0c))
+* **kcconfigs/tsdown:** add plugin barrel exports ([ab96809](https://github.com/kc-workspace/kcws/commit/ab9680913b2bb954ce62b0c2224b69be19580b0a))
+* **kcconfigs/tsdown:** add verbose option and applySetting to debugPlugin ([fb6154f](https://github.com/kc-workspace/kcws/commit/fb6154f6d5c86b32f81e0512c17a152f1dbca8c3))
+
+
+### Performance Improvements
+
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Documentation
+
+* **kcconfigs/tsdown:** add readme ([a386e5e](https://github.com/kc-workspace/kcws/commit/a386e5ea32b18986880cbf66b3862ca08a048b62))
+
+
+### Code Refactoring
+
+* **kcconfigs/tsdown:** migrate internals plugins to config-builder API ([1aa51ba](https://github.com/kc-workspace/kcws/commit/1aa51ba0e0b99838ae78f7f880c71fd486f79586))
+* **kcconfigs/tsdown:** rename apply to applyConfig and TsdownPlugin to TsdownConfigPlugin ([c405e5f](https://github.com/kc-workspace/kcws/commit/c405e5fc5face3ca0dfc470ec9400c886d5b6e1f))
+* **kcconfigs/tsdown:** simplify defineConfig by removing DefineOption parameter ([3f0845f](https://github.com/kc-workspace/kcws/commit/3f0845fa6d518d5a70786aa38168ec2c97baa5d0))
+* **kcconfigs/tsdown:** update models for config-builder API ([aed121c](https://github.com/kc-workspace/kcws/commit/aed121c595f7bab8cf4531bc16dc552b39e7ccda))
+* **kcconfigs/tsdown:** use barrel import for plugins and clean up index exports ([86b7bd5](https://github.com/kc-workspace/kcws/commit/86b7bd5c7d31dc7a18bd4b9b8a5675839b77f3e9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.3
+    * @kcconfigs/tsconfig bumped to 1.1.3
+
 ## [0.2.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.4...@kcconfigs/tsdown+v0.2.5) (2026-07-28)
 
 

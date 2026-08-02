@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.2...@kcconfigs/tsconfig+v1.1.3) (2026-08-02)
+
+
+### Performance Improvements
+
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kctypes/generic bumped to 1.31.1
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.3
+  * peerDependencies
+    * @kctypes/generic bumped to 1.31.1
+
 ## [1.1.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.1...@kcconfigs/tsconfig+v1.1.2) (2026-07-28)
 
 

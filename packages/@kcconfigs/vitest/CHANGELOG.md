@@ -1,5 +1,49 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.0...@kcconfigs/vitest+v0.2.1) (2026-08-02)
+
+
+### Features
+
+* **kcconfigs/vitest:** add plugin infrastructure ([0377376](https://github.com/kc-workspace/kcws/commit/037737640b30face0560429474160ad2003147fe))
+* **kcconfigs/vitest:** add replace mode to coverage plugin ([f98bbe4](https://github.com/kc-workspace/kcws/commit/f98bbe4232549e381babb0037bfd37757fb95494))
+* **kcconfigs/vitest:** export plugin entrypoints ([7adb9b9](https://github.com/kc-workspace/kcws/commit/7adb9b952080cab3071227b3184a4ea903a65e67))
+* **kcconfigs/vitest:** support explicit root projects ([373f1be](https://github.com/kc-workspace/kcws/commit/373f1be40fc384ecaed7f7d57bb82194207bc419))
+
+
+### Performance Improvements
+
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+* **kcconfigs/vitest:** export mergeConfig(base, ...overrides) instead of built-in that support only single override ([431e313](https://github.com/kc-workspace/kcws/commit/431e31398eea581ccae90fd386351bd24ea852f9))
+
+
+### Bugfixes
+
+* **kcconfigs/vitest:** when import plugins from `@kcconfigs/vitest/plugins`, mock file didn't load correctly ([2a6c1f7](https://github.com/kc-workspace/kcws/commit/2a6c1f76c15181ab6d8456b99bed3948c08c0e62))
+
+
+### Code Refactoring
+
+* **kcconfigs/vitest:** replace define utils with plugin-based API ([50b03e4](https://github.com/kc-workspace/kcws/commit/50b03e47c3aef298fd2778cb60d9eb2c421d5b97))
+* **kcconfigs/vitest:** restructure constants into directory ([c63d675](https://github.com/kc-workspace/kcws/commit/c63d67510c87d71619f1f6e3a56c9df24dae020d))
+* **kcconfigs/vitest:** restructure models into directory ([15353c8](https://github.com/kc-workspace/kcws/commit/15353c8d6bf6dc5829ab0328d1908252143a9ac6))
+* **kcconfigs/vitest:** update public API and add config-builder dependency ([8882933](https://github.com/kc-workspace/kcws/commit/8882933daf1237e59b622c33f883ffd329515ded))
+* **kcconfigs/vitest:** use local mergeConfig utility ([a6eecc1](https://github.com/kc-workspace/kcws/commit/a6eecc1f1500e1f894be5c06140f3540a06fa7b7))
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.0
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.3
+    * @kcconfigs/tsdown bumped to 0.2.6
+    * @kcconfigs/biome bumped to 2.0.3
+    * @kctypes/generic bumped to 1.31.1
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.1.2-beta.9...@kcconfigs/vitest+v0.2.0) (2026-07-28)
 
 

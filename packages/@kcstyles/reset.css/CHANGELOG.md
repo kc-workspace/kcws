@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.6](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.5...@kcstyles/reset.css+v1.0.6) (2026-08-02)
+
+
+### Code Refactoring
+
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.3
+    * @kcconfigs/tsdown bumped to 0.2.6
+
 ## [1.0.5](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.4...@kcstyles/reset.css+v1.0.5) (2026-07-28)
 
 

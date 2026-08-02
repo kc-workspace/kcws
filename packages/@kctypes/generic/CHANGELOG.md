@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.31.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.31.0...@kctypes/generic+v1.31.1) (2026-08-02)
+
+
+### Performance Improvements
+
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **kctypes/generic:** add AnyRecord for Record&lt;string, any&gt; ([1841b09](https://github.com/kc-workspace/kcws/commit/1841b09b9c028c2a3b2f1e156ea93bb3e1656e87))
+
 ## [1.31.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.30.4...@kctypes/generic+v1.31.0) (2026-07-23)
 
 

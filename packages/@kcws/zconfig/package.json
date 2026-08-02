@@ -1,7 +1,7 @@
 {
 	"private": false,
 	"name": "@kcws/zconfig",
-	"version": "0.0.0-beta.2",
+	"version": "0.1.0",
 	"description": "Load type-safe configuration with Zod schema",
 	"type": "module",
 	"scripts": {
