@@ -1,12 +1,7 @@
 import { format } from "node:util";
-import type { AnyConfigPlugin, BaseConfig, BaseSetting } from "../models";
+import type { AnyConfigPlugin, BaseConfig } from "../models";
 import defineBaseConfig from "./defineBaseConfig";
-import { withEnabled } from "./enabled";
-
-const debug = (setting: BaseSetting, msg: string) =>
-	withEnabled(setting?.debug, console.debug.bind(console))?.(msg);
-const verbose = (setting: BaseSetting, msg: string) =>
-	withEnabled(setting?.verbose, console.debug.bind(console))?.(msg);
+import { debug, verbose } from "./logger";
 
 const applyPlugins = <C>(
 	base: BaseConfig<C>,
