@@ -1,3 +1,3 @@
-import { defineProject } from "./src";
+import { defineProjectConfig } from "./src";
 
-export default defineProject();
+export default defineProjectConfig();

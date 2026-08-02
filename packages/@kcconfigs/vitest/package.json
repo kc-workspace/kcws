@@ -15,8 +15,9 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"vitest": "4.1.10",
-		"memfs": "4.64.0"
+		"@kcinternals/config-builder": "workspace:*",
+		"memfs": "4.64.0",
+		"vitest": "4.1.10"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.3",

@@ -1,8 +1,5 @@
-export type { AnyConfig, ProjectConfig, UserConfig } from "./models";
-export { defineEmptyProject } from "./utils/defineEmptyProject";
-export { defineEmptyRoot } from "./utils/defineEmptyRoot";
-export { defineProject } from "./utils/defineProject";
-export { defineProjectOrRoot } from "./utils/defineProjectOrRoot";
-export { defineRoot } from "./utils/defineRoot";
-export { mergeConfig } from "./utils/mergeConfig";
-export { setupMocks } from "./utils/setupMocks";
+export type * from "./models";
+
+export { default as defineConfig } from "./utils/defineConfig";
+export { default as defineProjectConfig } from "./utils/defineProjectConfig";
+export { default as defineRootConfig } from "./utils/defineRootConfig";
