@@ -10,7 +10,7 @@
 		"lint:check": "biome lint"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.3",
+		"@biomejs/biome": "2.5.6",
 		"@kcconfigs/biome": "workspace:*"
 	},
 	"main": "./src/presets/default.yaml",

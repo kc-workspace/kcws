@@ -78,17 +78,20 @@ describe(parseInput.name, () => {
 		["i", "", "i"] as TestCase,
 		["", "e", "e"] as TestCase,
 		["i", "e", "e"] as TestCase,
-	])("when input='%s' env='%s' should return '%s'", (inputValue, envValue, expected) => {
-		mockGetInput({ key: inputValue });
-		const schema = z.object({
-			key: z.string().optional(),
-		});
-		const input = parseInput(schema, undefined, {
-			INPUT__KEY: envValue,
-		});
+	])(
+		"when input='%s' env='%s' should return '%s'",
+		(inputValue, envValue, expected) => {
+			mockGetInput({ key: inputValue });
+			const schema = z.object({
+				key: z.string().optional(),
+			});
+			const input = parseInput(schema, undefined, {
+				INPUT__KEY: envValue,
+			});
 
-		expect(input).toEqual({ key: expected });
-	});
+			expect(input).toEqual({ key: expected });
+		},
+	);
 
 	test("should throw error if schema is not a ZodObject", () => {
 		expect(() => parseInput(z.string())).toThrow("schema must be a ZodObject");
