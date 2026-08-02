@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.1.7](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.6...@kcws/actkits+v0.1.7) (2026-08-02)
+
+
+### Performance Improvements
+
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Documentation
+
+* **kcws/actkits:** add README ([fd3030b](https://github.com/kc-workspace/kcws/commit/fd3030b0eea1aa851e70352f143ae6994dd33bbc))
+
+
+### Code Refactoring
+
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.3
+    * @kcconfigs/vitest bumped to 0.2.1
+    * @kcconfigs/tsconfig bumped to 1.1.3
+    * @kcconfigs/tsdown bumped to 0.2.6
+
 ## [0.1.6](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.5...@kcws/actkits+v0.1.6) (2026-07-28)
 
 

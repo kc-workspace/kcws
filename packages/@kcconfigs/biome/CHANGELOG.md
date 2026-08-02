@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.2...@kcconfigs/biome+v2.0.3) (2026-08-02)
+
+
+### Performance Improvements
+
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
 ## [2.0.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.1...@kcconfigs/biome+v2.0.2) (2026-07-28)
 
 
