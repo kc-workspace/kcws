@@ -20,7 +20,7 @@
 		"textlint-rule-terminology": "5.2.16"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.3",
+		"@biomejs/biome": "2.5.4",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
