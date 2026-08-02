@@ -1,15 +1,14 @@
-import { defineRoot } from "@kcconfigs/vitest";
+import { defineRootConfig } from "@kcconfigs/vitest";
+import { coveragePlugin } from "@kcconfigs/vitest/plugins";
 
-export default defineRoot({
-	test: {
-		projects: ["packages/**/vitest.config.ts", "!packages/**/.*.old/**"],
-		coverage: {
-			thresholds: {
-				branches: 0,
-				functions: 0,
-				lines: 0,
-				statements: 0,
-			},
+export default defineRootConfig(
+	["packages/**/vitest.config.ts", "!packages/**/.*.old/**"],
+	coveragePlugin({
+		thresholds: {
+			branches: 0,
+			functions: 0,
+			lines: 0,
+			statements: 0,
 		},
-	},
-});
+	}),
+);

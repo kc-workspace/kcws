@@ -1,3 +1,3 @@
-import { defineProject } from "@kcconfigs/vitest";
+import { defineProjectConfig } from "@kcconfigs/vitest";
 
-export default defineProject();
+export default defineProjectConfig();

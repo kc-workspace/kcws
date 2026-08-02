@@ -1,10 +1,11 @@
-import { defineProject, setupMocks } from "@kcconfigs/vitest";
+import { defineProjectConfig } from "@kcconfigs/vitest";
+import { useMockPlugin } from "@kcconfigs/vitest/plugins";
 
-const config = defineProject({
-	test: {
-		setupFiles: setupMocks({
+const config = defineProjectConfig(
+	useMockPlugin({
+		flags: {
 			console: true,
-		}),
-	},
-});
+		},
+	}),
+);
 export default config;
