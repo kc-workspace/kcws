@@ -1,11 +1,11 @@
 import { definePlugin } from "@kcinternals/config-builder";
-import { mergeConfig } from "vitest/config";
 import type {
 	AnyConfig,
 	AnyVitestConfigPlugin,
 	ProjectConfig,
 	UserConfig,
 } from "../models";
+import mergeConfig from "../utils/mergeConfig";
 
 /**
  * Vitest specific configuration type that can be either a root or project configuration.
@@ -17,6 +17,6 @@ const overridePlugin = (
 ): AnyVitestConfigPlugin<AnyConfig> =>
 	definePlugin("override", {
 		configPriority: 1000,
-		applyConfig: (base) => mergeConfig(base, { test: config }),
+		applyConfig: (base) => mergeConfig(base, { test: config } as AnyConfig),
 	});
 export default overridePlugin;
