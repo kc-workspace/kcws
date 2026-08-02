@@ -4,13 +4,6 @@ import type {
 } from "vitest/config";
 
 /**
- * Generic configuration type allowing any string keys and values.
- * Used as a flexible type for configuration merging operations.
- */
-// biome-ignore lint/suspicious/noExplicitAny: Necessary for generic config type
-export type AnyConfig = Record<string, any>;
-
-/**
  * Vitest user configuration type for root workspace setup.
  * Extends Vite's user configuration with Vitest-specific test settings.
  *
@@ -22,6 +15,14 @@ export type UserConfig = _UserConfig;
  * Vitest project configuration type for workspace projects.
  * Extends Vite's workspace config with project-specific test settings.
  *
+ * Project configuration is a subset of the root configuration,
+ * allowing for project-specific overrides.
+ *
  * @see https://vitest.dev/config/
  */
 export type ProjectConfig = _ProjectConfig;
+
+/**
+ * Vite + Vitest configuration type that can be either a root or project configuration.
+ */
+export type AnyConfig = UserConfig | ProjectConfig;
