@@ -14,9 +14,21 @@ describe("coveragePlugin", () => {
 		expect(result?.test?.coverage).toEqual(defaultCoverage);
 	});
 
+	test("should replace with enabled=true when option is true and replace is true", () => {
+		const plugin = coveragePlugin(true, true);
+		const result = plugin.applyConfig?.({
+			test: {
+				coverage: { enabled: true, provider: "v8" },
+			},
+		});
+		expect(result?.test?.coverage).toEqual({ enabled: true });
+	});
+
 	test("should remove coverage when option is false", () => {
 		const plugin = coveragePlugin(false);
-		const result = plugin.applyConfig?.({ test: { coverage: defaultCoverage } });
+		const result = plugin.applyConfig?.({
+			test: { coverage: defaultCoverage },
+		});
 		expect(result?.test?.coverage).toBeUndefined();
 	});
 
@@ -29,7 +41,23 @@ describe("coveragePlugin", () => {
 	test("should merge custom coverage options", () => {
 		const custom = { enabled: true, provider: "istanbul" as const };
 		const plugin = coveragePlugin(custom);
-		const result = plugin.applyConfig?.({ test: {} });
+		const result = plugin.applyConfig?.({
+			test: {
+				coverage: { reporter: ["text"] },
+			},
+		});
 		expect(result?.test?.coverage).toMatchObject(custom);
+		expect(result?.test?.coverage).toMatchObject({ reporter: ["text"] });
+	});
+
+	test("should replace coverage object when replace is true", () => {
+		const custom = { enabled: true, provider: "istanbul" as const };
+		const plugin = coveragePlugin(custom, true);
+		const result = plugin.applyConfig?.({
+			test: {
+				coverage: { reporter: ["text"] },
+			},
+		});
+		expect(result?.test?.coverage).toEqual(custom);
 	});
 });
