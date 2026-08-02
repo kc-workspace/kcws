@@ -1,8 +1,8 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { definePlugin } from "@kcinternals/config-builder";
-import { mergeConfig } from "vitest/config";
 import type { AnyConfig, VitestConfigPlugin } from "../models";
+import mergeConfig from "../utils/mergeConfig";
 
 export interface UseMockOption {
 	root?: string;
@@ -27,7 +27,7 @@ const resolvePath = (name: string, base: string) => {
 const useMockPlugin = (
 	opt: UseMockOption,
 ): VitestConfigPlugin<"use-mock", AnyConfig> => {
-	const base = opt.root ?? join(import.meta.dirname, "..");
+	const base = opt.root ?? join(import.meta.dirname, "..", "..");
 	const keys = Object.keys(opt.flags) as UseMockFlagKey[];
 	const setupFiles = keys
 		.map((key) =>
