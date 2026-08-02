@@ -21,23 +21,12 @@ const config: ViteUserConfig = {
 			thresholds: {
 				perFile: true,
 			},
-			include: ["**/*.{ts,tsx}"],
+			include: ["src/**/*.{ts,tsx}"],
 			exclude: [
-				// Ignored hidden files
-				"**/[.]**",
 				// Ignored test files
 				"**/*{.,-}{test,spec}?(-d).?(c|m)[jt]s?(x)",
-				"**/__mocks__/**",
-				// Ignored dist files
-				"**/dist/**",
-				// Ignored typescript definition files
-				"**/*.d.{ts,cts,mts}",
 				// Ignored example files
 				"**/*.example.?(c|m)[jt]s?(x)",
-				// Ignored configuration files
-				"**/*.config.?(c|m)[jt]s?(x)",
-				// Ignored schema files
-				"**/*.schema.?(c|m)[jt]s?(x)",
 			],
 		},
 	},
