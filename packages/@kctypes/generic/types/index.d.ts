@@ -1,5 +1,11 @@
 declare global {
 	/**
+	 * A type representing a record with string keys and values of any type.
+	 */
+	// biome-ignore lint/suspicious/noExplicitAny: Necessary for generic config type
+	type AnyRecord = Record<string, any>;
+
+	/**
 	 * A constructor type that creates instances of type T.
 	 *
 	 * @template T - The type of object that the constructor creates. Defaults to an empty object type.
