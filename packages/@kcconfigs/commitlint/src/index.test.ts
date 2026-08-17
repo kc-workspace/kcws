@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/style/noNonNullAssertion: testing known structures */
-
 import { cwd } from "node:process";
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";

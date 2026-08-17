@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
-
 import { vi } from "vitest";
 
 vi.mock(import("node:console"), async (importOriginal) => {

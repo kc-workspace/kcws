@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
-
 import type * as processType from "node:process";
 import { vi } from "vitest";
 
