@@ -2,7 +2,7 @@ import { defineConfig, type UserConfig } from "vite";
 
 import pkg from "./package.json" with { type: "json" };
 
-const globalName = pkg.name.split("/").pop();
+const globalName = pkg.name.split("/").pop() ?? "demo";
 
 const config: UserConfig = defineConfig({
 	build: {

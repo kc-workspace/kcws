@@ -8,10 +8,8 @@ const config: UserConfig = defineConfig({
 		minify: true,
 		sourcemap: true,
 		lib: {
-			entry: {
-				index: "./src/index.ts",
-			},
-			name: name.split("/").pop(),
+			entry: ["./src/index.ts"],
+			name: name.split("/").pop() ?? "demo",
 			formats: ["cjs", "iife", "umd"],
 		},
 		rolldownOptions: {
