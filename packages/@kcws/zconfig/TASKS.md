@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-17
 **Spec:** [DESIGN.md](./DESIGN.md)
-**Status:** Epic 1 complete
+**Status:** Epics 1–2 complete
 
 Work breakdown for implementing the approved design. Epics are ordered by dependency; stories within an epic
 are ordered unless marked parallel.
@@ -113,57 +113,57 @@ Pure logic, no filesystem and no adapters. Stories 2.1–2.3 are parallel; 2.4 d
 **Acceptance:** merge behaviour matches the spec's Merge Semantics exactly, and `Object.prototype` cannot be
 polluted by any config input.
 
-- [ ] T2.1.1 — Recursive merge of plain objects, later source wins
-- [ ] T2.1.2 — Arrays replace wholesale rather than concatenating
-- [ ] T2.1.3 — Primitives and `null` replace; `undefined` is skipped and does not override
-- [ ] T2.1.4 — Drop `__proto__`, `constructor`, and `prototype` keys; build merge targets with
+- [x] T2.1.1 — Recursive merge of plain objects, later source wins
+- [x] T2.1.2 — Arrays replace wholesale rather than concatenating
+- [x] T2.1.3 — Primitives and `null` replace; `undefined` is skipped and does not override
+- [x] T2.1.4 — Drop `__proto__`, `constructor`, and `prototype` keys; build merge targets with
       `Object.create(null)`
-- [ ] T2.1.5 — Test that a parsed payload containing a literal `__proto__` key leaves `Object.prototype`
+- [x] T2.1.5 — Test that a parsed payload containing a literal `__proto__` key leaves `Object.prototype`
       unmodified
-- [ ] T2.1.6 — Test that non-plain objects (Date, Map, class instances) replace rather than being walked
+- [x] T2.1.6 — Test that non-plain objects (Date, Map, class instances) replace rather than being walked
 
 ### Story 2.2 — Leaf transform walker
 
 **Acceptance:** one shared implementation applies `transform` for every adapter, file and environment alike.
 
-- [ ] T2.2.1 — Implement a walker that visits each leaf of a nested `RawConfig`, building the `key: string[]`
+- [x] T2.2.1 — Implement a walker that visits each leaf of a nested `RawConfig`, building the `key: string[]`
       path
-- [ ] T2.2.2 — Apply `TransformFn`, rebuilding output at the returned key path
-- [ ] T2.2.3 — Drop the key when the transform returns `undefined`
-- [ ] T2.2.4 — Define and test collision behaviour: two transformed keys resolving to the same path, later
+- [x] T2.2.2 — Apply `TransformFn`, rebuilding output at the returned key path
+- [x] T2.2.3 — Drop the key when the transform returns `undefined`
+- [x] T2.2.4 — Define and test collision behaviour: two transformed keys resolving to the same path, later
       wins
-- [ ] T2.2.5 — Test that array values are treated as leaves, not walked into
+- [x] T2.2.5 — Test that array values are treated as leaves, not walked into
 
 ### Story 2.3 — `validateSchema`
 
 **Acceptance:** any schema key violating `/^[a-z][a-zA-Z0-9]*$/` throws `ZconfigSchemaError` carrying the
 offending key path, before any I/O occurs.
 
-- [ ] T2.3.1 — Implement the key regex check and `ZconfigSchemaError` construction with the full key path
-- [ ] T2.3.2 — Walk `ZodObject` shapes recursively
-- [ ] T2.3.3 — Unwrap `ZodOptional`, `ZodDefault`, `ZodNullable`, `ZodCatch`, `ZodPipe`, `ZodLazy`
-- [ ] T2.3.4 — Descend into `ZodArray` elements
-- [ ] T2.3.5 — Walk every member of `ZodUnion` and `ZodDiscriminatedUnion`
-- [ ] T2.3.6 — Skip `ZodRecord` and object catchalls; add a code comment explaining why runtime keys are not
+- [x] T2.3.1 — Implement the key regex check and `ZconfigSchemaError` construction with the full key path
+- [x] T2.3.2 — Walk `ZodObject` shapes recursively
+- [x] T2.3.3 — Unwrap `ZodOptional`, `ZodDefault`, `ZodNullable`, `ZodCatch`, `ZodPipe`, `ZodLazy`
+- [x] T2.3.4 — Descend into `ZodArray` elements
+- [x] T2.3.5 — Walk every member of `ZodUnion` and `ZodDiscriminatedUnion`
+- [x] T2.3.6 — Skip `ZodRecord` and object catchalls; add a code comment explaining why runtime keys are not
       checkable
-- [ ] T2.3.7 — Add a visited-set cycle guard so a self-referencing `ZodLazy` terminates
-- [ ] T2.3.8 — Test the underscore case, the leading-uppercase case, and each wrapper and container above
+- [x] T2.3.7 — Add a visited-set cycle guard so a self-referencing `ZodLazy` terminates
+- [x] T2.3.8 — Test the underscore case, the leading-uppercase case, and each wrapper and container above
 
 ### Story 2.4 — `loadConfig` / `loadConfigSync`
 
 **Acceptance:** both entry points produce identical results for identical inputs, and the return type is
 `z.output<typeof schema>`.
 
-- [ ] T2.4.1 — Implement the async pipeline: validate schema, load adapters in order, merge, `safeParse`
-- [ ] T2.4.2 — Implement the sync pipeline sharing the same code path except for adapter invocation
-- [ ] T2.4.3 — Wrap any non-`Zconfig*` error escaping an adapter into `ZconfigAdapterError` using
+- [x] T2.4.1 — Implement the async pipeline: validate schema, load adapters in order, merge, `safeParse`
+- [x] T2.4.2 — Implement the sync pipeline sharing the same code path except for adapter invocation
+- [x] T2.4.3 — Wrap any non-`Zconfig*` error escaping an adapter into `ZconfigAdapterError` using
       `adapter.name`
-- [ ] T2.4.4 — Convert a `safeParse` failure into `ZconfigValidationError` with `issues` populated
-- [ ] T2.4.5 — Verify the returned type is `z.output<S>` with a type-level test, so schema defaults and
+- [x] T2.4.4 — Convert a `safeParse` failure into `ZconfigValidationError` with `issues` populated
+- [x] T2.4.5 — Verify the returned type is `z.output<S>` with a type-level test, so schema defaults and
       transforms are reflected
-- [ ] T2.4.6 — Test that a schema key violation throws before any adapter's `load` is called, using a spy
+- [x] T2.4.6 — Test that a schema key violation throws before any adapter's `load` is called, using a spy
       adapter
-- [ ] T2.4.7 — Sync/async parity test over a multi-adapter fixture
+- [x] T2.4.7 — Sync/async parity test over a multi-adapter fixture
 
 ---
 

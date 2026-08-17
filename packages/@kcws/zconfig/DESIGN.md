@@ -117,9 +117,13 @@ Validation recurses through the schema, unwrapping the wrapper types (`ZodOption
 and every member of a `ZodUnion` / `ZodDiscriminatedUnion`. A visited-set guards against cycles introduced by
 `ZodLazy`.
 
-`ZodRecord` and object catchalls are skipped — their keys only exist at runtime and cannot be validated ahead
-of time. Record keys containing `_` will not be addressable from environment variables; this is documented
-rather than enforced.
+`ZodRecord`, `ZodMap`, and object catchalls have keys that only exist at runtime, so those keys cannot be
+validated ahead of time. Record keys containing `_` will not be addressable from environment variables; this
+is documented rather than enforced.
+
+Their *value* schemas are still walked, under a `*` path segment. A `z.record(z.string(), z.object({ max_size:
+z.number() }))` therefore reports `pools.*.max_size` — the runtime key is unknowable, but `max_size` is
+statically declared and equally unaddressable, so it is rejected like any other key.
 
 ### Config sources that use other conventions
 
