@@ -21,8 +21,8 @@ describe("webPlugin", () => {
 
 	test("should preserve existing test config", () => {
 		const plugin = webPlugin("jsdom");
-		const result = plugin.applyConfig?.({ test: { timeout: 3000 } });
-		expect(result?.test?.timeout).toBe(3000);
+		const result = plugin.applyConfig?.({ test: { testTimeout: 3000 } });
+		expect(result?.test?.testTimeout).toBe(3000);
 		expect(result?.test?.environment).toBe("jsdom");
 	});
 });

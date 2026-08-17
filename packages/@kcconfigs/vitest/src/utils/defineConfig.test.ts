@@ -17,10 +17,10 @@ describe("defineConfig", () => {
 
 	test("should apply multiple plugins and merge their configs", () => {
 		const p1 = overridePlugin({ environment: "jsdom" });
-		const p2 = overridePlugin({ timeout: 5000 });
+		const p2 = overridePlugin({ testTimeout: 5000 });
 		const result = defineConfig(p1, p2);
 		expect(result.test?.environment).toBe("jsdom");
-		expect(result.test?.timeout).toBe(5000);
+		expect(result.test?.testTimeout).toBe(5000);
 	});
 
 	test("should respect configPriority ordering (higher priority wins on conflict)", () => {

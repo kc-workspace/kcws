@@ -19,9 +19,9 @@ describe("overridePlugin", () => {
 	});
 
 	test("should deep merge config without discarding existing keys", () => {
-		const plugin = overridePlugin({ timeout: 5000 });
+		const plugin = overridePlugin({ testTimeout: 5000 });
 		const result = plugin.applyConfig?.({ test: { environment: "node" } });
 		expect(result?.test?.environment).toBe("node");
-		expect(result?.test?.timeout).toBe(5000);
+		expect(result?.test?.testTimeout).toBe(5000);
 	});
 });
