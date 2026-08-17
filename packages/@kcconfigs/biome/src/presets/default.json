@@ -26,7 +26,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/*.test.*", "**/*.spec.*"],
+			"includes": ["**/*.test.*", "**/*.spec.*", "**/__mocks__/**"],
 			"linter": {
 				"rules": {
 					"complexity": {
@@ -38,6 +38,12 @@
 					"suspicious": {
 						"noExplicitAny": {
 							"level": "off"
+						}
+					},
+					"style": {
+						"noNonNullAssertion": {
+							"level": "off",
+							"fix": "none"
 						}
 					}
 				}
