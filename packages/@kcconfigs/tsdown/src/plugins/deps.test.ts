@@ -1,3 +1,4 @@
+import type { DepsConfig } from "tsdown";
 import { describe, expect, test } from "vitest";
 import depsPlugin from "./deps";
 
@@ -32,7 +33,7 @@ describe("depsPlugin", () => {
 		const depsConfig = {
 			neverBundle: ["picocolors"],
 			onlyBundle: false,
-		};
+		} satisfies DepsConfig;
 		const plugin = depsPlugin(depsConfig);
 		const base = {};
 		const result = plugin.applyConfig?.(base);

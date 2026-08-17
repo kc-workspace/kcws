@@ -8,58 +8,38 @@ describe("formatPlugin", () => {
 	});
 
 	test("should apply esm format when provided", () => {
-		const plugin = formatPlugin({ esm: true });
-		const base = { format: undefined };
+		const plugin = formatPlugin(["esm"]);
+		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ esm: true });
+		expect(result?.format).toEqual(["esm"]);
 	});
 
 	test("should apply cjs format when provided", () => {
-		const plugin = formatPlugin({ cjs: true });
-		const base = { format: undefined };
+		const plugin = formatPlugin(["cjs"]);
+		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ cjs: true });
+		expect(result?.format).toEqual(["cjs"]);
 	});
 
 	test("should apply multiple formats", () => {
-		const plugin = formatPlugin({ esm: true, cjs: true });
-		const base = { format: undefined };
+		const plugin = formatPlugin(["esm", "cjs"]);
+		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ esm: true, cjs: true });
+		expect(result?.format).toEqual(["esm", "cjs"]);
 	});
 
-	test("should handle iife format with true value", () => {
-		const plugin = formatPlugin({ iife: true });
-		const base = { format: undefined };
+	test("should apply iife format when provided", () => {
+		const plugin = formatPlugin(["iife"]);
+		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ iife: true });
+		expect(result?.format).toEqual(["iife"]);
 	});
 
-	test("should handle umd format with true value", () => {
-		const plugin = formatPlugin({ umd: true });
-		const base = { format: undefined };
+	test("should apply umd format when provided", () => {
+		const plugin = formatPlugin(["umd"]);
+		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ umd: true });
-	});
-
-	test("should skip formats set to false", () => {
-		const plugin = formatPlugin({
-			esm: true,
-			cjs: false,
-		});
-		const base = { format: undefined };
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ esm: true, cjs: false });
-	});
-
-	test("should skip undefined formats", () => {
-		const plugin = formatPlugin({
-			esm: true,
-			cjs: undefined,
-		});
-		const base = { format: undefined };
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual({ esm: true, cjs: undefined });
+		expect(result?.format).toEqual(["umd"]);
 	});
 
 	test("should pass through format values as objects", () => {
@@ -68,16 +48,16 @@ describe("formatPlugin", () => {
 			cjs: { minify: true } as const,
 		};
 		const plugin = formatPlugin(customFormat);
-		const base = { format: undefined };
+		const base = {};
 		const result = plugin.applyConfig?.(base);
 		expect(result?.format).toEqual(customFormat);
 	});
 
 	test("should preserve existing base config when applying", () => {
-		const plugin = formatPlugin({ esm: true });
-		const base = { entry: ["./src/index.ts"], format: undefined };
+		const plugin = formatPlugin(["esm"]);
+		const base = { entry: ["./src/index.ts"] };
 		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
-		expect(result?.format).toEqual({ esm: true });
+		expect(result?.format).toEqual(["esm"]);
 	});
 });

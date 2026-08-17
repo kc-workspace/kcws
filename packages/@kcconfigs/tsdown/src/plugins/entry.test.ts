@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { defaultIgnoreEntry } from "../constants";
+import type { TsdownConfig } from "../models";
 import entryPlugin from "./entry";
 
 describe("entryPlugin", () => {
@@ -10,7 +11,7 @@ describe("entryPlugin", () => {
 
 	test("should set entry to the given string array", () => {
 		const plugin = entryPlugin(["./src/index.ts", "./src/cli.ts"]);
-		const base = { entry: undefined };
+		const base = { entry: undefined } as unknown as TsdownConfig;
 		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual([
 			"./src/index.ts",
@@ -28,7 +29,7 @@ describe("entryPlugin", () => {
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = entryPlugin(["./src/index.ts"]);
-		const base = { outDir: "dist", entry: undefined };
+		const base = { outDir: "dist" } satisfies TsdownConfig;
 		const result = plugin.applyConfig?.(base);
 		expect(result?.outDir).toBe("dist");
 		expect(result?.entry).toEqual(["./src/index.ts", ...defaultIgnoreEntry]);
@@ -36,7 +37,7 @@ describe("entryPlugin", () => {
 
 	test("should not add default ignore entries when useDefault is false", () => {
 		const plugin = entryPlugin(["./src/index.ts"], false);
-		const base = { entry: undefined };
+		const base = { entry: undefined } as unknown as TsdownConfig;
 		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
 	});

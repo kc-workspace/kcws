@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import type { TsdownConfig } from "../models";
 import overridePlugin from "./override";
 
 describe("overridePlugin", () => {
@@ -24,7 +25,7 @@ describe("overridePlugin", () => {
 
 	test("should override existing config properties", () => {
 		const plugin = overridePlugin({ platform: "neutral" });
-		const base = { platform: "node" };
+		const base = { platform: "node" } as TsdownConfig;
 		const result = plugin.applyConfig?.(base);
 		expect(result?.platform).toBe("neutral");
 	});

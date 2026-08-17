@@ -134,7 +134,7 @@ describe("formatNormalize", () => {
 		const result = plugin.applyConfig?.(input as any);
 		const format = result?.format as Record<string, Record<string, unknown>>;
 		for (const [key, prop, value] of checks) {
-			expect(format[key][prop]).toBe(value);
+			expect(format[key]?.[prop]).toBe(value);
 		}
 	});
 
