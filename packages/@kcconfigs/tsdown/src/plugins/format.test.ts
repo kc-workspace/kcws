@@ -7,57 +7,102 @@ describe("formatPlugin", () => {
 		expect(plugin.name).toBe("format");
 	});
 
-	test("should apply esm format when provided", () => {
-		const plugin = formatPlugin(["esm"]);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual(["esm"]);
+	test.each(["esm", "cjs", "iife", "umd"] as const)(
+		"should apply the %s array format",
+		(format) => {
+			const plugin = formatPlugin([format]);
+			const result = plugin.applyConfig?.({});
+
+			expect(result?.format).toEqual([format]);
+		},
+	);
+
+	test("should preserve the order of multiple array formats", () => {
+		const plugin = formatPlugin(["umd", "esm", "cjs", "iife"]);
+		const result = plugin.applyConfig?.({});
+
+		expect(result?.format).toEqual(["umd", "esm", "cjs", "iife"]);
 	});
 
-	test("should apply cjs format when provided", () => {
-		const plugin = formatPlugin(["cjs"]);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual(["cjs"]);
-	});
-
-	test("should apply multiple formats", () => {
+	test("should replace an existing format array", () => {
 		const plugin = formatPlugin(["esm", "cjs"]);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
+		const result = plugin.applyConfig?.({ format: ["iife"] });
+
 		expect(result?.format).toEqual(["esm", "cjs"]);
 	});
 
-	test("should apply iife format when provided", () => {
-		const plugin = formatPlugin(["iife"]);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual(["iife"]);
+	test("should replace an existing format array with an empty array", () => {
+		const plugin = formatPlugin([]);
+		const result = plugin.applyConfig?.({ format: ["esm"] });
+
+		expect(result?.format).toEqual([]);
 	});
 
-	test("should apply umd format when provided", () => {
-		const plugin = formatPlugin(["umd"]);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual(["umd"]);
-	});
-
-	test("should pass through format values as objects", () => {
-		const customFormat = {
+	test("should apply configuration for every object format", () => {
+		const format = {
 			esm: { sourcemap: false } as const,
 			cjs: { minify: true } as const,
+			iife: { clean: ["*.js"] },
+			umd: { dts: false } as const,
 		};
-		const plugin = formatPlugin(customFormat);
-		const base = {};
-		const result = plugin.applyConfig?.(base);
-		expect(result?.format).toEqual(customFormat);
+		const plugin = formatPlugin(format);
+		const result = plugin.applyConfig?.({});
+
+		expect(result?.format).toEqual(format);
 	});
 
-	test("should preserve existing base config when applying", () => {
+	test("should deeply merge object formats with the existing config", () => {
+		const plugin = formatPlugin({
+			esm: {
+				sourcemap: false,
+				outputOptions: { banner: "new banner" },
+			},
+		});
+		const result = plugin.applyConfig?.({
+			format: {
+				cjs: { minify: false },
+				esm: {
+					sourcemap: true,
+					outputOptions: {
+						banner: "old banner",
+						footer: "existing footer",
+					},
+				},
+			},
+		});
+
+		expect(result?.format).toEqual({
+			cjs: { minify: false },
+			esm: {
+				sourcemap: false,
+				outputOptions: {
+					banner: "new banner",
+					footer: "existing footer",
+				},
+			},
+		});
+	});
+
+	test("should preserve an existing object format for an empty object", () => {
+		const plugin = formatPlugin({});
+		const result = plugin.applyConfig?.({
+			format: { esm: { sourcemap: true } },
+		});
+
+		expect(result?.format).toEqual({ esm: { sourcemap: true } });
+	});
+
+	test("should preserve unrelated base config", () => {
 		const plugin = formatPlugin(["esm"]);
-		const base = { entry: ["./src/index.ts"] };
-		const result = plugin.applyConfig?.(base);
-		expect(result?.entry).toEqual(["./src/index.ts"]);
-		expect(result?.format).toEqual(["esm"]);
+		const result = plugin.applyConfig?.({
+			entry: ["./src/index.ts"],
+			minify: false,
+		});
+
+		expect(result).toMatchObject({
+			entry: ["./src/index.ts"],
+			format: ["esm"],
+			minify: false,
+		});
 	});
 });
