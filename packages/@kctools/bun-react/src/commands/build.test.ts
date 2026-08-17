@@ -54,9 +54,9 @@ describe("build command registration", () => {
 		const args = cmd?.registeredArguments ?? [];
 
 		expect(args).toHaveLength(1);
-		expect(args[0].name()).toBe("html");
-		expect(args[0].defaultValue).toBe("./public/index.html");
-		expect(args[0].required).toBe(false);
+		expect(args[0]?.name()).toBe("html");
+		expect(args[0]?.defaultValue).toBe("./public/index.html");
+		expect(args[0]?.required).toBe(false);
 	});
 
 	test("minification is enabled by default (minify=true)", () => {
@@ -64,7 +64,7 @@ describe("build command registration", () => {
 		build(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "build");
-		expect(cmd?.opts().minify).toBe(true);
+		expect(cmd?.opts()["minify"]).toBe(true);
 	});
 
 	test("has --out option defaulting to 'dist'", () => {
@@ -72,7 +72,7 @@ describe("build command registration", () => {
 		build(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "build");
-		expect(cmd?.opts().out).toBe("dist");
+		expect(cmd?.opts()["out"]).toBe("dist");
 	});
 });
 

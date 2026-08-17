@@ -41,9 +41,9 @@ describe("dev command registration", () => {
 		const args = cmd?.registeredArguments ?? [];
 
 		expect(args).toHaveLength(1);
-		expect(args[0].name()).toBe("html");
-		expect(args[0].defaultValue).toBe("./public/index.html");
-		expect(args[0].required).toBe(false);
+		expect(args[0]?.name()).toBe("html");
+		expect(args[0]?.defaultValue).toBe("./public/index.html");
+		expect(args[0]?.required).toBe(false);
 	});
 
 	test("has --hostname option defaulting to '127.0.0.1'", () => {
@@ -51,7 +51,7 @@ describe("dev command registration", () => {
 		dev(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "dev");
-		expect(cmd?.opts().hostname).toBe("127.0.0.1");
+		expect(cmd?.opts()["hostname"]).toBe("127.0.0.1");
 	});
 
 	test("has --port option defaulting to '3000'", () => {
@@ -59,7 +59,7 @@ describe("dev command registration", () => {
 		dev(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "dev");
-		expect(cmd?.opts().port).toBe("3000");
+		expect(cmd?.opts()["port"]).toBe("3000");
 	});
 
 	test("has --next-port option defaulting to false", () => {
@@ -67,7 +67,7 @@ describe("dev command registration", () => {
 		dev(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "dev");
-		expect(cmd?.opts().nextPort).toBe(false);
+		expect(cmd?.opts()["nextPort"]).toBe(false);
 	});
 });
 
