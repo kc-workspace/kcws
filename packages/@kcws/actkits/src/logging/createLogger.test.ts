@@ -16,11 +16,11 @@ vi.mock("@actions/core", () => ({
 describe("createLogger", () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
-		delete process.env.DEBUG;
+		delete process.env["DEBUG"];
 	});
 
 	afterEach(() => {
-		delete process.env.DEBUG;
+		delete process.env["DEBUG"];
 	});
 
 	test("should compose namespace with ':' separators", () => {
@@ -118,8 +118,8 @@ describe("createLogger", () => {
 			await vi.importMock<typeof import("@actions/core")>("@actions/core");
 
 		vi.mocked(mockIsDebug).mockReturnValue(false);
-		process.env.DEBUG = "1";
+		process.env["DEBUG"] = "1";
 		expect(createLogger("stm").isDebug).toBe(true);
-		delete process.env.DEBUG;
+		delete process.env["DEBUG"];
 	});
 });
