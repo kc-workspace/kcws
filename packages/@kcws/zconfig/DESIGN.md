@@ -1,6 +1,6 @@
 # @kcws/zconfig Design Spec
 
-**Date:** 2026-08-01
+**Date:** 2026-08-17
 **Package:** `@kcws/zconfig`
 **Status:** Approved
 
@@ -12,6 +12,9 @@
 (files and environment variables), deep-merges them in adapter order (later wins), then validates the merged
 result against a Zod schema. Invalid config throws a typed error with full Zod issue details.
 
+Schema keys are constrained to strict camelCase (see [Key Naming Rules](#key-naming-rules)). This guarantees
+that every key path in a config has exactly one unambiguous environment variable name, in both directions.
+
 ---
 
 ## Architecture
@@ -20,9 +23,11 @@ result against a Zod schema. Invalid config throws a typed error with full Zod i
 src/
   core/
     index.ts          — loadConfig, loadConfigSync
+    validateSchema.ts — schema key-name validation (camelCase enforcement)
   utils/
     deepMerge.ts      — recursive deep merge utility
-    errors.ts         — ZconfigAdapterError, ZconfigValidationError
+    errors.ts         — ZconfigSchemaError, ZconfigAdapterError, ZconfigValidationError
+    requireLib.ts     — createRequire-based lazy loader for format libraries
     types.ts          — Adapter, RawConfig, TransformFn shared types
   adapters/
     env/
@@ -43,12 +48,17 @@ src/
 
 ```text
 loadConfig(schema, [adapter1, adapter2, ...])
+  → validate schema key names (camelCase only)
+      → failure: throw ZconfigSchemaError (before any I/O)
   → for each adapter: adapter.load() → RawConfig (plain object)
+      → failure: throw ZconfigAdapterError
   → deepMerge all RawConfigs in order (later adapters win on conflict)
-  → schema.parse(merged)
+  → schema.safeParse(merged)
       → success: return typed config
       → failure: throw ZconfigValidationError
 ```
+
+Schema validation runs first and performs no I/O, so a malformed schema fails fast and cheaply.
 
 ---
 
@@ -66,8 +76,55 @@ const config = loadConfigSync(schema, adapters);
 
 Both accept:
 
-- `schema`: a Zod schema (`ZodType<T>`)
+- `schema`: a Zod schema (`z.ZodType`)
 - `adapters`: `Adapter[]` — ordered list, later adapters override earlier ones
+
+Both return `z.output<typeof schema>`, so defaults and transforms declared in the schema are reflected in the
+returned type.
+
+---
+
+## Key Naming Rules
+
+Every object key reachable in the schema must match:
+
+```text
+/^[a-z][a-zA-Z0-9]*$/
+```
+
+That is: start with a lowercase letter, then letters and digits only. No underscores, no leading uppercase.
+
+A violation throws `ZconfigSchemaError` before any adapter runs. This is a programming error — the fix is to
+rename the schema key, not to change any config file.
+
+### Why
+
+Environment variable names are a flat `[A-Z0-9_]+` namespace. Encoding a nested key path into that namespace
+requires a separator, and if `_` serves as both the path separator and the intra-key word separator the
+encoding is ambiguous — `APP_DATABASE_HOST` could mean either `database.host` or `databaseHost`.
+
+Reserving `__` for path separation and `_` for word separation resolves this, but only if keys themselves
+never contain `_` and never start with an uppercase letter. With both constraints in place the key-path ↔
+environment-variable encoding is total and injective in both directions.
+
+The rule is enforced globally rather than only when `envAdapter` is present. Otherwise adding `envAdapter` to
+an existing project would retroactively invalidate a previously working schema.
+
+### Walking the schema
+
+Validation recurses through the schema, unwrapping the wrapper types (`ZodOptional`, `ZodDefault`,
+`ZodNullable`, `ZodCatch`, `ZodPipe`, `ZodLazy`) and descending into `ZodObject` shapes, `ZodArray` elements,
+and every member of a `ZodUnion` / `ZodDiscriminatedUnion`. A visited-set guards against cycles introduced by
+`ZodLazy`.
+
+`ZodRecord` and object catchalls are skipped — their keys only exist at runtime and cannot be validated ahead
+of time. Record keys containing `_` will not be addressable from environment variables; this is documented
+rather than enforced.
+
+### Config sources that use other conventions
+
+A TOML or YAML file using snake_case keys is still usable — supply a `transform` on that adapter to rename
+keys into camelCase before the merge step. The constraint applies to the schema, not to the raw source.
 
 ---
 
@@ -82,6 +139,7 @@ type TransformFn     = (input: TransformInput) => TransformOutput | undefined;
 // returning undefined skips the key entirely
 
 interface Adapter {
+  readonly name: string;   // e.g. "env", "json" — used in ZconfigAdapterError
   load(): Promise<RawConfig>;
   loadSync(): RawConfig;
 }
@@ -91,8 +149,11 @@ interface BaseAdapterOptions {
 }
 ```
 
-`transform` is called per leaf value after the adapter has parsed its source into a nested structure.
-The `key` is the full path as a string array (e.g. `["database", "host"]`). Returning `undefined` drops the key.
+`transform` is called once per leaf value, after the adapter has parsed its source into a nested structure and
+after any adapter-specific key mapping has been applied. The `key` is the full path as a string array (e.g.
+`["database", "host"]`). Returning `undefined` drops the key.
+
+If two transformed keys resolve to the same path, the later one wins — consistent with the merge rule.
 
 ---
 
@@ -104,8 +165,8 @@ Reads from `process.env` and optionally loads a `.env` file first.
 
 ```typescript
 envAdapter(options?: BaseAdapterOptions & {
-  prefix?: string;       // e.g. "APP" → strips APP_ and maps remaining
-  separator?: string;    // default "_", used to split into nested keys
+  prefix?: string;          // e.g. "APP" → strips APP_ before decoding
+  pathSeparator?: string;   // default "__", splits the name into key-path segments
   dotenv?: boolean | string;
   // default: true = auto-discover .env in cwd
   // false = skip .env file entirely
@@ -113,8 +174,44 @@ envAdapter(options?: BaseAdapterOptions & {
 }): Adapter
 ```
 
-**Key mapping:** `APP_DATABASE_HOST` with `prefix: "APP"` and `separator: "_"` → key path `["database", "host"]`.
-**Custom mapping:** provide `transform` to override or augment key path logic.
+#### Encoding — key path to variable name
+
+1. Convert each segment from camelCase to `SCREAMING_SNAKE`.
+2. Join segments with `pathSeparator`.
+3. Prepend `prefix` and `_`.
+
+#### Decoding — variable name to key path
+
+1. Strip `prefix` and `_`. A variable that does not match the prefix is ignored.
+2. Split the remainder on `pathSeparator` to get segments.
+3. Lowercase each segment, then convert snake to camel.
+
+```text
+database.host       ↔  APP_DATABASE__HOST
+databaseHost        ↔  APP_DATABASE_HOST
+database.hostName   ↔  APP_DATABASE__HOST_NAME
+a.b.c               ↔  APP_A__B__C
+```
+
+#### Acronyms
+
+The encoder inserts `_` before every uppercase letter with no acronym special-casing, so `dbURL` encodes to
+`DB_U_R_L`. Acronym-aware encoding would break injectivity — `DB_URL` could decode to either `dbUrl` or
+`dbURL`. Prefer `dbUrl` over `dbURL` in schemas.
+
+#### Values
+
+All environment values are strings. Coercion is the schema's responsibility — see
+[Value Coercion](#value-coercion).
+
+#### Arrays
+
+Environment variables cannot express nesting, so arrays have no positional encoding. Source arrays from files,
+or accept a delimited string in the schema:
+
+```typescript
+z.string().transform((s) => s.split(','))
+```
 
 ### `jsonAdapter`
 
@@ -122,13 +219,14 @@ Loads a JSON or JSONC file.
 
 ```typescript
 jsonAdapter(options?: BaseAdapterOptions & {
+  name?: string;       // base filename, default "config"
   path?: string;       // explicit file path; if omitted, auto-discovers
   optional?: boolean;  // default false; true = missing file returns {}
   jsonc?: boolean;     // default true = allow comments via jsonc-parser; false = strict JSON.parse
 }): Adapter
 ```
 
-**Auto-discovery order (cwd):** `config.json`, `.configrc.json`, `config/config.json`
+**Auto-discovery order (cwd only, no upward walk):** `<name>.json`, `.<name>rc.json`, `config/<name>.json`
 
 ### `json5Adapter`
 
@@ -136,12 +234,13 @@ Loads a JSON5 file (superset of JSON: comments, trailing commas, unquoted keys, 
 
 ```typescript
 json5Adapter(options?: BaseAdapterOptions & {
+  name?: string;
   path?: string;
   optional?: boolean;
 }): Adapter
 ```
 
-**Auto-discovery order (cwd):** `config.json5`, `.configrc.json5`, `config/config.json5`
+**Auto-discovery order (cwd only):** `<name>.json5`, `.<name>rc.json5`, `config/<name>.json5`
 
 ### `yamlAdapter`
 
@@ -149,12 +248,14 @@ Loads a YAML file.
 
 ```typescript
 yamlAdapter(options?: BaseAdapterOptions & {
+  name?: string;
   path?: string;
   optional?: boolean;
 }): Adapter
 ```
 
-**Auto-discovery order (cwd):** `config.yaml`, `config.yml`, `.configrc.yaml`, `.configrc.yml`, `config/config.yaml`
+**Auto-discovery order (cwd only):** `<name>.yaml`, `<name>.yml`, `.<name>rc.yaml`, `.<name>rc.yml`,
+`config/<name>.yaml`
 
 ### `tomlAdapter`
 
@@ -162,22 +263,81 @@ Loads a TOML file.
 
 ```typescript
 tomlAdapter(options?: BaseAdapterOptions & {
+  name?: string;
   path?: string;
   optional?: boolean;
 }): Adapter
 ```
 
-**Auto-discovery order (cwd):** `config.toml`, `.configrc.toml`, `config/config.toml`
+**Auto-discovery order (cwd only):** `<name>.toml`, `.<name>rc.toml`, `config/<name>.toml`
+
+### Discovery and `optional`
+
+`optional` applies to both explicit `path` and auto-discovery. With the default `optional: false`, an adapter
+that finds no candidate file throws `ZconfigAdapterError`. Relative paths resolve against `process.cwd()`.
+
+---
+
+## Value Coercion
+
+Adapters never coerce values. File formats already carry types, and environment values are always strings; the
+schema is the only place that knows the intended type, so coercion belongs there.
+
+```typescript
+const schema = z.object({
+  database: z.object({
+    host: z.string(),
+    port: z.coerce.number(),                     // accepts 5432 and "5432"
+  }),
+  debug: z.union([z.boolean(), z.stringbool()]), // accepts true and "false"
+});
+```
+
+- **Numbers** — `z.coerce.number()` passes a real number through unchanged and parses a numeric string, so one
+  schema works for every adapter.
+- **Booleans** — do not use `z.coerce.boolean()`; it applies JS truthiness, so `"false"` becomes `true`. Use
+  `z.stringbool()`, which accepts `true/false`, `1/0`, `yes/no`, `on/off`. It is a `ZodCodec<ZodString,
+  ZodBoolean>` and therefore rejects a real boolean from YAML, so union it with `z.boolean()` when the value
+  can come from either a file or the environment.
+
+Adapter-side coercion was rejected deliberately: guessing a type from value shape misfires constantly —
+version `"1.0"`, file mode `"0755"`, and zip code `"02134"` would all silently become numbers and then fail a
+`z.string()`.
+
+---
+
+## Merge Semantics
+
+`deepMerge` combines adapter outputs in order, later wins.
+
+- Plain objects merge recursively.
+- Arrays replace wholesale — they are not concatenated. Concatenation would make it impossible for a later
+  source to shrink or clear a list.
+- Primitives and `null` replace.
+- `undefined` is skipped and does not override an earlier value.
+
+### Prototype pollution
+
+Config files are parsed input. JSON and YAML parsers can both emit a literal `__proto__` key, so the merge
+must not blindly assign. Keys `__proto__`, `constructor`, and `prototype` are dropped during merge, and merge
+targets are created with `Object.create(null)`. This is covered by a dedicated test.
 
 ---
 
 ## Error Handling
 
-All errors thrown by `loadConfig`/`loadConfigSync` are one of two typed classes:
+All errors thrown by `loadConfig` / `loadConfigSync` are one of three typed classes:
 
 ```typescript
+// Thrown when the schema itself violates the key naming rules.
+// Raised before any adapter runs — no I/O has occurred.
+class ZconfigSchemaError extends Error {
+  readonly key: string[];    // offending key path
+  readonly reason: string;   // e.g. "key must be camelCase"
+}
+
 // Thrown when an adapter fails to load (file missing on non-optional,
-// parse error, missing library at runtime, etc.)
+// parse error, missing format library, etc.)
 class ZconfigAdapterError extends Error {
   readonly adapter: string;  // adapter name, e.g. "json", "env"
   readonly cause?: unknown;  // original underlying error
@@ -185,10 +345,13 @@ class ZconfigAdapterError extends Error {
 
 // Thrown when merged config fails Zod schema validation
 class ZconfigValidationError extends Error {
-  readonly issues: ZodIssue[]; // Zod issues array
-  readonly cause: ZodError;    // original ZodError
+  readonly issues: z.core.$ZodIssue[]; // Zod issues array
+  readonly cause: ZodError;            // original ZodError
 }
 ```
+
+`ZodIssue` is deprecated in Zod v4 in favour of `z.core.$ZodIssue` for libraries built on top of Zod, so the
+latter is used.
 
 All unexpected internal errors from adapters are wrapped into `ZconfigAdapterError`. No raw errors are leaked.
 
@@ -199,7 +362,7 @@ All unexpected internal errors from adapters are wrapped into `ZconfigAdapterErr
 ```typescript
 // Main entry
 import { loadConfig, loadConfigSync } from '@kcws/zconfig';
-import { ZconfigAdapterError, ZconfigValidationError } from '@kcws/zconfig';
+import { ZconfigSchemaError, ZconfigAdapterError, ZconfigValidationError } from '@kcws/zconfig';
 
 // All adapters (named)
 import { envAdapter, jsonAdapter, json5Adapter, yamlAdapter, tomlAdapter } from '@kcws/zconfig/adapters';
@@ -214,16 +377,28 @@ import tomlAdapter  from '@kcws/zconfig/adapters/toml';
 
 ### `package.json` exports map
 
+The barrel and the wildcard are separate entries — subpath `./adapters` does not match the pattern
+`./adapters/*`, so omitting the barrel would make `@kcws/zconfig/adapters` throw
+`ERR_PACKAGE_PATH_NOT_EXPORTED`.
+
 ```json
 {
   ".": { ... },
   "./adapters": { ... },
-  "./adapters/env": { ... },
-  "./adapters/json": { ... },
-  "./adapters/json5": { ... },
-  "./adapters/yaml": { ... },
-  "./adapters/toml": { ... }
+  "./adapters/*": { ... }
 }
+```
+
+### Build entries
+
+`tsdown.config.ts` must list entries matching the directory layout:
+
+```typescript
+entryPlugin([
+  "./src/index.ts",
+  "./src/adapters/index.ts",
+  "./src/adapters/*/index.ts",
+])
 ```
 
 ---
@@ -232,27 +407,63 @@ import tomlAdapter  from '@kcws/zconfig/adapters/toml';
 
 | Package | Type | Purpose |
 | --- | --- | --- |
-| `zod` | direct | Schema validation |
-| `yaml` | direct | YAML parsing |
-| `smol-toml` | direct | TOML parsing |
-| `jsonc-parser` | direct | JSONC parsing (comments support) |
-| `json5` | direct | JSON5 parsing |
-| `dotenv` | direct | `.env` file parsing |
+| `zod` | peer (`>=4`) + dev | Schema validation |
+| `yaml` | optional peer | YAML parsing |
+| `smol-toml` | optional peer | TOML parsing |
+| `jsonc-parser` | optional peer | JSONC parsing (comments support) |
+| `json5` | optional peer | JSON5 parsing |
+| `dotenv` | optional peer | `.env` file parsing |
 
-All are direct dependencies. Format libraries are imported lazily (dynamic `import()`) so the package doesn't fail at load time if a library is somehow unavailable.
+### Why `zod` is a peer dependency
+
+A direct dependency risks two copies of Zod in the tree. That breaks `instanceof ZodError`, makes
+`ZconfigValidationError.cause` untypeable against the consumer's Zod, and causes schema brand mismatches
+between the consumer's schema and this package's expectations.
+
+### Why format libraries are optional peers
+
+An environment-only consumer should not install `yaml`, `smol-toml`, `json5`, and `jsonc-parser`. Declaring
+them as optional peers keeps the install lean and makes the "missing format library" branch of
+`ZconfigAdapterError` a real, reachable case rather than dead text. A missing library produces a
+`ZconfigAdapterError` naming the adapter and the package to install.
+
+### Loading strategy
+
+Format libraries are resolved lazily, at the moment the owning adapter first runs, via
+`createRequire(import.meta.url)`. A dynamic `import()` cannot be used because `loadConfigSync` is synchronous
+and `await` is unavailable there; `createRequire` gives one code path that serves both the sync and async
+entry points.
+
+> **Build note:** the CJS output must have a working `import.meta.url` shim for `createRequire` to resolve.
+> Verify this in the built `dist/*.cjs` before release.
+
+`engines.node` is `>=20`.
 
 ---
 
 ## Testing Strategy
 
 **Framework:** Vitest
-**Filesystem:** `setupMocks()` + `vol` from `@kcconfigs/vitest/mocks` (memfs, no real FS I/O)
+**Filesystem:** memfs, wired through `useMockPlugin` — no real FS I/O
+
+Filesystem mocking is configured in `vitest.config.ts` via a plugin, not called from inside test bodies:
 
 ```typescript
-import { setupMocks } from '@kcconfigs/vitest/mocks';
+// vitest.config.ts
+import { defineProjectConfig } from '@kcconfigs/vitest';
+import { useMockPlugin } from '@kcconfigs/vitest/plugins';
+
+export default defineProjectConfig(
+  useMockPlugin({ flags: { fs: true, fsPromises: true } }),
+);
+```
+
+Tests then drive the in-memory volume directly:
+
+```typescript
+import { afterEach } from 'vitest';
 import { vol } from '@kcconfigs/vitest/mocks';
 
-setupMocks();
 afterEach(() => vol.reset());
 ```
 
@@ -261,6 +472,7 @@ afterEach(() => vol.reset());
 ```text
 src/
   core/index.test.ts
+  core/validateSchema.test.ts
   utils/deepMerge.test.ts
   adapters/
     env/index.test.ts
@@ -276,15 +488,40 @@ src/
 2. Nested objects — deep nested keys resolve correctly
 3. `optional: true` — missing file returns `{}`
 4. `optional: false` (default) — missing file throws `ZconfigAdapterError`
-5. Parse error — malformed content throws `ZconfigAdapterError`
-6. `transform` — custom transform applied correctly; `undefined` return drops key
+5. Auto-discovery — each candidate filename is found in priority order
+6. Parse error — malformed content throws `ZconfigAdapterError`
+7. `transform` — custom transform applied correctly; `undefined` return drops key
 
-### Core `loadConfig`/`loadConfigSync` tests
+### `envAdapter` additional cases
+
+1. Encode/decode round-trip — `database.host` and `databaseHost` stay distinct
+2. `prefix` filtering — non-matching variables ignored
+3. Acronym handling — `dbURL` ↔ `DB_U_R_L` round-trips
+4. Custom `pathSeparator`
+
+### `validateSchema` tests
+
+1. Valid camelCase schema passes
+2. Key containing `_` throws `ZconfigSchemaError` with the offending key path
+3. Key starting with uppercase throws `ZconfigSchemaError`
+4. Nested and wrapped schemas (`optional`, `default`, `nullable`, array element, union member) are walked
+5. `ZodRecord` subtrees are skipped rather than rejected
+6. `ZodLazy` cycle terminates
+
+### `deepMerge` tests
+
+1. Nested objects merge recursively
+2. Arrays replace rather than concatenate
+3. `undefined` does not override an earlier value
+4. `__proto__` / `constructor` / `prototype` keys are dropped and `Object.prototype` is unpolluted
+
+### Core `loadConfig` / `loadConfigSync` tests
 
 1. Single adapter — schema validates and returns typed config
 2. Multiple adapters — deep merge with later-wins behavior verified
-3. Validation failure — throws `ZconfigValidationError` with `issues` populated
-4. Sync parity — `loadConfigSync` produces identical result to `loadConfig`
+3. Schema key violation — throws `ZconfigSchemaError` before any adapter is invoked
+4. Validation failure — throws `ZconfigValidationError` with `issues` populated
+5. Sync parity — `loadConfigSync` produces identical result to `loadConfig`
 
 ---
 
@@ -298,9 +535,9 @@ import { envAdapter, yamlAdapter } from '@kcws/zconfig/adapters';
 const schema = z.object({
   database: z.object({
     host: z.string(),
-    port: z.number(),
+    port: z.coerce.number(),
   }),
-  debug: z.boolean().default(false),
+  debug: z.union([z.boolean(), z.stringbool()]).default(false),
 });
 
 const config = await loadConfig(schema, [
@@ -308,5 +545,13 @@ const config = await loadConfig(schema, [
   envAdapter({ prefix: 'APP' }),
 ]);
 
-// config is fully typed as z.infer<typeof schema>
+// config is fully typed as z.output<typeof schema>
+```
+
+Overriding the YAML values from the environment:
+
+```bash
+APP_DATABASE__HOST=db.internal
+APP_DATABASE__PORT=5432
+APP_DEBUG=true
 ```
