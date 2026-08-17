@@ -46,6 +46,19 @@ describe("useMockPlugin", () => {
 		expect(result?.test?.setupFiles).toHaveLength(0);
 	});
 
+	test("should use the package root by default", () => {
+		vi.mocked(existsSync).mockReturnValue(true);
+		const defaultRoot = join(import.meta.dirname, "..", "..");
+		const osPath = join(defaultRoot, "__mocks__", "os.ts");
+
+		const plugin = useMockPlugin({
+			flags: { os: true },
+		});
+		const result = plugin.applyConfig?.({ test: {} });
+
+		expect(result?.test?.setupFiles).toEqual([osPath]);
+	});
+
 	test("should throw when mock file does not exist", () => {
 		vi.mocked(existsSync).mockReturnValue(false);
 		expect(() =>

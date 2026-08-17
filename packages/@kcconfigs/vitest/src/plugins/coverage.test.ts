@@ -60,4 +60,11 @@ describe("coveragePlugin", () => {
 		});
 		expect(result?.test?.coverage).toEqual(custom);
 	});
+
+	test("should replace coverage when base test config is missing", () => {
+		const custom = { enabled: true, provider: "v8" as const };
+		const plugin = coveragePlugin(custom, true);
+		const result = plugin.applyConfig?.({});
+		expect(result?.test?.coverage).toEqual(custom);
+	});
 });

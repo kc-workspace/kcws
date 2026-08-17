@@ -29,11 +29,7 @@ const useMockPlugin = (
 ): VitestConfigPlugin<"use-mock", AnyConfig> => {
 	const base = opt.root ?? join(import.meta.dirname, "..", "..");
 	const keys = Object.keys(opt.flags) as UseMockFlagKey[];
-	const setupFiles = keys
-		.map((key) =>
-			opt.flags[key] === true ? resolvePath(key, base) : undefined,
-		)
-		.filter((path) => path !== undefined);
+	const setupFiles = keys.map((key) => resolvePath(key, base));
 
 	return definePlugin("use-mock", {
 		applyConfig: (base) =>
