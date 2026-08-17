@@ -31,8 +31,8 @@ describe("object utilities", () => {
 			const obj: Record<string, number> = { b: 2 };
 			const result = mergeObject(base, obj);
 
-			expect(result.a).toBe(1);
-			expect(result.b).toBe(2);
+			expect(result["a"]).toBe(1);
+			expect(result["b"]).toBe(2);
 		});
 
 		test("should override existing properties", () => {
@@ -56,9 +56,9 @@ describe("object utilities", () => {
 			const obj: Record<string, unknown> = { nested: { b: 2 } };
 			const result = mergeObject(base, obj);
 
-			const nested = result.nested as Record<string, unknown>;
-			expect(nested.a).toBe(1);
-			expect(nested.b).toBe(2);
+			const nested = result["nested"] as Record<string, unknown>;
+			expect(nested["a"]).toBe(1);
+			expect(nested["b"]).toBe(2);
 		});
 
 		test("should handle arrays in objects", () => {
@@ -66,7 +66,7 @@ describe("object utilities", () => {
 			const obj: Record<string, unknown> = { items: [3] };
 			const result = mergeObject(base, obj);
 
-			expect(Array.isArray(result.items)).toBe(true);
+			expect(Array.isArray(result["items"])).toBe(true);
 		});
 
 		test("should handle null base", () => {
@@ -74,8 +74,8 @@ describe("object utilities", () => {
 			const obj = { a: 1, b: 2 };
 			const result = mergeObject(base, obj);
 
-			expect(result.a).toBe(1);
-			expect(result.b).toBe(2);
+			expect(result["a"]).toBe(1);
+			expect(result["b"]).toBe(2);
 		});
 
 		test("should handle undefined base", () => {
@@ -83,7 +83,7 @@ describe("object utilities", () => {
 			const obj = { a: 1 };
 			const result = mergeObject(base, obj);
 
-			expect(result.a).toBe(1);
+			expect(result["a"]).toBe(1);
 		});
 
 		test("should handle null obj", () => {
@@ -103,35 +103,33 @@ describe("object utilities", () => {
 			};
 			const result = mergeObject(base, obj);
 
-			const level1 = result.level1 as Record<string, unknown>;
-			const level2 = level1.level2 as Record<string, unknown>;
-			const level3 = level2.level3 as Record<string, unknown>;
+			const level1 = result["level1"] as Record<string, unknown>;
+			const level2 = level1["level2"] as Record<string, unknown>;
+			const level3 = level2["level3"] as Record<string, unknown>;
 
-			expect(level3.value).toBe(1);
-			expect(level3.newValue).toBe(2);
+			expect(level3["value"]).toBe(1);
+			expect(level3["newValue"]).toBe(2);
 		});
 
 		test("should use custom merge function when provided", () => {
-			const base = { a: 1, b: 2 };
-			const obj = { b: 3, c: 4 };
+			const base: Record<string, number> = { a: 1, b: 2 };
+			const obj: Record<string, number> = { b: 3, c: 4 };
 			const customFn = <K extends keyof typeof base>(
-				base: typeof base,
+				current: typeof base,
 				key: K,
 				value: (typeof base)[K],
 			): [boolean, (typeof base)[K]] => {
-				if (key === "b") {
-					return [
-						true,
-						((base[key] as number) + (value as number)) as (typeof base)[K],
-					];
+				const currentValue = current[key];
+				if (key === "b" && currentValue !== undefined) {
+					return [true, (currentValue + value) as (typeof base)[K]];
 				}
 				return [false, value];
 			};
 			const result = mergeObject(base, obj, customFn);
 
-			expect(result.a).toBe(1);
-			expect(result.b).toBe(5); // 2 + 3
-			expect(result.c).toBe(4);
+			expect(result["a"]).toBe(1);
+			expect(result["b"]).toBe(5); // 2 + 3
+			expect(result["c"]).toBe(4);
 		});
 
 		test("should handle arrays merging in nested objects", () => {
@@ -143,8 +141,8 @@ describe("object utilities", () => {
 			};
 			const result = mergeObject(base, obj);
 
-			const config = result.config as Record<string, unknown>;
-			const plugins = config.plugins as string[];
+			const config = result["config"] as Record<string, unknown>;
+			const plugins = config["plugins"] as string[];
 
 			expect(plugins).toEqual(["a", "b", "c"]);
 		});
@@ -183,8 +181,8 @@ describe("object utilities", () => {
 			};
 			const result = normalizeObject(obj);
 
-			expect(result.a).toBe(1);
-			expect(result.d).toBe("value");
+			expect(result["a"]).toBe(1);
+			expect(result["d"]).toBe("value");
 			expect("b" in result).toBe(false);
 			expect("c" in result).toBe(false);
 		});
@@ -195,7 +193,7 @@ describe("object utilities", () => {
 			};
 			const result = normalizeObject(obj);
 
-			const items = result.items as number[];
+			const items = result["items"] as number[];
 			expect(items).toEqual([1, 2, 3]);
 		});
 
@@ -212,13 +210,13 @@ describe("object utilities", () => {
 			};
 			const result = normalizeObject(obj);
 
-			const level1 = result.level1 as Record<string, unknown>;
-			const level2 = level1.level2 as Record<string, unknown>;
+			const level1 = result["level1"] as Record<string, unknown>;
+			const level2 = level1["level2"] as Record<string, unknown>;
 
 			expect("a" in level1).toBe(false);
-			expect(level1.b).toBe(1);
+			expect(level1["b"]).toBe(1);
 			expect("c" in level2).toBe(false);
-			expect(level2.d).toBe(2);
+			expect(level2["d"]).toBe(2);
 		});
 
 		test("should preserve zero, false, and empty string", () => {
@@ -230,9 +228,9 @@ describe("object utilities", () => {
 			};
 			const result = normalizeObject(obj);
 
-			expect(result.zero).toBe(0);
-			expect(result.falsy).toBe(false);
-			expect(result.empty).toBe("");
+			expect(result["zero"]).toBe(0);
+			expect(result["falsy"]).toBe(false);
+			expect(result["empty"]).toBe("");
 			expect("nullVal" in result).toBe(false);
 		});
 
@@ -242,7 +240,7 @@ describe("object utilities", () => {
 			};
 			const result = normalizeObject(obj);
 
-			const mixed = result.mixed as unknown[];
+			const mixed = result["mixed"] as unknown[];
 			expect(mixed).toHaveLength(4);
 			expect(mixed).toContain(1);
 			expect(mixed).toContain("two");

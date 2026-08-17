@@ -111,7 +111,7 @@ describe("array utilities", () => {
 
 		test("should use custom merge function with empty arrays", () => {
 			const customMerge = <T>(a: T[], b: T[]) => {
-				return [...a, ...b].filter((n) => n > 0) as T[];
+				return [...a, ...b].filter((n) => typeof n === "number" && n > 0);
 			};
 			const result = mergeArray([-1, 2], [3, -4], customMerge);
 			expect(result).toEqual([2, 3]);
