@@ -42,9 +42,10 @@
 		"https://developer.microsoft.com/json-schemas/": true,
 		"https://biomejs.dev/schemas/*/schema.json": true,
 		"https://raw.githubusercontent.com/evilmartians/lefthook": true,
-		"https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json": true,
-		"https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json": true,
-		"https://raw.githubusercontent.com/megalinter/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json": true
+		"https://raw.githubusercontent.com/googleapis/release-please": true,
+		"https://raw.githubusercontent.com/DavidAnson/markdownlint": true,
+		"https://raw.githubusercontent.com/megalinter/megalinter": true,
+		"https://raw.githubusercontent.com/streetsidesoftware/cspell": true
 	},
 	"js/ts.tsdk.path": "node_modules/typescript/lib"
 }
