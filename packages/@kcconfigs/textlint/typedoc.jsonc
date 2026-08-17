@@ -1,4 +1,4 @@
 {
-	"$schema": "https://typedoc.org/schema.json"
-	// "projectDocuments": ["CHANGELOG.md"]
+	"$schema": "https://typedoc.org/schema.json",
+	"projectDocuments": ["CHANGELOG.md"]
 }

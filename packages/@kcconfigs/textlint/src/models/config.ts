@@ -9,10 +9,10 @@ export interface Config<
 	RU extends AnyRule[],
 	FL extends AnyFilter[],
 > {
-	plugins: PL;
-	presets: PR;
-	rules: RU;
-	filters: FL;
+	plugins?: PL;
+	presets?: PR;
+	rules?: RU;
+	filters?: FL;
 }
 
 export type AnyConfig = Config<
@@ -22,13 +22,15 @@ export type AnyConfig = Config<
 	AnyFilter[]
 >;
 
-type UserConfigRule<C extends AnyConfig> = C["presets"] extends never[]
-	? C["rules"] extends never[]
-		? Record<string, never>
-		: UserRule<C["rules"], "config">
-	: C["rules"] extends never[]
-		? UserPreset<C["presets"]>
-		: UserPreset<C["presets"]> & UserRule<C["rules"], "config">;
+type UserConfigRule<C extends AnyConfig> =
+	NonNullable<C["presets"]> extends never[]
+		? NonNullable<C["rules"]> extends never[]
+			? Record<string, never>
+			: UserRule<NonNullable<C["rules"]>, "config">
+		: NonNullable<C["rules"]> extends never[]
+			? UserPreset<NonNullable<C["presets"]>>
+			: UserPreset<NonNullable<C["presets"]>> &
+					UserRule<NonNullable<C["rules"]>, "config">;
 
 export interface UserConfig<C extends AnyConfig> {
 	plugins?: C["plugins"];

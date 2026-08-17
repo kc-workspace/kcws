@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import type { AnyUserConfig } from "../models";
+import type { AnyPlugin } from "../models";
 import { defineConfig } from "./defineConfig";
 import { defineFilter } from "./defineFilter";
 import { definePreset } from "./definePreset";
@@ -32,7 +32,9 @@ describe(defineConfig.name, () => {
 				config: true,
 			}),
 		];
-		const plugins = [{ pluginId: "markdown" }] as AnyUserConfig["plugins"];
+		const plugins: AnyPlugin[] = [
+			{ type: "plugin", name: "markdown", config: {} },
+		];
 
 		expect(
 			defineConfig({
