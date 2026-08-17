@@ -29,6 +29,12 @@
 			"includes": ["**/*.test.*", "**/*.spec.*"],
 			"linter": {
 				"rules": {
+					"complexity": {
+						"useLiteralKeys": {
+							"level": "off",
+							"fix": "none"
+						}
+					},
 					"suspicious": {
 						"noExplicitAny": {
 							"level": "off"
