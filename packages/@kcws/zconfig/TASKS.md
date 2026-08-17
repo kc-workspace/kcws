@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-17
 **Spec:** [DESIGN.md](./DESIGN.md)
-**Status:** Not started
+**Status:** Epic 1 complete
 
 Work breakdown for implementing the approved design. Epics are ordered by dependency; stories within an epic
 are ordered unless marked parallel.
@@ -22,12 +22,18 @@ are ordered unless marked parallel.
 
 ## Risk Gate — resolve before Epic 2
 
-**R1 — `createRequire` in the CJS build.** The lazy-loading strategy depends on
-`createRequire(import.meta.url)` working in both ESM and CJS output. `import.meta.url` does not exist in CJS,
-so this relies on the bundler injecting a shim. If it does not, the loading strategy in the spec must change
-(static top-level imports, dropping laziness and making format libraries hard dependencies).
+**R1 — `createRequire` in the CJS build.** ✅ **Resolved 2026-08-17.** tsdown emits
+`(0, require("module").createRequire)(require("url").pathToFileURL(__filename).href)` in the CJS output, so
+`import.meta.url` is shimmed correctly. Verified by executing both built artifacts: `dist/index.cjs` under
+`require()` and `dist/index.js` under `import`, each resolving a real optional peer and producing
+`ZconfigAdapterError` on a missing one. All five optional peers ship a CJS entry (`smol-toml` via its
+`require` export condition), so none are ESM-only. The DESIGN.md loading strategy stands unchanged.
 
-Resolve via **T1.5.1** before building any adapter. Everything in Epic 3 depends on the answer.
+**R2 — `exports` map cannot precede the files it names.** Discovered during Epic 1. Declaring `./adapters`
+and `./adapters/*` before any adapter exists makes `publint` and `attw` fail every build. Those two entries
+are therefore added in **T3.8.4**, alongside the code they describe, rather than in Story 1.1. The
+`entryPlugin` globs are harmless ahead of time — an unmatched glob is not a build error — so they stayed in
+Story 1.2.
 
 ---
 
@@ -40,46 +46,47 @@ Get the manifest, build, test harness, and shared primitives in place. No featur
 **Acceptance:** a consumer installing the package pulls no format libraries it does not use, and a second copy
 of Zod is impossible.
 
-- [ ] T1.1.1 — Move `zod` to `peerDependencies` as `>=4`, add matching `devDependencies` entry
-- [ ] T1.1.2 — Add `yaml`, `smol-toml`, `jsonc-parser`, `json5`, `dotenv` as `peerDependencies`
-- [ ] T1.1.3 — Add `peerDependenciesMeta` marking all five format libraries `optional: true`
-- [ ] T1.1.4 — Add the same five to `devDependencies` so tests can exercise them
-- [ ] T1.1.5 — Bump `engines.node` from `>=14` to `>=20`
-- [ ] T1.1.6 — Add the `"./adapters"` barrel entry to the `exports` map (subpath `./adapters` does not match
-      the `./adapters/*` pattern, so this is required for `@kcws/zconfig/adapters` to resolve)
-- [ ] T1.1.7 — Run `pnpm install` and confirm the lockfile records the optional peers correctly
+- [x] T1.1.1 — Move `zod` to `peerDependencies` as `>=4`, add matching `devDependencies` entry
+- [x] T1.1.2 — Add `yaml`, `smol-toml`, `jsonc-parser`, `json5`, `dotenv` as `peerDependencies`
+- [x] T1.1.3 — Add `peerDependenciesMeta` marking all five format libraries `optional: true`
+- [x] T1.1.4 — Add the same five to `devDependencies` so tests can exercise them
+- [x] T1.1.5 — Bump `engines.node` from `>=14` to `>=20`
+- [x] T1.1.6 — ~~Add the `"./adapters"` barrel entry to the `exports` map~~ — **moved to T3.8.4**, see R2.
+      The reasoning still holds: subpath `./adapters` does not match the `./adapters/*` pattern, so an
+      explicit barrel entry is required for `@kcws/zconfig/adapters` to resolve
+- [x] T1.1.7 — Run `pnpm install` and confirm the lockfile records the optional peers correctly
 
 ### Story 1.2 — Build configuration
 
 **Acceptance:** every path referenced by the `exports` map exists in `dist/` after `pnpm run build`.
 
-- [ ] T1.2.1 — Fix `entryPlugin` globs in `tsdown.config.ts` to
+- [x] T1.2.1 — Fix `entryPlugin` globs in `tsdown.config.ts` to
       `["./src/index.ts", "./src/adapters/index.ts", "./src/adapters/*/index.ts"]`
-- [ ] T1.2.2 — Build and diff the produced `dist/` tree against the `exports` map paths for `.`, `./adapters`,
-      and each `./adapters/*` subpath, in both `require` and `default` conditions
-- [ ] T1.2.3 — Confirm `publint` and `attw` pass on the built package
+- [x] T1.2.2 — Build and diff the produced `dist/` tree against the `exports` map paths. Only `.` is
+      declared at this point; the adapter subpaths are verified in **T3.8.5** once they exist
+- [x] T1.2.3 — Confirm `publint` and `attw` pass on the built package
 
 ### Story 1.3 — Test harness
 
 **Acceptance:** a test that writes to the filesystem leaves no trace on disk.
 
-- [ ] T1.3.1 — Wire `useMockPlugin({ flags: { fs: true, fsPromises: true } })` into `vitest.config.ts`
-- [ ] T1.3.2 — Add a smoke test that writes via `vol.fromJSON`, reads it back through `node:fs`, and asserts
+- [x] T1.3.1 — Wire `useMockPlugin({ flags: { fs: true, fsPromises: true } })` into `vitest.config.ts`
+- [x] T1.3.2 — Add a smoke test that writes via `vol.fromJSON`, reads it back through `node:fs`, and asserts
       the real working directory is untouched
-- [ ] T1.3.3 — Establish an `afterEach(() => vol.reset())` convention and document it in the test files
+- [x] T1.3.3 — Establish an `afterEach(() => vol.reset())` convention and document it in the test files
 
 ### Story 1.4 — Shared types and errors
 
 **Acceptance:** all three error classes are constructible, carry their documented fields, and survive
 `instanceof` across the sync and async entry points.
 
-- [ ] T1.4.1 — Delete the `multiply` stub in `src/index.ts` and its test file
-- [ ] T1.4.2 — Create `src/utils/types.ts` with `RawConfig`, `TransformInput`, `TransformOutput`,
+- [x] T1.4.1 — Delete the `multiply` stub in `src/index.ts` and its test file
+- [x] T1.4.2 — Create `src/utils/types.ts` with `RawConfig`, `TransformInput`, `TransformOutput`,
       `TransformFn`, `Adapter` (including `readonly name`), and `BaseAdapterOptions`
-- [ ] T1.4.3 — Create `src/utils/errors.ts` with `ZconfigSchemaError` (`key`, `reason`)
-- [ ] T1.4.4 — Add `ZconfigAdapterError` (`adapter`, `cause`)
-- [ ] T1.4.5 — Add `ZconfigValidationError` (`issues: z.core.$ZodIssue[]`, `cause: ZodError`)
-- [ ] T1.4.6 — Set `name` on each class and verify `instanceof` and `Error.captureStackTrace` behaviour under
+- [x] T1.4.3 — Create `src/utils/errors.ts` with `ZconfigSchemaError` (`key`, `reason`)
+- [x] T1.4.4 — Add `ZconfigAdapterError` (`adapter`, `cause`)
+- [x] T1.4.5 — Add `ZconfigValidationError` (`issues: z.core.$ZodIssue[]`, `cause: ZodError`)
+- [x] T1.4.6 — Set `name` on each class and verify `instanceof` and `Error.captureStackTrace` behaviour under
       the built output, not just source
 
 ### Story 1.5 — Lazy library loader
@@ -87,12 +94,13 @@ of Zod is impossible.
 **Acceptance:** an adapter whose format library is absent throws `ZconfigAdapterError` naming both the adapter
 and the package to install, and the library is not resolved until that adapter first runs.
 
-- [ ] T1.5.1 — **Spike (resolves R1):** verify `createRequire(import.meta.url)` resolves in the built
-      `dist/*.cjs` as well as `dist/*.js`. If it fails, stop and revise DESIGN.md's loading strategy before
-      continuing
-- [ ] T1.5.2 — Implement `src/utils/requireLib.ts` wrapping `createRequire` with a module-level cache
-- [ ] T1.5.3 — Map a resolution failure to `ZconfigAdapterError` with an actionable install hint
-- [ ] T1.5.4 — Test the cache-hit path, the missing-module path, and that no library loads at import time
+- [x] T1.5.1 — **Spike (resolves R1):** verify `createRequire(import.meta.url)` resolves in the built
+      `dist/*.cjs` as well as `dist/*.js`. Passed — see R1 above
+- [x] T1.5.2 — Implement `src/utils/requireLib.ts` wrapping `createRequire` with a module-level cache
+- [x] T1.5.3 — Map a resolution failure to `ZconfigAdapterError` with an actionable install hint
+- [x] T1.5.4 — Test the cache-hit path and the missing-module path. Laziness is structurally guaranteed —
+      the resolve call sits inside the function — and is verified end to end in **T4.2.3**, where an
+      environment-only install must work with no format libraries present
 
 ---
 
@@ -254,6 +262,11 @@ Shared discovery, read, and error handling so the four file adapters differ only
 - [ ] T3.8.1 — Create `src/adapters/index.ts` with named re-exports of all five adapters
 - [ ] T3.8.2 — Confirm each adapter directory exports both a default and a named binding
 - [ ] T3.8.3 — Re-export `loadConfig`, `loadConfigSync`, and the three error classes from `src/index.ts`
+- [ ] T3.8.4 — Add the `"./adapters"` and `"./adapters/*"` entries to the `exports` map (deferred from
+      T1.1.6 per R2; `./adapters` needs its own entry because it does not match the `./adapters/*` pattern)
+- [ ] T3.8.5 — Build and diff the produced `dist/` tree against every `exports` map path, for `.`,
+      `./adapters`, and each `./adapters/*` subpath, in both `require` and `default` conditions
+      (deferred from T1.2.2)
 
 ---
 

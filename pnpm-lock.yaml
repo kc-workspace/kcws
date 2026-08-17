@@ -528,12 +528,30 @@ importers:
       '@kcconfigs/vitest':
         specifier: workspace:*
         version: link:../../@kcconfigs/vitest
+      dotenv:
+        specifier: 17.4.2
+        version: 17.4.2
+      json5:
+        specifier: 2.2.3
+        version: 2.2.3
+      jsonc-parser:
+        specifier: 3.3.1
+        version: 3.3.1
+      smol-toml:
+        specifier: 1.8.0
+        version: 1.8.0
       tsdown:
         specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.21)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@types/node@24.13.3)(@vitest/coverage-v8@4.1.10)(@vitest/ui@4.1.10)(vite@8.1.4)
+      yaml:
+        specifier: 2.9.0
+        version: 2.9.0
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
 
 packages:
 
@@ -3093,6 +3111,10 @@ packages:
   domutils@3.2.2:
     resolution: {integrity: sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==}
 
+  dotenv@17.4.2:
+    resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
+    engines: {node: '>=12'}
+
   dts-resolver@3.0.0:
     resolution: {integrity: sha512-1T1f+z+4tl9XD+m+0HBgWoL/nm0bOIffyWaUuUSBlFg/86IWvfx+wjNaO/ybU0AJzG9/Mi5hBUgGV6zCmWEN7Q==}
     engines: {node: ^22.18.0 || >=24.0.0}
@@ -3820,6 +3842,9 @@ packages:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
     hasBin: true
+
+  jsonc-parser@3.3.1:
+    resolution: {integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==}
 
   jsonfile@6.2.1:
     resolution: {integrity: sha512-zwOTdL3rFQ/lRdBnntKVOX6k5cKJwEc1HdilT71BWEu7J41gXIB2MRp+vxduPSwZJPWBxEzv4yH1wYLJGUHX4Q==}
@@ -5060,6 +5085,10 @@ packages:
   smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
+
+  smol-toml@1.8.0:
+    resolution: {integrity: sha512-kCZr2V3ch9i00x8zXRhjUNVcjG9ijES5dDudkXvUVCT5QlJNQWElSJdZqyPemffHoLNUYwOcou0Fy+ojN0uHSQ==}
+    engines: {node: '>= 18'}
 
   socks-proxy-agent@8.0.5:
     resolution: {integrity: sha512-HehCEsotFqbPW9sJ8WVYB6UbmIMv7kUUORIF2Nncq4VQvBfNBLibW9YZR5dlYCSUhwcD628pRllm7n+E+YTzJw==}
@@ -8792,6 +8821,8 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
 
+  dotenv@17.4.2: {}
+
   dts-resolver@3.0.0: {}
 
   dunder-proto@1.0.1:
@@ -9490,6 +9521,8 @@ snapshots:
   json-schema-typed@8.0.2: {}
 
   json5@2.2.3: {}
+
+  jsonc-parser@3.3.1: {}
 
   jsonfile@6.2.1:
     dependencies:
@@ -10762,6 +10795,8 @@ snapshots:
   slug@11.0.1: {}
 
   smart-buffer@4.2.0: {}
+
+  smol-toml@1.8.0: {}
 
   socks-proxy-agent@8.0.5(supports-color@8.1.1):
     dependencies:

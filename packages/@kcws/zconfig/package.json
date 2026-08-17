@@ -21,8 +21,39 @@
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
+		"dotenv": "17.4.2",
+		"json5": "2.2.3",
+		"jsonc-parser": "3.3.1",
+		"smol-toml": "1.8.0",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.10"
+		"vitest": "4.1.10",
+		"yaml": "2.9.0",
+		"zod": "4.4.3"
+	},
+	"peerDependencies": {
+		"dotenv": "^17.0.0",
+		"json5": "^2.2.0",
+		"jsonc-parser": "^3.3.0",
+		"smol-toml": "^1.8.0",
+		"yaml": "^2.8.3",
+		"zod": ">=4"
+	},
+	"peerDependenciesMeta": {
+		"dotenv": {
+			"optional": true
+		},
+		"json5": {
+			"optional": true
+		},
+		"jsonc-parser": {
+			"optional": true
+		},
+		"smol-toml": {
+			"optional": true
+		},
+		"yaml": {
+			"optional": true
+		}
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
@@ -73,7 +104,7 @@
 		"!*.test.*"
 	],
 	"engines": {
-		"node": ">=14"
+		"node": ">=20"
 	},
 	"publishConfig": {
 		"access": "public"
