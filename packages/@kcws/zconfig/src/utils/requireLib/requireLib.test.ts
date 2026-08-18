@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { ZconfigAdapterError } from "./errors";
-import { requireLib } from "./requireLib";
+import { ZconfigAdapterError } from "../errors";
+import requireLib from "./requireLib";
 
 describe("requireLib", () => {
 	test("should resolve an installed optional peer dependency", () => {

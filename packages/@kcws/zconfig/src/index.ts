@@ -1,9 +1,5 @@
 export { loadConfig, loadConfigSync } from "./core";
-export {
-	ZconfigAdapterError,
-	ZconfigSchemaError,
-	ZconfigValidationError,
-} from "./utils/errors";
+
 export type {
 	Adapter,
 	BaseAdapterOptions,
@@ -11,4 +7,10 @@ export type {
 	TransformFn,
 	TransformInput,
 	TransformOutput,
-} from "./utils/types";
+} from "./types";
+
+export {
+	ZconfigAdapterError,
+	ZconfigSchemaError,
+	ZconfigValidationError,
+} from "./utils/errors";

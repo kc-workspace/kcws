@@ -19,30 +19,75 @@ that every key path in a config has exactly one unambiguous environment variable
 
 ## Architecture
 
+### Module conventions
+
+Every unit of behaviour lives in its own directory:
+
+- `index.ts` is the directory's public surface, re-exporting as **named** bindings.
+- Each exported function gets **its own file** with a `export default`.
+- Internal helpers not part of the public surface are grouped into a single `utils.ts` with named exports,
+  rather than one file each.
+- Plain values go in `constants.ts` and local types in `types.ts`, both with named exports. Grouping is
+  deliberate here — the one-file-per-unit rule applies to functions, not to every constant or type alias.
+
+Callers therefore import from the barrel (`import { deepMerge } from "../utils/deepMerge"`), while a
+directory's own files import each other directly.
+
+### Layout
+
 ```text
 src/
+  index.ts              — public entry: loadConfig, loadConfigSync, error classes, shared types
+  types/
+    index.ts            — Adapter, RawConfig, TransformFn and friends
   core/
-    index.ts          — loadConfig, loadConfigSync
-    validateSchema.ts — schema key-name validation (camelCase enforcement)
+    index.ts            — barrel
+    loadConfig.ts       — async entry point
+    loadConfigSync.ts   — sync entry point
   utils/
-    deepMerge.ts      — recursive deep merge utility
-    errors.ts         — ZconfigSchemaError, ZconfigAdapterError, ZconfigValidationError
-    requireLib.ts     — createRequire-based lazy loader for format libraries
-    types.ts          — Adapter, RawConfig, TransformFn shared types
+    validators/
+      index.ts          — barrel: validateSchema, validateConfig
+      validateSchema.ts — camelCase key enforcement across the Zod type graph
+      validateConfig.ts — safeParse of an already merged config
+      utils.ts          — explain, assertKey, defOf, visit
+      constants.ts      — KEY_PATTERN, RUNTIME_KEY, INNER_TYPE_WRAPPERS
+      types.ts          — SchemaLike, SchemaDef (Zod introspection shapes)
+    deepMerge/
+      index.ts          — barrel
+      deepMerge.ts      — recursive deep merge
+      utils.ts          — mergeInto
+    applyTransform/
+      index.ts          — barrel
+      applyTransform.ts — applies an adapter's transform to every leaf
+      utils.ts          — walk, setPath
+    errors/
+      index.ts          — barrel
+      errors.ts         — ZconfigSchemaError, ZconfigAdapterError, ZconfigValidationError
+      asAdapterError.ts — normalises anything an adapter throws
+      utils.ts          — trimConstructorFrame, summarise
+    object/
+      index.ts          — barrel
+      isPlainObject.ts  — narrows to objects safe to recurse into
+      constants.ts      — DANGEROUS_KEYS prototype pollution denylist
+    requireLib/
+      index.ts          — barrel
+      requireLib.ts     — createRequire-based lazy loader for format libraries
   adapters/
     env/
-      index.ts        — envAdapter (default export + named export)
+      index.ts          — envAdapter (default export + named export)
     json/
-      index.ts        — jsonAdapter (default export + named export)
+      index.ts          — jsonAdapter (default export + named export)
     json5/
-      index.ts        — json5Adapter (default export + named export)
+      index.ts          — json5Adapter (default export + named export)
     yaml/
-      index.ts        — yamlAdapter (default export + named export)
+      index.ts          — yamlAdapter (default export + named export)
     toml/
-      index.ts        — tomlAdapter (default export + named export)
-    index.ts          — named re-exports of all adapters
-  index.ts            — re-exports loadConfig, loadConfigSync, error classes
+      index.ts          — tomlAdapter (default export + named export)
+    index.ts            — named re-exports of all adapters
 ```
+
+Only `src/index.ts`, `src/adapters/index.ts`, and `src/adapters/*/index.ts` are build entry points. Everything
+under `utils/` is internal and bundled into whichever entry point reaches it.
 
 ### Data Flow
 
@@ -53,12 +98,15 @@ loadConfig(schema, [adapter1, adapter2, ...])
   → for each adapter: adapter.load() → RawConfig (plain object)
       → failure: throw ZconfigAdapterError
   → deepMerge all RawConfigs in order (later adapters win on conflict)
-  → schema.safeParse(merged)
+  → validateConfig: schema.safeParse(merged)
       → success: return typed config
       → failure: throw ZconfigValidationError
 ```
 
 Schema validation runs first and performs no I/O, so a malformed schema fails fast and cheaply.
+
+Merging stays in `loadConfig` rather than inside `validateConfig`, so the whole pipeline is visible at one
+call site and the validators own validation only.
 
 ---
 
@@ -450,7 +498,9 @@ entry points.
 **Framework:** Vitest
 **Filesystem:** memfs, wired through `useMockPlugin` — no real FS I/O
 
-Filesystem mocking is configured in `vitest.config.ts` via a plugin, not called from inside test bodies:
+Filesystem mocking is configured in `vitest.config.ts` via a plugin, not called from inside test bodies. That
+the plugin actually replaces `node:fs` is `@kcconfigs/vitest`'s contract, covered by that package's own
+tests, so this package does not re-assert it:
 
 ```typescript
 // vitest.config.ts
@@ -473,11 +523,20 @@ afterEach(() => vol.reset());
 
 ### Test file layout
 
+Tests sit beside the file they cover, named after it. A directory's `index.ts` barrel has no test of its own —
+it holds no behaviour.
+
 ```text
 src/
   core/index.test.ts
-  core/validateSchema.test.ts
-  utils/deepMerge.test.ts
+  utils/
+    validators/validateSchema.test.ts
+    validators/validateConfig.test.ts
+    deepMerge/deepMerge.test.ts
+    applyTransform/applyTransform.test.ts
+    errors/errors.test.ts
+    object/isPlainObject.test.ts
+    requireLib/requireLib.test.ts
   adapters/
     env/index.test.ts
     json/index.test.ts
@@ -485,6 +544,9 @@ src/
     yaml/index.test.ts
     toml/index.test.ts
 ```
+
+A directory's `utils.ts` carries no dedicated test file; its helpers are exercised through the exported
+function that owns them, which keeps the tests aimed at the public surface rather than at private structure.
 
 ### Coverage per adapter test file
 

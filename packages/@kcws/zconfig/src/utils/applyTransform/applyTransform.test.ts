@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
+import type { TransformInput } from "../../types";
 import applyTransform from "./applyTransform";
-import type { TransformInput } from "./types";
 
 describe("applyTransform", () => {
 	test("should return the input untouched when no transform is given", () => {

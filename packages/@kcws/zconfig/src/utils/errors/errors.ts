@@ -1,42 +1,5 @@
 import type { core, ZodError } from "zod";
-
-/**
- * Removes the error constructor itself from the reported stack trace, so the
- * top frame is the caller rather than this module. No-op outside V8.
- */
-const trimConstructorFrame = (
-	error: Error,
-	// biome-ignore lint/complexity/noBannedTypes: Error.captureStackTrace expects a bare Function
-	ctor: Function,
-): void => {
-	Error.captureStackTrace?.(error, ctor);
-};
-
-/**
- * Thrown when the supplied schema itself violates the key naming rules.
- *
- * Raised before any adapter runs, so no I/O has occurred when this surfaces.
- * The fix is always to rename the offending schema key.
- *
- * @see {@link https://github.com/kc-workspace/kcws/blob/main/packages/@kcws/zconfig/DESIGN.md | Key Naming Rules}
- */
-export class ZconfigSchemaError extends Error {
-	override readonly name = "ZconfigSchemaError";
-
-	/** Path of the offending key, e.g. `["database", "host_name"]`. */
-	readonly key: string[];
-
-	/** Human readable explanation of the violated rule. */
-	readonly reason: string;
-
-	constructor(key: string[], reason: string) {
-		super(`Invalid schema key "${key.join(".")}": ${reason}`);
-
-		this.key = key;
-		this.reason = reason;
-		trimConstructorFrame(this, ZconfigSchemaError);
-	}
-}
+import { summarise, trimConstructorFrame } from "./utils";
 
 /**
  * Thrown when an adapter fails to produce a configuration object.
@@ -55,6 +18,30 @@ export class ZconfigAdapterError extends Error {
 
 		this.adapter = adapter;
 		trimConstructorFrame(this, ZconfigAdapterError);
+	}
+}
+
+/**
+ * Thrown when the supplied schema itself violates the key naming rules.
+ *
+ * Raised before any adapter runs, so no I/O has occurred when this surfaces.
+ * The fix is always to rename the offending schema key.
+ */
+export class ZconfigSchemaError extends Error {
+	override readonly name = "ZconfigSchemaError";
+
+	/** Path of the offending key, e.g. `["database", "host_name"]`. */
+	readonly key: string[];
+
+	/** Human readable explanation of the violated rule. */
+	readonly reason: string;
+
+	constructor(key: string[], reason: string) {
+		super(`Invalid schema key "${key.join(".")}": ${reason}`);
+
+		this.key = key;
+		this.reason = reason;
+		trimConstructorFrame(this, ZconfigSchemaError);
 	}
 }
 
@@ -81,12 +68,3 @@ export class ZconfigValidationError extends Error {
 		trimConstructorFrame(this, ZconfigValidationError);
 	}
 }
-
-/** Renders a compact `path: message` list for the error message. */
-const summarise = (error: ZodError): string =>
-	error.issues
-		.map((issue) => {
-			const path = issue.path.join(".");
-			return path === "" ? issue.message : `${path}: ${issue.message}`;
-		})
-		.join("; ");

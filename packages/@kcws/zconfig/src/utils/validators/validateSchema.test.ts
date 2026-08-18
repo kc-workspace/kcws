@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { z } from "zod";
-import { ZconfigSchemaError } from "../utils/errors";
+import { ZconfigSchemaError } from "../errors";
 import validateSchema from "./validateSchema";
 
 /** Runs the validator and returns the thrown error, failing if none is thrown. */

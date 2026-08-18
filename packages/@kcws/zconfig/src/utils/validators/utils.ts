@@ -1,59 +1,15 @@
 /** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
 
-import type { ZodType } from "zod";
-import { ZconfigSchemaError } from "../utils/errors";
+import { ZconfigSchemaError } from "../errors";
+import { INNER_TYPE_WRAPPERS, KEY_PATTERN, RUNTIME_KEY } from "./constants";
+import type { SchemaDef, SchemaLike } from "./types";
 
 /**
- * Every schema key must be strict camelCase.
+ * Explains precisely which part of the camelCase rule a key broke.
  *
- * Environment variable names are a flat `[A-Z0-9_]+` namespace, so encoding a
- * nested key path into one needs `__` for path separation and `_` for word
- * separation. That encoding is only unambiguous while keys themselves contain
- * no underscore and never start with an uppercase letter — otherwise
- * `APP_DATABASE_HOST` could decode to either `database.host` or `databaseHost`.
+ * @internal
  */
-const KEY_PATTERN = /^[a-z][a-zA-Z0-9]*$/;
-
-/** Placeholder path segment for values behind a runtime key. */
-const RUNTIME_KEY = "*";
-
-/** Wrappers that hold exactly one child schema under `innerType`. */
-const INNER_TYPE_WRAPPERS: ReadonlySet<string> = new Set([
-	"optional",
-	"nullable",
-	"default",
-	"prefault",
-	"nonoptional",
-	"catch",
-	"readonly",
-	"promise",
-	"success",
-]);
-
-/**
- * Minimal view of Zod's internals.
- *
- * Zod exposes no public traversal API, so this walks `_zod.def` directly. Only
- * the discriminator is typed; each branch casts the fields it needs, which
- * keeps the unavoidable unsafety local to one function.
- */
-interface SchemaLike {
-	_zod?: { def?: SchemaDef };
-}
-
-type SchemaDef = { type?: string } & Record<string, unknown>;
-
-/**
- * Reads a schema's definition, tolerating anything that is not a schema.
- *
- * Callers pass optional slots such as `catchall` and tuple `rest` straight
- * through, so null and undefined must both resolve to "nothing to walk".
- */
-const defOf = (value: unknown): SchemaDef | undefined =>
-	(value as SchemaLike | null | undefined)?._zod?.def;
-
-/** Explains precisely which part of the rule a key broke. */
-const explain = (key: string): string => {
+export const explain = (key: string): string => {
 	if (key.includes("_")) {
 		return 'underscores are not allowed, because "_" separates words inside an environment variable name; use camelCase instead';
 	}
@@ -63,13 +19,43 @@ const explain = (key: string): string => {
 	return "key must contain only letters and digits";
 };
 
-const assertKey = (key: string, path: string[]): void => {
+/**
+ * Reads a schema's definition, tolerating anything that is not a schema.
+ *
+ * Callers pass optional slots such as `catchall` and tuple `rest` straight
+ * through, so null and undefined must both resolve to "nothing to walk".
+ *
+ * @internal
+ */
+export const defOf = (value: unknown): SchemaDef | undefined =>
+	(value as SchemaLike | null | undefined)?._zod?.def;
+
+/**
+ * Throws unless a single schema key satisfies the camelCase rule.
+ *
+ * @throws {ZconfigSchemaError} when the key is not camelCase
+ * @internal
+ */
+export const assertKey = (key: string, path: string[]): void => {
 	if (KEY_PATTERN.test(key)) return;
 
 	throw new ZconfigSchemaError(path, explain(key));
 };
 
-const visit = (schema: unknown, path: string[], seen: Set<unknown>): void => {
+/**
+ * Recursively walks a schema, asserting every reachable key.
+ *
+ * @param schema - node to walk; anything that is not a schema is ignored
+ * @param path - key path leading to this node
+ * @param seen - guard against cycles and repeated subtrees
+ * @throws {ZconfigSchemaError} on the first offending key
+ * @internal
+ */
+export const visit = (
+	schema: unknown,
+	path: string[],
+	seen: Set<unknown>,
+): void => {
 	const def = defOf(schema);
 	if (def === undefined) return;
 
@@ -159,20 +145,3 @@ const visit = (schema: unknown, path: string[], seen: Set<unknown>): void => {
 		}
 	}
 };
-
-/**
- * Asserts that every key reachable in a schema is strict camelCase.
- *
- * Runs before any adapter, so a malformed schema fails without performing I/O.
- * The rule is enforced for all schemas rather than only when `envAdapter` is
- * present — otherwise adding that adapter later would retroactively invalidate
- * a working schema.
- *
- * @throws {ZconfigSchemaError} on the first offending key
- * @internal
- */
-const validateSchema = (schema: ZodType): void => {
-	visit(schema, [], new Set());
-};
-
-export default validateSchema;

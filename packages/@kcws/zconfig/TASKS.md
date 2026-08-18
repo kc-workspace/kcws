@@ -35,6 +35,19 @@ are therefore added in **T3.8.4**, alongside the code they describe, rather than
 `entryPlugin` globs are harmless ahead of time — an unmatched glob is not a build error — so they stayed in
 Story 1.2.
 
+**R3 — module layout settled after Epic 2.** The flat `utils/*.ts` files were restructured into one directory
+per unit before starting Epic 3, so every adapter is written against the final shape rather than being
+migrated later. Conventions are documented in DESIGN.md under Architecture → Module conventions. Net effect
+on the task list:
+
+- `src/utils/types.ts` moved to `src/types/index.ts` — shared types are not a util, and every layer imports
+  them.
+- `core/validateSchema.ts` and the `validate` helper inside `core/index.ts` moved to `src/utils/validators/`.
+  `core/` now holds only the two load entry points, one file each.
+- The former `validate` is now `validateConfig` and no longer merges; `loadConfig` calls
+  `validateConfig(schema, deepMerge(...sources))`, keeping the pipeline visible at the call site.
+- Adapter paths in Epic 3 are unchanged. `src/adapters/<name>/index.ts` already matched the convention.
+
 ---
 
 ## Epic 1 — Package foundation
@@ -68,12 +81,13 @@ of Zod is impossible.
 
 ### Story 1.3 — Test harness
 
-**Acceptance:** a test that writes to the filesystem leaves no trace on disk.
+**Acceptance:** adapter tests can drive the filesystem through `vol` without touching the real disk.
+
+`useMockPlugin` is trusted to mock `node:fs` and `node:fs/promises`; that is `@kcconfigs/vitest`'s
+responsibility and is covered by its own tests, so this package does not re-verify it.
 
 - [x] T1.3.1 — Wire `useMockPlugin({ flags: { fs: true, fsPromises: true } })` into `vitest.config.ts`
-- [x] T1.3.2 — Add a smoke test that writes via `vol.fromJSON`, reads it back through `node:fs`, and asserts
-      the real working directory is untouched
-- [x] T1.3.3 — Establish an `afterEach(() => vol.reset())` convention and document it in the test files
+- [x] T1.3.2 — Establish an `afterEach(() => vol.reset())` convention and document it in the test files
 
 ### Story 1.4 — Shared types and errors
 
@@ -81,9 +95,9 @@ of Zod is impossible.
 `instanceof` across the sync and async entry points.
 
 - [x] T1.4.1 — Delete the `multiply` stub in `src/index.ts` and its test file
-- [x] T1.4.2 — Create `src/utils/types.ts` with `RawConfig`, `TransformInput`, `TransformOutput`,
-      `TransformFn`, `Adapter` (including `readonly name`), and `BaseAdapterOptions`
-- [x] T1.4.3 — Create `src/utils/errors.ts` with `ZconfigSchemaError` (`key`, `reason`)
+- [x] T1.4.2 — Create shared types with `RawConfig`, `TransformInput`, `TransformOutput`, `TransformFn`,
+      `Adapter` (including `readonly name`), and `BaseAdapterOptions`. Now at `src/types/index.ts` — see R3
+- [x] T1.4.3 — Create `src/utils/errors/` with `ZconfigSchemaError` (`key`, `reason`)
 - [x] T1.4.4 — Add `ZconfigAdapterError` (`adapter`, `cause`)
 - [x] T1.4.5 — Add `ZconfigValidationError` (`issues: z.core.$ZodIssue[]`, `cause: ZodError`)
 - [x] T1.4.6 — Set `name` on each class and verify `instanceof` and `Error.captureStackTrace` behaviour under
@@ -96,7 +110,7 @@ and the package to install, and the library is not resolved until that adapter f
 
 - [x] T1.5.1 — **Spike (resolves R1):** verify `createRequire(import.meta.url)` resolves in the built
       `dist/*.cjs` as well as `dist/*.js`. Passed — see R1 above
-- [x] T1.5.2 — Implement `src/utils/requireLib.ts` wrapping `createRequire` with a module-level cache
+- [x] T1.5.2 — Implement `src/utils/requireLib/` wrapping `createRequire` with a module-level cache
 - [x] T1.5.3 — Map a resolution failure to `ZconfigAdapterError` with an actionable install hint
 - [x] T1.5.4 — Test the cache-hit path and the missing-module path. Laziness is structurally guaranteed —
       the resolve call sits inside the function — and is verified end to end in **T4.2.3**, where an
@@ -106,7 +120,8 @@ and the package to install, and the library is not resolved until that adapter f
 
 ## Epic 2 — Core engine
 
-Pure logic, no filesystem and no adapters. Stories 2.1–2.3 are parallel; 2.4 depends on all three.
+Pure logic, no filesystem and no adapters. Stories 2.1–2.3 are parallel; 2.4 depends on all three, and 2.5
+restructures the result before Epic 3 begins.
 
 ### Story 2.1 — `deepMerge`
 
@@ -164,6 +179,33 @@ offending key path, before any I/O occurs.
 - [x] T2.4.6 — Test that a schema key violation throws before any adapter's `load` is called, using a spy
       adapter
 - [x] T2.4.7 — Sync/async parity test over a multi-adapter fixture
+
+### Story 2.5 — Module layout refactor
+
+Settles the file conventions before Epic 3, so five adapters are written against the final shape instead of
+being migrated afterwards. Behaviour-preserving; see R3.
+
+**Acceptance:** every directory follows one-function-per-file with a named-export `index.ts` barrel, and the
+full suite passes unchanged.
+
+- [x] T2.5.1 — Split each flat `utils/*.ts` into a directory: `index.ts` barrel plus one default-exported
+      file per exported function
+- [x] T2.5.2 — Group internal helpers into a per-directory `utils.ts`, plain values into `constants.ts`, and
+      local types into `types.ts`, all with named exports
+- [x] T2.5.3 — Move `src/utils/types.ts` to `src/types/index.ts` and update every importer
+- [x] T2.5.4 — Move `core/validateSchema.ts` to `src/utils/validators/validateSchema.ts`
+- [x] T2.5.5 — Move the `validate` helper out of `core/index.ts` to
+      `src/utils/validators/validateConfig.ts`, taking an already merged config rather than a source list
+- [x] T2.5.6 — Split `core/index.ts` into `loadConfig.ts` and `loadConfigSync.ts` behind a barrel
+- [x] T2.5.7 — Extract `asAdapterError` from `core/index.ts` into `src/utils/errors/`
+- [x] T2.5.8 — Relocate every test beside the file it covers; add a direct `isPlainObject` test, which had
+      only been covered indirectly through `deepMerge`
+- [x] T2.5.9 — Normalise every directory onto the convention: fold `summarise` and `trimConstructorFrame`
+      into `errors/utils.ts`, `mergeInto` into `deepMerge/utils.ts`, `walk` and `setPath` into
+      `applyTransform/utils.ts`, and `dangerousKeys.ts` into `object/constants.ts`
+- [x] T2.5.10 — Drop the standalone `fsMock.test.ts`; mocking `node:fs` is `useMockPlugin`'s contract and is
+      covered by `@kcconfigs/vitest`'s own tests
+- [x] T2.5.11 — Confirm `check`, `test`, and `build` all still pass with coverage unchanged
 
 ---
 
@@ -320,6 +362,9 @@ E1.3 harness ──┴─> E1.4 types ─┘
                         │
                         v
                  E2.4 loadConfig
+                        │
+                        v
+                 E2.5 layout refactor
                         │
         ┌───────────────┴───────────────┐
         v                               v

@@ -1,5 +1,5 @@
 import { createRequire } from "node:module";
-import { ZconfigAdapterError } from "./errors";
+import { ZconfigAdapterError } from "../errors";
 
 /**
  * Resolution is anchored to this package rather than the caller's working
@@ -22,8 +22,9 @@ const cache = new Map<string, unknown>();
  * @param adapter - adapter name, reported on failure
  * @param moduleName - package to resolve, e.g. `"yaml"`
  * @throws {ZconfigAdapterError} when the package cannot be resolved
+ * @internal
  */
-export const requireLib = <T>(adapter: string, moduleName: string): T => {
+const requireLib = <T>(adapter: string, moduleName: string): T => {
 	if (cache.has(moduleName)) return cache.get(moduleName) as T;
 
 	try {
@@ -38,3 +39,5 @@ export const requireLib = <T>(adapter: string, moduleName: string): T => {
 		);
 	}
 };
+
+export default requireLib;

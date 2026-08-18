@@ -1,11 +1,11 @@
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
+import type { Adapter, RawConfig } from "../types";
 import {
 	ZconfigAdapterError,
 	ZconfigSchemaError,
 	ZconfigValidationError,
 } from "../utils/errors";
-import type { Adapter, RawConfig } from "../utils/types";
 import { loadConfig, loadConfigSync } from ".";
 
 /** Adapter returning a fixed payload from both entry points. */
