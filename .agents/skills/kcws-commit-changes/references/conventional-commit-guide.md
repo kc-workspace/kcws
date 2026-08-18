@@ -25,13 +25,23 @@ Write `<subject>` in imperative form and keep it concise.
 
 ## Scope guidance
 
-Use a short scope when it improves clarity.
+Use the narrowest scope that owns the change. In this repository, package
+scopes are detected automatically from `pnpm-workspace.yaml`; write the
+package name without the `@` prefix:
 
-Examples:
+- `feat(kcws/zconfig): add lazy config loading`
+- `fix(kcconfigs/vitest): preserve explicit project roots`
+- `refactor(kctools/bun-react): simplify the build command`
 
-- `feat(charts): add monthly expense trend comparison`
-- `fix(csv): handle quoted commas in parser`
-- `refactor(transactions): simplify category aggregation`
+For changes that affect the whole repository, use one of the configured
+shared scopes: `core`, `config`, `script`, `deps`, or `deps-dev`.
+
+- `build(deps): upgrade Biome`
+- `ci(config): run the docs workflow only for relevant files`
+
+Do not use a directory name or a file name when an owning package scope is
+available. Omit the scope for changes with no single owner, such as a
+repository-wide release or housekeeping change.
 
 ## Splitting heuristics
 

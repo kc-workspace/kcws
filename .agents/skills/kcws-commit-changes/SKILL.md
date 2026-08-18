@@ -1,5 +1,5 @@
 ---
-name: commit-changes
+name: kcws-commit-changes
 description: Create Git commits from local repository changes using Conventional Commits. Use when asked to commit changes, write commit messages, split a diff into multiple commits, or keep each commit scoped to a single functionality.
 ---
 
