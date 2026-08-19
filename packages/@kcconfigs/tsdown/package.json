@@ -4,7 +4,7 @@
 	"description": "Shared tsdown configuration",
 	"type": "module",
 	"scripts": {
-		"build": "tsdown",
+		"build": "tsdown --config-loader unrun",
 		"test": "vitest run",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
