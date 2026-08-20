@@ -1,6 +1,6 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
-import { ZconfigAdapterError } from "../../utils/errors";
+import { ZconfigAdapterError } from "#utils/errors";
 import { jsonAdapter } from ".";
 
 describe("jsonAdapter", () => {
@@ -52,7 +52,9 @@ describe("jsonAdapter", () => {
 	});
 
 	test("throws a typed error when required input is missing", () => {
-		expect(() => jsonAdapter().loadSync()).toThrow(ZconfigAdapterError);
+		expect(() => jsonAdapter({ optional: false }).loadSync()).toThrow(
+			ZconfigAdapterError,
+		);
 	});
 
 	test("applies a leaf transform", () => {

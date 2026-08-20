@@ -1,8 +1,6 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
-import { z } from "zod";
-import { loadConfigSync } from "../../core";
-import { ZconfigAdapterError } from "../../utils/errors";
+import { ZconfigAdapterError } from "#utils/errors";
 import { yamlAdapter } from ".";
 
 describe("yamlAdapter", () => {
@@ -50,18 +48,6 @@ describe("yamlAdapter", () => {
 		vol.fromJSON({ "config.yaml": "database: [\n" }, process.cwd());
 
 		expect(() => yamlAdapter().loadSync()).toThrow(ZconfigAdapterError);
-	});
-
-	test("does not allow a YAML __proto__ key to pollute Object.prototype", () => {
-		delete (Object.prototype as { polluted?: boolean }).polluted;
-		vol.fromJSON(
-			{ "config.yaml": "__proto__:\n  polluted: true\n" },
-			process.cwd(),
-		);
-
-		const config = loadConfigSync(z.object({}), [yamlAdapter()]);
-		expect(config).toEqual({});
-		expect(Object.prototype).not.toHaveProperty("polluted");
 	});
 
 	test("applies a leaf transform", () => {

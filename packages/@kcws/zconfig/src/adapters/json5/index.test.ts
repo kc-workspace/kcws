@@ -1,6 +1,6 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
-import { ZconfigAdapterError } from "../../utils/errors";
+import { ZconfigAdapterError } from "#utils/errors";
 import { json5Adapter } from ".";
 
 describe("json5Adapter", () => {
