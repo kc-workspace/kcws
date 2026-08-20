@@ -19,7 +19,7 @@ import { decodeDotenv } from "./utils";
 const dotenvAdapter = (options: DotenvAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "dotenv",
-		files: [".env"],
+		files: [".env.local", ".env"],
 		parseSync: (content) => decodeDotenv(content, options),
 		...getExtendOptions(options),
 	});
