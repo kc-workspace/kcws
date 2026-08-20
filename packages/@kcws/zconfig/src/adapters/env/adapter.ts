@@ -19,13 +19,13 @@ const envAdapter = (options: Partial<EnvAdapterOptions> = {}): Adapter => ({
 	name: "env",
 	load: async () => {
 		const opts = normalizeOptions(options);
-		const parser = await importAsync<DotenvModule>(envAdapter.name, "dotenv");
+		const parser = await importAsync<DotenvModule>("env", "dotenv");
 		const env = loadEnv(parser, opts);
 		return createConfig(env, opts);
 	},
 	loadSync: () => {
 		const opts = normalizeOptions(options);
-		const parser = importSync<DotenvModule>(envAdapter.name, "dotenv");
+		const parser = importSync<DotenvModule>("env", "dotenv");
 		const env = loadEnv(parser, opts);
 		return createConfig(env, opts);
 	},
