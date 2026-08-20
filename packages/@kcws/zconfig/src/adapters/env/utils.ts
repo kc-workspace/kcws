@@ -1,13 +1,7 @@
-import { resolve } from "node:path";
 import { env as pEnv } from "node:process";
 import type { RawConfig } from "#types";
 import { applyTransform } from "../../utils/transforms";
-import type {
-	DotenvFlag,
-	DotenvModule,
-	EnvAdapterOptions,
-	EnvObject,
-} from "./types";
+import type { EnvAdapterOptions, EnvObject } from "./types";
 
 /**
  * Encodes a camelCase key path into an env name.
@@ -76,8 +70,6 @@ export const normalizeOptions = (
 ): EnvAdapterOptions => {
 	const output: EnvAdapterOptions = {
 		pathSeparator: options.pathSeparator ?? "__",
-		dotenv: options.dotenv ?? true,
-		customEnv: options.customEnv ?? false,
 		processEnv: options.processEnv ?? (pEnv as EnvObject),
 	};
 	if (options.transform) output.transform = options.transform;
@@ -86,79 +78,46 @@ export const normalizeOptions = (
 };
 
 /**
- * Load env from 3 places: custom object, dotenv file, and process.env
- * process.env is always the last source, so it will override any previous values
- * @param mod - the dotenv module
- * @param options - the options for the env adapter
- * @returns an object containing the merged env values
+ * Decodes a flat env object into a nested configuration object, using the
+ * prefix and path separator to decode env names into camelCase key paths.
+ * Shared by {@link envAdapter} and the dotenv adapter so both decode keys
+ * identically.
+ * @param env - the env object to decode
+ * @param prefix - env prefix
+ * @param pathSeparator - separator used in the environment variable name
+ * @returns a config object with the decoded keys
  */
-export const loadEnv = (
-	mod: DotenvModule,
-	{ processEnv, customEnv, dotenv }: EnvAdapterOptions,
-): EnvObject => {
-	const envs: EnvObject = Object.create(null);
-	// Load order: process.env > dotenv file > custom object
-	if (customEnv !== false) {
-		for (const [key, value] of Object.entries(customEnv)) {
-			if (value !== undefined) envs[key] = value;
-		}
+export const decodeEnvObject = (
+	env: EnvObject,
+	prefix: string | undefined,
+	pathSeparator: string,
+): RawConfig => {
+	const config: RawConfig = Object.create(null);
+	for (const [name, value] of Object.entries(env)) {
+		const key = decodeEnvKey(name, prefix, pathSeparator);
+		if (key !== undefined) setPath(config, key, value);
 	}
-	if (dotenv !== false) {
-		const [required, dotenvPath] = getDotenvPath(dotenv);
-		if (dotenvPath) {
-			const result = mod.config({
-				path: dotenvPath,
-				encoding: "utf8",
-				processEnv: envs,
-				override: true,
-				debug: false,
-			});
-			if (required && result.error) throw result.error;
-		}
-	}
-	if (processEnv !== false) {
-		for (const [key, value] of Object.entries(processEnv)) {
-			if (value !== undefined) envs[key] = value;
-		}
-	}
-	return envs;
+	return config;
 };
 
 /**
  * Create a config object from an env object, applying the prefix and path separator
  * to decode the env names into a nested config object. The transform function is
  * applied to each leaf of the config object.
- * @param env - the env object to load the config from
+ * @param env - the env object to load the config from, or `false` for an empty source
  * @param options - the options for the env adapter
  * @returns a config object with the decoded keys and transformed values
  */
 export const createConfig = (
-	env: EnvObject,
+	env: EnvObject | false,
 	options: EnvAdapterOptions,
 ): RawConfig => {
-	const config: RawConfig = Object.create(null);
-	const pathSeparator = options.pathSeparator;
-	for (const [name, value] of Object.entries(env)) {
-		const key = decodeEnvKey(name, options.prefix, pathSeparator);
-		if (key !== undefined) setPath(config, key, value);
-	}
+	const config =
+		env === false
+			? Object.create(null)
+			: decodeEnvObject(env, options.prefix, options.pathSeparator);
 
 	return applyTransform(config, options.transform);
-};
-
-/** Get the path to the dotenv file based on input dotenv option */
-const getDotenvPath = (
-	dotenv: DotenvFlag,
-): [boolean, string | string[] | undefined] => {
-	if (dotenv === false) {
-		return [false, undefined];
-	} else if (dotenv === true || dotenv === undefined) {
-		return [false, resolve(process.cwd(), ".env")];
-	} else if (typeof dotenv === "string") {
-		return [true, resolve(process.cwd(), dotenv)];
-	} else {
-		return [false, dotenv];
-	}
 };
 
 /** Set a value at the specified path in the target object */

@@ -122,10 +122,7 @@ describe("integration", () => {
 		vi.stubEnv("APP_DATABASE__PORT", "6543");
 		vi.stubEnv("APP_DEBUG", "true");
 
-		const adapters = [
-			yamlAdapter(),
-			envAdapter({ prefix: "APP", dotenv: false }),
-		];
+		const adapters = [yamlAdapter(), envAdapter({ prefix: "APP" })];
 		const asyncConfig = await loadConfig(integrationSchema, adapters);
 		const syncConfig = loadConfigSync(integrationSchema, adapters);
 

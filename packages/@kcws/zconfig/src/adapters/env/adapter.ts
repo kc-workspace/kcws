@@ -1,33 +1,27 @@
 import type { Adapter } from "#types";
-import { importAsync, importSync } from "#utils/imports";
-import type { DotenvModule, EnvAdapterOptions } from "./types";
-import { createConfig, loadEnv, normalizeOptions } from "./utils";
+import type { EnvAdapterOptions } from "./types";
+import { createConfig, normalizeOptions } from "./utils";
 
 /**
  * Creates an adapter that reads configuration values from environment
- * variables, an optional dotenv file, and optional custom values.
+ * variables.
  *
- * Values are loaded in this order: `customEnv`, dotenv, then `processEnv`.
- * Later sources override earlier sources. Environment variable names are
- * decoded into nested camelCase keys using `prefix` and `pathSeparator`.
+ * Values are read from `processEnv` (`process.env` by default). Environment
+ * variable names are decoded into nested camelCase keys using `prefix` and
+ * `pathSeparator`.
  *
- * @param options - environment variable sources and key decoding options
+ * @param options - environment variable source and key decoding options
  * @returns adapter suitable for {@link loadConfig} and {@link loadConfigSync}
- * @throws {ZconfigAdapterError} when a required dotenv file cannot be loaded
  */
 const envAdapter = (options: Partial<EnvAdapterOptions> = {}): Adapter => ({
 	name: "env",
 	load: async () => {
 		const opts = normalizeOptions(options);
-		const parser = await importAsync<DotenvModule>("env", "dotenv");
-		const env = loadEnv(parser, opts);
-		return createConfig(env, opts);
+		return createConfig(opts.processEnv, opts);
 	},
 	loadSync: () => {
 		const opts = normalizeOptions(options);
-		const parser = importSync<DotenvModule>("env", "dotenv");
-		const env = loadEnv(parser, opts);
-		return createConfig(env, opts);
+		return createConfig(opts.processEnv, opts);
 	},
 });
 

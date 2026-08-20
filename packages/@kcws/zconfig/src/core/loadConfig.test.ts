@@ -208,7 +208,7 @@ describe("integration", () => {
 		await expect(
 			loadConfig(integrationSchema, [
 				yamlAdapter(),
-				envAdapter({ prefix: "APP", dotenv: false }),
+				envAdapter({ prefix: "APP" }),
 			]),
 		).resolves.toEqual({
 			database: { host: "env.internal", port: 6543 },
@@ -228,7 +228,7 @@ describe("integration", () => {
 		vi.stubEnv("APP_DATABASE__PORT", "6543");
 
 		const envConfig = await loadConfig(integrationSchema, [
-			envAdapter({ prefix: "APP", dotenv: false }),
+			envAdapter({ prefix: "APP" }),
 		]);
 
 		expect(yamlConfig.database.port).toBe(5432);

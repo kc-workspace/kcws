@@ -13,7 +13,7 @@ describe("envAdapter", () => {
 		vi.stubEnv("APP_DATABASE__PORT", "5432");
 		vi.stubEnv("OTHER_VALUE", "ignored");
 
-		const adapter = envAdapter({ prefix: "APP", dotenv: false });
+		const adapter = envAdapter({ prefix: "APP" });
 
 		expect(adapter.name).toBe("env");
 		expect(adapter.loadSync()).toEqual({
@@ -28,7 +28,6 @@ describe("envAdapter", () => {
 			envAdapter({
 				prefix: "APP",
 				pathSeparator: ".",
-				dotenv: false,
 			}).loadSync(),
 		).toEqual({ database: { host: "localhost" } });
 	});
@@ -38,7 +37,6 @@ describe("envAdapter", () => {
 
 		const result = envAdapter({
 			prefix: "APP",
-			dotenv: false,
 			transform: (input) => ({
 				key: input.key[0] === "databaseHost" ? ["database", "host"] : input.key,
 				value: input.value,
@@ -48,37 +46,18 @@ describe("envAdapter", () => {
 		expect(result).toEqual({ database: { host: "localhost" } });
 	});
 
-	test("loads .env by default without overriding process.env", () => {
-		vol.fromJSON(
-			{
-				".env": "APP_DATABASE__HOST=dotenv-host\nAPP_DATABASE__PORT=1111\n",
-			},
-			process.cwd(),
-		);
-		vi.stubEnv("APP_DATABASE__PORT", "2222");
+	test("reads only process environment values", () => {
+		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, process.cwd());
+		vi.stubEnv("APP_DEBUG", "false");
 
 		expect(envAdapter({ prefix: "APP" }).loadSync()).toEqual({
-			database: { host: "dotenv-host", port: "2222" },
+			debug: "false",
 		});
-	});
-
-	test("loads an explicit dotenv path", () => {
-		vol.fromJSON({ "config/.env.test": "APP_DEBUG=true\n" }, process.cwd());
-
-		expect(
-			envAdapter({ prefix: "APP", dotenv: "config/.env.test" }).loadSync(),
-		).toEqual({ debug: "true" });
-	});
-
-	test("skips dotenv when disabled", () => {
-		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, process.cwd());
-
-		expect(envAdapter({ prefix: "APP", dotenv: false }).loadSync()).toEqual({});
 	});
 
 	test("uses the same synchronous implementation for load", async () => {
 		vi.stubEnv("APP_DEBUG", "true");
-		const adapter = envAdapter({ prefix: "APP", dotenv: false });
+		const adapter = envAdapter({ prefix: "APP" });
 
 		expect(await adapter.load()).toEqual(adapter.loadSync());
 	});
