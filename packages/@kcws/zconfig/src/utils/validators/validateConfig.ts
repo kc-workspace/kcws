@@ -1,5 +1,5 @@
 import type { ZodType, z } from "zod";
-import type { RawConfig } from "../../types";
+import type { RawConfig } from "#types";
 import { ZconfigValidationError } from "../errors";
 
 /**

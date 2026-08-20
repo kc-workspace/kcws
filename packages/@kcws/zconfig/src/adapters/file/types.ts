@@ -1,4 +1,4 @@
-import type { BaseAdapterOptions } from "../../types";
+import type { BaseAdapterOptions } from "#types";
 
 /** Options for creating a custom file-backed configuration adapter. */
 export interface FileAdapterOptions extends BaseAdapterOptions {

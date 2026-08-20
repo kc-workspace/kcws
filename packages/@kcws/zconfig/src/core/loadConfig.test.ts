@@ -1,13 +1,13 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
-import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters";
-import type { Adapter, RawConfig } from "../types";
+import type { Adapter, RawConfig } from "#types";
 import {
 	ZconfigAdapterError,
 	ZconfigSchemaError,
 	ZconfigValidationError,
-} from "../utils/errors";
+} from "#utils/errors";
+import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters";
 import { loadConfig } from ".";
 
 /** Adapter returning a fixed payload from both entry points. */

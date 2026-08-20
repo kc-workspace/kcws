@@ -1,4 +1,4 @@
-import type { RawConfig } from "../../types";
+import type { RawConfig } from "#types";
 
 /**
  * Narrows to objects safe to recurse into.

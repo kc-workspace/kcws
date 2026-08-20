@@ -1,9 +1,9 @@
 import type { ZodType, z } from "zod";
-import { DEF_ADAPTERS } from "../constants";
-import type { Adapter, RawConfig } from "../types";
-import { deepMerge } from "../utils/deepMerge";
-import { asAdapterError } from "../utils/errors";
-import { validateConfig, validateSchema } from "../utils/validators";
+import { DEF_ADAPTERS } from "#constants";
+import type { Adapter, RawConfig } from "#types";
+import { deepMerge } from "#utils/deepMerge";
+import { asAdapterError } from "#utils/errors";
+import { validateConfig, validateSchema } from "#utils/validators";
 
 /**
  * Loads configuration from every adapter, merges it, and validates the result.
