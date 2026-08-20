@@ -26,7 +26,7 @@ export interface FileAdapterOptions extends BaseAdapterOptions {
 
 	/**
 	 * Whether a missing configuration file should return an empty object.
-	 * @default false
+	 * @default true
 	 */
 	optional?: boolean;
 

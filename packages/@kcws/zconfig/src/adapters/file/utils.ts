@@ -23,7 +23,7 @@ export const normalizeOptions = (
 	files: options.files,
 	path: options.path,
 	directories: options.directories ?? getConfigDirectories(),
-	optional: options.optional ?? false,
+	optional: options.optional ?? true,
 	transform: options.transform,
 	parseSync: options.parseSync,
 	parse: options.parse ?? toParse(options.parseSync),
