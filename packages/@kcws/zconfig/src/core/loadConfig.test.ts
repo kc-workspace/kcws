@@ -8,7 +8,7 @@ import {
 	ZconfigSchemaError,
 	ZconfigValidationError,
 } from "../utils/errors";
-import { loadConfig, loadConfigSync } from ".";
+import { loadConfig } from ".";
 
 /** Adapter returning a fixed payload from both entry points. */
 const stub = (name: string, value: RawConfig): Adapter => ({
@@ -126,30 +126,6 @@ describe("loadConfig", () => {
 	});
 });
 
-describe("loadConfigSync", () => {
-	test("should validate a single adapter and return the parsed config", () => {
-		expect(loadConfigSync(schema, [stub("json", base)])).toEqual({
-			database: { host: "localhost", port: 5432 },
-			debug: false,
-		});
-	});
-
-	test("should use loadSync rather than load", () => {
-		const adapter = stub("json", base);
-		const load = vi.spyOn(adapter, "load");
-
-		loadConfigSync(schema, [adapter]);
-
-		expect(load).not.toHaveBeenCalled();
-	});
-
-	test("should throw ZconfigValidationError when the merged config is invalid", () => {
-		expect(() => loadConfigSync(schema, [stub("json", {})])).toThrow(
-			ZconfigValidationError,
-		);
-	});
-});
-
 describe("schema validation ordering", () => {
 	const invalidSchema = z.object({ database_host: z.string() });
 
@@ -161,16 +137,6 @@ describe("schema validation ordering", () => {
 			ZconfigSchemaError,
 		);
 		expect(load).not.toHaveBeenCalled();
-	});
-
-	test("should throw ZconfigSchemaError before any adapter runs when sync", () => {
-		const adapter = stub("json", base);
-		const loadSync = vi.spyOn(adapter, "loadSync");
-
-		expect(() => loadConfigSync(invalidSchema, [adapter])).toThrow(
-			ZconfigSchemaError,
-		);
-		expect(loadSync).not.toHaveBeenCalled();
 	});
 });
 
@@ -185,18 +151,6 @@ describe("adapter error handling", () => {
 		expect(error).toBeInstanceOf(ZconfigAdapterError);
 		expect(error.adapter).toBe("yaml");
 		expect(error.cause).toBe(cause);
-	});
-
-	test("should wrap a raw adapter error when sync", () => {
-		const cause = new Error("ENOENT: no such file");
-
-		try {
-			loadConfigSync(schema, [failing("toml", cause)]);
-			expect.unreachable("loadConfigSync should have thrown");
-		} catch (thrown) {
-			expect(thrown).toBeInstanceOf(ZconfigAdapterError);
-			expect((thrown as ZconfigAdapterError).adapter).toBe("toml");
-		}
 	});
 
 	test("should wrap a non-Error thrown value", async () => {
@@ -227,25 +181,6 @@ describe("adapter error handling", () => {
 		);
 
 		expect(load).not.toHaveBeenCalled();
-	});
-});
-
-describe("sync and async parity", () => {
-	test("should produce identical results across a multi adapter fixture", async () => {
-		const adapters = (): Adapter[] => [
-			stub("yaml", { database: { host: "localhost", port: 5432 } }),
-			stub("json", { database: { port: 6543 }, debug: true }),
-			stub("env", { database: { host: "db.internal" } }),
-		];
-
-		const asyncConfig = await loadConfig(schema, adapters());
-		const syncConfig = loadConfigSync(schema, adapters());
-
-		expect(syncConfig).toEqual(asyncConfig);
-		expect(syncConfig).toEqual({
-			database: { host: "db.internal", port: 6543 },
-			debug: true,
-		});
 	});
 });
 
@@ -314,29 +249,6 @@ describe("integration", () => {
 			"database.port",
 		);
 	});
-
-	test("should keep sync and async results equal across YAML and environment", async () => {
-		vol.fromJSON(
-			{ "config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n" },
-			process.cwd(),
-		);
-		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
-		vi.stubEnv("APP_DATABASE__PORT", "6543");
-		vi.stubEnv("APP_DEBUG", "true");
-
-		const adapters = [
-			yamlAdapter(),
-			envAdapter({ prefix: "APP", dotenv: false }),
-		];
-		const asyncConfig = await loadConfig(integrationSchema, adapters);
-		const syncConfig = loadConfigSync(integrationSchema, adapters);
-
-		expect(syncConfig).toEqual(asyncConfig);
-		expect(syncConfig).toEqual({
-			database: { host: "env.internal", port: 6543 },
-			debug: true,
-		});
-	});
 });
 
 describe("types", () => {
@@ -350,14 +262,5 @@ describe("types", () => {
 		// `debug` is optional on input and required on output, so this asserts the
 		// return type follows z.output rather than z.input.
 		expectTypeOf(config.debug).toEqualTypeOf<boolean>();
-	});
-
-	test("should return the schema output type when sync", () => {
-		const config = loadConfigSync(schema, [stub("json", base)]);
-
-		expectTypeOf(config).toEqualTypeOf<{
-			database: { host: string; port: number };
-			debug: boolean;
-		}>();
 	});
 });
