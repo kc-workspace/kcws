@@ -1,4 +1,4 @@
-import type { RawConfig, TransformInput } from "../../types";
+import type { RawConfig, TransformInput } from "#types";
 import { DANGEROUS_KEYS, isPlainObject } from "../object";
 
 /**

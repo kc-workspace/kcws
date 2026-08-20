@@ -6,8 +6,7 @@ import { ZconfigAdapterError } from "../errors";
  * directory, so an optional peer installed alongside `@kcws/zconfig` is found
  * regardless of where the consuming process was started.
  */
-const require_ = createRequire(import.meta.url);
-
+const requireSync = createRequire(import.meta.url);
 const cache = new Map<string, unknown>();
 
 /**
@@ -24,11 +23,11 @@ const cache = new Map<string, unknown>();
  * @throws {ZconfigAdapterError} when the package cannot be resolved
  * @internal
  */
-const requireLib = <T>(adapter: string, moduleName: string): T => {
+const importSync = <T>(adapter: string, moduleName: string): T => {
 	if (cache.has(moduleName)) return cache.get(moduleName) as T;
 
 	try {
-		const loaded = require_(moduleName) as T;
+		const loaded = requireSync(moduleName) as T;
 		cache.set(moduleName, loaded);
 		return loaded;
 	} catch (cause) {
@@ -40,4 +39,4 @@ const requireLib = <T>(adapter: string, moduleName: string): T => {
 	}
 };
 
-export default requireLib;
+export default importSync;

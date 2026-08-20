@@ -1,4 +1,4 @@
-import type { RawConfig, TransformFn } from "../../types";
+import type { RawConfig, TransformFn } from "#types";
 import { setPath, walk } from "./utils";
 
 /**

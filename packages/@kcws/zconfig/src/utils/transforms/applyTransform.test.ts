@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
-import type { TransformInput } from "../../types";
+import type { TransformInput } from "#types";
 import applyTransform from "./applyTransform";
 
 describe("applyTransform", () => {

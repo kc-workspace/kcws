@@ -1,5 +1,5 @@
-import type { RawConfig } from "../../types";
-import { DANGEROUS_KEYS, isPlainObject } from "../object";
+import type { RawConfig } from "#types";
+import { DANGEROUS_KEYS, isPlainObject } from "#utils/object";
 
 /**
  * Folds one source into a merge target, in place.

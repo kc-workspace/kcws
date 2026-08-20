@@ -48,5 +48,6 @@ export interface Adapter {
 
 /** Options every adapter accepts. */
 export interface BaseAdapterOptions {
+	/** Transformation function applied to each leaf of the configuration. */
 	transform?: TransformFn;
 }

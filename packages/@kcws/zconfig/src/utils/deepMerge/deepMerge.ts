@@ -1,4 +1,4 @@
-import type { RawConfig } from "../../types";
+import type { RawConfig } from "#types";
 import { mergeInto } from "./utils";
 
 /**
