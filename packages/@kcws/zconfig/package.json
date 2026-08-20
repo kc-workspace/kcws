@@ -97,7 +97,6 @@
 	},
 	"imports": {
 		"#core": "./src/core/index.ts",
-		"#constants": "./src/constants/index.ts",
 		"#types": "./src/types/index.ts",
 		"#utils/*": "./src/utils/*/index.ts"
 	},

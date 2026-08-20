@@ -1,7 +1,8 @@
 import type { Adapter } from "#types";
 import { importSync } from "#utils/imports";
-import { fileAdapter, getConfigFiles, getExtendOptions } from "../file";
+import { fileAdapter } from "../file";
 import type { TomlAdapterOptions, TomlParserModule } from "./types";
+import { getTomlFiles } from "./utils";
 
 /**
  * Creates an adapter that reads a TOML configuration file.
@@ -17,10 +18,10 @@ import type { TomlAdapterOptions, TomlParserModule } from "./types";
 const tomlAdapter = (options: TomlAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "toml",
-		files: getConfigFiles(["toml"], options.name),
+		files: getTomlFiles(),
 		parseSync: <T>(content: string): T =>
 			importSync<TomlParserModule>("toml", "smol-toml").parse(content) as T,
-		...getExtendOptions(options),
+		...options,
 	});
 
 export default tomlAdapter;

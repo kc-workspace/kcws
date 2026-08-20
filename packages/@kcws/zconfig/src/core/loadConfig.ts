@@ -1,9 +1,9 @@
 import type { ZodType, z } from "zod";
-import { DEF_ADAPTERS } from "#constants";
 import type { Adapter, RawConfig } from "#types";
 import { deepMerge } from "#utils/deepMerge";
 import { asAdapterError } from "#utils/errors";
 import { validateConfig, validateSchema } from "#utils/validators";
+import { useGenericAdapters } from "../adapters";
 
 /**
  * Loads configuration from every adapter, merges it, and validates the result.
@@ -24,7 +24,7 @@ import { validateConfig, validateSchema } from "#utils/validators";
  */
 const loadConfig = async <S extends ZodType>(
 	schema: S,
-	adapters: Adapter[] = DEF_ADAPTERS,
+	adapters: Adapter[] = useGenericAdapters(),
 ): Promise<z.output<S>> => {
 	validateSchema(schema);
 

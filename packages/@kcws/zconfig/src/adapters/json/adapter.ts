@@ -1,7 +1,7 @@
 import type { Adapter } from "#types";
-import { fileAdapter, getConfigFiles, getExtendOptions } from "../file";
+import { fileAdapter } from "../file";
 import type { JsonAdapterOptions } from "./types";
-import { parseJson, parseJsonc } from "./utils";
+import { getJsonFiles, parseJson, parseJsonc } from "./utils";
 
 /**
  * Creates an adapter that reads a JSON or JSONC configuration file.
@@ -17,7 +17,7 @@ import { parseJson, parseJsonc } from "./utils";
 const jsonAdapter = (options: JsonAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "json",
-		files: getConfigFiles(["json", "jsonc"], options.name),
+		files: getJsonFiles(),
 		parseSync: (content, file) => {
 			// Enable jsonc parsing if the file ends with .jsonc
 			if (file.endsWith(".jsonc") || options.jsonc !== false) {
@@ -26,7 +26,7 @@ const jsonAdapter = (options: JsonAdapterOptions = {}): Adapter =>
 				return parseJson(content);
 			}
 		},
-		...getExtendOptions(options),
+		...options,
 	});
 
 export default jsonAdapter;

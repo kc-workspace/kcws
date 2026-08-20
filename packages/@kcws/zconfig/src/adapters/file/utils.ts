@@ -4,11 +4,8 @@ import { resolve } from "node:path";
 import { cwd } from "node:process";
 import type { RawConfig } from "#types";
 import { ZconfigAdapterError } from "#utils/errors";
-import type {
-	ExtendFileAdapterOptions,
-	FileAdapterNormalizedOptions,
-	FileAdapterOptions,
-} from "./types";
+import { getConfigDirs } from "../_internal";
+import type { FileAdapterNormalizedOptions, FileAdapterOptions } from "./types";
 
 /**
  * Normalizes the options for the file adapter, providing default values for missing options.
@@ -22,7 +19,7 @@ export const normalizeOptions = (
 	name: options.name,
 	files: options.files,
 	path: options.path,
-	directories: options.directories ?? getConfigDirectories(),
+	directories: options.directories ?? getConfigDirs(),
 	optional: options.optional ?? true,
 	transform: options.transform,
 	parseSync: options.parseSync,
@@ -77,60 +74,6 @@ export const findConfig = ({
 
 	if (!optional) throw missingFileError(name, possiblePaths);
 	else return undefined;
-};
-
-/**
- * Returns an array of possible configuration file names based on the provided extension and optional name.
- * @param extension - The file extension (e.g., "json", "toml")
- * @param name - Optional name to include in the file names
- * @returns An array of possible configuration file names
- */
-export const getConfigFiles = (
-	extensions: string[],
-	name: string | undefined,
-): string[] => {
-	const files: string[] = [
-		...extensions.map((ext) => `config.${ext}`),
-		...extensions.map((ext) => `.config.${ext}`),
-	];
-
-	if (name) {
-		files.push(
-			...extensions.map((ext) => `${name}.${ext}`),
-			...extensions.map((ext) => `.${name}.${ext}`),
-			...extensions.map((ext) => `${name}/config.${ext}`),
-			...extensions.map((ext) => `.${name}/config.${ext}`),
-			...extensions.map((ext) => `config/${name}.${ext}`),
-			...extensions.map((ext) => `.config/${name}.${ext}`),
-		);
-	}
-
-	return files;
-};
-
-/**
- * Returns the default directories to search for configuration files.
- * @returns An array of default directories
- */
-export const getConfigDirectories = (): string[] => {
-	return [cwd()];
-};
-
-/**
- * Copies shared file-adapter options for a format-specific adapter.
- *
- * The format-specific adapter name is removed because the caller supplies its
- * own stable name to {@link fileAdapter}.
- *
- * @param options - shared file discovery and transformation options
- * @returns copied options without the adapter name
- */
-export const getExtendOptions = (
-	options: ExtendFileAdapterOptions,
-): ExtendFileAdapterOptions => {
-	const output = Object.assign({}, options);
-	if (output.name) delete output.name;
-	return output;
 };
 
 const missingFileError = (name: string, paths: string[]) =>

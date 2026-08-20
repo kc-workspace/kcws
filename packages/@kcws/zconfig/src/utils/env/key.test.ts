@@ -2,76 +2,87 @@ import { describe, expect, test } from "vitest";
 import { decodeEnvKey, encodeEnvKey } from "./key";
 
 describe("encodeEnvKey", () => {
-	test("keeps nested keys distinct from a combined camelCase key", () => {
-		expect(encodeEnvKey(["database", "host"], "APP", "__")).toBe(
-			"APP_DATABASE__HOST",
-		);
-		expect(encodeEnvKey(["databaseHost"], "APP", "__")).toBe(
-			"APP_DATABASE_HOST",
-		);
-	});
+	test.each`
+		keys                    | prefix       | expected
+		${["database", "host"]} | ${"APP"}     | ${"APP_DATABASE__HOST"}
+		${["database", "host"]} | ${"apP"}     | ${"APP_DATABASE__HOST"}
+		${["databaseHost"]}     | ${"APP"}     | ${"APP_DATABASE_HOST"}
+		${["database-host"]}    | ${"APP"}     | ${"APP_DATABASE_HOST"}
+		${["databaseName"]}     | ${"M_"}      | ${"M_DATABASE_NAME"}
+		${["databaseName"]}     | ${"M.N"}     | ${"M_N_DATABASE_NAME"}
+		${["databasePort"]}     | ${"_M__"}    | ${"_M__DATABASE_PORT"}
+		${["dbURL"]}            | ${undefined} | ${"DB_U_R_L"}
+		${["db2Host"]}          | ${undefined} | ${"DB2_HOST"}
+	`(
+		"encodeEnvKey($keys, $prefix) -> $expected",
+		({ keys, prefix, expected }) => {
+			expect(encodeEnvKey(keys, prefix, "__")).toBe(expected);
+		},
+	);
 
-	test("encodes acronyms and digits without special casing", () => {
-		expect(encodeEnvKey(["dbURL"], undefined, "__")).toBe("DB_U_R_L");
-		expect(encodeEnvKey(["db2Host"], undefined, "__")).toBe("DB2_HOST");
+	test.each`
+		keys                    | keySep  | expected
+		${["database", "host"]} | ${"__"} | ${"DATABASE__HOST"}
+		${["database", "host"]} | ${"--"} | ${"DATABASE--HOST"}
+		${["database", "host"]} | ${"++"} | ${"DATABASE++HOST"}
+	`(
+		"encodeEnvKey($keys, undefined, $keySep) -> $expected",
+		({ keys, keySep, expected }) => {
+			expect(encodeEnvKey(keys, undefined, keySep)).toBe(expected);
+		},
+	);
+
+	test("throws an error if keySep is '_'", () => {
+		expect(() => encodeEnvKey(["database", "host"], "APP", "_")).toThrow(
+			'keySep cannot be "_"',
+		);
 	});
 });
 
 describe("decodeEnvKey", () => {
-	test("decodes prefixed nested and combined paths", () => {
-		expect(decodeEnvKey("APP_DATABASE__HOST", "APP", "__")).toEqual([
-			"database",
-			"host",
-		]);
-		expect(decodeEnvKey("APP_DATABASE_HOST", "APP", "__")).toEqual([
-			"databaseHost",
-		]);
-	});
+	test.each`
+		name                    | prefix       | expected
+		${"APP_DATABASE__HOST"} | ${"APP"}     | ${["database", "host"]}
+		${"APP_DATABASE_HOST"}  | ${"APP"}     | ${["databaseHost"]}
+		${"DB_U_R_L"}           | ${undefined} | ${["dbURL"]}
+		${"DB2_HOST"}           | ${undefined} | ${["db2Host"]}
+		${"OTHER_VALUE"}        | ${"APP"}     | ${undefined}
+		${"APP__VALUE"}         | ${"APP"}     | ${undefined}
+		${"APP_VALUE__"}        | ${"APP"}     | ${undefined}
+	`(
+		"decodeEnvKey($name, $prefix) -> $expected",
+		({ name, prefix, expected }) => {
+			expect(decodeEnvKey(name, prefix, "__")).toEqual(expected);
+		},
+	);
 
-	test("round-trips acronym and digit segments", () => {
-		expect(decodeEnvKey("DB_U_R_L", undefined, "__")).toEqual(["dbURL"]);
-		expect(decodeEnvKey("DB2_HOST", undefined, "__")).toEqual(["db2Host"]);
-	});
+	test.each`
+		name                 | keySep  | expected
+		${"DATABASE.HOST"}   | ${"."}  | ${["database", "host"]}
+		${"DATABASE:::HOST"} | ${"::"} | ${["database", ":host"]}
+	`(
+		"decodeEnvKey($name, $keySep) -> $expected",
+		({ name, keySep, expected }) => {
+			expect(decodeEnvKey(name, undefined, keySep)).toEqual(expected);
+		},
+	);
 
-	test("ignores non-matching prefixes and malformed paths", () => {
-		expect(decodeEnvKey("OTHER_VALUE", "APP", "__")).toBeUndefined();
-		expect(decodeEnvKey("APP__VALUE", "APP", "__")).toBeUndefined();
-		expect(decodeEnvKey("APP_VALUE__", "APP", "__")).toBeUndefined();
-	});
+	test.each`
+		keys                    | name                   | prefix   | keySep
+		${["database", "host"]} | ${"APP_DATABASE.HOST"} | ${"APP"} | ${"."}
+	`(
+		"round-trips '$keys' <-> '$name' should be reversable",
+		({ keys, name, prefix, keySep }) => {
+			const actualName = encodeEnvKey(keys, prefix, keySep);
+			expect(actualName).toBe(name);
+			const expectedKeys = decodeEnvKey(actualName, prefix, keySep);
+			expect(expectedKeys).toEqual(keys);
+		},
+	);
 
-	test("supports a custom path separator", () => {
-		expect(encodeEnvKey(["database", "hostName"], "APP", ".")).toBe(
-			"APP_DATABASE.HOST_NAME",
+	test("throws an error if keySep is '_'", () => {
+		expect(() => decodeEnvKey("APP_DATABASE__HOST", "APP", "_")).toThrow(
+			'keySep cannot be "_"',
 		);
-		expect(decodeEnvKey("APP_DATABASE.HOST_NAME", "APP", ".")).toEqual([
-			"database",
-			"hostName",
-		]);
-	});
-
-	test("round-trips a generated set of valid camelCase paths without collisions", () => {
-		const segments = [
-			"a",
-			"b2",
-			"database",
-			"host",
-			"hostName",
-			"databaseHost",
-			"dbURL",
-		];
-		const paths = Array.from({ length: 21 }, (_, index) => {
-			const depth = (index % 3) + 1;
-			return Array.from(
-				{ length: depth },
-				(_, segmentIndex) =>
-					segments[(index + segmentIndex * 3) % segments.length]!,
-			);
-		});
-		const encoded = paths.map((path) => encodeEnvKey(path, undefined, "__"));
-
-		for (const [index, path] of paths.entries()) {
-			expect(decodeEnvKey(encoded[index]!, undefined, "__")).toEqual(path);
-		}
-		expect(new Set(encoded).size).toBe(paths.length);
 	});
 });

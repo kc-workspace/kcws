@@ -1,5 +1,6 @@
 import type { ParseError as JsoncParseError } from "jsonc-parser";
 import { importSync } from "#utils/imports";
+import { getConfigFiles } from "../_internal";
 import type {
 	JsonAdapterNormalizedOptions,
 	JsonAdapterOptions,
@@ -33,4 +34,8 @@ export const parseJsonc = <T>(content: string): T => {
 
 	return parsed;
 };
+
 export const parseJson = <T>(content: string): T => JSON.parse(content);
+
+export const getJsonFiles = (name?: string): string[] =>
+	getConfigFiles(["json", "jsonc"], name);

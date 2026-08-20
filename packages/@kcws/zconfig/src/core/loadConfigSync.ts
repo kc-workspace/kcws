@@ -1,9 +1,9 @@
 import type { ZodType, z } from "zod";
-import { DEF_ADAPTERS } from "#constants";
 import type { Adapter, RawConfig } from "#types";
 import { deepMerge } from "#utils/deepMerge";
 import { asAdapterError } from "#utils/errors";
 import { validateConfig, validateSchema } from "#utils/validators";
+import { useGenericAdapters } from "../adapters";
 
 /**
  * Synchronous counterpart to {@link loadConfig}.
@@ -19,7 +19,7 @@ import { validateConfig, validateSchema } from "#utils/validators";
  */
 const loadConfigSync = <S extends ZodType>(
 	schema: S,
-	adapters: Adapter[] = DEF_ADAPTERS,
+	adapters: Adapter[] = useGenericAdapters(),
 ): z.output<S> => {
 	validateSchema(schema);
 

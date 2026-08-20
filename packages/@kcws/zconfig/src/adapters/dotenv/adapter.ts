@@ -1,7 +1,7 @@
 import type { Adapter } from "#types";
-import { fileAdapter, getExtendOptions } from "../file";
+import { fileAdapter } from "../file";
 import type { DotenvAdapterOptions } from "./types";
-import { decodeDotenv } from "./utils";
+import { decodeDotenv, getDotenvFiles } from "./utils";
 
 /**
  * Creates an adapter that reads configuration values from a dotenv-style
@@ -19,9 +19,9 @@ import { decodeDotenv } from "./utils";
 const dotenvAdapter = (options: DotenvAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "dotenv",
-		files: [".env.local", ".env"],
+		files: getDotenvFiles(),
 		parseSync: (content) => decodeDotenv(content, options),
-		...getExtendOptions(options),
+		...options,
 	});
 
 export default dotenvAdapter;

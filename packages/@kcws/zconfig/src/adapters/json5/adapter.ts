@@ -1,7 +1,8 @@
 import type { Adapter } from "#types";
 import { importSync } from "#utils/imports";
-import { fileAdapter, getConfigFiles, getExtendOptions } from "../file";
+import { fileAdapter } from "../file";
 import type { Json5AdapterOptions, Json5ParserModule } from "./types";
+import { getJson5Files } from "./utils";
 
 /**
  * Creates an adapter that reads a JSON5 configuration file.
@@ -17,10 +18,10 @@ import type { Json5AdapterOptions, Json5ParserModule } from "./types";
 const json5Adapter = (options: Json5AdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "json5",
-		files: getConfigFiles(["json5"], options.name),
+		files: getJson5Files(),
 		parseSync: (content) =>
 			importSync<Json5ParserModule>("json5", "json5").parse(content),
-		...getExtendOptions(options),
+		...options,
 	});
 
 export default json5Adapter;

@@ -3,3 +3,5 @@ export type {
 	Json5AdapterNormalizedOptions,
 	Json5AdapterOptions,
 } from "./types";
+
+export { getJson5Files } from "./utils";

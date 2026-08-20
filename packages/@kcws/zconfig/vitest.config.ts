@@ -1,6 +1,14 @@
 import { defineProjectConfig } from "@kcconfigs/vitest";
-import { useMockPlugin } from "@kcconfigs/vitest/plugins";
+import {
+	debugPlugin,
+	overridePlugin,
+	useMockPlugin,
+} from "@kcconfigs/vitest/plugins";
 
 export default defineProjectConfig(
+	overridePlugin({
+		printConsoleTrace: true,
+	}),
+	debugPlugin(),
 	useMockPlugin({ flags: { fs: true, fsPromises: true } }),
 );

@@ -27,3 +27,19 @@ export const decodeDotenv = <T>(
 		options.pathSeparator ?? "__",
 	) as T;
 };
+
+export const getDotenvFiles = (name?: string): string[] => {
+	const files = [];
+	if (name) {
+		files.push(
+			`.${name}/.env.local`,
+			`${name}/.env.local`,
+			`.env.${name}.local`,
+			`.${name}/.env`,
+			`${name}/.env`,
+			`.env.${name}`,
+		);
+	}
+	files.push(".env.local", ".env");
+	return files;
+};

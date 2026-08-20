@@ -5,9 +5,3 @@ export type {
 	FileAdapterOptions,
 	NormalizeFileAdapterOptions,
 } from "./types";
-
-export {
-	getConfigDirectories,
-	getConfigFiles,
-	getExtendOptions,
-} from "./utils";
