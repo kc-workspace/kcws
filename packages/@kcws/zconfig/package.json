@@ -69,6 +69,30 @@
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
 			}
+		},
+		"./adapters": {
+			"source": "./src/adapters/index.ts",
+			"typedoc": "./src/adapters/index.ts",
+			"require": {
+				"types": "./dist/adapters/index.d.cts",
+				"default": "./dist/adapters/index.cjs"
+			},
+			"default": {
+				"types": "./dist/adapters/index.d.ts",
+				"default": "./dist/adapters/index.js"
+			}
+		},
+		"./adapters/*": {
+			"source": "./src/adapters/*/index.ts",
+			"typedoc": "./src/adapters/*/index.ts",
+			"require": {
+				"types": "./dist/adapters/*/index.d.cts",
+				"default": "./dist/adapters/*/index.cjs"
+			},
+			"default": {
+				"types": "./dist/adapters/*/index.d.ts",
+				"default": "./dist/adapters/*/index.js"
+			}
 		}
 	},
 	"imports": {

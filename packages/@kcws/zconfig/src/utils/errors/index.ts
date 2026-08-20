@@ -4,3 +4,4 @@ export {
 	ZconfigSchemaError,
 	ZconfigValidationError,
 } from "./errors";
+export { default as toAdapterError } from "./toAdapterError";
