@@ -1,7 +1,7 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
-import { envAdapter, yamlAdapter } from "../adapters";
+import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters";
 import type { Adapter, RawConfig } from "../types";
 import {
 	ZconfigAdapterError,
@@ -198,6 +198,8 @@ describe("integration", () => {
 			{
 				"config.yaml":
 					"database:\n  host: yaml.internal\n  port: 5432\ndebug: true\n",
+				".env":
+					"APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\nAPP_DEBUG=true\n",
 			},
 			process.cwd(),
 		);
@@ -208,6 +210,7 @@ describe("integration", () => {
 		await expect(
 			loadConfig(integrationSchema, [
 				yamlAdapter(),
+				dotenvAdapter({ prefix: "APP" }),
 				envAdapter({ prefix: "APP" }),
 			]),
 		).resolves.toEqual({

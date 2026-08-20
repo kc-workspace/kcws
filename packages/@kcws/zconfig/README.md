@@ -19,7 +19,11 @@ pnpm add dotenv yaml jsonc-parser json5 smol-toml
 ```typescript
 import { z } from "zod";
 import { loadConfig } from "@kcws/zconfig";
-import { envAdapter, yamlAdapter } from "@kcws/zconfig/adapters";
+import {
+	dotenvAdapter,
+	envAdapter,
+	yamlAdapter,
+} from "@kcws/zconfig/adapters";
 
 const schema = z.object({
 	database: z.object({
@@ -31,6 +35,7 @@ const schema = z.object({
 
 const config = await loadConfig(schema, [
 	yamlAdapter({ path: "./config.yaml", optional: true }),
+	dotenvAdapter({ path: "./.env", optional: true, prefix: "APP" }),
 	envAdapter({ prefix: "APP" }),
 ]);
 ```
@@ -50,17 +55,19 @@ APP_DEBUG=true
 ```typescript
 import { loadConfig, loadConfigSync } from "@kcws/zconfig";
 import {
+	dotenvAdapter,
 	envAdapter,
 	jsonAdapter,
 	json5Adapter,
+	staticAdapter,
 	tomlAdapter,
 	yamlAdapter,
 } from "@kcws/zconfig/adapters";
 import jsonAdapter from "@kcws/zconfig/adapters/json";
 ```
 
-The package exports `envAdapter`, `jsonAdapter`, `json5Adapter`, `yamlAdapter`, and `tomlAdapter`. Each file
-adapter supports discovery, an explicit `path`, `optional: true`, and a leaf `transform`.
+The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `jsonAdapter`, `json5Adapter`, `yamlAdapter`,
+and `tomlAdapter`. File adapters support discovery, an explicit `path`, `optional: true`, and a leaf `transform`.
 
 ## Schema keys
 
@@ -90,8 +97,10 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 
 ## Adapters
 
-- `envAdapter` reads `process.env`, optional custom values, and optional dotenv files. Process values override
-  dotenv and custom values.
+- `envAdapter` reads `process.env` or a supplied environment object.
+- `dotenvAdapter` reads dotenv-style files such as `.env` and decodes their keys using the same options as
+	`envAdapter`.
+- `staticAdapter` returns an already available raw configuration object and can apply a leaf `transform`.
 - `jsonAdapter` reads JSONC by default for `.json` and always uses JSONC for `.jsonc`.
 - `json5Adapter` reads JSON5 files.
 - `yamlAdapter` reads `.yaml` and `.yml` files.

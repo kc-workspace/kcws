@@ -1,7 +1,7 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
-import { envAdapter, yamlAdapter } from "../adapters";
+import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters";
 import type { Adapter, RawConfig } from "../types";
 import {
 	ZconfigAdapterError,
@@ -115,14 +115,21 @@ describe("integration", () => {
 
 	test("should keep sync and async results equal across YAML and environment", async () => {
 		vol.fromJSON(
-			{ "config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n" },
+			{
+				"config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n",
+				".env": "APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\n",
+			},
 			process.cwd(),
 		);
 		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
 		vi.stubEnv("APP_DATABASE__PORT", "6543");
 		vi.stubEnv("APP_DEBUG", "true");
 
-		const adapters = [yamlAdapter(), envAdapter({ prefix: "APP" })];
+		const adapters = [
+			yamlAdapter(),
+			dotenvAdapter({ prefix: "APP" }),
+			envAdapter({ prefix: "APP" }),
+		];
 		const asyncConfig = await loadConfig(integrationSchema, adapters);
 		const syncConfig = loadConfigSync(integrationSchema, adapters);
 

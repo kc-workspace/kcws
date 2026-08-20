@@ -13,8 +13,8 @@ import { validateConfig, validateSchema } from "../utils/validators";
  * the filesystem or the environment.
  *
  * Adapters run sequentially rather than concurrently. Order is observable —
- * `envAdapter` may populate `process.env` from a `.env` file — so overlapping
- * them would make the outcome depend on scheduling.
+ * `dotenvAdapter` and `envAdapter` may read overlapping values — so
+ * overlapping them would make the outcome depend on scheduling.
  *
  * @param schema - schema describing the expected configuration
  * @param adapters - ordered sources, later entries overriding earlier ones
