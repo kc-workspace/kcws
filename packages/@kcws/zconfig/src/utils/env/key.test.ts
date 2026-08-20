@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { decodeEnvKey, encodeEnvKey } from "./utils";
+import { decodeEnvKey, encodeEnvKey } from "./key";
 
 describe("encodeEnvKey", () => {
 	test("keeps nested keys distinct from a combined camelCase key", () => {

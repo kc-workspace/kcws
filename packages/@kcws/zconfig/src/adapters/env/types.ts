@@ -1,7 +1,4 @@
-import type { BaseAdapterOptions } from "#types";
-
-/** Environment variables available to the environment adapter. */
-export type EnvObject = Record<string, string>;
+import type { BaseAdapterOptions, EnvObject } from "#types";
 
 /** Options for {@link envAdapter}. */
 export interface EnvAdapterOptions extends BaseAdapterOptions {

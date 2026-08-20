@@ -1,6 +1,6 @@
+import type { EnvObject } from "#types";
+import { decodeEnvObject } from "#utils/env";
 import { importSync } from "#utils/imports";
-import type { EnvObject } from "../env/types";
-import { decodeEnvObject } from "../env/utils";
 import type { DotenvAdapterOptions, DotenvModule } from "./types";
 
 /**

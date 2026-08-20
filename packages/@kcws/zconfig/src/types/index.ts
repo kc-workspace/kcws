@@ -6,6 +6,9 @@
  */
 export type RawConfig = Record<string, unknown>;
 
+/** Environment variables available to environment-based adapters. */
+export type EnvObject = Record<string, string>;
+
 /** A single leaf value visited during a {@link TransformFn} walk. */
 export interface TransformInput {
 	/** Full path to the value, e.g. `["database", "host"]`. */

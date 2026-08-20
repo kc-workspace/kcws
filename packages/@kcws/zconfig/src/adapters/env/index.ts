@@ -1,2 +1,3 @@
+export type { EnvObject } from "#types";
 export { default as envAdapter } from "./adapter";
-export type { EnvAdapterOptions, EnvObject } from "./types";
+export type { EnvAdapterOptions } from "./types";
