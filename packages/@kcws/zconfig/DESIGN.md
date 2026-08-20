@@ -1,8 +1,8 @@
 # @kcws/zconfig Design Spec
 
-**Date:** 2026-08-17
+**Date:** 2026-08-20
 **Package:** `@kcws/zconfig`
-**Status:** Approved
+**Status:** Implemented through adapter exports; integration and release verification remain
 
 ---
 
@@ -56,10 +56,14 @@ src/
       index.ts          — barrel
       deepMerge.ts      — recursive deep merge
       utils.ts          — mergeInto
-    applyTransform/
+    transforms/
       index.ts          — barrel
       applyTransform.ts — applies an adapter's transform to every leaf
       utils.ts          — walk, setPath
+    imports/
+      index.ts          — barrel
+      importAsync.ts    — lazy ESM import for optional dependencies
+      importSync.ts     — cached createRequire loader for optional dependencies
     errors/
       index.ts          — barrel
       errors.ts         — ZconfigSchemaError, ZconfigAdapterError, ZconfigValidationError
@@ -69,20 +73,21 @@ src/
       index.ts          — barrel
       isPlainObject.ts  — narrows to objects safe to recurse into
       constants.ts      — DANGEROUS_KEYS prototype pollution denylist
-    requireLib/
-      index.ts          — barrel
-      requireLib.ts     — createRequire-based lazy loader for format libraries
   adapters/
+    file/
+      adapter.ts        — shared file loading, discovery, parsing, and errors
+      index.ts          — file adapter barrel
+      types.ts          — common file adapter options
+      utils.ts          — path lookup and read helpers
     env/
-      index.ts          — envAdapter (default export + named export)
-    json/
-      index.ts          — jsonAdapter (default export + named export)
-    json5/
-      index.ts          — json5Adapter (default export + named export)
-    yaml/
-      index.ts          — yamlAdapter (default export + named export)
-    toml/
-      index.ts          — tomlAdapter (default export + named export)
+      adapter.ts        — environment and dotenv adapter
+      index.ts          — env adapter barrel
+      types.ts          — environment adapter options
+      utils.ts          — env codec and nested config construction
+    json/               — JSON and JSONC adapter
+    json5/              — JSON5 adapter
+    yaml/               — YAML adapter
+    toml/               — TOML adapter
     index.ts            — named re-exports of all adapters
 ```
 
@@ -95,7 +100,7 @@ under `utils/` is internal and bundled into whichever entry point reaches it.
 loadConfig(schema, [adapter1, adapter2, ...])
   → validate schema key names (camelCase only)
       → failure: throw ZconfigSchemaError (before any I/O)
-  → for each adapter: adapter.load() → RawConfig (plain object)
+  → for each adapter sequentially: adapter.load() → RawConfig (plain object)
       → failure: throw ZconfigAdapterError
   → deepMerge all RawConfigs in order (later adapters win on conflict)
   → validateConfig: schema.safeParse(merged)
@@ -103,7 +108,9 @@ loadConfig(schema, [adapter1, adapter2, ...])
       → failure: throw ZconfigValidationError
 ```
 
-Schema validation runs first and performs no I/O, so a malformed schema fails fast and cheaply.
+Schema validation runs first and performs no I/O, so a malformed schema fails fast and cheaply. Adapters are
+loaded sequentially because `envAdapter` may populate an intermediate environment from a dotenv file and
+later adapters must observe the resulting order.
 
 Merging stays in `loadConfig` rather than inside `validateConfig`, so the whole pipeline is visible at one
 call site and the validators own validation only.
@@ -219,12 +226,19 @@ Reads from `process.env` and optionally loads a `.env` file first.
 envAdapter(options?: BaseAdapterOptions & {
   prefix?: string;          // e.g. "APP" → strips APP_ before decoding
   pathSeparator?: string;   // default "__", splits the name into key-path segments
-  dotenv?: boolean | string;
+  dotenv?: boolean | string | string[];
   // default: true = auto-discover .env in cwd
   // false = skip .env file entirely
-  // string = explicit path to .env file
+  // string = required explicit path to .env file
+  // string[] = dotenv search paths
+  customEnv?: Record<string, string> | false;
+  processEnv?: Record<string, string> | false;
 }): Adapter
 ```
+
+`customEnv` is loaded first, dotenv values are loaded second, and `processEnv` is loaded last, so actual
+process values override both earlier sources. `processEnv` defaults to `process.env`; `customEnv` defaults to
+`false`. The adapter resolves `dotenv` only when it runs.
 
 #### Encoding — key path to variable name
 
@@ -265,6 +279,21 @@ or accept a delimited string in the schema:
 z.string().transform((s) => s.split(','))
 ```
 
+### File adapters
+
+The JSON, JSON5, YAML, and TOML adapters share the file adapter base. All file paths are resolved relative to
+the current working directory unless a custom `directories` list is supplied. An explicit `path` bypasses
+discovery. By default a missing file is an error; `optional: true` returns `{}` instead.
+
+The default candidate list is generated from the adapter extensions in this order:
+
+1. `config.<ext>` and `.config.<ext>`
+2. `<name>.<ext>` and `.<name>.<ext>` when `name` is provided
+3. `<name>/config.<ext>` and `.<name>/config.<ext>` when `name` is provided
+4. `config/<name>.<ext>` and `.config/<name>.<ext>` when `name` is provided
+
+The default search directory is `process.cwd()`. A custom `directories` list is searched in its given order.
+
 ### `jsonAdapter`
 
 Loads a JSON or JSONC file.
@@ -274,11 +303,12 @@ jsonAdapter(options?: BaseAdapterOptions & {
   name?: string;       // base filename, default "config"
   path?: string;       // explicit file path; if omitted, auto-discovers
   optional?: boolean;  // default false; true = missing file returns {}
-  jsonc?: boolean;     // default true = allow comments via jsonc-parser; false = strict JSON.parse
+  jsonc?: boolean;     // default true for .json; .jsonc always uses jsonc-parser
 }): Adapter
 ```
 
-**Auto-discovery order (cwd only, no upward walk):** `<name>.json`, `.<name>rc.json`, `config/<name>.json`
+The adapter searches `.json` and `.jsonc` files. With `jsonc: false`, `.json` files use `JSON.parse`; `.jsonc`
+files always use `jsonc-parser`. JSONC diagnostics are surfaced as adapter errors.
 
 ### `json5Adapter`
 
@@ -292,7 +322,7 @@ json5Adapter(options?: BaseAdapterOptions & {
 }): Adapter
 ```
 
-**Auto-discovery order (cwd only):** `<name>.json5`, `.<name>rc.json5`, `config/<name>.json5`
+It searches `.json5` files and loads `json5` only when the adapter runs.
 
 ### `yamlAdapter`
 
@@ -306,8 +336,7 @@ yamlAdapter(options?: BaseAdapterOptions & {
 }): Adapter
 ```
 
-**Auto-discovery order (cwd only):** `<name>.yaml`, `<name>.yml`, `.<name>rc.yaml`, `.<name>rc.yml`,
-`config/<name>.yaml`
+It searches `.yaml` and `.yml` files and loads `yaml` only when the adapter runs.
 
 ### `tomlAdapter`
 
@@ -321,7 +350,7 @@ tomlAdapter(options?: BaseAdapterOptions & {
 }): Adapter
 ```
 
-**Auto-discovery order (cwd only):** `<name>.toml`, `.<name>rc.toml`, `config/<name>.toml`
+It searches `.toml` files and loads `smol-toml` only when the adapter runs.
 
 ### Discovery and `optional`
 
@@ -481,10 +510,9 @@ them as optional peers keeps the install lean and makes the "missing format libr
 
 ### Loading strategy
 
-Format libraries are resolved lazily, at the moment the owning adapter first runs, via
-`createRequire(import.meta.url)`. A dynamic `import()` cannot be used because `loadConfigSync` is synchronous
-and `await` is unavailable there; `createRequire` gives one code path that serves both the sync and async
-entry points.
+Optional format libraries are resolved lazily, at the moment the owning adapter first runs. Synchronous
+adapters use a cached `createRequire(import.meta.url)` loader; asynchronous environment loading uses dynamic
+`import()`. File parsers are synchronous internally and are wrapped by the file adapter's async read path.
 
 > **Build note:** the CJS output must have a working `import.meta.url` shim for `createRequire` to resolve.
 > Verify this in the built `dist/*.cjs` before release.
@@ -533,12 +561,14 @@ src/
     validators/validateSchema.test.ts
     validators/validateConfig.test.ts
     deepMerge/deepMerge.test.ts
-    applyTransform/applyTransform.test.ts
+    transforms/applyTransform.test.ts
     errors/errors.test.ts
     object/isPlainObject.test.ts
-    requireLib/requireLib.test.ts
+    imports/importAsync.test.ts
+    imports/importSync.test.ts
   adapters/
     env/index.test.ts
+    env/utils.test.ts
     json/index.test.ts
     json5/index.test.ts
     yaml/index.test.ts

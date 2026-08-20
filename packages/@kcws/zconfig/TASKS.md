@@ -1,8 +1,8 @@
 # @kcws/zconfig Implementation Tasks
 
-**Date:** 2026-08-17
+**Date:** 2026-08-20
 **Spec:** [DESIGN.md](./DESIGN.md)
-**Status:** Epics 1–2 complete
+**Status:** Epics 1–3 implemented; package type-check and Epic 4 remain
 
 Work breakdown for implementing the approved design. Epics are ordered by dependency; stories within an epic
 are ordered unless marked parallel.
@@ -27,7 +27,8 @@ are ordered unless marked parallel.
 `import.meta.url` is shimmed correctly. Verified by executing both built artifacts: `dist/index.cjs` under
 `require()` and `dist/index.js` under `import`, each resolving a real optional peer and producing
 `ZconfigAdapterError` on a missing one. All five optional peers ship a CJS entry (`smol-toml` via its
-`require` export condition), so none are ESM-only. The DESIGN.md loading strategy stands unchanged.
+`require` export condition), so none are ESM-only. The current `importSync` and `importAsync` strategy is
+documented in DESIGN.md.
 
 **R2 — `exports` map cannot precede the files it names.** Discovered during Epic 1. Declaring `./adapters`
 and `./adapters/*` before any adapter exists makes `publint` and `attw` fail every build. Those two entries
@@ -46,7 +47,7 @@ on the task list:
   `core/` now holds only the two load entry points, one file each.
 - The former `validate` is now `validateConfig` and no longer merges; `loadConfig` calls
   `validateConfig(schema, deepMerge(...sources))`, keeping the pipeline visible at the call site.
-- Adapter paths in Epic 3 are unchanged. `src/adapters/<name>/index.ts` already matched the convention.
+- Adapter paths in Epic 3 now include the shared `src/adapters/file/` base and the environment codec helpers.
 
 ---
 
@@ -103,18 +104,19 @@ responsibility and is covered by its own tests, so this package does not re-veri
 - [x] T1.4.6 — Set `name` on each class and verify `instanceof` and `Error.captureStackTrace` behaviour under
       the built output, not just source
 
-### Story 1.5 — Lazy library loader
+### Story 1.5 — Lazy library imports
 
 **Acceptance:** an adapter whose format library is absent throws `ZconfigAdapterError` naming both the adapter
 and the package to install, and the library is not resolved until that adapter first runs.
 
 - [x] T1.5.1 — **Spike (resolves R1):** verify `createRequire(import.meta.url)` resolves in the built
       `dist/*.cjs` as well as `dist/*.js`. Passed — see R1 above
-- [x] T1.5.2 — Implement `src/utils/requireLib/` wrapping `createRequire` with a module-level cache
+- [x] T1.5.2 — Implement `src/utils/imports/` with cached synchronous `createRequire` loading and asynchronous
+      dynamic imports
 - [x] T1.5.3 — Map a resolution failure to `ZconfigAdapterError` with an actionable install hint
 - [x] T1.5.4 — Test the cache-hit path and the missing-module path. Laziness is structurally guaranteed —
       the resolve call sits inside the function — and is verified end to end in **T4.2.3**, where an
-      environment-only install must work with no format libraries present
+      environment-only install must work without file-format libraries
 
 ---
 
@@ -202,10 +204,11 @@ full suite passes unchanged.
       only been covered indirectly through `deepMerge`
 - [x] T2.5.9 — Normalise every directory onto the convention: fold `summarise` and `trimConstructorFrame`
       into `errors/utils.ts`, `mergeInto` into `deepMerge/utils.ts`, `walk` and `setPath` into
-      `applyTransform/utils.ts`, and `dangerousKeys.ts` into `object/constants.ts`
+      `transforms/utils.ts`, and `dangerousKeys.ts` into `object/constants.ts`
 - [x] T2.5.10 — Drop the standalone `fsMock.test.ts`; mocking `node:fs` is `useMockPlugin`'s contract and is
       covered by `@kcconfigs/vitest`'s own tests
-- [x] T2.5.11 — Confirm `check`, `test`, and `build` all still pass with coverage unchanged
+- [ ] T2.5.11 — Reconfirm `check`, `test`, and `build` after the adapter changes; the current TOML adapter
+      type-check error still blocks the package `check` command
 
 ---
 
@@ -221,34 +224,34 @@ into an adapter.
 **Acceptance:** encode and decode round-trip for every valid camelCase key path, and `database.host` never
 collides with `databaseHost`.
 
-- [ ] T3.1.1 — Implement encode: camelCase segments to `SCREAMING_SNAKE`, joined by `pathSeparator`, prefixed
-- [ ] T3.1.2 — Implement decode: strip prefix, split on `pathSeparator`, lowercase then snake-to-camel each
+- [x] T3.1.1 — Implement encode: camelCase segments to `SCREAMING_SNAKE`, joined by `pathSeparator`, prefixed
+- [x] T3.1.2 — Implement decode: strip prefix, split on `pathSeparator`, lowercase then snake-to-camel each
       segment
-- [ ] T3.1.3 — Insert `_` before every uppercase letter with no acronym special-casing; add a comment
+- [x] T3.1.3 — Insert `_` before every uppercase letter with no acronym special-casing; add a comment
       recording that acronym-aware encoding would break injectivity
-- [ ] T3.1.4 — Handle digits: they attach to the preceding segment (`db2Host` ↔ `DB2_HOST`)
-- [ ] T3.1.5 — Reject malformed names (empty segment, leading or trailing separator) by ignoring the variable
-- [ ] T3.1.6 — Round-trip test the spec's table: `database.host`, `databaseHost`, `database.hostName`, `a.b.c`
-- [ ] T3.1.7 — Property test: for a generated set of valid camelCase key paths, `decode(encode(p)) === p` and
+- [x] T3.1.4 — Handle digits: they attach to the preceding segment (`db2Host` ↔ `DB2_HOST`)
+- [x] T3.1.5 — Reject malformed names (empty segment, leading or trailing separator) by ignoring the variable
+- [x] T3.1.6 — Round-trip test the spec's table: `database.host`, `databaseHost`, `database.hostName`, `a.b.c`
+- [x] T3.1.7 — Property test: for a generated set of valid camelCase key paths, `decode(encode(p)) === p` and
       no two distinct paths encode to the same name
-- [ ] T3.1.8 — Test a custom `pathSeparator`
+- [x] T3.1.8 — Test a custom `pathSeparator`
 
 ### Story 3.2 — `envAdapter`
 
 **Acceptance:** environment variables override file values at the correct key paths, and non-matching
 variables are ignored.
 
-- [ ] T3.2.1 — Read `process.env`, filter by `prefix`, decode each name to a key path via Story 3.1
-- [ ] T3.2.2 — Build the nested `RawConfig` from the decoded key paths
-- [ ] T3.2.3 — Implement `dotenv` handling for all three option forms: `true` (auto-discover in cwd), `false`
-      (skip), and an explicit path string
-- [ ] T3.2.4 — Load `dotenv` through `requireLib`; `.env` values must not override already-set `process.env`
-      entries
-- [ ] T3.2.5 — Apply `transform` via the Story 2.2 walker
-- [ ] T3.2.6 — Implement `load` and `loadSync` (both synchronous internally; `load` wraps in a resolved
+- [x] T3.2.1 — Read `process.env`, filter by `prefix`, decode each name to a key path via Story 3.1
+- [x] T3.2.2 — Build the nested `RawConfig` from the decoded key paths
+- [x] T3.2.3 — Implement `dotenv` handling for boolean, explicit path, and path-array forms: `true`
+      auto-discovers `.env` in cwd and `false` skips dotenv loading
+- [x] T3.2.4 — Load environment sources in custom object, dotenv, then process environment order; process
+      values override earlier entries
+- [x] T3.2.5 — Apply `transform` via the Story 2.2 walker
+- [x] T3.2.6 — Implement `load` and `loadSync` (both synchronous internally; `load` wraps in a resolved
       promise)
-- [ ] T3.2.7 — Set `name = "env"`
-- [ ] T3.2.8 — Tests: prefix filtering, nested construction, `dotenv` in each form, transform, acronym
+- [x] T3.2.7 — Set `name = "env"`
+- [x] T3.2.8 — Tests: prefix filtering, nested construction, `dotenv` in each form, transform, acronym
       round-trip
 
 ### Story 3.3 — File adapter base
@@ -257,56 +260,55 @@ Shared discovery, read, and error handling so the four file adapters differ only
 
 **Acceptance:** the four file adapters contain no duplicated discovery or error-wrapping logic.
 
-- [ ] T3.3.1 — Implement candidate generation from `name`: `<name>.<ext>`, `.<name>rc.<ext>`,
-      `config/<name>.<ext>`
-- [ ] T3.3.2 — Implement cwd-only discovery in priority order, no upward directory walk
-- [ ] T3.3.3 — Resolve an explicit `path` relative to `process.cwd()`, bypassing discovery
-- [ ] T3.3.4 — `optional: true` returns `{}` when nothing is found; `optional: false` throws
+- [x] T3.3.1 — Implement candidate generation for `config.<ext>`, `.config.<ext>`, named files, named
+      directories, and `config/<name>.<ext>` variants
+- [x] T3.3.2 — Implement ordered directory discovery, defaulting to cwd and supporting custom `directories`
+- [x] T3.3.3 — Resolve an explicit `path` relative to `process.cwd()`, bypassing discovery
+- [x] T3.3.4 — `optional: true` returns `{}` when nothing is found; `optional: false` throws
       `ZconfigAdapterError`. Applies to both explicit `path` and discovery
-- [ ] T3.3.5 — Wrap parse failures into `ZconfigAdapterError` with the adapter name and the file path
-- [ ] T3.3.6 — Reject a parsed root that is not a plain object
-- [ ] T3.3.7 — Provide sync and async read paths over `node:fs` and `node:fs/promises`
-- [ ] T3.3.8 — Apply `transform` via the Story 2.2 walker
+- [x] T3.3.5 — Wrap parse failures into `ZconfigAdapterError` with the adapter name and the file path
+- [x] T3.3.6 — Reject a parsed root that is not a plain object
+- [x] T3.3.7 — Provide sync and async read paths over `node:fs` and `node:fs/promises`
+- [x] T3.3.8 — Apply `transform` via the Story 2.2 walker
 
 ### Story 3.4 — `jsonAdapter`
 
-- [ ] T3.4.1 — Wire the base with extension `json` and `name` default `"config"`
-- [ ] T3.4.2 — `jsonc: true` (default) parses via `jsonc-parser` loaded through `requireLib`
-- [ ] T3.4.3 — `jsonc: false` parses via `JSON.parse`
-- [ ] T3.4.4 — Surface `jsonc-parser` diagnostics as a `ZconfigAdapterError` message, not a silent empty
+- [x] T3.4.1 — Wire the base with extension `json` and `name` default `"config"`
+- [x] T3.4.2 — Parse `.json` as JSONC by default through `jsonc-parser`, while `.jsonc` always uses JSONC
+- [x] T3.4.3 — With `jsonc: false`, parse `.json` through `JSON.parse`
+- [x] T3.4.4 — Surface `jsonc-parser` diagnostics as a `ZconfigAdapterError` message, not a silent empty
       result
-- [ ] T3.4.5 — Set `name = "json"`; run the standard per-adapter test set plus a comments-allowed and a
+- [x] T3.4.5 — Set `name = "json"`; run the standard per-adapter test set plus a comments-allowed and a
       strict-mode-rejects-comments case
 
 ### Story 3.5 — `json5Adapter` (parallel with 3.4, 3.6, 3.7)
 
-- [ ] T3.5.1 — Wire the base with extension `json5`, parser `json5` through `requireLib`
-- [ ] T3.5.2 — Set `name = "json5"`; run the standard per-adapter test set
+- [x] T3.5.1 — Wire the base with extension `json5`, parser `json5` through `importSync`
+- [x] T3.5.2 — Set `name = "json5"`; run the standard per-adapter test set
 
 ### Story 3.6 — `yamlAdapter` (parallel)
 
-- [ ] T3.6.1 — Wire the base with extensions `yaml` and `yml`, parser `yaml` through `requireLib`
-- [ ] T3.6.2 — Candidate order: `<name>.yaml`, `<name>.yml`, `.<name>rc.yaml`, `.<name>rc.yml`,
-      `config/<name>.yaml`
-- [ ] T3.6.3 — Set `name = "yaml"`; run the standard per-adapter test set
-- [ ] T3.6.4 — Add a test feeding a YAML document containing a literal `__proto__` key, asserting the Story
+- [x] T3.6.1 — Wire the base with extensions `yaml` and `yml`, parser `yaml` through `importSync`
+- [x] T3.6.2 — Use the shared file candidate generation for `.yaml` and `.yml` files
+- [x] T3.6.3 — Set `name = "yaml"`; run the standard per-adapter test set
+- [x] T3.6.4 — Add a test feeding a YAML document containing a literal `__proto__` key, asserting the Story
       2.1 guard holds end to end
 
 ### Story 3.7 — `tomlAdapter` (parallel)
 
-- [ ] T3.7.1 — Wire the base with extension `toml`, parser `smol-toml` through `requireLib`
-- [ ] T3.7.2 — Set `name = "toml"`; run the standard per-adapter test set
-- [ ] T3.7.3 — Add a test showing a snake_case TOML file made schema-compatible via `transform`, matching the
+- [x] T3.7.1 — Wire the base with extension `toml`, parser `smol-toml` through `importSync`
+- [x] T3.7.2 — Set `name = "toml"`; run the standard per-adapter test set
+- [x] T3.7.3 — Add a test showing a snake_case TOML file made schema-compatible via `transform`, matching the
       spec's documented escape hatch
 
 ### Story 3.8 — Adapter barrel
 
-- [ ] T3.8.1 — Create `src/adapters/index.ts` with named re-exports of all five adapters
-- [ ] T3.8.2 — Confirm each adapter directory exports both a default and a named binding
-- [ ] T3.8.3 — Re-export `loadConfig`, `loadConfigSync`, and the three error classes from `src/index.ts`
-- [ ] T3.8.4 — Add the `"./adapters"` and `"./adapters/*"` entries to the `exports` map (deferred from
+- [x] T3.8.1 — Create `src/adapters/index.ts` with named re-exports of all five adapters
+- [x] T3.8.2 — Confirm each adapter directory exports both a default and a named binding
+- [x] T3.8.3 — Re-export `loadConfig`, `loadConfigSync`, and the three error classes from `src/index.ts`
+- [x] T3.8.4 — Add the `"./adapters"` and `"./adapters/*"` entries to the `exports` map (deferred from
       T1.1.6 per R2; `./adapters` needs its own entry because it does not match the `./adapters/*` pattern)
-- [ ] T3.8.5 — Build and diff the produced `dist/` tree against every `exports` map path, for `.`,
+- [x] T3.8.5 — Build and diff the produced `dist/` tree against every `exports` map path, for `.`,
       `./adapters`, and each `./adapters/*` subpath, in both `require` and `default` conditions
       (deferred from T1.2.2)
 
@@ -334,8 +336,8 @@ Shared discovery, read, and error handling so the four file adapters differ only
 - [ ] T4.2.1 — Resolve every import form in the spec's Exports section against the built package: root
       barrel, `./adapters` barrel, and each `./adapters/*` subpath
 - [ ] T4.2.2 — Verify both ESM and CJS consumption, confirming the `createRequire` path works in each
-- [ ] T4.2.3 — Verify an environment-only install with no format libraries present works, and that a
-      file adapter then fails with the actionable `ZconfigAdapterError`
+- [ ] T4.2.3 — Verify an environment-only install with dotenv present but no file-format libraries works, and
+      that a file adapter then fails with the actionable `ZconfigAdapterError`
 
 ### Story 4.3 — Documentation
 
@@ -351,7 +353,7 @@ Shared discovery, read, and error handling so the four file adapters differ only
 ## Dependency graph
 
 ```text
-E1.1 manifest ─┬─> E1.2 build ─┬─> E1.5 requireLib (R1 gate)
+E1.1 manifest ─┬─> E1.2 build ─┬─> E1.5 imports (R1 gate)
                │               │
 E1.3 harness ──┴─> E1.4 types ─┘
                         │
