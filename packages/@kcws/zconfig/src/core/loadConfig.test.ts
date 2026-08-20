@@ -192,6 +192,9 @@ describe("integration", () => {
 		}),
 		debug: z.union([z.boolean(), z.stringbool()]).default(false),
 	});
+	const dotenvIntegrationSchema = integrationSchema.extend({
+		dotenvOnly: z.string(),
+	});
 
 	test("should apply environment values after YAML values", async () => {
 		vol.fromJSON(
@@ -199,7 +202,7 @@ describe("integration", () => {
 				"config.yaml":
 					"database:\n  host: yaml.internal\n  port: 5432\ndebug: true\n",
 				".env":
-					"APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\nAPP_DEBUG=true\n",
+					"APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\nAPP_DOTENV_ONLY=dotenv-value\nAPP_DEBUG=true\n",
 			},
 			process.cwd(),
 		);
@@ -208,13 +211,14 @@ describe("integration", () => {
 		vi.stubEnv("APP_DEBUG", "false");
 
 		await expect(
-			loadConfig(integrationSchema, [
+			loadConfig(dotenvIntegrationSchema, [
 				yamlAdapter(),
 				dotenvAdapter({ prefix: "APP" }),
 				envAdapter({ prefix: "APP" }),
 			]),
 		).resolves.toEqual({
 			database: { host: "env.internal", port: 6543 },
+			dotenvOnly: "dotenv-value",
 			debug: false,
 		});
 	});

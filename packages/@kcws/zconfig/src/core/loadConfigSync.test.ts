@@ -112,12 +112,16 @@ describe("integration", () => {
 		}),
 		debug: z.union([z.boolean(), z.stringbool()]).default(false),
 	});
+	const dotenvIntegrationSchema = integrationSchema.extend({
+		dotenvOnly: z.string(),
+	});
 
 	test("should keep sync and async results equal across YAML and environment", async () => {
 		vol.fromJSON(
 			{
 				"config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n",
-				".env": "APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\n",
+				".env":
+					"APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\nAPP_DOTENV_ONLY=dotenv-value\n",
 			},
 			process.cwd(),
 		);
@@ -130,12 +134,13 @@ describe("integration", () => {
 			dotenvAdapter({ prefix: "APP" }),
 			envAdapter({ prefix: "APP" }),
 		];
-		const asyncConfig = await loadConfig(integrationSchema, adapters);
-		const syncConfig = loadConfigSync(integrationSchema, adapters);
+		const asyncConfig = await loadConfig(dotenvIntegrationSchema, adapters);
+		const syncConfig = loadConfigSync(dotenvIntegrationSchema, adapters);
 
 		expect(syncConfig).toEqual(asyncConfig);
 		expect(syncConfig).toEqual({
 			database: { host: "env.internal", port: 6543 },
+			dotenvOnly: "dotenv-value",
 			debug: true,
 		});
 	});

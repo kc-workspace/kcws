@@ -11,7 +11,7 @@ describe("staticAdapter", () => {
 		expect(await adapter.load()).toBe(config);
 	});
 
-	test("applies a leaf transform without env decoding", () => {
+	test("applies a leaf transform without env decoding", async () => {
 		const adapter = staticAdapter({ database_host: "localhost" }, (input) => ({
 			key: input.key.map((segment) =>
 				segment === "database_host" ? "databaseHost" : segment,
@@ -19,7 +19,9 @@ describe("staticAdapter", () => {
 			value: input.value,
 		}));
 
-		expect(adapter.loadSync()).toEqual({ databaseHost: "localhost" });
+		const expected = { databaseHost: "localhost" };
+		expect(adapter.loadSync()).toEqual(expected);
+		expect(await adapter.load()).toEqual(expected);
 	});
 
 	test("uses the same implementation for load and loadSync", async () => {
