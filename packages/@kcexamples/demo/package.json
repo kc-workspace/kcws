@@ -33,7 +33,10 @@
 		"vitest": "4.1.10",
 		"zshy": "0.7.3"
 	},
-	"zshy": "./src/index.ts",
+	"zshy": {
+		"exports": "./src/index.ts",
+		"noEdit": true
+	},
 	"main": "./dist.tsdown/index.js",
 	"types": "./dist.tsdown/index.d.cts",
 	"exports": {
