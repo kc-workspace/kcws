@@ -1,6 +1,6 @@
 import { vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test, vi } from "vitest";
-import envAdapter from ".";
+import { envAdapter } from ".";
 
 describe("envAdapter", () => {
 	afterEach(() => {

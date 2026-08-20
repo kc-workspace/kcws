@@ -3,7 +3,7 @@ import { afterEach, describe, expect, test } from "vitest";
 import { z } from "zod";
 import { loadConfigSync } from "../../core";
 import { ZconfigAdapterError } from "../../utils/errors";
-import yamlAdapter from ".";
+import { yamlAdapter } from ".";
 
 describe("yamlAdapter", () => {
 	afterEach(() => {
