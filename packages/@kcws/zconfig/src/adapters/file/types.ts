@@ -1,24 +1,26 @@
 import type { BaseAdapterOptions } from "../../types";
 
+/** Options for creating a custom file-backed configuration adapter. */
 export interface FileAdapterOptions extends BaseAdapterOptions {
 	/**
-	 * Adapter name
+	 * Stable adapter identifier used in error messages.
 	 */
 	name: string;
 
 	/**
-	 * File names to search for configuration files.
+	 * Candidate file names searched in order within each configured directory.
 	 */
 	files: string[];
 
 	/**
 	 * Explicit file path, resolved relative to the current working directory.
+	 * When set, directory and file discovery options are ignored.
 	 */
 	path?: string;
 
 	/**
 	 * Directory paths to search for configuration files.
-	 * @default [process.cwd(), os.homedir()]
+	 * @default [process.cwd()]
 	 */
 	directories?: string[];
 
@@ -29,28 +31,25 @@ export interface FileAdapterOptions extends BaseAdapterOptions {
 	optional?: boolean;
 
 	/**
-	 * Parse the configuration file content into a JavaScript object.
+	 * Parses configuration file content into a JavaScript object synchronously.
 	 * @param content - The existing configuration content
 	 * @param file - The configuration file absolute path
 	 * @returns The parsed configuration object
-	 *
-	 * @see {@link parse} for asynchronous parsing
 	 */
 	parseSync: <T>(content: string, file: string) => T;
 
 	/**
-	 * Parse the configuration file content into a JavaScript object.
-	 * Default implementation is to call `parseSync` in a Promise.
+	 * Parses configuration file content into a JavaScript object asynchronously.
+	 * Defaults to calling `parseSync` in a resolved Promise.
 	 *
 	 * @param content - The existing configuration content
 	 * @param file - The configuration file absolute path
 	 * @returns The parsed configuration object
-	 *
-	 * @see {@link parseSync} for synchronous parsing
 	 */
 	parse?: <T>(content: string, file: string) => Promise<T>;
 }
 
+/** File adapter options after discovery and parser defaults are applied. */
 export type FileAdapterNormalizedOptions = Required<
 	Omit<FileAdapterOptions, "transform" | "path">
 > & {
@@ -58,11 +57,12 @@ export type FileAdapterNormalizedOptions = Required<
 	transform: BaseAdapterOptions["transform"] | undefined;
 };
 
-/** For custom file adapters to extend as base option */
+/** Base options that format-specific file adapters can extend. */
 export type ExtendFileAdapterOptions = Partial<
 	Omit<FileAdapterOptions, "parse" | "parseSync">
 >;
 
+/** Converts format-specific file options into file adapter options. */
 export type NormalizeFileAdapterOptions<O> = O extends ExtendFileAdapterOptions
 	? Required<Omit<O, keyof ExtendFileAdapterOptions>> & ExtendFileAdapterOptions
 	: never;

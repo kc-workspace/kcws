@@ -5,10 +5,15 @@ import { createConfig, loadEnv, normalizeOptions } from "./utils";
 
 /**
  * Creates an adapter that reads configuration values from environment
- * variables and, optionally, a dotenv file.
+ * variables, an optional dotenv file, and optional custom values.
  *
- * @param options - prefix, path separator, dotenv source, and leaf transform
- * @returns an adapter suitable for both config loading entry points
+ * Values are loaded in this order: `customEnv`, dotenv, then `processEnv`.
+ * Later sources override earlier sources. Environment variable names are
+ * decoded into nested camelCase keys using `prefix` and `pathSeparator`.
+ *
+ * @param options - environment variable sources and key decoding options
+ * @returns adapter suitable for {@link loadConfig} and {@link loadConfigSync}
+ * @throws {ZconfigAdapterError} when a required dotenv file cannot be loaded
  */
 const envAdapter = (options: Partial<EnvAdapterOptions> = {}): Adapter => ({
 	name: "env",

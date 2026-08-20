@@ -11,6 +11,17 @@ import {
 
 const LOAD_ERR = "Failed to load config file";
 
+/**
+ * Creates an adapter for a custom file format.
+ *
+ * The adapter uses an explicit `path` when provided. Otherwise, it searches
+ * each configured directory and candidate file name until it finds an existing
+ * file. Missing files are errors unless `optional` is `true`.
+ *
+ * @param options - file discovery, parsing, and transformation options
+ * @returns adapter suitable for {@link loadConfig} and {@link loadConfigSync}
+ * @throws {ZconfigAdapterError} when the file is missing, unreadable, or invalid
+ */
 const fileAdapter = (options: FileAdapterOptions): Adapter => ({
 	name: options.name,
 	load: async () => {

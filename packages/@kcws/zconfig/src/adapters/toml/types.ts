@@ -3,7 +3,10 @@ import type {
 	NormalizeFileAdapterOptions,
 } from "../file";
 
+/** Options for {@link tomlAdapter}. */
 export interface TomlAdapterOptions extends ExtendFileAdapterOptions {}
+
+/** Normalized options used internally by the TOML adapter. */
 export type TomlAdapterNormalizedOptions =
 	NormalizeFileAdapterOptions<TomlAdapterOptions>;
 

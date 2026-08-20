@@ -8,6 +8,7 @@ import { summarise, trimConstructorFrame } from "./utils";
  * optional peer format library, and any unexpected internal adapter error.
  */
 export class ZconfigAdapterError extends Error {
+	/** Error class name. */
 	override readonly name = "ZconfigAdapterError";
 
 	/** Name of the adapter that failed, e.g. `"json"` or `"env"`. */
@@ -28,6 +29,7 @@ export class ZconfigAdapterError extends Error {
  * The fix is always to rename the offending schema key.
  */
 export class ZconfigSchemaError extends Error {
+	/** Error class name. */
 	override readonly name = "ZconfigSchemaError";
 
 	/** Path of the offending key, e.g. `["database", "host_name"]`. */
@@ -52,6 +54,7 @@ export class ZconfigSchemaError extends Error {
  * unwrapping {@link ZconfigValidationError.cause}.
  */
 export class ZconfigValidationError extends Error {
+	/** Error class name. */
 	override readonly name = "ZconfigValidationError";
 
 	/** Every issue reported by Zod, in the order Zod produced them. */

@@ -116,6 +116,15 @@ export const getConfigDirectories = (): string[] => {
 	return [cwd()];
 };
 
+/**
+ * Copies shared file-adapter options for a format-specific adapter.
+ *
+ * The format-specific adapter name is removed because the caller supplies its
+ * own stable name to {@link fileAdapter}.
+ *
+ * @param options - shared file discovery and transformation options
+ * @returns copied options without the adapter name
+ */
 export const getExtendOptions = (
 	options: ExtendFileAdapterOptions,
 ): ExtendFileAdapterOptions => {

@@ -3,7 +3,10 @@ import type {
 	NormalizeFileAdapterOptions,
 } from "../file";
 
+/** Options for {@link json5Adapter}. */
 export interface Json5AdapterOptions extends ExtendFileAdapterOptions {}
+
+/** Normalized options used internally by the JSON5 adapter. */
 export type Json5AdapterNormalizedOptions =
 	NormalizeFileAdapterOptions<Json5AdapterOptions>;
 

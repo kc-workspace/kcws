@@ -10,12 +10,15 @@ export type RawConfig = Record<string, unknown>;
 export interface TransformInput {
 	/** Full path to the value, e.g. `["database", "host"]`. */
 	key: string[];
+	/** Value read from the adapter source before schema validation. */
 	value: unknown;
 }
 
 /** The relocated key and value a {@link TransformFn} chose to emit. */
 export interface TransformOutput {
+	/** Destination path for the transformed value. */
 	key: string[];
+	/** Value emitted at the destination path. */
 	value: unknown;
 }
 
@@ -42,7 +45,9 @@ export interface Adapter {
 	/** Stable identifier used in {@link ZconfigAdapterError}, e.g. `"env"`. */
 	readonly name: string;
 
+	/** Loads and parses configuration asynchronously. */
 	load(): Promise<RawConfig>;
+	/** Loads and parses configuration synchronously. */
 	loadSync(): RawConfig;
 }
 

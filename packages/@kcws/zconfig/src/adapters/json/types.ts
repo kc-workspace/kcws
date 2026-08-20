@@ -3,6 +3,7 @@ import type {
 	NormalizeFileAdapterOptions,
 } from "../file";
 
+/** Options for {@link jsonAdapter}. */
 export interface JsonAdapterOptions extends ExtendFileAdapterOptions {
 	/**
 	 * Use jsonc-parser to support comments in JSON files.
@@ -10,6 +11,8 @@ export interface JsonAdapterOptions extends ExtendFileAdapterOptions {
 	 */
 	jsonc?: boolean;
 }
+
+/** Normalized options used internally by the JSON adapter. */
 export type JsonAdapterNormalizedOptions =
 	NormalizeFileAdapterOptions<JsonAdapterOptions>;
 
