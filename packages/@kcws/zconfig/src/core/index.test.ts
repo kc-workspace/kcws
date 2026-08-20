@@ -1,5 +1,7 @@
+import { vol } from "@kcconfigs/vitest/mocks";
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
+import { envAdapter, yamlAdapter } from "../adapters";
 import type { Adapter, RawConfig } from "../types";
 import {
 	ZconfigAdapterError,
@@ -242,6 +244,96 @@ describe("sync and async parity", () => {
 		expect(syncConfig).toEqual(asyncConfig);
 		expect(syncConfig).toEqual({
 			database: { host: "db.internal", port: 6543 },
+			debug: true,
+		});
+	});
+});
+
+describe("integration", () => {
+	const integrationSchema = z.object({
+		database: z.object({
+			host: z.string(),
+			port: z.coerce.number(),
+		}),
+		debug: z.union([z.boolean(), z.stringbool()]).default(false),
+	});
+
+	test("should apply environment values after YAML values", async () => {
+		vol.fromJSON(
+			{
+				"config.yaml":
+					"database:\n  host: yaml.internal\n  port: 5432\ndebug: true\n",
+			},
+			process.cwd(),
+		);
+		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
+		vi.stubEnv("APP_DATABASE__PORT", "6543");
+		vi.stubEnv("APP_DEBUG", "false");
+
+		await expect(
+			loadConfig(integrationSchema, [
+				yamlAdapter(),
+				envAdapter({ prefix: "APP", dotenv: false }),
+			]),
+		).resolves.toEqual({
+			database: { host: "env.internal", port: 6543 },
+			debug: false,
+		});
+	});
+
+	test("should accept real YAML numbers and string environment values", async () => {
+		vol.fromJSON(
+			{ "config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n" },
+			process.cwd(),
+		);
+
+		const yamlConfig = await loadConfig(integrationSchema, [yamlAdapter()]);
+
+		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
+		vi.stubEnv("APP_DATABASE__PORT", "6543");
+
+		const envConfig = await loadConfig(integrationSchema, [
+			envAdapter({ prefix: "APP", dotenv: false }),
+		]);
+
+		expect(yamlConfig.database.port).toBe(5432);
+		expect(envConfig.database.port).toBe(6543);
+	});
+
+	test("should expose schema issue paths in validation errors", async () => {
+		vol.fromJSON(
+			{ "config.yaml": "database:\n  host: yaml.internal\n  port: invalid\n" },
+			process.cwd(),
+		);
+
+		const error = await rejection<ZconfigValidationError>(
+			loadConfig(integrationSchema, [yamlAdapter()]),
+		);
+
+		expect(error.issues.map((issue) => issue.path.join("."))).toContain(
+			"database.port",
+		);
+	});
+
+	test("should keep sync and async results equal across YAML and environment", async () => {
+		vol.fromJSON(
+			{ "config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n" },
+			process.cwd(),
+		);
+		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
+		vi.stubEnv("APP_DATABASE__PORT", "6543");
+		vi.stubEnv("APP_DEBUG", "true");
+
+		const adapters = [
+			yamlAdapter(),
+			envAdapter({ prefix: "APP", dotenv: false }),
+		];
+		const asyncConfig = await loadConfig(integrationSchema, adapters);
+		const syncConfig = loadConfigSync(integrationSchema, adapters);
+
+		expect(syncConfig).toEqual(asyncConfig);
+		expect(syncConfig).toEqual({
+			database: { host: "env.internal", port: 6543 },
 			debug: true,
 		});
 	});
