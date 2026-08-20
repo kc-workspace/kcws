@@ -26,7 +26,35 @@ disable-model-invocation: false
 6. Use `beforeEach` for per-test setup and `afterEach` for cleanup. Reset mocks, virtual filesystems, environment changes, and timers so tests do not depend on execution order.
 7. Mock only external effects or platform boundaries. Prefer real domain logic and explicit fixtures for deterministic tests.
 8. Preserve the package's existing `vitest.config.ts` pattern, normally using `defineProjectConfig` from `@kcconfigs/vitest`. Add mock plugins or flags only for dependencies the package actually needs to isolate.
-9. Run the narrowest test file first. Then run the package `test` script and relevant `check`/`build` scripts.
+9. Select the Vitest config that owns the tests:
+   - For one package, prefer `pnpm --filter <package-name> test` from the repository root. This runs the package script with that package's own config.
+   - For a workspace project, use the repository root config with `pnpm test:all --project <project-name>` or `./node_modules/.bin/vitest run --project <project-name>`.
+   - Do not pass a package config such as `--config packages/@kcws/zconfig/vitest.config.ts` to a workspace-wide run. A package config can apply its mock plugins to files outside that package; for example, zconfig's filesystem mock can break commitlint tests that need the real OS temporary directory.
+10. Run the narrowest test file first. Then run the package `test` script and relevant `check`/`build` scripts.
+
+### Vitest Config Selection
+
+The root [`vitest.config.ts`](../../vitest.config.ts) discovers package configs as named projects. Use it when selecting among packages:
+
+```bash
+pnpm test:all --project @kcconfigs/commitlint
+pnpm test:all --project @kcws/zconfig
+```
+
+Use a package config only with that package's tests, normally through its package script:
+
+```bash
+pnpm --filter @kcconfigs/commitlint test
+pnpm --filter @kcws/zconfig test
+```
+
+Avoid this cross-package form:
+
+```bash
+vitest run --config packages/@kcws/zconfig/vitest.config.ts
+```
+
+It is not equivalent to `pnpm test:all`; it bypasses the root project configuration and can leak package-specific mocks into unrelated test suites.
 
 ## Naming And Scope
 
