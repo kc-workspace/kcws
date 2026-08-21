@@ -75,8 +75,8 @@ Every statically declared object key must match `/^[a-z][a-zA-Z0-9]*$/`: start w
 use letters and digits only. Underscores and leading uppercase letters are rejected with
 `ZconfigSchemaError` before any adapter runs.
 
-This rule makes environment names injective. Nested paths use `__`; word boundaries inside one camelCase key
-use `_`:
+This rule makes environment names reversable.
+Nested paths use `__`; word boundaries inside one camelCase key use `_`:
 
 | Schema path | Environment name with `prefix: "APP"` |
 | --- | --- |

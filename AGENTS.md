@@ -8,9 +8,9 @@ styles, examples, and shared configuration.
 - `@kcconfigs/*` - Shared configuration
 - `@kcexamples/*` - Starter and proof of concept packages
 - `@kcinternals/*` Monorepo-internal packages
-- `@kcstyles/*` - Shraed CSS packages
+- `@kcstyles/*` - Shared CSS packages
 - `@kctools/*` - Commandline tools
-- `@kctypes/*` - Typescript definition utilty packages
+- `@kctypes/*` - Typescript definition utilities packages
 - `@kcws/*` - General full-stack packages
 
 `pnpm-workspace.yaml` controls workspaces, overrides,
