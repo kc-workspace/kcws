@@ -10,7 +10,7 @@ import { getYamlFiles, yamlAdapter } from "../yaml";
 const useDefaultAdapters = (name: string): Adapter[] => {
 	const prefix = encodeEnvKey([name], undefined, "");
 	return [
-		jsonAdapter({ optional: true, jsonc: true, files: getJsonFiles(name) }),
+		jsonAdapter({ optional: true, files: getJsonFiles(name) }),
 		yamlAdapter({ optional: true, files: getYamlFiles(name) }),
 		tomlAdapter({ optional: true, files: getTomlFiles(name) }),
 		dotenvAdapter({ optional: true, files: getDotenvFiles(name), prefix }),

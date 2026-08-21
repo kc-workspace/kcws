@@ -6,7 +6,7 @@ import { tomlAdapter } from "../toml";
 import { yamlAdapter } from "../yaml";
 
 const genericAdapters = [
-	jsonAdapter({ optional: true, jsonc: true }),
+	jsonAdapter({ optional: true }),
 	yamlAdapter({ optional: true }),
 	tomlAdapter({ optional: true }),
 	dotenvAdapter({ optional: true }),
