@@ -1,9 +1,12 @@
+/* jscpd:ignore-start */
 import type { ZodType, z } from "zod";
 import type { Adapter, RawConfig } from "#types";
 import { deepMerge } from "#utils/deepMerge";
 import { asAdapterError } from "#utils/errors";
 import { validateConfig, validateSchema } from "#utils/validators";
 import { useGenericAdapters } from "../adapters";
+
+/* jscpd:ignore-end */
 
 /**
  * Loads configuration from every adapter, merges it, and validates the result.
@@ -22,7 +25,6 @@ import { useGenericAdapters } from "../adapters";
  * @throws {ZconfigAdapterError} when an adapter cannot produce configuration
  * @throws {ZconfigValidationError} when the merged configuration is invalid
  */
-/* jscpd:ignore-start */
 const loadConfig = async <S extends ZodType>(
 	schema: S,
 	adapters: Adapter[] = useGenericAdapters(),
@@ -41,4 +43,3 @@ const loadConfig = async <S extends ZodType>(
 	return validateConfig(schema, deepMerge(...sources));
 };
 export default loadConfig;
-/* jscpd:ignore-end */
