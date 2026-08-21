@@ -62,7 +62,7 @@ Create clear, reviewable commits from the current working tree.
   user did not approve the 1Password prompt in time.
   1. Retry the **same** `git commit` command up to **2 times**. Each
      retry re-triggers the 1Password prompt.
-  2. If it still fails after 2 retries, **stop retrying** — do not attempt
+  2. If it still fails after 2 retries, **stop retrying**; do not attempt
      alternative workarounds. Inform the user that repeated 1Password
      timeouts occurred and ask them to run `git commit` manually in their
      own terminal. Leave changes staged so they can commit immediately.
