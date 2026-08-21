@@ -1,7 +1,7 @@
 {
 	"max_errors": 200,
 	"checks": {
-		"annotations": true,
+		"annotations": false,
 		"archaism": true,
 		"cliches": true,
 		"dates_times": true,
@@ -25,6 +25,5 @@
 		"typography": false,
 		"uncomparables": true,
 		"weasel_words": true
-	},
-	"file_checks": {}
+	}
 }
