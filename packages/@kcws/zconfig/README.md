@@ -20,23 +20,23 @@ pnpm add dotenv yaml jsonc-parser json5 smol-toml
 import { z } from "zod";
 import { loadConfig } from "@kcws/zconfig";
 import {
-	dotenvAdapter,
-	envAdapter,
-	yamlAdapter,
+  dotenvAdapter,
+  envAdapter,
+  yamlAdapter,
 } from "@kcws/zconfig/adapters";
 
 const schema = z.object({
-	database: z.object({
-		host: z.string(),
-		port: z.coerce.number(),
-	}),
-	debug: z.union([z.boolean(), z.stringbool()]).default(false),
+  database: z.object({
+    host: z.string(),
+    port: z.coerce.number(),
+  }),
+  debug: z.union([z.boolean(), z.stringbool()]).default(false),
 });
 
 const config = await loadConfig(schema, [
-	yamlAdapter({ path: "./config.yaml", optional: true }),
-	dotenvAdapter({ path: "./.env", optional: true, prefix: "APP" }),
-	envAdapter({ prefix: "APP" }),
+  yamlAdapter({ path: "./config.yaml", optional: true }),
+  dotenvAdapter({ path: "./.env", optional: true, prefix: "APP" }),
+  envAdapter({ prefix: "APP" }),
 ]);
 ```
 
@@ -55,13 +55,13 @@ APP_DEBUG=true
 ```typescript
 import { loadConfig, loadConfigSync } from "@kcws/zconfig";
 import {
-	dotenvAdapter,
-	envAdapter,
-	jsonAdapter,
-	json5Adapter,
-	staticAdapter,
-	tomlAdapter,
-	yamlAdapter,
+  dotenvAdapter,
+  envAdapter,
+  jsonAdapter,
+  json5Adapter,
+  staticAdapter,
+  tomlAdapter,
+  yamlAdapter,
 } from "@kcws/zconfig/adapters";
 import jsonAdapter from "@kcws/zconfig/adapters/json";
 ```
@@ -99,7 +99,7 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 
 - `envAdapter` reads `process.env` or a supplied environment object.
 - `dotenvAdapter` reads dotenv-style files such as `.env` and decodes their keys using the same options as
-	`envAdapter`.
+  `envAdapter`.
 - `staticAdapter` returns an already available raw configuration object and can apply a leaf `transform`.
 - `jsonAdapter` reads JSONC by default for `.json` and always uses JSONC for `.jsonc`.
 - `json5Adapter` reads JSON5 files.
