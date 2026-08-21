@@ -61,7 +61,7 @@ ls:
 
   packages/*/*/src:
     # Source code directory must be camelCase or special __mocks__ folder
-    .dir: camelCase | regex:(__mocks__|__fixtures__)
+    .dir: camelCase | regex:(__mocks__|__fixtures__) | regex:(_[a-z][a-zA-Z0-9]*)
     ## TODO: This doesn't works
     # .{ts,tsx}: camelCase | PascalCase
     # .{css,scss}: camelCase
