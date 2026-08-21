@@ -4,7 +4,7 @@
 	"description": "Demo library for testing various tools.",
 	"type": "module",
 	"scripts": {
-		"build": "pnpm run build:tsdown",
+		"build": "pnpm run build:all",
 		"build:dts": "tsc --project tsconfig.dts.json",
 		"build:vite": "pnpm run build:vite:mjs && pnpm run build:vite:cjs",
 		"build:vite:mjs": "vite build --config vite-mjs.config.ts",
@@ -14,12 +14,12 @@
 		"build:all": "pnpm run build:dts && pnpm run build:vite && pnpm run build:tsdown && pnpm run build:zshy",
 		"test": "vitest run",
 		"fix": "biome check --fix --unsafe",
-		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
-		"format": "biome format --fix",
-		"format:check": "biome format",
-		"lint": "biome lint --fix --unsafe",
-		"lint:check": "biome lint",
-		"type:check": "tsc --noEmit"
+		"fix:lint": "biome lint --fix --unsafe",
+		"fix:format": "biome format --fix",
+		"check": "pnpm run check:lint && pnpm run check:format && pnpm run check:type",
+		"check:lint": "biome lint",
+		"check:format": "biome format",
+		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.6",
@@ -33,7 +33,10 @@
 		"vitest": "4.1.10",
 		"zshy": "0.7.3"
 	},
-	"zshy": "./src/index.ts",
+	"zshy": {
+		"exports": "./src/index.ts",
+		"noEdit": true
+	},
 	"main": "./dist.tsdown/index.js",
 	"types": "./dist.tsdown/index.d.cts",
 	"exports": {

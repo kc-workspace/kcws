@@ -4,10 +4,11 @@
 	"description": "Shared biome configuration",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",
-		"format": "biome format --fix",
-		"format:check": "biome format",
-		"lint": "biome lint --fix --unsafe",
-		"lint:check": "biome lint"
+		"fix:lint": "biome lint --fix --unsafe",
+		"fix:format": "biome format --fix",
+		"check": "pnpm run check:lint && pnpm run check:format",
+		"check:lint": "biome lint",
+		"check:format": "biome format"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.6"

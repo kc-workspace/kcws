@@ -4,15 +4,15 @@
 	"description": "Shared vitest configuration",
 	"type": "module",
 	"scripts": {
-		"test": "vitest run",
 		"build": "tsdown",
+		"test": "vitest run",
 		"fix": "biome check --fix --unsafe",
-		"check": "pnpm run lint:check && pnpm run format:check && pnpm run type:check",
-		"format": "biome format --fix",
-		"format:check": "biome format",
-		"lint": "biome lint --fix --unsafe",
-		"lint:check": "biome lint",
-		"type:check": "tsc --noEmit"
+		"fix:lint": "biome lint --fix --unsafe",
+		"fix:format": "biome format --fix",
+		"check": "pnpm run check:lint && pnpm run check:format && pnpm run check:type",
+		"check:lint": "biome lint",
+		"check:format": "biome format",
+		"check:type": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@kcinternals/config-builder": "workspace:*",
