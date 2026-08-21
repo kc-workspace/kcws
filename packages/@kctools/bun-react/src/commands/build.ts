@@ -24,7 +24,7 @@ export const build: CommandFn = (program, Bun) => {
 		.command("build")
 		.description(text.desc)
 		.argument("[html]", text.html.desc, text.html.def)
-		.option("-M, --no-minify", text.noMinify.desc)
+		.option("-M, --no-minify", text.noMinify.desc, true)
 		.option("-O, --out <directory>", text.outdir.desc, text.outdir.def)
 		.action(async (html, options) => {
 			const cwd = process.cwd();
