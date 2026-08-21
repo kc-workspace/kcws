@@ -49,15 +49,13 @@
 			"path": "@commitlint/cz-commitlint"
 		}
 	},
+	"volta": {
+		"node": "24.19.0"
+	},
 	"engines": {
 		"node": "^22.11.0 || ^24.11.0 || ^25.0.0 || ^26.0.0"
 	},
 	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": "24.19.0",
-			"onFail": "error"
-		},
 		"packageManager": {
 			"name": "pnpm",
 			"version": "11.22.0",

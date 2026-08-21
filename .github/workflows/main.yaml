@@ -176,7 +176,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --config.runtime-on-fail=ignore
+        run: pnpm install
       - name: Build configurations
         run: pnpm build:config
       - name: Build packages
