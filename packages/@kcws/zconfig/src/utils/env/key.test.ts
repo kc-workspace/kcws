@@ -71,7 +71,7 @@ describe("decodeEnvKey", () => {
 		keys                    | name                   | prefix   | keySep
 		${["database", "host"]} | ${"APP_DATABASE.HOST"} | ${"APP"} | ${"."}
 	`(
-		"round-trips '$keys' <-> '$name' should be reversable",
+		"round-trips '$keys' <-> '$name' should be reversible",
 		({ keys, name, prefix, keySep }) => {
 			const actualName = encodeEnvKey(keys, prefix, keySep);
 			expect(actualName).toBe(name);
