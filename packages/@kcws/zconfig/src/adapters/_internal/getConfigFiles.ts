@@ -12,8 +12,8 @@ const getConfigFiles = (
 
 	if (name) {
 		files.push(
-			...extensions.map((ext) => `${name}.${ext}`),
-			...extensions.map((ext) => `.${name}.${ext}`),
+			...extensions.map((ext) => `${name}.config.${ext}`),
+			...extensions.map((ext) => `.${name}.config.${ext}`),
 			...extensions.map((ext) => `.${name}/config.${ext}`),
 			...extensions.map((ext) => `${name}/config.${ext}`),
 			...extensions.map((ext) => `.config/${name}.${ext}`),
