@@ -7,7 +7,7 @@
 		"dates_times": true,
 		"hedging": true,
 		"industrial_language": true,
-		"lexical_illusions": true,
+		"lexical_illusions": false,
 		"malapropisms": true,
 		"misc": true,
 		"mixed_metaphors": true,
