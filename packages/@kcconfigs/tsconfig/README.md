@@ -168,8 +168,6 @@ including JSX transform (`react-jsx`) and `.tsx` file inclusion.
 }
 ```
 
-<!-- TODO: Add more -->
-
 ## Investigate
 
 You can use `tsc --showConfig` command to show the full config
