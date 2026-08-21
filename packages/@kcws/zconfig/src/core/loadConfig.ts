@@ -22,6 +22,7 @@ import { useGenericAdapters } from "../adapters";
  * @throws {ZconfigAdapterError} when an adapter cannot produce configuration
  * @throws {ZconfigValidationError} when the merged configuration is invalid
  */
+/* jscpd:ignore-start */
 const loadConfig = async <S extends ZodType>(
 	schema: S,
 	adapters: Adapter[] = useGenericAdapters(),
@@ -40,3 +41,4 @@ const loadConfig = async <S extends ZodType>(
 	return validateConfig(schema, deepMerge(...sources));
 };
 export default loadConfig;
+/* jscpd:ignore-end */

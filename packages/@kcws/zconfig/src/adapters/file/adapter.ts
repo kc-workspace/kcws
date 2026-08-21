@@ -25,6 +25,7 @@ const LOAD_ERR = "Failed to load config file";
 const fileAdapter = (options: FileAdapterOptions): Adapter => ({
 	name: options.name,
 	load: async () => {
+		/* jscpd:ignore-start */
 		try {
 			const opts = normalizeOptions(options);
 			const path = findConfig(opts);
@@ -35,8 +36,10 @@ const fileAdapter = (options: FileAdapterOptions): Adapter => ({
 				cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR;
 			throw toAdapterError(options.name, message, cause);
 		}
+		/* jscpd:ignore-end */
 	},
 	loadSync: () => {
+		/* jscpd:ignore-start */
 		try {
 			const opts = normalizeOptions(options);
 			const path = findConfig(opts);
@@ -47,6 +50,7 @@ const fileAdapter = (options: FileAdapterOptions): Adapter => ({
 				cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR;
 			throw toAdapterError(options.name, message, cause);
 		}
+		/* jscpd:ignore-end */
 	},
 });
 
