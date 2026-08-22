@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.0.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.3...@kcconfigs/biome+v2.0.4) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **kcconfigs/biome:** relex rule on __mocks__ folder too ([5e83ecd](https://github.com/kc-workspace/kcws/commit/5e83ecda4e76f10d6b2c13935e26b7f2d6c296d6))
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** useLiteralKeys should be disable everywhere ([07eb555](https://github.com/kc-workspace/kcws/commit/07eb555b49526067fffcf5d78a0f0422cdd03e4e))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
 ## [2.0.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.2...@kcconfigs/biome+v2.0.3) (2026-08-02)
 
 

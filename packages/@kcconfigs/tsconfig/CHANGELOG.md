@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.3...@kcconfigs/tsconfig+v1.1.4) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **kcconfigs/tsconfig:** no reason to ignore example, config, and test file on tsconfig ([1fdf964](https://github.com/kc-workspace/kcws/commit/1fdf9648727afdb5ff08531fa0db4914ebfcd1f6))
+
+
+### Documentation
+
+* **kcconfigs/tsconfig:** remove old todo annotation from readme ([b80b515](https://github.com/kc-workspace/kcws/commit/b80b5150cde1c7fd8a6dbc6d2cb957d627e0c7b4))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.4
+
 ## [1.1.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.2...@kcconfigs/tsconfig+v1.1.3) (2026-08-02)
 
 

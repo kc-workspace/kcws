@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.1...@kcconfigs/vitest+v0.2.2) (2026-08-22)
+
+
+### Features
+
+* **kcconfigs/vitest:** add tsPathsPlugin for tsconfig paths resolution ([c1af818](https://github.com/kc-workspace/kcws/commit/c1af818c64f862e2048831372615a2fcee5c125d))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps:** bump memfs from 4.64.0 to 4.68.0 in the vitest group across 1 directory ([#203](https://github.com/kc-workspace/kcws/issues/203)) ([af8503a](https://github.com/kc-workspace/kcws/commit/af8503af1b0ff8d16d2c3b4d30ae75b2061c7315))
+* **deps:** bump memfs in the vitest group across 1 directory ([af8503a](https://github.com/kc-workspace/kcws/commit/af8503af1b0ff8d16d2c3b4d30ae75b2061c7315))
+
+
+### Documentation
+
+* **kcconfigs/vitest:** add tsdoc to expose utils and readme ([0bc2e30](https://github.com/kc-workspace/kcws/commit/0bc2e30aec59ffc16200e7f17c6b3fcc5617b951))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.1
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.4
+    * @kcconfigs/tsdown bumped to 0.2.7
+    * @kcconfigs/biome bumped to 2.0.4
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.0...@kcconfigs/vitest+v0.2.1) (2026-08-02)
 
 

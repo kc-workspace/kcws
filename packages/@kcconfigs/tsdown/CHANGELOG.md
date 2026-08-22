@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.2.7](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.6...@kcconfigs/tsdown+v0.2.7) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps:** bump publint from 0.3.21 to 0.3.23 ([#206](https://github.com/kc-workspace/kcws/issues/206)) ([76dd726](https://github.com/kc-workspace/kcws/commit/76dd726c36c426925ba46fc5e5ac5f4b7080ca47))
+
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** invalid build script ([46408a3](https://github.com/kc-workspace/kcws/commit/46408a3bde2ae0659ae12977d8f7341560123cea))
+* **kcconfigs/tsdown:** previously tsconfig ignore test file by default cause some error to face up ([a2134ed](https://github.com/kc-workspace/kcws/commit/a2134edf9ee135d3fbcbbdb8dad85acec20990a2))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.1
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.4
+    * @kcconfigs/tsconfig bumped to 1.1.4
+
 ## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.5...@kcconfigs/tsdown+v0.2.6) (2026-08-02)
 
 
