@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.1.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.7...@kcconfigs/lefthook+v0.1.8) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **kcconfigs/lefthook:** add features/debug.yaml for debugging output ([79d920b](https://github.com/kc-workspace/kcws/commit/79d920b9343a1fa3b4dd5d89af8a19b2af285faa))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.4
+
 ## [0.1.7](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.6...@kcconfigs/lefthook+v0.1.7) (2026-08-02)
 
 

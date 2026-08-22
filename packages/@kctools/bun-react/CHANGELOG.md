@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.10...@kctools/bun-react+v0.2.0) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps:** bump commander from 14.0.3 to 15.0.0 ([#191](https://github.com/kc-workspace/kcws/issues/191)) ([f5aa6ca](https://github.com/kc-workspace/kcws/commit/f5aa6ca7e66981a7e19e7e180de4b72cf8ee46a7))
+
+
+### Bugfixes
+
+* **kctools/bun-react:** fix strict type errors ([9ace590](https://github.com/kc-workspace/kcws/commit/9ace590ddb872c7b94809978d6f1c7d407647729))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+
+
+### Miscellaneous Chores
+
+* **kctools/bun-react:** force update v0.1.10 =&gt; v0.2.0 ([068b57b](https://github.com/kc-workspace/kcws/commit/068b57b8a63a6336ced92c5d25cf6e5942a38d98))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.4
+    * @kcconfigs/tsconfig bumped to 1.1.4
+    * @kcconfigs/tsdown bumped to 0.2.7
+    * @kcconfigs/vitest bumped to 0.2.2
+
 ## [0.1.10](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.1.9...@kctools/bun-react+v0.1.10) (2026-08-02)
 
 
