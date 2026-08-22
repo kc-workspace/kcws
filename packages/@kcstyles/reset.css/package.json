@@ -10,7 +10,7 @@
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@tsdown/css": "0.22.7",
-		"lightningcss": "1.32.0",
+		"lightningcss": "1.33.0",
 		"sass-embedded": "1.100.0",
 		"tsdown": "0.22.7"
 	},
