@@ -11,7 +11,7 @@
 		"check:format": "biome format"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.6",
+		"@biomejs/biome": "2.5.7",
 		"@kcconfigs/biome": "workspace:*"
 	},
 	"main": "./src/presets/default.yaml",
