@@ -21,7 +21,7 @@ disable-model-invocation: false
 
    ```json
    {
-     "$schema": "https://biomejs.dev/schemas/2.5.6/schema.json",
+     "$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
      "extends": ["@kcconfigs/biome"],
      "root": true
    }
