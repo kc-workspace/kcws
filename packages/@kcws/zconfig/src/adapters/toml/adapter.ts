@@ -1,5 +1,5 @@
 import type { Adapter } from "#types";
-import { importSync } from "#utils/imports";
+import { importAsync, importSync } from "#utils/imports";
 import { fileAdapter } from "../file";
 import type { TomlAdapterOptions, TomlParserModule } from "./types";
 import { getTomlFiles } from "./utils";
@@ -21,6 +21,10 @@ const tomlAdapter = (options: TomlAdapterOptions = {}): Adapter =>
 		files: getTomlFiles(),
 		parseSync: <T>(content: string): T =>
 			importSync<TomlParserModule>("toml", "smol-toml").parse(content) as T,
+		parse: <T>(content: string): Promise<T> =>
+			importAsync<TomlParserModule>("toml", "smol-toml").then(
+				(mod) => mod.parse(content) as T,
+			),
 		...options,
 	});
 

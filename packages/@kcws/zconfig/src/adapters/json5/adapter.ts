@@ -1,5 +1,5 @@
 import type { Adapter } from "#types";
-import { importSync } from "#utils/imports";
+import { importAsync, importSync } from "#utils/imports";
 import { fileAdapter } from "../file";
 import type { Json5AdapterOptions, Json5ParserModule } from "./types";
 import { getJson5Files } from "./utils";
@@ -21,6 +21,10 @@ const json5Adapter = (options: Json5AdapterOptions = {}): Adapter =>
 		files: getJson5Files(),
 		parseSync: (content) =>
 			importSync<Json5ParserModule>("json5", "json5").parse(content),
+		parse: (content) =>
+			importAsync<Json5ParserModule>("json5", "json5").then((mod) =>
+				mod.parse(content),
+			),
 		...options,
 	});
 

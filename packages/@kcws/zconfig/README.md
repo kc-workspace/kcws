@@ -57,6 +57,7 @@ import { loadConfig, loadConfigSync } from "@kcws/zconfig";
 import {
   dotenvAdapter,
   envAdapter,
+  autoAdapter,
   jsonAdapter,
   json5Adapter,
   staticAdapter,
@@ -66,8 +67,9 @@ import {
 import jsonAdapter from "@kcws/zconfig/adapters/json";
 ```
 
-The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `jsonAdapter`, `json5Adapter`, `yamlAdapter`,
-and `tomlAdapter`. File adapters support discovery, an explicit `path`, `optional: true`, and a leaf `transform`.
+The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `autoAdapter`, `jsonAdapter`, `json5Adapter`,
+`yamlAdapter`, and `tomlAdapter`. File adapters support discovery, an explicit `path`, `optional: true`, and a leaf
+`transform`.
 
 ## Schema keys
 
@@ -101,6 +103,9 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 - `dotenvAdapter` reads dotenv-style files such as `.env` and decodes their keys using the same options as
   `envAdapter`.
 - `staticAdapter` returns an already available raw configuration object and can apply a leaf `transform`.
+- `autoAdapter` discovers the first supported configuration file and selects its parser from the file extension.
+  It supports `.yaml`, `.yml`, `.json5`, `.jsonc`, `.json`, and `.toml`; `.json` files use strict JSON parsing and
+  `.jsonc` files use JSONC parsing. Unlike `jsonAdapter`, it has no `jsonc` override.
 - `jsonAdapter` reads JSONC by default for `.json` and always uses JSONC for `.jsonc`.
 - `json5Adapter` reads JSON5 files.
 - `yamlAdapter` reads `.yaml` and `.yml` files.
