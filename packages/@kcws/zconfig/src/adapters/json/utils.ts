@@ -20,7 +20,7 @@ export const normalizeOptions = (
 });
 
 export const parseJsonc = <T>(content: string): T => {
-	const parser = importSync<JsonParserModule>("json", "jsonc-parser");
+	const parser = importSync<JsonParserModule>("jsonc", "jsonc-parser");
 	const errors: JsoncParseError[] = [];
 	const parsed = parser.parse(content, errors);
 	if (errors.length > 0) {
