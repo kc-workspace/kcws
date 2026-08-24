@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.7](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.6...@kcstyles/reset.css+v1.0.7) (2026-08-22)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump lightningcss from 1.32.0 to 1.33.0 ([#210](https://github.com/kc-workspace/kcws/issues/210)) ([fa4461a](https://github.com/kc-workspace/kcws/commit/fa4461ac86381c05cb1c7ed2e4866b7c63baea84))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.4
+    * @kcconfigs/tsdown bumped to 0.2.7
+
 ## [1.0.6](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.5...@kcstyles/reset.css+v1.0.6) (2026-08-02)
 
 
