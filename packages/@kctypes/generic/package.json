@@ -2,6 +2,7 @@
 	"name": "@kctypes/generic",
 	"version": "1.31.1",
 	"description": "TypeScript definitions for global generic type",
+	"type": "module",
 	"scripts": {
 		"test": "vitest run"
 	},

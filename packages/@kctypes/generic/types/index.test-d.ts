@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from "vitest";
-import ".";
+import "./index.d.ts";
 
 describe("Constructor type", () => {
 	it("should accept a class constructor", () => {
