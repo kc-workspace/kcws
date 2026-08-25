@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.31.1...@kctypes/generic+v2.0.0) (2026-08-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kctypes/generic:** export package as module type instead of cjs
+
+### Performance Improvements
+
+* **kctypes/generic:** export package as module type instead of cjs ([a7c0ad8](https://github.com/kc-workspace/kcws/commit/a7c0ad833b5a05b36f97f7f257e2c84e3140177b))
+
 ## [1.31.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.31.0...@kctypes/generic+v1.31.1) (2026-08-02)
 
 
