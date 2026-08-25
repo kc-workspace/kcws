@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
 import { ZconfigAdapterError } from "#utils/errors";
 import { dotenvAdapter } from ".";
@@ -9,10 +9,7 @@ describe("dotenvAdapter", () => {
 	});
 
 	test("reads an explicit dotenv file with a prefix", () => {
-		vol.fromJSON(
-			{ "config/.env": "APP_DATABASE__HOST=localhost\n" },
-			process.cwd(),
-		);
+		vol.fromJSON({ "config/.env": "APP_DATABASE__HOST=localhost\n" }, mockCwd);
 
 		const adapter = dotenvAdapter({ path: "config/.env", prefix: "APP" });
 
@@ -25,14 +22,14 @@ describe("dotenvAdapter", () => {
 	});
 
 	test("keeps async and sync output equal", async () => {
-		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, process.cwd());
+		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, mockCwd);
 		const adapter = dotenvAdapter({ prefix: "APP" });
 
 		expect(await adapter.load()).toEqual(adapter.loadSync());
 	});
 
 	test("supports a custom path separator", () => {
-		vol.fromJSON({ ".env": "APP_DATABASE.HOST=localhost\n" }, process.cwd());
+		vol.fromJSON({ ".env": "APP_DATABASE.HOST=localhost\n" }, mockCwd);
 
 		expect(
 			dotenvAdapter({ prefix: "APP", pathSeparator: "." }).loadSync(),
@@ -40,7 +37,7 @@ describe("dotenvAdapter", () => {
 	});
 
 	test("applies a leaf transform", () => {
-		vol.fromJSON({ ".env": "APP_DATABASE_HOST=localhost\n" }, process.cwd());
+		vol.fromJSON({ ".env": "APP_DATABASE_HOST=localhost\n" }, mockCwd);
 
 		const result = dotenvAdapter({
 			prefix: "APP",

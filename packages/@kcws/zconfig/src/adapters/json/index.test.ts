@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
 import { ZconfigAdapterError } from "#utils/errors";
 import { jsonAdapter } from ".";
@@ -11,16 +11,22 @@ describe("jsonAdapter", () => {
 	test("parses JSONC with comments by default", () => {
 		vol.fromJSON(
 			{ "config.json": '{\n // comment\n "database": { "port": 5432 }\n}' },
-			process.cwd(),
+			mockCwd,
 		);
 
 		expect(jsonAdapter().loadSync()).toEqual({ database: { port: 5432 } });
 	});
 
+	test("parses JSONC with comments when jsonc is true", () => {
+		vol.fromJSON({ "config.json": '{\n  // comment\n  "value": 1}' }, mockCwd);
+
+		expect(jsonAdapter({ jsonc: true }).loadSync()).toEqual({ value: 1 });
+	});
+
 	test("parses nested values from an explicit path", async () => {
 		vol.fromJSON(
 			{ "config/app.json": '{"database":{"host":"localhost"}}' },
-			process.cwd(),
+			mockCwd,
 		);
 
 		const adapter = jsonAdapter({ path: "config/app.json" });
@@ -31,10 +37,7 @@ describe("jsonAdapter", () => {
 	});
 
 	test("rejects comments in strict JSON mode", () => {
-		vol.fromJSON(
-			{ "config.json": '{"value": 1, // comment\n}' },
-			process.cwd(),
-		);
+		vol.fromJSON({ "config.json": '{"value": 1, // comment\n}' }, mockCwd);
 
 		expect(() => jsonAdapter({ jsonc: false }).loadSync()).toThrow(
 			ZconfigAdapterError,
@@ -42,7 +45,7 @@ describe("jsonAdapter", () => {
 	});
 
 	test("surfaces JSONC diagnostics for malformed content", () => {
-		vol.fromJSON({ "config.json": '{"value": }' }, process.cwd());
+		vol.fromJSON({ "config.json": '{"value": }' }, mockCwd);
 
 		expect(() => jsonAdapter().loadSync()).toThrow(/parse/);
 	});
@@ -58,7 +61,7 @@ describe("jsonAdapter", () => {
 	});
 
 	test("applies a leaf transform", () => {
-		vol.fromJSON({ "config.json": '{"snake_key":"value"}' }, process.cwd());
+		vol.fromJSON({ "config.json": '{"snake_key":"value"}' }, mockCwd);
 
 		expect(
 			jsonAdapter({

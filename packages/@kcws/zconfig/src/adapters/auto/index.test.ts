@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
 import { ZconfigAdapterError } from "#utils/errors";
 import { autoAdapter } from ".";
@@ -42,7 +42,7 @@ describe("autoAdapter", () => {
 	])(
 		"parses .$extension with the matching standard parser",
 		({ extension, content, expected }) => {
-			vol.fromJSON({ [`config.${extension}`]: content }, process.cwd());
+			vol.fromJSON({ [`config.${extension}`]: content }, mockCwd);
 
 			expect(autoAdapter().loadSync()).toEqual(expected);
 		},
@@ -54,14 +54,14 @@ describe("autoAdapter", () => {
 				"config.json":
 					'{\n // comments are only supported by .jsonc\n "debug": true\n}',
 			},
-			process.cwd(),
+			mockCwd,
 		);
 
 		expect(() => autoAdapter().loadSync()).toThrow(ZconfigAdapterError);
 	});
 
 	test("loads an explicit file asynchronously", async () => {
-		vol.fromJSON({ "config/app.yaml": "debug: true\n" }, process.cwd());
+		vol.fromJSON({ "config/app.yaml": "debug: true\n" }, mockCwd);
 
 		const adapter = autoAdapter({ path: "config/app.yaml" });
 		expect(adapter.name).toBe("auto");
@@ -73,13 +73,13 @@ describe("autoAdapter", () => {
 	});
 
 	test("throws a typed error for malformed input", () => {
-		vol.fromJSON({ "config.yaml": "database: [\n" }, process.cwd());
+		vol.fromJSON({ "config.yaml": "database: [\n" }, mockCwd);
 
 		expect(() => autoAdapter().loadSync()).toThrow(ZconfigAdapterError);
 	});
 
 	test("applies a leaf transform", () => {
-		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, process.cwd());
+		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, mockCwd);
 
 		expect(
 			autoAdapter({

@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
 import { ZconfigAdapterError } from "#utils/errors";
 import { tomlAdapter } from ".";
@@ -13,7 +13,7 @@ describe("tomlAdapter", () => {
 			{
 				"config.toml": '[database]\nhost = "localhost"\nport = 5432\n',
 			},
-			process.cwd(),
+			mockCwd,
 		);
 
 		expect(tomlAdapter().loadSync()).toEqual({
@@ -22,7 +22,7 @@ describe("tomlAdapter", () => {
 	});
 
 	test("loads an explicit file asynchronously", async () => {
-		vol.fromJSON({ "config/app.toml": "debug = true\n" }, process.cwd());
+		vol.fromJSON({ "config/app.toml": "debug = true\n" }, mockCwd);
 
 		const adapter = tomlAdapter({ path: "config/app.toml" });
 		expect(adapter.name).toBe("toml");
@@ -34,16 +34,13 @@ describe("tomlAdapter", () => {
 	});
 
 	test("throws a typed error for malformed input", () => {
-		vol.fromJSON({ "config.toml": "[database\nhost = true" }, process.cwd());
+		vol.fromJSON({ "config.toml": "[database\nhost = true" }, mockCwd);
 
 		expect(() => tomlAdapter().loadSync()).toThrow(ZconfigAdapterError);
 	});
 
 	test("renames snake_case TOML keys through a transform", () => {
-		vol.fromJSON(
-			{ "config.toml": "[database]\nmax_size = 10\n" },
-			process.cwd(),
-		);
+		vol.fromJSON({ "config.toml": "[database]\nmax_size = 10\n" }, mockCwd);
 
 		expect(
 			tomlAdapter({

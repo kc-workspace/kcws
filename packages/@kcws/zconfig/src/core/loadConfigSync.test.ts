@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
 import { z } from "zod";
 import type { Adapter, RawConfig } from "#types";
@@ -123,7 +123,7 @@ describe("integration", () => {
 				".env":
 					"APP_DATABASE__HOST=dotenv.internal\nAPP_DATABASE__PORT=5433\nAPP_DOTENV_ONLY=dotenv-value\n",
 			},
-			process.cwd(),
+			mockCwd,
 		);
 		vi.stubEnv("APP_DATABASE__HOST", "env.internal");
 		vi.stubEnv("APP_DATABASE__PORT", "6543");

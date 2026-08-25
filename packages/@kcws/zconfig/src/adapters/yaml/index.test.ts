@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test } from "vitest";
 import { ZconfigAdapterError } from "#utils/errors";
 import { yamlAdapter } from ".";
@@ -11,7 +11,7 @@ describe("yamlAdapter", () => {
 	test("parses nested YAML values", () => {
 		vol.fromJSON(
 			{ "config.yaml": "database:\n  host: localhost\n  port: 5432\n" },
-			process.cwd(),
+			mockCwd,
 		);
 
 		expect(yamlAdapter().loadSync()).toEqual({
@@ -26,14 +26,14 @@ describe("yamlAdapter", () => {
 				".configrc.yaml": "source: rc\n",
 				"config/config.yaml": "source: config\n",
 			},
-			process.cwd(),
+			mockCwd,
 		);
 
 		expect(yamlAdapter().loadSync()).toEqual({ source: "yml" });
 	});
 
 	test("loads an explicit file asynchronously", async () => {
-		vol.fromJSON({ "config/app.yaml": "debug: true\n" }, process.cwd());
+		vol.fromJSON({ "config/app.yaml": "debug: true\n" }, mockCwd);
 
 		const adapter = yamlAdapter({ path: "config/app.yaml" });
 		expect(adapter.name).toBe("yaml");
@@ -45,13 +45,13 @@ describe("yamlAdapter", () => {
 	});
 
 	test("throws a typed error for malformed input", () => {
-		vol.fromJSON({ "config.yaml": "database: [\n" }, process.cwd());
+		vol.fromJSON({ "config.yaml": "database: [\n" }, mockCwd);
 
 		expect(() => yamlAdapter().loadSync()).toThrow(ZconfigAdapterError);
 	});
 
 	test("applies a leaf transform", () => {
-		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, process.cwd());
+		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, mockCwd);
 
 		expect(
 			yamlAdapter({

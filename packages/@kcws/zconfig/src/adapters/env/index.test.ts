@@ -1,4 +1,4 @@
-import { vol } from "@kcconfigs/vitest/mocks";
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { envAdapter } from ".";
 
@@ -47,7 +47,7 @@ describe("envAdapter", () => {
 	});
 
 	test("reads only process environment values", () => {
-		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, process.cwd());
+		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, mockCwd);
 		vi.stubEnv("APP_DEBUG", "false");
 
 		expect(envAdapter({ prefix: "APP" }).loadSync()).toEqual({
