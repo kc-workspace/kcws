@@ -4,7 +4,7 @@ import { vi } from "vitest";
 const processMock = (actual: typeof processType) => {
 	return {
 		...actual,
-		cwd: vi.fn(() => "/mock"),
+		cwd: vi.fn(() => "/mock/cwd"),
 		exit: vi.fn<typeof process.exit>(),
 		arch: "x64" as const,
 		platform: "linux" as const,

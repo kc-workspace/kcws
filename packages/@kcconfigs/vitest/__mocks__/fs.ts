@@ -17,9 +17,9 @@ vi.hoisted(async () => {
 	const { fs: mockFS, vol } = await import("memfs");
 	vol.fromJSON(
 		{
-			"./tmp/.gitkeep": "",
+			"./.gitkeep": "",
 		},
-		"/mock",
+		"/mock/tmp",
 	);
 	require.cache["fs"] = { exports: mockFS } as never;
 });
