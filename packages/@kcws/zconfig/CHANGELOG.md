@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.0...@kcws/zconfig+v0.2.1) (2026-08-24)
+
+
+### Features
+
+* **kcws/zconfig:** add auto config adapter ([7eb1586](https://github.com/kc-workspace/kcws/commit/7eb1586a7ad2efc6fdff7480a3e7f9f243f89401))
+
+
+### Bugfixes
+
+* **kcws/zconfig:** load JSONC parser correctly ([329a512](https://github.com/kc-workspace/kcws/commit/329a5120bc1f02f6cfc76d2a2756f800dbeb1910))
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.1.0...@kcws/zconfig+v0.2.0) (2026-08-22)
 
 
