@@ -8,6 +8,7 @@ export {
 	useGenericAdapters,
 } from "./_shared";
 
+export { autoAdapter, getAutoFiles } from "./auto";
 export { dotenvAdapter } from "./dotenv";
 export { envAdapter } from "./env";
 export { fileAdapter } from "./file";
