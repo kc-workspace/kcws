@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsdown --config-loader unrun",
-		"test": "vitest run",
+		"test": "vitest run --configLoader native",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
 		"fix:format": "biome format --fix",

@@ -12,7 +12,7 @@
 		"build:tsdown": "tsdown",
 		"build:zshy": "zshy --project tsconfig.zshy.json",
 		"build:all": "pnpm run build:dts && pnpm run build:vite && pnpm run build:tsdown && pnpm run build:zshy",
-		"test": "vitest run",
+		"test": "vitest run --configLoader native",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
 		"fix:format": "biome format --fix",

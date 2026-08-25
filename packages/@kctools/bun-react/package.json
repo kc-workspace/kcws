@@ -7,7 +7,7 @@
 		"build": "tsdown",
 		"start": "./bin/index.js",
 		"build-start": "pnpm build && ./bin/index.js",
-		"test": "vitest run",
+		"test": "vitest run --configLoader native",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
 		"fix:format": "biome format --fix",

@@ -8,7 +8,7 @@
 		"build:internal": "pnpm recursive run --if-present --stream --filter @kcinternals/* build",
 		"build:config": "pnpm recursive run --if-present --stream --filter @kcconfigs/* build",
 		"build:all": "pnpm recursive run --if-present --stream build",
-		"test:all": "vitest run",
+		"test:all": "vitest run --configLoader native",
 		"check:commit": "commitlint",
 		"check:file": "ls-lint --config .github/linters/ls-lint.yaml",
 		"check:all": "pnpm recursive run --if-present --stream check",
