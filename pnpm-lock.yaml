@@ -279,8 +279,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(typedoc@0.28.20)
       typedoc-plugin-dt-links:
-        specifier: 2.0.66
-        version: 2.0.66(typedoc@0.28.20)
+        specifier: 2.0.67
+        version: 2.0.67(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: 4.0.1
         version: 4.0.1(typedoc@0.28.20)
@@ -5615,8 +5615,8 @@ packages:
     peerDependencies:
       typedoc: 0.28.x
 
-  typedoc-plugin-dt-links@2.0.66:
-    resolution: {integrity: sha512-kpkisf98WlmLI+bWmvKbCq4M5mlStdZ2XpApneLz39uF7Lt+knOypWwN97YGt0ggX65Ue6YNJlMVEp2ebIPsOg==}
+  typedoc-plugin-dt-links@2.0.67:
+    resolution: {integrity: sha512-IbUvmVORMxKn6zHjSozO0bS2stMBmSe3DfUQrSjkFpH3GvmQQiD+OfKkdyLCJsHJ8KfG6RKsmvx2AWwduVUvBg==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -11302,7 +11302,7 @@ snapshots:
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.66(typedoc@0.28.20):
+  typedoc-plugin-dt-links@2.0.67(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
