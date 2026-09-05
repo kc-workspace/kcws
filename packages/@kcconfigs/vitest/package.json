@@ -16,8 +16,8 @@
 	},
 	"dependencies": {
 		"@kcinternals/config-builder": "workspace:*",
-		"memfs": "4.68.0",
-		"vitest": "4.1.10"
+		"memfs": "4.68.1",
+		"vitest": "4.1.11"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.7",
