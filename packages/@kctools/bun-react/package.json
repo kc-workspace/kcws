@@ -22,7 +22,7 @@
 		"commander": "15.0.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.7",
+		"@biomejs/biome": "2.5.11",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
