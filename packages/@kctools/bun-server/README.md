@@ -134,6 +134,21 @@ bun-server build --mode mpa
 ## dist/index.html, dist/about/index.html, dist/blog/post/index.html
 ```
 
+Every bundler message is reported on the console channel of its level, and a
+successful build lists what it wrote — path, size, and kind, entrypoints first
+— followed by the file count, total size, and elapsed time:
+
+```text
+Build output:
+
+  dist/index.html            1.21 KB  entry
+  dist/chunk-a1b2c3.js     142.40 KB  chunk
+  dist/index-d4e5f6.css     12.02 KB  asset
+  dist/chunk-a1b2c3.js.map 380.11 KB  sourcemap
+
+  4 files, 535.74 KB in 231ms
+```
+
 ### preview
 
 Serve a directory of already built static files. Useful to check a production

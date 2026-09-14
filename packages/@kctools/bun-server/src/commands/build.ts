@@ -1,8 +1,10 @@
-import { error, info, log } from "node:console";
+import { error, info, log, warn } from "node:console";
 import { resolve } from "node:path";
+import type * as BunType from "bun";
 import tailwind from "bun-plugin-tailwind";
 import { DEFAULT_ENTRY, type Mode, resolveInput } from "../utils/entries";
 import { modeOption } from "../utils/options";
+import { formatArtifacts, formatMessage, formatSummary } from "../utils/report";
 import type { CommandFn } from "./types";
 
 const text = {
@@ -20,6 +22,14 @@ const text = {
 	},
 };
 
+/** Send a bundler message to the console channel matching its level. */
+const report = (message: BunType.BuildOutput["logs"][number]): void => {
+	const line = formatMessage(message);
+	if (message.level === "error") error(line);
+	else if (message.level === "warning") warn(line);
+	else log(line);
+};
+
 export const build: CommandFn = (program, Bun) => {
 	program
 		.command("build")
@@ -35,6 +45,7 @@ export const build: CommandFn = (program, Bun) => {
 
 			const plugins = [tailwind];
 
+			const started = performance.now();
 			const output = await Bun.build({
 				entrypoints: resolved.entries.map((entry) => entry.path),
 				target: "browser",
@@ -44,17 +55,18 @@ export const build: CommandFn = (program, Bun) => {
 				sourcemap: "linked",
 				plugins,
 			});
+			const elapsed = performance.now() - started;
 
-			log("Build output:");
-			output.logs.forEach((l) => {
-				log(`${l.level}: ${l.name} - ${l.message}`);
-			});
+			output.logs.forEach(report);
 
-			log();
-			if (output.success) {
-				info("\nBuild succeeded");
-			} else {
+			if (!output.success) {
 				error("\nBuild failed!");
+				return;
 			}
+
+			log("\nBuild output:");
+			for (const line of formatArtifacts(output.outputs, cwd)) log(line);
+
+			info(`\n${formatSummary(output.outputs, elapsed)}`);
 		});
 };

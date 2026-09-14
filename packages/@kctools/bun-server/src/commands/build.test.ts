@@ -1,4 +1,4 @@
-import { error, info, log } from "node:console";
+import { error, info, log, warn } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { Command } from "commander";
@@ -27,7 +27,19 @@ const createMockBun = (
 	} as unknown as typeof BunType;
 };
 
-const createMockOutput = (success: boolean): BunType.BuildOutput => ({
+const createMockArtifact = (
+	path: string,
+	size: number,
+	kind: BunType.BuildArtifact["kind"],
+): BunType.BuildArtifact =>
+	({ path: resolve(process.cwd(), path), size, kind }) as BunType.BuildArtifact;
+
+const createMockOutput = (
+	success: boolean,
+	outputs: BunType.BuildArtifact[] = [
+		createMockArtifact("dist/index.html", 1024, "entry-point"),
+	],
+): BunType.BuildOutput => ({
 	success,
 	logs: [
 		{
@@ -37,7 +49,7 @@ const createMockOutput = (success: boolean): BunType.BuildOutput => ({
 			position: null,
 		},
 	],
-	outputs: [],
+	outputs,
 });
 
 describe("build command registration", () => {
@@ -262,13 +274,13 @@ describe("build command action - mpa mode", () => {
 });
 
 describe("build command action - output", () => {
-	test("logs 'Build output:' header before log entries", async () => {
+	test("logs 'Build output:' header", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build"], { from: "user" });
-		expect(log).toHaveBeenCalledWith("Build output:");
+		expect(log).toHaveBeenCalledWith("\nBuild output:");
 	});
 
 	test("logs each build log entry with level, name, and message", async () => {
@@ -280,21 +292,86 @@ describe("build command action - output", () => {
 		expect(log).toHaveBeenCalledWith("info: BuildMessage - processed");
 	});
 
-	test("logs success message when build succeeds", async () => {
+	test("routes an error level log entry to console.error", async () => {
 		const program = new Command();
-		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
+		const output = createMockOutput(true);
+		output.logs = [
+			{
+				level: "error",
+				name: "BuildMessage",
+				message: "broken",
+				position: null,
+			},
+		];
+		const mockBun = createMockBun(Promise.resolve(output));
 		build(program, mockBun);
 
 		await program.parseAsync(["build"], { from: "user" });
-		expect(info).toHaveBeenCalledWith("\nBuild succeeded");
+		expect(error).toHaveBeenCalledWith("error: BuildMessage - broken");
 	});
 
-	test("logs error message when build fails", async () => {
+	test("routes a warning level log entry to console.warn", async () => {
+		const program = new Command();
+		const output = createMockOutput(true);
+		output.logs = [
+			{
+				level: "warning",
+				name: "BuildMessage",
+				message: "suspicious",
+				position: null,
+			},
+		];
+		const mockBun = createMockBun(Promise.resolve(output));
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+		expect(warn).toHaveBeenCalledWith("warning: BuildMessage - suspicious");
+	});
+
+	test("logs one padded line per artifact with its size and kind", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			Promise.resolve(
+				createMockOutput(true, [
+					createMockArtifact("dist/index.html", 1024, "entry-point"),
+					createMockArtifact("dist/app.js", 2048, "chunk"),
+				]),
+			),
+		);
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+
+		expect(log).toHaveBeenCalledWith("  dist/index.html  1.00 KB  entry");
+		expect(log).toHaveBeenCalledWith("  dist/app.js      2.00 KB  chunk");
+	});
+
+	test("summarizes file count, total size, and duration when build succeeds", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			Promise.resolve(
+				createMockOutput(true, [
+					createMockArtifact("dist/index.html", 1024, "entry-point"),
+					createMockArtifact("dist/app.js", 2048, "chunk"),
+				]),
+			),
+		);
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+
+		expect(info).toHaveBeenCalledWith(
+			expect.stringMatching(/^\n {2}2 files, 3\.00 KB in \d/),
+		);
+	});
+
+	test("logs error message and no artifacts when build fails", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(Promise.resolve(createMockOutput(false)));
 		build(program, mockBun);
 
 		await program.parseAsync(["build"], { from: "user" });
 		expect(error).toHaveBeenCalledWith("\nBuild failed!");
+		expect(log).not.toHaveBeenCalledWith("\nBuild output:");
 	});
 });
