@@ -1,6 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
-	"extends": ["./base.json", "../features/svelte.json"],
+	"extends": ["./base.json"],
 	"files": {
 		"includes": [
 			"**",
