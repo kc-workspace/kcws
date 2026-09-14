@@ -63,7 +63,7 @@ before the first page is bundled:
 Plugins from bunfig.toml: bun-plugin-tailwind
 ```
 
-`dev` only reports them — Bun's development server loads them itself. `build`
+`dev` only reports them. Bun's development server loads them itself. `build`
 loads them and passes them to the bundler; a plugin that fails to load is
 reported and skipped, and the build continues without it.
 
