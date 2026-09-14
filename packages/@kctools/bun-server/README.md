@@ -11,6 +11,7 @@ production, and previews the build output.
   - [Single page (spa)](#single-page-spa)
   - [Multiple pages (mpa)](#multiple-pages-mpa)
 - [Commands](#commands)
+  - [Server options](#server-options)
   - [dev](#dev)
   - [build](#build)
   - [preview](#preview)
@@ -135,8 +136,7 @@ bun-server build --mode mpa
 ```
 
 Every bundler message is reported on the console channel of its level, and a
-successful build lists what it wrote — path, size, and kind, entrypoints first
-— followed by the file count, total size, and elapsed time:
+successful build lists what it wrote.
 
 ```text
 Build output:
