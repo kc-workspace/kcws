@@ -7,8 +7,8 @@ import {
 	listEntries,
 	MODES,
 	type Mode,
-} from "./entries";
-import { listen, parsePort } from "./serve";
+} from "../utils/entries";
+import { listen, parsePort } from "../utils/serve";
 import type { CommandFn } from "./types";
 
 const text = {

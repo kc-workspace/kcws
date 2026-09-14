@@ -1,7 +1,7 @@
 import { error } from "node:console";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import type * as Bun from "bun";
-import { listen, parsePort } from "./serve";
+import { listen, parsePort } from "../utils/serve";
 import type { CommandFn } from "./types";
 
 const text = {

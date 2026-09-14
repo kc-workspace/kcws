@@ -10,7 +10,7 @@ import {
 	listEntries,
 	MODES,
 	type Mode,
-} from "./entries";
+} from "../utils/entries";
 import type { CommandFn } from "./types";
 
 const text = {
