@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.10](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.9...@kcstyles/reset.css+v1.0.10) (2026-09-14)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.7
+    * @kcconfigs/tsdown bumped to 0.2.10
+
 ## [1.0.9](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.8...@kcstyles/reset.css+v1.0.9) (2026-09-14)
 
 
