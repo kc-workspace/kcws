@@ -1,6 +1,24 @@
-# Biome shared configuration
+# @kcconfigs/biome
 
-Shared Biome formatter and linter settings.
+Shared [Biome](https://biomejs.dev/) formatter, linter, and assist settings.
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Presets](#presets)
+- [Formatter defaults](#formatter-defaults)
+- [Test file relaxations](#test-file-relaxations)
+- [Example](#example)
+
+## Prerequisites
+
+- **Biome**: 2.0.0 or higher (as peer dependency)
+
+## Installation
+
+```bash
+pnpm add --save-dev @biomejs/biome @kcconfigs/biome
+```
 
 ## Usage
 
@@ -13,15 +31,44 @@ Add a `biome.json` (or `biome.jsonc`) that extends the default preset:
 }
 ```
 
-The default preset extends the base rules and excludes generated artifacts such as `dist`, coverage, and test reports.
-See [biome.default.json](./src/presets/default.json) for the full list.
+### Presets
 
-## Variants
+| Name                    | Description                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| `@kcconfigs/biome`      | Default preset. Extends `base` and adds file includes/excludes plus `useEditorconfig`         |
+| `@kcconfigs/biome/base` | Bare preset with formatter, linter, and assist rules only, without workspace-specific filters |
 
-- `@kcconfigs/biome`: extends the base preset and adds sensible file includes/excludes plus editorconfig awareness.
-- `@kcconfigs/biome/base`: bare preset containing formatter, linter, and assist rules without workspace-specific file filters; useful if you want custom include/exclude patterns.
+The default preset excludes generated artifacts such as `dist`, `reports/coverage`,
+`reports/test-results`, lock files, `*.tsbuildinfo`, and release-please manifests.
+See [default.json](./src/presets/default.json) for the full list.
 
-Example using the base preset with custom overrides:
+Use `base` when you need to own the include/exclude patterns yourself.
+
+## Formatter defaults
+
+Inherited from [base.json](./src/presets/base.json):
+
+- **Indent style**: tab
+- **Indent width**: 2
+- **Line width**: 120
+- **Line ending**: LF
+- **VCS integration**: enabled, uses `.gitignore`, default branch `main`
+
+The default preset also sets `formatter.useEditorconfig` to `true`,
+so an `.editorconfig` in your repository takes precedence over the values above.
+
+## Test file relaxations
+
+The default preset relaxes a few rules for `**/*.test.*`, `**/*.spec.*`,
+and `**/__mocks__/**`:
+
+- `complexity/useLiteralKeys`: off
+- `suspicious/noExplicitAny`: off
+- `style/noNonNullAssertion`: off
+
+## Example
+
+Base preset with custom includes and a rule override:
 
 ```jsonc
 {
