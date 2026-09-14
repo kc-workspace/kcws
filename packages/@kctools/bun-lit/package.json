@@ -2,44 +2,8 @@
 	"name": "@kctools/bun-lit",
 	"version": "0.1.0",
 	"description": "Deprecated; use @kctools/bun-server instead",
-	"private": true,
+	"private": false,
 	"type": "module",
-	"scripts": {
-		"build": "tsdown",
-		"test": "vitest run --configLoader native",
-		"fix": "biome check --fix --unsafe",
-		"fix:lint": "biome lint --fix --unsafe",
-		"fix:format": "biome format --fix",
-		"check": "pnpm run check:lint && pnpm run check:format && pnpm run check:type",
-		"check:lint": "biome lint",
-		"check:format": "biome format",
-		"check:type": "tsc --noEmit"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.7",
-		"@kcconfigs/biome": "workspace:*",
-		"@kcconfigs/vitest": "workspace:*",
-		"@kcconfigs/tsconfig": "workspace:*",
-		"@kcconfigs/tsdown": "workspace:*",
-		"tsdown": "0.22.7",
-		"vitest": "4.1.11"
-	},
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.cts",
-	"exports": {
-		".": {
-			"source": "./src/index.ts",
-			"typedoc": "./src/index.ts",
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			},
-			"default": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			}
-		}
-	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kctools/bun-lit",
 	"repository": {
@@ -67,9 +31,6 @@
 		"src",
 		"!*.test.*"
 	],
-	"engines": {
-		"node": ">=14"
-	},
 	"publishConfig": {
 		"access": "public"
 	}

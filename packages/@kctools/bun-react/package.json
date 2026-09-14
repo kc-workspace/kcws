@@ -2,50 +2,8 @@
 	"name": "@kctools/bun-react",
 	"version": "0.2.2",
 	"description": "Deprecated; use @kctools/bun-server instead",
-	"private": true,
+	"private": false,
 	"type": "module",
-	"scripts": {
-		"build": "tsdown",
-		"start": "./bin/index.js",
-		"build-start": "tsdown && ./bin/index.js",
-		"test": "vitest run --configLoader native",
-		"fix": "biome check --fix --unsafe",
-		"fix:lint": "biome lint --fix --unsafe",
-		"fix:format": "biome format --fix",
-		"check": "pnpm run check:lint && pnpm run check:format && pnpm run check:type",
-		"check:lint": "biome lint",
-		"check:format": "biome format",
-		"check:type": "tsc --noEmit"
-	},
-	"dependencies": {
-		"@types/bun": "1.4.0",
-		"bun-plugin-tailwind": "0.1.2",
-		"commander": "15.0.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.7",
-		"@kcconfigs/biome": "workspace:*",
-		"@kcconfigs/tsconfig": "workspace:*",
-		"@kcconfigs/tsdown": "workspace:*",
-		"@kcconfigs/vitest": "workspace:*",
-		"tsdown": "0.22.7",
-		"vitest": "4.1.11"
-	},
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"bin": {
-		"bun-react": "./bin/index.js"
-	},
-	"exports": {
-		".": {
-			"source": "./src/index.ts",
-			"typedoc": "./src/index.ts",
-			"default": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			}
-		}
-	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kctools/bun-react",
 	"repository": {
@@ -72,9 +30,6 @@
 		"src",
 		"!*.test.*"
 	],
-	"engines": {
-		"node": ">=14"
-	},
 	"publishConfig": {
 		"access": "public"
 	}
