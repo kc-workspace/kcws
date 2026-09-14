@@ -1,5 +1,5 @@
 import { error } from "node:console";
-import { dirname, join, resolve, sep } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import type * as Bun from "bun";
 import { listen, parsePort } from "./serve";
 import type { CommandFn } from "./types";
@@ -28,8 +28,10 @@ const INDEX = "index.html";
 
 // lexical containment only: it stops `../` traversal, it is not a sandbox, so a
 // symlink inside the served directory pointing outside is still followed
-const isInside = (root: string, target: string): boolean =>
-	target === root || target.startsWith(`${root}${sep}`);
+const isInside = (root: string, target: string): boolean => {
+	const path = relative(root, target);
+	return path === "" || (!path.startsWith("..") && !isAbsolute(path));
+};
 
 /**
  * Decode a request pathname, rejecting what cannot become a file path.

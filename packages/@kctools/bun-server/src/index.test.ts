@@ -27,6 +27,26 @@ describe("Program", () => {
 			).toBe("Use bun to start dev or prod server for simple website");
 		});
 
+		test("falls back to the package name when package.json declares no bin", async () => {
+			vi.resetModules();
+			vi.doMock("../package.json", () => ({
+				bin: {},
+				name: "@kctools/bun-server",
+				description: "fallback description",
+				version: "1.2.3",
+			}));
+
+			const { Program: Fallback } = await import("./index");
+			const program = new Fallback(createMockBun());
+
+			expect((program as unknown as { program: Command }).program.name()).toBe(
+				"@kctools/bun-server",
+			);
+
+			vi.doUnmock("../package.json");
+			vi.resetModules();
+		});
+
 		test("sets version from package.json", () => {
 			const program = new Program(createMockBun());
 			expect(

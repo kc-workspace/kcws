@@ -319,6 +319,32 @@ describe("preview command action - static files", () => {
 	});
 });
 
+describe("preview command action - filesystem root", () => {
+	const serveRoot = async (files: Record<string, string>, path: string) => {
+		const mockBun = createMockBun(files);
+		const program = new Command();
+		preview(program, mockBun);
+		await program.parseAsync(["preview", "/"], { from: "user" });
+		return fetchOf(mockBun)(new Request(`http://127.0.0.1:3000${path}`));
+	};
+
+	test("serves a file when the served directory is the filesystem root", async () => {
+		const response = await serveRoot(
+			{ "/app.html": "<h1>app</h1>" },
+			"/app.html",
+		);
+
+		expect(response.status).toBe(200);
+		await expect(response.text()).resolves.toBe("<h1>app</h1>");
+	});
+
+	test("stops walking up at the filesystem root instead of looping", async () => {
+		const response = await serveRoot({}, "/");
+
+		expect(response.status).toBe(404);
+	});
+});
+
 describe("preview command action - custom directory", () => {
 	test("serves from the provided directory instead of dist", async () => {
 		const custom = resolve(process.cwd(), "custom");
