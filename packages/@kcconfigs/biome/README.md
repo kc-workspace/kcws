@@ -5,6 +5,7 @@ Shared [Biome](https://biomejs.dev/) formatter, linter, and assist settings.
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Integrate with vscode](#integrate-with-vscode)
   - [Presets](#presets)
 - [Formatter defaults](#formatter-defaults)
 - [Test file relaxations](#test-file-relaxations)
@@ -28,6 +29,18 @@ Add a `biome.json` (or `biome.jsonc`) that extends the default preset:
 {
   "$schema": "https://biomejs.dev/schemas/2.5.7/schema.json",
   "extends": ["@kcconfigs/biome"]
+}
+```
+
+### Integrate with vscode
+
+I recommended to add following to `.vscode/settings.json`.
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  }
 }
 ```
 
