@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@arethetypeswrong/core": "0.18.5",
 		"@kcinternals/config-builder": "workspace:*",
-		"publint": "0.3.23",
+		"publint": "0.3.24",
 		"tsdown": "0.22.7",
 		"unplugin-unused": "0.5.7",
 		"unrun": "0.3.1"
