@@ -23,12 +23,19 @@ Provides multiple tsconfig.json templates for different project types and use ca
 
 ## Prerequisites
 
-- **TypeScript**: 5.5.0 or higher (as peer dependency)
+- **TypeScript**: 6.0.0 or higher (as peer dependency)
+
+These peer dependencies are optional and only needed by the presets or features
+that reference them:
+
+- `@types/node` for `features/types` and the `default` preset
+- `@types/bun` for `features/bun` and the `bun` preset
+- `@kctypes/generic` for `features/types` and `features/bun`
 
 ## Installation
 
 ```bash
-pnpm add --save-dev typescript @kcconfigs/tsconfig
+pnpm add --save-dev typescript @types/node @kcconfigs/tsconfig
 ```
 
 ## Recommended settings
@@ -49,6 +56,7 @@ This package provides multiple tsconfig presets, environments, and features:
 | `@kcconfigs/tsconfig/root`     | Use monorepo root with /packages           |
 | `@kcconfigs/tsconfig/bundler`  | Use for with bundler (vite, tsdown, etc.)  |
 | `@kcconfigs/tsconfig/react`    | Use for React projects (extends bundler)   |
+| `@kcconfigs/tsconfig/bun`      | Default plus Bun types                     |
 | `@kcconfigs/tsconfig/dts`      | Use for generate declaration and maps      |
 | `@kcconfigs/tsconfig/zshy`     | Use with [zshy][zshy]                      |
 
@@ -92,7 +100,9 @@ We are have some restriction:
 
 | Name                                           | Description                                         |
 | ---------------------------------------------- | --------------------------------------------------- |
+| `@kcconfigs/tsconfig/features/bun`             | Use `bun` and `@kctypes/generic` as ambient types   |
 | `@kcconfigs/tsconfig/features/bundler`         | Set for bundler mode                                |
+| `@kcconfigs/tsconfig/features/commonjs`        | Emit CommonJS and relax `verbatimModuleSyntax`      |
 | `@kcconfigs/tsconfig/features/declaration`     | Add declaration files                               |
 | `@kcconfigs/tsconfig/features/declarationOnly` | Only emit declaration files                         |
 | `@kcconfigs/tsconfig/features/diagnostics`     | Add diagnostics output for debugging                |
@@ -103,8 +113,7 @@ We are have some restriction:
 | `@kcconfigs/tsconfig/features/noStrict`        | Disable strict mode when type checks                |
 | `@kcconfigs/tsconfig/features/tslib`           | Enable using helpers from `tslib`                   |
 | `@kcconfigs/tsconfig/features/types`           | Support custom `@kctypes/*` packages as types       |
-| `@kcconfigs/tsconfig/features/js`              | Allow JavaScript files to be imported               |
-| `@kcconfigs/tsconfig/features/es5`             | Set target to ES5 (2009) for backward compatible    |
+| `@kcconfigs/tsconfig/features/js`              | Allow and check JavaScript files                    |
 | `@kcconfigs/tsconfig/features/es6`             | Set target to ES6 (ES2015) for backward compatible  |
 | `@kcconfigs/tsconfig/features/react`           | Enable JSX support with `react-jsx` transform       |
 | `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                     |
@@ -140,10 +149,19 @@ To extend configurations with custom settings:
 All configurations inherit base settings:
 
 - **Target**: ESNext
-- **Module**: ESNext
-- **Strict Mode**: Enabled
+- **Module**: `preserve` (`envs/node` switches it to `nodenext`,
+  `envs/web` to `esnext`)
+- **Strict Mode**: Enabled, plus `exactOptionalPropertyTypes`,
+  `noUncheckedIndexedAccess`, `noImplicitOverride`, `noImplicitReturns`,
+  `noPropertyAccessFromIndexSignature`, `noFallthroughCasesInSwitch`,
+  `noUnusedLocals`, and `noUnusedParameters`
 - **Source Maps**: Enabled
-- **Check Js**: Enabled
+- **Incremental**: Enabled
+- **Verbatim Module Syntax**: Enabled
+- **Skip Lib Check**: Enabled
+
+JavaScript support is off by default; add
+`@kcconfigs/tsconfig/features/js` to enable `allowJs` and `checkJs`.
 
 ## Example
 
