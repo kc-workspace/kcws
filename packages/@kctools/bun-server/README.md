@@ -1,6 +1,6 @@
 # @kctools/bun-server
 
-Command line server for simple websites, powered by [Bun](https://bun.com/).
+Command line server for plain HTML websites, powered by [Bun](https://bun.com/).
 Bundles and serves plain HTML entrypoints in development, builds them for
 production, and previews the build output.
 
@@ -88,6 +88,16 @@ colliding route and exits instead of silently dropping one.
 
 ## Commands
 
+### Server options
+
+`dev` and `preview` both bind a socket, and take the same options for it:
+
+| Option                  | Default     | Description                                       |
+| ----------------------- | ----------- | ------------------------------------------------- |
+| `-h, --hostname <host>` | `127.0.0.1` | hostname to bind to                               |
+| `-p, --port <number>`   | `3000`      | port to listen on                                 |
+| `-P, --next-port`       | `false`     | try the next ports when the requested one is busy |
+
 ### dev
 
 Start the development server with hot reloading.
@@ -96,12 +106,11 @@ Start the development server with hot reloading.
 bun-server dev [input] [options]
 ```
 
-| Option                    | Default     | Description                                       |
-| ------------------------- | ----------- | ------------------------------------------------- |
-| `-m, --mode <mode>`       | `spa`       | `spa` or `mpa`                                    |
-| `-h, --hostname <host>`   | `127.0.0.1` | hostname to bind to                               |
-| `-p, --port <number>`     | `3000`      | port to listen on                                 |
-| `-P, --next-port`         | `false`     | try the next ports when the requested one is busy |
+| Option              | Default | Description    |
+| ------------------- | ------- | -------------- |
+| `-m, --mode <mode>` | `spa`   | `spa` or `mpa` |
+
+Plus the [server options](#server-options).
 
 ### build
 
@@ -134,13 +143,7 @@ build before deploying it.
 bun-server preview [directory] [options]
 ```
 
-| Option                    | Default     | Description                                       |
-| ------------------------- | ----------- | ------------------------------------------------- |
-| `-h, --hostname <host>`   | `127.0.0.1` | hostname to bind to                               |
-| `-p, --port <number>`     | `3000`      | port to listen on                                 |
-| `-P, --next-port`         | `false`     | try the next ports when the requested one is busy |
-
-The directory defaults to `dist`:
+Takes the [server options](#server-options). The directory defaults to `dist`:
 
 ```bash
 bun-server preview
@@ -149,9 +152,9 @@ bun-server preview build-output
 
 A request resolves in this order:
 
-1. the file itself, e.g. `/app.js`
-2. `index.html` inside the requested directory, e.g. `/docs` → `docs/index.html`
-3. the same path with an `.html` extension, e.g. `/about` → `about.html`
+1. the file itself, such as `/app.js`
+2. `index.html` inside the requested directory: `/docs` → `docs/index.html`
+3. the same path with an `.html` extension: `/about` → `about.html`
 4. `index.html` of the closest parent directory, walking up to the root
 
 Steps 2 and 3 mirror the two `mpa` spellings of a route, so a built multi page
@@ -165,7 +168,7 @@ lexical: it stops `../` traversal, but a symlink inside the served directory
 that points outside is still followed. This is a local preview server, not a
 sandbox.
 
-Unlike `dev`, `preview` does no bundling — build first.
+Unlike `dev`, `preview` does no bundling, so build first.
 
 ## References
 

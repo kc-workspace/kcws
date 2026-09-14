@@ -1,3 +1,4 @@
+import { error } from "node:console";
 import { dirname, relative, resolve, sep } from "node:path";
 import type * as Bun from "bun";
 
@@ -128,15 +129,80 @@ export const listEntries = (
 	if (mode === "spa") return [toEntry(resolve(cwd, input), "/")];
 
 	const root = entryRoot(mode, input, cwd);
-	const files = [
-		...new bun.Glob(PAGE_GLOB).scanSync({
-			cwd: root,
-			absolute: true,
-			onlyFiles: true,
-		}),
-	];
+	const files = scan(bun, root);
 
 	return files
 		.map((file) => toEntry(file, toRoute(file, root)))
 		.sort((a, b) => a.route.localeCompare(b.route));
+};
+
+/** Scan errors meaning the directory simply is not there. */
+const MISSING = new Set(["ENOENT", "ENOTDIR"]);
+
+/**
+ * List the HTML documents below `root`, treating a missing directory as empty.
+ *
+ * @param bun - Bun runtime namespace
+ * @param root - absolute path of the directory to scan
+ * @returns absolute paths of the matched documents
+ */
+const scan = (bun: typeof Bun, root: string): string[] => {
+	try {
+		return [
+			...new bun.Glob(PAGE_GLOB).scanSync({
+				cwd: root,
+				absolute: true,
+				onlyFiles: true,
+			}),
+		];
+	} catch (e) {
+		const code = (e as { code?: string }).code;
+		if (code !== undefined && MISSING.has(code)) return [];
+		throw e;
+	}
+};
+
+/** Everything a command needs about the documents it acts on. */
+export interface ResolvedInput {
+	/** The documents, sorted by route. */
+	entries: Entry[];
+	/** Directory the entries are rooted at, for the bundler output layout. */
+	root: string;
+}
+
+/**
+ * Resolve the documents a command should act on, reporting why it cannot.
+ *
+ * Applies the default input of the mode, then the two checks every command
+ * needs: the input has to match at least one document, and no two documents may
+ * claim the same route.
+ *
+ * @param bun - Bun runtime namespace
+ * @param mode - page layout of the served website
+ * @param input - file path (`spa`) or directory (`mpa`), or the mode default
+ * @param cwd - directory the input is resolved against
+ * @returns the entries and their root, or `undefined` when nothing is servable
+ */
+export const resolveInput = (
+	bun: typeof Bun,
+	mode: Mode,
+	input: string | undefined,
+	cwd: string,
+): ResolvedInput | undefined => {
+	const path = input ?? DEFAULT_ENTRY[mode];
+	const entries = listEntries(bun, mode, path, cwd);
+	if (entries.length === 0) {
+		error(`No HTML entry found in ${path}`);
+		return undefined;
+	}
+
+	const duplicates = duplicateRoutes(entries);
+	if (duplicates.length > 0) {
+		error(
+			`Multiple HTML entries claim the same route: ${duplicates.join(", ")}`,
+		);
+		return undefined;
+	}
+
+	return { entries, root: entryRoot(mode, path, cwd) };
 };
