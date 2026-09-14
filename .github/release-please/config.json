@@ -108,6 +108,12 @@
     },
     "packages/@kcws/zconfig": {
       "component": "@kcws/zconfig"
+    },
+    "packages/@kctools/bun-lit": {
+      "component": "@kctools/bun-lit"
+    },
+    "packages/@kctools/bun-server": {
+      "component": "@kctools/bun-server"
     }
   }
 }
