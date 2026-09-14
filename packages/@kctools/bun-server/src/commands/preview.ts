@@ -71,9 +71,11 @@ const readable = async (
 /**
  * Build the static file handler serving `root`.
  *
- * Requests resolve to the file itself, then to the `index.html` of the closest
- * parent directory down to the root, so client side routes keep working for
- * both a single page and a multi page build.
+ * Requests resolve to the file itself, then to the document the same path with
+ * an `.html` extension names, then to the `index.html` of the closest parent
+ * directory down to the root. The middle step mirrors `mpa`, where `about.html`
+ * and `about/index.html` both serve `/about`; the last one keeps client side
+ * routes working.
  *
  * @param bun - Bun runtime namespace
  * @param root - absolute path of the served directory
@@ -92,7 +94,11 @@ const createHandler =
 			return new Response("Forbidden", { status: 403 });
 		}
 
-		let file = await readable(bun, target);
+		let file =
+			(await readable(bun, target)) ??
+			(await readable(bun, join(target, INDEX))) ??
+			(await readable(bun, `${target}.html`));
+
 		for (const directory of parents(root, target)) {
 			if (file !== undefined) break;
 			file = await readable(bun, join(directory, INDEX));

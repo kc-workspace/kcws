@@ -233,6 +233,40 @@ describe("preview command action - static files", () => {
 		expect(mockBun.file).not.toHaveBeenCalled();
 	});
 
+	test("serves the matching html document of an extensionless path", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "index.html")]: "<h1>home</h1>",
+			[resolve(ROOT, "about.html")]: "<h1>about</h1>",
+		});
+
+		const response = await request(mockBun, "/about");
+
+		expect(response.status).toBe(200);
+		await expect(response.text()).resolves.toBe("<h1>about</h1>");
+	});
+
+	test("serves a nested html document of an extensionless path", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "index.html")]: "<h1>home</h1>",
+			[resolve(ROOT, "blog/news.html")]: "<h1>news</h1>",
+		});
+
+		const response = await request(mockBun, "/blog/news");
+
+		await expect(response.text()).resolves.toBe("<h1>news</h1>");
+	});
+
+	test("prefers a directory index over a sibling html document", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "docs/index.html")]: "<h1>index</h1>",
+			[resolve(ROOT, "docs.html")]: "<h1>sibling</h1>",
+		});
+
+		const response = await request(mockBun, "/docs");
+
+		await expect(response.text()).resolves.toBe("<h1>index</h1>");
+	});
+
 	test("falls back to the index.html of the closest parent directory", async () => {
 		const mockBun = createMockBun({
 			[resolve(ROOT, "index.html")]: "<h1>home</h1>",

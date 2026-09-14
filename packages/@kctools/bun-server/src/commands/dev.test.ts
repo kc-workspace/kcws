@@ -46,7 +46,7 @@ describe("dev command registration", () => {
 		expect(cmd?.description()).toBe("Start the development server");
 	});
 
-	test("accepts an optional html argument with no static default", () => {
+	test("accepts an optional input argument with no static default", () => {
 		const program = new Command();
 		dev(program, createMockBun());
 
@@ -54,7 +54,7 @@ describe("dev command registration", () => {
 		const args = cmd?.registeredArguments ?? [];
 
 		expect(args).toHaveLength(1);
-		expect(args[0]?.name()).toBe("html");
+		expect(args[0]?.name()).toBe("input");
 		expect(args[0]?.required).toBe(false);
 		expect(args[0]?.defaultValue).toBeUndefined();
 	});
@@ -262,18 +262,30 @@ describe("dev command action - mpa mode", () => {
 		expect(mockBun.resolveSync).toHaveBeenCalledTimes(2);
 	});
 
-	test("errors and does not start a server when two pages claim the same route", async () => {
+	test("serves a named document on its own route", async () => {
 		const program = new Command();
 		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
-			routeFile("src/routes/about/index.html"),
-			routeFile("src/routes/about/contact.html"),
+			routeFile("src/routes/about.html"),
 		]);
 		dev(program, mockBun);
 
-		await program.parseAsync(
-			["dev", "--mode", "mpa", "./src/routes/**/*.html"],
-			{ from: "user" },
-		);
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual([
+			"/about",
+			"/about/*",
+		]);
+	});
+
+	test("errors and does not start a server when two documents claim the same route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/about.html"),
+			routeFile("src/routes/about/index.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
 
 		expect(error).toHaveBeenCalledWith(
 			"Multiple HTML entries claim the same route: /about",
@@ -291,35 +303,31 @@ describe("dev command action - mpa mode", () => {
 
 		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
 
-		expect(error).toHaveBeenCalledWith(
-			"No HTML entry found for ./src/routes/**/index.html",
-		);
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/routes");
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
-	test("accepts a custom glob pattern", async () => {
+	test("scans a custom directory", async () => {
 		const program = new Command();
-		const patterns: string[] = [];
+		let scanned: unknown;
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
 			serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:3000") }),
 			Glob: class {
-				constructor(pattern: string) {
-					patterns.push(pattern);
-				}
-				scanSync(): string[] {
+				constructor(readonly pattern: string) {}
+				scanSync(options: { cwd: string }): string[] {
+					scanned = options.cwd;
 					return [routeFile("src/pages/docs/index.html")];
 				}
 			},
 		} as unknown as typeof BunType;
 		dev(program, mockBun);
 
-		await program.parseAsync(
-			["dev", "--mode", "mpa", "./src/pages/**/index.html"],
-			{ from: "user" },
-		);
+		await program.parseAsync(["dev", "--mode", "mpa", "./src/pages"], {
+			from: "user",
+		});
 
-		expect(patterns).toEqual(["./src/pages/**/index.html"]);
+		expect(scanned).toBe(resolve(process.cwd(), "src/pages"));
 		expect(Object.keys(routesOf(mockBun)).sort()).toEqual(["/docs", "/docs/*"]);
 	});
 });

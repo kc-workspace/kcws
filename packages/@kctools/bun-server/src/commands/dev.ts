@@ -13,8 +13,8 @@ import type { CommandFn } from "./types";
 
 const text = {
 	desc: "Start the development server",
-	html: {
-		desc: `Path to the HTML file (spa) or glob to the HTML files (mpa) to serve (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
+	input: {
+		desc: `Path to the HTML file (spa) or directory holding the HTML files (mpa) to serve (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
 	},
 	mode: {
 		desc: "Page layout of the website",
@@ -38,7 +38,7 @@ export const dev: CommandFn = (program, Bun) => {
 	program
 		.command("dev")
 		.description(text.desc)
-		.argument("[html]", text.html.desc)
+		.argument("[input]", text.input.desc)
 		.addOption(
 			new Option("-m, --mode <mode>", text.mode.desc)
 				.choices([...MODES])
@@ -47,7 +47,7 @@ export const dev: CommandFn = (program, Bun) => {
 		.option("-h, --hostname <hostname>", text.hostname.desc, text.hostname.def)
 		.option("-p, --port <number>", text.port.desc, text.port.def)
 		.option("-P, --next-port", text.nextPort.desc, text.nextPort.def)
-		.action(async (html, options) => {
+		.action(async (input, options) => {
 			const port = parsePort(options.port);
 			if (port === undefined) {
 				error(`Invalid port number: ${options.port}`);
@@ -56,11 +56,11 @@ export const dev: CommandFn = (program, Bun) => {
 
 			const cwd = process.cwd();
 			const mode = options.mode as Mode;
-			const pattern: string = html ?? DEFAULT_ENTRY[mode];
+			const inputPath: string = input ?? DEFAULT_ENTRY[mode];
 
-			const entries = listEntries(Bun, mode, pattern, cwd);
+			const entries = listEntries(Bun, mode, inputPath, cwd);
 			if (entries.length === 0) {
-				error(`No HTML entry found for ${pattern}`);
+				error(`No HTML entry found in ${inputPath}`);
 				return;
 			}
 

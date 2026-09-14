@@ -57,7 +57,7 @@ describe("build command registration", () => {
 		expect(cmd?.description()).toBe("Build the project");
 	});
 
-	test("accepts an optional html argument with no static default", () => {
+	test("accepts an optional input argument with no static default", () => {
 		const program = new Command();
 		build(program, createMockBun());
 
@@ -65,7 +65,7 @@ describe("build command registration", () => {
 		const args = cmd?.registeredArguments ?? [];
 
 		expect(args).toHaveLength(1);
-		expect(args[0]?.name()).toBe("html");
+		expect(args[0]?.name()).toBe("input");
 		expect(args[0]?.required).toBe(false);
 		expect(args[0]?.defaultValue).toBeUndefined();
 	});
@@ -203,7 +203,7 @@ describe("build command action - mpa mode", () => {
 		);
 	});
 
-	test("roots the output at the static prefix of the glob", async () => {
+	test("roots the output at the given directory", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
 			routeFile("src/routes/about/index.html"),
@@ -217,18 +217,31 @@ describe("build command action - mpa mode", () => {
 		);
 	});
 
-	test("errors and does not build when two pages claim the same route", async () => {
+	test("roots the output at a custom directory", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
-			routeFile("src/routes/about/index.html"),
-			routeFile("src/routes/about/contact.html"),
+			routeFile("src/pages/about.html"),
 		]);
 		build(program, mockBun);
 
-		await program.parseAsync(
-			["build", "--mode", "mpa", "./src/routes/**/*.html"],
-			{ from: "user" },
+		await program.parseAsync(["build", "--mode", "mpa", "./src/pages"], {
+			from: "user",
+		});
+
+		expect(mockBun.build).toHaveBeenCalledWith(
+			expect.objectContaining({ root: resolve(process.cwd(), "src/pages") }),
 		);
+	});
+
+	test("errors and does not build when two documents claim the same route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
+			routeFile("src/routes/about.html"),
+			routeFile("src/routes/about/index.html"),
+		]);
+		build(program, mockBun);
+
+		await program.parseAsync(["build", "--mode", "mpa"], { from: "user" });
 
 		expect(error).toHaveBeenCalledWith(
 			"Multiple HTML entries claim the same route: /about",
@@ -243,9 +256,7 @@ describe("build command action - mpa mode", () => {
 
 		await program.parseAsync(["build", "--mode", "mpa"], { from: "user" });
 
-		expect(error).toHaveBeenCalledWith(
-			"No HTML entry found for ./src/routes/**/index.html",
-		);
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/routes");
 		expect(mockBun.build).not.toHaveBeenCalled();
 	});
 });

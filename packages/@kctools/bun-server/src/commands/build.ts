@@ -15,8 +15,8 @@ import type { CommandFn } from "./types";
 
 const text = {
 	desc: "Build the project",
-	html: {
-		desc: `Path to the HTML file (spa) or glob to the HTML files (mpa) to build (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
+	input: {
+		desc: `Path to the HTML file (spa) or directory holding the HTML files (mpa) to build (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
 	},
 	mode: {
 		desc: "Page layout of the website",
@@ -36,7 +36,7 @@ export const build: CommandFn = (program, Bun) => {
 	program
 		.command("build")
 		.description(text.desc)
-		.argument("[html]", text.html.desc)
+		.argument("[input]", text.input.desc)
 		.addOption(
 			new Option("-m, --mode <mode>", text.mode.desc)
 				.choices([...MODES])
@@ -44,14 +44,14 @@ export const build: CommandFn = (program, Bun) => {
 		)
 		.option("-M, --no-minify", text.noMinify.desc, true)
 		.option("-O, --out <directory>", text.outdir.desc, text.outdir.def)
-		.action(async (html, options) => {
+		.action(async (input, options) => {
 			const cwd = process.cwd();
 			const mode = options.mode as Mode;
-			const pattern: string = html ?? DEFAULT_ENTRY[mode];
+			const inputPath: string = input ?? DEFAULT_ENTRY[mode];
 
-			const entries = listEntries(Bun, mode, pattern, cwd);
+			const entries = listEntries(Bun, mode, inputPath, cwd);
 			if (entries.length === 0) {
-				error(`No HTML entry found for ${pattern}`);
+				error(`No HTML entry found in ${inputPath}`);
 				return;
 			}
 
@@ -69,7 +69,7 @@ export const build: CommandFn = (program, Bun) => {
 				entrypoints: entries.map((entry) => entry.path),
 				target: "browser",
 				outdir: resolve(cwd, options.out),
-				root: entryRoot(mode, pattern, cwd),
+				root: entryRoot(mode, inputPath, cwd),
 				minify: options.minify,
 				sourcemap: "linked",
 				plugins,

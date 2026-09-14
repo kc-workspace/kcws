@@ -44,12 +44,13 @@ bun-server preview
 ## Modes
 
 `dev` and `build` accept `--mode` to select how many HTML entrypoints the
-website has. The positional argument overrides the default entry of the mode.
+website has. The positional argument overrides the default input of the mode,
+and its meaning follows the mode: a file in `spa`, a directory in `mpa`.
 
-| Mode  | Default entry                | Meaning                             |
-| ----- | ---------------------------- | ----------------------------------- |
-| `spa` | `./public/index.html`        | one document, path to a single file |
-| `mpa` | `./src/routes/**/index.html` | one document per route, glob        |
+| Mode  | Default input         | Input is                                |
+| ----- | --------------------- | --------------------------------------- |
+| `spa` | `./public/index.html` | the single HTML document                |
+| `mpa` | `./src/routes`        | a directory holding the HTML documents  |
 
 ### Single page (spa)
 
@@ -63,27 +64,27 @@ bun-server dev ./public/app.html
 
 ### Multiple pages (mpa)
 
-Every matched document becomes its own route. The URL is the directory of the
-document relative to the static part of the glob, and each route also answers
-its sub-paths:
+Every `.html` document below the directory, at any depth, becomes its own
+route. The URL is the document's path under that directory without the
+extension, and a document named `index.html` answers the route of its own
+directory. Each route also answers its sub-paths:
 
 ```text
 src/routes/index.html            ->  /          and  /*
+src/routes/about.html            ->  /about     and  /about/*
 src/routes/about/index.html      ->  /about     and  /about/*
+src/routes/blog/post.html        ->  /blog/post and  /blog/post/*
 src/routes/blog/post/index.html  ->  /blog/post and  /blog/post/*
 ```
 
 ```bash
 bun-server dev --mode mpa
-bun-server dev --mode mpa './src/pages/**/index.html'
+bun-server dev --mode mpa ./src/pages
 ```
 
-Quote the glob so the shell passes it through unexpanded.
-
-Because the route comes from the directory, the glob must match at most one
-document per directory. A pattern such as `./src/routes/**/*.html` that matches
-both `about/index.html` and `about/contact.html` maps both to `/about`; the
-command reports the colliding route and exits instead of silently dropping one.
+As the table shows, `about.html` and `about/index.html` are two ways to write
+the same route. A directory holding both is ambiguous: the command reports the
+colliding route and exits instead of silently dropping one.
 
 ## Commands
 
@@ -92,7 +93,7 @@ command reports the colliding route and exits instead of silently dropping one.
 Start the development server with hot reloading.
 
 ```bash
-bun-server dev [html] [options]
+bun-server dev [input] [options]
 ```
 
 | Option                    | Default     | Description                                       |
@@ -107,7 +108,7 @@ bun-server dev [html] [options]
 Bundle the website for production.
 
 ```bash
-bun-server build [html] [options]
+bun-server build [input] [options]
 ```
 
 | Option                   | Default | Description                          |
@@ -146,9 +147,15 @@ bun-server preview
 bun-server preview build-output
 ```
 
-A request resolves to the file itself, and otherwise to the `index.html` of the
-closest parent directory, walking up to the root of the served directory. Deep
-links therefore keep working, and land on the same document `dev` would serve:
+A request resolves in this order:
+
+1. the file itself, e.g. `/app.js`
+2. `index.html` inside the requested directory, e.g. `/docs` → `docs/index.html`
+3. the same path with an `.html` extension, e.g. `/about` → `about.html`
+4. `index.html` of the closest parent directory, walking up to the root
+
+Steps 2 and 3 mirror the two `mpa` spellings of a route, so a built multi page
+site is served exactly as `dev` serves it. Step 4 keeps deep links working:
 `/about/deep` falls back to `about/index.html` when it exists, and to the root
 `index.html` when it does not.
 
