@@ -29,7 +29,6 @@ sonar
 sonarcloud
 sonarqube
 syft
-textlintrc
 unplugin
 unrun
 vale

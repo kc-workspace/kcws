@@ -46,8 +46,6 @@ overrides:
   tmp@<0.2.7: ^0.2.7
   ## typedoc>yaml
   yaml@>=2.0.0 <2.8.3: ^2.8.3
-  ## textlint>@modelcontextprotocol/sdk>@hono/node-server>hono
-  hono@<4.12.25: ^4.12.25
   ## @actions/core>@actions/http-client>undici
   undici@<6.27.0: ^6.27.0
   ## typedoc-theme-oxide>cheerio>undici
