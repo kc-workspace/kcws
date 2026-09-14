@@ -623,63 +623,9 @@ importers:
         specifier: 0.22.7
         version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.24)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
 
-  packages/@kctools/bun-lit:
-    devDependencies:
-      '@biomejs/biome':
-        specifier: 2.5.7
-        version: 2.5.7
-      '@kcconfigs/biome':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/biome
-      '@kcconfigs/tsconfig':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsconfig
-      '@kcconfigs/tsdown':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/vitest':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/vitest
-      tsdown:
-        specifier: 0.22.7
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.24)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
-      vitest:
-        specifier: 4.1.11
-        version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(@vitest/ui@4.1.11)(vite@8.2.1)
+  packages/@kctools/bun-lit: {}
 
-  packages/@kctools/bun-react:
-    dependencies:
-      '@types/bun':
-        specifier: 1.4.0
-        version: 1.4.0
-      bun-plugin-tailwind:
-        specifier: 0.1.2
-        version: 0.1.2(bun@1.3.14)
-      commander:
-        specifier: 15.0.0
-        version: 15.0.0
-    devDependencies:
-      '@biomejs/biome':
-        specifier: 2.5.7
-        version: 2.5.7
-      '@kcconfigs/biome':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/biome
-      '@kcconfigs/tsconfig':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsconfig
-      '@kcconfigs/tsdown':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/tsdown
-      '@kcconfigs/vitest':
-        specifier: workspace:*
-        version: link:../../@kcconfigs/vitest
-      tsdown:
-        specifier: 0.22.7
-        version: 0.22.7(@arethetypeswrong/core@0.18.5)(@tsdown/css@0.22.7)(publint@0.3.24)(typescript@6.0.3)(unplugin-unused@0.5.7)(unrun@0.3.1)
-      vitest:
-        specifier: 4.1.11
-        version: 4.1.11(@types/node@24.13.3)(@vitest/coverage-v8@4.1.11)(@vitest/ui@4.1.11)(vite@8.2.1)
+  packages/@kctools/bun-react: {}
 
   packages/@kctools/bun-server:
     dependencies:
