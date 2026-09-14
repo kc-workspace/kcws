@@ -104,7 +104,6 @@
 		"CHANGELOG.md",
 		"dist",
 		"src",
-		"mocks",
 		"!*.test.*"
 	],
 	"engines": {
