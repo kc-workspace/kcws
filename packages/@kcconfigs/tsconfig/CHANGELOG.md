@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.7...@kcconfigs/tsconfig+v1.1.8) (2026-09-14)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.6
+
 ## [1.1.7](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.6...@kcconfigs/tsconfig+v1.1.7) (2026-09-14)
 
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.0...@kctools/bun-server+v0.2.1) (2026-09-14)
+
+
+### Bugfixes
+
+* minify flag with no- ([63bc34a](https://github.com/kc-workspace/kcws/commit/63bc34a99c121479da5d1582012214666e7347e4))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.6
+    * @kcconfigs/vitest bumped to 0.3.3
+    * @kcconfigs/tsconfig bumped to 1.1.8
+    * @kcconfigs/tsdown bumped to 0.2.11
+
 ## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.1.1...@kctools/bun-server+v0.2.0) (2026-09-14)
 
 
