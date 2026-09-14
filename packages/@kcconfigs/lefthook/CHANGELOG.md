@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.1.9](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.8...@kcconfigs/lefthook+v0.1.9) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+
+
+### Bugfixes
+
+* **kcconfigs/lefthook:** pre-push never include change file due to wrong variable name ([54cbb2f](https://github.com/kc-workspace/kcws/commit/54cbb2fc3fff21bf95164e15757ffe98ad041241))
+
+
+### Documentation
+
+* **kcconfigs/lefthook:** refresh docs ([4109718](https://github.com/kc-workspace/kcws/commit/41097180073bfed6d7d95415cef0fd3518d36c3e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+
 ## [0.1.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.7...@kcconfigs/lefthook+v0.1.8) (2026-08-22)
 
 

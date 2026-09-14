@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.1.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.5...@kcconfigs/tsconfig+v1.1.6) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps:** bump @types/bun from 1.3.14 to 1.4.0 ([#224](https://github.com/kc-workspace/kcws/issues/224)) ([ad74e83](https://github.com/kc-workspace/kcws/commit/ad74e8363b5c2f3c19dcb03bf07e623a27fdc294))
+
+
+### Documentation
+
+* **kcconfigs/tsconfig:** refresh docs ([42f497a](https://github.com/kc-workspace/kcws/commit/42f497aab25118e537d3ec62f8ad8622da6fab1a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kctypes/generic bumped to 2.0.1
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+  * peerDependencies
+    * @kctypes/generic bumped to 2.0.1
+
 ## [1.1.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.4...@kcconfigs/tsconfig+v1.1.5) (2026-08-25)
 
 

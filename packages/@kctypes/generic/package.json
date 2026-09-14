@@ -1,6 +1,6 @@
 {
 	"name": "@kctypes/generic",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "TypeScript definitions for global generic type",
 	"type": "module",
 	"scripts": {

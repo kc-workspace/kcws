@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.13](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.12...@kcconfigs/commitlint+v0.2.13) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump the commitlint group across 1 directory with 3 updates ([#215](https://github.com/kc-workspace/kcws/issues/215)) ([76f6943](https://github.com/kc-workspace/kcws/commit/76f6943767aad9c8a479c2ccc8ebc9359dd58419))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
+
+### Documentation
+
+* **kcconfigs/commitlint:** init readme ([c61646e](https://github.com/kc-workspace/kcws/commit/c61646e3c3bd53e393435da1c7773dda6e81c122))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+    * @kcconfigs/tsconfig bumped to 1.1.6
+    * @kcconfigs/tsdown bumped to 0.2.9
+    * @kcconfigs/vitest bumped to 0.3.1
+
 ## [0.2.12](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.11...@kcconfigs/commitlint+v0.2.12) (2026-08-25)
 
 

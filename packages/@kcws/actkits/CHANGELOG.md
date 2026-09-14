@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.10](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.9...@kcws/actkits+v0.1.10) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+    * @kcconfigs/vitest bumped to 0.3.1
+    * @kcconfigs/tsconfig bumped to 1.1.6
+    * @kcconfigs/tsdown bumped to 0.2.9
+
 ## [0.1.9](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.1.8...@kcws/actkits+v0.1.9) (2026-08-25)
 
 
