@@ -14,9 +14,9 @@ describe("Program", () => {
 	describe("constructor", () => {
 		test("sets program name from bin key in package.json", () => {
 			const program = new Program(createMockBun());
-			// bin key is "bun-react" — the first key of the bin object
+			// bin key is "bun-server" — the first key of the bin object
 			expect((program as unknown as { program: Command }).program.name()).toBe(
-				"bun-react",
+				"bun-server",
 			);
 		});
 
@@ -24,7 +24,7 @@ describe("Program", () => {
 			const program = new Program(createMockBun());
 			expect(
 				(program as unknown as { program: Command }).program.description(),
-			).toBe("Use bun to start dev or prod server for react website");
+			).toBe("Use bun to start dev or prod server for simple website");
 		});
 
 		test("sets version from package.json", () => {

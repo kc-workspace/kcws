@@ -20,8 +20,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.7",
-		"@commitlint/cli": "21.2.1",
-		"@commitlint/cz-commitlint": "21.2.0",
+		"@commitlint/cli": "21.2.2",
+		"@commitlint/cz-commitlint": "21.2.2",
 		"@kcconfigs/biome": "workspace:",
 		"@kcconfigs/commitlint": "workspace:",
 		"@kcconfigs/lefthook": "workspace:",
@@ -29,21 +29,21 @@
 		"@kcconfigs/typedoc": "workspace:",
 		"@kcconfigs/vitest": "workspace:",
 		"@ls-lint/ls-lint": "2.3.1",
-		"@vitest/coverage-v8": "4.1.10",
-		"@vitest/ui": "4.1.10",
+		"@vitest/coverage-v8": "4.1.11",
+		"@vitest/ui": "4.1.11",
 		"commitizen": "4.3.2",
 		"inquirer": "^12.11.1",
-		"lefthook": "2.1.10",
+		"lefthook": "2.1.12",
 		"rimraf": "6.1.3",
 		"typedoc": "0.28.20",
 		"typedoc-github-theme": "0.4.0",
-		"typedoc-plugin-dt-links": "2.0.66",
+		"typedoc-plugin-dt-links": "2.0.70",
 		"typedoc-plugin-extras": "4.0.1",
 		"typedoc-plugin-include-example": "3.0.2",
 		"typedoc-plugin-mdn-links": "5.1.1",
 		"typedoc-plugin-missing-exports": "4.1.4",
 		"typescript": "6.0.3",
-		"vitest": "4.1.10"
+		"vitest": "4.1.11"
 	},
 	"config": {
 		"commitizen": {

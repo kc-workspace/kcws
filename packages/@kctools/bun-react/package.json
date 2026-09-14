@@ -18,7 +18,7 @@
 		"check:type": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@types/bun": "1.3.14",
+		"@types/bun": "1.4.0",
 		"bun-plugin-tailwind": "0.1.2",
 		"commander": "15.0.0"
 	},
@@ -29,7 +29,7 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.10"
+		"vitest": "4.1.11"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",

@@ -24,7 +24,7 @@ describe("Program", () => {
 			const program = new Program(createMockBun());
 			expect(
 				(program as unknown as { program: Command }).program.description(),
-			).toBe("Use bun to start dev or prod server for react website");
+			).toBe("Deprecated; use @kctools/bun-server instead");
 		});
 
 		test("sets version from package.json", () => {
