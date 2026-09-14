@@ -1,9 +1,9 @@
 import { error, info, log, warn } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
-import tailwind from "bun-plugin-tailwind";
 import { DEFAULT_ENTRY, type Mode, resolveInput } from "../utils/entries";
 import { modeOption } from "../utils/options";
+import { loadPlugins, pluginNames, reportPlugins } from "../utils/plugins";
 import { formatArtifacts, formatMessage, formatSummary } from "../utils/report";
 import type { CommandFn } from "./types";
 
@@ -47,7 +47,9 @@ export const build: CommandFn = (program, Bun) => {
 			const resolved = resolveInput(Bun, options.mode as Mode, input, cwd);
 			if (resolved === undefined) return;
 
-			const plugins = [tailwind];
+			const names = await pluginNames(Bun, cwd);
+			reportPlugins(names);
+			const plugins = await loadPlugins(Bun, names, cwd);
 
 			const started = performance.now();
 			const output = await Bun.build({

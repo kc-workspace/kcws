@@ -7,6 +7,7 @@ production, and previews the build output.
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Plugins](#plugins)
 - [Modes](#modes)
   - [Single page (spa)](#single-page-spa)
   - [Multiple pages (mpa)](#multiple-pages-mpa)
@@ -39,8 +40,32 @@ bun-server build
 bun-server preview
 ```
 
-[Tailwind CSS](https://tailwindcss.com/) is bundled automatically through
-`bun-plugin-tailwind`; no extra configuration is needed.
+## Plugins
+
+`dev` and `build` take their bundler plugins from the `[serve.static]` section
+of `bunfig.toml`, the file Bun's own development server reads. Declaring a
+plugin there is all it takes for both commands to use it, and removing it is how
+you turn one off:
+
+```toml
+[serve.static]
+plugins = ["bun-plugin-tailwind"]
+```
+
+That is also how [Tailwind CSS](https://tailwindcss.com/) is enabled: install
+`bun-plugin-tailwind` and list it. Without a `bunfig.toml`, or with an empty
+list, neither command loads any plugin.
+
+Both commands report what they are about to run, so the active set is visible
+before the first page is bundled:
+
+```text
+Plugins from bunfig.toml: bun-plugin-tailwind
+```
+
+`dev` only reports them — Bun's development server loads them itself. `build`
+loads them and passes them to the bundler; a plugin that fails to load is
+reported and skipped, and the build continues without it.
 
 ## Modes
 
@@ -189,4 +214,5 @@ Unlike `dev`, `preview` does no bundling, so build first.
 
 - [Bun HTTP server](https://bun.com/docs/api/http)
 - [Bun bundler](https://bun.com/docs/bundler)
+- [Bun HTML and static sites](https://bun.com/docs/bundler/html)
 - [Commander](https://github.com/tj/commander.js)

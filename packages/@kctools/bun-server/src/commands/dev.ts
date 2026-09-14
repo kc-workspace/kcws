@@ -1,6 +1,7 @@
 import { error } from "node:console";
 import { DEFAULT_ENTRY, type Mode, resolveInput } from "../utils/entries";
 import { modeOption } from "../utils/options";
+import { pluginNames, reportPlugins } from "../utils/plugins";
 import { listen, parsePort } from "../utils/serve";
 import type { CommandFn } from "./types";
 
@@ -42,6 +43,10 @@ export const dev: CommandFn = (program, Bun) => {
 			const cwd = process.cwd();
 			const resolved = resolveInput(Bun, options.mode as Mode, input, cwd);
 			if (resolved === undefined) return;
+
+			// Bun's dev server loads these itself; reporting them tells the reader
+			// which plugins are about to process the pages
+			reportPlugins(await pluginNames(Bun, cwd));
 
 			const routes: Record<string, unknown> = {};
 			for (const entry of resolved.entries) {

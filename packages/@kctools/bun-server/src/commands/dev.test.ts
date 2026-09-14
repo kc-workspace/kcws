@@ -1,4 +1,4 @@
-import { error, log, warn } from "node:console";
+import { error, info, log, warn } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { Command } from "commander";
@@ -9,13 +9,28 @@ import { dev } from "./dev";
 const HTML_FIXTURE_PATH = new URL("./__fixtures__/html.ts", import.meta.url)
 	.pathname;
 
+// Bun members backing the bunfig.toml lookup the dev action reports from
+const bunfig = (declared?: string[]) => ({
+	file: vi.fn().mockReturnValue({
+		exists: async () => declared !== undefined,
+		text: async () => "",
+	}),
+	TOML: {
+		parse: vi
+			.fn()
+			.mockReturnValue({ serve: { static: { plugins: declared ?? [] } } }),
+	},
+});
+
 const createMockBun = (
 	serveResult: object = { url: new URL("http://127.0.0.1:3000") },
 	globFiles: string[] = [],
+	declared?: string[],
 ) =>
 	({
 		resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
 		serve: vi.fn().mockReturnValue(serveResult),
+		...bunfig(declared),
 		Glob: class {
 			constructor(readonly pattern: string) {}
 			scanSync(): string[] {
@@ -227,6 +242,36 @@ describe("dev command action - spa mode", () => {
 	});
 });
 
+describe("dev command action - plugins", () => {
+	test("reports the plugins bunfig.toml declares", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			{ url: new URL("http://127.0.0.1:3000") },
+			[],
+			["bun-plugin-tailwind"],
+		);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev"], { from: "user" });
+
+		expect(info).toHaveBeenCalledWith(
+			"Plugins from bunfig.toml: bun-plugin-tailwind",
+		);
+	});
+
+	test("stays silent when there is no bunfig.toml", async () => {
+		const program = new Command();
+		const mockBun = createMockBun();
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev"], { from: "user" });
+
+		expect(info).not.toHaveBeenCalledWith(
+			expect.stringContaining("Plugins from"),
+		);
+	});
+});
+
 describe("dev command action - mpa mode", () => {
 	const routeFile = (relativePath: string) =>
 		resolve(process.cwd(), relativePath);
@@ -312,6 +357,7 @@ describe("dev command action - mpa mode", () => {
 		let scanned: unknown;
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			...bunfig(),
 			serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:3000") }),
 			Glob: class {
 				constructor(readonly pattern: string) {}
@@ -337,6 +383,7 @@ describe("dev command action - port retry", () => {
 		const portError = new Error("Port 3000 already in use");
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			...bunfig(),
 			serve: vi.fn().mockImplementation(() => {
 				throw portError;
 			}),
@@ -354,6 +401,7 @@ describe("dev command action - port retry", () => {
 		const portError = new Error("Port in use");
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			...bunfig(),
 			serve: vi
 				.fn()
 				.mockImplementationOnce(() => {
@@ -379,6 +427,7 @@ describe("dev command action - port retry", () => {
 		const portError = new Error("Port in use");
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			...bunfig(),
 			serve: vi.fn().mockImplementation(() => {
 				throw portError;
 			}),

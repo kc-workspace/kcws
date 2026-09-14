@@ -3,21 +3,31 @@ import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { Command } from "commander";
 import { describe, expect, test, vi } from "vitest";
-
-vi.mock("bun-plugin-tailwind", () => ({
-	default: { name: "tailwind-mock" },
-}));
-
 import { build } from "./build";
+
+// Absolute path to the module bunfig.toml plugin names resolve to
+const PLUGIN_FIXTURE_PATH = new URL("./__fixtures__/plugin.ts", import.meta.url)
+	.pathname;
 
 const createMockBun = (
 	output?: Promise<BunType.BuildOutput>,
 	globFiles: string[] = [],
+	declared?: string[],
 ) => {
 	const buildFn = vi.fn();
 	if (output) buildFn.mockReturnValueOnce(output);
 	return {
 		build: buildFn,
+		file: vi.fn().mockReturnValue({
+			exists: async () => declared !== undefined,
+			text: async () => "",
+		}),
+		TOML: {
+			parse: vi
+				.fn()
+				.mockReturnValue({ serve: { static: { plugins: declared ?? [] } } }),
+		},
+		resolveSync: vi.fn().mockReturnValue(PLUGIN_FIXTURE_PATH),
 		Glob: class {
 			constructor(readonly pattern: string) {}
 			scanSync(): string[] {
@@ -176,7 +186,7 @@ describe("build command action - spa mode", () => {
 		);
 	});
 
-	test("includes plugins array in build options", async () => {
+	test("builds without plugins when there is no bunfig.toml", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
 		build(program, mockBun);
@@ -184,9 +194,51 @@ describe("build command action - spa mode", () => {
 		await program.parseAsync(["build"], { from: "user" });
 
 		expect(mockBun.build).toHaveBeenCalledWith(
-			expect.objectContaining({
-				plugins: expect.arrayContaining([expect.any(Object)]),
-			}),
+			expect.objectContaining({ plugins: [] }),
+		);
+	});
+
+	test("loads the plugins bunfig.toml declares for the dev server", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			Promise.resolve(createMockOutput(true)),
+			[],
+			["bun-plugin-tailwind"],
+		);
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+
+		expect(mockBun.build).toHaveBeenCalledWith(
+			expect.objectContaining({ plugins: [{ name: "fixture-plugin" }] }),
+		);
+	});
+
+	test("reports the plugins it loaded", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			Promise.resolve(createMockOutput(true)),
+			[],
+			["bun-plugin-tailwind"],
+		);
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+
+		expect(info).toHaveBeenCalledWith(
+			"Plugins from bunfig.toml: bun-plugin-tailwind",
+		);
+	});
+
+	test("stays silent about plugins when none are declared", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)));
+		build(program, mockBun);
+
+		await program.parseAsync(["build"], { from: "user" });
+
+		expect(info).not.toHaveBeenCalledWith(
+			expect.stringContaining("Plugins from"),
 		);
 	});
 });
