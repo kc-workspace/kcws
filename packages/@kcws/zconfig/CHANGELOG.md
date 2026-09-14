@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.1...@kcws/zconfig+v0.2.2) (2026-08-25)
+
+
+### Performance Improvements
+
+* **kcws/zconfig:** add autoAdapter and getAutoFiles to `@kcws/zconfig/adapters` ns ([5e37832](https://github.com/kc-workspace/kcws/commit/5e37832c9abc19d207edd7009bdeeb18559f53ee))
+* **kcws/zconfig:** update use*Adapters to use auto adapters instead ([bda371a](https://github.com/kc-workspace/kcws/commit/bda371a7a161b865fa7e5e367114a80c4e0235c7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.3.0
+    * @kcconfigs/tsconfig bumped to 1.1.5
+    * @kcconfigs/tsdown bumped to 0.2.8
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.0...@kcws/zconfig+v0.2.1) (2026-08-24)
 
 

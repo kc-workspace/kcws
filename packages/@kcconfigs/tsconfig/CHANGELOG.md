@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.4...@kcconfigs/tsconfig+v1.1.5) (2026-08-25)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kctypes/generic bumped to 2.0.0
+  * peerDependencies
+    * @kctypes/generic bumped to 2.0.0
+
 ## [1.1.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.3...@kcconfigs/tsconfig+v1.1.4) (2026-08-22)
 
 

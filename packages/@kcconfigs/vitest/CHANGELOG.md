@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.2...@kcconfigs/vitest+v0.3.0) (2026-08-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/vitest:** update fs mock and paths as well as export mock*
+
+### Performance Improvements
+
+* **kcconfigs/vitest:** update fs mock and paths as well as export mock* ([0836522](https://github.com/kc-workspace/kcws/commit/083652287f7bf824714d4837eb51cbe870978cfa))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.2
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.5
+    * @kcconfigs/tsdown bumped to 0.2.8
+    * @kctypes/generic bumped to 2.0.0
+
 ## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.1...@kcconfigs/vitest+v0.2.2) (2026-08-22)
 
 

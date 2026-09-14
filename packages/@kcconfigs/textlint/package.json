@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/textlint",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"description": "Shared textlint rule configuration",
 	"type": "module",
 	"scripts": {

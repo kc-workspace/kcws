@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kctypes/package_json+v1.31.1...@kctypes/package_json+v2.0.0) (2026-08-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kctypes/package_json:** export package as module type instead of cjs
+
+### Performance Improvements
+
+* **kctypes/package_json:** export package as module type instead of cjs ([356e5a9](https://github.com/kc-workspace/kcws/commit/356e5a9b694a4151332075b9d8f56ffc3f4c0b6f))
+
 ## [1.31.1](https://github.com/kc-workspace/kcws/compare/@kctypes/package_json+v1.31.0...@kctypes/package_json+v1.31.1) (2026-08-02)
 
 

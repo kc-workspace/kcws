@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.2...@kcconfigs/typedoc+v0.3.3) (2026-08-25)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.5
+    * @kcconfigs/tsdown bumped to 0.2.8
+    * @kcconfigs/vitest bumped to 0.3.0
+
 ## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.1...@kcconfigs/typedoc+v0.3.2) (2026-08-22)
 
 
