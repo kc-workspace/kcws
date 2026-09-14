@@ -48,12 +48,14 @@ export const listen = <O extends object>(
 	) => Bun.Server<unknown>;
 
 	let port = options.port;
+	let last: unknown;
 	for (let attempt = 0; attempt < MAX_PORT_ATTEMPTS; attempt++) {
 		try {
 			const server = serve(create(port));
 			log(`Listening on ${server.url}`);
 			return server;
 		} catch (e) {
+			last = e;
 			if (!options.nextPort) {
 				error(e);
 				return undefined;
@@ -64,6 +66,9 @@ export const listen = <O extends object>(
 		}
 	}
 
+	// the retry loop cannot tell a busy port from any other failure, so the last
+	// error is reported to keep a misconfiguration from looking like a busy port
 	error(`Unable to find a free port after ${MAX_PORT_ATTEMPTS} attempts`);
+	error(last);
 	return undefined;
 };

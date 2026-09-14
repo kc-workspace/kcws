@@ -2,17 +2,25 @@ import { error, info, log } from "node:console";
 import { resolve } from "node:path";
 import tailwind from "bun-plugin-tailwind";
 import { Option } from "commander";
-import { DEFAULT_ENTRY, listEntries, MODES, type Mode } from "./entries";
+import {
+	DEFAULT_ENTRY,
+	DEFAULT_MODE,
+	duplicateRoutes,
+	entryRoot,
+	listEntries,
+	MODES,
+	type Mode,
+} from "./entries";
 import type { CommandFn } from "./types";
 
 const text = {
 	desc: "Build the project",
 	html: {
-		desc: "Path to the HTML file (spa) or glob to the HTML files (mpa) to build",
+		desc: `Path to the HTML file (spa) or glob to the HTML files (mpa) to build (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
 	},
 	mode: {
 		desc: "Page layout of the website",
-		def: "spa",
+		def: DEFAULT_MODE,
 	},
 	noMinify: {
 		desc: "Disable minification",
@@ -47,12 +55,21 @@ export const build: CommandFn = (program, Bun) => {
 				return;
 			}
 
+			const duplicates = duplicateRoutes(entries);
+			if (duplicates.length > 0) {
+				error(
+					`Multiple HTML entries claim the same route: ${duplicates.join(", ")}`,
+				);
+				return;
+			}
+
 			const plugins = [tailwind];
 
 			const output = await Bun.build({
 				entrypoints: entries.map((entry) => entry.path),
 				target: "browser",
 				outdir: resolve(cwd, options.out),
+				root: entryRoot(mode, pattern, cwd),
 				minify: options.minify,
 				sourcemap: "linked",
 				plugins,

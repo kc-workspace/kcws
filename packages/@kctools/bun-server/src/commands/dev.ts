@@ -1,17 +1,24 @@
 import { error } from "node:console";
 import { Option } from "commander";
-import { DEFAULT_ENTRY, listEntries, MODES, type Mode } from "./entries";
+import {
+	DEFAULT_ENTRY,
+	DEFAULT_MODE,
+	duplicateRoutes,
+	listEntries,
+	MODES,
+	type Mode,
+} from "./entries";
 import { listen, parsePort } from "./serve";
 import type { CommandFn } from "./types";
 
 const text = {
 	desc: "Start the development server",
 	html: {
-		desc: "Path to the HTML file (spa) or glob to the HTML files (mpa) to serve",
+		desc: `Path to the HTML file (spa) or glob to the HTML files (mpa) to serve (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
 	},
 	mode: {
 		desc: "Page layout of the website",
-		def: "spa",
+		def: DEFAULT_MODE,
 	},
 	hostname: {
 		desc: "Hostname to bind the dev server to",
@@ -54,6 +61,14 @@ export const dev: CommandFn = (program, Bun) => {
 			const entries = listEntries(Bun, mode, pattern, cwd);
 			if (entries.length === 0) {
 				error(`No HTML entry found for ${pattern}`);
+				return;
+			}
+
+			const duplicates = duplicateRoutes(entries);
+			if (duplicates.length > 0) {
+				error(
+					`Multiple HTML entries claim the same route: ${duplicates.join(", ")}`,
+				);
 				return;
 			}
 

@@ -132,4 +132,15 @@ describe("listen", () => {
 			`Unable to find a free port after ${MAX_PORT_ATTEMPTS} attempts`,
 		);
 	});
+
+	test("logs the underlying failure after exhausting every attempt", () => {
+		const failure = new Error("hostname is invalid");
+		const serve = vi.fn().mockImplementation(() => {
+			throw failure;
+		});
+
+		listen(createMockBun(serve), { port: 3000, nextPort: true }, () => ({}));
+
+		expect(error).toHaveBeenCalledWith(failure);
+	});
 });

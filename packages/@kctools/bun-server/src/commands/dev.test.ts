@@ -262,6 +262,25 @@ describe("dev command action - mpa mode", () => {
 		expect(mockBun.resolveSync).toHaveBeenCalledTimes(2);
 	});
 
+	test("errors and does not start a server when two pages claim the same route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/about/index.html"),
+			routeFile("src/routes/about/contact.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(
+			["dev", "--mode", "mpa", "./src/routes/**/*.html"],
+			{ from: "user" },
+		);
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple HTML entries claim the same route: /about",
+		);
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
+
 	test("errors and does not start a server when no page matches", async () => {
 		const program = new Command();
 		const mockBun = createMockBun(

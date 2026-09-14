@@ -1,5 +1,5 @@
 import { error } from "node:console";
-import { join, resolve, sep } from "node:path";
+import { dirname, join, resolve, sep } from "node:path";
 import type * as Bun from "bun";
 import { listen, parsePort } from "./serve";
 import type { CommandFn } from "./types";
@@ -26,8 +26,39 @@ const text = {
 
 const INDEX = "index.html";
 
+// lexical containment only: it stops `../` traversal, it is not a sandbox, so a
+// symlink inside the served directory pointing outside is still followed
 const isInside = (root: string, target: string): boolean =>
 	target === root || target.startsWith(`${root}${sep}`);
+
+/**
+ * Decode a request pathname, rejecting what cannot become a file path.
+ *
+ * @param url - the requested URL
+ * @returns the decoded pathname, or `undefined` when it is unusable
+ */
+const decodePath = (url: string): string | undefined => {
+	try {
+		const pathname = decodeURIComponent(new URL(url).pathname);
+		return pathname.includes("\0") ? undefined : pathname;
+	} catch {
+		// malformed percent encoding
+		return undefined;
+	}
+};
+
+/** Every directory from `target` up to `root`, closest first. */
+const parents = (root: string, target: string): string[] => {
+	const directories: string[] = [];
+	let current = target;
+	while (isInside(root, current)) {
+		directories.push(current);
+		const parent = dirname(current);
+		if (parent === current) break;
+		current = parent;
+	}
+	return directories;
+};
 
 const readable = async (
 	bun: typeof Bun,
@@ -40,8 +71,9 @@ const readable = async (
 /**
  * Build the static file handler serving `root`.
  *
- * Requests resolve to a file, to the `index.html` of a directory, and finally
- * fall back to the root `index.html` so client side routes keep working.
+ * Requests resolve to the file itself, then to the `index.html` of the closest
+ * parent directory down to the root, so client side routes keep working for
+ * both a single page and a multi page build.
  *
  * @param bun - Bun runtime namespace
  * @param root - absolute path of the served directory
@@ -50,16 +82,21 @@ const readable = async (
 const createHandler =
 	(bun: typeof Bun, root: string) =>
 	async (request: Request): Promise<Response> => {
-		const pathname = decodeURIComponent(new URL(request.url).pathname);
+		const pathname = decodePath(request.url);
+		if (pathname === undefined) {
+			return new Response("Bad Request", { status: 400 });
+		}
+
 		const target = resolve(root, `.${pathname}`);
 		if (!isInside(root, target)) {
 			return new Response("Forbidden", { status: 403 });
 		}
 
-		const file =
-			(await readable(bun, target)) ??
-			(await readable(bun, join(target, INDEX))) ??
-			(await readable(bun, join(root, INDEX)));
+		let file = await readable(bun, target);
+		for (const directory of parents(root, target)) {
+			if (file !== undefined) break;
+			file = await readable(bun, join(directory, INDEX));
+		}
 
 		if (file === undefined) return new Response("Not Found", { status: 404 });
 		return new Response(file);

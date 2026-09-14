@@ -12,6 +12,9 @@ export const MODES = ["spa", "mpa"] as const;
 /** Page layout of the served website. */
 export type Mode = (typeof MODES)[number];
 
+/** Page layout used when the command is called without `--mode`. */
+export const DEFAULT_MODE: Mode = "spa";
+
 /** Entry pattern used when the command is called without an explicit one. */
 export const DEFAULT_ENTRY: Record<Mode, string> = {
 	spa: "./public/index.html",
@@ -28,6 +31,9 @@ export interface Entry {
 	wildcard: string;
 }
 
+/** Metacharacters that make a `Bun.Glob` segment non-literal. */
+const GLOB_CHARS = /[*?[\]{}]/;
+
 /**
  * Return the static directory prefix of a glob pattern, i.e. every leading
  * segment before the first one containing a wildcard.
@@ -39,7 +45,7 @@ export const globBase = (pattern: string): string => {
 	const segments = pattern.split("/");
 	const statics: string[] = [];
 	for (const segment of segments) {
-		if (segment.includes("*")) break;
+		if (GLOB_CHARS.test(segment)) break;
 		statics.push(segment);
 	}
 
@@ -63,6 +69,43 @@ const toEntry = (path: string, route: string): Entry => ({
 	route,
 	wildcard: toWildcard(route),
 });
+
+/**
+ * Return the directory the entries of a pattern are rooted at.
+ *
+ * The bundler needs it to keep the source layout in its output: without it Bun
+ * derives the root from the common ancestor of the entrypoints, which collapses
+ * the layout whenever every page happens to live in the same directory.
+ *
+ * @param mode - page layout of the served website
+ * @param pattern - file path (`spa`) or glob pattern (`mpa`)
+ * @param cwd - directory the pattern is resolved against
+ * @returns absolute path of the root directory
+ */
+export const entryRoot = (mode: Mode, pattern: string, cwd: string): string =>
+	mode === "spa"
+		? dirname(resolve(cwd, pattern))
+		: resolve(cwd, globBase(pattern));
+
+/**
+ * Return the routes claimed by more than one entry.
+ *
+ * A route is derived from the directory of its document, so a pattern matching
+ * several documents in one directory produces collisions that would otherwise
+ * silently overwrite each other.
+ *
+ * @param entries - entries to inspect
+ * @returns each colliding route, once
+ */
+export const duplicateRoutes = (entries: Entry[]): string[] => {
+	const seen = new Set<string>();
+	const duplicates = new Set<string>();
+	for (const entry of entries) {
+		if (seen.has(entry.route)) duplicates.add(entry.route);
+		seen.add(entry.route);
+	}
+	return [...duplicates];
+};
 
 /**
  * Resolve the HTML documents a command should serve or build.

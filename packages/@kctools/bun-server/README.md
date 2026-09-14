@@ -80,6 +80,11 @@ bun-server dev --mode mpa './src/pages/**/index.html'
 
 Quote the glob so the shell passes it through unexpanded.
 
+Because the route comes from the directory, the glob must match at most one
+document per directory. A pattern such as `./src/routes/**/*.html` that matches
+both `about/index.html` and `about/contact.html` maps both to `/about`; the
+command reports the colliding route and exits instead of silently dropping one.
+
 ## Commands
 
 ### dev
@@ -141,11 +146,17 @@ bun-server preview
 bun-server preview build-output
 ```
 
-A request resolves in this order: the file itself, `index.html` inside the
-requested directory, then the `index.html` at the root of the served directory.
-The last step keeps deep links working for single page applications, and serves
-the home page for unknown paths of a multi page build. Requests that escape the
-served directory are rejected with `403`.
+A request resolves to the file itself, and otherwise to the `index.html` of the
+closest parent directory, walking up to the root of the served directory. Deep
+links therefore keep working, and land on the same document `dev` would serve:
+`/about/deep` falls back to `about/index.html` when it exists, and to the root
+`index.html` when it does not.
+
+Requests that escape the served directory are rejected with `403`, and requests
+whose path cannot become a file name with `400`. The containment check is
+lexical: it stops `../` traversal, but a symlink inside the served directory
+that points outside is still followed. This is a local preview server, not a
+sandbox.
 
 Unlike `dev`, `preview` does no bundling — build first.
 

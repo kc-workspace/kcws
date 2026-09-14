@@ -1,7 +1,15 @@
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { describe, expect, test } from "vitest";
-import { DEFAULT_ENTRY, globBase, listEntries, MODES } from "./entries";
+import {
+	DEFAULT_ENTRY,
+	DEFAULT_MODE,
+	duplicateRoutes,
+	entryRoot,
+	globBase,
+	listEntries,
+	MODES,
+} from "./entries";
 
 const CWD = "/project";
 
@@ -46,6 +54,80 @@ describe("globBase", () => {
 
 	test("returns '.' when the pattern has no directory", () => {
 		expect(globBase("*.html")).toBe(".");
+	});
+
+	test("stops at a brace expansion", () => {
+		expect(globBase("./src/routes/{about,blog}/index.html")).toBe(
+			"./src/routes",
+		);
+	});
+
+	test("stops at a character class", () => {
+		expect(globBase("./src/routes/[ab]*/index.html")).toBe("./src/routes");
+	});
+
+	test("stops at a single character wildcard", () => {
+		expect(globBase("./src/routes/page?/index.html")).toBe("./src/routes");
+	});
+});
+
+describe("DEFAULT_MODE", () => {
+	test("is spa", () => {
+		expect(DEFAULT_MODE).toBe("spa");
+	});
+});
+
+describe("entryRoot", () => {
+	test("is the directory of the file in spa mode", () => {
+		expect(entryRoot("spa", "./public/index.html", CWD)).toBe(
+			resolve(CWD, "public"),
+		);
+	});
+
+	test("is the static prefix of the glob in mpa mode", () => {
+		expect(entryRoot("mpa", "./src/routes/**/index.html", CWD)).toBe(
+			resolve(CWD, "src/routes"),
+		);
+	});
+
+	test("follows a custom glob in mpa mode", () => {
+		expect(entryRoot("mpa", "./src/pages/**/index.html", CWD)).toBe(
+			resolve(CWD, "src/pages"),
+		);
+	});
+});
+
+describe("duplicateRoutes", () => {
+	const entry = (route: string, path: string) => ({
+		path,
+		route,
+		wildcard: route === "/" ? "/*" : `${route}/*`,
+	});
+
+	test("returns nothing when every route is unique", () => {
+		expect(
+			duplicateRoutes([entry("/", "/a/index.html"), entry("/b", "/b.html")]),
+		).toEqual([]);
+	});
+
+	test("returns each route claimed by more than one file", () => {
+		expect(
+			duplicateRoutes([
+				entry("/about", "/about/index.html"),
+				entry("/about", "/about/contact.html"),
+				entry("/", "/index.html"),
+			]),
+		).toEqual(["/about"]);
+	});
+
+	test("reports a duplicated route once", () => {
+		expect(
+			duplicateRoutes([
+				entry("/a", "/a/one.html"),
+				entry("/a", "/a/two.html"),
+				entry("/a", "/a/three.html"),
+			]),
+		).toEqual(["/a"]);
 	});
 });
 

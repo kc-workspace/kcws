@@ -211,6 +211,40 @@ describe("preview command action - static files", () => {
 		await expect(response.text()).resolves.toBe("<h1>home</h1>");
 	});
 
+	test("returns 400 for a malformed percent encoding", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "index.html")]: "<h1>home</h1>",
+		});
+
+		const response = await request(mockBun, "/%ZZ/page");
+
+		expect(response.status).toBe(400);
+		expect(mockBun.file).not.toHaveBeenCalled();
+	});
+
+	test("returns 400 for a path containing a null byte", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "index.html")]: "<h1>home</h1>",
+		});
+
+		const response = await request(mockBun, "/a%00b");
+
+		expect(response.status).toBe(400);
+		expect(mockBun.file).not.toHaveBeenCalled();
+	});
+
+	test("falls back to the index.html of the closest parent directory", async () => {
+		const mockBun = createMockBun({
+			[resolve(ROOT, "index.html")]: "<h1>home</h1>",
+			[resolve(ROOT, "about/index.html")]: "<h1>about</h1>",
+		});
+
+		const response = await request(mockBun, "/about/deep/link");
+
+		expect(response.status).toBe(200);
+		await expect(response.text()).resolves.toBe("<h1>about</h1>");
+	});
+
 	test("returns 404 when neither the file nor the fallback exists", async () => {
 		const mockBun = createMockBun({});
 

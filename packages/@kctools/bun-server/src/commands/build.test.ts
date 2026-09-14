@@ -117,6 +117,7 @@ describe("build command action - spa mode", () => {
 				entrypoints: [resolve(process.cwd(), "./public/index.html")],
 				target: "browser",
 				outdir: resolve(process.cwd(), "dist"),
+				root: resolve(process.cwd(), "public"),
 				minify: true,
 				sourcemap: "linked",
 			}),
@@ -200,6 +201,39 @@ describe("build command action - mpa mode", () => {
 				],
 			}),
 		);
+	});
+
+	test("roots the output at the static prefix of the glob", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
+			routeFile("src/routes/about/index.html"),
+		]);
+		build(program, mockBun);
+
+		await program.parseAsync(["build", "--mode", "mpa"], { from: "user" });
+
+		expect(mockBun.build).toHaveBeenCalledWith(
+			expect.objectContaining({ root: resolve(process.cwd(), "src/routes") }),
+		);
+	});
+
+	test("errors and does not build when two pages claim the same route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
+			routeFile("src/routes/about/index.html"),
+			routeFile("src/routes/about/contact.html"),
+		]);
+		build(program, mockBun);
+
+		await program.parseAsync(
+			["build", "--mode", "mpa", "./src/routes/**/*.html"],
+			{ from: "user" },
+		);
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple HTML entries claim the same route: /about",
+		);
+		expect(mockBun.build).not.toHaveBeenCalled();
 	});
 
 	test("errors and does not build when no page matches", async () => {
