@@ -12,9 +12,12 @@ const text = {
 	input: {
 		desc: `Path to the HTML file (spa) or directory holding the HTML files (mpa) to build (default: "${DEFAULT_ENTRY.spa}" in spa, "${DEFAULT_ENTRY.mpa}" in mpa)`,
 	},
+	minify: {
+		desc: "Enable minification",
+		def: true,
+	},
 	noMinify: {
 		desc: "Disable minification",
-		def: false,
 	},
 	outdir: {
 		desc: "Output directory",
@@ -36,7 +39,8 @@ export const build: CommandFn = (program, Bun) => {
 		.description(text.desc)
 		.argument("[input]", text.input.desc)
 		.addOption(modeOption())
-		.option("-M, --no-minify", text.noMinify.desc, true)
+		.option("-M, --minify", text.minify.desc, text.minify.def)
+		.option("-N, --no-minify", text.noMinify.desc)
 		.option("-O, --out <directory>", text.outdir.desc, text.outdir.def)
 		.action(async (input, options) => {
 			const cwd = process.cwd();
