@@ -1,3 +1,4 @@
+import { error } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { describe, expect, test } from "vitest";
@@ -9,6 +10,7 @@ import {
 	listEntries,
 	MODES,
 	PAGE_GLOB,
+	resolveInput,
 } from "./entries";
 
 const CWD = "/project";
@@ -258,5 +260,148 @@ describe("duplicateRoutes", () => {
 		);
 
 		expect(duplicateRoutes(entries)).toEqual(["/about"]);
+	});
+});
+
+describe("resolveInput", () => {
+	const resolveFrom = (
+		files: string[],
+		directory: string | undefined = "./src/routes",
+	) => resolveInput(createMockBun(files), "mpa", directory, CWD);
+
+	test("returns the entries when the input resolves cleanly", () => {
+		const resolved = resolveFrom([
+			resolve(ROUTES, "index.html"),
+			resolve(ROUTES, "about.html"),
+		]);
+
+		expect(resolved?.entries.map((e) => e.route)).toEqual(["/", "/about"]);
+	});
+
+	test("returns the root the entries are laid out from", () => {
+		const resolved = resolveFrom([resolve(ROUTES, "index.html")]);
+
+		expect(resolved?.root).toBe(ROUTES);
+	});
+
+	test("falls back to the default input of the mode", () => {
+		let scanned: string | undefined;
+		const bun = {
+			Glob: class {
+				constructor(readonly pattern: string) {}
+				scanSync(options: { cwd: string }): string[] {
+					scanned = options.cwd;
+					return [resolve(ROUTES, "index.html")];
+				}
+			},
+		} as unknown as typeof BunType;
+
+		const resolved = resolveInput(bun, "mpa", undefined, CWD);
+
+		expect(scanned).toBe(ROUTES);
+		expect(resolved?.root).toBe(ROUTES);
+	});
+
+	test("reports an input matching nothing and returns undefined", () => {
+		expect(resolveFrom([])).toBeUndefined();
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/routes");
+	});
+
+	test("names the input that matched nothing", () => {
+		resolveFrom([], "./src/pages");
+
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/pages");
+	});
+
+	test("names the default input when none was given", () => {
+		resolveInput(createMockBun([]), "mpa", undefined, CWD);
+
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/routes");
+	});
+
+	test("reports colliding routes and returns undefined", () => {
+		const resolved = resolveFrom([
+			resolve(ROUTES, "about.html"),
+			resolve(ROUTES, "about/index.html"),
+		]);
+
+		expect(resolved).toBeUndefined();
+		expect(error).toHaveBeenCalledWith(
+			"Multiple HTML entries claim the same route: /about",
+		);
+	});
+
+	test("lists every colliding route", () => {
+		resolveFrom([
+			resolve(ROUTES, "about.html"),
+			resolve(ROUTES, "about/index.html"),
+			resolve(ROUTES, "blog.html"),
+			resolve(ROUTES, "blog/index.html"),
+		]);
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple HTML entries claim the same route: /about, /blog",
+		);
+	});
+
+	test("resolves a spa input without scanning", () => {
+		const resolved = resolveInput(
+			createMockBun(),
+			"spa",
+			"./public/index.html",
+			CWD,
+		);
+
+		expect(resolved?.entries).toEqual([
+			{ path: resolve(CWD, "public/index.html"), route: "/", wildcard: "/*" },
+		]);
+		expect(resolved?.root).toBe(resolve(CWD, "public"));
+	});
+});
+
+describe("listEntries - missing directory", () => {
+	const throwingBun = (failure: unknown) =>
+		({
+			Glob: class {
+				constructor(readonly pattern: string) {}
+				scanSync(): string[] {
+					throw failure;
+				}
+			},
+		}) as unknown as typeof BunType;
+
+	const withCode = (code: string) =>
+		Object.assign(new Error(`${code}: scan failed`), { code });
+
+	test("treats a missing directory as no documents", () => {
+		expect(
+			listEntries(throwingBun(withCode("ENOENT")), "mpa", "./nope", CWD),
+		).toEqual([]);
+	});
+
+	test("treats a file given where a directory belongs as no documents", () => {
+		expect(
+			listEntries(throwingBun(withCode("ENOTDIR")), "mpa", "./a.html", CWD),
+		).toEqual([]);
+	});
+
+	test("rethrows any other scan failure", () => {
+		const failure = withCode("EACCES");
+
+		expect(() =>
+			listEntries(throwingBun(failure), "mpa", "./secret", CWD),
+		).toThrow(failure);
+	});
+
+	test("reports a missing directory through resolveInput", () => {
+		const resolved = resolveInput(
+			throwingBun(withCode("ENOENT")),
+			"mpa",
+			"./nope",
+			CWD,
+		);
+
+		expect(resolved).toBeUndefined();
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./nope");
 	});
 });
