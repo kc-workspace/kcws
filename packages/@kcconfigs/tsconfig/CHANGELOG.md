@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.7](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.6...@kcconfigs/tsconfig+v1.1.7) (2026-09-14)
+
+
+### Performance Improvements
+
+* **kcconfigs/tsconfig:** add lit support (https://lit.dev/) ([0cb7b74](https://github.com/kc-workspace/kcws/commit/0cb7b7407c3501ae0f3c4c11b7d7bf280d330569))
+
 ## [1.1.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.5...@kcconfigs/tsconfig+v1.1.6) (2026-09-14)
 
 

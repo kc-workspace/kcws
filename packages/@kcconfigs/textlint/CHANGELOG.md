@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.14](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.13...@kcconfigs/textlint+v0.1.14) (2026-09-14)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.3.2
+    * @kcconfigs/tsconfig bumped to 1.1.7
+    * @kcconfigs/tsdown bumped to 0.2.10
+
 ## [0.1.13](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.12...@kcconfigs/textlint+v0.1.13) (2026-09-14)
 
 
