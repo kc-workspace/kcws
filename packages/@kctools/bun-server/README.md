@@ -1,0 +1,156 @@
+# @kctools/bun-server
+
+Command line server for simple websites, powered by [Bun](https://bun.com/).
+Bundles and serves plain HTML entrypoints in development, builds them for
+production, and previews the build output.
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Modes](#modes)
+  - [Single page (spa)](#single-page-spa)
+  - [Multiple pages (mpa)](#multiple-pages-mpa)
+- [Commands](#commands)
+  - [dev](#dev)
+  - [build](#build)
+  - [preview](#preview)
+- [References](#references)
+
+## Prerequisites
+
+- **Bun**: 1.3.0 or higher
+- **Node.js**: 14 or higher
+
+## Installation
+
+```bash
+pnpm add --save-dev @kctools/bun-server
+```
+
+## Usage
+
+```bash
+## start the development server
+bun-server dev
+## build for production into dist/
+bun-server build
+## serve the production build
+bun-server preview
+```
+
+[Tailwind CSS](https://tailwindcss.com/) is bundled automatically through
+`bun-plugin-tailwind`; no extra configuration is needed.
+
+## Modes
+
+`dev` and `build` accept `--mode` to select how many HTML entrypoints the
+website has. The positional argument overrides the default entry of the mode.
+
+| Mode  | Default entry                | Meaning                             |
+| ----- | ---------------------------- | ----------------------------------- |
+| `spa` | `./public/index.html`        | one document, path to a single file |
+| `mpa` | `./src/routes/**/index.html` | one document per route, glob        |
+
+### Single page (spa)
+
+The default. One HTML document answers every request, so client side routers
+keep working on a page reload:
+
+```bash
+bun-server dev
+bun-server dev ./public/app.html
+```
+
+### Multiple pages (mpa)
+
+Every matched document becomes its own route. The URL is the directory of the
+document relative to the static part of the glob, and each route also answers
+its sub-paths:
+
+```text
+src/routes/index.html            ->  /          and  /*
+src/routes/about/index.html      ->  /about     and  /about/*
+src/routes/blog/post/index.html  ->  /blog/post and  /blog/post/*
+```
+
+```bash
+bun-server dev --mode mpa
+bun-server dev --mode mpa './src/pages/**/index.html'
+```
+
+Quote the glob so the shell passes it through unexpanded.
+
+## Commands
+
+### dev
+
+Start the development server with hot reloading.
+
+```bash
+bun-server dev [html] [options]
+```
+
+| Option                    | Default     | Description                                       |
+| ------------------------- | ----------- | ------------------------------------------------- |
+| `-m, --mode <mode>`       | `spa`       | `spa` or `mpa`                                    |
+| `-h, --hostname <host>`   | `127.0.0.1` | hostname to bind to                               |
+| `-p, --port <number>`     | `3000`      | port to listen on                                 |
+| `-P, --next-port`         | `false`     | try the next ports when the requested one is busy |
+
+### build
+
+Bundle the website for production.
+
+```bash
+bun-server build [html] [options]
+```
+
+| Option                   | Default | Description                          |
+| ------------------------ | ------- | ------------------------------------ |
+| `-m, --mode <mode>`      | `spa`   | `spa` or `mpa`                       |
+| `-M, --no-minify`        | —       | disable minification                 |
+| `-O, --out <directory>`  | `dist`  | output directory                     |
+
+In `mpa` mode every matched document is an entrypoint, and the output keeps the
+source directory layout:
+
+```bash
+bun-server build --mode mpa
+## dist/index.html, dist/about/index.html, dist/blog/post/index.html
+```
+
+### preview
+
+Serve a directory of already built static files. Useful to check a production
+build before deploying it.
+
+```bash
+bun-server preview [directory] [options]
+```
+
+| Option                    | Default     | Description                                       |
+| ------------------------- | ----------- | ------------------------------------------------- |
+| `-h, --hostname <host>`   | `127.0.0.1` | hostname to bind to                               |
+| `-p, --port <number>`     | `3000`      | port to listen on                                 |
+| `-P, --next-port`         | `false`     | try the next ports when the requested one is busy |
+
+The directory defaults to `dist`:
+
+```bash
+bun-server preview
+bun-server preview build-output
+```
+
+A request resolves in this order: the file itself, `index.html` inside the
+requested directory, then the `index.html` at the root of the served directory.
+The last step keeps deep links working for single page applications, and serves
+the home page for unknown paths of a multi page build. Requests that escape the
+served directory are rejected with `403`.
+
+Unlike `dev`, `preview` does no bundling — build first.
+
+## References
+
+- [Bun HTTP server](https://bun.com/docs/api/http)
+- [Bun bundler](https://bun.com/docs/bundler)
+- [Commander](https://github.com/tj/commander.js)

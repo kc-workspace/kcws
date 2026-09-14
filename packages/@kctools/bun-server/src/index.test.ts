@@ -89,14 +89,13 @@ describe("setup", () => {
 		expect(result).toBeInstanceOf(Program);
 	});
 
-	test("registers both dev and build subcommands", () => {
+	test("registers the dev, build and preview subcommands", () => {
 		const mockBun = {} as unknown as typeof BunType;
 		const program = setup(mockBun);
 		const innerProgram = (program as unknown as { program: Command }).program;
 		const names = innerProgram.commands.map((c) => c.name());
 
-		expect(names).toContain("dev");
-		expect(names).toContain("build");
+		expect(names).toEqual(["dev", "build", "preview"]);
 	});
 
 	test("stores the provided Bun instance", () => {

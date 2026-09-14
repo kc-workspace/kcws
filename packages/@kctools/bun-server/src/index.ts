@@ -3,6 +3,7 @@ import { Command } from "commander";
 import { bin, description, name, version } from "../package.json";
 import { build } from "./commands/build";
 import { dev } from "./commands/dev";
+import { preview } from "./commands/preview";
 import type { CommandFn } from "./commands/types";
 
 export class Program {
@@ -31,7 +32,7 @@ export class Program {
 
 const setup = (bun: typeof Bun): Program => {
 	const program = new Program(bun);
-	program.add(dev).add(build);
+	program.add(dev).add(build).add(preview);
 	return program;
 };
 
