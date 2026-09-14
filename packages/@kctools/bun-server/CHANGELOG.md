@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.1.1...@kctools/bun-server+v0.2.0) (2026-09-14)
+
+
+### Features
+
+* **kctools/bun-server:** report built files, sizes, and duration ([0add500](https://github.com/kc-workspace/kcws/commit/0add500d210c2d4fbcdc46a81e7e03b781ca40bf))
+
+
+### Bugfixes
+
+* **kctools/bun-server:** preview should use different port than dev ([e44a892](https://github.com/kc-workspace/kcws/commit/e44a892e4fb768b1b0706359ef20896c67d7ae83))
+
+
+### Documentation
+
+* **kctools/bun-server:** update readme toc and fix doc styles ([ff5b0a0](https://github.com/kc-workspace/kcws/commit/ff5b0a0f3eadd242feec10e3a9cf911aa4f4bee7))
+
+
+### Miscellaneous Chores
+
+* **kctools/bun-server:** force update v0.1.1 =&gt; v0.2.0 ([9cf04ff](https://github.com/kc-workspace/kcws/commit/9cf04ff5c5bd8880b26f413de3e6c9b5594ddc7b))
+
 ## [0.1.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.1.0...@kctools/bun-server+v0.1.1) (2026-09-14)
 
 
