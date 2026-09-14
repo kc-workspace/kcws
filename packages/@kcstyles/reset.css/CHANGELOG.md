@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.9](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.8...@kcstyles/reset.css+v1.0.9) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump sass-embedded from 1.100.0 to 1.103.1 ([#222](https://github.com/kc-workspace/kcws/issues/222)) ([fb0eb3b](https://github.com/kc-workspace/kcws/commit/fb0eb3bc6e20b6393b502c77ec1b759beda3da59))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.6
+    * @kcconfigs/tsdown bumped to 0.2.9
+
 ## [1.0.8](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.7...@kcstyles/reset.css+v1.0.8) (2026-08-25)
 
 

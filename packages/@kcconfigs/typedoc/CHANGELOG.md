@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.3...@kcconfigs/typedoc+v0.3.4) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
+
+### Documentation
+
+* **kcconfigs/typedoc:** commit as is ([9c29194](https://github.com/kc-workspace/kcws/commit/9c29194c4f91b27a08bd867ab731785f71c8eed5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+    * @kcconfigs/tsconfig bumped to 1.1.6
+    * @kcconfigs/tsdown bumped to 0.2.9
+    * @kcconfigs/vitest bumped to 0.3.1
+
 ## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.2...@kcconfigs/typedoc+v0.3.3) (2026-08-25)
 
 

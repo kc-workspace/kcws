@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v2.0.0...@kctypes/generic+v2.0.1) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
 ## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v1.31.1...@kctypes/generic+v2.0.0) (2026-08-25)
 
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.4...@kcconfigs/biome+v2.0.5) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** svelte preset links to non-existed file ([3f2f7bc](https://github.com/kc-workspace/kcws/commit/3f2f7bc292035e2e02b783d4bde976441d1cf1bb))
+
+
+### Documentation
+
+* **kcconfigs/biome:** refresh docs ([00f1e1c](https://github.com/kc-workspace/kcws/commit/00f1e1c8882828980ecde7ded950ae02ba7754ea))
+
 ## [2.0.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.3...@kcconfigs/biome+v2.0.4) (2026-08-22)
 
 
