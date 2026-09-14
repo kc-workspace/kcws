@@ -1,0 +1,10 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"compilerOptions": {
+		// TODO: Flag should be swap after https://github.com/oven-sh/bun/issues/29197 fixed
+
+		// Language and Environment - https://www.typescriptlang.org/tsconfig/#Language_and_Environment_6254
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false
+	}
+}

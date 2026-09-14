@@ -16,6 +16,7 @@ Provides multiple tsconfig.json templates for different project types and use ca
 - [Example](#example)
   - [TSDown](#tsdown)
   - [React](#react)
+  - [Bun with Lit](#bun-with-lit)
 - [Investigate](#investigate)
 - [References](#references)
 
@@ -56,6 +57,7 @@ This package provides multiple tsconfig presets, environments, and features:
 | `@kcconfigs/tsconfig/root`     | Use monorepo root with /packages           |
 | `@kcconfigs/tsconfig/bundler`  | Use for with bundler (vite, tsdown, etc.)  |
 | `@kcconfigs/tsconfig/react`    | Use for React projects (extends bundler)   |
+| `@kcconfigs/tsconfig/lit`      | Use for [Lit][lit] projects                |
 | `@kcconfigs/tsconfig/bun`      | Default plus Bun types                     |
 | `@kcconfigs/tsconfig/dts`      | Use for generate declaration and maps      |
 | `@kcconfigs/tsconfig/zshy`     | Use with [zshy][zshy]                      |
@@ -116,6 +118,7 @@ We are have some restriction:
 | `@kcconfigs/tsconfig/features/js`              | Allow and check JavaScript files                    |
 | `@kcconfigs/tsconfig/features/es6`             | Set target to ES6 (ES2015) for backward compatible  |
 | `@kcconfigs/tsconfig/features/react`           | Enable JSX support with `react-jsx` transform       |
+| `@kcconfigs/tsconfig/features/lit`             | Enable experimental decorators for [Lit][lit]       |
 | `@kcconfigs/tsconfig/features/empty`           | Starting point for new features                     |
 
 Example use features
@@ -177,12 +180,24 @@ Below are the example configuration per tools or frameworks.
 
 ### React
 
-The react preset extends from bundler with React support,
-including JSX transform (`react-jsx`) and `.tsx` file inclusion.
+The react preset extends from bundler with React support.
 
 ```json
 {
   "extends": "@kcconfigs/tsconfig/react"
+}
+```
+
+### Bun with Lit
+
+The Bun preset extends from `default`, you can extend lit feature for lit support.
+
+```json
+{
+  "extends": [
+    "@kcconfigs/tsconfig/bun",
+    "@kcconfigs/tsconfig/features/lit"
+  ]
 }
 ```
 
@@ -196,6 +211,7 @@ after resolved **extends** path.
 - [TypeScript Configuration][tsconfig]
 
 [package.json#type]: https://nodejs.org/api/packages.html#type
+[lit]: https://lit.dev
 [zshy]: https://github.com/colinhacks/zshy
 [tsconfig]: https://www.typescriptlang.org/tsconfig
 
