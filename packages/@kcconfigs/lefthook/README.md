@@ -14,6 +14,7 @@ definitions that can be mixed and matched via Lefthook's `extends` mechanism.
     - [commit-msg](#commit-msg)
     - [pre-commit](#pre-commit)
     - [pre-push](#pre-push)
+    - [External configuration](#external-configuration)
 - [Templates](#templates)
 - [Example](#example)
 
@@ -50,22 +51,37 @@ templates:
   pm_cmd: pnpm
 ```
 
+Lefthook resolves `extends` as filesystem paths, not as Node module
+specifiers, so every entry below is listed relative to the package root and
+must be prefixed with `./node_modules/@kcconfigs/lefthook/` and suffixed with
+`.yaml` in your `lefthook.yaml`.
+
+For example, `presets/default` is written as:
+
+```yaml
+extends:
+  - ./node_modules/@kcconfigs/lefthook/src/presets/default.yaml
+```
+
 ### Presets
 
 Presets bundle multiple features together for convenience.
 
-| Name      | Import path           | Description                                    |
-| --------- | --------------------- | ---------------------------------------------- |
-| `default` | `@kcconfigs/lefthook` | Enables `strict` and `minimal-output` features |
+| Name      | Path              | Description                                    |
+| --------- | ----------------- | ---------------------------------------------- |
+| `default` | `presets/default` | Enables `strict` and `minimal-output` features |
 
 ### Features
 
 Features configure Lefthook behavior and can be extended individually.
 
-| Name             | Import path               | Description                                                               |
+| Name             | Path                      | Description                                                               |
 | ---------------- | ------------------------- | ------------------------------------------------------------------------- |
 | `strict`         | `features/strict`         | Asserts Lefthook is installed and enforces minimum version 2.0.0          |
 | `minimal-output` | `features/minimal-output` | Limits output to metadata, summary, and execution output for cleaner logs |
+| `debug`          | `features/debug`          | Disables TTY and prints every output group, including skips and failures  |
+
+`debug` and `minimal-output` both set `output`, so extend only one of them.
 
 ### Hooks
 
@@ -75,35 +91,54 @@ All hooks use the `{pm_cmd}` template variable for the package manager command
 
 #### commit-msg
 
-| Hook         | Import path                   | Description                               |
-| ------------ | ----------------------------- | ----------------------------------------- |
-| `commitlint` | `hooks/commit-msg/commitlint` | Validates commit messages with commitlint |
+| Hook         | Path                          | Description                                      |
+| ------------ | ----------------------------- | ------------------------------------------------ |
+| `commitlint` | `hooks/commit-msg/commitlint` | Validates the commit message with commitlint     |
+| `textlint`   | `hooks/commit-msg/textlint`   | Lints and fixes the commit message with textlint |
+
+Both commit-msg hooks set `LEFTHOOK=0` so the nested command does not re-enter
+Lefthook.
 
 #### pre-commit
 
 Pre-commit hooks run on staged files and autofix where possible
 (`stage_fixed: true`).
 
-| Hook           | Import path                     | Description                         |
-| -------------- | ------------------------------- | ----------------------------------- |
-| `biome-check`  | `hooks/pre-commit/biome-check`  | Runs `biome check --fix --unsafe`   |
-| `biome-format` | `hooks/pre-commit/biome-format` | Runs `biome format --fix --unsafe`  |
-| `biome-lint`   | `hooks/pre-commit/biome-lint`   | Runs `biome lint --fix --unsafe`    |
-| `ls-lint`      | `hooks/pre-commit/ls-lint`      | Validates file naming conventions   |
-| `textlint`     | `hooks/pre-commit/textlint`     | Lints and fixes text/Markdown files |
-| `type-check`   | `hooks/pre-commit/type-check`   | Runs `tsc --noEmit`                 |
-| `vitest`       | `hooks/pre-commit/vitest`       | Runs the test suite via Vitest      |
+| Hook           | Path                            | Description                              |
+| -------------- | ------------------------------- | ---------------------------------------- |
+| `biome-check`  | `hooks/pre-commit/biome-check`  | Runs `biome check --fix --unsafe`        |
+| `biome-format` | `hooks/pre-commit/biome-format` | Runs `biome format --fix --unsafe`       |
+| `biome-lint`   | `hooks/pre-commit/biome-lint`   | Runs `biome lint --fix --unsafe`         |
+| `ls-lint`      | `hooks/pre-commit/ls-lint`      | Validates file naming conventions        |
+| `textlint`     | `hooks/pre-commit/textlint`     | Lints and fixes `*.md` and `*.txt` files |
+| `type-check`   | `hooks/pre-commit/type-check`   | Runs `tsc --noEmit`                      |
+| `vitest`       | `hooks/pre-commit/vitest`       | Runs the test suite via `vitest run`     |
+
+`type-check` and `vitest` do not stage anything; they only gate the commit.
 
 #### pre-push
 
 Pre-push hooks run broader validation checks before pushing.
 Unlike pre-commit hooks, these do **not** autofix files.
 
-| Hook           | Import path                   | Description                     |
-| -------------- | ----------------------------- | ------------------------------- |
-| `biome-check`  | `hooks/pre-push/biome-check`  | Runs `biome check` (read-only)  |
-| `biome-format` | `hooks/pre-push/biome-format` | Runs `biome format` (read-only) |
-| `biome-lint`   | `hooks/pre-push/biome-lint`   | Runs `biome lint` (read-only)   |
+| Hook           | Path                          | Description                           |
+| -------------- | ----------------------------- | ------------------------------------- |
+| `biome-check`  | `hooks/pre-push/biome-check`  | Runs `biome check` (read-only)        |
+| `biome-format` | `hooks/pre-push/biome-format` | Runs `biome format` (read-only)       |
+| `biome-lint`   | `hooks/pre-push/biome-lint`   | Runs `biome lint` (read-only)         |
+| `textlint`     | `hooks/pre-push/textlint`     | Runs `textlint` on `*.md` and `*.txt` |
+| `type-check`   | `hooks/pre-push/type-check`   | Runs `tsc --noEmit`                   |
+| `vitest`       | `hooks/pre-push/vitest`       | Runs the test suite via `vitest run`  |
+
+#### External configuration
+
+The `textlint` and `ls-lint` hooks pass repository-level config paths on the
+command line, so those files must exist:
+
+| Hook       | Required files                                                             |
+| ---------- | -------------------------------------------------------------------------- |
+| `textlint` | `.github/linters/textlintrc.yaml`, `.github/linters/textlintrc.ignore.txt` |
+| `ls-lint`  | `.github/linters/ls-lint.yaml`                                             |
 
 ## Templates
 
