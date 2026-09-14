@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.5...@kcconfigs/biome+v2.0.6) (2026-09-14)
+
+
+### Documentation
+
+* **kcconfigs/biome:** add doc how to integrate with vscode for autofix ([7195768](https://github.com/kc-workspace/kcws/commit/7195768be9bcf5b8f40ab30b39e39053cb587936))
+
 ## [2.0.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.4...@kcconfigs/biome+v2.0.5) (2026-09-14)
 
 
