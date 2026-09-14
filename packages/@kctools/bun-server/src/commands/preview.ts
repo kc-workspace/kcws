@@ -16,7 +16,7 @@ const text = {
 	},
 	port: {
 		desc: "Port to run the preview server on",
-		def: "3000",
+		def: "4000",
 	},
 	nextPort: {
 		desc: "Automatically find the next available port if the specified one is in use",

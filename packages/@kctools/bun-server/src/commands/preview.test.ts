@@ -19,7 +19,7 @@ const createFile = (content: string | undefined) => {
 const createMockBun = (files: Record<string, string> = {}) =>
 	({
 		file: vi.fn((path: string) => createFile(files[path])),
-		serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:3000") }),
+		serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:4000") }),
 	}) as unknown as typeof BunType;
 
 const fetchOf = (bun: typeof BunType) => {
@@ -33,7 +33,7 @@ const request = async (bun: typeof BunType, path: string) => {
 	const program = new Command();
 	preview(program, bun);
 	await program.parseAsync(["preview"], { from: "user" });
-	return fetchOf(bun)(new Request(`http://127.0.0.1:3000${path}`));
+	return fetchOf(bun)(new Request(`http://127.0.0.1:4000${path}`));
 };
 
 describe("preview command registration", () => {
@@ -74,12 +74,12 @@ describe("preview command registration", () => {
 		expect(cmd?.opts()["hostname"]).toBe("127.0.0.1");
 	});
 
-	test("has --port option defaulting to '3000'", () => {
+	test("has --port option defaulting to '4000'", () => {
 		const program = new Command();
 		preview(program, createMockBun());
 
 		const cmd = program.commands.find((c) => c.name() === "preview");
-		expect(cmd?.opts()["port"]).toBe("3000");
+		expect(cmd?.opts()["port"]).toBe("4000");
 	});
 
 	test("has --next-port option defaulting to false", () => {
@@ -113,7 +113,7 @@ describe("preview command action - server", () => {
 		expect(mockBun.serve).toHaveBeenCalledWith(
 			expect.objectContaining({
 				hostname: "127.0.0.1",
-				port: 3000,
+				port: 4000,
 				fetch: expect.any(Function),
 			}),
 		);
@@ -141,7 +141,7 @@ describe("preview command action - server", () => {
 
 		await program.parseAsync(["preview"], { from: "user" });
 
-		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:3000/");
+		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:4000/");
 	});
 
 	test("does not enable development mode", async () => {
@@ -325,7 +325,7 @@ describe("preview command action - filesystem root", () => {
 		const program = new Command();
 		preview(program, mockBun);
 		await program.parseAsync(["preview", "/"], { from: "user" });
-		return fetchOf(mockBun)(new Request(`http://127.0.0.1:3000${path}`));
+		return fetchOf(mockBun)(new Request(`http://127.0.0.1:4000${path}`));
 	};
 
 	test("serves a file when the served directory is the filesystem root", async () => {
@@ -356,7 +356,7 @@ describe("preview command action - custom directory", () => {
 
 		await program.parseAsync(["preview", "custom"], { from: "user" });
 		const response = await fetchOf(mockBun)(
-			new Request("http://127.0.0.1:3000/"),
+			new Request("http://127.0.0.1:4000/"),
 		);
 
 		await expect(response.text()).resolves.toBe("<h1>custom</h1>");
