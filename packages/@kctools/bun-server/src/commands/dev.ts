@@ -1,8 +1,10 @@
 import { error } from "node:console";
-import { DEFAULT_ENTRY, type Mode, resolveInput } from "../utils/entries";
-import { modeOption } from "../utils/options";
+import { DEFAULT_ENTRY } from "../utils/entries";
+import { resolveCommandInput } from "../utils/input";
+import { modeOption, staticsOption } from "../utils/options";
 import { pluginNames, reportPlugins } from "../utils/plugins";
 import { listen, parsePort } from "../utils/serve";
+import { duplicateTargets, listStatics, staticRoute } from "../utils/statics";
 import type { CommandFn } from "./types";
 
 const text = {
@@ -33,6 +35,7 @@ export const dev: CommandFn = (program, Bun) => {
 		.option("-h, --hostname <hostname>", text.hostname.desc, text.hostname.def)
 		.option("-p, --port <number>", text.port.desc, text.port.def)
 		.option("-P, --next-port", text.nextPort.desc, text.nextPort.def)
+		.addOption(staticsOption())
 		.action(async (input, options) => {
 			const port = parsePort(options.port);
 			if (port === undefined) {
@@ -41,7 +44,7 @@ export const dev: CommandFn = (program, Bun) => {
 			}
 
 			const cwd = process.cwd();
-			const resolved = resolveInput(Bun, options.mode as Mode, input, cwd);
+			const resolved = await resolveCommandInput(Bun, options, input, cwd);
 			if (resolved === undefined) return;
 
 			// Bun's dev server loads these itself; reporting them tells the reader
@@ -55,6 +58,27 @@ export const dev: CommandFn = (program, Bun) => {
 				);
 				routes[entry.route] = htmlContent;
 				routes[entry.wildcard] = htmlContent;
+			}
+
+			const files = listStatics(Bun, resolved.statics);
+			const duplicates = duplicateTargets(files);
+			if (duplicates.length > 0) {
+				error(
+					`Multiple static files claim the same path: ${duplicates.join(", ")}`,
+				);
+				return;
+			}
+
+			for (const file of files) {
+				const route = staticRoute(file);
+				if (route in routes) {
+					error(
+						`Static file ${file.to} claims the route ${route}, which a page already serves`,
+					);
+					return;
+				}
+				// read on request, so an edited file is served without a restart
+				routes[route] = new Response(Bun.file(file.from));
 			}
 
 			listen(Bun, { port, nextPort: options.nextPort }, (current) => ({

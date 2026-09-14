@@ -114,6 +114,116 @@ describe("dev command registration", () => {
 		const cmd = program.commands.find((c) => c.name() === "dev");
 		expect(cmd?.opts()["nextPort"]).toBe(false);
 	});
+
+	test("has --statics option defaulting to no specification", () => {
+		const program = new Command();
+		dev(program, createMockBun());
+
+		const cmd = program.commands.find((c) => c.name() === "dev");
+		expect(cmd?.opts()["statics"]).toEqual([]);
+	});
+});
+
+describe("dev command action - statics", () => {
+	const PUBLIC = resolve(process.cwd(), "public");
+	const ROUTES = resolve(process.cwd(), "src/routes");
+
+	/** Bun stand in whose glob answers with the files declared for a base. */
+	const createScanBun = (matches: Record<string, string[]>) =>
+		({
+			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:3000") }),
+			...bunfig(),
+			Glob: class {
+				constructor(readonly pattern: string) {}
+				scanSync(options: { cwd: string }): string[] {
+					return matches[options.cwd] ?? [];
+				}
+			},
+		}) as unknown as typeof BunType;
+
+	const serveWith = async (
+		args: string[],
+		matches: Record<string, string[]> = {
+			[PUBLIC]: [resolve(PUBLIC, "favicon.ico")],
+		},
+	) => {
+		const program = new Command();
+		const mockBun = createScanBun(matches);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", ...args], { from: "user" });
+		return mockBun;
+	};
+
+	test("serves a matched file from the output root", async () => {
+		const mockBun = await serveWith(["--statics", "public:/"]);
+
+		expect(Object.keys(routesOf(mockBun))).toContain("/favicon.ico");
+	});
+
+	test("keeps the source directory in the route when no target is given", async () => {
+		const mockBun = await serveWith(["--statics", "public"]);
+
+		expect(Object.keys(routesOf(mockBun))).toContain("/public/favicon.ico");
+	});
+
+	test("answers a static route with a response", async () => {
+		const mockBun = await serveWith(["--statics", "public:/"]);
+
+		expect(routesOf(mockBun)["/favicon.ico"]).toBeInstanceOf(Response);
+	});
+
+	test("serves only the pages when no specification is given", async () => {
+		const mockBun = await serveWith([]);
+
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual(["/", "/*"]);
+	});
+
+	test("warns when a specification matches nothing", async () => {
+		const mockBun = await serveWith(["--statics", "public:/"], {});
+
+		expect(warn).toHaveBeenCalledWith("No static file found in public:/");
+		expect(mockBun.serve).toHaveBeenCalled();
+	});
+
+	test("does not start a server when a specification is unusable", async () => {
+		const mockBun = await serveWith(["--statics", "/shared/icons"]);
+
+		expect(error).toHaveBeenCalledWith(
+			"Static source /shared/icons needs an explicit target: /shared/icons:<target>",
+		);
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
+
+	test("errors and does not start a server when two files claim the same path", async () => {
+		const mockBun = await serveWith([
+			"--statics",
+			"public:/",
+			"--statics",
+			"public:/",
+		]);
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple static files claim the same path: favicon.ico",
+		);
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
+
+	test("errors and does not start a server when a file claims a page route", async () => {
+		const mockBun = await serveWith(
+			["--mode", "mpa", "--statics", "public:/"],
+			{
+				[ROUTES]: [resolve(ROUTES, "about.html")],
+				[PUBLIC]: [resolve(PUBLIC, "about")],
+			},
+		);
+
+		expect(error).toHaveBeenCalledWith(
+			"Static file about claims the route /about, which a page already serves",
+		);
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
 });
 
 describe("dev command action - port validation", () => {

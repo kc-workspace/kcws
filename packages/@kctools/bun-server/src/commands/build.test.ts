@@ -9,6 +9,9 @@ import { build } from "./build";
 const PLUGIN_FIXTURE_PATH = new URL("./__fixtures__/plugin.ts", import.meta.url)
 	.pathname;
 
+/** Size every mocked source file reports, so a copied file has one. */
+const STATIC_SIZE = 1024;
+
 const createMockBun = (
 	output?: Promise<BunType.BuildOutput>,
 	globFiles: string[] = [],
@@ -18,10 +21,15 @@ const createMockBun = (
 	if (output) buildFn.mockReturnValueOnce(output);
 	return {
 		build: buildFn,
-		file: vi.fn().mockReturnValue({
-			exists: async () => declared !== undefined,
+		write: vi.fn(),
+		file: vi.fn().mockImplementation((path: string) => ({
+			// only bunfig.toml is looked up by existence, a static source that is
+			// not a document has to read as a directory
+			exists: async () =>
+				path.endsWith("bunfig.toml") && declared !== undefined,
 			text: async () => "",
-		}),
+			size: STATIC_SIZE,
+		})),
 		TOML: {
 			parse: vi
 				.fn()
@@ -123,6 +131,146 @@ describe("build command registration", () => {
 
 		const cmd = program.commands.find((c) => c.name() === "build");
 		expect(cmd?.opts()["out"]).toBe("dist");
+	});
+
+	test("has --statics option defaulting to no specification", () => {
+		const program = new Command();
+		build(program, createMockBun());
+
+		const cmd = program.commands.find((c) => c.name() === "build");
+		expect(cmd?.opts()["statics"]).toEqual([]);
+	});
+});
+
+describe("build command action - statics", () => {
+	const FAVICON = resolve(process.cwd(), "public/favicon.ico");
+
+	const buildWith = async (args: string[], globFiles = [FAVICON]) => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			Promise.resolve(createMockOutput(true)),
+			globFiles,
+		);
+		build(program, mockBun);
+
+		await program.parseAsync(["build", ...args], { from: "user" });
+		return mockBun;
+	};
+
+	test("copies a matched file into the output root", async () => {
+		const mockBun = await buildWith(["--statics", "public:/"]);
+
+		expect(mockBun.write).toHaveBeenCalledWith(
+			resolve(process.cwd(), "dist/favicon.ico"),
+			expect.anything(),
+		);
+	});
+
+	test("keeps the source directory when no target is given", async () => {
+		const mockBun = await buildWith(["--statics", "public"]);
+
+		expect(mockBun.write).toHaveBeenCalledWith(
+			resolve(process.cwd(), "dist/public/favicon.ico"),
+			expect.anything(),
+		);
+	});
+
+	test("copies into a custom output directory", async () => {
+		const mockBun = await buildWith([
+			"--out",
+			"build",
+			"--statics",
+			"public:/",
+		]);
+
+		expect(mockBun.write).toHaveBeenCalledWith(
+			resolve(process.cwd(), "build/favicon.ico"),
+			expect.anything(),
+		);
+	});
+
+	test("copies nothing when no specification is given", async () => {
+		const mockBun = await buildWith([]);
+
+		expect(mockBun.write).not.toHaveBeenCalled();
+	});
+
+	test("reports a copied file on its own kind", async () => {
+		await buildWith(["--statics", "public:/"]);
+
+		expect(log).toHaveBeenCalledWith(
+			expect.stringMatching(/dist\/favicon\.ico\s+1\.00 KB\s+static/),
+		);
+	});
+
+	test("counts the copied files in the summary", async () => {
+		await buildWith(["--statics", "public:/"]);
+
+		expect(info).toHaveBeenCalledWith(
+			expect.stringMatching(/^\n {2}2 files, 2\.00 KB in \d/),
+		);
+	});
+
+	test("warns when a specification matches nothing", async () => {
+		const mockBun = await buildWith(["--statics", "public:/"], []);
+
+		expect(warn).toHaveBeenCalledWith("No static file found in public:/");
+		expect(mockBun.write).not.toHaveBeenCalled();
+	});
+
+	test("does not build when a specification is unusable", async () => {
+		const mockBun = await buildWith(["--statics", "/shared/icons"]);
+
+		expect(error).toHaveBeenCalledWith(
+			"Static source /shared/icons needs an explicit target: /shared/icons:<target>",
+		);
+		expect(mockBun.build).not.toHaveBeenCalled();
+	});
+
+	test("errors and copies nothing when two files claim the same path", async () => {
+		const mockBun = await buildWith([
+			"--statics",
+			"public:/",
+			"--statics",
+			"public:/",
+		]);
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple static files claim the same path: favicon.ico",
+		);
+		expect(mockBun.write).not.toHaveBeenCalled();
+	});
+
+	test("errors and copies nothing when a file overwrites a bundled one", async () => {
+		const program = new Command();
+		const page = resolve(process.cwd(), "public/index.html");
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
+			page,
+		]);
+		build(program, mockBun);
+
+		await program.parseAsync(["build", "--statics", "public:/"], {
+			from: "user",
+		});
+
+		expect(error).toHaveBeenCalledWith(
+			"Static files overwrite a bundled file: index.html",
+		);
+		expect(mockBun.write).not.toHaveBeenCalled();
+	});
+
+	test("copies nothing when the build itself failed", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(Promise.resolve(createMockOutput(false)), [
+			FAVICON,
+		]);
+		build(program, mockBun);
+
+		await program.parseAsync(["build", "--statics", "public:/"], {
+			from: "user",
+		});
+
+		expect(mockBun.write).not.toHaveBeenCalled();
 	});
 });
 
