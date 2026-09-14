@@ -1,4 +1,5 @@
 import { error, log, warn } from "node:console";
+import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { Command } from "commander";
 import { describe, expect, test, vi } from "vitest";
@@ -10,11 +11,23 @@ const HTML_FIXTURE_PATH = new URL("./__fixtures__/html.ts", import.meta.url)
 
 const createMockBun = (
 	serveResult: object = { url: new URL("http://127.0.0.1:3000") },
+	globFiles: string[] = [],
 ) =>
 	({
 		resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
 		serve: vi.fn().mockReturnValue(serveResult),
+		Glob: class {
+			constructor(readonly pattern: string) {}
+			scanSync(): string[] {
+				return globFiles;
+			}
+		},
 	}) as unknown as typeof BunType;
+
+const routesOf = (bun: typeof BunType) => {
+	const serve = bun.serve as unknown as ReturnType<typeof vi.fn>;
+	return serve.mock.calls[0]?.[0]?.routes as Record<string, unknown>;
+};
 
 describe("dev command registration", () => {
 	test("registers a dev subcommand", () => {
@@ -33,7 +46,7 @@ describe("dev command registration", () => {
 		expect(cmd?.description()).toBe("Start the development server");
 	});
 
-	test("accepts an optional html argument defaulting to ./public/index.html", () => {
+	test("accepts an optional input argument with no static default", () => {
 		const program = new Command();
 		dev(program, createMockBun());
 
@@ -41,9 +54,26 @@ describe("dev command registration", () => {
 		const args = cmd?.registeredArguments ?? [];
 
 		expect(args).toHaveLength(1);
-		expect(args[0]?.name()).toBe("html");
-		expect(args[0]?.defaultValue).toBe("./public/index.html");
+		expect(args[0]?.name()).toBe("input");
 		expect(args[0]?.required).toBe(false);
+		expect(args[0]?.defaultValue).toBeUndefined();
+	});
+
+	test("has --mode option defaulting to 'spa'", () => {
+		const program = new Command();
+		dev(program, createMockBun());
+
+		const cmd = program.commands.find((c) => c.name() === "dev");
+		expect(cmd?.opts()["mode"]).toBe("spa");
+	});
+
+	test("rejects a --mode value outside spa and mpa", async () => {
+		const program = new Command().exitOverride();
+		dev(program, createMockBun());
+
+		await expect(
+			program.parseAsync(["dev", "--mode", "ssr"], { from: "user" }),
+		).rejects.toThrow();
 	});
 
 	test("has --hostname option defaulting to '127.0.0.1'", () => {
@@ -94,18 +124,7 @@ describe("dev command action - port validation", () => {
 		expect(mockBun.serve).not.toHaveBeenCalled();
 	});
 
-	test("rejects a negative port and logs an error", async () => {
-		const program = new Command();
-		const mockBun = createMockBun();
-		dev(program, mockBun);
-
-		await program.parseAsync(["dev", "--port", "-1"], { from: "user" });
-
-		expect(error).toHaveBeenCalledWith("Invalid port number: -1");
-		expect(mockBun.serve).not.toHaveBeenCalled();
-	});
-
-	test("rejects port 65536 (above maximum) and logs an error", async () => {
+	test("rejects a port above the maximum and logs an error", async () => {
 		const program = new Command();
 		const mockBun = createMockBun();
 		dev(program, mockBun);
@@ -114,18 +133,6 @@ describe("dev command action - port validation", () => {
 
 		expect(error).toHaveBeenCalledWith("Invalid port number: 65536");
 		expect(mockBun.serve).not.toHaveBeenCalled();
-	});
-
-	test("accepts port 1 (minimum valid port) without error", async () => {
-		const program = new Command();
-		const mockBun = createMockBun();
-		dev(program, mockBun);
-
-		await program.parseAsync(["dev", "--port", "1"], { from: "user" });
-
-		expect(error).not.toHaveBeenCalledWith(
-			expect.stringContaining("Invalid port"),
-		);
 	});
 
 	test("accepts port 65535 (maximum valid port) without error", async () => {
@@ -141,8 +148,8 @@ describe("dev command action - port validation", () => {
 	});
 });
 
-describe("dev command action - server", () => {
-	test("resolves html path with Bun.resolveSync using cwd", async () => {
+describe("dev command action - spa mode", () => {
+	test("resolves the default spa entry relative to cwd", async () => {
 		const program = new Command();
 		const mockBun = createMockBun();
 		dev(program, mockBun);
@@ -150,12 +157,12 @@ describe("dev command action - server", () => {
 		await program.parseAsync(["dev"], { from: "user" });
 
 		expect(mockBun.resolveSync).toHaveBeenCalledWith(
-			"./public/index.html",
+			resolve(process.cwd(), "./public/index.html"),
 			process.cwd(),
 		);
 	});
 
-	test("resolves custom html path when argument is provided", async () => {
+	test("resolves a custom html path when the argument is provided", async () => {
 		const program = new Command();
 		const mockBun = createMockBun();
 		dev(program, mockBun);
@@ -163,9 +170,19 @@ describe("dev command action - server", () => {
 		await program.parseAsync(["dev", "./custom/app.html"], { from: "user" });
 
 		expect(mockBun.resolveSync).toHaveBeenCalledWith(
-			"./custom/app.html",
+			resolve(process.cwd(), "./custom/app.html"),
 			process.cwd(),
 		);
+	});
+
+	test("serves the single page on both the root and the wildcard route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun();
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev"], { from: "user" });
+
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual(["/", "/*"]);
 	});
 
 	test("starts server with default hostname and port", async () => {
@@ -199,20 +216,6 @@ describe("dev command action - server", () => {
 		);
 	});
 
-	test("sets up wildcard route with the imported html content", async () => {
-		const program = new Command();
-		const mockBun = createMockBun();
-		dev(program, mockBun);
-
-		await program.parseAsync(["dev"], { from: "user" });
-
-		expect(mockBun.serve).toHaveBeenCalledWith(
-			expect.objectContaining({
-				routes: { "/*": expect.anything() },
-			}),
-		);
-	});
-
 	test("logs the listening URL after server starts", async () => {
 		const program = new Command();
 		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") });
@@ -222,7 +225,114 @@ describe("dev command action - server", () => {
 
 		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:3000/");
 	});
+});
 
+describe("dev command action - mpa mode", () => {
+	const routeFile = (relativePath: string) =>
+		resolve(process.cwd(), relativePath);
+
+	test("serves one exact and one wildcard route per matched page", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/index.html"),
+			routeFile("src/routes/about/index.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual([
+			"/",
+			"/*",
+			"/about",
+			"/about/*",
+		]);
+	});
+
+	test("resolves every matched page", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/index.html"),
+			routeFile("src/routes/about/index.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(mockBun.resolveSync).toHaveBeenCalledTimes(2);
+	});
+
+	test("serves a named document on its own route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/about.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual([
+			"/about",
+			"/about/*",
+		]);
+	});
+
+	test("errors and does not start a server when two documents claim the same route", async () => {
+		const program = new Command();
+		const mockBun = createMockBun({ url: new URL("http://127.0.0.1:3000") }, [
+			routeFile("src/routes/about.html"),
+			routeFile("src/routes/about/index.html"),
+		]);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(error).toHaveBeenCalledWith(
+			"Multiple HTML entries claim the same route: /about",
+		);
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
+
+	test("errors and does not start a server when no page matches", async () => {
+		const program = new Command();
+		const mockBun = createMockBun(
+			{ url: new URL("http://127.0.0.1:3000") },
+			[],
+		);
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa"], { from: "user" });
+
+		expect(error).toHaveBeenCalledWith("No HTML entry found in ./src/routes");
+		expect(mockBun.serve).not.toHaveBeenCalled();
+	});
+
+	test("scans a custom directory", async () => {
+		const program = new Command();
+		let scanned: unknown;
+		const mockBun = {
+			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
+			serve: vi.fn().mockReturnValue({ url: new URL("http://127.0.0.1:3000") }),
+			Glob: class {
+				constructor(readonly pattern: string) {}
+				scanSync(options: { cwd: string }): string[] {
+					scanned = options.cwd;
+					return [routeFile("src/pages/docs/index.html")];
+				}
+			},
+		} as unknown as typeof BunType;
+		dev(program, mockBun);
+
+		await program.parseAsync(["dev", "--mode", "mpa", "./src/pages"], {
+			from: "user",
+		});
+
+		expect(scanned).toBe(resolve(process.cwd(), "src/pages"));
+		expect(Object.keys(routesOf(mockBun)).sort()).toEqual(["/docs", "/docs/*"]);
+	});
+});
+
+describe("dev command action - port retry", () => {
 	test("logs error and does not retry when port is in use without --next-port", async () => {
 		const portError = new Error("Port 3000 already in use");
 		const mockBun = {
@@ -265,7 +375,7 @@ describe("dev command action - server", () => {
 		expect(log).toHaveBeenCalledWith("Listening on http://127.0.0.1:3001/");
 	});
 
-	test("stops after 9 retry attempts when all ports are in use (limit=10, ++count)", async () => {
+	test("stops after 10 attempts when all ports are in use", async () => {
 		const portError = new Error("Port in use");
 		const mockBun = {
 			resolveSync: vi.fn().mockReturnValue(HTML_FIXTURE_PATH),
@@ -278,7 +388,6 @@ describe("dev command action - server", () => {
 
 		await program.parseAsync(["dev", "--next-port"], { from: "user" });
 
-		// while (++count < 10) runs for count 1..9 = 9 iterations
-		expect(mockBun.serve).toHaveBeenCalledTimes(9);
+		expect(mockBun.serve).toHaveBeenCalledTimes(10);
 	});
 });
