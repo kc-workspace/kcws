@@ -14,6 +14,7 @@ kcstyles
 kctools
 kctypes
 kcws
+lcovonly
 megalinter
 mergify
 npmjs
@@ -29,8 +30,10 @@ sonar
 sonarcloud
 sonarqube
 syft
+textlintrc
 unplugin
 unrun
+unstub
 vale
 zconfig
 ztypes
