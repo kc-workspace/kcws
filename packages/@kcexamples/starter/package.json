@@ -16,7 +16,7 @@
 		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.7",
+		"@biomejs/biome": "2.5.11",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
