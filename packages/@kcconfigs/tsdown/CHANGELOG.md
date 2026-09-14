@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.9](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.8...@kcconfigs/tsdown+v0.2.9) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps:** bump publint from 0.3.23 to 0.3.24 ([#223](https://github.com/kc-workspace/kcws/issues/223)) ([89be044](https://github.com/kc-workspace/kcws/commit/89be044ea0b4e2db384ec5836f638f3f57a7b982))
+
+
+### Documentation
+
+* **kcconfigs/tsdown:** refresh docs ([180065c](https://github.com/kc-workspace/kcws/commit/180065c1b9af1ea5f0e5183d6a3a93e53e4b21c5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.3
+  * devDependencies
+    * @kcconfigs/biome bumped to 2.0.5
+    * @kcconfigs/tsconfig bumped to 1.1.6
+
 ## [0.2.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.7...@kcconfigs/tsdown+v0.2.8) (2026-08-25)
 
 

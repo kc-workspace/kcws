@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.0...@kcconfigs/vitest+v0.3.1) (2026-09-14)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
+
+### Bugfixes
+
+* **kcconfigs/vitest:** remove unused files whitelist in package.json ([b00e754](https://github.com/kc-workspace/kcws/commit/b00e7547fe73c24fe7ff46ed0e3f372e37297d95))
+
+
+### Documentation
+
+* **kcconfigs/vitest:** refresh docs ([be4880a](https://github.com/kc-workspace/kcws/commit/be4880af5d329e2be3680db37daa7acdca3871bf))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.3
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 1.1.6
+    * @kcconfigs/tsdown bumped to 0.2.9
+    * @kcconfigs/biome bumped to 2.0.5
+    * @kctypes/generic bumped to 2.0.1
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.2...@kcconfigs/vitest+v0.3.0) (2026-08-25)
 
 

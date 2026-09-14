@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.2.1...@kctools/bun-react+v0.2.2) (2026-09-14)
+
+
+### Performance Improvements
+
+* **core:** deprecate @kctools/bun-*, and use @kctools/bun-server instead ([b369475](https://github.com/kc-workspace/kcws/commit/b3694757cfd2cfee40fc05416483133f31ee3534))
+* **deps:** bump @types/bun from 1.3.14 to 1.4.0 ([#224](https://github.com/kc-workspace/kcws/issues/224)) ([ad74e83](https://github.com/kc-workspace/kcws/commit/ad74e8363b5c2f3c19dcb03bf07e623a27fdc294))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.2.0...@kctools/bun-react+v0.2.1) (2026-08-25)
 
 
