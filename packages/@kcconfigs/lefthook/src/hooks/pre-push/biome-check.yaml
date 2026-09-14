@@ -17,4 +17,4 @@ pre-push:
       run: >
         {pm_cmd} biome check
         --colors=off --no-errors-on-unmatched
-        {staged_files}
+        {push_files}

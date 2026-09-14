@@ -10,4 +10,4 @@ pre-push:
         {pm_cmd} textlint
         --config .github/linters/textlintrc.yaml
         --ignore-path .github/linters/textlintrc.ignore.txt
-        --no-color {staged_files}
+        --no-color {push_files}
