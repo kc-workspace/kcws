@@ -41,10 +41,6 @@ updates:
         patterns:
           - typedoc
           - typedoc-*
-      textlint:
-        patterns:
-          - textlint
-          - textlint-*
       commitlint:
         patterns:
           - "@commitlint/*"
