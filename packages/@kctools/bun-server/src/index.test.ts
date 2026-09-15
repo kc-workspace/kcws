@@ -1,11 +1,6 @@
 import type * as BunType from "bun";
 import { Command } from "commander";
 import { describe, expect, test, vi } from "vitest";
-
-vi.mock("bun-plugin-tailwind", () => ({
-	default: { name: "tailwind-mock" },
-}));
-
 import { Program, setup } from "./index";
 
 const createMockBun = () => ({}) as unknown as typeof BunType;
