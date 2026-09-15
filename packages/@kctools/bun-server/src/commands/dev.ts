@@ -1,10 +1,10 @@
 import { error } from "node:console";
 import { DEFAULT_ENTRY } from "../utils/entries";
-import { resolveCommandInput } from "../utils/input";
+import { collectStatics, resolveCommandInput } from "../utils/input";
 import { modeOption, staticsOption } from "../utils/options";
 import { pluginNames, reportPlugins } from "../utils/plugins";
 import { listen, parsePort } from "../utils/serve";
-import { duplicateTargets, listStatics, staticRoute } from "../utils/statics";
+import { staticRoute } from "../utils/statics";
 import type { CommandFn } from "./types";
 
 const text = {
@@ -60,14 +60,8 @@ export const dev: CommandFn = (program, Bun) => {
 				routes[entry.wildcard] = htmlContent;
 			}
 
-			const files = listStatics(Bun, resolved.statics);
-			const duplicates = duplicateTargets(files);
-			if (duplicates.length > 0) {
-				error(
-					`Multiple static files claim the same path: ${duplicates.join(", ")}`,
-				);
-				return;
-			}
+			const files = collectStatics(Bun, resolved);
+			if (files === undefined) return;
 
 			for (const file of files) {
 				const route = staticRoute(file);

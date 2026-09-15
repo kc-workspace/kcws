@@ -165,6 +165,15 @@ output:
 give it, so `--statics public:/` puts `public/favicon.ico` on `/favicon.ico`,
 and reads it on request, so an edit is served without a restart.
 
+A directory of static files usually holds the HTML documents as well, and those
+belong to the bundler: copying one beside its bundled self would either collide
+with it or ship the page untransformed. They are skipped, so `--statics
+public:/` on the default layout copies everything in `public` except the
+`index.html` the build already produces.
+
+Names starting with a dot are matched like any other, which is what makes
+`.well-known/security.txt` reachable.
+
 A source matching no file is reported and skipped; the rest still builds. Two
 files claiming one output path, or a static file landing on something the
 bundler already wrote, is an error, and nothing is copied.

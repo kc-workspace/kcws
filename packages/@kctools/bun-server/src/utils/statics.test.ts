@@ -104,6 +104,13 @@ describe("parseStatics", () => {
 		);
 	});
 
+	test("names a derived target that escapes the output directory", async () => {
+		expect(await parse("../secrets")).toBeUndefined();
+		expect(error).toHaveBeenCalledWith(
+			"Static target ../secrets escapes the output directory",
+		);
+	});
+
 	test("parses every given specification", async () => {
 		const specs = await parseStatics(
 			createMockBun(),
@@ -186,7 +193,12 @@ describe("listStatics", () => {
 		listStatics(bun, [spec({ pattern: "**/*.png" })]);
 
 		expect(pattern).toBe("**/*.png");
-		expect(options).toEqual({ cwd: PUBLIC, absolute: true, onlyFiles: true });
+		expect(options).toEqual({
+			cwd: PUBLIC,
+			absolute: true,
+			onlyFiles: true,
+			dot: true,
+		});
 	});
 
 	test("sorts the files by their output path", () => {
@@ -222,6 +234,32 @@ describe("listStatics", () => {
 		]);
 	});
 
+	test("skips a document the command already builds", () => {
+		const files = listStatics(
+			createScanBun({
+				[PUBLIC]: [
+					resolve(PUBLIC, "index.html"),
+					resolve(PUBLIC, "favicon.ico"),
+				],
+			}),
+			[spec({ target: "." })],
+			new Set([resolve(PUBLIC, "index.html")]),
+		);
+
+		expect(files.map((file) => file.to)).toEqual(["favicon.ico"]);
+	});
+
+	test("warns when every matched file is a built document", () => {
+		const files = listStatics(
+			createScanBun({ [PUBLIC]: [resolve(PUBLIC, "index.html")] }),
+			[spec({ source: "public:/", target: "." })],
+			new Set([resolve(PUBLIC, "index.html")]),
+		);
+
+		expect(files).toEqual([]);
+		expect(warn).toHaveBeenCalledWith("No static file found in public:/");
+	});
+
 	test("warns when a specification matches nothing", () => {
 		expect(
 			listStatics(createScanBun({}), [spec({ source: "public:/" })]),
@@ -253,6 +291,12 @@ describe("staticRoute", () => {
 	test("serves a file from its output path", () => {
 		expect(staticRoute({ from: "/a/favicon.ico", to: "favicon.ico" })).toBe(
 			"/favicon.ico",
+		);
+	});
+
+	test("percent encodes a name that is not URL safe", () => {
+		expect(staticRoute({ from: "/a/my file.png", to: "img/my file.png" })).toBe(
+			"/img/my%20file.png",
 		);
 	});
 

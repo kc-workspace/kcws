@@ -243,10 +243,15 @@ describe("build command action - statics", () => {
 
 	test("errors and copies nothing when a file overwrites a bundled one", async () => {
 		const program = new Command();
-		const page = resolve(process.cwd(), "public/index.html");
-		const mockBun = createMockBun(Promise.resolve(createMockOutput(true)), [
-			page,
-		]);
+		const mockBun = createMockBun(
+			Promise.resolve(
+				createMockOutput(true, [
+					createMockArtifact("dist/index.html", 1024, "entry-point"),
+					createMockArtifact("dist/favicon.ico", 512, "asset"),
+				]),
+			),
+			[FAVICON],
+		);
 		build(program, mockBun);
 
 		await program.parseAsync(["build", "--statics", "public:/"], {
@@ -254,9 +259,22 @@ describe("build command action - statics", () => {
 		});
 
 		expect(error).toHaveBeenCalledWith(
-			"Static files overwrite a bundled file: index.html",
+			"Static files overwrite a bundled file: favicon.ico",
 		);
 		expect(mockBun.write).not.toHaveBeenCalled();
+	});
+
+	test("copies the other files when a document it builds also matches", async () => {
+		const mockBun = await buildWith(
+			["--statics", "public:/"],
+			[resolve(process.cwd(), "public/index.html"), FAVICON],
+		);
+
+		expect(mockBun.write).toHaveBeenCalledTimes(1);
+		expect(mockBun.write).toHaveBeenCalledWith(
+			resolve(process.cwd(), "dist/favicon.ico"),
+			expect.anything(),
+		);
 	});
 
 	test("copies nothing when the build itself failed", async () => {

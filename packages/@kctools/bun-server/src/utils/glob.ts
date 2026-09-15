@@ -14,12 +14,14 @@ const MISSING = new Set(["ENOENT", "ENOTDIR"]);
  * @param bun - Bun runtime namespace
  * @param root - absolute path of the directory to scan
  * @param pattern - glob pattern matched below `root`
+ * @param dot - whether names starting with a dot are matched
  * @returns absolute paths of the matched files
  */
 export const scanFiles = (
 	bun: typeof Bun,
 	root: string,
 	pattern: string,
+	dot: boolean,
 ): string[] => {
 	try {
 		return [
@@ -27,6 +29,7 @@ export const scanFiles = (
 				cwd: root,
 				absolute: true,
 				onlyFiles: true,
+				dot,
 			}),
 		];
 	} catch (e) {

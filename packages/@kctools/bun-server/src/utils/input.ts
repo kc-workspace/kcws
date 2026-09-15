@@ -1,6 +1,13 @@
+import { error } from "node:console";
 import type * as Bun from "bun";
 import { type Mode, type ResolvedInput, resolveInput } from "./entries";
-import { parseStatics, type StaticSpec } from "./statics";
+import {
+	duplicateTargets,
+	listStatics,
+	parseStatics,
+	type StaticFile,
+	type StaticSpec,
+} from "./statics";
 
 /** The options every command resolving an input is given. */
 export interface InputOptions {
@@ -43,4 +50,33 @@ export const resolveCommandInput = async (
 	if (specs === undefined) return undefined;
 
 	return { ...resolved, statics: specs };
+};
+
+/**
+ * Match the static files a command copies or serves, reporting why it cannot.
+ *
+ * The documents the command builds are left out: they are the bundler's to
+ * write. Two files landing on one output path would silently keep whichever
+ * was written last, so that is where this stops.
+ *
+ * @param bun - Bun runtime namespace
+ * @param input - what the command resolved to act on
+ * @returns the matched files, or `undefined` when two claim one path
+ */
+export const collectStatics = (
+	bun: typeof Bun,
+	input: CommandInput,
+): StaticFile[] | undefined => {
+	const built = new Set(input.entries.map((entry) => entry.path));
+	const files = listStatics(bun, input.statics, built);
+
+	const duplicates = duplicateTargets(files);
+	if (duplicates.length > 0) {
+		error(
+			`Multiple static files claim the same path: ${duplicates.join(", ")}`,
+		);
+		return undefined;
+	}
+
+	return files;
 };

@@ -2,7 +2,7 @@ import { error, info, log, warn } from "node:console";
 import { resolve } from "node:path";
 import type * as BunType from "bun";
 import { DEFAULT_ENTRY } from "../utils/entries";
-import { resolveCommandInput } from "../utils/input";
+import { collectStatics, resolveCommandInput } from "../utils/input";
 import { modeOption, staticsOption } from "../utils/options";
 import { loadPlugins, pluginNames, reportPlugins } from "../utils/plugins";
 import {
@@ -11,12 +11,7 @@ import {
 	formatSummary,
 	type ReportedFile,
 } from "../utils/report";
-import {
-	copyStatics,
-	duplicateTargets,
-	listStatics,
-	type StaticFile,
-} from "../utils/statics";
+import { copyStatics, type StaticFile } from "../utils/statics";
 import type { CommandFn } from "./types";
 
 const text = {
@@ -106,14 +101,8 @@ export const build: CommandFn = (program, Bun) => {
 				return;
 			}
 
-			const files = listStatics(Bun, resolved.statics);
-			const duplicates = duplicateTargets(files);
-			if (duplicates.length > 0) {
-				error(
-					`Multiple static files claim the same path: ${duplicates.join(", ")}`,
-				);
-				return;
-			}
+			const files = collectStatics(Bun, resolved);
+			if (files === undefined) return;
 
 			const bundled = new Set(output.outputs.map((artifact) => artifact.path));
 			const overwritten = files

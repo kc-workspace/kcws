@@ -120,7 +120,9 @@ export const parseStatics = async (
 
 		const target = toTarget(written ?? root);
 		if (escapes(target)) {
-			error(`Static target ${written} escapes the output directory`);
+			// a target left out is derived from the source, so report the one that
+			// actually escapes rather than the absent one
+			error(`Static target ${written ?? target} escapes the output directory`);
 			return undefined;
 		}
 
@@ -140,21 +142,31 @@ export interface StaticFile {
 /**
  * List the files the specifications match, reporting the ones matching none.
  *
+ * A directory of static files usually holds the HTML documents too, and those
+ * are the bundler's to write: copying one beside its bundled self would either
+ * collide with it or ship the page untransformed. They are skipped here, so
+ * `--statics public:/` means "everything in `public` the build does not
+ * already produce".
+ *
  * A specification matching nothing is worth saying out loud — the pattern is
  * likely a typo — but it is not worth stopping over: the rest of the website
  * still builds without it.
  *
  * @param bun - Bun runtime namespace
  * @param specs - resolved specifications to match
+ * @param built - absolute paths of the documents the command builds itself
  * @returns the matched files, sorted by output path
  */
 export const listStatics = (
 	bun: typeof Bun,
 	specs: StaticSpec[],
+	built: ReadonlySet<string> = new Set(),
 ): StaticFile[] => {
 	const files: StaticFile[] = [];
 	for (const spec of specs) {
-		const matched = scanFiles(bun, spec.base, spec.pattern);
+		const matched = scanFiles(bun, spec.base, spec.pattern, true).filter(
+			(file) => !built.has(file),
+		);
 		if (matched.length === 0) {
 			warn(`No static file found in ${spec.source}`);
 			continue;
@@ -173,13 +185,15 @@ export const listStatics = (
  * Return the URL a file is served from during development.
  *
  * The development server answers a static file where the built website would
- * have it, so the same markup works before and after a build.
+ * have it, so the same markup works before and after a build. Each segment is
+ * encoded, or a name holding a space or a `#` would never match the request
+ * the browser sends for it.
  *
  * @param file - file to serve
  * @returns the URL path, e.g. `/favicon.ico`
  */
 export const staticRoute = (file: StaticFile): string =>
-	`/${file.to.split(sep).join("/")}`;
+	`/${file.to.split(sep).map(encodeURIComponent).join("/")}`;
 
 /**
  * Return the output paths claimed by more than one file.

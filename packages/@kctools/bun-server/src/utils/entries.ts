@@ -130,7 +130,8 @@ export const listEntries = (
 	if (mode === "spa") return [toEntry(resolve(cwd, input), "/")];
 
 	const root = entryRoot(mode, input, cwd);
-	const files = scanFiles(bun, root, PAGE_GLOB);
+	// a page below a dot directory is not a page the website means to serve
+	const files = scanFiles(bun, root, PAGE_GLOB, false);
 
 	return files
 		.map((file) => toEntry(file, toRoute(file, root)))
