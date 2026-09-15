@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.1...@kctools/bun-server+v0.3.0) (2026-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kctools/bun-server:** build no longer bundles Tailwind CSS unconditionally. Declare the plugin in bunfig.toml to keep it:
+
+### Features
+
+* **kctools/bun-server:** copy and serve static files with --statics ([#241](https://github.com/kc-workspace/kcws/issues/241)) ([47db522](https://github.com/kc-workspace/kcws/commit/47db5222ba0f974a6ba521bcccf6aa3fb0aa3922))
+* **kctools/bun-server:** load bundler plugins from bunfig.toml ([#240](https://github.com/kc-workspace/kcws/issues/240)) ([977c874](https://github.com/kc-workspace/kcws/commit/977c874bbdd234863513cde66df5322046dcc8f1))
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.0...@kctools/bun-server+v0.2.1) (2026-09-14)
 
 
