@@ -11,6 +11,7 @@ production, and previews the build output.
 - [Modes](#modes)
   - [Single page (spa)](#single-page-spa)
   - [Multiple pages (mpa)](#multiple-pages-mpa)
+- [Static files](#static-files)
 - [Commands](#commands)
   - [Server options](#server-options)
   - [dev](#dev)
@@ -112,6 +113,71 @@ As the table shows, `about.html` and `about/index.html` are two ways to write
 the same route. A directory holding both is ambiguous: the command reports the
 colliding route and exits instead of silently dropping one.
 
+## Static files
+
+The bundler only ever sees the files an HTML document refers to, so a
+`favicon.ico`, a `robots.txt`, or a folder of images nothing links to never
+reaches the output. `--statics` names them, and `dev` and `build` both take it:
+
+```bash
+bun-server build --statics public:/
+bun-server dev --statics public:/ --statics ./icons
+```
+
+Each value is `<source>[:<target>]`, and the option can be repeated.
+
+The **source** is a path or a glob. A relative one, spelled `name` or `./name`,
+is read from the working directory; an absolute one is read as it is. A
+directory means everything below it, at any depth, and a single file means that
+file:
+
+```text
+public                 every file below ./public
+assets/**/*.png        every PNG below ./assets, at any depth
+robots.txt             that one file
+/shared/icons:icons    every file below an absolute directory
+```
+
+The **target** is the directory the files are written to, always relative to
+the build output directory. `/` is the output directory itself. Left out, it
+repeats the directory the source is rooted at, which is the part of the source
+before its first glob character:
+
+| Specification            | `public/favicon.ico` is written to |
+| ------------------------ | ---------------------------------- |
+| `--statics public`       | `dist/public/favicon.ico`          |
+| `--statics public:/`     | `dist/favicon.ico`                 |
+| `--statics public:icons` | `dist/icons/favicon.ico`           |
+
+The layout below that root is kept either way, so `public/img/logo.png` with
+`--statics public:/` becomes `dist/img/logo.png`. An absolute source has no
+sensible target to fall back on, so it has to be given one.
+
+`build` copies the files after bundling and lists them with the rest of the
+output:
+
+```text
+  dist/index.html    1.21 KB  entry
+  dist/favicon.ico   4.19 KB  static
+```
+
+`dev` copies nothing. It serves each file from the same URL the build would
+give it, so `--statics public:/` puts `public/favicon.ico` on `/favicon.ico`,
+and reads it on request, so an edit is served without a restart.
+
+A directory of static files usually holds the HTML documents as well, and those
+belong to the bundler: copying one beside its bundled self would either collide
+with it or ship the page untransformed. They are skipped, so `--statics
+public:/` on the default layout copies everything in `public` except the
+`index.html` the build already produces.
+
+Names starting with a dot are matched like any other, which is what makes
+`.well-known/security.txt` reachable.
+
+A source matching no file is reported and skipped; the rest still builds. Two
+files claiming one output path, or a static file landing on something the
+bundler already wrote, is an error, and nothing is copied.
+
 ## Commands
 
 ### Server options
@@ -132,11 +198,9 @@ Start the development server with hot reloading.
 bun-server dev [input] [options]
 ```
 
-| Option              | Default | Description    |
-| ------------------- | ------- | -------------- |
-| `-m, --mode <mode>` | `spa`   | `spa` or `mpa` |
-
-Plus the [server options](#server-options).
+Takes `-m, --mode <mode>` to pick a [layout](#modes), defaulting to `spa`, and
+`-s, --statics <source[:target]>`, repeatable, to serve
+[static files](#static-files). Plus the [server options](#server-options).
 
 ### build
 
@@ -146,11 +210,12 @@ Bundle the website for production.
 bun-server build [input] [options]
 ```
 
-| Option                   | Default | Description                          |
-| ------------------------ | ------- | ------------------------------------ |
-| `-m, --mode <mode>`      | `spa`   | `spa` or `mpa`                       |
-| `-M, --no-minify`        | —       | disable minification                 |
-| `-O, --out <directory>`  | `dist`  | output directory                     |
+| Option                            | Default | Description                                       |
+| --------------------------------- | ------- | ------------------------------------------------- |
+| `-m, --mode <mode>`               | `spa`   | `spa` or `mpa`                                    |
+| `-N, --no-minify`                 | —       | disable minification                              |
+| `-O, --out <directory>`           | `dist`  | output directory                                  |
+| `-s, --statics <source[:target]>` | —       | [static files](#static-files) to copy, repeatable |
 
 In `mpa` mode every matched document is an entrypoint, and the output keeps the
 source directory layout:

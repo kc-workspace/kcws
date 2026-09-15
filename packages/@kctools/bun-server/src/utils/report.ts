@@ -56,8 +56,23 @@ export const formatDuration = (ms: number): string => {
 		: `${(ms / SECOND).toFixed(DECIMALS)}s`;
 };
 
-/** Artifact kinds in the order they are reported. */
-const KIND_ORDER: Bun.BuildArtifact["kind"][] = [
+/**
+ * A file worth a line in the build report.
+ *
+ * Every {@link Bun.BuildArtifact} is one, and so is a file the command wrote
+ * beside the bundler, such as a copied static file.
+ */
+export interface ReportedFile {
+	/** Absolute path the file was written to. */
+	path: string;
+	/** Size of the file in bytes. */
+	size: number;
+	/** What the file is, reported as it is when Bun does not produce it. */
+	kind: string;
+}
+
+/** File kinds in the order they are reported, unknown kinds last. */
+const KIND_ORDER: string[] = [
 	"entry-point",
 	"chunk",
 	"asset",
@@ -66,7 +81,7 @@ const KIND_ORDER: Bun.BuildArtifact["kind"][] = [
 ];
 
 /** Shorter labels for the kinds Bun reports. */
-const KIND_LABEL: Record<Bun.BuildArtifact["kind"], string> = {
+const KIND_LABEL: Record<string, string> = {
 	"entry-point": "entry",
 	chunk: "chunk",
 	asset: "asset",
@@ -80,13 +95,13 @@ const INDENT = "  ";
 /** Spaces between the columns of a reported line. */
 const GAP = "  ";
 
-const kindRank = (kind: Bun.BuildArtifact["kind"]): number => {
+const kindRank = (kind: string): number => {
 	const index = KIND_ORDER.indexOf(kind);
 	return index === -1 ? KIND_ORDER.length : index;
 };
 
 /** Entrypoints first, then by kind, then alphabetically inside a kind. */
-const compare = (a: Bun.BuildArtifact, b: Bun.BuildArtifact): number =>
+const compare = (a: ReportedFile, b: ReportedFile): number =>
 	kindRank(a.kind) - kindRank(b.kind) || a.path.localeCompare(b.path);
 
 /**
@@ -110,12 +125,12 @@ const shorten = (path: string, cwd: string): string => {
  * Paths are relative to `cwd` so the output stays readable, and the columns are
  * padded to the widest value to keep the sizes aligned.
  *
- * @param artifacts - files the bundler wrote
+ * @param artifacts - files the command wrote
  * @param cwd - directory the paths are reported against
  * @returns one line per artifact, sorted with the entrypoints first
  */
 export const formatArtifacts = (
-	artifacts: Bun.BuildArtifact[],
+	artifacts: ReportedFile[],
 	cwd: string,
 ): string[] => {
 	const rows = [...artifacts].sort(compare).map((artifact) => ({
@@ -136,12 +151,12 @@ export const formatArtifacts = (
 /**
  * Render the closing line of a build: file count, total size, elapsed time.
  *
- * @param artifacts - files the bundler wrote
+ * @param artifacts - files the command wrote
  * @param elapsed - build duration in milliseconds
  * @returns a single summary line
  */
 export const formatSummary = (
-	artifacts: Bun.BuildArtifact[],
+	artifacts: ReportedFile[],
 	elapsed: number,
 ): string => {
 	const total = artifacts.reduce((sum, artifact) => sum + artifact.size, 0);

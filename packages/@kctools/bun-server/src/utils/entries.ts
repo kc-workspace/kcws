@@ -1,6 +1,7 @@
 import { error } from "node:console";
 import { dirname, relative, resolve, sep } from "node:path";
 import type * as Bun from "bun";
+import { scanFiles } from "./glob";
 
 /**
  * Supported page layouts.
@@ -129,37 +130,12 @@ export const listEntries = (
 	if (mode === "spa") return [toEntry(resolve(cwd, input), "/")];
 
 	const root = entryRoot(mode, input, cwd);
-	const files = scan(bun, root);
+	// a page below a dot directory is not a page the website means to serve
+	const files = scanFiles(bun, root, PAGE_GLOB, false);
 
 	return files
 		.map((file) => toEntry(file, toRoute(file, root)))
 		.sort((a, b) => a.route.localeCompare(b.route));
-};
-
-/** Scan errors meaning the directory simply is not there. */
-const MISSING = new Set(["ENOENT", "ENOTDIR"]);
-
-/**
- * List the HTML documents below `root`, treating a missing directory as empty.
- *
- * @param bun - Bun runtime namespace
- * @param root - absolute path of the directory to scan
- * @returns absolute paths of the matched documents
- */
-const scan = (bun: typeof Bun, root: string): string[] => {
-	try {
-		return [
-			...new bun.Glob(PAGE_GLOB).scanSync({
-				cwd: root,
-				absolute: true,
-				onlyFiles: true,
-			}),
-		];
-	} catch (e) {
-		const code = (e as { code?: string }).code;
-		if (code !== undefined && MISSING.has(code)) return [];
-		throw e;
-	}
 };
 
 /** Everything a command needs about the documents it acts on. */

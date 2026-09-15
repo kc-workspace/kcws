@@ -170,6 +170,27 @@ describe("formatArtifacts", () => {
 	test("returns no lines when nothing was built", () => {
 		expect(formatArtifacts([], cwd)).toEqual([]);
 	});
+
+	test("keeps the label of a kind the bundler does not produce", () => {
+		const lines = formatArtifacts(
+			[{ path: resolve(cwd, "dist/favicon.ico"), size: 1024, kind: "static" }],
+			cwd,
+		);
+
+		expect(lines).toEqual(["  dist/favicon.ico  1.00 KB  static"]);
+	});
+
+	test("reports such a kind after every bundled file", () => {
+		const lines = formatArtifacts(
+			[
+				{ path: resolve(cwd, "dist/favicon.ico"), size: 1024, kind: "static" },
+				artifact("dist/index.html", 1024, "entry-point"),
+			],
+			cwd,
+		);
+
+		expect(lines.at(-1)).toContain("static");
+	});
 });
 
 describe("formatSummary", () => {

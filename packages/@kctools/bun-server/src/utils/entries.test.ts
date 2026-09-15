@@ -190,7 +190,12 @@ describe("listEntries - mpa", () => {
 		listEntries(bun, "mpa", "./src/routes", CWD);
 
 		expect(pattern).toBe(PAGE_GLOB);
-		expect(options).toEqual({ cwd: ROUTES, absolute: true, onlyFiles: true });
+		expect(options).toEqual({
+			cwd: ROUTES,
+			absolute: true,
+			onlyFiles: true,
+			dot: false,
+		});
 	});
 
 	test("scans a custom directory", () => {
@@ -211,6 +216,7 @@ describe("listEntries - mpa", () => {
 			cwd: resolve(CWD, "src/pages"),
 			absolute: true,
 			onlyFiles: true,
+			dot: false,
 		});
 	});
 });
