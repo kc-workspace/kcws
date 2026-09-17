@@ -51,7 +51,7 @@
 		}
 	},
 	"volta": {
-		"node": "24.19.0"
+		"node": "24.21.0"
 	},
 	"engines": {
 		"node": "^22.11.0 || ^24.11.0 || ^25.0.0 || ^26.0.0"
@@ -59,7 +59,7 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "11.22.0",
+			"version": "12.4.2",
 			"onFail": "error"
 		}
 	}
