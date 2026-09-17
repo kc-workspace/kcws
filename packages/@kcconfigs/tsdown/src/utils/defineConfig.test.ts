@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+import minifyPlugin from "../plugins/minify";
 import outputPlugin from "../plugins/output";
 import defineConfig from "./defineConfig";
 
@@ -7,6 +8,16 @@ describe("defineConfig", () => {
 		const config = defineConfig();
 		expect(config).toBeDefined();
 		expect(config.outDir).toBe("dist");
+	});
+
+	test("should not minify by default", () => {
+		const config = defineConfig();
+		expect(config.minify).toBe(false);
+	});
+
+	test("should minify when minifyPlugin is applied", () => {
+		const config = defineConfig(minifyPlugin());
+		expect(config.minify).toBe(true);
 	});
 
 	test("should include normalize plugins automatically", () => {

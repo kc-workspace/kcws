@@ -33,6 +33,15 @@ describe("cssPlugin", () => {
 		expect(result?.entry).toContain("!./src/**/*.spec-d.ts");
 	});
 
+	test("should disable css minify and force esm output", () => {
+		const plugin = cssPlugin();
+		const base = {} as TsdownConfig;
+		const result = plugin.applyConfig?.(base);
+		expect(result?.css?.minify).toBe(false);
+		expect(result?.css?.fileName).toBe("index.css");
+		expect(result?.format).toBe("esm");
+	});
+
 	test("should preserve existing base config when applying", () => {
 		const plugin = cssPlugin();
 		const base = { outDir: "dist", entry: [] };

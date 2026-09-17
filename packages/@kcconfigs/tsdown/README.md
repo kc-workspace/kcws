@@ -69,33 +69,39 @@ Current defaults include:
 - `platform`: `"neutral"`
 - `outDir`: `"dist"`
 - `clean`: `true`
-- `minify`: `true`
+- `minify`: `false`
 - `fixedExtension`: `false`
 - `failOnWarn`: `true`
 - `publint.enabled`: `true` (warning level)
 - `unused.enabled`: `true` (warning level; checks `dependencies` and `peerDependencies`)
 - `attw.enabled`: `true`
 
+Output is not minified by default. This config targets libraries, and
+readable output lets consumers debug problems inside your package. Bundle
+size is the consuming application's concern, so minify there instead. If you
+still want minified library output, add `minifyPlugin()`.
+
 ### Plugins
 
 You can import plugins from `@kcconfigs/tsdown/plugins` or direct subpaths
 like `@kcconfigs/tsdown/plugins/node`.
 
-| Plugin                            | Import                      | Description                                                                             |
-| --------------------------------- | --------------------------- | --------------------------------------------------------------------------------------- |
-| `attwPlugin(config)`              | `@kcconfigs/tsdown/plugins` | Configure `attw` (`@arethetypeswrong/core`) options                                     |
-| `browserPlugin()`                 | `@kcconfigs/tsdown/plugins` | Set platform to `browser`                                                               |
-| `cssPlugin(option?)`              | `@kcconfigs/tsdown/plugins` | Build CSS/SCSS entry as `index.css` with ESM output                                     |
-| `debugPlugin(option?)`            | `@kcconfigs/tsdown/plugins` | Disable minification and set debug env flags; pass `{ verbose: true }` for verbose logs |
-| `depsPlugin(config)`              | `@kcconfigs/tsdown/plugins` | Configure dependency externalization via `deps`                                         |
-| `dtsPlugin(config)`               | `@kcconfigs/tsdown/plugins` | Configure declaration generation (`dts`)                                                |
-| `entryPlugin(entry, useDefault?)` | `@kcconfigs/tsdown/plugins` | Override entries and optionally append default excludes                                 |
-| `formatPlugin(format)`            | `@kcconfigs/tsdown/plugins` | Configure output formats                                                                |
-| `nodePlugin()`                    | `@kcconfigs/tsdown/plugins` | Set platform to `node`                                                                  |
-| `outputPlugin(outDir)`            | `@kcconfigs/tsdown/plugins` | Override output directory                                                               |
-| `overridePlugin(...configs)`      | `@kcconfigs/tsdown/plugins` | Merge additional tsdown config objects                                                  |
-| `publintPlugin(config)`           | `@kcconfigs/tsdown/plugins` | Configure `publint` checks                                                              |
-| `unusedPlugin(config)`            | `@kcconfigs/tsdown/plugins` | Configure unused dependency checks                                                      |
+| Plugin                            | Import                      | Description                                                                   |
+| --------------------------------- | --------------------------- | ----------------------------------------------------------------------------- |
+| `attwPlugin(config)`              | `@kcconfigs/tsdown/plugins` | Configure `attw` (`@arethetypeswrong/core`) options                           |
+| `browserPlugin()`                 | `@kcconfigs/tsdown/plugins` | Set platform to `browser`                                                     |
+| `cssPlugin(option?)`              | `@kcconfigs/tsdown/plugins` | Build CSS/SCSS entry as `index.css` with ESM output                           |
+| `debugPlugin(option?)`            | `@kcconfigs/tsdown/plugins` | Enable debug and verbose setting                                              |
+| `depsPlugin(config)`              | `@kcconfigs/tsdown/plugins` | Configure dependency externalization via `deps`                               |
+| `dtsPlugin(config)`               | `@kcconfigs/tsdown/plugins` | Configure declaration generation (`dts`)                                      |
+| `entryPlugin(entry, useDefault?)` | `@kcconfigs/tsdown/plugins` | Override entries and optionally append default excludes                       |
+| `formatPlugin(format)`            | `@kcconfigs/tsdown/plugins` | Configure output formats                                                      |
+| `minifyPlugin(minify?)`           | `@kcconfigs/tsdown/plugins` | Enable JS and CSS minification (off by default); pass `false` to force it off |
+| `nodePlugin()`                    | `@kcconfigs/tsdown/plugins` | Set platform to `node`                                                        |
+| `outputPlugin(outDir)`            | `@kcconfigs/tsdown/plugins` | Override output directory                                                     |
+| `overridePlugin(...configs)`      | `@kcconfigs/tsdown/plugins` | Merge additional tsdown config objects                                        |
+| `publintPlugin(config)`           | `@kcconfigs/tsdown/plugins` | Configure `publint` checks                                                    |
+| `unusedPlugin(config)`            | `@kcconfigs/tsdown/plugins` | Configure unused dependency checks                                            |
 
 ## Examples
 
@@ -129,6 +135,15 @@ import { defineConfig } from "@kcconfigs/tsdown";
 import { cssPlugin } from "@kcconfigs/tsdown/plugins";
 
 export default defineConfig(cssPlugin({ lang: "scss" }));
+```
+
+Opting in to minified output:
+
+```ts
+import { defineConfig } from "@kcconfigs/tsdown";
+import { minifyPlugin, nodePlugin } from "@kcconfigs/tsdown/plugins";
+
+export default defineConfig(nodePlugin(), minifyPlugin());
 ```
 
 Merging a raw tsdown config object:

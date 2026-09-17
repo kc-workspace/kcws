@@ -9,7 +9,10 @@ interface DebugPluginOption {
 }
 
 /**
- * Debug plugin — disables minification for easier debugging.
+ * Debug plugin — enables debug setting and injects debug env flags.
+ *
+ * Minification is already off by default; use `minifyPlugin(false)` to
+ * force it off when another plugin turned it on.
  */
 const debugPlugin = (opt?: DebugPluginOption): TsdownConfigPlugin<"debug"> =>
 	definePlugin("debug", {
@@ -20,10 +23,6 @@ const debugPlugin = (opt?: DebugPluginOption): TsdownConfigPlugin<"debug"> =>
 		}),
 		applyConfig: (base) => {
 			return mergeConfig(base, {
-				minify: false,
-				css: {
-					minify: false,
-				},
 				env: {
 					DEBUG: true,
 					NODE_ENV: "debug",

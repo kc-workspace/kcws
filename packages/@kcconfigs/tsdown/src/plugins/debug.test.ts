@@ -7,26 +7,30 @@ describe("debugPlugin", () => {
 		expect(plugin.name).toBe("debug");
 	});
 
-	test("should disable minify", () => {
+	test("should set debug env flags", () => {
 		const plugin = debugPlugin();
 		const base = {};
 		const result = plugin.applyConfig?.(base);
-		expect(result?.minify).toBe(false);
+		expect(result?.env).toEqual({ DEBUG: true, NODE_ENV: "debug" });
 	});
 
-	test("should override existing minify config", () => {
+	test("should not touch minify config", () => {
 		const plugin = debugPlugin();
 		const base = { minify: true };
 		const result = plugin.applyConfig?.(base);
-		expect(result?.minify).toBe(false);
+		expect(result?.minify).toBe(true);
 	});
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = debugPlugin();
-		const base = { entry: ["./src/index.ts"] };
+		const base = { entry: ["./src/index.ts"], env: { FOO: "bar" } };
 		const result = plugin.applyConfig?.(base);
 		expect(result?.entry).toEqual(["./src/index.ts"]);
-		expect(result?.minify).toBe(false);
+		expect(result?.env).toEqual({
+			FOO: "bar",
+			DEBUG: true,
+			NODE_ENV: "debug",
+		});
 	});
 
 	test("should set debug flag in applySetting", () => {

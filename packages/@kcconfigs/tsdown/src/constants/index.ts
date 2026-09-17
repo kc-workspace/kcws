@@ -18,7 +18,7 @@ export const baseConfig: TsdownConfig = {
 	fixedExtension: false,
 	outDir: "dist",
 	clean: true,
-	minify: true,
+	minify: false,
 	failOnWarn: true,
 	publint: {
 		enabled: true,

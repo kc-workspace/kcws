@@ -22,7 +22,7 @@ const cssPlugin = (option?: CssPluginOption): TsdownConfigPlugin<"css"> =>
 				css: {
 					fileName: option?.output ?? "index.css",
 					splitting: false,
-					minify: true,
+					minify: false,
 				},
 				format: "esm",
 				publint: false,

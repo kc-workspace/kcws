@@ -6,6 +6,7 @@ export { default as depsPlugin } from "./deps";
 export { default as dtsPlugin } from "./dts";
 export { default as entryPlugin } from "./entry";
 export { default as formatPlugin } from "./format";
+export { default as minifyPlugin } from "./minify";
 export { default as nodePlugin } from "./node";
 export { default as outputPlugin } from "./output";
 export { default as overridePlugin } from "./override";
