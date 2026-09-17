@@ -1,39 +1,12 @@
-import type * as Bun from "bun";
-import { Command } from "commander";
-import { bin, description, name, version } from "../package.json";
-import { build } from "./commands/build";
-import { dev } from "./commands/dev";
-import { preview } from "./commands/preview";
-import type { CommandFn } from "./commands/types";
+import build from "#commands/build";
+import dev from "#commands/dev";
+import preview from "#commands/preview";
+import { Program } from "#core/program";
+import type { BunType } from "#types";
 
-export class Program {
-	private readonly program: Command;
-	private readonly Bun: typeof Bun;
-
-	constructor(bun: typeof Bun) {
-		this.Bun = bun;
-		this.program = new Command()
-			.name(Object.keys(bin).at(0) ?? name)
-			.description(description)
-			.version(version);
-	}
-
-	add(fn: CommandFn): this {
-		fn(this.program, this.Bun);
-		return this;
-	}
-
-	parse(args: string[]): void {
-		this.program.parse(args, {
-			from: "node",
-		});
-	}
-}
-
-const setup = (bun: typeof Bun): Program => {
+const setup = (bun: BunType): Program => {
 	const program = new Program(bun);
-	program.add(dev).add(build).add(preview);
-	return program;
+	return program.add(dev).add(build).add(preview);
 };
 
 export { setup };
