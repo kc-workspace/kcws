@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.1...@kctools/bun-server+v0.3.0) (2026-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kctools/bun-server:** `Program` is no longer exported from the package root; `setup` is the only export. Import it from `#core/program` when the class itself is needed.
+* **kctools/bun-server:** build no longer bundles Tailwind CSS unconditionally. Declare the plugin in bunfig.toml to keep it:
+
+### Features
+
+* **kctools/bun-server:** add env readers and pino based logger ([9526804](https://github.com/kc-workspace/kcws/commit/952680481630338ffde8986b8748ddccf0b420dc))
+* **kctools/bun-server:** copy and serve static files with --statics ([#241](https://github.com/kc-workspace/kcws/issues/241)) ([47db522](https://github.com/kc-workspace/kcws/commit/47db5222ba0f974a6ba521bcccf6aa3fb0aa3922))
+* **kctools/bun-server:** load bundler plugins from bunfig.toml ([#240](https://github.com/kc-workspace/kcws/issues/240)) ([977c874](https://github.com/kc-workspace/kcws/commit/977c874bbdd234863513cde66df5322046dcc8f1))
+
+
+### Code Refactoring
+
+* **kctools/bun-server:** add shared types and constants modules ([00e9450](https://github.com/kc-workspace/kcws/commit/00e9450190284f454a14c86b17885a032f452c38))
+* **kctools/bun-server:** move commands into feature directories ([65e2c48](https://github.com/kc-workspace/kcws/commit/65e2c489346aea09ef41a69e62a92e6ca738540c))
+* **kctools/bun-server:** move Program into core and drop legacy modules ([cbbd2d3](https://github.com/kc-workspace/kcws/commit/cbbd2d3c27fe93555607a9087668da47824c3ffe))
+* **kctools/bun-server:** split build report into report module ([145b972](https://github.com/kc-workspace/kcws/commit/145b972f46d1396577c36ea67a938bf07e36622f))
+* **kctools/bun-server:** split bunfig plugin loading into plugin module ([f4fc21f](https://github.com/kc-workspace/kcws/commit/f4fc21ff895ffc4f6c7792469b2930458650f9f6))
+* **kctools/bun-server:** split path, option and url helpers ([da61f02](https://github.com/kc-workspace/kcws/commit/da61f026ce8649cf82af77a577673a1eaf3f3208))
+* **kctools/bun-server:** split route resolution into routeFiles ([f96f033](https://github.com/kc-workspace/kcws/commit/f96f033359f10369ec9e849bd0ae9ce11c9fbfb9))
+* **kctools/bun-server:** split server startup into server module ([dce2a83](https://github.com/kc-workspace/kcws/commit/dce2a8339b3d890d249dabd4924f98e303eaa24b))
+* **kctools/bun-server:** split static handling into staticFiles ([3595dd7](https://github.com/kc-workspace/kcws/commit/3595dd7a12dc4a50d4b34f47263f32640aac6db8))
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.0...@kctools/bun-server+v0.2.1) (2026-09-14)
 
 
