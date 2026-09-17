@@ -11,6 +11,7 @@ const createMockBun = (sizes: Record<string, number> = {}) => {
 
 const statik = (name: string): ResolvedStatic => ({
 	route: `/assets/${name}`,
+	wildcard: `/assets/${name}/*`,
 	source: `/repo/assets/${name}`,
 	target: `/repo/dist/assets/${name}`,
 });

@@ -1,14 +1,14 @@
 import { describe, expect, test } from "vitest";
-import findDuplicateFiles from "./findDuplicateFiles";
-import type { ResolvedStatic } from "./types";
+import findDuplicateRoutes from "./findDuplicateRoutes";
+import toWildcardRoute from "./toWildcardRoute";
+import type { BasicRoute } from "./types";
 
-const file = (route: string, source: string): ResolvedStatic => ({
+const file = (route: string): BasicRoute => ({
 	route,
-	source,
-	target: `/repo/dist${route}`,
+	wildcard: toWildcardRoute(route),
 });
 
-describe("findDuplicateFiles", () => {
+describe("findDuplicateRoutes", () => {
 	test.each([
 		{
 			name: "every route is unique",
@@ -27,10 +27,7 @@ describe("findDuplicateFiles", () => {
 			expected: ["/a.png", "/b.png"],
 		},
 	])("finds $expected when $name", ({ routes, expected }) => {
-		const resolved = routes.map((route, index) =>
-			file(route, `/repo/${index}${route}`),
-		);
-
-		expect(findDuplicateFiles(resolved)).toEqual(expected);
+		const resolved = routes.map((route) => file(route));
+		expect(findDuplicateRoutes(resolved)).toEqual(expected);
 	});
 });

@@ -31,6 +31,7 @@ describe("parseStaticFiles", () => {
 		await expect(parseStaticFiles(bun, options(["assets"]))).resolves.toEqual([
 			{
 				route: "/assets/logo.png",
+				wildcard: "/assets/logo.png/*",
 				source: "/repo/assets/logo.png",
 				target: "/repo/dist/assets/logo.png",
 			},

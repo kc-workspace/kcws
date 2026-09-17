@@ -31,6 +31,7 @@ describe("resolveStaticSpecs", () => {
 			dirname: "assets",
 			file: "/repo/assets/logo.png",
 			route: "/assets/logo.png",
+			wildcard: "/assets/logo.png/*",
 			target: "/repo/dist/assets/logo.png",
 		},
 		{
@@ -39,6 +40,7 @@ describe("resolveStaticSpecs", () => {
 			dirname: "assets",
 			file: "/repo/assets/img/logo.png",
 			route: "/assets/img/logo.png",
+			wildcard: "/assets/img/logo.png/*",
 			target: "/repo/dist/assets/img/logo.png",
 		},
 		{
@@ -47,15 +49,19 @@ describe("resolveStaticSpecs", () => {
 			dirname: ".",
 			file: "/repo/public/favicon.ico",
 			route: "/favicon.ico",
+			wildcard: "/favicon.ico/*",
 			target: "/repo/dist/favicon.ico",
 		},
-	])("resolves $name", async ({ root, dirname, file, route, target }) => {
-		const { bun } = createMockBun({ [root]: [file] });
+	])(
+		"resolves $name",
+		async ({ root, dirname, file, route, wildcard, target }) => {
+			const { bun } = createMockBun({ [root]: [file] });
 
-		await expect(
-			resolveStaticSpecs(bun, [spec(root, dirname)]),
-		).resolves.toEqual([{ route, source: file, target }]);
-	});
+			await expect(
+				resolveStaticSpecs(bun, [spec(root, dirname)]),
+			).resolves.toEqual([{ route, wildcard, source: file, target }]);
+		},
+	);
 
 	test("scans hidden files too", async () => {
 		const { bun, scan } = createMockBun({});

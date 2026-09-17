@@ -1,6 +1,6 @@
 import type { BunType } from "#types";
+import { findDuplicateRoutes } from "#utils/url";
 import createRouteSpecs from "./createRouteSpecs";
-import findDuplicateRoutes from "./findDuplicateRoutes";
 import resolveRouteSpecs from "./resolveRouteSpecs";
 import type { ResolvedRoute } from "./types";
 
