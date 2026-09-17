@@ -1,6 +1,7 @@
 import { sep as OS_PATH_SEP, relative } from "node:path";
 import type { BunType } from "#types";
 import { scanFiles } from "#utils/path";
+import { toWildcardRoute } from "#utils/url";
 import { HTML_EXTENSION, HTML_INDEX, HTML_SEP, logger } from "./constants";
 import type { ResolvedRoute, RouteSpec } from "./types";
 
@@ -25,11 +26,10 @@ const resolveRouteSpecs = async (
 
 const toResolvedRoute = (cwd: string, file: string): ResolvedRoute => {
 	const routeName = toRouteName(relative(cwd, file));
-	const wildcard = toRouteWildcard(routeName);
 	const route: ResolvedRoute = {
 		path: file,
 		route: routeName,
-		wildcard: wildcard,
+		wildcard: toWildcardRoute(routeName),
 	};
 	return route;
 };
@@ -44,10 +44,6 @@ const toRouteName = (file: string): string => {
 
 	if (segments.length === 0) return HTML_SEP;
 	else return `${HTML_SEP}${segments.join(HTML_SEP)}`;
-};
-
-const toRouteWildcard = (route: string): string => {
-	return route === "/" ? "/*" : `${route}/*`;
 };
 
 export default resolveRouteSpecs;

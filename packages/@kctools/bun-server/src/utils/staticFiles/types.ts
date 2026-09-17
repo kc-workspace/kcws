@@ -1,3 +1,5 @@
+import type { BasicRoute } from "#utils/url";
+
 export interface StaticSpec {
 	/**
 	 * The original source path specified by the user.
@@ -38,14 +40,7 @@ export interface StaticSpec {
 	};
 }
 
-export interface ResolvedStatic {
-	/**
-	 * The route at which the static files will be served.
-	 * @example
-	 * 	"/images"
-	 * 	"/assets"
-	 */
-	route: string;
+export interface ResolvedStatic extends BasicRoute {
 	/**
 	 * The source absolute path of the static files.
 	 */

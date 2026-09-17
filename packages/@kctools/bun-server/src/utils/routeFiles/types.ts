@@ -1,3 +1,5 @@
+import type { BasicRoute } from "#utils/url";
+
 export interface RouteSpec {
 	/** The original source path specified by the user. */
 	source: string;
@@ -7,11 +9,7 @@ export interface RouteSpec {
 	pattern: string;
 }
 
-export interface ResolvedRoute {
+export interface ResolvedRoute extends BasicRoute {
 	/** Absolute path to the HTML document. */
 	path: string;
-	/** Exact URL path the document answers, e.g. `/about`. */
-	route: string;
-	/** Wildcard URL path for client side sub-routes, e.g. `/about/*`. */
-	wildcard: string;
 }

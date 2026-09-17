@@ -1,6 +1,7 @@
 import { join, sep as OS_PATH_SEP, relative, resolve } from "node:path";
 import type { BunType } from "#types";
 import { scanFiles } from "#utils/path";
+import { toWildcardRoute } from "#utils/url";
 import { logger } from "./constants";
 import type { ResolvedStatic, StaticSpec } from "./types";
 
@@ -35,6 +36,7 @@ const toResolvedStatic = (file: string, spec: StaticSpec): ResolvedStatic => {
 	const route = segments.length === 0 ? "/" : `/${segments.join("/")}`;
 	return {
 		route,
+		wildcard: toWildcardRoute(route),
 		source: file,
 		target: resolve(spec.target.base, spec.target.dirname, fileName),
 	};

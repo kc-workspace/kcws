@@ -1,6 +1,6 @@
-import type { ResolvedStatic } from "./types";
+import type { BasicRoute } from "./types";
 
-const findDuplicateFiles = (routes: ResolvedStatic[]): string[] => {
+const findDuplicateRoutes = (routes: BasicRoute[]): string[] => {
 	const seen = new Set<string>();
 	const duplicates = new Set<string>();
 
@@ -11,4 +11,4 @@ const findDuplicateFiles = (routes: ResolvedStatic[]): string[] => {
 	return Array.from(duplicates);
 };
 
-export default findDuplicateFiles;
+export default findDuplicateRoutes;
