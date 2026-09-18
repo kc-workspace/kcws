@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.11...@kcconfigs/tsdown+v0.3.0) (2026-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/tsdown:** `minify` and `css.minify` default to `false`. Add `minifyPlugin()` to keep minified output.
+
+### Features
+
+* **kcconfigs/tsdown:** disable minify by default and add minifyPlugin ([18ec633](https://github.com/kc-workspace/kcws/commit/18ec6332702f1d447f435c861015a76823aab9c5))
+
 ## [0.2.11](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.10...@kcconfigs/tsdown+v0.2.11) (2026-09-14)
 
 
