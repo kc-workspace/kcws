@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.5...@kcws/zconfig+v0.2.6) (2026-09-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.3.4
+    * @kcconfigs/tsdown bumped to 0.3.0
+
 ## [0.2.5](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.4...@kcws/zconfig+v0.2.5) (2026-09-14)
 
 
