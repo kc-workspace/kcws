@@ -8,8 +8,12 @@ workspace-detected scopes, and raw overrides.
 - [Installation](#installation)
 - [Usage](#usage)
   - [Quick start](#quick-start)
+  - [Asynchronous config](#asynchronous-config)
   - [Default behavior](#default-behavior)
   - [Plugins](#plugins)
+    - [Commit types](#commit-types)
+    - [Scopes](#scopes)
+    - [Overrides](#overrides)
 - [Rules](#rules)
 - [Examples](#examples)
 - [References](#references)
@@ -30,8 +34,6 @@ pnpm add --save-dev @commitlint/cli @kcconfigs/commitlint
 ### Quick start
 
 Create a `commitlint.config.ts` at your repository root.
-`defineConfig` is asynchronous because scopes are read from the workspace,
-so `await` it (top-level `await` requires `"type": "module"`).
 
 ```ts
 import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
@@ -41,9 +43,14 @@ const config: CommitlintConfig = await defineConfig();
 export default config;
 ```
 
-`defineConfig` takes plugins only; it has no separate options argument.
+### Asynchronous config
+
+`defineConfig` returns a promise because workspace scopes are read from the
+filesystem, so `await` it. Top-level `await` requires `"type": "module"` in
+your `package.json`.
+
 Plugins may be passed as values or as promises, so asynchronous factories such
-as `autoScopePlugin` can be passed directly:
+as `autoScopePlugin` can be passed directly without awaiting them first:
 
 ```ts
 import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
@@ -56,6 +63,8 @@ const config: CommitlintConfig = await defineConfig(
 
 export default config;
 ```
+
+`defineConfig` takes plugins only; it has no separate options argument.
 
 ### Default behavior
 
@@ -77,13 +86,13 @@ filesystem.
 Import plugins from `@kcconfigs/commitlint/plugins`, or one at a time from
 `@kcconfigs/commitlint/plugins/<name>`.
 
-| Plugin                         | Description                                                                              |
-| ------------------------------ | ---------------------------------------------------------------------------------------- |
-| `typesPlugin(mode?)`           | Set `type-enum` and the prompt `type` question from a `TypeMode`                        |
-| `scopePlugin(scopes)`          | Set `scope-enum` and the prompt `scope` question to a fixed list                        |
-| `autoScopePlugin(additional?)` | Same, from workspace packages plus `additional`; asynchronous, returns a promise         |
-| `overridePlugin(...configs)`   | Deep merge raw commitlint config after every other plugin                               |
-| `debugPlugin(options?)`        | Log each plugin as it applies; `{ verbose: true }` also logs before/after configs        |
+| Plugin                         | Description                                                                       |
+| ------------------------------ | --------------------------------------------------------------------------------- |
+| `typesPlugin(mode?)`           | Set `type-enum` and the prompt `type` question from a `TypeMode`                  |
+| `scopePlugin(scopes)`          | Set `scope-enum` and the prompt `scope` question to a fixed list                  |
+| `autoScopePlugin(additional?)` | Same, from workspace packages plus `additional`; asynchronous, returns a promise  |
+| `overridePlugin(...configs)`   | Deep merge raw commitlint config after every other plugin                         |
+| `debugPlugin(options?)`        | Log each plugin as it applies; `{ verbose: true }` also logs before/after configs |
 
 #### Commit types
 
