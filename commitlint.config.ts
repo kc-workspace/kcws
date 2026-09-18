@@ -1,7 +1,8 @@
-import { defineConfig, type UserConfig } from "@kcconfigs/commitlint";
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import { autoScopePlugin } from "@kcconfigs/commitlint/plugins";
 
-const config: UserConfig = await defineConfig({
-	scopes: ["core", "config", "script", "deps", "deps-dev", "ai"],
-});
+const config: CommitlintConfig = await defineConfig(
+	autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
+);
 
 export default config;

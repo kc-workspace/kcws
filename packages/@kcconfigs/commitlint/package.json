@@ -15,6 +15,7 @@
 		"check:type": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@kcinternals/config-builder": "workspace:*",
 		"@pnpm/workspace.find-packages": "1000.0.65",
 		"yaml": "2.9.0"
 	},
@@ -43,6 +44,30 @@
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
 			}
+		},
+		"./plugins": {
+			"source": "./src/plugins/index.ts",
+			"typedoc": "./src/plugins/index.ts",
+			"require": {
+				"types": "./dist/plugins/index.d.cts",
+				"default": "./dist/plugins/index.cjs"
+			},
+			"default": {
+				"types": "./dist/plugins/index.d.ts",
+				"default": "./dist/plugins/index.js"
+			}
+		},
+		"./plugins/*": {
+			"source": "./src/plugins/*.ts",
+			"typedoc": "./src/plugins/*.ts",
+			"require": {
+				"types": "./dist/plugins/*.d.cts",
+				"default": "./dist/plugins/*.cjs"
+			},
+			"default": {
+				"types": "./dist/plugins/*.d.ts",
+				"default": "./dist/plugins/*.js"
+			}
 		}
 	},
 	"license": "AGPL-3.0-only",
@@ -62,7 +87,8 @@
 		"typescript",
 		"commitlint",
 		"commit",
-		"linter"
+		"linter",
+		"plugin"
 	],
 	"files": [
 		"CHANGELOG.json",

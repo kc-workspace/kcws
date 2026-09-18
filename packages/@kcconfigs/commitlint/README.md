@@ -1,14 +1,15 @@
 # @kcconfigs/commitlint
 
-Shared [commitlint](https://commitlint.js.org/) configuration with automatic
-workspace scope detection and customizable commit types.
+Shared [commitlint](https://commitlint.js.org/) configuration with a typed
+`defineConfig` helper and composable plugins for commit types, fixed or
+workspace-detected scopes, and raw overrides.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Options](#options)
-  - [Commit types](#commit-types)
-  - [Scopes](#scopes)
+  - [Quick start](#quick-start)
+  - [Default behavior](#default-behavior)
+  - [Plugins](#plugins)
 - [Rules](#rules)
 - [Examples](#examples)
 - [References](#references)
@@ -26,29 +27,67 @@ pnpm add --save-dev @commitlint/cli @kcconfigs/commitlint
 
 ## Usage
 
+### Quick start
+
 Create a `commitlint.config.ts` at your repository root.
 `defineConfig` is asynchronous because scopes are read from the workspace,
 so `await` it (top-level `await` requires `"type": "module"`).
 
 ```ts
-import { defineConfig, type UserConfig } from "@kcconfigs/commitlint";
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
 
-const config: UserConfig = await defineConfig();
+const config: CommitlintConfig = await defineConfig();
 
 export default config;
 ```
 
-### Options
+`defineConfig` takes plugins only; it has no separate options argument.
+Plugins may be passed as values or as promises, so asynchronous factories such
+as `autoScopePlugin` can be passed directly:
 
-| Option       | Type       | Default      | Description                                                |
-| ------------ | ---------- | ------------ | ---------------------------------------------------------- |
-| `types`      | `TypeMode` | `"standard"` | Commit types allowed by `type-enum`                        |
-| `autoScopes` | `boolean`  | `true`       | Detect scopes from workspace packages                      |
-| `scopes`     | `string[]` | -            | Extra scopes; the only scopes when `autoScopes` is `false` |
+```ts
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import { autoScopePlugin, typesPlugin } from "@kcconfigs/commitlint/plugins";
 
-### Commit types
+const config: CommitlintConfig = await defineConfig(
+  typesPlugin("minimal"),
+  autoScopePlugin(["core", "config"]),
+);
 
-`types` accepts a `TypeMode`:
+export default config;
+```
+
+### Default behavior
+
+`defineConfig()` without plugins produces the same config as
+`defineConfig(typesPlugin("standard"), autoScopePlugin())`:
+
+- `parserPreset` is `@commitlint/config-conventional`
+- `type-enum` allows the standard conventional commit types
+- `scope-enum` allows the workspace packages detected in the current directory
+- `subject-max-length` warns above 80, `body-max-line-length` warns above 300
+- prompt exposes `type` and `scope` questions with `enableMultipleScopes: false`
+
+When you pass your own `typesPlugin`, `scopePlugin`, or `autoScopePlugin`, the
+matching default is skipped, so `scopePlugin([...])` never touches the
+filesystem.
+
+### Plugins
+
+Import plugins from `@kcconfigs/commitlint/plugins`, or one at a time from
+`@kcconfigs/commitlint/plugins/<name>`.
+
+| Plugin                         | Description                                                                              |
+| ------------------------------ | ---------------------------------------------------------------------------------------- |
+| `typesPlugin(mode?)`           | Set `type-enum` and the prompt `type` question from a `TypeMode`                        |
+| `scopePlugin(scopes)`          | Set `scope-enum` and the prompt `scope` question to a fixed list                        |
+| `autoScopePlugin(additional?)` | Same, from workspace packages plus `additional`; asynchronous, returns a promise         |
+| `overridePlugin(...configs)`   | Deep merge raw commitlint config after every other plugin                               |
+| `debugPlugin(options?)`        | Log each plugin as it applies; `{ verbose: true }` also logs before/after configs        |
+
+#### Commit types
+
+`typesPlugin` accepts a `TypeMode` and defaults to `"standard"`:
 
 | Value        | Result                                                                                       |
 | ------------ | -------------------------------------------------------------------------------------------- |
@@ -59,11 +98,18 @@ export default config;
 
 The `description`, `title`, and `emoji` fields are passed to the commitlint
 prompt, so `@commitlint/prompt-cli` shows them when composing a commit.
+Each `typesPlugin` replaces the types set by an earlier one.
 
-### Scopes
+#### Scopes
 
-When `autoScopes` is `true`, scopes are detected from the workspace in the
-current working directory. The package manager is picked by the first match:
+`scopePlugin(scopes)` allows exactly the given scopes and never reads the
+filesystem. Use it in single-package repositories or when scopes are curated
+by hand.
+
+`autoScopePlugin(additional?)` detects workspace packages in the current
+working directory and appends `additional`. Scopes are resolved when the
+plugin is created, so it returns a promise. The package manager is picked by
+the first match:
 
 | Detected file                   | Source of packages               |
 | ------------------------------- | -------------------------------- |
@@ -75,8 +121,15 @@ Package names become scopes with the leading `@` stripped, so
 `@kcconfigs/commitlint` becomes the scope `kcconfigs/commitlint`.
 The root package is always excluded.
 
-If both `autoScopes` is `false` and `scopes` is empty, the config falls back to
-`core`, `config`, `script`, `deps`, `deps-dev`.
+Both plugins fall back to `core`, `config`, `script`, `deps`, `deps-dev` when
+the resolved list is empty. Each scope plugin replaces the scopes set by an
+earlier one, so pass only one of them.
+
+#### Overrides
+
+`overridePlugin` deep merges plain objects and replaces arrays, functions, and
+primitives. It runs with a high config priority, so it wins over built-in
+plugins regardless of argument order.
 
 ## Rules
 
@@ -96,11 +149,12 @@ Multiple scopes per commit are disabled (`enableMultipleScopes: false`).
 Add extra scopes on top of the detected workspace packages:
 
 ```ts
-import { defineConfig, type UserConfig } from "@kcconfigs/commitlint";
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import { autoScopePlugin } from "@kcconfigs/commitlint/plugins";
 
-const config: UserConfig = await defineConfig({
-  scopes: ["core", "config", "script", "deps", "deps-dev", "ai"],
-});
+const config: CommitlintConfig = await defineConfig(
+  autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
+);
 
 export default config;
 ```
@@ -108,13 +162,13 @@ export default config;
 Use a fixed set of types and scopes in a single-package repository:
 
 ```ts
-import { defineConfig, type UserConfig } from "@kcconfigs/commitlint";
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import { scopePlugin, typesPlugin } from "@kcconfigs/commitlint/plugins";
 
-const config: UserConfig = await defineConfig({
-  types: "minimal",
-  autoScopes: false,
-  scopes: ["api", "web"],
-});
+const config: CommitlintConfig = await defineConfig(
+  typesPlugin("minimal"),
+  scopePlugin(["api", "web"]),
+);
 
 export default config;
 ```
@@ -122,14 +176,31 @@ export default config;
 Custom types with prompt metadata:
 
 ```ts
-import { defineConfig, type UserConfig } from "@kcconfigs/commitlint";
+import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import { typesPlugin } from "@kcconfigs/commitlint/plugins";
 
-const config: UserConfig = await defineConfig({
-  types: {
+const config: CommitlintConfig = await defineConfig(
+  typesPlugin({
     feat: { description: "A new feature", title: "Features", emoji: "✨" },
     fix: { description: "A bug fix", title: "Bugfixes", emoji: "🐛" },
-  },
-});
+  }),
+);
+
+export default config;
+```
+
+Tighten a rule and debug the plugin pipeline:
+
+```ts
+import { type CommitlintConfig, defineConfig, Severity } from "@kcconfigs/commitlint";
+import { debugPlugin, overridePlugin } from "@kcconfigs/commitlint/plugins";
+
+const config: CommitlintConfig = await defineConfig(
+  debugPlugin(),
+  overridePlugin({
+    rules: { "subject-max-length": [Severity.Error, "always", 72] },
+  }),
+);
 
 export default config;
 ```

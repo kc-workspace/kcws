@@ -269,6 +269,9 @@ importers:
 
   packages/@kcconfigs/commitlint:
     dependencies:
+      '@kcinternals/config-builder':
+        specifier: workspace:*
+        version: link:../../@kcinternals/config-builder
       '@pnpm/workspace.find-packages':
         specifier: 1000.0.65
         version: 1000.0.65(@pnpm/logger@1001.0.1)(@pnpm/worker@1000.6.11)(supports-color@8.1.1)(typanion@3.14.0)
@@ -9469,6 +9472,7 @@ snapshots:
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
+    optional: true
 
   iconv-lite@0.7.3:
     dependencies:
