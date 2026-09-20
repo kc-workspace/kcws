@@ -179,7 +179,7 @@ overrides:
   undici@<6.27.0: ^6.27.0
   undici@>=7.0.0 <7.29.0: ^7.29.0
   vite@>=8.0.0 <8.0.16: ^8.0.16
-  adm-zip@<0.6.0: ^0.6.0
+  adm-zip@<0.6.1: ^0.6.1
 
 importers:
 
@@ -419,7 +419,7 @@ importers:
         version: 1.4.1(typedoc@0.28.20)
       typedoc-plugin-dt-links:
         specifier: ^2.0.0
-        version: 2.0.63(typedoc@0.28.20)
+        version: 2.0.70(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: ^4.0.0
         version: 4.0.1(typedoc@0.28.20)
@@ -2686,8 +2686,8 @@ packages:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
     engines: {node: '>= 0.6'}
 
-  adm-zip@0.6.0:
-    resolution: {integrity: sha512-XleryMhbuksdKtofnWZ9Sk+4CUTbms4Mb/EU32SZwToAyZ5RgVos/ki8n+yr0LWHOGKuakbXTuuYNHLQjhddgg==}
+  adm-zip@0.6.1:
+    resolution: {integrity: sha512-Xwrja8nx9e5o2N1my4DsKCeKpdrnACyr1wtbPxBDgGzKzKyE9kRtBFA8mWldI+RVlD7CBZNWY/wQ2+ydwOR6kQ==}
     engines: {node: '>=14.0'}
 
   agent-base@7.1.4:
@@ -5605,11 +5605,6 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.63:
-    resolution: {integrity: sha512-cHiu31veGGXyvyeJ6cCQ7uzAF7Mu0QcDljsPHIq73k0W1H4x8qQ9dgqQmjTEln4EcVj1Z7L7XladD83LNcbETA==}
-    peerDependencies:
-      typedoc: 0.28.x
-
   typedoc-plugin-dt-links@2.0.70:
     resolution: {integrity: sha512-XYu5km4q7hxvTN/14LknwZqif1ng0XAqd6YQ3Oy7xx/OlSJZgUQbvqMecRhDdXrar3pYBuUC49g51glTJwuFRA==}
     peerDependencies:
@@ -7066,7 +7061,7 @@ snapshots:
       '@pnpm/fetcher-base': 1001.2.2
       '@pnpm/fetching-types': 1000.2.1
       '@pnpm/worker': 1000.6.11(@pnpm/logger@1001.0.1)(@types/node@24.13.3)
-      adm-zip: 0.6.0
+      adm-zip: 0.6.1
       is-subdir: 1.2.0
       rename-overwrite: 6.0.6
       ssri: 10.0.5
@@ -8428,7 +8423,7 @@ snapshots:
       mime-types: 3.0.2
       negotiator: 1.0.0
 
-  adm-zip@0.6.0: {}
+  adm-zip@0.6.1: {}
 
   agent-base@7.1.4: {}
 
@@ -11358,10 +11353,6 @@ snapshots:
   typedoc-material-theme@1.4.1(typedoc@0.28.20):
     dependencies:
       '@material/material-color-utilities': 0.3.0
-      typedoc: 0.28.20(typescript@6.0.3)
-
-  typedoc-plugin-dt-links@2.0.63(typedoc@0.28.20):
-    dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
   typedoc-plugin-dt-links@2.0.70(typedoc@0.28.20):
