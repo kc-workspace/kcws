@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.3...@kcconfigs/vitest+v0.3.4) (2026-09-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.0
+
 ## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.2...@kcconfigs/vitest+v0.3.3) (2026-09-14)
 
 
