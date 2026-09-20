@@ -4,6 +4,13 @@ import { describe, expect, test, vi } from "vitest";
 import type { BunType } from "#types";
 import dev from "./index";
 
+vi.mock("#utils/routeFiles", async (importOriginal) => ({
+	...(await importOriginal<typeof import("#utils/routeFiles")>()),
+	loadRouteBundle: vi.fn((path: string) =>
+		Promise.resolve({ name: path, kind: "bundle" }),
+	),
+}));
+
 vi.mock("#utils/logger", () => ({
 	createLogger: () => ({
 		debug: vi.fn(),
@@ -32,6 +39,7 @@ const createMockBun = (files: Record<string, string[]>) => {
 			Glob,
 			file: vi.fn((path: string) => ({
 				name: path,
+				kind: "file",
 				exists: () => Promise.resolve(false),
 			})),
 			serve,
@@ -61,6 +69,15 @@ const servedFiles = (serve: ReturnType<typeof vi.fn>): Record<string, string> =>
 		]),
 	);
 
+/** The route table reduced to how each route is served. */
+const servedKinds = (serve: ReturnType<typeof vi.fn>): Record<string, string> =>
+	Object.fromEntries(
+		Object.entries(routes(serve)).map(([route, value]) => [
+			route,
+			(value as { kind: string }).kind,
+		]),
+	);
+
 describe("dev", () => {
 	test("is described as the development server command", () => {
 		expect(dev).toMatchObject({
@@ -84,6 +101,16 @@ describe("dev", () => {
 		});
 	});
 
+	test("serves html routes as bundles so their assets are resolved", async () => {
+		const { bun, serve } = createMockBun({
+			"/repo/pages": ["/repo/pages/index.html"],
+		});
+
+		await run(bun, ["pages", "--cwd", "/repo"]);
+
+		expect(servedKinds(serve)).toEqual({ "/": "bundle", "/*": "bundle" });
+	});
+
 	test("serves the static files from their source", async () => {
 		const { bun, serve } = createMockBun({
 			"/repo/assets": ["/repo/assets/logo.png"],
@@ -94,6 +121,7 @@ describe("dev", () => {
 		expect(servedFiles(serve)["/assets/logo.png"]).toBe(
 			"/repo/assets/logo.png",
 		);
+		expect(servedKinds(serve)["/assets/logo.png"]).toBe("file");
 	});
 
 	test("falls back to the default route directory", async () => {

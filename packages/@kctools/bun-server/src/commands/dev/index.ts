@@ -4,7 +4,7 @@ import type { CommandFn } from "#types";
 import { defineCommand } from "#utils/command";
 import { createLogger } from "#utils/logger";
 import { cwdOption, readOptions } from "#utils/options";
-import { parseRouteFiles } from "#utils/routeFiles";
+import { loadRouteBundle, parseRouteFiles } from "#utils/routeFiles";
 import { createServer } from "#utils/server";
 import { parseStaticFiles, staticOption } from "#utils/staticFiles";
 
@@ -39,8 +39,9 @@ const dev: CommandFn = defineCommand(
 
 			const routeFiles = await parseRouteFiles(Bun, inputs, options);
 			for (const routeFile of routeFiles) {
-				routes[routeFile.route] = Bun.file(routeFile.path);
-				routes[routeFile.wildcard] = Bun.file(routeFile.path);
+				const bundle = await loadRouteBundle(routeFile.path);
+				routes[routeFile.route] = bundle;
+				routes[routeFile.wildcard] = bundle;
 			}
 
 			const staticFiles = await parseStaticFiles(Bun, options);
