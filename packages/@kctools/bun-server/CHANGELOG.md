@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.0...@kctools/bun-server+v0.3.1) (2026-09-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.0
+    * @kcconfigs/vitest bumped to 0.3.4
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.1...@kctools/bun-server+v0.3.0) (2026-09-17)
 
 

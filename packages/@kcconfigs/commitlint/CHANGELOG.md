@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.15...@kcconfigs/commitlint+v0.3.0) (2026-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/commitlint:** defineConfig no longer accepts { types, autoScopes, scopes }. Use typesPlugin(mode), scopePlugin(scopes) or autoScopePlugin(additional) from @kcconfigs/commitlint/plugins instead.
+
+### Features
+
+* **kcconfigs/commitlint:** migrate to @kcinternals/config-builder plugin API ([96e4213](https://github.com/kc-workspace/kcws/commit/96e42134892610b091e40a598549b4685266ff0f))
+
+
+### Documentation
+
+* **kcconfigs/commitlint:** split async config section and align plugin table ([3a69502](https://github.com/kc-workspace/kcws/commit/3a69502bdee65efd5b7047a12e27d23cc3fef867))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.0
+    * @kcconfigs/vitest bumped to 0.3.4
+
 ## [0.2.15](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.14...@kcconfigs/commitlint+v0.2.15) (2026-09-14)
 
 
