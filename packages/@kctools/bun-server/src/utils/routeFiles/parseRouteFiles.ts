@@ -1,5 +1,6 @@
 import type { BunType } from "#types";
 import { findDuplicateRoutes } from "#utils/url";
+import { logger } from "./constants";
 import createRouteSpecs from "./createRouteSpecs";
 import resolveRouteSpecs from "./resolveRouteSpecs";
 import type { ResolvedRoute } from "./types";
@@ -17,6 +18,7 @@ const parseRouteFiles = async (
 		throw new Error(`Found duplicated routes: ${duplicatedRoutes.join(", ")}`);
 	}
 
+	logger.debug({ length: routes.length }, `found ${routes.length} routes`);
 	return routes;
 };
 export default parseRouteFiles;

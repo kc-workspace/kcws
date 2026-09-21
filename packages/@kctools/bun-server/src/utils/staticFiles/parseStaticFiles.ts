@@ -1,5 +1,6 @@
 import type { BunType } from "#types";
 import { findDuplicateRoutes } from "#utils/url";
+import { logger } from "./constants";
 import createStaticSpecs from "./createStaticSpecs";
 import resolveStaticSpec from "./resolveStaticSpecs";
 import type { ResolvedStatic } from "./types";
@@ -18,6 +19,7 @@ const parseStaticFiles = async (
 		);
 	}
 
+	logger.debug({ length: files.length }, `found ${files.length} static files`);
 	return files;
 };
 
