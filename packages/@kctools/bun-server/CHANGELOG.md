@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.1...@kctools/bun-server+v0.3.2) (2026-09-20)
+
+
+### Bugfixes
+
+* **kctools/bun-server:** serve html routes as bundles in dev ([b4ba66b](https://github.com/kc-workspace/kcws/commit/b4ba66b9bd628a6408f78bf0392691663acb4a77))
+
 ## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.0...@kctools/bun-server+v0.3.1) (2026-09-18)
 
 
