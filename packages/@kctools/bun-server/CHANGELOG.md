@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.2...@kctools/bun-server+v0.3.3) (2026-09-21)
+
+
+### Performance Improvements
+
+* **kctools/bun-server:** add debug log show how many static files and routes after transform ([4a1aa17](https://github.com/kc-workspace/kcws/commit/4a1aa170d3ca37ba2a1379c34acf0bea0e67700d))
+
 ## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.1...@kctools/bun-server+v0.3.2) (2026-09-20)
 
 
