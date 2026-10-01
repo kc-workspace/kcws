@@ -21,7 +21,6 @@ previews the build output.
 ## Prerequisites
 
 - **Bun**: 1.3.0 or higher
-- **Node.js**: 14 or higher
 
 ## Installation
 
