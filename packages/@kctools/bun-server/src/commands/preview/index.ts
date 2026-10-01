@@ -23,6 +23,10 @@ const define = (command: Command) => {
 			"-P, --next-port",
 			"Automatically find the next available port if the specified one is in use",
 			true,
+		)
+		.option(
+			"-N, --no-next-port",
+			"Throw an error if the specified port is in use",
 		);
 };
 
