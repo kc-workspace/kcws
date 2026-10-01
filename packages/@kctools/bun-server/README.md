@@ -1,22 +1,21 @@
 # @kctools/bun-server
 
 Command line server for plain HTML websites, powered by [Bun](https://bun.com/).
-Bundles and serves plain HTML entrypoints in development, builds them for
-production, and previews the build output.
+Serves HTML entrypoints in development, builds them for production, and
+previews the build output.
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Routes](#routes)
 - [Plugins](#plugins)
-- [Modes](#modes)
-  - [Single page (spa)](#single-page-spa)
-  - [Multiple pages (mpa)](#multiple-pages-mpa)
 - [Static files](#static-files)
 - [Commands](#commands)
   - [Server options](#server-options)
   - [dev](#dev)
   - [build](#build)
   - [preview](#preview)
+- [Logging](#logging)
 - [References](#references)
 
 ## Prerequisites
@@ -27,257 +26,160 @@ production, and previews the build output.
 ## Installation
 
 ```bash
-pnpm add --save-dev @kctools/bun-server
+bun add --dev @kctools/bun-server
 ```
 
 ## Usage
 
 ```bash
-## start the development server
-bun-server dev
-## build for production into dist/
-bun-server build
-## serve the production build
-bun-server preview
+bun-server dev       # dev server on ./src/routes
+bun-server build     # build into ./dist
+bun-server preview   # serve ./dist
 ```
+
+## Routes
+
+`dev` and `build` take any number of inputs: an HTML file, a directory (scanned
+for `**/*.html`), or a glob. Default is `./src/routes`.
+
+The route is the file path under its root without `.html`, and `index.html`
+answers its directory. A single file is rooted at its own directory, and a glob
+at the part before its first glob character.
+
+```text
+src/routes/index.html        ->  /
+src/routes/about.html        ->  /about
+src/routes/about/index.html  ->  /about
+```
+
+- In `dev`, each route also answers its sub-paths (`/about/*`).
+- Dotfiles are not matched.
+- Two files producing the same route, across all inputs, fail with
+  `Found duplicated routes: /about`.
 
 ## Plugins
 
-`dev` and `build` take their bundler plugins from the `[serve.static]` section
-of `bunfig.toml`, the file Bun's own development server reads. Declaring a
-plugin there is all it takes for both commands to use it, and removing it is how
-you turn one off:
+`build` loads bundler plugins from `bunfig.toml` in the working directory, the
+same section Bun's dev server reads:
 
 ```toml
 [serve.static]
 plugins = ["bun-plugin-tailwind"]
 ```
 
-That is also how [Tailwind CSS](https://tailwindcss.com/) is enabled: install
-`bun-plugin-tailwind` and list it. Without a `bunfig.toml`, or with an empty
-list, neither command loads any plugin.
-
-Both commands report what they are about to run, so the active set is visible
-before the first page is bundled:
-
-```text
-Plugins from bunfig.toml: bun-plugin-tailwind
-```
-
-`dev` only reports them. Bun's development server loads them itself. `build`
-loads them and passes them to the bundler; a plugin that fails to load is
-reported and skipped, and the build continues without it.
-
-## Modes
-
-`dev` and `build` accept `--mode` to select how many HTML entrypoints the
-website has. The positional argument overrides the default input of the mode,
-and its meaning follows the mode: a file in `spa`, a directory in `mpa`.
-
-| Mode  | Default input         | Input is                                |
-| ----- | --------------------- | --------------------------------------- |
-| `spa` | `./public/index.html` | the single HTML document                |
-| `mpa` | `./src/routes`        | a directory holding the HTML documents  |
-
-### Single page (spa)
-
-The default. One HTML document answers every request, so client side routers
-keep working on a page reload:
-
-```bash
-bun-server dev
-bun-server dev ./public/app.html
-```
-
-### Multiple pages (mpa)
-
-Every `.html` document below the directory, at any depth, becomes its own
-route. The URL is the document's path under that directory without the
-extension, and a document named `index.html` answers the route of its own
-directory. Each route also answers its sub-paths:
-
-```text
-src/routes/index.html            ->  /          and  /*
-src/routes/about.html            ->  /about     and  /about/*
-src/routes/about/index.html      ->  /about     and  /about/*
-src/routes/blog/post.html        ->  /blog/post and  /blog/post/*
-src/routes/blog/post/index.html  ->  /blog/post and  /blog/post/*
-```
-
-```bash
-bun-server dev --mode mpa
-bun-server dev --mode mpa ./src/pages
-```
-
-As the table shows, `about.html` and `about/index.html` are two ways to write
-the same route. A directory holding both is ambiguous: the command reports the
-colliding route and exits instead of silently dropping one.
+A missing file or `plugins` array loads nothing. A plugin that fails to load is
+logged and skipped. `dev` leaves this to `Bun.serve()`.
 
 ## Static files
 
-The bundler only ever sees the files an HTML document refers to, so a
-`favicon.ico`, a `robots.txt`, or a folder of images nothing links to never
-reaches the output. `--statics` names them, and `dev` and `build` both take it:
+The bundler only outputs files an HTML document references. Use
+`--statics <source>[:<target>]` (repeatable, `dev` and `build`) for anything
+else, such as `favicon.ico` or `robots.txt`.
 
 ```bash
-bun-server build --statics public:/
-bun-server dev --statics public:/ --statics ./icons
+bun-server build --statics public:.
 ```
 
-Each value is `<source>[:<target>]`, and the option can be repeated.
+**Source** is a path or glob, relative to the working directory or absolute. It
+is split into a root and a pattern:
 
-The **source** is a path or a glob. A relative one, spelled `name` or `./name`,
-is read from the working directory; an absolute one is read as it is. A
-directory means everything below it, at any depth, and a single file means that
-file:
+| Source              | Root          | Pattern      |
+| ------------------- | ------------- | ------------ |
+| `public`            | `public`      | `**/*`       |
+| `assets/**/*.png`   | `assets`      | `**/*.png`   |
+| `**/*.txt`          | working dir   | `**/*.txt`   |
+| `public/robots.txt` | `public`      | `robots.txt` |
 
-```text
-public                 every file below ./public
-assets/**/*.png        every PNG below ./assets, at any depth
-robots.txt             that one file
-/shared/icons:icons    every file below an absolute directory
-```
+**Target** is a directory inside the output directory; `.` is the output root.
+Default is the source root. The layout below the root is kept:
 
-The **target** is the directory the files are written to, always relative to
-the build output directory. `/` is the output directory itself. Left out, it
-repeats the directory the source is rooted at, which is the part of the source
-before its first glob character:
+| Specification            | `public/img/logo.png` is written to |
+| ------------------------ | ----------------------------------- |
+| `--statics public`       | `dist/public/img/logo.png`          |
+| `--statics public:.`     | `dist/img/logo.png`                 |
+| `--statics public:icons` | `dist/icons/img/logo.png`           |
 
-| Specification            | `public/favicon.ico` is written to |
-| ------------------------ | ---------------------------------- |
-| `--statics public`       | `dist/public/favicon.ico`          |
-| `--statics public:/`     | `dist/favicon.ico`                 |
-| `--statics public:icons` | `dist/icons/favicon.ico`           |
+Rules:
 
-The layout below that root is kept either way, so `public/img/logo.png` with
-`--statics public:/` becomes `dist/img/logo.png`. An absolute source has no
-sensible target to fall back on, so it has to be given one.
+- The value is split at the last `:`.
+- An absolute source requires a target (`/shared/icons:icons`).
+- A target outside the output directory (`..`, `/`, `/etc`) is an error.
+- Dotfiles are matched, so `.well-known/` works.
+- HTML files are copied too. A static file that overwrites bundler output
+  stops the build before anything is copied.
+- Two static files with the same output path fail with
+  `Found duplicated static files: ...`.
 
-`build` copies the files after bundling and lists them with the rest of the
-output:
-
-```text
-  dist/index.html    1.21 KB  entry
-  dist/favicon.ico   4.19 KB  static
-```
-
-`dev` copies nothing. It serves each file from the same URL the build would
-give it, so `--statics public:/` puts `public/favicon.ico` on `/favicon.ico`,
-and reads it on request, so an edit is served without a restart.
-
-A directory of static files usually holds the HTML documents as well, and those
-belong to the bundler: copying one beside its bundled self would either collide
-with it or ship the page untransformed. They are skipped, so `--statics
-public:/` on the default layout copies everything in `public` except the
-`index.html` the build already produces.
-
-Names starting with a dot are matched like any other, which is what makes
-`.well-known/security.txt` reachable.
-
-A source matching no file is reported and skipped; the rest still builds. Two
-files claiming one output path, or a static file landing on something the
-bundler already wrote, is an error, and nothing is copied.
+`build` copies the files after bundling. `dev` copies nothing and serves each
+file from the URL it would have in the build, read on every request.
 
 ## Commands
 
+Every command takes `-C, --cwd <directory>` (default: process working
+directory). All paths resolve against it.
+
 ### Server options
 
-`dev` and `preview` both bind a socket, and take the same options for it:
+`dev` and `preview` take:
 
-| Option                  | Default     | Description                                       |
-| ----------------------- | ----------- | ------------------------------------------------- |
-| `-h, --hostname <host>` | `127.0.0.1` | hostname to bind to                               |
-| `-p, --port <number>`   | `3000`      | port to listen on                                 |
-| `-P, --next-port`       | `false`     | try the next ports when the requested one is busy |
+| Option                  | Default                        | Description                           |
+| ----------------------- | ------------------------------ | ------------------------------------- |
+| `-h, --hostname <host>` | `127.0.0.1`                    | hostname to bind                      |
+| `-p, --port <number>`   | `3000` (dev), `4000` (preview) | port, `0` picks a free one            |
+| `-P, --next-port`       | enabled                        | try next port if busy, up to 10 times |
+| `-N, --no-next-port`    | —                              | fail if the port is busy              |
 
 ### dev
 
-Start the development server with hot reloading.
-
 ```bash
-bun-server dev [input] [options]
+bun-server dev [input...] [options]
 ```
 
-Takes `-m, --mode <mode>` to pick a [layout](#modes), defaulting to `spa`, and
-`-s, --statics <source[:target]>`, repeatable, to serve
-[static files](#static-files). Plus the [server options](#server-options).
+Serves [routes](#routes) as HTML bundles through `Bun.serve()` in development
+mode, with hot reloading. Takes `-s, --statics` and the
+[server options](#server-options).
 
 ### build
 
-Bundle the website for production.
-
 ```bash
-bun-server build [input] [options]
+bun-server build [input...] [options]
 ```
 
-| Option                            | Default | Description                                       |
-| --------------------------------- | ------- | ------------------------------------------------- |
-| `-m, --mode <mode>`               | `spa`   | `spa` or `mpa`                                    |
-| `-N, --no-minify`                 | —       | disable minification                              |
-| `-O, --out <directory>`           | `dist`  | output directory                                  |
-| `-s, --statics <source[:target]>` | —       | [static files](#static-files) to copy, repeatable |
+| Option                             | Default | Description                   |
+| ---------------------------------- | ------- | ----------------------------- |
+| `-M, --minify` / `-N, --no-minify` | enabled | toggle minification           |
+| `-O, --out <directory>`            | `dist`  | output directory              |
+| `-s, --statics <source[:target]>`  | —       | [static files](#static-files) |
 
-In `mpa` mode every matched document is an entrypoint, and the output keeps the
-source directory layout:
-
-```bash
-bun-server build --mode mpa
-## dist/index.html, dist/about/index.html, dist/blog/post/index.html
-```
-
-Every bundler message is reported on the console channel of its level, and a
-successful build lists what it wrote.
-
-```text
-Build output:
-
-  dist/index.html            1.21 KB  entry
-  dist/chunk-a1b2c3.js     142.40 KB  chunk
-  dist/index-d4e5f6.css     12.02 KB  asset
-  dist/chunk-a1b2c3.js.map 380.11 KB  sourcemap
-
-  4 files, 535.74 KB in 231ms
-```
+Runs `Bun.build()` with every route as an entrypoint: browser target, ESM, code
+splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined. Logs
+each output file with its size and kind, then a total.
 
 ### preview
-
-Serve a directory of already built static files. Useful to check a production
-build before deploying it.
 
 ```bash
 bun-server preview [directory] [options]
 ```
 
-Takes the [server options](#server-options). The directory defaults to `dist`:
+Serves a built directory (default `dist`) without bundling. Takes the
+[server options](#server-options). A request `/x` resolves to the first that
+exists:
 
-```bash
-bun-server preview
-bun-server preview build-output
-```
+1. `x`
+2. `x/index.html`
+3. `x.html`
 
-A request resolves in this order:
+Anything else is `404`. There is no sub-path fallback. Paths that leave the
+directory return `403`, and paths that cannot be decoded return `400`. The check
+is lexical, so symlinks are followed. Use it for local preview only.
 
-1. the file itself, such as `/app.js`
-2. `index.html` inside the requested directory: `/docs` → `docs/index.html`
-3. the same path with an `.html` extension: `/about` → `about.html`
-4. `index.html` of the closest parent directory, walking up to the root
+## Logging
 
-Steps 2 and 3 mirror the two `mpa` spellings of a route, so a built multi page
-site is served exactly as `dev` serves it. Step 4 keeps deep links working:
-`/about/deep` falls back to `about/index.html` when it exists, and to the root
-`index.html` when it does not.
-
-Requests that escape the served directory are rejected with `403`, and requests
-whose path cannot become a file name with `400`. The containment check is
-lexical: it stops `../` traversal, but a symlink inside the served directory
-that points outside is still followed. This is a local preview server, not a
-sandbox.
-
-Unlike `dev`, `preview` does no bundling, so build first.
+Set `DEBUG=true` (also `1`, `yes`, `on`) to print debug logs, such as resolved
+routes, static files, and server configuration.
 
 ## References
 
 - [Bun HTTP server](https://bun.com/docs/api/http)
 - [Bun bundler](https://bun.com/docs/bundler)
 - [Bun HTML and static sites](https://bun.com/docs/bundler/html)
-- [Commander](https://github.com/tj/commander.js)
