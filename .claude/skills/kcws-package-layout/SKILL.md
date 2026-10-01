@@ -42,7 +42,9 @@ src/
 - `core/` contains the main functions exposed by the library.
 - `types/` contains public type definitions.
 - `utils/` contains reusable utility functions grouped by namespace.
-- Keep core implementations as direct files under `src/core/`; `src/core/index.ts` is the required core export boundary. If a core namespace folder is needed, its `index.ts` follows the namespace template below.
+- Keep core implementations as direct files under `src/core/`; `src/core/index.ts` is the required
+  core export boundary. If a core namespace folder is needed, its `index.ts` follows the namespace
+  template below.
 - Each `src/types/<namespace>.ts` file is a public type module. In the template, `<name>` is that module's filename without `.ts`.
 - Add `utils.ts`, `types.ts`, or `constants.ts` inside a utility namespace only when internal helpers require it.
 - Keep utility namespaces shallow: `src/utils/<namespace>/` is the boundary.

@@ -21,15 +21,22 @@ disable-model-invocation: false
    - Use `[feature].test.ts` beside feature implementation for focused tests.
    - Use `*.test-d.ts` for type-only assertions, commonly under `types/` in `@kctypes/*` packages.
 3. Import test functions from `vitest`. Use `describe` for the unit or API area and name tests by observable behavior.
-4. Test public behavior through the package entrypoint when the contract is public. Test internal modules directly only when the behavior is intentionally internal and stable enough to warrant coverage.
+4. Test public behavior through the package entrypoint when the contract is public. Test internal
+   modules directly only when the behavior is intentionally internal and stable enough to warrant
+   coverage.
 5. Use the shared helpers from `@kcconfigs/vitest` instead of creating package-local equivalents. For filesystem tests, use `@kcconfigs/vitest/mocks` and call `vol.reset()` in `afterEach`.
 6. Use `beforeEach` for per-test setup and `afterEach` for cleanup. Reset mocks, virtual filesystems, environment changes, and timers so tests do not depend on execution order.
 7. Mock only external effects or platform boundaries. Prefer real domain logic and explicit fixtures for deterministic tests.
-8. Preserve the package's existing `vitest.config.ts` pattern, normally using `defineProjectConfig` from `@kcconfigs/vitest`. Add mock plugins or flags only for dependencies the package actually needs to isolate.
+8. Preserve the package's existing `vitest.config.ts` pattern, normally using `defineProjectConfig`
+   from `@kcconfigs/vitest`. Add mock plugins or flags only for dependencies the package actually
+   needs to isolate.
 9. Select the Vitest config that owns the tests:
    - For one package, prefer `pnpm --filter <package-name> test` from the repository root. This runs the package script with that package's own config.
    - For a workspace project, use the repository root config with `pnpm test:all --project <project-name>` or `./node_modules/.bin/vitest run --project <project-name>`.
-   - Do not pass a package config such as `--config packages/@kcws/zconfig/vitest.config.ts` to a workspace-wide run. A package config can apply its mock plugins to files outside that package; for example, zconfig's filesystem mock can break commitlint tests that need the real OS temporary directory.
+   - Do not pass a package config such as `--config packages/@kcws/zconfig/vitest.config.ts` to a
+     workspace-wide run. A package config can apply its mock plugins to files outside that package;
+     for example, zconfig's filesystem mock can break commitlint tests that need the real OS
+     temporary directory.
 10. Run the narrowest test file first. Then run the package `test` script and relevant `check`/`build` scripts.
 
 ### Vitest Config Selection

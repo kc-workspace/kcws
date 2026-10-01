@@ -38,7 +38,9 @@ disable-model-invocation: false
 5. Prefer the smallest scoped command while iterating, then run the affected package `check` script before completion.
 6. Use automatic fixes only when the resulting change is understood. Review `--unsafe` fixes carefully, especially around imports, types, and generated or configuration files.
 7. Keep formatting-only changes separate from behavior changes when practical. Do not reformat unrelated files or generated output.
-8. If a diagnostic reflects a real code issue, fix the code rather than weakening the shared rule. Change configuration only when the repository-wide rule is wrong and the exception is documented by surrounding configuration.
+8. If a diagnostic reflects a real code issue, fix the code rather than weakening the shared rule.
+   Change configuration only when the repository-wide rule is wrong and the exception is documented
+   by surrounding configuration.
 
 ## Boundaries
 
