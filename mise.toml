@@ -1,3 +1,4 @@
 [tools]
+claude = "2.1.285"
 ## Must be the same with `devEngines.runtime` in `<root>/package.json`
 node = "24.21.0"
