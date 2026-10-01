@@ -168,7 +168,7 @@ exists:
 2. `x/index.html`
 3. `x.html`
 
-Anything else is `404`. There is no sub-path fallback. Paths that leave the
+Anything else is `404`, with no sub-path fallback. Paths that leave the
 directory return `403`, and paths that cannot be decoded return `400`. The check
 is lexical, so symlinks are followed. Use it for local preview only.
 
