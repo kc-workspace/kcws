@@ -30,7 +30,7 @@ overrides:
   ## force all @types/node to be v24
   "@types/node@*": ^24.0.0
   ## commitizen>glob>minimatch>brace-expansion
-  brace-expansion@<5.0.9: ^5.0.9
+  brace-expansion@<5.0.12: ^5.0.12
   ## kcconfigs__commitlint>@pnpm/workspace.find-packages>...>cross-spawn
   cross-spawn@>=7.0.0 <7.0.5: ^7.0.5
   ## @commitlint/cli>@commitlint/load>...>ajv>fast-uri
@@ -54,7 +54,7 @@ overrides:
   ## typedoc>yaml
   yaml@>=2.0.0 <2.8.3: ^2.8.3
   ## @actions/core>@actions/http-client>undici
-  undici@<6.27.0: ^6.27.0
+  undici@<6.28.1: ^6.28.1
   ## typedoc-theme-oxide>cheerio>undici
   undici@>=7.0.0 <7.29.0: ^7.29.0
   ## @vitest/ui>vitest>@vitest/mocker>vite
