@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.2...@kctools/bun-server+v0.3.3) (2026-10-02)
+
+
+### Performance Improvements
+
+* **kctools/bun-server:** add debug log show how many static files and routes after transform ([4a1aa17](https://github.com/kc-workspace/kcws/commit/4a1aa170d3ca37ba2a1379c34acf0bea0e67700d))
+
+
+### Bugfixes
+
+* **kctools/bun-server:** allow disabling next port with --no-next-port ([c1f3f6f](https://github.com/kc-workspace/kcws/commit/c1f3f6f1bf4ddc18fd83efa4ff3429660f48eefc))
+* **kctools/bun-server:** this package only work on bun runtime ([d4bd51a](https://github.com/kc-workspace/kcws/commit/d4bd51a365824f089d45c94189b73026b222a09e))
+
+
+### Documentation
+
+* **kctools/bun-server:** avoid sentence starting with "There is" ([15a6d22](https://github.com/kc-workspace/kcws/commit/15a6d221c4f51ae442b5d3db19585deb20ca1123))
+* **kctools/bun-server:** rewrite README to match current commands ([c381b1e](https://github.com/kc-workspace/kcws/commit/c381b1e21351563d415a8a6c4fcac866c5c5d8de))
+
 ## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.1...@kctools/bun-server+v0.3.2) (2026-09-20)
 
 
