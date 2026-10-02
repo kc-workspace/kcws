@@ -1,8 +1,7 @@
-import type { PluginPriority } from "@kcinternals/config-builder";
 import type { TsdownConfig } from "../models";
 
-export const debugPriority: PluginPriority = Number.NEGATIVE_INFINITY;
-export const normalizePriority: PluginPriority = Number.POSITIVE_INFINITY;
+export const debugPriority: number = Number.NEGATIVE_INFINITY;
+export const normalizePriority: number = Number.POSITIVE_INFINITY;
 
 export const defaultIgnoreEntry = [
 	"!./src/**/*.example.ts",
