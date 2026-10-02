@@ -15,9 +15,9 @@ import { createConfig, normalizeOptions } from "./utils";
  */
 const envAdapter = (options: Partial<EnvAdapterOptions> = {}): Adapter => ({
 	name: "env",
-	load: async () => {
+	load: () => {
 		const opts = normalizeOptions(options);
-		return createConfig(opts.processEnv, opts);
+		return Promise.resolve(createConfig(opts.processEnv, opts));
 	},
 	loadSync: () => {
 		const opts = normalizeOptions(options);
