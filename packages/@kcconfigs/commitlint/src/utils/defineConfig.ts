@@ -23,7 +23,7 @@ import mergeConfig from "./mergeConfig";
 const defineConfig = async (
 	...plugins: CommitlintConfigPluginInput[]
 ): Promise<CommitlintConfig> => {
-	const resolved = await Promise.all(plugins);
+	const resolved = await Promise.all(plugins.map((p) => Promise.resolve(p)));
 	const names = new Set(resolved.map((plugin) => plugin.name));
 
 	const defaults: AnyCommitlintConfigPlugin[] = [];
