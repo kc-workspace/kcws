@@ -13,7 +13,7 @@ const staticAdapter = (
 	transform?: TransformFn,
 ): Adapter => ({
 	name: "static",
-	load: async () => applyTransform(config, transform),
+	load: () => Promise.resolve(applyTransform(config, transform)),
 	loadSync: () => applyTransform(config, transform),
 });
 
