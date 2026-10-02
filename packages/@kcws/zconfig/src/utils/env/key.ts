@@ -46,13 +46,14 @@ export const decodeEnvKey = (
 	if (keySep === wSep) throw new Error(`keySep cannot be "${wSep}"`);
 
 	const prefixVal = getPrefixVal(prefix);
-	const encoded =
-		prefixVal === undefined
-			? key
-			: key.startsWith(prefixVal)
-				? key.slice(prefixVal.length)
-				: undefined;
-	if (encoded === undefined) return undefined;
+	let encoded: string;
+	if (prefixVal === undefined) {
+		encoded = key;
+	} else if (!key.startsWith(prefixVal)) {
+		return undefined;
+	} else {
+		encoded = key.slice(prefixVal.length);
+	}
 
 	const segments = encoded.split(keySep);
 	if (
