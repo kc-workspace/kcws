@@ -26,7 +26,8 @@ export const parseJsonc = <T>(content: string): T => {
 	if (errors.length > 0) {
 		const diagnostics = errors
 			.map(({ error, offset, length }) => {
-				return `${parser.printParseErrorCode?.(error) ?? `error ${error}`} at ${offset}:${length}`;
+				const code = parser.printParseErrorCode?.(error) ?? `error ${error}`;
+				return `${code} at ${offset}:${length}`;
 			})
 			.join(", ");
 		throw new Error(`JSONC parse error: ${diagnostics}`);
