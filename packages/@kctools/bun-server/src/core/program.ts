@@ -4,9 +4,9 @@ import type { BunType, CommandFn } from "#types";
 import { createLogger, type Logger } from "#utils/logger";
 
 class Program {
-	#root: Command;
-	#bun: BunType;
-	#logger: Logger;
+	readonly #root: Command;
+	readonly #bun: BunType;
+	readonly #logger: Logger;
 
 	constructor(bun: BunType) {
 		this.#bun = bun;
