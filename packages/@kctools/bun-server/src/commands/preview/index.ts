@@ -36,7 +36,7 @@ const preview: CommandFn = defineCommand(
 	"preview",
 	"Preview the built website using Bun.serve()",
 	(command, Bun) => {
-		define(command).action(async (input, options) => {
+		define(command).action((input, options) => {
 			logger.debug({ input, options }, "starting the preview server");
 
 			const cwd = readOptions<string>(options, "cwd");
