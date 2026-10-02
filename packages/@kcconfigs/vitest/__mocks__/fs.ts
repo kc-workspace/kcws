@@ -1,15 +1,17 @@
 import type * as fsType from "node:fs";
-import { fs } from "memfs";
+import { fs as _memfs } from "memfs";
 import { vi } from "vitest";
 
+const memfs = _memfs as unknown as typeof fsType;
+
 /* jscpd:ignore-start */
-vi.mock(import("node:fs"), async () => {
-	return fs as unknown as typeof fsType;
+vi.mock(import("node:fs"), () => {
+	return memfs;
 });
 
 // biome-ignore lint/style/useNodejsImportProtocol: For backward compatibility
-vi.mock(import("fs"), async () => {
-	return fs as unknown as typeof fsType;
+vi.mock(import("fs"), () => {
+	return memfs;
 });
 
 // Support CJS require() method since vi.mock didn't support require()
