@@ -4,188 +4,208 @@ import { getEnv } from "./env";
 
 describe("getEnv", () => {
 	describe("with default INPUT prefix", () => {
-		test("should return value for simple key", () => {
-			const result = getEnv("token", undefined, {
-				INPUT__TOKEN: "secret-token",
-			});
-			expect(result).toBe("secret-token");
-		});
-
-		test("should return undefined when key not found", () => {
-			const result = getEnv("missing", undefined, {});
-			expect(result).toBeUndefined();
-		});
-
-		test("should handle key with dot notation", () => {
-			const result = getEnv("config.path", undefined, {
-				INPUT__CONFIG__PATH: "/path/to/config",
-			});
-			expect(result).toBe("/path/to/config");
-		});
-
-		test("should handle key with slash notation", () => {
-			const result = getEnv("api/endpoint", undefined, {
-				INPUT__API__ENDPOINT: "https://api.example.com",
-			});
-			expect(result).toBe("https://api.example.com");
-		});
-
-		test("should handle key with dash (replaced with underscore)", () => {
-			const result = getEnv("my-key", undefined, {
-				INPUT__MY_KEY: "value",
-			});
-			expect(result).toBe("value");
-		});
-
-		test("should handle key with space (replaced with underscore)", () => {
-			const result = getEnv("my key", undefined, {
-				INPUT__MY_KEY: "value",
-			});
-			expect(result).toBe("value");
-		});
-
-		test("should convert key to uppercase", () => {
-			const result = getEnv("MyKey", undefined, {
-				INPUT__MYKEY: "value",
-			});
-			expect(result).toBe("value");
+		test.for([
+			{
+				name: "simple key",
+				key: "token",
+				env: { INPUT__TOKEN: "secret-token" },
+				expected: "secret-token",
+			},
+			{
+				name: "missing key",
+				key: "missing",
+				env: {},
+				expected: undefined,
+			},
+			{
+				name: "key with dot notation",
+				key: "config.path",
+				env: { INPUT__CONFIG__PATH: "/path/to/config" },
+				expected: "/path/to/config",
+			},
+			{
+				name: "key with slash notation",
+				key: "api/endpoint",
+				env: { INPUT__API__ENDPOINT: "https://api.example.com" },
+				expected: "https://api.example.com",
+			},
+			{
+				name: "key with dash (replaced with underscore)",
+				key: "my-key",
+				env: { INPUT__MY_KEY: "value" },
+				expected: "value",
+			},
+			{
+				name: "key with space (replaced with underscore)",
+				key: "my key",
+				env: { INPUT__MY_KEY: "value" },
+				expected: "value",
+			},
+			{
+				name: "key converted to uppercase",
+				key: "MyKey",
+				env: { INPUT__MYKEY: "value" },
+				expected: "value",
+			},
+		])("should handle $name", ({ key, env, expected }) => {
+			expect(getEnv(key, undefined, env)).toBe(expected);
 		});
 	});
 
 	describe("with custom prefix", () => {
-		test("should use dot notation prefix", () => {
-			const result = getEnv("mode", "my.action", {
-				MY__ACTION__MODE: "warn",
-			});
-			expect(result).toBe("warn");
-		});
-
-		test("should use slash notation prefix", () => {
-			const result = getEnv("token", "org/abc", {
-				ORG__ABC__TOKEN: "custom-token",
-			});
-			expect(result).toBe("custom-token");
-		});
-
-		test("should handle prefix with dash", () => {
-			const result = getEnv("key", "my-prefix", {
-				MY_PREFIX__KEY: "value",
-			});
-			expect(result).toBe("value");
-		});
-
-		test("should handle prefix with space", () => {
-			const result = getEnv("key", "my prefix", {
-				MY_PREFIX__KEY: "value",
-			});
-			expect(result).toBe("value");
+		test.for([
+			{
+				name: "dot notation prefix",
+				key: "mode",
+				prefix: "my.action",
+				env: { MY__ACTION__MODE: "warn" },
+				expected: "warn",
+			},
+			{
+				name: "slash notation prefix",
+				key: "token",
+				prefix: "org/abc",
+				env: { ORG__ABC__TOKEN: "custom-token" },
+				expected: "custom-token",
+			},
+			{
+				name: "prefix with dash",
+				key: "key",
+				prefix: "my-prefix",
+				env: { MY_PREFIX__KEY: "value" },
+				expected: "value",
+			},
+			{
+				name: "prefix with space",
+				key: "key",
+				prefix: "my prefix",
+				env: { MY_PREFIX__KEY: "value" },
+				expected: "value",
+			},
+		])("should handle $name", ({ key, prefix, env, expected }) => {
+			expect(getEnv(key, prefix, env)).toBe(expected);
 		});
 	});
 
 	describe("with empty prefix", () => {
-		test("should use only the key without prefix", () => {
-			const result = getEnv("debug", "", {
-				DEBUG: "true",
-			});
-			expect(result).toBe("true");
-		});
-
-		test("should handle key with dot notation", () => {
-			const result = getEnv("config.value", "", {
-				CONFIG__VALUE: "test",
-			});
-			expect(result).toBe("test");
+		test.for([
+			{
+				name: "key without prefix",
+				key: "debug",
+				env: { DEBUG: "true" },
+				expected: "true",
+			},
+			{
+				name: "key with dot notation",
+				key: "config.value",
+				env: { CONFIG__VALUE: "test" },
+				expected: "test",
+			},
+		])("should handle $name", ({ key, env, expected }) => {
+			expect(getEnv(key, "", env)).toBe(expected);
 		});
 	});
 
 	describe("validation errors", () => {
-		test("should throw error for empty key", () => {
-			expect(() => getEnv("", undefined, {})).toThrow("Key must not be empty");
-		});
-
-		test("should throw error for key with invalid characters", () => {
-			expect(() => getEnv("key@value", undefined, {})).toThrow(
-				"Invalid key: contains invalid characters",
-			);
-		});
-
-		test("should throw error for prefix with invalid characters", () => {
-			expect(() => getEnv("key", "prefix@value", {})).toThrow(
-				"Invalid prefix: contains invalid characters",
-			);
-		});
-
-		test("should throw error for consecutive separators in key", () => {
-			expect(() => getEnv("key..value", undefined, {})).toThrow(
-				"Invalid key: consecutive separator characters",
-			);
-		});
-
-		test("should throw error for consecutive separators in prefix", () => {
-			expect(() => getEnv("key", "prefix//value", {})).toThrow(
-				"Invalid prefix: consecutive separator characters",
-			);
-		});
-
-		test("should throw error for key starting with separator", () => {
-			expect(() => getEnv(".key", undefined, {})).toThrow(
-				"Invalid key: cannot start with a separator character",
-			);
-		});
-
-		test("should throw error for key ending with separator", () => {
-			expect(() => getEnv("key.", undefined, {})).toThrow(
-				"Invalid key: cannot end with a separator character",
-			);
-		});
-
-		test("should throw error for prefix starting with separator", () => {
-			expect(() => getEnv("key", "/prefix", {})).toThrow(
-				"Invalid prefix: cannot start with a separator character",
-			);
-		});
-
-		test("should throw error for prefix ending with separator", () => {
-			expect(() => getEnv("key", "prefix-", {})).toThrow(
-				"Invalid prefix: cannot end with a separator character",
-			);
-		});
-
-		test("should throw error for env key exceeding max length", () => {
-			const longKey = "a".repeat(130);
-			expect(() => getEnv(longKey, undefined, {})).toThrow(
-				"Environment variable name exceeds maximum length of 128 characters",
-			);
+		test.for([
+			{
+				name: "empty key",
+				key: "",
+				prefix: undefined,
+				error: "Key must not be empty",
+			},
+			{
+				name: "key with invalid characters",
+				key: "key@value",
+				prefix: undefined,
+				error: "Invalid key: contains invalid characters",
+			},
+			{
+				name: "prefix with invalid characters",
+				key: "key",
+				prefix: "prefix@value",
+				error: "Invalid prefix: contains invalid characters",
+			},
+			{
+				name: "consecutive separators in key",
+				key: "key..value",
+				prefix: undefined,
+				error: "Invalid key: consecutive separator characters",
+			},
+			{
+				name: "consecutive separators in prefix",
+				key: "key",
+				prefix: "prefix//value",
+				error: "Invalid prefix: consecutive separator characters",
+			},
+			{
+				name: "key starting with separator",
+				key: ".key",
+				prefix: undefined,
+				error: "Invalid key: cannot start with a separator character",
+			},
+			{
+				name: "key ending with separator",
+				key: "key.",
+				prefix: undefined,
+				error: "Invalid key: cannot end with a separator character",
+			},
+			{
+				name: "prefix starting with separator",
+				key: "key",
+				prefix: "/prefix",
+				error: "Invalid prefix: cannot start with a separator character",
+			},
+			{
+				name: "prefix ending with separator",
+				key: "key",
+				prefix: "prefix-",
+				error: "Invalid prefix: cannot end with a separator character",
+			},
+			{
+				name: "env key exceeding max length",
+				key: "a".repeat(130),
+				prefix: undefined,
+				error:
+					"Environment variable name exceeds maximum length of 128 characters",
+			},
+		])("should throw error for $name", ({ key, prefix, error }) => {
+			expect(() => getEnv(key, prefix, {})).toThrow(error);
 		});
 	});
 
 	describe("complex scenarios", () => {
-		test("should handle deeply nested keys", () => {
-			const result = getEnv("level1.level2.level3", "app", {
-				APP__LEVEL1__LEVEL2__LEVEL3: "deep-value",
-			});
-			expect(result).toBe("deep-value");
-		});
-
-		test("should handle mixed separators in key", () => {
-			const result = getEnv("api/v1.endpoint", undefined, {
-				INPUT__API__V1__ENDPOINT: "value",
-			});
-			expect(result).toBe("value");
-		});
-
-		test("should handle mixed separators in prefix", () => {
-			const result = getEnv("key", "org/team.project", {
-				ORG__TEAM__PROJECT__KEY: "value",
-			});
-			expect(result).toBe("value");
-		});
-
-		test("should return undefined for empty string value", () => {
-			const result = getEnv("key", undefined, {
-				INPUT__KEY: "",
-			});
-			expect(result).toBe("");
+		test.for([
+			{
+				name: "deeply nested keys",
+				key: "level1.level2.level3",
+				prefix: "app",
+				env: { APP__LEVEL1__LEVEL2__LEVEL3: "deep-value" },
+				expected: "deep-value",
+			},
+			{
+				name: "mixed separators in key",
+				key: "api/v1.endpoint",
+				prefix: undefined,
+				env: { INPUT__API__V1__ENDPOINT: "value" },
+				expected: "value",
+			},
+			{
+				name: "mixed separators in prefix",
+				key: "key",
+				prefix: "org/team.project",
+				env: { ORG__TEAM__PROJECT__KEY: "value" },
+				expected: "value",
+			},
+			{
+				name: "empty string value",
+				key: "key",
+				prefix: undefined,
+				env: { INPUT__KEY: "" },
+				expected: "",
+			},
+		])("should handle $name", ({ key, prefix, env, expected }) => {
+			expect(getEnv(key, prefix, env)).toBe(expected);
 		});
 	});
 });

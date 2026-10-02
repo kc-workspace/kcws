@@ -4,82 +4,62 @@ import { z } from "zod";
 import { zStringArray } from "./zStringArray";
 
 describe("zStringArray", () => {
-	test("should parse comma-separated string to array", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "a,b,c" })).toEqual({ tags: ["a", "b", "c"] });
+	const schema = z.object({ tags: zStringArray });
+
+	test.for([
+		{
+			name: "comma-separated string",
+			input: "a,b,c",
+			expected: ["a", "b", "c"],
+		},
+		{
+			name: "newline-separated string",
+			input: "a\nb\nc",
+			expected: ["a", "b", "c"],
+		},
+		{
+			name: "items with surrounding whitespace",
+			input: "  a  ,  b  ,  c  ",
+			expected: ["a", "b", "c"],
+		},
+		{
+			name: "string with empty items",
+			input: "a,,b,  ,c",
+			expected: ["a", "b", "c"],
+		},
+		{ name: "single item", input: "single", expected: ["single"] },
+		{
+			name: "actual array",
+			input: ["a", "b", "c"],
+			expected: ["a", "b", "c"],
+		},
+		{
+			name: "newline separator first when both present",
+			input: "a,b\nc,d",
+			expected: ["a,b", "c,d"],
+		},
+	])("should parse $name", ({ input, expected }) => {
+		expect(schema.parse({ tags: input })).toEqual({ tags: expected });
 	});
 
-	test("should parse newline-separated string to array", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "a\nb\nc" })).toEqual({
-			tags: ["a", "b", "c"],
-		});
-	});
-
-	test("should trim whitespace from each item", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "  a  ,  b  ,  c  " })).toEqual({
-			tags: ["a", "b", "c"],
-		});
-	});
-
-	test("should filter out empty items", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "a,,b,  ,c" })).toEqual({
-			tags: ["a", "b", "c"],
-		});
-	});
-
-	test("should handle single item", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "single" })).toEqual({ tags: ["single"] });
-	});
-
-	test("should pass through actual array", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: ["a", "b", "c"] })).toEqual({
-			tags: ["a", "b", "c"],
-		});
-	});
-
-	test("should throw on empty string (required)", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(() => schema.parse({ tags: "" })).toThrow();
-	});
-
-	test("should throw on undefined (required)", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(() => schema.parse({ tags: undefined })).toThrow();
+	test.for([
+		{ name: "empty string (required)", input: "" },
+		{ name: "undefined (required)", input: undefined },
+		{ name: "null (required)", input: null },
+		{ name: "number input", input: 42 },
+		{ name: "boolean input", input: true },
+		{ name: "object input", input: {} },
+	])("should throw on $name", ({ input }) => {
+		expect(() => schema.parse({ tags: input })).toThrow();
 	});
 
 	test("should allow undefined with optional", () => {
-		const schema = z.object({ tags: zStringArray.optional() });
-		expect(schema.parse({ tags: undefined })).toEqual({ tags: undefined });
+		const optional = z.object({ tags: zStringArray.optional() });
+		expect(optional.parse({ tags: undefined })).toEqual({ tags: undefined });
 	});
 
 	test("should allow missing field with optional", () => {
-		const schema = z.object({ tags: zStringArray.optional() });
-		expect(schema.parse({})).toEqual({});
-	});
-
-	test("should prefer newline separator when both present", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(schema.parse({ tags: "a,b\nc,d" })).toEqual({
-			tags: ["a,b", "c,d"],
-		});
-	});
-
-	test("should throw on null (required)", () => {
-		const schema = z.object({ tags: zStringArray });
-		expect(() => schema.parse({ tags: null })).toThrow();
-	});
-
-	test("should throw on non-string non-array input", () => {
-		const schema = z.object({ tags: zStringArray });
-		// Non-array, non-string input triggers "return undefined"
-		// which causes zod to report "Required"
-		expect(() => schema.parse({ tags: 42 })).toThrow();
-		expect(() => schema.parse({ tags: true })).toThrow();
-		expect(() => schema.parse({ tags: {} })).toThrow();
+		const optional = z.object({ tags: zStringArray.optional() });
+		expect(optional.parse({})).toEqual({});
 	});
 });

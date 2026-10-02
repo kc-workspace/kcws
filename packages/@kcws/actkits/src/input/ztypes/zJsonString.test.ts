@@ -4,71 +4,53 @@ import { z } from "zod";
 import { zJsonString } from "./zJsonString";
 
 describe("zJsonString", () => {
-	test("should parse JSON string to object", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(schema.parse({ config: '{"key": "value"}' })).toEqual({
-			config: { key: "value" },
-		});
+	const schema = z.object({ config: zJsonString });
+
+	test.for([
+		{
+			name: "JSON string",
+			input: '{"key": "value"}',
+			expected: { key: "value" },
+		},
+		{
+			name: "nested JSON object",
+			input: '{"nested": {"a": 1, "b": 2}}',
+			expected: { nested: { a: 1, b: 2 } },
+		},
+		{
+			name: "JSON with array values",
+			input: '{"items": [1, 2, 3]}',
+			expected: { items: [1, 2, 3] },
+		},
+		{
+			name: "actual object",
+			input: { key: "value" },
+			expected: { key: "value" },
+		},
+	])("should parse $name", ({ input, expected }) => {
+		expect(schema.parse({ config: input })).toEqual({ config: expected });
 	});
 
-	test("should parse nested JSON object", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(schema.parse({ config: '{"nested": {"a": 1, "b": 2}}' })).toEqual({
-			config: { nested: { a: 1, b: 2 } },
-		});
-	});
-
-	test("should parse JSON with array values", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(schema.parse({ config: '{"items": [1, 2, 3]}' })).toEqual({
-			config: { items: [1, 2, 3] },
-		});
-	});
-
-	test("should pass through actual object", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(schema.parse({ config: { key: "value" } })).toEqual({
-			config: { key: "value" },
-		});
-	});
-
-	test("should throw on empty string (required)", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: "" })).toThrow();
-	});
-
-	test("should throw on undefined (required)", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: undefined })).toThrow();
-	});
-
-	test("should throw on invalid JSON string", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: "not json" })).toThrow();
-	});
-
-	test("should throw on malformed JSON", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: "{key: value}" })).toThrow();
+	test.for([
+		{ name: "empty string (required)", input: "" },
+		{ name: "undefined (required)", input: undefined },
+		{ name: "invalid JSON string", input: "not json" },
+		{ name: "malformed JSON", input: "{key: value}" },
+		{ name: "number input", input: 42 },
+		{ name: "boolean input", input: true },
+	])("should throw on $name", ({ input }) => {
+		expect(() => schema.parse({ config: input })).toThrow();
 	});
 
 	test("should allow undefined with optional", () => {
-		const schema = z.object({ config: zJsonString.optional() });
-		expect(schema.parse({ config: undefined })).toEqual({ config: undefined });
+		const optional = z.object({ config: zJsonString.optional() });
+		expect(optional.parse({ config: undefined })).toEqual({
+			config: undefined,
+		});
 	});
 
 	test("should allow missing field with optional", () => {
-		const schema = z.object({ config: zJsonString.optional() });
-		expect(schema.parse({})).toEqual({});
-	});
-
-	test("should throw on non-object non-string input (number)", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: 42 })).toThrow();
-	});
-
-	test("should throw on non-object non-string input (boolean)", () => {
-		const schema = z.object({ config: zJsonString });
-		expect(() => schema.parse({ config: true })).toThrow();
+		const optional = z.object({ config: zJsonString.optional() });
+		expect(optional.parse({})).toEqual({});
 	});
 });

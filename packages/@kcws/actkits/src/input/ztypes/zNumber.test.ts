@@ -4,53 +4,33 @@ import { z } from "zod";
 import { zNumber } from "./zNumber";
 
 describe("zNumber", () => {
-	test("should parse numeric string to number", () => {
-		const schema = z.object({ count: zNumber });
-		expect(schema.parse({ count: "42" })).toEqual({ count: 42 });
+	const schema = z.object({ count: zNumber });
+
+	test.for([
+		{ name: "numeric string", input: "42", expected: 42 },
+		{ name: "negative number string", input: "-10", expected: -10 },
+		{ name: "float string", input: "3.14", expected: 3.14 },
+		{ name: "zero", input: "0", expected: 0 },
+		{ name: "actual number", input: 42, expected: 42 },
+	])("should parse $name", ({ input, expected }) => {
+		expect(schema.parse({ count: input })).toEqual({ count: expected });
 	});
 
-	test("should parse negative number string", () => {
-		const schema = z.object({ count: zNumber });
-		expect(schema.parse({ count: "-10" })).toEqual({ count: -10 });
-	});
-
-	test("should parse float string", () => {
-		const schema = z.object({ count: zNumber });
-		expect(schema.parse({ count: "3.14" })).toEqual({ count: 3.14 });
-	});
-
-	test("should parse zero", () => {
-		const schema = z.object({ count: zNumber });
-		expect(schema.parse({ count: "0" })).toEqual({ count: 0 });
-	});
-
-	test("should pass through actual number", () => {
-		const schema = z.object({ count: zNumber });
-		expect(schema.parse({ count: 42 })).toEqual({ count: 42 });
-	});
-
-	test("should throw on empty string (required)", () => {
-		const schema = z.object({ count: zNumber });
-		expect(() => schema.parse({ count: "" })).toThrow();
-	});
-
-	test("should throw on undefined (required)", () => {
-		const schema = z.object({ count: zNumber });
-		expect(() => schema.parse({ count: undefined })).toThrow();
-	});
-
-	test("should throw on invalid number string", () => {
-		const schema = z.object({ count: zNumber });
-		expect(() => schema.parse({ count: "abc" })).toThrow();
+	test.for([
+		{ name: "empty string (required)", input: "" },
+		{ name: "undefined (required)", input: undefined },
+		{ name: "invalid number string", input: "abc" },
+	])("should throw on $name", ({ input }) => {
+		expect(() => schema.parse({ count: input })).toThrow();
 	});
 
 	test("should allow undefined with optional", () => {
-		const schema = z.object({ count: zNumber.optional() });
-		expect(schema.parse({ count: undefined })).toEqual({ count: undefined });
+		const optional = z.object({ count: zNumber.optional() });
+		expect(optional.parse({ count: undefined })).toEqual({ count: undefined });
 	});
 
 	test("should allow missing field with optional", () => {
-		const schema = z.object({ count: zNumber.optional() });
-		expect(schema.parse({})).toEqual({});
+		const optional = z.object({ count: zNumber.optional() });
+		expect(optional.parse({})).toEqual({});
 	});
 });

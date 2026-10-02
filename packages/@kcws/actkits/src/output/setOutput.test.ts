@@ -21,14 +21,16 @@ describe("output helpers", () => {
 		expect(mockSetOutput).toHaveBeenCalledWith("published", "true");
 	});
 
-	test("should return serialized strings for different value types", () => {
-		expect(setOutput("boolean", true)).toBe("true");
-		expect(setOutput("number", 42)).toBe("42");
-		expect(setOutput("string", "hello")).toBe("hello");
-		expect(setOutput("null", null)).toBe("");
-		expect(setOutput("undefined", undefined)).toBe("");
-		expect(setOutput("object", { a: 1 })).toBe('{"a":1}');
-		expect(setOutput("bigint", BigInt(123))).toBe("123");
+	test.for([
+		{ name: "boolean", value: true, expected: "true" },
+		{ name: "number", value: 42, expected: "42" },
+		{ name: "string", value: "hello", expected: "hello" },
+		{ name: "null", value: null, expected: "" },
+		{ name: "undefined", value: undefined, expected: "" },
+		{ name: "object", value: { a: 1 }, expected: '{"a":1}' },
+		{ name: "bigint", value: BigInt(123), expected: "123" },
+	])("should serialize $name value", ({ name, value, expected }) => {
+		expect(setOutput(name, value)).toBe(expected);
 	});
 
 	test("should serialize output maps", async () => {

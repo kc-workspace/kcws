@@ -7,28 +7,32 @@ describe("namespace", () => {
 		expect(NS_SEP).toBe(":");
 	});
 
-	test("should join parent and child segments", () => {
-		const result = createNamespace("stm", ["action-a", "http"]);
-		expect(result).toBe("stm:action-a:http");
-	});
-
-	test("should drop empty segments", () => {
-		const result = createNamespace("stm", ["", "action-a", "", "parser"]);
-		expect(result).toBe("stm:action-a:parser");
-	});
-
-	test("should drop empty parent when parent is empty string", () => {
-		const result = createNamespace("", ["stm", "http"]);
-		expect(result).toBe("stm:http");
-	});
-
-	test("should safely ignore undefined-like segment values at runtime", () => {
-		const runtimeSegments = [
-			"action-a",
-			undefined,
-			"parser",
-		] as unknown as string[];
-		const result = createNamespace("stm", runtimeSegments);
-		expect(result).toBe("stm:action-a:parser");
+	test.for([
+		{
+			name: "join parent and child segments",
+			parent: "stm",
+			segments: ["action-a", "http"],
+			expected: "stm:action-a:http",
+		},
+		{
+			name: "drop empty segments",
+			parent: "stm",
+			segments: ["", "action-a", "", "parser"],
+			expected: "stm:action-a:parser",
+		},
+		{
+			name: "drop empty parent when parent is empty string",
+			parent: "",
+			segments: ["stm", "http"],
+			expected: "stm:http",
+		},
+		{
+			name: "safely ignore undefined-like segment values at runtime",
+			parent: "stm",
+			segments: ["action-a", undefined, "parser"] as unknown as string[],
+			expected: "stm:action-a:parser",
+		},
+	])("should $name", ({ parent, segments, expected }) => {
+		expect(createNamespace(parent, segments)).toBe(expected);
 	});
 });

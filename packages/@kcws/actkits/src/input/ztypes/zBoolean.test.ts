@@ -4,93 +4,55 @@ import { z } from "zod";
 import { zBoolean } from "./zBoolean";
 
 describe("zBoolean", () => {
-	describe("YAML 1.2 truthy values", () => {
-		test.each(["true", "True", "TRUE"])(
-			"should parse '%s' as true",
-			(value) => {
-				const schema = z.object({ enabled: zBoolean });
-				expect(schema.parse({ enabled: value })).toEqual({ enabled: true });
-			},
-		);
+	const schema = z.object({ enabled: zBoolean });
+
+	test.for([
+		{ input: "true", expected: true },
+		{ input: "True", expected: true },
+		{ input: "TRUE", expected: true },
+		{ input: "false", expected: false },
+		{ input: "False", expected: false },
+		{ input: "FALSE", expected: false },
+		{ input: "  true  ", expected: true },
+		{ input: true, expected: true },
+		{ input: false, expected: false },
+	])("should parse $input as $expected", ({ input, expected }) => {
+		expect(schema.parse({ enabled: input })).toEqual({ enabled: expected });
 	});
 
-	describe("YAML 1.2 falsy values", () => {
-		test.each(["false", "False", "FALSE"])(
-			"should parse '%s' as false",
-			(value) => {
-				const schema = z.object({ enabled: zBoolean });
-				expect(schema.parse({ enabled: value })).toEqual({ enabled: false });
-			},
-		);
-	});
+	test.for(["1", "yes", "YES", "on", "ON", "y", "Y"])(
+		"should throw on YAML 1.1 truthy value '%s'",
+		(input) => {
+			expect(() => schema.parse({ enabled: input })).toThrow();
+		},
+	);
 
-	describe("YAML 1.1 values (not supported in 1.2)", () => {
-		test.each(["1", "yes", "YES", "on", "ON", "y", "Y"])(
-			"should throw on '%s' (not valid in YAML 1.2)",
-			(value) => {
-				const schema = z.object({ enabled: zBoolean });
-				expect(() => schema.parse({ enabled: value })).toThrow();
-			},
-		);
+	test.for(["0", "no", "NO", "off", "OFF", "n", "N"])(
+		"should throw on YAML 1.1 falsy value '%s'",
+		(input) => {
+			expect(() => schema.parse({ enabled: input })).toThrow();
+		},
+	);
 
-		test.each(["0", "no", "NO", "off", "OFF", "n", "N"])(
-			"should throw on '%s' (not valid in YAML 1.2)",
-			(value) => {
-				const schema = z.object({ enabled: zBoolean });
-				expect(() => schema.parse({ enabled: value })).toThrow();
-			},
-		);
-	});
-
-	test("should pass through actual boolean true", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(schema.parse({ enabled: true })).toEqual({ enabled: true });
-	});
-
-	test("should pass through actual boolean false", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(schema.parse({ enabled: false })).toEqual({ enabled: false });
-	});
-
-	test("should throw on empty string (required)", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(() => schema.parse({ enabled: "" })).toThrow();
-	});
-
-	test("should throw on undefined (required)", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(() => schema.parse({ enabled: undefined })).toThrow();
-	});
-
-	test("should throw on invalid boolean string", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(() => schema.parse({ enabled: "maybe" })).toThrow();
+	test.for([
+		{ name: "empty string (required)", input: "" },
+		{ name: "undefined (required)", input: undefined },
+		{ name: "invalid boolean string", input: "maybe" },
+		{ name: "number input", input: 42 },
+		{ name: "object input", input: {} },
+	])("should throw on $name", ({ input }) => {
+		expect(() => schema.parse({ enabled: input })).toThrow();
 	});
 
 	test("should allow undefined with optional", () => {
-		const schema = z.object({ enabled: zBoolean.optional() });
-		expect(schema.parse({ enabled: undefined })).toEqual({
+		const optional = z.object({ enabled: zBoolean.optional() });
+		expect(optional.parse({ enabled: undefined })).toEqual({
 			enabled: undefined,
 		});
 	});
 
 	test("should allow missing field with optional", () => {
-		const schema = z.object({ enabled: zBoolean.optional() });
-		expect(schema.parse({})).toEqual({});
-	});
-
-	test("should handle whitespace around value", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(schema.parse({ enabled: "  true  " })).toEqual({ enabled: true });
-	});
-
-	test("should throw on non-string non-boolean input (number)", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(() => schema.parse({ enabled: 42 })).toThrow();
-	});
-
-	test("should throw on non-string non-boolean input (object)", () => {
-		const schema = z.object({ enabled: zBoolean });
-		expect(() => schema.parse({ enabled: {} })).toThrow();
+		const optional = z.object({ enabled: zBoolean.optional() });
+		expect(optional.parse({})).toEqual({});
 	});
 });

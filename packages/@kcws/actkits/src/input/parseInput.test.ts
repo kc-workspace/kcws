@@ -70,23 +70,26 @@ describe(parseInput.name, () => {
 		expect(input).toEqual({ key: "env" });
 	});
 
-	type TestCase = [string, string | undefined, string | undefined];
-	test.each([
-		["", undefined, undefined] as TestCase,
-		["", "", undefined] as TestCase,
-		["i", undefined, "i"] as TestCase,
-		["i", "", "i"] as TestCase,
-		["", "e", "e"] as TestCase,
-		["i", "e", "e"] as TestCase,
+	test.for<{
+		input: string;
+		env: string | undefined;
+		expected: string | undefined;
+	}>([
+		{ input: "", env: undefined, expected: undefined },
+		{ input: "", env: "", expected: undefined },
+		{ input: "i", env: undefined, expected: "i" },
+		{ input: "i", env: "", expected: "i" },
+		{ input: "", env: "e", expected: "e" },
+		{ input: "i", env: "e", expected: "e" },
 	])(
-		"when input='%s' env='%s' should return '%s'",
-		(inputValue, envValue, expected) => {
+		"when input=$input env=$env should return $expected",
+		({ input: inputValue, env, expected }) => {
 			mockGetInput({ key: inputValue });
 			const schema = z.object({
 				key: z.string().optional(),
 			});
 			const input = parseInput(schema, undefined, {
-				INPUT__KEY: envValue,
+				INPUT__KEY: env,
 			});
 
 			expect(input).toEqual({ key: expected });
