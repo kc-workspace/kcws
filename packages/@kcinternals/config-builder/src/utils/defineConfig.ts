@@ -18,7 +18,7 @@ const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
 
 	const appliedSettingConfig = applyPlugins(
 		baseConfig,
-		plugins.sort((a, b) => a.settingPriority - b.settingPriority),
+		plugins.toSorted((a, b) => a.settingPriority - b.settingPriority),
 		(base, plugin) => {
 			const name = plugin.name;
 			const beforeSetting = base.setting;
@@ -38,7 +38,7 @@ const defineConfig = <C>(base: C, ...plugins: AnyConfigPlugin<C>[]): C => {
 
 	const appliedConfig = applyPlugins(
 		appliedSettingConfig,
-		plugins.sort((a, b) => a.configPriority - b.configPriority),
+		plugins.toSorted((a, b) => a.configPriority - b.configPriority),
 		(base, plugin) => {
 			const name = plugin.name;
 			const setting = base.setting;
