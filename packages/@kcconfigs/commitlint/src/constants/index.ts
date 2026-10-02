@@ -2,13 +2,12 @@ import {
 	RuleConfigSeverity as Severity,
 	type UserConfig,
 } from "@commitlint/types";
-import type { PluginPriority } from "@kcinternals/config-builder";
 import type { MinimalType, StandardType, TypeEnum } from "../types";
 
 /** Setting priority used by the debug plugin so it runs before anything else. */
-export const debugPriority: PluginPriority = Number.NEGATIVE_INFINITY;
+export const debugPriority: number = Number.NEGATIVE_INFINITY;
 /** Config priority used by the override plugin so it runs after built-in plugins. */
-export const overridePriority: PluginPriority = 1000;
+export const overridePriority: number = 1000;
 
 /** Conventional commit types with prompt metadata. */
 export const STANDARD_TYPES: Record<StandardType, TypeEnum> = {
