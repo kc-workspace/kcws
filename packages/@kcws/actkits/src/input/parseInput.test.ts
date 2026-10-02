@@ -97,7 +97,7 @@ describe(parseInput.name, () => {
 		expect(() => parseInput(z.string())).toThrow("schema must be a ZodObject");
 	});
 
-	test("should throw error if schema is not a ZodObject", () => {
+	test("should throw error for invalid value", () => {
 		const schema = z.object({
 			key: z.string(),
 		});
@@ -106,7 +106,7 @@ describe(parseInput.name, () => {
 		);
 	});
 
-	test("should throw error for invalid value", () => {
+	test("should throw error for invalid enum value", () => {
 		mockGetInput({ key: "1" });
 		const schema = z.object({
 			key: z.enum(["true", "false"]),
