@@ -1,6 +1,5 @@
 import { definePlugin } from "@kcinternals/config-builder";
-import type { CIOption } from "tsdown";
-import { mergeConfig, type PublintOptions } from "tsdown";
+import { type CIOption, mergeConfig, type PublintOptions } from "tsdown";
 import { normalizePriority } from "../constants";
 import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models";
 
