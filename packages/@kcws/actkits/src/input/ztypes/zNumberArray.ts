@@ -16,7 +16,7 @@ import { createArrayParser } from "./createArrayParser";
  */
 export const zNumberArray: z.ZodPreprocess<z.ZodArray<z.ZodNumber>> =
 	createArrayParser(z.number(), (val) => {
-		if (Array.isArray(val)) return val.map((v) => Number(v));
+		if (Array.isArray(val)) return val.map(Number);
 		const num = Number(val);
 		if (Number.isFinite(num)) return [num];
 		return undefined;
