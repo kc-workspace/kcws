@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.3.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.4...@kcconfigs/vitest+v0.3.5) (2026-10-03)
+
+
+### Code Refactoring
+
+* **kcconfigs/vitest:** drop redundant fallback when spreading test config ([d104487](https://github.com/kc-workspace/kcws/commit/d104487cff19dc75ac136405b3d49680a4da5aa9))
+* **kcconfigs/vitest:** drop unneeded async in fs mock factory ([82c3e8e](https://github.com/kc-workspace/kcws/commit/82c3e8ee58822e48038e9be84d16fd08c0546b51))
+* **kcconfigs/vitest:** drop unneeded async in fs/promises mock factory ([794f424](https://github.com/kc-workspace/kcws/commit/794f424edd7b71bce2f4de1045fec71c04275177))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.6
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.1
+
 ## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.3...@kcconfigs/vitest+v0.3.4) (2026-09-18)
 
 

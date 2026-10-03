@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.17](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.16...@kcconfigs/textlint+v0.1.17) (2026-10-03)
+
+
+### Code Refactoring
+
+* **kcconfigs/textlint:** inline rule module any type ([2b1c39a](https://github.com/kc-workspace/kcws/commit/2b1c39afa801c73b7a081daec886942b6555d7e0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.3.5
+    * @kcconfigs/tsdown bumped to 0.3.1
+
 ## [0.1.16](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.15...@kcconfigs/textlint+v0.1.16) (2026-09-18)
 
 
