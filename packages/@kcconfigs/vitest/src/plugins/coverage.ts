@@ -20,7 +20,7 @@ const replaceCoverage = (
 	return {
 		...base,
 		test: {
-			...(base.test ?? {}),
+			...base.test,
 			coverage,
 		},
 	};
