@@ -25,6 +25,12 @@ const define = (command: Command) => {
 		.option("-M, --minify", "Enable minification", true)
 		.option("-N, --no-minify", "Disable minification")
 		.option(
+			"-E, --environment <name>",
+			"Inline process.env.NODE_ENV as the given environment",
+			"production",
+		)
+		.option("--no-environment", "Leave process.env.NODE_ENV untouched")
+		.option(
 			"-O, --out <directory>",
 			"Specify the output directory",
 			DEFAULT_OUTPUT,
@@ -39,6 +45,12 @@ const build: CommandFn = defineCommand(
 			const cwd = readOptions<string>(options, "cwd");
 			const out = resolve(cwd, readOptions<string>(options, "out"));
 			logger.debug({ inputs, options }, "building the project");
+
+			const defines: Record<string, string> = {};
+			const environment = readOptions<string | false>(options, "environment");
+			if (typeof environment === "string") {
+				defines["process.env.NODE_ENV"] = JSON.stringify(environment);
+			}
 
 			const routeFiles = await parseRouteFiles(Bun, inputs, options);
 			if (routeFiles.length === 0) {
@@ -61,6 +73,7 @@ const build: CommandFn = defineCommand(
 				sourcemap: "linked",
 				metafile: true,
 				env: "BUN_PUBLIC_*",
+				define: defines,
 				plugins,
 			};
 			logger.debug({ buildConfig }, "Build configuration prepared");

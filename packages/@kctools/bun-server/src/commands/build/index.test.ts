@@ -116,6 +116,35 @@ describe("build", () => {
 		expect(config(bunBuild)).toMatchObject(expected);
 	});
 
+	test.each<{ name: string; args: string[]; expected: BuildConfig["define"] }>([
+		{
+			name: "inlines NODE_ENV as production by default",
+			args: [],
+			expected: { "process.env.NODE_ENV": '"production"' },
+		},
+		{
+			name: "inlines NODE_ENV as the given environment",
+			args: ["--environment", "staging"],
+			expected: { "process.env.NODE_ENV": '"staging"' },
+		},
+		{
+			name: "inlines NODE_ENV with the -E short flag",
+			args: ["-E", "test"],
+			expected: { "process.env.NODE_ENV": '"test"' },
+		},
+		{
+			name: "leaves NODE_ENV untouched with --no-environment",
+			args: ["--no-environment"],
+			expected: {},
+		},
+	])("$name", async ({ args, expected }) => {
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo", ...args]);
+
+		expect(config(bunBuild).define).toEqual(expected);
+	});
+
 	test("copies the static files next to the build output", async () => {
 		const { bun, write } = createMockBun({
 			files: { ...pages, "/repo/assets": ["/repo/assets/logo.png"] },

@@ -144,14 +144,16 @@ mode, with hot reloading. Takes `-s, --statics` and the
 bun-server build [input...] [options]
 ```
 
-| Option                             | Default | Description                   |
-| ---------------------------------- | ------- | ----------------------------- |
-| `-M, --minify` / `-N, --no-minify` | enabled | toggle minification           |
-| `-O, --out <directory>`            | `dist`  | output directory              |
-| `-s, --statics <source[:target]>`  | —       | [static files](#static-files) |
+| Option                                          | Default      | Description                    |
+| ----------------------------------------------- | ------------ | ------------------------------ |
+| `-M, --minify` / `-N, --no-minify`              | enabled      | toggle minification            |
+| `-O, --out <directory>`                         | `dist`       | output directory               |
+| `-s, --statics <source[:target]>`               | —            | [static files](#static-files)  |
+| `-E, --environment <name>` / `--no-environment` | `production` | `NODE_ENV` value, or untouched |
 
 Runs `Bun.build()` with every route as an entrypoint: browser target, ESM, code
-splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined. Logs
+splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined.
+`--environment` also inlines `process.env.NODE_ENV` as the given value. Logs
 each output file with its size and kind, then a total.
 
 ### preview
