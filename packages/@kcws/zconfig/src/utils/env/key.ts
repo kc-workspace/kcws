@@ -1,4 +1,4 @@
-const symbol = /[^a-zA-Z0-9_]/g;
+const symbol = /\W/g;
 
 /**
  * Encodes a camelCase key path into an env name.
@@ -20,7 +20,7 @@ export const encodeEnvKey = (
 	const keyEnv = keys
 		.map((key) => {
 			return key
-				.replace(/^[0-9]+/g, "")
+				.replace(/^\d+/g, "")
 				.replace(/([A-Z])/g, `${wSep}$1`)
 				.replace(symbol, wSep);
 		})
