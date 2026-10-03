@@ -153,7 +153,7 @@ bun-server build [input...] [options]
 
 Runs `Bun.build()` with every route as an entrypoint: browser target, ESM, code
 splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined.
-`--environment` also inlines `process.env.NODE_ENV` as the given value. Logs
+`--environment` also replaces `process.env.NODE_ENV` with the given value. Logs
 each output file with its size and kind, then a total.
 
 ### preview

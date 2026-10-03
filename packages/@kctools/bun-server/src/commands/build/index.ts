@@ -26,7 +26,7 @@ const define = (command: Command) => {
 		.option("-N, --no-minify", "Disable minification")
 		.option(
 			"-E, --environment <name>",
-			"Inline process.env.NODE_ENV as the given environment",
+			"Replace process.env.NODE_ENV with the given environment",
 			"production",
 		)
 		.option("--no-environment", "Leave process.env.NODE_ENV untouched")

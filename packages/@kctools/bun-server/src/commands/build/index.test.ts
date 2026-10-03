@@ -118,17 +118,17 @@ describe("build", () => {
 
 	test.each<{ name: string; args: string[]; expected: BuildConfig["define"] }>([
 		{
-			name: "inlines NODE_ENV as production by default",
+			name: "defines NODE_ENV as production by default",
 			args: [],
 			expected: { "process.env.NODE_ENV": '"production"' },
 		},
 		{
-			name: "inlines NODE_ENV as the given environment",
+			name: "defines NODE_ENV as the given environment",
 			args: ["--environment", "staging"],
 			expected: { "process.env.NODE_ENV": '"staging"' },
 		},
 		{
-			name: "inlines NODE_ENV with the -E short flag",
+			name: "defines NODE_ENV with the -E short flag",
 			args: ["-E", "test"],
 			expected: { "process.env.NODE_ENV": '"test"' },
 		},
