@@ -19,12 +19,12 @@ describe("context urls", () => {
 	});
 
 	test("should return undefined urls when required values are missing", () => {
-		expect(getRepositoryUrl(getContext({ GITHUB_REPOSITORY: "kc/kcws" }))).toBe(
-			undefined,
-		);
+		expect(
+			getRepositoryUrl(getContext({ GITHUB_REPOSITORY: "kc/kcws" })),
+		).toBeUndefined();
 		expect(
 			getRunUrl(getContext({ GITHUB_SERVER_URL: "https://github.com" })),
-		).toBe(undefined);
+		).toBeUndefined();
 		expect(
 			getRunUrl(
 				getContext({
@@ -32,6 +32,6 @@ describe("context urls", () => {
 					GITHUB_SERVER_URL: "https://github.com",
 				}),
 			),
-		).toBe(undefined);
+		).toBeUndefined();
 	});
 });
