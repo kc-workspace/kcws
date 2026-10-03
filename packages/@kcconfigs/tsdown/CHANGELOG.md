@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.3.0...@kcconfigs/tsdown+v0.3.1) (2026-10-03)
+
+
+### Code Refactoring
+
+* **kcconfigs/tsdown:** merge duplicate tsdown imports ([fc99d41](https://github.com/kc-workspace/kcws/commit/fc99d416bbaad48735b105a0601819fa33602357))
+* **kcconfigs/tsdown:** use number type for plugin priority constants ([15b4682](https://github.com/kc-workspace/kcws/commit/15b46825492474eb96e5ec42ded27698b85ccbde))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.6
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.2.11...@kcconfigs/tsdown+v0.3.0) (2026-09-18)
 
 

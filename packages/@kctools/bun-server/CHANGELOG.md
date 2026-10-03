@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.3...@kctools/bun-server+v0.3.4) (2026-10-03)
+
+
+### Features
+
+* **kctools/bun-server:** add --environment option to build command ([a158bf8](https://github.com/kc-workspace/kcws/commit/a158bf81c21174b638ce733de2edf087d4c358a1))
+
+
+### Documentation
+
+* **kctools/bun-server:** reword NODE_ENV option without inline wording ([dc65685](https://github.com/kc-workspace/kcws/commit/dc65685ab1b8889ee50793a19dc93cb9188c5738))
+
+
+### Code Refactoring
+
+* **kctools/bun-server:** drop unneeded async in preview action ([b4e395d](https://github.com/kc-workspace/kcws/commit/b4e395d2d4247a25df0cb4f3df738fed48563c77))
+* **kctools/bun-server:** mark program private fields readonly ([713864a](https://github.com/kc-workspace/kcws/commit/713864a1c26863ba788dcbfdbc0a793dbe318e5b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.1
+    * @kcconfigs/vitest bumped to 0.3.5
+
 ## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.2...@kctools/bun-server+v0.3.3) (2026-10-02)
 
 
