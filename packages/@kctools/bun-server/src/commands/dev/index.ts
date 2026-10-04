@@ -42,8 +42,13 @@ const dev: CommandFn = defineCommand(
 			const routes: Serve.Routes<undefined, string> = {};
 
 			const routeFiles = await parseRouteFiles(Bun, inputs, options);
-			for (const routeFile of routeFiles) {
-				const bundle = await loadRouteBundle(routeFile.path);
+			const bundles = await Promise.all(
+				routeFiles.map(async (routeFile) => ({
+					routeFile,
+					bundle: await loadRouteBundle(routeFile.path),
+				})),
+			);
+			for (const { routeFile, bundle } of bundles) {
 				routes[routeFile.route] = bundle;
 				routes[routeFile.wildcard] = bundle;
 			}
