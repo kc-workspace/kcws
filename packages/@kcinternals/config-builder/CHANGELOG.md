@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.2.5...@kcinternals/config-builder+v0.2.6) (2026-10-04)
+
+
+### Bugfixes
+
+* **kcinternals/config-builder:** use toSorted to avoid mutating plugins array ([2c1ee0a](https://github.com/kc-workspace/kcws/commit/2c1ee0a7f70a245ac30e4a237a933fb00c2b3fa6))
+
+
+### Code Refactoring
+
+* **kcinternals/config-builder:** remove redundant PluginPriority type alias ([9c7dc40](https://github.com/kc-workspace/kcws/commit/9c7dc400f8a6125164c654d7562d387c13984465))
+
 ## [0.2.5](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.2.4...@kcinternals/config-builder+v0.2.5) (2026-09-14)
 
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.7](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.6...@kcws/zconfig+v0.2.7) (2026-10-04)
+
+
+### Code Refactoring
+
+* **kcws/zconfig:** reduce complex string template ([e35dbae](https://github.com/kc-workspace/kcws/commit/e35dbaeb766feabdb4c0d9a81cc95a575a1c083c))
+* **kcws/zconfig:** return Promise.resolve in env adapter load ([ee023bb](https://github.com/kc-workspace/kcws/commit/ee023bbb222ab7580fe879802a7e96497bbe0d50))
+* **kcws/zconfig:** return Promise.resolve in static adapter load ([0d43ce7](https://github.com/kc-workspace/kcws/commit/0d43ce73eae00a98d9ad1408fa2ffee49a57546c))
+* **kcws/zconfig:** simplify logic in decodeEnvKey function ([d1cb8ff](https://github.com/kc-workspace/kcws/commit/d1cb8ff1690243f1cc2c8bf7fc63a5d8ed62100e))
+* **kcws/zconfig:** use shorthand character classes in env key regex ([e22d334](https://github.com/kc-workspace/kcws/commit/e22d334aefb623dc42644cc919f1d080ee50dcd0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/vitest bumped to 0.3.5
+    * @kcconfigs/tsdown bumped to 0.3.1
+
 ## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.5...@kcws/zconfig+v0.2.6) (2026-09-18)
 
 
