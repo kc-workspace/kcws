@@ -9,19 +9,23 @@ const resolveRouteSpecs = async (
 	Bun: BunType,
 	specs: RouteSpec[],
 ): Promise<ResolvedRoute[]> => {
-	const resolved: ResolvedRoute[] = [];
-	for (const spec of specs) {
-		logger.debug({ spec }, `resolving route spec`);
-		const files = await scanFiles(Bun, spec.pattern, {
-			cwd: spec.root,
-			dot: false,
-		});
+	const resolved = await Promise.all(
+		specs.map(async (spec) => {
+			logger.debug({ spec }, `resolving route spec`);
+			const files = await scanFiles(Bun, spec.pattern, {
+				cwd: spec.root,
+				dot: false,
+			});
 
-		const routes = files.map((file) => toResolvedRoute(spec.root, file));
-		logger.debug({ routes }, `resolved ${routes.length} routes for route spec`);
-		resolved.push(...routes);
-	}
-	return resolved;
+			const routes = files.map((file) => toResolvedRoute(spec.root, file));
+			logger.debug(
+				{ routes },
+				`resolved ${routes.length} routes for route spec`,
+			);
+			return routes;
+		}),
+	);
+	return resolved.flat();
 };
 
 const toResolvedRoute = (cwd: string, file: string): ResolvedRoute => {
