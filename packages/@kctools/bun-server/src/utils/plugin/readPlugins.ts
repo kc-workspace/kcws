@@ -38,15 +38,21 @@ const readPlugins = async (
 		}
 		logger.info(`Bun plugins: ${pluginNames.join(", ")}`);
 
-		for (const plugin of pluginNames) {
-			try {
-				const pluginPath = await Bun.resolve(plugin, cwd);
-				const module = await import(pluginPath);
-				plugins.push(module.default ?? module);
-			} catch (error) {
-				logger.error({ error, plugin }, `Failed to load plugin: ${plugin}`);
-			}
-		}
+		const loaded = await Promise.all(
+			pluginNames.map(async (plugin): Promise<BunPlugin | undefined> => {
+				try {
+					const pluginPath = await Bun.resolve(plugin, cwd);
+					const module = await import(pluginPath);
+					return module.default ?? module;
+				} catch (error) {
+					logger.error({ error, plugin }, `Failed to load plugin: ${plugin}`);
+					return undefined;
+				}
+			}),
+		);
+		plugins.push(
+			...loaded.filter((plugin): plugin is BunPlugin => plugin !== undefined),
+		);
 		return plugins;
 	} catch (error) {
 		logger.error({ error }, "Failed to read plugins from bunfig.toml");
