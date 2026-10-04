@@ -17,16 +17,19 @@ const createRouteSpecs = async (
 	if (inputs.length === 0) {
 		specs.push(...useDefault(cwd));
 	}
-	for (const input of inputs) {
-		const { root, pattern } = await splitPath(Bun, input, cwd, "**/*.html");
-		const spec: RouteSpec = {
-			source: input,
-			root: join(cwd, root),
-			pattern,
-		};
-		logger.debug({ spec }, "created route spec");
-		specs.push(spec);
-	}
+	const created = await Promise.all(
+		inputs.map(async (input): Promise<RouteSpec> => {
+			const { root, pattern } = await splitPath(Bun, input, cwd, "**/*.html");
+			const spec: RouteSpec = {
+				source: input,
+				root: join(cwd, root),
+				pattern,
+			};
+			logger.debug({ spec }, "created route spec");
+			return spec;
+		}),
+	);
+	specs.push(...created);
 	logger.debug({ length: specs.length }, "created all route specs");
 	return specs;
 };
