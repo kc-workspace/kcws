@@ -27,20 +27,17 @@ const createServer = <WebSocketData, R extends string>(
 				`attempt start server with port: ${currentPort}`,
 			);
 
-			const config = Object.assign(
-				{
-					development: true,
-					hostname: host,
-					port: currentPort,
-				},
-				options,
-			) as Serve.Options<WebSocketData, R>;
+			const config = {
+				development: true,
+				hostname: host,
+				port: currentPort,
+				...options,
+			} as Serve.Options<WebSocketData, R>;
 
 			const server = Bun.serve({
 				fetch: () => {
 					return new Response(DEFAULT_NOT_FOUND, { status: 404 });
 				},
-
 				...config,
 			});
 			if (server) {
