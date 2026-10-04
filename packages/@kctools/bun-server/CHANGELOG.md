@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.3...@kctools/bun-server+v0.3.4) (2026-10-04)
+
+
+### Features
+
+* **kctools/bun-server:** add --environment option to build command ([a158bf8](https://github.com/kc-workspace/kcws/commit/a158bf81c21174b638ce733de2edf087d4c358a1))
+
+
+### Performance Improvements
+
+* **kctools/bun-server:** create route specs concurrently ([0877461](https://github.com/kc-workspace/kcws/commit/08774611236579cbb4139e5482508ae98b2244b5))
+* **kctools/bun-server:** load bunfig plugins concurrently ([7b6d925](https://github.com/kc-workspace/kcws/commit/7b6d92572872a8110a7d4b990824139d21522294))
+* **kctools/bun-server:** load dev route bundles concurrently ([17c7c71](https://github.com/kc-workspace/kcws/commit/17c7c71ec7468b3cfa2fbb2e9c037500b0d33746))
+* **kctools/bun-server:** resolve route specs concurrently ([8bcb920](https://github.com/kc-workspace/kcws/commit/8bcb92006ad3a9dfeb9304dc40c8d51a5c5e345a))
+* **kctools/bun-server:** resolve static specs concurrently ([3223b42](https://github.com/kc-workspace/kcws/commit/3223b4232ebfff4a31ca9eeb1c45f128630c21eb))
+* **kctools/bun-server:** split static paths concurrently ([677bc5a](https://github.com/kc-workspace/kcws/commit/677bc5a5614d463cb5eef196b3757e5961877454))
+
+
+### Documentation
+
+* **kctools/bun-server:** reword NODE_ENV option without inline wording ([dc65685](https://github.com/kc-workspace/kcws/commit/dc65685ab1b8889ee50793a19dc93cb9188c5738))
+
+
+### Code Refactoring
+
+* **kctools/bun-server:** drop unneeded async in preview action ([b4e395d](https://github.com/kc-workspace/kcws/commit/b4e395d2d4247a25df0cb4f3df738fed48563c77))
+* **kctools/bun-server:** mark program private fields readonly ([713864a](https://github.com/kc-workspace/kcws/commit/713864a1c26863ba788dcbfdbc0a793dbe318e5b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.1
+    * @kcconfigs/vitest bumped to 0.3.5
+
 ## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.2...@kctools/bun-server+v0.3.3) (2026-10-02)
 
 

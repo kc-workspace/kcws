@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.3.0...@kcconfigs/commitlint+v0.3.1) (2026-10-04)
+
+
+### Code Refactoring
+
+* **kcconfigs/commitlint:** re-export Severity directly ([47368c5](https://github.com/kc-workspace/kcws/commit/47368c534df4113e1f108fafddb1d89dc6c35baf))
+* **kcconfigs/commitlint:** use number type for plugin priority constants ([a70843d](https://github.com/kc-workspace/kcws/commit/a70843dbc5290529b79038b6bbf1031c4d5a8369))
+* **kcconfigs/commitlint:** wrap plugin inputs with Promise.resolve ([2bff15a](https://github.com/kc-workspace/kcws/commit/2bff15a98a80c9a6d85ed92c5db3f4a2af2b0b9e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.2.6
+  * devDependencies
+    * @kcconfigs/tsdown bumped to 0.3.1
+    * @kcconfigs/vitest bumped to 0.3.5
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.2.15...@kcconfigs/commitlint+v0.3.0) (2026-09-18)
 
 
