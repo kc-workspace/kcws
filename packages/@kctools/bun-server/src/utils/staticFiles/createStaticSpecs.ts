@@ -15,12 +15,15 @@ const createStaticSpecs = async (
 	const out = readOptions<string | undefined>(options, "out");
 
 	logger.debug({ statics }, "processing static items to spec");
-	for (const item of statics) {
-		const separator = item.lastIndexOf(STATIC_SEPARATOR);
-		const source = separator === -1 ? item : item.slice(0, separator);
-		const written = separator === -1 ? undefined : item.slice(separator + 1);
-
-		const { root, pattern } = await splitPath(Bun, source, cwd);
+	const splits = await Promise.all(
+		statics.map(async (item) => {
+			const separator = item.lastIndexOf(STATIC_SEPARATOR);
+			const source = separator === -1 ? item : item.slice(0, separator);
+			const written = separator === -1 ? undefined : item.slice(separator + 1);
+			return { source, written, ...(await splitPath(Bun, source, cwd)) };
+		}),
+	);
+	for (const { source, written, root, pattern } of splits) {
 		if (written === undefined && isAbsolute(root)) {
 			throw new Error(
 				`Static source ${source} needs an explicit target: ${source}:<target>`,
