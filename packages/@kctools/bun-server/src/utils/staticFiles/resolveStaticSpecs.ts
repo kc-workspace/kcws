@@ -9,23 +9,24 @@ const resolveStaticSpec = async (
 	Bun: BunType,
 	specs: StaticSpec[],
 ): Promise<ResolvedStatic[]> => {
-	const resolved: ResolvedStatic[] = [];
-	for (const spec of specs) {
-		logger.debug({ spec }, "resolving static spec");
-		const files = await scanFiles(Bun, spec.pattern, {
-			cwd: spec.root,
-			dot: true,
-		});
+	const resolved = await Promise.all(
+		specs.map(async (spec) => {
+			logger.debug({ spec }, "resolving static spec");
+			const files = await scanFiles(Bun, spec.pattern, {
+				cwd: spec.root,
+				dot: true,
+			});
 
-		const statics = files.map((file) => toResolvedStatic(file, spec));
-		logger.debug(
-			{ statics },
-			`resolved ${statics.length} static files for static spec`,
-		);
-		resolved.push(...statics);
-	}
+			const statics = files.map((file) => toResolvedStatic(file, spec));
+			logger.debug(
+				{ statics },
+				`resolved ${statics.length} static files for static spec`,
+			);
+			return statics;
+		}),
+	);
 
-	return resolved;
+	return resolved.flat();
 };
 
 const toResolvedStatic = (file: string, spec: StaticSpec): ResolvedStatic => {
