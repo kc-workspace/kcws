@@ -57,10 +57,15 @@
 		"node": "^22.11.0 || ^24.11.0 || ^25.0.0 || ^26.0.0"
 	},
 	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "24.21.0",
+			"onFail": "download"
+		},
 		"packageManager": {
 			"name": "pnpm",
-			"version": "12.4.2",
-			"onFail": "error"
+			"version": "12.10.1",
+			"onFail": "download"
 		}
 	}
 }

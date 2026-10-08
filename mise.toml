@@ -1,4 +1,6 @@
 [tools]
-claude = "2.1.285"
-## Must be the same with `devEngines.runtime` in `<root>/package.json`
-node = "24.21.0"
+claude = "2.1.292"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "pnpm"]
+not_found_auto_install              = true
