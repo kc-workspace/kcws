@@ -4,6 +4,7 @@ import { coveragePlugin } from "@kcconfigs/vitest/plugins";
 export default defineRootConfig(
 	["packages/**/vitest.config.ts", "!packages/**/.*.old/**"],
 	coveragePlugin({
+		include: ["packages/*/*/src/**/*.{ts,tsx}"],
 		thresholds: {
 			branches: 0,
 			functions: 0,
