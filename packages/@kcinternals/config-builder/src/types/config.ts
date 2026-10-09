@@ -9,5 +9,6 @@ export interface BaseConfig<C> {
 // biome-ignore lint/suspicious/noExplicitAny: AnyBaseConfig should use any type
 export type AnyBaseConfig = BaseConfig<any>;
 
+/** Extract the configuration type from a base configuration */
 export type GetConfig<B extends AnyBaseConfig> =
 	B extends BaseConfig<infer C> ? C : never;
