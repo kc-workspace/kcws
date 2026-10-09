@@ -51,8 +51,8 @@ I recommended to add following to `.vscode/settings.json`.
 | `@kcconfigs/biome`      | Default preset. Extends `base` and adds file includes/excludes plus `useEditorconfig`         |
 | `@kcconfigs/biome/base` | Bare preset with formatter, linter, and assist rules only, without workspace-specific filters |
 
-The default preset excludes generated artifacts such as `dist`, `reports/coverage`,
-`reports/test-results`, lock files, `*.tsbuildinfo`, and release-please manifests.
+The default preset excludes generated artifacts such as `dist`, `.vitest`,
+`reports/coverage`, `reports/test-results`, lock files, `*.tsbuildinfo`, and release-please manifests.
 See [default.json](./src/presets/default.json) for the full list.
 
 Use `base` when you need to own the include/exclude patterns yourself.
