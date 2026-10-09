@@ -31,6 +31,9 @@
 		"src",
 		"!*.test.*"
 	],
+	"engines": {
+		"node": ">=22"
+	},
 	"publishConfig": {
 		"access": "public"
 	}
