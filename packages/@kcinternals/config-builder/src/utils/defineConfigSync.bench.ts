@@ -1,13 +1,13 @@
 import { expect, test } from "vitest";
-import type { AnyConfigPlugin } from "../models";
-import defineConfig from "./defineConfig";
-import definePlugin from "./definePlugin";
+import type { AnySyncConfigPlugin } from "../types";
+import defineConfig from "./defineConfigSync";
+import definePlugin from "./definePluginSync";
 
 interface BenchConfig {
 	values: number[];
 }
 
-const createPlugins = (count: number): AnyConfigPlugin<BenchConfig>[] =>
+const createPlugins = (count: number): AnySyncConfigPlugin<BenchConfig>[] =>
 	Array.from({ length: count }, (_, index) =>
 		definePlugin<string, BenchConfig>(`plugin-${index}`, {
 			settingPriority: count - index,
@@ -19,7 +19,7 @@ const createPlugins = (count: number): AnyConfigPlugin<BenchConfig>[] =>
 		}),
 	);
 
-test("defineConfig scales with plugin count", async ({ bench }) => {
+test("defineConfigSync scales with plugin count", async ({ bench }) => {
 	const small = createPlugins(5);
 	const large = createPlugins(50);
 
@@ -35,7 +35,9 @@ test("defineConfig scales with plugin count", async ({ bench }) => {
 	);
 });
 
-test("defineConfig cost of debug and verbose logging", async ({ bench }) => {
+test("defineConfigSync cost of debug and verbose logging", async ({
+	bench,
+}) => {
 	const plugins = createPlugins(10);
 	const noop = (): void => {};
 	const logging = definePlugin<"logging", BenchConfig>("logging", {
