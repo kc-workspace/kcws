@@ -9,10 +9,10 @@
 	"devDependencies": {
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
-		"@tsdown/css": "0.22.7",
+		"@tsdown/css": "0.23.0",
 		"lightningcss": "1.33.0",
 		"sass-embedded": "1.103.1",
-		"tsdown": "0.22.7"
+		"tsdown": "0.23.0"
 	},
 	"main": "./dist/index.css",
 	"exports": {

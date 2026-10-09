@@ -25,7 +25,7 @@
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kctypes/generic": "workspace:*",
-		"tsdown": "0.22.7"
+		"tsdown": "0.23.0"
 	},
 	"peerDependencies": {
 		"vitest": "^5.0.0"
