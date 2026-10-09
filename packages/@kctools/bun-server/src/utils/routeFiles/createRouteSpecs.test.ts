@@ -22,7 +22,7 @@ interface SpecCase {
 }
 
 describe("createRouteSpecs", () => {
-	test.each<SpecCase>([
+	test.for<SpecCase>([
 		{
 			name: "uses the default route directory when there is no input",
 			inputs: [],

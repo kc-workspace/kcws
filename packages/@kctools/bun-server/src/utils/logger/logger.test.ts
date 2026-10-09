@@ -13,7 +13,7 @@ afterEach(() => {
 });
 
 describe("logger", () => {
-	test.each([
+	test.for([
 		{ name: "DEBUG is unset", debug: undefined, level: "info" },
 		{ name: "DEBUG is disabled", debug: "false", level: "info" },
 		{ name: "DEBUG is enabled", debug: "true", level: "debug" },

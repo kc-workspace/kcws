@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import readOptions from "./readOptions";
 
 describe("readOptions", () => {
-	test.each([
+	test.for([
 		{
 			name: "reads the value of the key",
 			options: { cwd: "/repo" },

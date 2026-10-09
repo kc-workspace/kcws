@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import formatSize from "./formatSize";
 
 describe("formatSize", () => {
-	test.each([
+	test.for([
 		{ name: "keeps plain bytes whole", bytes: 512, expected: "512 B" },
 		{
 			name: "switches to kilobytes at the step",

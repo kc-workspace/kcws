@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import toBool from "./toBool";
 
 describe("toBool", () => {
-	test.each([
+	test.for([
 		{ value: "true", expected: true },
 		{ value: "1", expected: true },
 		{ value: "yes", expected: true },

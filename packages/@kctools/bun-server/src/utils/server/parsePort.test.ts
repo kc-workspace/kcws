@@ -2,14 +2,14 @@ import { describe, expect, test } from "vitest";
 import parsePort from "./parsePort";
 
 describe("parsePort", () => {
-	test.each([
+	test.for([
 		{ port: "3000", expected: 3000 },
 		{ port: "1001", expected: 1024 },
 	])("parses the port $port given as string", ({ port, expected }) => {
 		expect(parsePort(port)).toBe(expected);
 	});
 
-	test.each([
+	test.for([
 		{ port: 0, expected: 0 },
 		{ port: 1, expected: 80 },
 		{ port: 80, expected: 80 },
@@ -32,7 +32,7 @@ describe("parsePort", () => {
 		expect(parsePort(port)).toBe(expected);
 	});
 
-	test.each([
+	test.for([
 		{ name: "a word", port: "abc" },
 		{ name: "an empty string", port: "" },
 		{ name: "an infinite number", port: Number.POSITIVE_INFINITY },

@@ -13,7 +13,7 @@ describe("staticOption", () => {
 		expect(staticOption.flags).toBe("-s, --statics <source[:target]>");
 	});
 
-	test.each([
+	test.for([
 		{ name: "defaults to no static file", args: [], expected: [] },
 		{
 			name: "collects a single value",

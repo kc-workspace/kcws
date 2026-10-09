@@ -24,7 +24,7 @@ const spec = (root: string, dirname: string, pattern = "**/*"): StaticSpec => ({
 });
 
 describe("resolveStaticSpecs", () => {
-	test.each([
+	test.for([
 		{
 			name: "a file into its route and target",
 			root: "/repo/assets",

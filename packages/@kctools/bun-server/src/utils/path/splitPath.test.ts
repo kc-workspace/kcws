@@ -11,7 +11,7 @@ const createMockBun = (existing: string[] = []) =>
 	}) as unknown as BunType;
 
 describe("splitPath", () => {
-	test.each([
+	test.for([
 		{
 			name: "splits at the first segment holding a pattern",
 			source: "src/images/*.png",
@@ -33,7 +33,7 @@ describe("splitPath", () => {
 		);
 	});
 
-	test.each(["*", "?", "[", "]", "{", "}", "!"])(
+	test.for(["*", "?", "[", "]", "{", "}", "!"])(
 		"treats %s as a pattern character",
 		async (magic) => {
 			await expect(

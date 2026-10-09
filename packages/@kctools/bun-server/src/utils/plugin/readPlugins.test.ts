@@ -59,7 +59,7 @@ describe("readPlugins", () => {
 		expect(file).toHaveBeenCalledWith(resolve("/repo", BUNFIG));
 	});
 
-	test.each<{ name: string; mock: MockBunOption }>([
+	test.for<{ name: string; mock: MockBunOption }>([
 		{ name: "bunfig.toml is missing", mock: {} },
 		{ name: "the plugins array is missing", mock: { bunfig: "", toml: {} } },
 		{

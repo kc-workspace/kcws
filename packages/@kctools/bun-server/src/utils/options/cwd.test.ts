@@ -14,7 +14,7 @@ describe("cwdOption", () => {
 		expect(cwdOption.flags).toBe("-C, --cwd <directory>");
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "defaults to the process working directory",
 			args: [],
