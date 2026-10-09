@@ -37,14 +37,6 @@
 	"bin": {
 		"bun-server": "./bin/index.js"
 	},
-	"imports": {
-		"#root/package.json": "./package.json",
-		"#core/program": "./src/core/program.ts",
-		"#commands/*": "./src/commands/*/index.ts",
-		"#constants": "./src/constants/index.ts",
-		"#utils/*": "./src/utils/*/index.ts",
-		"#types": "./src/types/index.ts"
-	},
 	"exports": {
 		".": {
 			"source": "./src/index.ts",
@@ -54,6 +46,14 @@
 				"default": "./dist/index.js"
 			}
 		}
+	},
+	"imports": {
+		"#root/package.json": "./package.json",
+		"#core/program": "./src/core/program.ts",
+		"#commands/*": "./src/commands/*/index.ts",
+		"#constants": "./src/constants/index.ts",
+		"#utils/*": "./src/utils/*/index.ts",
+		"#types": "./src/types/index.ts"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kctools/bun-server",
