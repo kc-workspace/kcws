@@ -45,7 +45,7 @@
 
 ## Terminology
 
-- **package** - package name (for example `@kcconfigs/tsconfig`, `@kcexamples/demo`)
+- **package** - package name (for example `@kcconfigs/tsconfig`, `@kcexamples/starter`)
   - Use on package.json#name field and release-please/config.json#component field
 - **component** - package name without at(@) sign (for example `kcconfigs/tsconfig`)
   - Use on Git commit scope and Git tag prefix
