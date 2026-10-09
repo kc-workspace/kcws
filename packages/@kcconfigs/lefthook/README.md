@@ -25,7 +25,7 @@ definitions that can be mixed and matched via Lefthook's `extends` mechanism.
 ## Installation
 
 ```bash
-pnpm add --save-dev @kcconfigs/lefthook
+pnpm add --save-dev lefthook @kcconfigs/lefthook
 ```
 
 Then install the Git hooks:

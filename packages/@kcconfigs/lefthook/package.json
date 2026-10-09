@@ -14,6 +14,9 @@
 		"@biomejs/biome": "2.5.11",
 		"@kcconfigs/biome": "workspace:*"
 	},
+	"peerDependencies": {
+		"lefthook": "^2.0.0"
+	},
 	"main": "./src/presets/default.yaml",
 	"exports": {
 		".": "./src/presets/default.yaml",
