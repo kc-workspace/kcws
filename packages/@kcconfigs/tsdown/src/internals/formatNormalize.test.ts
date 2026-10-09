@@ -25,68 +25,68 @@ describe("formatNormalize", () => {
 		);
 	});
 
-	test.each([
-		[
-			"should default to esm + cjs when format is null",
-			{ format: null },
-			["esm", "cjs"],
-			[],
-		],
-		[
-			"should normalize 'esm' string to esm format object",
-			{ format: "esm" },
-			["esm"],
-			["cjs"],
-		],
-		[
-			"should normalize 'es' alias to esm format object",
-			{ format: "es" },
-			["esm"],
-			[],
-		],
-		[
-			"should normalize 'module' alias to esm format object",
-			{ format: "module" },
-			["esm"],
-			[],
-		],
-		[
-			"should normalize 'cjs' string to cjs format object",
-			{ format: "cjs" },
-			["cjs"],
-			["esm"],
-		],
-		[
-			"should normalize 'commonjs' alias to cjs format object",
-			{ format: "commonjs" },
-			["cjs"],
-			[],
-		],
-		[
-			"should normalize 'iife' string to iife format object",
-			{ format: "iife" },
-			["iife"],
-			[],
-		],
-		[
-			"should normalize 'umd' string to umd format object",
-			{ format: "umd" },
-			["umd"],
-			[],
-		],
-		[
-			"should normalize array of formats",
-			{ format: ["esm", "cjs"] },
-			["esm", "cjs"],
-			[],
-		],
-		[
-			"should normalize array with aliases",
-			{ format: ["es", "commonjs"] },
-			["esm", "cjs"],
-			[],
-		],
-	])("%s", (_name, input, hasProps, notHasProps) => {
+	test.for([
+		{
+			name: "should default to esm + cjs when format is null",
+			input: { format: null },
+			hasProps: ["esm", "cjs"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize 'esm' string to esm format object",
+			input: { format: "esm" },
+			hasProps: ["esm"],
+			notHasProps: ["cjs"],
+		},
+		{
+			name: "should normalize 'es' alias to esm format object",
+			input: { format: "es" },
+			hasProps: ["esm"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize 'module' alias to esm format object",
+			input: { format: "module" },
+			hasProps: ["esm"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize 'cjs' string to cjs format object",
+			input: { format: "cjs" },
+			hasProps: ["cjs"],
+			notHasProps: ["esm"],
+		},
+		{
+			name: "should normalize 'commonjs' alias to cjs format object",
+			input: { format: "commonjs" },
+			hasProps: ["cjs"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize 'iife' string to iife format object",
+			input: { format: "iife" },
+			hasProps: ["iife"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize 'umd' string to umd format object",
+			input: { format: "umd" },
+			hasProps: ["umd"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize array of formats",
+			input: { format: ["esm", "cjs"] },
+			hasProps: ["esm", "cjs"],
+			notHasProps: [],
+		},
+		{
+			name: "should normalize array with aliases",
+			input: { format: ["es", "commonjs"] },
+			hasProps: ["esm", "cjs"],
+			notHasProps: [],
+		},
+	])("$name", ({ input, hasProps, notHasProps }) => {
 		const plugin = formatNormalize();
 		const result = plugin.applyConfig?.(input as any);
 		for (const prop of hasProps) {
@@ -97,39 +97,41 @@ describe("formatNormalize", () => {
 		}
 	});
 
-	test.each([
-		[
-			"should normalize object format with aliases",
-			{ format: { es: { minify: false }, commonjs: { sourcemap: false } } },
-			[
+	test.for([
+		{
+			name: "should normalize object format with aliases",
+			input: {
+				format: { es: { minify: false }, commonjs: { sourcemap: false } },
+			},
+			checks: [
 				["esm", "minify", false],
 				["cjs", "sourcemap", false],
 			] as const,
-		],
-		[
-			"should normalize object format with standard keys",
-			{ format: { esm: { minify: false }, cjs: { sourcemap: false } } },
-			[
+		},
+		{
+			name: "should normalize object format with standard keys",
+			input: { format: { esm: { minify: false }, cjs: { sourcemap: false } } },
+			checks: [
 				["esm", "minify", false],
 				["cjs", "sourcemap", false],
 			] as const,
-		],
-		[
-			"should normalize object format with module alias",
-			{ format: { module: { minify: false } } },
-			[["esm", "minify", false]] as const,
-		],
-		[
-			"should normalize object format with iife key",
-			{ format: { iife: { minify: false } } },
-			[["iife", "minify", false]] as const,
-		],
-		[
-			"should normalize object format with umd key",
-			{ format: { umd: { minify: false } } },
-			[["umd", "minify", false]] as const,
-		],
-	])("%s", (_name, input, checks) => {
+		},
+		{
+			name: "should normalize object format with module alias",
+			input: { format: { module: { minify: false } } },
+			checks: [["esm", "minify", false]] as const,
+		},
+		{
+			name: "should normalize object format with iife key",
+			input: { format: { iife: { minify: false } } },
+			checks: [["iife", "minify", false]] as const,
+		},
+		{
+			name: "should normalize object format with umd key",
+			input: { format: { umd: { minify: false } } },
+			checks: [["umd", "minify", false]] as const,
+		},
+	])("$name", ({ input, checks }) => {
 		const plugin = formatNormalize();
 		const result = plugin.applyConfig?.(input as any);
 		const format = result?.format as Record<string, Record<string, unknown>>;
