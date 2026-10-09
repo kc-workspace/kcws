@@ -2,7 +2,11 @@ import { defineRootConfig } from "@kcconfigs/vitest";
 import { coveragePlugin } from "@kcconfigs/vitest/plugins";
 
 export default defineRootConfig(
-	["packages/**/vitest.config.ts", "!packages/**/.*.old/**"],
+	[
+		"packages/**/vitest.config.js",
+		"packages/**/vitest.config.ts",
+		"!packages/**/.*.old/**",
+	],
 	coveragePlugin({
 		include: ["packages/*/*/src/**/*.{ts,tsx}"],
 		thresholds: {
