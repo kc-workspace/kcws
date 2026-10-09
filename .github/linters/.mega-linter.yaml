@@ -104,7 +104,6 @@ ENABLE_LINTERS:
 ADDITIONAL_EXCLUDED_DIRECTORIES:
   - .vscode
   - .github
-  - reports
   - .vitest
   - docs
 
