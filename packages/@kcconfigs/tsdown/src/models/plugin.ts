@@ -1,7 +1,7 @@
-import type { ConfigPlugin } from "@kcinternals/config-builder";
+import type { SyncConfigPlugin } from "@kcinternals/config-builder";
 import type { TsdownConfig } from "./config";
 
-export type TsdownConfigPlugin<N extends string> = ConfigPlugin<
+export type TsdownConfigPlugin<N extends string> = SyncConfigPlugin<
 	N,
 	TsdownConfig
 >;

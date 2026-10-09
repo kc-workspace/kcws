@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { type Format, mergeConfig, type ResolvedConfig } from "tsdown";
 import type { TsdownConfigPlugin } from "../models";
 
@@ -9,7 +9,7 @@ export type MinimalFormatObject = Partial<Record<MinimalFormat, FormatValue>>;
 const formatPlugin = (
 	format: MinimalFormat[] | MinimalFormatObject,
 ): TsdownConfigPlugin<"format"> =>
-	definePlugin("format", {
+	definePluginSync("format", {
 		applyConfig: (base) => {
 			return mergeConfig(base, {
 				format,

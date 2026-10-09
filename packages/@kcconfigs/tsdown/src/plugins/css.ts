@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import { defaultIgnoreEntry } from "../constants";
 import type { TsdownConfigPlugin } from "../models";
@@ -15,7 +15,7 @@ export interface CssPluginOption {
 }
 
 const cssPlugin = (option?: CssPluginOption): TsdownConfigPlugin<"css"> =>
-	definePlugin("css", {
+	definePluginSync("css", {
 		applyConfig: (base) => {
 			return mergeConfig(base, {
 				entry: [`./src/index.${option?.lang ?? "css"}`, ...defaultIgnoreEntry],

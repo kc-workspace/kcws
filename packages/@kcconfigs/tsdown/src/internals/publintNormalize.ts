@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { type CIOption, mergeConfig, type PublintOptions } from "tsdown";
 import { normalizePriority } from "../constants";
 import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models";
@@ -33,7 +33,7 @@ const normalize = (config: TsdownConfig): EnableOption<PublintOptions> => {
 };
 
 const publintNormalize = (): TsdownConfigPlugin<"publint"> =>
-	definePlugin("publint", {
+	definePluginSync("publint", {
 		configPriority: normalizePriority,
 		applyConfig: (config) => {
 			const publint = normalize(config);

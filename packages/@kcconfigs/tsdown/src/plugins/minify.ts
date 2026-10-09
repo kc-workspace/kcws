@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import type { TsdownConfigPlugin } from "../models";
 
@@ -13,7 +13,7 @@ import type { TsdownConfigPlugin } from "../models";
  * @returns tsdown config plugin that sets `minify` and `css.minify`.
  */
 const minifyPlugin = (minify: boolean = true): TsdownConfigPlugin<"minify"> =>
-	definePlugin("minify", {
+	definePluginSync("minify", {
 		applyConfig: (base) => {
 			return mergeConfig(base, {
 				minify,

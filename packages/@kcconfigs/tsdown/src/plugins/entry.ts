@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import { defaultIgnoreEntry } from "../constants";
 import type { TsdownConfigPlugin } from "../models";
@@ -7,7 +7,7 @@ const entryPlugin = (
 	entry: string[],
 	useDefault = true,
 ): TsdownConfigPlugin<"entry"> =>
-	definePlugin("entry", {
+	definePluginSync("entry", {
 		applyConfig: (base) => {
 			const defaultEntry = useDefault ? defaultIgnoreEntry : [];
 			const _entry = [...entry, ...defaultEntry];

@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { type Format, mergeConfig, type ResolvedConfig } from "tsdown";
 import { normalizePriority } from "../constants";
 import type { TsdownConfig, TsdownConfigPlugin } from "../models";
@@ -64,7 +64,7 @@ const normalize = (config: TsdownConfig): MinimalFormatObject => {
 };
 
 const formatNormalize = (): TsdownConfigPlugin<"format"> =>
-	definePlugin("format", {
+	definePluginSync("format", {
 		configPriority: normalizePriority,
 		applyConfig: (config) => {
 			return mergeConfig(config, {

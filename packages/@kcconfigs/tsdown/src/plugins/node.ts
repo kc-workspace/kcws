@@ -1,9 +1,9 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import type { TsdownConfigPlugin } from "../models";
 
 const nodePlugin = (): TsdownConfigPlugin<"node"> =>
-	definePlugin("node", {
+	definePluginSync("node", {
 		applyConfig: (base) => {
 			return mergeConfig(base, { platform: "node" });
 		},

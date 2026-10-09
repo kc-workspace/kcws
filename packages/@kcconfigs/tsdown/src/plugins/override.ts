@@ -1,11 +1,11 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import type { TsdownConfig, TsdownConfigPlugin } from "../models";
 
 const overridePlugin = (
 	...overrides: TsdownConfig[]
 ): TsdownConfigPlugin<"override"> =>
-	definePlugin("override", {
+	definePluginSync("override", {
 		applyConfig: (base) => {
 			return mergeConfig(base, ...overrides);
 		},

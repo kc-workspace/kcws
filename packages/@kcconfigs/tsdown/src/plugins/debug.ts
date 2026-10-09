@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { mergeConfig } from "tsdown";
 import { debugPriority } from "../constants";
 import type { TsdownConfigPlugin } from "../models";
@@ -15,7 +15,7 @@ interface DebugPluginOption {
  * force it off when another plugin turned it on.
  */
 const debugPlugin = (opt?: DebugPluginOption): TsdownConfigPlugin<"debug"> =>
-	definePlugin("debug", {
+	definePluginSync("debug", {
 		settingPriority: debugPriority,
 		applySetting: (base) => ({
 			debug: true,

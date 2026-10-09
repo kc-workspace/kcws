@@ -1,4 +1,4 @@
-import { defineConfig as _defineConfig } from "@kcinternals/config-builder";
+import { defineConfigSync } from "@kcinternals/config-builder";
 import { baseConfig } from "../constants";
 import attwNormalize from "../internals/attwNormalize";
 import dtsNormalize from "../internals/dtsNormalize";
@@ -9,7 +9,7 @@ import type { TsdownConfig, TsdownConfigPlugin } from "../models";
 const defineConfig = (
 	...plugins: TsdownConfigPlugin<string>[]
 ): TsdownConfig => {
-	return _defineConfig(
+	return defineConfigSync(
 		baseConfig,
 		...plugins,
 		attwNormalize(),

@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { type AttwOptions, type CIOption, mergeConfig } from "tsdown";
 import { normalizePriority } from "../constants";
 import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models";
@@ -46,7 +46,7 @@ const normalize = (config: TsdownConfig): EnableOption<AttwOptions> => {
 };
 
 const attwNormalize = (): TsdownConfigPlugin<"attw"> =>
-	definePlugin("attw", {
+	definePluginSync("attw", {
 		configPriority: normalizePriority,
 		applyConfig: (config) => {
 			const attw = normalize(config);
