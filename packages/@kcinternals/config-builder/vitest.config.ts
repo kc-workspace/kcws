@@ -20,6 +20,7 @@ const config: ViteUserConfig = {
 			exclude: [
 				// Ignored test files
 				"**/*{.,-}{test,spec}?(-d).?(c|m)[jt]s?(x)",
+				"**/*.{bench,benchmark}.?(c|m)[jt]s?(x)",
 				// Ignored example files
 				"**/*.example.?(c|m)[jt]s?(x)",
 			],

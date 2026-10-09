@@ -6,6 +6,7 @@
 	"scripts": {
 		"build": "tsdown",
 		"test": "vitest run --configLoader native",
+		"bench": "vitest bench --run --configLoader native",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
 		"fix:format": "biome format --fix",
@@ -60,7 +61,8 @@
 		"CHANGELOG.md",
 		"dist",
 		"src",
-		"!*.test.*"
+		"!*.test.*",
+		"!*.bench.*"
 	],
 	"engines": {
 		"node": ">=22"
