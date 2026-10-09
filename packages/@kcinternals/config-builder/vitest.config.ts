@@ -7,19 +7,12 @@ const config: ViteUserConfig = {
 		unstubGlobals: true,
 		unstubEnvs: true,
 		environment: "node",
-		reporters: [
-			"default",
-			["html", { outputDir: "reports/test-results" }],
-			"junit",
-		],
-		outputFile: {
-			junit: "reports/test-results/junit.xml",
-		},
+		reporters: ["default", "html", "junit"],
 		coverage: {
 			enabled: true,
 			provider: "v8",
-			reporter: [["text"], ["lcovonly"], ["html", { subdir: "html" }]],
-			reportsDirectory: "reports/coverage",
+			reporter: [["text"], ["lcovonly"], ["html"]],
+			reportsDirectory: ".vitest/coverage",
 			thresholds: {
 				perFile: true,
 			},
