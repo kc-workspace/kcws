@@ -81,6 +81,7 @@
 		"!*.test.*"
 	],
 	"engines": {
+		"node": ">=22",
 		"bun": ">=1.3"
 	},
 	"publishConfig": {
