@@ -17,7 +17,8 @@ a monorepo root/project split, and filesystem mock helpers.
 
 ## Prerequisites
 
-- **Vitest**: 4.0.0 or higher (as peer dependency)
+- **Vitest**: 5.0.0 or higher (as peer dependency)
+- **Vite**: required peer dependency of Vitest 5
 
 Optional, only needed by the defaults they back:
 
@@ -27,7 +28,7 @@ Optional, only needed by the defaults they back:
 ## Installation
 
 ```bash
-pnpm add --save-dev vitest @vitest/ui @vitest/coverage-v8 @kcconfigs/vitest
+pnpm add --save-dev vitest vite @vitest/ui @vitest/coverage-v8 @kcconfigs/vitest
 ```
 
 ## Usage
@@ -118,8 +119,8 @@ The shared root base config sets:
 - `environment`: `"node"`
 - `restoreMocks`, `mockReset`, `clearMocks`, `unstubGlobals`, `unstubEnvs`: `true`
 - `reporters`: `default`, `html`, `junit`
-- `outputFile`: `reports/test-results/index.html` and
-  `reports/test-results/junit.xml`
+- `html` reporter `outputDir`: `reports/test-results` (writes `index.html`)
+- `outputFile`: `reports/test-results/junit.xml`
 - `coverage`: enabled, `v8` provider, `text` + `lcovonly` + `html` reporters,
   written to `reports/coverage`, with per-file thresholds
 
