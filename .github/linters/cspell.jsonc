@@ -13,6 +13,7 @@
 		"**/.vscode/**",
 		// Ignore test reports
 		"**/reports/**",
+		"**/.vitest/**",
 		// Ignore meta-linter report
 		"**/megalinter-reports/**",
 		// Ignore dictionary files

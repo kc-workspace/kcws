@@ -76,6 +76,7 @@ ignore:
   - node_modules
   - dist
   - reports
+  - .vitest
   ## Optimized for speed workaround
   ## https://github.com/loeffel-io/ls-lint/issues/246
   - packages/@kcconfigs/*/node_modules
