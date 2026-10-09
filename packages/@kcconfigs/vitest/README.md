@@ -120,10 +120,10 @@ The shared root base config sets:
 - `restoreMocks`, `mockReset`, `unstubGlobals`, `unstubEnvs`: `true`
   (`clearMocks` is already `true` by default in Vitest 5)
 - `reporters`: `default`, `html`, `junit`
-- `html` reporter `outputDir`: `reports/test-results` (writes `index.html`)
-- `outputFile`: `reports/test-results/junit.xml`
+- report output: Vitest 5 defaults under `.vitest/` (`index.html`,
+  `junit/output.xml`)
 - `coverage`: enabled, `v8` provider, `text` + `lcovonly` + `html` reporters,
-  written to `reports/coverage`, with per-file thresholds
+  written to `.vitest/coverage`, with per-file thresholds
 
 Coverage includes `**/*.{ts,tsx}` and excludes hidden files, test files,
 `__mocks__`, `dist`, declaration files, and `*.example.*`, `*.config.*`,

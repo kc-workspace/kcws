@@ -5,8 +5,8 @@ import type { ProjectConfig, UserConfig } from "../models";
 export const defaultCoverage: CoverageOptions = {
 	enabled: true,
 	provider: "v8",
-	reporter: [["text"], ["lcovonly"], ["html", { subdir: "html" }]],
-	reportsDirectory: "reports/coverage",
+	reporter: [["text"], ["lcovonly"], ["html"]],
+	reportsDirectory: ".vitest/coverage",
 	thresholds: {
 		perFile: true,
 	},
@@ -38,14 +38,7 @@ export const baseRootConfig: UserConfig = defineConfig({
 		unstubGlobals: true,
 		unstubEnvs: true,
 		environment: "node",
-		reporters: [
-			"default",
-			["html", { outputDir: "reports/test-results" }],
-			"junit",
-		],
-		outputFile: {
-			junit: "reports/test-results/junit.xml",
-		},
+		reporters: ["default", "html", "junit"],
 		coverage: defaultCoverage,
 	},
 });
