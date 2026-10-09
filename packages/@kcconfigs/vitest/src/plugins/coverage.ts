@@ -1,4 +1,7 @@
-import { definePlugin, type WithEnabled } from "@kcinternals/config-builder";
+import {
+	definePluginSync,
+	type WithEnabled,
+} from "@kcinternals/config-builder";
 import type { CoverageOptions } from "vitest/node";
 import { defaultCoverage } from "../constants/config";
 import type { UserConfig, VitestConfigPlugin } from "../models";
@@ -43,7 +46,7 @@ const coveragePlugin = (
 	opt: CoverageOption,
 	replace = false,
 ): VitestConfigPlugin<"website", UserConfig> =>
-	definePlugin("website", {
+	definePluginSync("website", {
 		applyConfig: (base) => {
 			if (opt === false) {
 				if (base.test?.coverage) delete base.test.coverage;

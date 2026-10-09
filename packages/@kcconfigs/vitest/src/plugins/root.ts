@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import { baseRootConfig } from "../constants/config";
 import type { UserConfig, VitestConfigPlugin } from "../models";
 import mergeConfig from "../utils/mergeConfig";
@@ -6,7 +6,7 @@ import mergeConfig from "../utils/mergeConfig";
 const rootPlugin = (
 	projects?: string[],
 ): VitestConfigPlugin<"root", UserConfig> =>
-	definePlugin("root", {
+	definePluginSync("root", {
 		configPriority: -1000,
 		applyConfig: (base) => {
 			const overrideConfig = projects

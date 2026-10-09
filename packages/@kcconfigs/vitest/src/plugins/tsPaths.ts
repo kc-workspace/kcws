@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginSync } from "@kcinternals/config-builder";
 import type { AnyConfig, VitestConfigPlugin } from "../models";
 import mergeConfig from "../utils/mergeConfig";
 
@@ -7,7 +7,7 @@ import mergeConfig from "../utils/mergeConfig";
  * This plugin will help you to resolve the paths correctly by using the tsconfig.json file.
  */
 const tsPathsPlugin = (): VitestConfigPlugin<"tsPaths", AnyConfig> =>
-	definePlugin("tsPaths", {
+	definePluginSync("tsPaths", {
 		applyConfig: (base) =>
 			mergeConfig(base, { resolve: { tsconfigPaths: true } }),
 	});
