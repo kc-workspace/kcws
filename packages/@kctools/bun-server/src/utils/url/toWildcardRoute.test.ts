@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import toWildcardRoute from "./toWildcardRoute";
 
 describe("toWildcardRoute", () => {
-	test.each([
+	test.for([
 		{ name: "the root route", route: "/", expected: "/*" },
 		{ name: "a named route", route: "/about", expected: "/about/*" },
 		{

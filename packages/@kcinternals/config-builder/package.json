@@ -6,6 +6,7 @@
 	"scripts": {
 		"build": "tsdown",
 		"test": "vitest run --configLoader native",
+		"bench": "vitest bench --run --configLoader native",
 		"fix": "biome check --fix --unsafe",
 		"fix:lint": "biome lint --fix --unsafe",
 		"fix:format": "biome format --fix",
@@ -19,7 +20,7 @@
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.11"
+		"vitest": "5.0.3"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",
@@ -60,7 +61,8 @@
 		"CHANGELOG.md",
 		"dist",
 		"src",
-		"!*.test.*"
+		"!*.test.*",
+		"!*.bench.*"
 	],
 	"engines": {
 		"node": ">=22"

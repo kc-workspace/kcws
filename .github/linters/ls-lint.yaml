@@ -75,7 +75,7 @@ ignore:
   - docs
   - node_modules
   - dist
-  - reports
+  - .vitest
   ## Optimized for speed workaround
   ## https://github.com/loeffel-io/ls-lint/issues/246
   - packages/@kcconfigs/*/node_modules
@@ -96,10 +96,10 @@ ignore:
   - packages/@kctools/*/dist
   - packages/@kctypes/*/dist
   - packages/@kcws/*/dist
-  - packages/@kcconfigs/*/reports
-  - packages/@kcexamples/*/reports
-  - packages/@kcinternals/*/reports
-  - packages/@kcstyles/*/reports
-  - packages/@kctools/*/reports
-  - packages/@kctypes/*/reports
-  - packages/@kcws/*/reports
+  - packages/@kcconfigs/*/.vitest
+  - packages/@kcexamples/*/.vitest
+  - packages/@kcinternals/*/.vitest
+  - packages/@kcstyles/*/.vitest
+  - packages/@kctools/*/.vitest
+  - packages/@kctypes/*/.vitest
+  - packages/@kcws/*/.vitest

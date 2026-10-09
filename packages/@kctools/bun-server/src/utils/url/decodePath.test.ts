@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import decodePath from "./decodePath";
 
 describe("decodePath", () => {
-	test.each([
+	test.for([
 		{
 			name: "the pathname of the url",
 			url: "http://localhost:3000/about",

@@ -2,7 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 import isDebug from "./isDebug";
 
 describe("isDebug", () => {
-	test.each([
+	test.for([
 		{ name: "DEBUG is enabled", debug: "true", expected: true },
 		{ name: "DEBUG is disabled", debug: "false", expected: false },
 		{ name: "DEBUG is unset", debug: undefined, expected: false },

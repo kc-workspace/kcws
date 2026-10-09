@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import formatDuration from "./formatDuration";
 
 describe("formatDuration", () => {
-	test.each([
+	test.for([
 		{ ms: 231, expected: "231ms" },
 		{ ms: 231.6, expected: "232ms" },
 		{ ms: 999, expected: "999ms" },

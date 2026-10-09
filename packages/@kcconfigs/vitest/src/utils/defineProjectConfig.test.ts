@@ -7,7 +7,6 @@ describe("defineProjectConfig", () => {
 		const result = defineProjectConfig();
 		expect(result.test?.restoreMocks).toBe(true);
 		expect(result.test?.mockReset).toBe(true);
-		expect(result.test?.clearMocks).toBe(true);
 	});
 
 	test("should apply additional plugins on top of base config", () => {

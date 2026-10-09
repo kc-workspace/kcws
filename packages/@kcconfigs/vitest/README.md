@@ -17,7 +17,8 @@ a monorepo root/project split, and filesystem mock helpers.
 
 ## Prerequisites
 
-- **Vitest**: 4.0.0 or higher (as peer dependency)
+- **Vitest**: 5.0.0 or higher (as peer dependency)
+- **Vite**: required peer dependency of Vitest 5
 
 Optional, only needed by the defaults they back:
 
@@ -27,7 +28,7 @@ Optional, only needed by the defaults they back:
 ## Installation
 
 ```bash
-pnpm add --save-dev vitest @vitest/ui @vitest/coverage-v8 @kcconfigs/vitest
+pnpm add --save-dev vitest vite @vitest/ui @vitest/coverage-v8 @kcconfigs/vitest
 ```
 
 ## Usage
@@ -116,12 +117,13 @@ optional `replace` flag:
 The shared root base config sets:
 
 - `environment`: `"node"`
-- `restoreMocks`, `mockReset`, `clearMocks`, `unstubGlobals`, `unstubEnvs`: `true`
+- `restoreMocks`, `mockReset`, `unstubGlobals`, `unstubEnvs`: `true`
+  (`clearMocks` is already `true` by default in Vitest 5)
 - `reporters`: `default`, `html`, `junit`
-- `outputFile`: `reports/test-results/index.html` and
-  `reports/test-results/junit.xml`
+- report output: Vitest 5 defaults under `.vitest/` (`index.html`,
+  `junit/output.xml`)
 - `coverage`: enabled, `v8` provider, `text` + `lcovonly` + `html` reporters,
-  written to `reports/coverage`, with per-file thresholds
+  written to `.vitest/coverage`, with per-file thresholds
 
 Coverage includes `**/*.{ts,tsx}` and excludes hidden files, test files,
 `__mocks__`, `dist`, declaration files, and `*.example.*`, `*.config.*`,

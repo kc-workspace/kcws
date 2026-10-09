@@ -23,7 +23,7 @@ describe("createStaticSpecs", () => {
 		).resolves.toEqual([]);
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "copies a directory into the output under its own name",
 			item: "assets",
@@ -97,7 +97,7 @@ describe("createStaticSpecs", () => {
 		]);
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "an absolute source has no target",
 			item: "/etc/assets",

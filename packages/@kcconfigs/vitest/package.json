@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@kcinternals/config-builder": "workspace:*",
 		"memfs": "4.68.2",
-		"vitest": "4.1.11"
+		"vitest": "5.0.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.11",
@@ -28,7 +28,7 @@
 		"tsdown": "0.22.7"
 	},
 	"peerDependencies": {
-		"vitest": "^4.0.0"
+		"vitest": "^5.0.0"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",

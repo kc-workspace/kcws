@@ -5,8 +5,7 @@
 		"includes": [
 			"**",
 			"!*.tsbuildinfo",
-			"!reports/test-results",
-			"!reports/coverage",
+			"!.vitest",
 			"!.dist",
 			"!dist",
 			"!dist.*",

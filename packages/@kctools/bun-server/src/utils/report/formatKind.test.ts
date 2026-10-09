@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import formatKind from "./formatKind";
 
 describe("formatKind", () => {
-	test.each([
+	test.for([
 		{ kind: "entry-point", expected: "entry" },
 		{ kind: "chunk", expected: "chunk" },
 		{ kind: "asset", expected: "asset" },

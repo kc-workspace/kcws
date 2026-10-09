@@ -75,7 +75,7 @@ describe("preview", () => {
 		});
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "binds the default hostname and port",
 			args: [],
@@ -95,7 +95,7 @@ describe("preview", () => {
 	});
 
 	describe("request handling", () => {
-		test.each<RequestCase>([
+		test.for<RequestCase>([
 			{
 				name: "serves a file below the served directory",
 				files: { "/repo/dist/app.js": "console.log(1)" },

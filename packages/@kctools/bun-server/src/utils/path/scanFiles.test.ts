@@ -33,7 +33,7 @@ describe("scanFiles", () => {
 		).resolves.toEqual(["/repo/a.html", "/repo/b.html"]);
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "scans absolute by default and keeps the given options",
 			option: { cwd: "/repo", dot: true },
@@ -52,7 +52,7 @@ describe("scanFiles", () => {
 		expect(scan).toHaveBeenCalledWith(expected);
 	});
 
-	test.each(["ENOENT", "ENOTDIR"])(
+	test.for(["ENOENT", "ENOTDIR"])(
 		"returns nothing when the directory is missing with %s",
 		async (code) => {
 			const { bun } = createMockBun({ error: errorWithCode(code) });
@@ -63,7 +63,7 @@ describe("scanFiles", () => {
 		},
 	);
 
-	test.each([
+	test.for([
 		{ name: "another code", error: errorWithCode("EACCES") },
 		{ name: "no code", error: new Error("boom") },
 	])("rethrows an error with $name", async ({ error }) => {

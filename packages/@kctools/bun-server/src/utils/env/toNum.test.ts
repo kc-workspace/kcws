@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import toNum from "./toNum";
 
 describe("toNum", () => {
-	test.each([
+	test.for([
 		{ name: "an integer", value: "3000", expected: 3000 },
 		{ name: "a float", value: "1.5", expected: 1.5 },
 		{ name: "a negative number", value: "-1", expected: -1 },

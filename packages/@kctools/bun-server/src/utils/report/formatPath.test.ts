@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import formatPath from "./formatPath";
 
 describe("formatPath", () => {
-	test.each([
+	test.for([
 		{
 			name: "shortens a path inside the working directory",
 			path: "/repo/dist/index.html",

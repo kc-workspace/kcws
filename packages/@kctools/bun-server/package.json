@@ -30,20 +30,12 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.11"
+		"vitest": "5.0.3"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"bin": {
 		"bun-server": "./bin/index.js"
-	},
-	"imports": {
-		"#root/package.json": "./package.json",
-		"#core/program": "./src/core/program.ts",
-		"#commands/*": "./src/commands/*/index.ts",
-		"#constants": "./src/constants/index.ts",
-		"#utils/*": "./src/utils/*/index.ts",
-		"#types": "./src/types/index.ts"
 	},
 	"exports": {
 		".": {
@@ -54,6 +46,14 @@
 				"default": "./dist/index.js"
 			}
 		}
+	},
+	"imports": {
+		"#root/package.json": "./package.json",
+		"#core/program": "./src/core/program.ts",
+		"#commands/*": "./src/commands/*/index.ts",
+		"#constants": "./src/constants/index.ts",
+		"#utils/*": "./src/utils/*/index.ts",
+		"#types": "./src/types/index.ts"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kctools/bun-server",

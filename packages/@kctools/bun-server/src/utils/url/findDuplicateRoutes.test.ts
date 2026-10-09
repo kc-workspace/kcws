@@ -9,7 +9,7 @@ const file = (route: string): BasicRoute => ({
 });
 
 describe("findDuplicateRoutes", () => {
-	test.each([
+	test.for([
 		{
 			name: "every route is unique",
 			routes: ["/a.png", "/b.png"],

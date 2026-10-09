@@ -21,7 +21,7 @@ describe("reportArtifacts", () => {
 		]);
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "entry points before other kinds",
 			artifacts: [

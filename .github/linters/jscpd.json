@@ -11,7 +11,7 @@
 		"**/.git/**",
 		"**/.rbenv/**",
 		"**/.venv/**",
-		"**/report/**",
+		"**/.vitest/**",
 		"**/megalinter-reports/**",
 		"**/hardis-report/**",
 		"**/*cache*/**",

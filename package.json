@@ -9,12 +9,13 @@
 		"build:config": "pnpm recursive run --if-present --stream --filter @kcconfigs/* build",
 		"build:all": "pnpm recursive run --if-present --stream build",
 		"test:all": "vitest run --configLoader native",
+		"bench:all": "vitest bench --configLoader native",
 		"check:commit": "commitlint",
 		"check:file": "ls-lint --config .github/linters/ls-lint.yaml",
 		"check:all": "pnpm recursive run --if-present --stream check",
 		"fix:all": "pnpm recursive run --if-present --stream fix",
 		"docs:all": "typedoc",
-		"clean": "rimraf --verbose --glob -- docs **/*.tsbuildinfo **/dist **/reports",
+		"clean": "rimraf --verbose --glob -- docs **/*.tsbuildinfo **/dist **/.vitest",
 		"clean:all": "pnpm clean && rimraf --verbose --glob -- **/node_modules pnpm-lock.yaml",
 		"commit": "git-cz"
 	},
@@ -29,8 +30,8 @@
 		"@kcconfigs/typedoc": "workspace:",
 		"@kcconfigs/vitest": "workspace:",
 		"@ls-lint/ls-lint": "2.3.1",
-		"@vitest/coverage-v8": "4.1.11",
-		"@vitest/ui": "4.1.11",
+		"@vitest/coverage-v8": "5.0.3",
+		"@vitest/ui": "5.0.3",
 		"commitizen": "4.3.2",
 		"inquirer": "^12.11.1",
 		"lefthook": "2.1.12",
@@ -43,7 +44,7 @@
 		"typedoc-plugin-mdn-links": "5.1.1",
 		"typedoc-plugin-missing-exports": "4.1.4",
 		"typescript": "6.0.3",
-		"vitest": "4.1.11"
+		"vitest": "5.0.3"
 	},
 	"config": {
 		"commitizen": {

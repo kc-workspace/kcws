@@ -7,7 +7,7 @@ describe("formatPlugin", () => {
 		expect(plugin.name).toBe("format");
 	});
 
-	test.each(["esm", "cjs", "iife", "umd"] as const)(
+	test.for(["esm", "cjs", "iife", "umd"] as const)(
 		"should apply the %s array format",
 		(format) => {
 			const plugin = formatPlugin([format]);

@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import isInside from "./isInside";
 
 describe("isInside", () => {
-	test.each([
+	test.for([
 		{ name: "a direct child", child: "/repo/dist/index.html", expected: true },
 		{
 			name: "a nested child",

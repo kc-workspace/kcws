@@ -82,7 +82,7 @@ describe("build", () => {
 		});
 	});
 
-	test.each<{ name: string; args: string[]; expected: Partial<BuildConfig> }>([
+	test.for<{ name: string; args: string[]; expected: Partial<BuildConfig> }>([
 		{
 			name: "builds every route file into the output directory",
 			args: [],
@@ -116,7 +116,7 @@ describe("build", () => {
 		expect(config(bunBuild)).toMatchObject(expected);
 	});
 
-	test.each<{ name: string; args: string[]; expected: BuildConfig["define"] }>([
+	test.for<{ name: string; args: string[]; expected: BuildConfig["define"] }>([
 		{
 			name: "defines NODE_ENV as production by default",
 			args: [],

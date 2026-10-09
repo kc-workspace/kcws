@@ -23,7 +23,7 @@ const spec = (root: string, pattern = "**/*.html"): RouteSpec => ({
 });
 
 describe("resolveRouteSpecs", () => {
-	test.each([
+	test.for([
 		{
 			name: "an index file to the root route",
 			file: "index.html",

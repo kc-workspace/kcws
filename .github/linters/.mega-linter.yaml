@@ -104,7 +104,7 @@ ENABLE_LINTERS:
 ADDITIONAL_EXCLUDED_DIRECTORIES:
   - .vscode
   - .github
-  - reports
+  - .vitest
   - docs
 
 COPYPASTE_JSCPD_CONFIG_FILE: jscpd.json

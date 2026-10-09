@@ -134,7 +134,7 @@ describe("dev", () => {
 		expect(Object.keys(routes(serve))).toEqual(["/", "/*"]);
 	});
 
-	test.each([
+	test.for([
 		{
 			name: "binds the default hostname and port",
 			args: [],

@@ -8,7 +8,7 @@ describe("autoAdapter", () => {
 		vol.reset();
 	});
 
-	test.each([
+	test.for([
 		{
 			extension: "yaml",
 			content: "database:\n  port: 5432\n",
