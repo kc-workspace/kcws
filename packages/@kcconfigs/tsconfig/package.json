@@ -11,19 +11,19 @@
 		"check:format": "biome format"
 	},
 	"dependencies": {
-		"@types/bun": "^1.4.0",
-		"@types/node": "^24.0.0",
-		"@kctypes/generic": "workspace:*"
+		"@kctypes/generic": "workspace:*",
+		"@types/bun": "^1.4.2",
+		"@types/node": "^24.0.0"
 	},
 	"devDependencies": {
-		"@kcconfigs/biome": "workspace:*",
-		"@biomejs/biome": "2.5.11"
+		"@biomejs/biome": "2.5.15",
+		"@kcconfigs/biome": "workspace:*"
 	},
 	"peerDependencies": {
-		"typescript": "^6.0.0",
+		"@kctypes/generic": "workspace:*",
 		"@types/bun": "^1.4.0",
 		"@types/node": "^24.0.0",
-		"@kctypes/generic": "workspace:*"
+		"typescript": "^6.0.0"
 	},
 	"peerDependenciesMeta": {
 		"@types/bun": {
