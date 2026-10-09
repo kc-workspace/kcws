@@ -14,6 +14,7 @@ export const defaultCoverage: CoverageOptions = {
 	exclude: [
 		// Ignored test files
 		"**/*{.,-}{test,spec}?(-d).?(c|m)[jt]s?(x)",
+		"**/*.{bench,benchmark}.?(c|m)[jt]s?(x)",
 		"**/__mocks__/**",
 		// Ignored typescript definition files
 		"**/*.d.{ts,cts,mts}",
