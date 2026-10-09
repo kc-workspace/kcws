@@ -5,6 +5,7 @@ const config: ViteUserConfig = defineConfig({
 		coverage: {
 			enabled: true,
 			provider: "v8",
+			reportsDirectory: ".vitest/coverage",
 		},
 		typecheck: {
 			enabled: true,
