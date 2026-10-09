@@ -21,7 +21,7 @@
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
-		"dotenv": "17.4.2",
+		"dotenv": "18.0.6",
 		"json5": "2.2.3",
 		"jsonc-parser": "3.3.1",
 		"smol-toml": "1.9.0",
@@ -31,7 +31,7 @@
 		"zod": "4.4.3"
 	},
 	"peerDependencies": {
-		"dotenv": "^17.0.0",
+		"dotenv": "^17.0.0 || ^18.0.0",
 		"json5": "^2.2.0",
 		"jsonc-parser": "^3.3.0",
 		"smol-toml": "^1.8.0",
