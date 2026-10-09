@@ -1,4 +1,4 @@
-import type { ConfigPlugin } from "@kcinternals/config-builder";
+import type { AsyncConfigPlugin } from "@kcinternals/config-builder";
 import type { CommitlintConfig } from "./config";
 
 /**
@@ -6,7 +6,7 @@ import type { CommitlintConfig } from "./config";
  *
  * @typeParam N - Plugin name literal.
  */
-export type CommitlintConfigPlugin<N extends string> = ConfigPlugin<
+export type CommitlintConfigPlugin<N extends string> = AsyncConfigPlugin<
 	N,
 	CommitlintConfig
 >;

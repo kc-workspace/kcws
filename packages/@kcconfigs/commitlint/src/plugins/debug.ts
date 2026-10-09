@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginAsync } from "@kcinternals/config-builder";
 import { debugPriority } from "../constants";
 import type { CommitlintConfigPlugin } from "../types";
 
@@ -21,7 +21,7 @@ export interface DebugPluginOption {
 const debugPlugin = (
 	opt?: DebugPluginOption,
 ): CommitlintConfigPlugin<"debug"> =>
-	definePlugin("debug", {
+	definePluginAsync("debug", {
 		settingPriority: debugPriority,
 		applySetting: (base) => ({
 			debug: true,

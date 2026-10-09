@@ -1,4 +1,4 @@
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginAsync } from "@kcinternals/config-builder";
 import { overridePriority } from "../constants";
 import type { CommitlintConfig, CommitlintConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
@@ -14,7 +14,7 @@ import mergeConfig from "../utils/mergeConfig";
 const overridePlugin = (
 	...overrides: CommitlintConfig[]
 ): CommitlintConfigPlugin<"override"> =>
-	definePlugin("override", {
+	definePluginAsync("override", {
 		configPriority: overridePriority,
 		applyConfig: (base) => mergeConfig(base, ...overrides),
 	});

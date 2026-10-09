@@ -1,5 +1,5 @@
 import { RuleConfigSeverity as Severity } from "@commitlint/types";
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginAsync } from "@kcinternals/config-builder";
 import { MINIMAL_TYPES, STANDARD_TYPES } from "../constants";
 import type { CommitlintConfigPlugin, TypeMode, TypeObject } from "../types";
 import mergeConfig from "../utils/mergeConfig";
@@ -40,7 +40,7 @@ const getTypes = (mode: TypeMode): TypeObject => {
 const typesPlugin = (
 	mode: TypeMode = "standard",
 ): CommitlintConfigPlugin<"types"> =>
-	definePlugin("types", {
+	definePluginAsync("types", {
 		applyConfig: (base) => {
 			const types = getTypes(mode);
 			const merged = mergeConfig(base, {

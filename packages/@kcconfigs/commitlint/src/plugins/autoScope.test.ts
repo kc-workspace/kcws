@@ -44,7 +44,9 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin();
-		const [severity, condition, scopes] = readScopes(plugin.applyConfig?.({}));
+		const [severity, condition, scopes] = readScopes(
+			await plugin.applyConfig?.({}),
+		);
 		expect(severity).toBe(Severity.Error);
 		expect(condition).toBe("always");
 		expect(scopes.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort());
@@ -60,7 +62,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin();
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes).toEqual(["scope/pkg-a"]);
 	});
 
@@ -74,7 +76,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin();
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes).toEqual(["scope/pkg-a"]);
 	});
 
@@ -87,7 +89,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin();
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes).toEqual(["scope/pkg-a"]);
 	});
 
@@ -100,7 +102,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin(["custom1", "custom2"]);
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes.sort()).toEqual(["custom1", "custom2", "scope/pkg-a"].sort());
 	});
 
@@ -113,7 +115,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin(["custom"]);
-		const result = plugin.applyConfig?.({});
+		const result = await plugin.applyConfig?.({});
 		expect(result?.prompt?.questions?.scope?.enum).toEqual({
 			custom: {},
 			"scope/pkg-a": {},
@@ -126,7 +128,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin();
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes.sort()).toEqual(
 			["core", "config", "script", "deps", "deps-dev"].sort(),
 		);
@@ -140,8 +142,8 @@ describe("autoScopePlugin", () => {
 			},
 			cwd(),
 		);
-		const first = scopePlugin(["old"]).applyConfig?.({}) ?? {};
-		const result = (await autoScopePlugin()).applyConfig?.(first);
+		const first = (await scopePlugin(["old"]).applyConfig?.({})) ?? {};
+		const result = await (await autoScopePlugin()).applyConfig?.(first);
 		const [, , scopes] = readScopes(result);
 		expect(scopes).toEqual(["scope/pkg-a"]);
 		expect(result?.prompt?.questions?.scope?.enum).toEqual({
@@ -155,7 +157,7 @@ describe("autoScopePlugin", () => {
 			cwd(),
 		);
 		const plugin = await autoScopePlugin(["api"]);
-		const result = plugin.applyConfig?.({
+		const result = await plugin.applyConfig?.({
 			helpUrl: "help",
 			rules: { "type-enum": [Severity.Error, "always", ["feat"]] },
 			prompt: {

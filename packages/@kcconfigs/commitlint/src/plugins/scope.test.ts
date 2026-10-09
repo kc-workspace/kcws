@@ -18,42 +18,44 @@ describe("scopePlugin", () => {
 		expect(plugin.name).toBe("scope");
 	});
 
-	test("should configure scope-enum with the given scopes", () => {
+	test("should configure scope-enum with the given scopes", async () => {
 		const plugin = scopePlugin(["api", "web"]);
-		const [severity, condition, scopes] = readScopes(plugin.applyConfig?.({}));
+		const [severity, condition, scopes] = readScopes(
+			await plugin.applyConfig?.({}),
+		);
 		expect(severity).toBe(Severity.Error);
 		expect(condition).toBe("always");
 		expect(scopes).toEqual(["api", "web"]);
 	});
 
-	test("should expose scopes to the prompt", () => {
+	test("should expose scopes to the prompt", async () => {
 		const plugin = scopePlugin(["api", "web"]);
-		const result = plugin.applyConfig?.({});
+		const result = await plugin.applyConfig?.({});
 		expect(result?.prompt?.questions?.scope?.enum).toEqual({
 			api: {},
 			web: {},
 		});
 	});
 
-	test("should fall back to default scopes when the list is empty", () => {
+	test("should fall back to default scopes when the list is empty", async () => {
 		const plugin = scopePlugin([]);
-		const [, , scopes] = readScopes(plugin.applyConfig?.({}));
+		const [, , scopes] = readScopes(await plugin.applyConfig?.({}));
 		expect(scopes.sort()).toEqual(
 			["core", "config", "script", "deps", "deps-dev"].sort(),
 		);
 	});
 
-	test("should replace scopes configured by an earlier plugin", () => {
-		const first = scopePlugin(["old"]).applyConfig?.({}) ?? {};
-		const result = scopePlugin(["new"]).applyConfig?.(first);
+	test("should replace scopes configured by an earlier plugin", async () => {
+		const first = (await scopePlugin(["old"]).applyConfig?.({})) ?? {};
+		const result = await scopePlugin(["new"]).applyConfig?.(first);
 		const [, , scopes] = readScopes(result);
 		expect(scopes).toEqual(["new"]);
 		expect(result?.prompt?.questions?.scope?.enum).toEqual({ new: {} });
 	});
 
-	test("should preserve existing base config when applying", () => {
+	test("should preserve existing base config when applying", async () => {
 		const plugin = scopePlugin(["api"]);
-		const result = plugin.applyConfig?.({
+		const result = await plugin.applyConfig?.({
 			helpUrl: "help",
 			rules: { "type-enum": [Severity.Error, "always", ["feat"]] },
 			prompt: {

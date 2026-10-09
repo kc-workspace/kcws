@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { cwd as wd } from "node:process";
-import { definePlugin } from "@kcinternals/config-builder";
+import { definePluginAsync } from "@kcinternals/config-builder";
 import type { CommitlintConfigPlugin } from "../types";
 import {
 	findBunPackages,
@@ -50,7 +50,7 @@ const autoScopePlugin = async (
 	additional: string[] = [],
 ): Promise<CommitlintConfigPlugin<"autoScope">> => {
 	const scopes = [...additional, ...(await detectScopes())];
-	return definePlugin("autoScope", {
+	return definePluginAsync("autoScope", {
 		applyConfig: (base) => applyScopes(base, scopes),
 	});
 };

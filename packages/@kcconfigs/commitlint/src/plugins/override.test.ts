@@ -13,27 +13,27 @@ describe("overridePlugin", () => {
 		expect(plugin.configPriority).toBe(1000);
 	});
 
-	test("should apply single override", () => {
+	test("should apply single override", async () => {
 		const plugin = overridePlugin({ helpUrl: "custom" });
-		const result = plugin.applyConfig?.({ helpUrl: "base" });
+		const result = await plugin.applyConfig?.({ helpUrl: "base" });
 		expect(result?.helpUrl).toBe("custom");
 	});
 
-	test("should apply multiple overrides left to right", () => {
+	test("should apply multiple overrides left to right", async () => {
 		const plugin = overridePlugin(
 			{ helpUrl: "first" },
 			{ helpUrl: "second", parserPreset: "preset" },
 		);
-		const result = plugin.applyConfig?.({ helpUrl: "base" });
+		const result = await plugin.applyConfig?.({ helpUrl: "base" });
 		expect(result?.helpUrl).toBe("second");
 		expect(result?.parserPreset).toBe("preset");
 	});
 
-	test("should deep merge rules", () => {
+	test("should deep merge rules", async () => {
 		const plugin = overridePlugin({
 			rules: { "header-max-length": [Severity.Error, "always", 100] },
 		});
-		const result = plugin.applyConfig?.({
+		const result = await plugin.applyConfig?.({
 			rules: { "subject-max-length": [Severity.Warning, "always", 80] },
 		});
 		expect(result?.rules).toEqual({
@@ -42,9 +42,9 @@ describe("overridePlugin", () => {
 		});
 	});
 
-	test("should work with empty overrides", () => {
+	test("should work with empty overrides", async () => {
 		const plugin = overridePlugin();
-		const result = plugin.applyConfig?.({ helpUrl: "base" });
+		const result = await plugin.applyConfig?.({ helpUrl: "base" });
 		expect(result).toEqual({ helpUrl: "base" });
 	});
 });

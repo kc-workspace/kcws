@@ -1,4 +1,4 @@
-import { defineConfig as _defineConfig } from "@kcinternals/config-builder";
+import { defineConfigAsync } from "@kcinternals/config-builder";
 import { baseConfig } from "../constants";
 import autoScopePlugin from "../plugins/autoScope";
 import typesPlugin from "../plugins/types";
@@ -33,6 +33,10 @@ const defineConfig = async (
 	}
 
 	// copy so plugins can never mutate the shared base constant
-	return _defineConfig(mergeConfig({}, baseConfig), ...defaults, ...resolved);
+	return defineConfigAsync(
+		mergeConfig({}, baseConfig),
+		...defaults,
+		...resolved,
+	);
 };
 export default defineConfig;

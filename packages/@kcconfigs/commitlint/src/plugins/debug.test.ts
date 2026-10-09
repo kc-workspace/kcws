@@ -12,21 +12,21 @@ describe("debugPlugin", () => {
 		expect(plugin.settingPriority).toBe(Number.NEGATIVE_INFINITY);
 	});
 
-	test("should enable debug setting", () => {
+	test("should enable debug setting", async () => {
 		const plugin = debugPlugin();
-		const result = plugin.applySetting?.({});
+		const result = await plugin.applySetting?.({});
 		expect(result?.debug).toBe(true);
 	});
 
-	test("should enable verbose when requested", () => {
+	test("should enable verbose when requested", async () => {
 		const plugin = debugPlugin({ verbose: true });
-		const result = plugin.applySetting?.({});
+		const result = await plugin.applySetting?.({});
 		expect(result?.verbose).toBe(true);
 	});
 
-	test("should inherit verbose from base setting when not specified", () => {
+	test("should inherit verbose from base setting when not specified", async () => {
 		const plugin = debugPlugin();
-		const result = plugin.applySetting?.({ verbose: true });
+		const result = await plugin.applySetting?.({ verbose: true });
 		expect(result?.verbose).toBe(true);
 	});
 
