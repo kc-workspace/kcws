@@ -1,5 +1,5 @@
 import { format } from "node:util";
-import type { AnyConfigPlugin, BaseConfig } from "../models";
+import type { AnyConfigPlugin, BaseConfig } from "../types";
 import defineBaseConfig from "./defineBaseConfig";
 import { debug, verbose } from "./logger";
 

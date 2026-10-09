@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import type { BaseSetting, ConfigPluginAction } from "../models";
+import type { BaseSetting, ConfigPluginAction } from "../types";
 import definePlugin from "./definePlugin";
 
 interface MockConfig {

@@ -1,4 +1,4 @@
-import type { BaseConfig, BaseSetting } from "../models";
+import type { BaseConfig, BaseSetting } from "../types";
 
 const defineBaseConfig = <C>(
 	base: C,

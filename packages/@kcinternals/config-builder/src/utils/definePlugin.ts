@@ -1,4 +1,4 @@
-import type { ConfigPlugin } from "../models";
+import type { ConfigPlugin } from "../types";
 
 /**
  * create a ConfigPlugin with the given name and plugin configuration

@@ -1,4 +1,4 @@
-import type { BaseSetting } from "../models";
+import type { BaseSetting } from "../types";
 import { withEnabled } from "./enabled";
 
 export const debug = (setting: BaseSetting, msg: string): void =>

@@ -1,4 +1,4 @@
-import type { WithEnabled } from "../models";
+import type { WithEnabled } from "../types";
 
 export const withEnabled = <T>(
 	value: WithEnabled<T> | undefined,
