@@ -30,7 +30,7 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
 		"tsdown": "0.22.7",
-		"vitest": "4.1.11"
+		"vitest": "5.0.3"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",

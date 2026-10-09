@@ -15,6 +15,7 @@ pnpm-publish-summary.json
 # Test reports
 reports
 coverage
+.vitest
 *.lcov
 
 # logs

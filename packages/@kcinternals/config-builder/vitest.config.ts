@@ -8,9 +8,12 @@ const config: ViteUserConfig = {
 		unstubGlobals: true,
 		unstubEnvs: true,
 		environment: "node",
-		reporters: ["default", "html", "junit"],
+		reporters: [
+			"default",
+			["html", { outputDir: "reports/test-results" }],
+			"junit",
+		],
 		outputFile: {
-			html: "reports/test-results/index.html",
 			junit: "reports/test-results/junit.xml",
 		},
 		coverage: {
