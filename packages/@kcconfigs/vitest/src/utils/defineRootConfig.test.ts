@@ -8,7 +8,6 @@ describe("defineRootConfig", () => {
 		const result = defineRootConfig([]);
 		expect(result.test?.restoreMocks).toBe(true);
 		expect(result.test?.mockReset).toBe(true);
-		expect(result.test?.clearMocks).toBe(true);
 		expect(result.test?.environment).toBe("node");
 	});
 

@@ -117,7 +117,8 @@ optional `replace` flag:
 The shared root base config sets:
 
 - `environment`: `"node"`
-- `restoreMocks`, `mockReset`, `clearMocks`, `unstubGlobals`, `unstubEnvs`: `true`
+- `restoreMocks`, `mockReset`, `unstubGlobals`, `unstubEnvs`: `true`
+  (`clearMocks` is already `true` by default in Vitest 5)
 - `reporters`: `default`, `html`, `junit`
 - `html` reporter `outputDir`: `reports/test-results` (writes `index.html`)
 - `outputFile`: `reports/test-results/junit.xml`

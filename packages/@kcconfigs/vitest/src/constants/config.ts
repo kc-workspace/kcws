@@ -35,7 +35,6 @@ export const baseRootConfig: UserConfig = defineConfig({
 	test: {
 		restoreMocks: true,
 		mockReset: true,
-		clearMocks: true,
 		unstubGlobals: true,
 		unstubEnvs: true,
 		environment: "node",
