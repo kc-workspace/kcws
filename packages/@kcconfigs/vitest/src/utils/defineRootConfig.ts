@@ -1,5 +1,5 @@
-import type { AnyVitestConfigPlugin, UserConfig } from "../models";
 import { rootPlugin } from "../plugins";
+import type { AnyVitestConfigPlugin, UserConfig } from "../types";
 import defineConfig from "./defineConfig";
 import type defineProjectConfig from "./defineProjectConfig";
 

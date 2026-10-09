@@ -1,5 +1,5 @@
 import { definePluginSync } from "@kcinternals/config-builder";
-import type { ProjectConfig, UserConfig, VitestConfigPlugin } from "../models";
+import type { ProjectConfig, UserConfig, VitestConfigPlugin } from "../types";
 
 const debugPlugin = (): VitestConfigPlugin<
 	"debug",

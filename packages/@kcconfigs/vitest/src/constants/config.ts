@@ -1,6 +1,6 @@
 import { defineConfig, defineProject } from "vitest/config";
 import type { CoverageOptions } from "vitest/node";
-import type { ProjectConfig, UserConfig } from "../models";
+import type { ProjectConfig, UserConfig } from "../types";
 
 export const defaultCoverage: CoverageOptions = {
 	enabled: true,

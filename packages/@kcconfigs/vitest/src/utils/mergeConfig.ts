@@ -1,5 +1,5 @@
 import { mergeConfig as _mergeConfig } from "vitest/config";
-import type { UserConfig } from "../models";
+import type { UserConfig } from "../types";
 
 /**
  * Merges Vitest configuration overrides into a base configuration in order.

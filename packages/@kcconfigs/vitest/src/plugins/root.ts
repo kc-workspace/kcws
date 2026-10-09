@@ -1,6 +1,6 @@
 import { definePluginSync } from "@kcinternals/config-builder";
 import { baseRootConfig } from "../constants/config";
-import type { UserConfig, VitestConfigPlugin } from "../models";
+import type { UserConfig, VitestConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 const rootPlugin = (

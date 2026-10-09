@@ -4,7 +4,7 @@ import {
 } from "@kcinternals/config-builder";
 import type { CoverageOptions } from "vitest/node";
 import { defaultCoverage } from "../constants/config";
-import type { UserConfig, VitestConfigPlugin } from "../models";
+import type { UserConfig, VitestConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 /**

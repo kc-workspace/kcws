@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import type { UserConfig } from "../models";
+import type { UserConfig } from "../types";
 import mergeConfig from "./mergeConfig";
 
 describe("mergeConfig", () => {

@@ -4,7 +4,7 @@ import type {
 	AnyVitestConfigPlugin,
 	ProjectConfig,
 	UserConfig,
-} from "../models";
+} from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 /**

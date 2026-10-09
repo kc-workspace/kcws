@@ -1,6 +1,6 @@
 import { definePluginSync } from "@kcinternals/config-builder";
 import type { BuiltinEnvironment } from "vitest/node";
-import type { AnyConfig, VitestConfigPlugin } from "../models";
+import type { AnyConfig, VitestConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 const webPlugin = (

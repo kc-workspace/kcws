@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { definePluginSync } from "@kcinternals/config-builder";
-import type { AnyConfig, VitestConfigPlugin } from "../models";
+import type { AnyConfig, VitestConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 export interface UseMockOption {

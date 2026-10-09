@@ -1,6 +1,6 @@
 import { definePluginSync } from "@kcinternals/config-builder";
 import { baseProjectConfig } from "../constants/config";
-import type { ProjectConfig, VitestConfigPlugin } from "../models";
+import type { ProjectConfig, VitestConfigPlugin } from "../types";
 import mergeConfig from "../utils/mergeConfig";
 
 const projectPlugin = (): VitestConfigPlugin<"project", ProjectConfig> =>
