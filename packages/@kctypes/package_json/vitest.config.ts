@@ -2,11 +2,6 @@ import { defineConfig, type ViteUserConfig } from "vitest/config";
 
 const config: ViteUserConfig = defineConfig({
 	test: {
-		coverage: {
-			enabled: true,
-			provider: "v8",
-			reportsDirectory: ".vitest/coverage",
-		},
 		typecheck: {
 			enabled: true,
 			only: true,
