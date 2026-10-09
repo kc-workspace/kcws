@@ -4,7 +4,6 @@ const config: ViteUserConfig = {
 	test: {
 		restoreMocks: true,
 		mockReset: true,
-		clearMocks: true,
 		unstubGlobals: true,
 		unstubEnvs: true,
 		environment: "node",
