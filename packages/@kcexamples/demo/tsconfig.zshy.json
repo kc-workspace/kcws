@@ -1,7 +1,0 @@
-{
-	"extends": "@kcconfigs/tsconfig/zshy",
-	"compilerOptions": {
-		"rootDir": "./src",
-		"outDir": "./dist.zshy"
-	}
-}

@@ -1,6 +1,0 @@
-{
-	"extends": "@kcconfigs/tsconfig/dts",
-	"compilerOptions": {
-		"outDir": "./dist.dts"
-	}
-}
