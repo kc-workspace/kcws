@@ -70,6 +70,17 @@ export const visit = (
 			// defaulting a missing one to `{}` would silently validate nothing.
 			// A loud TypeError is the better failure if Zod's internals ever move.
 			const shape = def["shape"] as Record<string, unknown>;
+
+			// Zod 4.5+ lets a shape declare symbol keys, which `Object.keys` skips.
+			// No adapter can produce one, so such a key could never be satisfied.
+			const [symbol] = Object.getOwnPropertySymbols(shape);
+			if (symbol !== undefined) {
+				throw new ZconfigSchemaError(
+					[...path, symbol.toString()],
+					"symbol keys are not allowed, because no configuration source can produce one",
+				);
+			}
+
 			for (const key of Object.keys(shape)) {
 				const keyPath = [...path, key];
 				assertKey(key, keyPath);
