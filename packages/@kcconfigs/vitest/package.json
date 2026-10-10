@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@kcinternals/config-builder": "workspace:*",
-		"memfs": "4.68.2",
+		"memfs": "4.79.0",
 		"vitest": "5.0.3"
 	},
 	"devDependencies": {
