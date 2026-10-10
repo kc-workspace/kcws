@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.3.1...@kcconfigs/commitlint+v0.4.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+
+### Code Refactoring
+
+* **kcconfigs/commitlint:** migrate to async config-builder APIs ([5f8d350](https://github.com/kc-workspace/kcws/commit/5f8d3503d5bbc956af8ef6a6e5ff8a3cef4ab635))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kcconfigs/vitest bumped to 0.4.0
+
 ## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.3.0...@kcconfigs/commitlint+v0.3.1) (2026-10-04)
 
 

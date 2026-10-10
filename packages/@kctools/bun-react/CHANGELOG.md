@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.2.2...@kctools/bun-react+v0.3.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kctools/bun-react:** Require Node.js 22 or newer.
+
+### Miscellaneous Chores
+
+* **kctools/bun-react:** require Node 22 ([a93409d](https://github.com/kc-workspace/kcws/commit/a93409d0b7bbb41aafabb7ef02a00826d1bbd618))
+
 ## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-react+v0.2.1...@kctools/bun-react+v0.2.2) (2026-09-14)
 
 

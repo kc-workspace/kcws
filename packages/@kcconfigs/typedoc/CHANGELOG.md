@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.8...@kcconfigs/typedoc+v0.4.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/typedoc:** Require Node.js 22 or newer.
+
+### Bugfixes
+
+* **kcconfigs/typedoc:** upgrade typedoc-github-theme peer to match with root ([63f6c91](https://github.com/kc-workspace/kcws/commit/63f6c9155007658607c6f4ad6c31dc6507f636a5))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/typedoc:** require Node 22 ([ed9dda1](https://github.com/kc-workspace/kcws/commit/ed9dda110f42064a59cf85cb7329ff07d12e5c32))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kcconfigs/vitest bumped to 0.4.0
+
 ## [0.3.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.7...@kcconfigs/typedoc+v0.3.8) (2026-10-04)
 
 

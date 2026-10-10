@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.2.6...@kcinternals/config-builder+v0.3.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcinternals/config-builder:** Require Node.js 22 or newer.
+* **kcinternals/config-builder:** defineConfig, definePlugin and ConfigPlugin are removed; use the Sync or Async variants.
+
+### Features
+
+* **kcinternals/config-builder:** split define APIs into sync and async variants ([16bf1e5](https://github.com/kc-workspace/kcws/commit/16bf1e56edaeb8fc053c52d476230442a37a54e1))
+
+
+### Documentation
+
+* **kcinternals/config-builder:** replace hard tabs with spaces in README examples ([82a7850](https://github.com/kc-workspace/kcws/commit/82a78505a1994ebe60a819f7c1d69f12c05a147f))
+
+
+### Code Refactoring
+
+* **kcinternals/config-builder:** drop clearMocks now default in Vitest 5 ([7649e92](https://github.com/kc-workspace/kcws/commit/7649e923a7c83398d73bdf8b6ffe25afe1718e23))
+* **kcinternals/config-builder:** rename models to types ([953851d](https://github.com/kc-workspace/kcws/commit/953851d988188dcfd41ca23896d9389033d0c8a2))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcinternals/config-builder:** require Node 22 ([5cbca76](https://github.com/kc-workspace/kcws/commit/5cbca760888d4416707070c6c1de5b0460ef28a8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+
 ## [0.2.6](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.2.5...@kcinternals/config-builder+v0.2.6) (2026-10-04)
 
 

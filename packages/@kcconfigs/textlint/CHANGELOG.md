@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.17...@kcconfigs/textlint+v0.2.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/textlint:** Require Node.js 22 or newer.
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/textlint:** require Node 22 ([3955376](https://github.com/kc-workspace/kcws/commit/395537658297af892eec70af344e8c91e10fbfa5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kcconfigs/vitest bumped to 0.4.0
+
 ## [0.1.17](https://github.com/kc-workspace/kcws/compare/@kcconfigs/textlint+v0.1.16...@kcconfigs/textlint+v0.1.17) (2026-10-04)
 
 
