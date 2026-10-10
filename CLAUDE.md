@@ -66,7 +66,7 @@ pnpm --filter @kcws/actkits test
 ```
 
 Standard runtime-package scripts are `build`, `test`, `check` (`check:lint`, `check:format`, `check:type`), and `fix` (`fix:lint`, `fix:format`).
-Script names are verb first, then noun (`<verb>:<noun>`, e.g. `check:type`, `build:all`). Chain actions with `-` (e.g. `build-start`).
+Script names are verb first, then noun (`<verb>:<noun>`, for example `check:type`, `build:all`). Chain actions with `-` (for example `build-start`).
 
 ## Code And Tests
 
