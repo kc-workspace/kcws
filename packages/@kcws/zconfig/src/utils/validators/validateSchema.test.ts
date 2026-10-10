@@ -89,6 +89,18 @@ describe("validateSchema", () => {
 			expect(error.key).toStrictEqual(["database", "pool", "max_size"]);
 			expect(error.message).toContain("database.pool.max_size");
 		});
+
+		test("should reject a symbol key", () => {
+			const tag = Symbol("tag");
+			const error = expectRejected(
+				z.object({
+					database: z.object({ host: z.string(), [tag]: z.number() }),
+				}),
+			);
+
+			expect(error.key).toStrictEqual(["database", "Symbol(tag)"]);
+			expect(error.reason).toContain("symbol");
+		});
 	});
 
 	describe("wrapper unwrapping", () => {
@@ -130,6 +142,22 @@ describe("validateSchema", () => {
 					z.object({ a: z.object({ b_c: z.string() }).readonly() }),
 				),
 			).toThrow(ZconfigSchemaError);
+		});
+
+		test("should descend through exactOptional", () => {
+			expect(() =>
+				validateSchema(
+					z.object({ a: z.object({ b_c: z.string() }).exactOptional() }),
+				),
+			).toThrow(ZconfigSchemaError);
+		});
+
+		test("should descend into a z.deepPartial object", () => {
+			const error = expectRejected(
+				z.deepPartial(z.object({ a: z.object({ b_c: z.string() }) })),
+			);
+
+			expect(error.key).toStrictEqual(["a", "b_c"]);
 		});
 	});
 
