@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.13...@kcstyles/reset.css+v2.0.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcstyles/reset.css:** Require Node.js 22 or newer.
+
+### Miscellaneous Chores
+
+* **kcstyles/reset.css:** require Node 22 ([fa71aa9](https://github.com/kc-workspace/kcws/commit/fa71aa972ae962a43cc6b19a447b2485c350b030))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+
 ## [1.0.13](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v1.0.12...@kcstyles/reset.css+v1.0.13) (2026-10-04)
 
 

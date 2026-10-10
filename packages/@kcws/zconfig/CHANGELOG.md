@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.7...@kcws/zconfig+v0.3.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcws/zconfig:** Require Node.js 22 or newer.
+
+### Performance Improvements
+
+* **deps:** bump zod from 4.4.3 to 4.6.5 ([#255](https://github.com/kc-workspace/kcws/issues/255)) ([aeee6fe](https://github.com/kc-workspace/kcws/commit/aeee6fefd47d4b4a4cc9d14da5db58b1c8bed34e))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcws/zconfig:** require Node 22 ([29cc46e](https://github.com/kc-workspace/kcws/commit/29cc46e74617cd9ebf2eb354dff14f0f433ef7eb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kcconfigs/vitest bumped to 0.4.0
+
 ## [0.2.7](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.6...@kcws/zconfig+v0.2.7) (2026-10-04)
 
 

@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.4...@kctools/bun-server+v0.4.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kctools/bun-server:** Require Node.js 22 or newer.
+
+### Bugfixes
+
+* **kctools/bun-server:** update @types/bun version to match with kcconfigs/tsconfig ([458cff0](https://github.com/kc-workspace/kcws/commit/458cff0c1f1515f2a1fc71b223073b22aec1bb90))
+
+
+### Code Refactoring
+
+* **kctools/bun-server:** use object spread for server config ([181e243](https://github.com/kc-workspace/kcws/commit/181e243764d22c00decc99316fe279570b89b1cf))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kctools/bun-server:** require Node 22 ([af668c2](https://github.com/kc-workspace/kcws/commit/af668c286ecdb0a80eafa2dc5369634392150404))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kcconfigs/vitest bumped to 0.4.0
+
 ## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.3...@kctools/bun-server+v0.3.4) (2026-10-04)
 
 

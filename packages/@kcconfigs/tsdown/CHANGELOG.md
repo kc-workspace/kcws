@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.3.1...@kcconfigs/tsdown+v0.4.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/tsdown:** Require Node.js 22 or newer.
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** align Node.js engines with tsdown 0.23 ([b767198](https://github.com/kc-workspace/kcws/commit/b7671983e0db0db0ac1132c9b28c2172d566494f))
+* **kcconfigs/tsdown:** still publish old cjs for tsdown on node v22.0.0 to v22.18.0 for now ([fd49d67](https://github.com/kc-workspace/kcws/commit/fd49d67d7c93f9c61a8179b909f83e06e43d1b8c))
+
+
+### Code Refactoring
+
+* **kcconfigs/tsdown:** migrate to sync config-builder APIs ([627c7bd](https://github.com/kc-workspace/kcws/commit/627c7bdc934a14355da55009b4da29aeb394741e))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/tsdown:** require Node 22 ([d26ffe7](https://github.com/kc-workspace/kcws/commit/d26ffe771ff4d89a3fb8bbeb0710a964e1b0096c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+
 ## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.3.0...@kcconfigs/tsdown+v0.3.1) (2026-10-04)
 
 

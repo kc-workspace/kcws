@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.10...@kcconfigs/lefthook+v0.2.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/lefthook:** Require Node.js 22 or newer.
+
+### Performance Improvements
+
+* **kcconfigs/lefthook:** add peerDependencies to lefthook with v2 or higher ([54c2e53](https://github.com/kc-workspace/kcws/commit/54c2e53e1e906b268e0a756a67e62462bc7acfd5))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/lefthook:** require Node 22 ([81bd12c](https://github.com/kc-workspace/kcws/commit/81bd12cc9abbdc6247e97fba8732e7b08915f872))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+
 ## [0.1.10](https://github.com/kc-workspace/kcws/compare/@kcconfigs/lefthook+v0.1.9...@kcconfigs/lefthook+v0.1.10) (2026-09-14)
 
 

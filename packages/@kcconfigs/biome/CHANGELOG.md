@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.6...@kcconfigs/biome+v3.0.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/biome:** reports/test-results and reports/coverage are no longer excluded by the default and svelte presets.
+* **kcconfigs/biome:** Require Node.js 22 or newer.
+
+### Features
+
+* **kcconfigs/biome:** ignore Vitest 5 .vitest artifact directory ([ddc0c2d](https://github.com/kc-workspace/kcws/commit/ddc0c2de4e1a015b6cad56fc6f4f3a0184c697a2))
+* **kcconfigs/biome:** stop excluding reports directories ([983a71d](https://github.com/kc-workspace/kcws/commit/983a71d8117007fcdf51a72ef4c5f6bd1405fbfd))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/biome:** require Node 22 ([ea343cf](https://github.com/kc-workspace/kcws/commit/ea343cf73b4cd24afe114d209274747b123a3b85))
+
 ## [2.0.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.5...@kcconfigs/biome+v2.0.6) (2026-09-14)
 
 

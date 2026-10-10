@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v2.0.1...@kctypes/generic+v3.0.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kctypes/generic:** Require Node.js 22 or newer.
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kctypes/generic:** require Node 22 ([a04822a](https://github.com/kc-workspace/kcws/commit/a04822af37bfb23cc3a123543e8bf019cd88ac9f))
+
 ## [2.0.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v2.0.0...@kctypes/generic+v2.0.1) (2026-09-14)
 
 

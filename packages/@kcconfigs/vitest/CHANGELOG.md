@@ -1,5 +1,52 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.5...@kcconfigs/vitest+v0.4.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/vitest:** test reports move from reports/test-results and reports/coverage to .vitest/.
+* **kcconfigs/vitest:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/vitest:** Require Node.js 22 or newer.
+
+### Features
+
+* **kcconfigs/vitest:** exclude benchmark files from default coverage ([9bab9fc](https://github.com/kc-workspace/kcws/commit/9bab9fc072fe027ecf78db0554351e2c64168eed))
+* **kcconfigs/vitest:** require Vitest 5 ([62be68f](https://github.com/kc-workspace/kcws/commit/62be68f6162dd3570da59b810354de518b045e2f))
+* **kcconfigs/vitest:** write reports to Vitest 5 .vitest directory ([628a23f](https://github.com/kc-workspace/kcws/commit/628a23f547429ef4383a022245fc0413ef32e3b9))
+
+
+### Bugfixes
+
+* **kcconfigs/vitest:** load built config so package tests can run ([cd3add0](https://github.com/kc-workspace/kcws/commit/cd3add061a0e7b71080de5657062da4484a87658))
+
+
+### Code Refactoring
+
+* **kcconfigs/vitest:** drop clearMocks now default in Vitest 5 ([8e362b2](https://github.com/kc-workspace/kcws/commit/8e362b2e804a92cbcc291239bbc768d67e72aeab))
+* **kcconfigs/vitest:** migrate to sync config-builder APIs ([2e154b0](https://github.com/kc-workspace/kcws/commit/2e154b0ff8f1493c95e96d3a8ab9e11a344dfca5))
+* **kcconfigs/vitest:** rename models directory to types ([5210aa2](https://github.com/kc-workspace/kcws/commit/5210aa2964dd88e469931c5046081dfdc363d757))
+* **kcconfigs/vitest:** scope default coverage include to src ([1ee0d3b](https://github.com/kc-workspace/kcws/commit/1ee0d3b18b31328b07cca597cff5a1c7b1a991d2))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/vitest:** require Node 22 ([0fceec3](https://github.com/kc-workspace/kcws/commit/0fceec32d5457ad54928fd3e9215c198202b1ee1))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+    * @kcconfigs/tsconfig bumped to 2.0.0
+    * @kcconfigs/tsdown bumped to 0.4.0
+    * @kctypes/generic bumped to 3.0.0
+
 ## [0.3.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.3.4...@kcconfigs/vitest+v0.3.5) (2026-10-04)
 
 

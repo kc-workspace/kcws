@@ -1,5 +1,32 @@
 # Changelog
 
+## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.8...@kcconfigs/tsconfig+v2.0.0) (2026-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/tsconfig:** Require Node.js 22 or newer.
+
+### Performance Improvements
+
+* **deps:** bump @types/node from 24.13.3 to 24.19.0 ([#256](https://github.com/kc-workspace/kcws/issues/256)) ([c662bad](https://github.com/kc-workspace/kcws/commit/c662badf8e98b0a6828777959a965668e19f2c44))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/tsconfig:** require Node 22 ([b6b771c](https://github.com/kc-workspace/kcws/commit/b6b771c14599fbec5552473b9120151b759d5eb0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kctypes/generic bumped to 3.0.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 3.0.0
+  * peerDependencies
+    * @kctypes/generic bumped to 3.0.0
+
 ## [1.1.8](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.7...@kcconfigs/tsconfig+v1.1.8) (2026-09-14)
 
 
