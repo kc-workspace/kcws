@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/typedoc",
-	"version": "0.3.8",
+	"version": "0.4.0",
 	"description": "Shared typedoc configuration",
 	"type": "module",
 	"scripts": {
