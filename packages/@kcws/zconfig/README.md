@@ -116,6 +116,6 @@ Format libraries are optional peers and loaded only when their adapter runs. A m
 
 ## Errors
 
-- `ZconfigSchemaError` means a schema key violates the camelCase rule.
+- `ZconfigSchemaError` means a schema key violates the camelCase rule or is a symbol.
 - `ZconfigAdapterError` means an adapter could not load or parse its source.
 - `ZconfigValidationError` contains the original Zod `issues` and `cause`.

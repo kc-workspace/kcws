@@ -13,7 +13,7 @@
 	"dependencies": {
 		"@kctypes/generic": "workspace:*",
 		"@types/bun": "^1.4.2",
-		"@types/node": "^24.0.0"
+		"@types/node": "^24.19.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.15",
@@ -22,7 +22,7 @@
 	"peerDependencies": {
 		"@kctypes/generic": "workspace:*",
 		"@types/bun": "^1.4.0",
-		"@types/node": "^24.0.0",
+		"@types/node": "^24.19.0",
 		"typescript": "^6.0.0"
 	},
 	"peerDependenciesMeta": {
