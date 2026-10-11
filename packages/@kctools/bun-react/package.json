@@ -1,6 +1,6 @@
 {
 	"name": "@kctools/bun-react",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "Deprecated; use @kctools/bun-server instead",
 	"private": false,
 	"type": "module",
