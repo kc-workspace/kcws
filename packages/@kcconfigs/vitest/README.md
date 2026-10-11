@@ -151,26 +151,29 @@ matching mock file cannot be found.
 
 Tests then drive the in-memory filesystem through `@kcconfigs/vitest/mocks`:
 
-| Export     | Description                                                         |
-| ---------- | ------------------------------------------------------------------- |
-| `vol`      | The [memfs](https://github.com/streamich/memfs) volume backing `fs` |
-| `mockCwd`  | The mocked `process.cwd()` value, `/mock/cwd`                       |
-| `mockHome` | The mocked home directory, `/mock/home`                             |
-| `mockTmp`  | The mocked temp directory, `/mock/tmp`                              |
+| Export           | Description                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| `vol`            | The [memfs](https://github.com/streamich/memfs) volume backing `fs`                 |
+| `resetVol()`     | Clear `vol` and recreate `mockCwd`, `mockHome`, and `mockTmp`                       |
+| `createMockFs()` | A fresh `node:fs` compatible object backed by `vol`, safe to clone (graceful-fs)    |
+| `mockCwd`        | The mocked `process.cwd()` value, `/mock/cwd`; relative `vol` paths resolve here    |
+| `mockHome`       | The mocked home directory, `/mock/home`                                             |
+| `mockTmp`        | The mocked temp directory, `/mock/tmp`                                              |
 
 Reset the volume in `afterEach` so tests stay isolated:
 
 ```ts
-import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
+import { resetVol, vol } from "@kcconfigs/vitest/mocks";
 import { afterEach, expect, test } from "vitest";
 import { readConfig } from ".";
 
 afterEach(() => {
-  vol.reset();
+  resetVol();
 });
 
 test("reads config from the working directory", () => {
-  vol.fromJSON({ "config.json": '{"name":"kcws"}' }, mockCwd);
+  // Relative paths resolve against mockCwd
+  vol.fromJSON({ "config.json": '{"name":"kcws"}' });
 
   expect(readConfig()).toEqual({ name: "kcws" });
 });

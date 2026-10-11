@@ -1,8 +1,9 @@
-import type * as fsPromisesType from "node:fs/promises";
-import { fs as _memfs } from "memfs";
 import { vi } from "vitest";
+// Import from dist, the same module `@kcconfigs/vitest/mocks` resolves to,
+// so tests and mocks share a single memfs volume.
+import { createMockFs } from "../dist/mockHelpers/index.js";
 
-const memfs = _memfs.promises as unknown as typeof fsPromisesType;
+const memfs = createMockFs().promises;
 
 /* jscpd:ignore-start */
 vi.mock(import("node:fs/promises"), () => {
@@ -16,14 +17,9 @@ vi.mock(import("fs/promises"), () => {
 
 // Support CJS require() method since vi.mock didn't support require()
 vi.hoisted(async () => {
-	const { fs: mockFS, vol } = await import("memfs");
-	vol.fromJSON(
-		{
-			"./.gitkeep": "",
-		},
-		"/mock/tmp",
-	);
-
-	require.cache["fs/promises"] = { exports: mockFS.promises } as never;
+	const { createMockFs } = await import("../dist/mockHelpers/index.js");
+	require.cache["fs/promises"] = {
+		exports: createMockFs().promises,
+	} as never;
 });
 /* jscpd:ignore-end */
