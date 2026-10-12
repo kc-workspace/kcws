@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v2.0.0...@kcconfigs/tsconfig+v2.1.0) (2026-10-12)
+
+
+### Features
+
+* **kcconfigs/tsconfig:** include all typescript files from root in bun preset ([#259](https://github.com/kc-workspace/kcws/issues/259)) ([c1aca40](https://github.com/kc-workspace/kcws/commit/c1aca400b7286527d67cae5d9adb8f9523240fc0))
+
 ## [2.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v1.1.8...@kcconfigs/tsconfig+v2.0.0) (2026-10-11)
 
 

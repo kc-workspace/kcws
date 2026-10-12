@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.3.0...@kcinternals/config-builder+v0.3.1) (2026-10-12)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.1.0
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.2.6...@kcinternals/config-builder+v0.3.0) (2026-10-11)
 
 
