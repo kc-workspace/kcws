@@ -1,4 +1,16 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": ["./default.json", "../features/bun.json"]
+	"extends": ["./default.json", "../features/bun.json"],
+	"include": [
+		"${configDir}/package.json",
+		"${configDir}/**/*.ts",
+		"${configDir}/**/*.tsx",
+		"${configDir}/**/*.mts",
+		"${configDir}/**/*.cts"
+	],
+	"exclude": ["${configDir}/**/node_modules/**", "${configDir}/dist/**"],
+	"compilerOptions": {
+		// Modules - https://www.typescriptlang.org/tsconfig/#Modules_6244
+		"rootDir": "${configDir}"
+	}
 }
