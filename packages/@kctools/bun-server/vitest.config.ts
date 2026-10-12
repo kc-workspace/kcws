@@ -5,6 +5,7 @@ const config = defineProjectConfig(
 	useMockPlugin({
 		flags: {
 			console: true,
+			fsPromises: true,
 		},
 	}),
 );

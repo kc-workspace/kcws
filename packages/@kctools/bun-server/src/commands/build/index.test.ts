@@ -1,6 +1,7 @@
+import { resetVol, vol } from "@kcconfigs/vitest/mocks";
 import type { BuildConfig, BuildOutput } from "bun";
 import { Command } from "commander";
-import { beforeEach, describe, expect, test, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import type { BunType } from "#types";
 import build from "./index";
 
@@ -73,6 +74,10 @@ describe("build", () => {
 		log.info.mockClear();
 		log.warn.mockClear();
 		log.error.mockClear();
+	});
+
+	afterEach(() => {
+		resetVol();
 	});
 
 	test("is described as the build command", () => {
@@ -226,5 +231,49 @@ describe("build", () => {
 			"The following static files will overwrite build output",
 		);
 		expect(write).not.toHaveBeenCalled();
+	});
+
+	test("keeps the output directory by default", async () => {
+		vol.fromJSON({ "/repo/dist/stale.js": "stale" });
+		const { bun } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo"]);
+
+		expect(vol.existsSync("/repo/dist/stale.js")).toBe(true);
+	});
+
+	test("removes the output directory before building with --clean", async () => {
+		vol.fromJSON({ "/repo/dist/stale.js": "stale" });
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo", "--clean"]);
+
+		expect(vol.existsSync("/repo/dist")).toBe(false);
+		expect(bunBuild).toHaveBeenCalled();
+	});
+
+	test("builds with --clean when the output directory is missing", async () => {
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo", "--clean"]);
+
+		expect(bunBuild).toHaveBeenCalled();
+	});
+
+	test.for([
+		{ name: "the working directory", out: "." },
+		{ name: "a parent of the working directory", out: ".." },
+	])("refuses to clean $name", async ({ out }) => {
+		vol.fromJSON({ "/repo/pages/index.html": "<html></html>" });
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo", "--out", out, "--clean"]);
+
+		expect(vol.existsSync("/repo/pages/index.html")).toBe(true);
+		expect(bunBuild).not.toHaveBeenCalled();
+		expect(log.error).toHaveBeenCalledWith(
+			{ out: expect.any(String) },
+			"Refuse to clean an output directory containing the working directory",
+		);
 	});
 });

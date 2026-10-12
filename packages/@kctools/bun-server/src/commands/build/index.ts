@@ -1,4 +1,5 @@
-import { resolve } from "node:path";
+import { rm } from "node:fs/promises";
+import { isAbsolute, relative, resolve } from "node:path";
 import type { BuildConfig } from "bun";
 import type { Command } from "commander";
 import { DEFAULT_OUTPUT } from "#constants";
@@ -34,7 +35,14 @@ const define = (command: Command) => {
 			"-O, --out <directory>",
 			"Specify the output directory",
 			DEFAULT_OUTPUT,
-		);
+		)
+		.option("--clean", "Remove the output directory before building", false);
+};
+
+/** Whether `out` is `cwd` itself or one of its ancestors. */
+const containsCwd = (cwd: string, out: string): boolean => {
+	const path = relative(out, cwd);
+	return !path.startsWith("..") && !isAbsolute(path);
 };
 
 const build: CommandFn = defineCommand(
@@ -61,6 +69,18 @@ const build: CommandFn = defineCommand(
 			const staticFiles = await parseStaticFiles(Bun, options);
 
 			const plugins = await readPlugins(Bun, options);
+
+			if (readOptions<boolean>(options, "clean")) {
+				if (containsCwd(cwd, out)) {
+					logger.error(
+						{ out },
+						"Refuse to clean an output directory containing the working directory",
+					);
+					return;
+				}
+				logger.debug({ out }, "Cleaning the output directory");
+				await rm(out, { recursive: true, force: true });
+			}
 
 			const started = performance.now();
 			const buildConfig: BuildConfig = {
