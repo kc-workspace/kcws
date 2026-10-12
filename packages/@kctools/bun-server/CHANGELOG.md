@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.0...@kctools/bun-server+v0.4.1) (2026-10-12)
+
+
+### Features
+
+* **kctools/bun-server:** add --clean flag to build command ([#257](https://github.com/kc-workspace/kcws/issues/257)) ([bf43c80](https://github.com/kc-workspace/kcws/commit/bf43c80885137e97f467c91dd2b60e0ce375625b))
+
 ## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.3.4...@kctools/bun-server+v0.4.0) (2026-10-11)
 
 
