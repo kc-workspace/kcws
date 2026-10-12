@@ -58,7 +58,7 @@ This package provides multiple tsconfig presets, environments, and features:
 | `@kcconfigs/tsconfig/bundler`  | Use for with bundler (vite, tsdown, etc.)  |
 | `@kcconfigs/tsconfig/react`    | Use for React projects (extends bundler)   |
 | `@kcconfigs/tsconfig/lit`      | Use for [Lit][lit] projects                |
-| `@kcconfigs/tsconfig/bun`      | Default plus Bun types                     |
+| `@kcconfigs/tsconfig/bun`      | Bun types, include all TS files from root  |
 | `@kcconfigs/tsconfig/dts`      | Use for generate declaration and maps      |
 | `@kcconfigs/tsconfig/zshy`     | Use with [zshy][zshy]                      |
 
@@ -190,7 +190,10 @@ The react preset extends from bundler with React support.
 
 ### Bun with Lit
 
-The Bun preset extends from `default`, you can extend lit feature for lit support.
+The Bun preset extends from `default` with Bun types. Because Bun runs TypeScript
+natively, it includes every TypeScript file (`.ts`, `.tsx`, `.mts`, `.cts`)
+under the project root (excluding `node_modules` and `dist`) instead of only
+`src/`. You can extend lit feature for lit support.
 
 ```json
 {
