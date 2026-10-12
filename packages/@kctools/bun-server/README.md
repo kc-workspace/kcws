@@ -148,6 +148,7 @@ bun-server build [input...] [options]
 | ----------------------------------------------- | ------------ | ------------------------------ |
 | `-M, --minify` / `-N, --no-minify`              | enabled      | toggle minification            |
 | `-O, --out <directory>`                         | `dist`       | output directory               |
+| `--clean`                                       | disabled     | remove output directory first  |
 | `-s, --statics <source[:target]>`               | —            | [static files](#static-files)  |
 | `-E, --environment <name>` / `--no-environment` | `production` | `NODE_ENV` value, or untouched |
 
@@ -155,6 +156,9 @@ Runs `Bun.build()` with every route as an entrypoint: browser target, ESM, code
 splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined.
 `--environment` also replaces `process.env.NODE_ENV` with the given value. Logs
 each output file with its size and kind, then a total.
+
+`--clean` removes the output directory before building. It refuses to clean
+an output directory that is the working directory or one of its parents.
 
 ### preview
 
