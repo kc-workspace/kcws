@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.1...@kcws/zconfig+v0.3.2) (2026-10-14)
+
+
+### Features
+
+* **kcws/zconfig:** add content and stream adapters ([#262](https://github.com/kc-workspace/kcws/issues/262)) ([a35afcc](https://github.com/kc-workspace/kcws/commit/a35afcc763ac6605cfebeea3373506d626cb5eaa))
+
 ## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.0...@kcws/zconfig+v0.3.1) (2026-10-12)
 
 
