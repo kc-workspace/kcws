@@ -1,7 +1,7 @@
 import type { Adapter } from "#types";
-import { importAsync, importSync } from "#utils/imports";
+import { resolveParser, toFileParser } from "../content/utils";
 import { fileAdapter } from "../file";
-import type { YamlAdapterOptions, YamlParserModule } from "./types";
+import type { YamlAdapterOptions } from "./types";
 import { getYamlFiles } from "./utils";
 
 /**
@@ -19,12 +19,7 @@ const yamlAdapter = (options: YamlAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "yaml",
 		files: getYamlFiles(),
-		parseSync: (content) =>
-			importSync<YamlParserModule>("yaml", "yaml").parse(content),
-		parse: (content) =>
-			importAsync<YamlParserModule>("yaml", "yaml").then((mod) =>
-				mod.parse(content),
-			),
+		...toFileParser(resolveParser("yaml", { format: "yaml" })),
 		...options,
 	});
 

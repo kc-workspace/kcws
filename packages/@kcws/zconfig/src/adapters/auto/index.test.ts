@@ -78,6 +78,14 @@ describe("autoAdapter", () => {
 		expect(() => autoAdapter().loadSync()).toThrow(ZconfigAdapterError);
 	});
 
+	test("throws a typed error for an unsupported explicit file extension", async () => {
+		vol.fromJSON({ "config.ini": "debug=true\n" }, mockCwd);
+
+		const adapter = autoAdapter({ path: "config.ini" });
+		expect(() => adapter.loadSync()).toThrow(/unsupported file extension/);
+		await expect(adapter.load()).rejects.toThrow(ZconfigAdapterError);
+	});
+
 	test("applies a leaf transform", () => {
 		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, mockCwd);
 

@@ -111,6 +111,7 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 - `autoAdapter` discovers the first supported configuration file and selects its parser from the file extension.
   It supports `.yaml`, `.yml`, `.json5`, `.jsonc`, `.json`, and `.toml`; `.json` files use strict JSON parsing and
   `.jsonc` files use JSONC parsing. Unlike `jsonAdapter`, it has no `jsonc` override.
+  An explicit `path` with any other extension throws `ZconfigAdapterError`.
 - `jsonAdapter` reads JSONC by default for `.json` and always uses JSONC for `.jsonc`.
 - `json5Adapter` reads JSON5 files.
 - `yamlAdapter` reads `.yaml` and `.yml` files.

@@ -1,32 +1,30 @@
 import type { Adapter } from "#types";
-import { importSync } from "#utils/imports";
+import type { ContentFormat } from "../content";
+import { toFileParserByPath } from "../content/utils";
 import { fileAdapter } from "../file";
-import type { JsonParserModule } from "../json/types";
-import type { Json5ParserModule } from "../json5/types";
-import type { TomlParserModule } from "../toml/types";
-import type { YamlParserModule } from "../yaml/types";
 import type { AutoAdapterOptions } from "./types";
 import { getAutoFiles } from "./utils";
+
+const FORMATS: [string, Exclude<ContentFormat, "dotenv">][] = [
+	[".yaml", "yaml"],
+	[".yml", "yaml"],
+	[".json5", "json5"],
+	[".jsonc", "jsonc"],
+	[".json", "json"],
+	[".toml", "toml"],
+];
 
 const autoAdapter = (options: AutoAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "auto",
 		files: getAutoFiles(),
-		parseSync: (content, path) => {
-			if (path.endsWith(".yaml") || path.endsWith(".yml")) {
-				return importSync<YamlParserModule>("yaml", "yaml").parse(content);
-			} else if (path.endsWith(".json5")) {
-				return importSync<Json5ParserModule>("json5", "json5").parse(content);
-			} else if (path.endsWith(".jsonc")) {
-				return importSync<JsonParserModule>("jsonc", "jsonc-parser").parse(
-					content,
-				);
-			} else if (path.endsWith(".json")) {
-				return JSON.parse(content);
-			} else if (path.endsWith(".toml")) {
-				return importSync<TomlParserModule>("toml", "smol-toml").parse(content);
+		...toFileParserByPath("auto", (file) => {
+			const format = FORMATS.find(([extension]) => file.endsWith(extension));
+			if (format === undefined) {
+				throw new Error(`unsupported file extension: ${file}`);
 			}
-		},
+			return { format: format[1] };
+		}),
 		...options,
 	});
 

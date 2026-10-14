@@ -1,6 +1,7 @@
 import type { RawConfig } from "#types";
 import { importAsync, importSync } from "#utils/imports";
 import { decodeDotenv } from "../dotenv/utils";
+import type { FileAdapterOptions } from "../file";
 import { parseJson, parseJsonc } from "../json/utils";
 import type { Json5ParserModule } from "../json5/types";
 import type { TomlParserModule } from "../toml/types";
@@ -88,6 +89,37 @@ export const resolveParser = (
  */
 export const toRawConfig = (parsed: unknown): RawConfig =>
 	(parsed ?? {}) as RawConfig;
+
+/**
+ * Adapts a resolved parser pair to the {@link fileAdapter} parser options.
+ *
+ * @param parser - parser pair from {@link resolveParser}
+ * @returns `parseSync` and `parse` options for {@link fileAdapter}
+ */
+export const toFileParser = (
+	parser: ContentParser,
+): Required<Pick<FileAdapterOptions, "parse" | "parseSync">> => ({
+	parseSync: <T>(content: string): T => parser.parseSync(content) as T,
+	parse: <T>(content: string): Promise<T> =>
+		parser.parse(content) as Promise<T>,
+});
+
+/**
+ * Adapts a per-file parser selection to the {@link fileAdapter} parser options.
+ *
+ * @param name - adapter name, reported when a format library is missing
+ * @param select - chooses the format or custom parser for a file path
+ * @returns `parseSync` and `parse` options for {@link fileAdapter}
+ */
+export const toFileParserByPath = (
+	name: string,
+	select: (file: string) => ContentParseOptions,
+): Required<Pick<FileAdapterOptions, "parse" | "parseSync">> => ({
+	parseSync: <T>(content: string, file: string): T =>
+		resolveParser(name, select(file)).parseSync(content) as T,
+	parse: <T>(content: string, file: string): Promise<T> =>
+		resolveParser(name, select(file)).parse(content) as Promise<T>,
+});
 
 const fromSync = (parseSync: (content: string) => unknown): ContentParser => ({
 	parseSync,
