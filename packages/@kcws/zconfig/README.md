@@ -58,17 +58,19 @@ import {
   dotenvAdapter,
   envAdapter,
   autoAdapter,
+  contentAdapter,
   jsonAdapter,
   json5Adapter,
   staticAdapter,
+  streamAdapter,
   tomlAdapter,
   yamlAdapter,
 } from "@kcws/zconfig/adapters";
 import jsonAdapter from "@kcws/zconfig/adapters/json";
 ```
 
-The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `autoAdapter`, `jsonAdapter`, `json5Adapter`,
-`yamlAdapter`, and `tomlAdapter`. File adapters support discovery, an explicit `path`, `optional: true`, and a leaf
+The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `contentAdapter`, `streamAdapter`, `autoAdapter`,
+`jsonAdapter`, `json5Adapter`, `yamlAdapter`, and `tomlAdapter`. File adapters support discovery, an explicit `path`, `optional: true`, and a leaf
 `transform`.
 
 ## Schema keys
@@ -103,9 +105,13 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 - `dotenvAdapter` reads dotenv-style files such as `.env` and decodes their keys using the same options as
   `envAdapter`.
 - `staticAdapter` returns an already available raw configuration object and can apply a leaf `transform`.
+- `contentAdapter` parses in-memory content (a string, `Uint8Array`, or `Buffer`) with a built-in `format` or a custom
+  parser. See [Content and streams](#content-and-streams).
+- `streamAdapter` reads and parses a stream or asynchronous source. It supports `loadConfig` only.
 - `autoAdapter` discovers the first supported configuration file and selects its parser from the file extension.
   It supports `.yaml`, `.yml`, `.json5`, `.jsonc`, `.json`, and `.toml`; `.json` files use strict JSON parsing and
   `.jsonc` files use JSONC parsing. Unlike `jsonAdapter`, it has no `jsonc` override.
+  An explicit `path` with any other extension throws `ZconfigAdapterError`.
 - `jsonAdapter` reads JSONC by default for `.json` and always uses JSONC for `.jsonc`.
 - `json5Adapter` reads JSON5 files.
 - `yamlAdapter` reads `.yaml` and `.yml` files.
@@ -113,6 +119,44 @@ Adapters preserve source values. Put coercion in the schema, where the intended 
 
 Format libraries are optional peers and loaded only when their adapter runs. A missing library throws
 `ZconfigAdapterError` with the adapter name and package to install.
+
+## Content and streams
+
+Use `contentAdapter` and `streamAdapter` for configuration that is not a local file. Both take a built-in `format`
+(`yaml`, `json`, `jsonc`, `json5`, `toml`, or `dotenv`) or a custom `parseSync`/`parse` pair, plus the usual
+`transform`. The `dotenv` format also accepts `prefix` and `pathSeparator`, like `dotenvAdapter`. Set `name` to
+identify the source in errors.
+
+```typescript
+import { loadConfig } from "@kcws/zconfig";
+import {
+  contentAdapter,
+  envAdapter,
+  streamAdapter,
+  yamlAdapter,
+} from "@kcws/zconfig/adapters";
+
+const config = await loadConfig(schema, [
+  // Remote configuration first, then local files and the environment override it
+  streamAdapter({
+    name: "consul",
+    format: "json",
+    stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
+  }),
+  contentAdapter({ format: "yaml", content: process.argv[2] ?? "" }),
+  yamlAdapter({ path: "./config.yaml", optional: true }),
+  envAdapter({ prefix: "APP" }),
+]);
+```
+
+`content` may be a value or a function called on every load. `stream` accepts any async iterable of strings or bytes,
+including Node.js `Readable`, `process.stdin`, and web `ReadableStream` such as a `fetch` response body. It also accepts
+a function returning a stream, a string, or bytes (optionally as a Promise). A stream can only be read once: a stream
+value fails on a second load, so pass a function when the adapter is reused. Bytes are decoded as UTF-8, and an empty
+document loads as `{}`.
+
+`streamAdapter` cannot load synchronously; its `loadSync` throws `ZconfigAdapterError`, so `loadConfigSync` fails
+when given a stream adapter.
 
 ## Errors
 
