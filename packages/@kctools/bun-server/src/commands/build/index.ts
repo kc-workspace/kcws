@@ -54,7 +54,12 @@ const build: CommandFn = defineCommand(
 			const out = resolve(cwd, readOptions<string>(options, "out"));
 			logger.debug({ inputs, options }, "building the project");
 
-			const defines: Record<string, string> = {};
+			const { BUN_PUBLIC_BUILD_DATE: buildDate } = process.env;
+			const defines: Record<string, string> = {
+				"process.env.BUN_PUBLIC_BUILD_DATE": JSON.stringify(
+					buildDate ?? new Date().toISOString(),
+				),
+			};
 			const environment = readOptions<string | false>(options, "environment");
 			if (typeof environment === "string") {
 				defines["process.env.NODE_ENV"] = JSON.stringify(environment);

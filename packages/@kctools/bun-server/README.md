@@ -155,7 +155,8 @@ bun-server build [input...] [options]
 Runs `Bun.build()` with every route as an entrypoint: browser target, ESM, code
 splitting, linked source maps, and only `BUN_PUBLIC_*` env vars inlined.
 `--environment` also replaces `process.env.NODE_ENV` with the given value. Logs
-each output file with its size and kind, then a total.
+each output file with its size and kind, then a total. `BUN_PUBLIC_BUILD_DATE`
+defaults to the build time in ISO 8601 UTC format; an existing value is kept.
 
 `--clean` removes the output directory before building. It refuses to clean
 an output directory that is the working directory or one of its parents.

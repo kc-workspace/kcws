@@ -77,6 +77,8 @@ describe("build", () => {
 	});
 
 	afterEach(() => {
+		vi.useRealTimers();
+		vi.unstubAllEnvs();
 		resetVol();
 	});
 
@@ -125,22 +127,33 @@ describe("build", () => {
 		{
 			name: "defines NODE_ENV as production by default",
 			args: [],
-			expected: { "process.env.NODE_ENV": '"production"' },
+			expected: {
+				"process.env.BUN_PUBLIC_BUILD_DATE": expect.any(String),
+				"process.env.NODE_ENV": '"production"',
+			},
 		},
 		{
 			name: "defines NODE_ENV as the given environment",
 			args: ["--environment", "staging"],
-			expected: { "process.env.NODE_ENV": '"staging"' },
+			expected: {
+				"process.env.BUN_PUBLIC_BUILD_DATE": expect.any(String),
+				"process.env.NODE_ENV": '"staging"',
+			},
 		},
 		{
 			name: "defines NODE_ENV with the -E short flag",
 			args: ["-E", "test"],
-			expected: { "process.env.NODE_ENV": '"test"' },
+			expected: {
+				"process.env.BUN_PUBLIC_BUILD_DATE": expect.any(String),
+				"process.env.NODE_ENV": '"test"',
+			},
 		},
 		{
 			name: "leaves NODE_ENV untouched with --no-environment",
 			args: ["--no-environment"],
-			expected: {},
+			expected: {
+				"process.env.BUN_PUBLIC_BUILD_DATE": expect.any(String),
+			},
 		},
 	])("$name", async ({ args, expected }) => {
 		const { bun, build: bunBuild } = createMockBun({ files: pages });
@@ -148,6 +161,30 @@ describe("build", () => {
 		await run(bun, ["pages", "--cwd", "/repo", ...args]);
 
 		expect(config(bunBuild).define).toEqual(expected);
+	});
+
+	test("defines BUN_PUBLIC_BUILD_DATE as the build timestamp", async () => {
+		vi.stubEnv("BUN_PUBLIC_BUILD_DATE", undefined);
+		vi.useFakeTimers();
+		vi.setSystemTime(new Date("2026-10-18T12:34:56.000Z"));
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo"]);
+
+		expect(config(bunBuild).define).toMatchObject({
+			"process.env.BUN_PUBLIC_BUILD_DATE": '"2026-10-18T12:34:56.000Z"',
+		});
+	});
+
+	test("preserves an existing BUN_PUBLIC_BUILD_DATE", async () => {
+		vi.stubEnv("BUN_PUBLIC_BUILD_DATE", "2026-10-17T00:00:00.000Z");
+		const { bun, build: bunBuild } = createMockBun({ files: pages });
+
+		await run(bun, ["pages", "--cwd", "/repo"]);
+
+		expect(config(bunBuild).define).toMatchObject({
+			"process.env.BUN_PUBLIC_BUILD_DATE": '"2026-10-17T00:00:00.000Z"',
+		});
 	});
 
 	test("copies the static files next to the build output", async () => {
