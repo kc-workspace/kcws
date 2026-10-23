@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.2...@kctools/bun-server+v0.4.3) (2026-10-23)
+
+
+### Bugfixes
+
+* **kctools/bun-server:** preserve build date env ([6dda797](https://github.com/kc-workspace/kcws/commit/6dda797e4a3569ddd4109ac18952dca2521e4ef5))
+
 ## [0.4.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.1...@kctools/bun-server+v0.4.2) (2026-10-12)
 
 
