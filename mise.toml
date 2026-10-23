@@ -1,5 +1,5 @@
 [tools]
-claude = "2.1.292"
+claude = "2.1.308"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "pnpm"]
