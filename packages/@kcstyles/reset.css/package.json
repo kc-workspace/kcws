@@ -11,7 +11,7 @@
 		"@kcconfigs/tsdown": "workspace:*",
 		"@tsdown/css": "0.23.0",
 		"lightningcss": "1.33.0",
-		"sass-embedded": "1.105.1",
+		"sass-embedded": "1.105.2",
 		"tsdown": "0.23.0"
 	},
 	"main": "./dist/index.css",
