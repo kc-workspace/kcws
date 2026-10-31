@@ -243,8 +243,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(typedoc@0.28.20)
       typedoc-plugin-dt-links:
-        specifier: 2.0.75
-        version: 2.0.75(typedoc@0.28.20)
+        specifier: 2.0.76
+        version: 2.0.76(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: 4.0.1
         version: 4.0.1(typedoc@0.28.20)
@@ -426,7 +426,7 @@ importers:
         version: 1.4.1(typedoc@0.28.20)
       typedoc-plugin-dt-links:
         specifier: ^2.0.0
-        version: 2.0.75(typedoc@0.28.20)
+        version: 2.0.76(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: ^4.0.0
         version: 4.0.1(typedoc@0.28.20)
@@ -5596,8 +5596,8 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.75:
-    resolution: {integrity: sha512-5XZEJyC0JbtoW1pBKc5Y+RNDoXP1p53TvtGXzJehaMxx7ZrBwic1A8h2d7RPAWuDPw27OVj/4LnlAMh1bT6jQA==}
+  typedoc-plugin-dt-links@2.0.76:
+    resolution: {integrity: sha512-71w92l9F07uwuqZqx3wagdV3PBk1eXKsjbHRYA+JK6VTYeuhPMC5d5cvcLbtQtyTeNqV/JMdzFL4JifY+InbrA==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -11255,7 +11255,7 @@ snapshots:
       '@material/material-color-utilities': 0.3.0
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.75(typedoc@0.28.20):
+  typedoc-plugin-dt-links@2.0.76(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
