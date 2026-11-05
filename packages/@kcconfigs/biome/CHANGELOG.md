@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v3.0.0...@kcconfigs/biome+v3.1.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** the svelte preset no longer disables useConst, useImportType, noUnusedVariables, and noUnusedImports for *.svelte files, and no longer sets formatter.useEditorconfig.
+
+### Features
+
+* **kcconfigs/biome:** add astro preset ([f322bdf](https://github.com/kc-workspace/kcws/commit/f322bdf95de9952f9896434fc9afca73df92a10b))
+* **kcconfigs/biome:** enable full svelte support in svelte preset ([8124f6a](https://github.com/kc-workspace/kcws/commit/8124f6ac13e50eb95e42d153e56fa2d0430705aa))
+* **kcconfigs/biome:** set explicit formatter options in base preset ([159b21c](https://github.com/kc-workspace/kcws/commit/159b21c32fe3b3645270600008d114aa11fcc41f))
+* **kcconfigs/biome:** trim file excludes in presets ([ad63944](https://github.com/kc-workspace/kcws/commit/ad63944f78e9ab816c16c645615fb69ca42cf1b5))
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** exclude node_modules in default preset ([8dd00f9](https://github.com/kc-workspace/kcws/commit/8dd00f97abcb1749ea023e6e82abdf2a071e7a4c))
+
+
+### Miscellaneous Chores
+
+* **kcconfigs/biome:** force update v3.0.0 =&gt; v3.1.0 ([11e23bc](https://github.com/kc-workspace/kcws/commit/11e23bc932125c888f6261489f40f2b650d546cb))
+
 ## [3.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v2.0.6...@kcconfigs/biome+v3.0.0) (2026-10-11)
 
 
