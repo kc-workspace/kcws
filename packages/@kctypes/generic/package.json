@@ -34,8 +34,19 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["typescript", "generic", "types", "typings"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "types", "!**/*.test-d.ts", "!*.test.*"],
+	"keywords": [
+		"typescript",
+		"generic",
+		"types",
+		"typings"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"types",
+		"!**/*.test-d.ts",
+		"!*.test.*"
+	],
 	"engines": {
 		"node": ">=22"
 	},

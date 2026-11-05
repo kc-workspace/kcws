@@ -50,8 +50,20 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["config", "builder", "plugin", "kcconfigs"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*", "!*.bench.*"],
+	"keywords": [
+		"config",
+		"builder",
+		"plugin",
+		"kcconfigs"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist",
+		"src",
+		"!*.test.*",
+		"!*.bench.*"
+	],
 	"engines": {
 		"node": ">=22"
 	},

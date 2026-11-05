@@ -125,7 +125,14 @@
 		"environment",
 		"dotenv"
 	],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*", "!*.bench.*"],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist",
+		"src",
+		"!*.test.*",
+		"!*.bench.*"
+	],
 	"engines": {
 		"node": ">=22"
 	},

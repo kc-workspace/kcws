@@ -97,8 +97,21 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["config", "typescript", "tsdown", "library", "compiler", "bundler"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*"],
+	"keywords": [
+		"config",
+		"typescript",
+		"tsdown",
+		"library",
+		"compiler",
+		"bundler"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist",
+		"src",
+		"!*.test.*"
+	],
 	"engines": {
 		"node": ">=22.0.0"
 	},

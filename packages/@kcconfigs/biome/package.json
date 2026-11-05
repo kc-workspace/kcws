@@ -31,8 +31,19 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["linter", "formatter", "config", "biome", "biome-plugin"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "biome-manifest.json", "src"],
+	"keywords": [
+		"linter",
+		"formatter",
+		"config",
+		"biome",
+		"biome-plugin"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"biome-manifest.json",
+		"src"
+	],
 	"engines": {
 		"node": ">=22"
 	},

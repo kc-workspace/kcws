@@ -83,8 +83,19 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["textlint", "textlintrule", "config", "preset"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*"],
+	"keywords": [
+		"textlint",
+		"textlintrule",
+		"config",
+		"preset"
+	],
+	"files": [
+		"CHANGELOG.json",
+		"CHANGELOG.md",
+		"dist",
+		"src",
+		"!*.test.*"
+	],
 	"engines": {
 		"node": ">=22"
 	},
