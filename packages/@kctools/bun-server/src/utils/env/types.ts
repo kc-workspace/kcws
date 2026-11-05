@@ -1,1 +1,1 @@
-export type ConvertEnv<T> = (value: string | undefined) => T | undefined;
+export type ConvertEnv<T> = (value: string | undefined) => T | undefined

@@ -1,5 +1,6 @@
-import { mergeConfig } from "./mergeConfig";
-import type { UserConfig } from "./model";
+import type {UserConfig} from "./model"
+
+import {mergeConfig} from "./mergeConfig"
 
 export const defineBaseConfig = (config?: UserConfig): UserConfig => {
 	const baseConfig: UserConfig = {
@@ -52,7 +53,7 @@ export const defineBaseConfig = (config?: UserConfig): UserConfig => {
 		treatValidationWarningsAsErrors: false,
 
 		// Other: https://typedoc.org/documents/Options.Other.html
-	};
+	}
 
-	return mergeConfig(baseConfig, config) as UserConfig;
-};
+	return mergeConfig(baseConfig, config) as UserConfig
+}

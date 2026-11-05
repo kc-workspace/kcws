@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod"
 
 /**
  * Zod schema for parsing string input to boolean.
@@ -18,12 +18,12 @@ import { z } from "zod";
  * ```
  */
 export const zBoolean: z.ZodPreprocess<z.ZodBoolean> = z.preprocess((val) => {
-	if (val === "" || val === undefined || val === null) return undefined;
-	if (typeof val === "boolean") return val;
+	if (val === "" || val === undefined || val === null) return undefined
+	if (typeof val === "boolean") return val
 	if (typeof val === "string") {
-		const trimmed = val.trim();
-		if (["true", "True", "TRUE"].includes(trimmed)) return true;
-		if (["false", "False", "FALSE"].includes(trimmed)) return false;
+		const trimmed = val.trim()
+		if (["true", "True", "TRUE"].includes(trimmed)) return true
+		if (["false", "False", "FALSE"].includes(trimmed)) return false
 	}
-	return val;
-}, z.boolean());
+	return val
+}, z.boolean())

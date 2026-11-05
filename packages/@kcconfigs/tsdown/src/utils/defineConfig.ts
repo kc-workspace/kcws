@@ -1,14 +1,14 @@
-import { defineConfigSync } from "@kcinternals/config-builder";
-import { baseConfig } from "../constants";
-import attwNormalize from "../internals/attwNormalize";
-import dtsNormalize from "../internals/dtsNormalize";
-import formatNormalize from "../internals/formatNormalize";
-import publintNormalize from "../internals/publintNormalize";
-import type { TsdownConfig, TsdownConfigPlugin } from "../models";
+import type {TsdownConfig, TsdownConfigPlugin} from "../models"
 
-const defineConfig = (
-	...plugins: TsdownConfigPlugin<string>[]
-): TsdownConfig => {
+import {defineConfigSync} from "@kcinternals/config-builder"
+
+import {baseConfig} from "../constants"
+import attwNormalize from "../internals/attwNormalize"
+import dtsNormalize from "../internals/dtsNormalize"
+import formatNormalize from "../internals/formatNormalize"
+import publintNormalize from "../internals/publintNormalize"
+
+const defineConfig = (...plugins: TsdownConfigPlugin<string>[]): TsdownConfig => {
 	return defineConfigSync(
 		baseConfig,
 		...plugins,
@@ -16,7 +16,7 @@ const defineConfig = (
 		dtsNormalize(),
 		formatNormalize(),
 		publintNormalize(),
-	);
-};
+	)
+}
 
-export default defineConfig;
+export default defineConfig

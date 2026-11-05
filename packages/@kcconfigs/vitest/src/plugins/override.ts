@@ -1,22 +1,17 @@
-import { definePluginSync } from "@kcinternals/config-builder";
-import type {
-	AnyConfig,
-	AnyVitestConfigPlugin,
-	ProjectConfig,
-	UserConfig,
-} from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {AnyConfig, AnyVitestConfigPlugin, ProjectConfig, UserConfig} from "../types"
+
+import {definePluginSync} from "@kcinternals/config-builder"
+
+import mergeConfig from "../utils/mergeConfig"
 
 /**
  * Vitest specific configuration type that can be either a root or project configuration.
  */
-export type OverrideConfig = UserConfig["test"] | ProjectConfig["test"];
+export type OverrideConfig = UserConfig["test"] | ProjectConfig["test"]
 
-const overridePlugin = (
-	config: OverrideConfig,
-): AnyVitestConfigPlugin<AnyConfig> =>
+const overridePlugin = (config: OverrideConfig): AnyVitestConfigPlugin<AnyConfig> =>
 	definePluginSync("override", {
 		configPriority: 1000,
-		applyConfig: (base) => mergeConfig(base, { test: config } as AnyConfig),
-	});
-export default overridePlugin;
+		applyConfig: (base) => mergeConfig(base, {test: config} as AnyConfig),
+	})
+export default overridePlugin

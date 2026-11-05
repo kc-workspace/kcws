@@ -1,8 +1,10 @@
-import { RuleConfigSeverity as Severity } from "@commitlint/types";
-import { definePluginAsync } from "@kcinternals/config-builder";
-import { MINIMAL_TYPES, STANDARD_TYPES } from "../constants";
-import type { CommitlintConfigPlugin, TypeMode, TypeObject } from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {CommitlintConfigPlugin, TypeMode, TypeObject} from "../types"
+
+import {RuleConfigSeverity as Severity} from "@commitlint/types"
+import {definePluginAsync} from "@kcinternals/config-builder"
+
+import {MINIMAL_TYPES, STANDARD_TYPES} from "../constants"
+import mergeConfig from "../utils/mergeConfig"
 
 /**
  * Resolves commit types from a {@link TypeMode}.
@@ -13,21 +15,21 @@ import mergeConfig from "../utils/mergeConfig";
 const getTypes = (mode: TypeMode): TypeObject => {
 	if (Array.isArray(mode)) {
 		return mode.reduce((acc, type) => {
-			acc[type] = {};
-			return acc;
-		}, {} as TypeObject);
+			acc[type] = {}
+			return acc
+		}, {} as TypeObject)
 	}
 	if (typeof mode !== "string") {
-		return mode;
+		return mode
 	}
 
 	switch (mode) {
 		case "standard":
-			return STANDARD_TYPES;
+			return STANDARD_TYPES
 		case "minimal":
-			return MINIMAL_TYPES;
+			return MINIMAL_TYPES
 	}
-};
+}
 
 /**
  * Types plugin — sets the `type-enum` rule and the prompt `type` question.
@@ -37,17 +39,15 @@ const getTypes = (mode: TypeMode): TypeObject => {
  * @param mode - Commit types to allow; defaults to `"standard"`
  * @returns commitlint config plugin
  */
-const typesPlugin = (
-	mode: TypeMode = "standard",
-): CommitlintConfigPlugin<"types"> =>
+const typesPlugin = (mode: TypeMode = "standard"): CommitlintConfigPlugin<"types"> =>
 	definePluginAsync("types", {
 		applyConfig: (base) => {
-			const types = getTypes(mode);
+			const types = getTypes(mode)
 			const merged = mergeConfig(base, {
 				rules: {
 					"type-enum": [Severity.Error, "always", Object.keys(types)],
 				},
-			});
+			})
 			// enum must replace, not merge, so earlier types do not leak through
 			return {
 				...merged,
@@ -55,10 +55,10 @@ const typesPlugin = (
 					...merged.prompt,
 					questions: {
 						...merged.prompt?.questions,
-						type: { ...merged.prompt?.questions?.type, enum: types },
+						type: {...merged.prompt?.questions?.type, enum: types},
 					},
 				},
-			};
+			}
 		},
-	});
-export default typesPlugin;
+	})
+export default typesPlugin

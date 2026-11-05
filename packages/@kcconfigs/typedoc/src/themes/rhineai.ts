@@ -1,4 +1,4 @@
-import { defineTheme, type ThemeConfig } from "../configs";
+import {defineTheme, type ThemeConfig} from "../configs"
 
 /**
  * Typedoc theme that mimics GitHub style
@@ -6,6 +6,6 @@ import { defineTheme, type ThemeConfig } from "../configs";
  */
 const rhineai: ThemeConfig = defineTheme({
 	plugin: ["typedoc-rhineai-theme"],
-});
+})
 
-export default rhineai;
+export default rhineai

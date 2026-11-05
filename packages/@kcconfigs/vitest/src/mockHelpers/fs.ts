@@ -1,22 +1,24 @@
-import type * as fsType from "node:fs";
-import { memfs, type Volume } from "memfs";
-import { mockCwd, mockHome, mockTmp } from "./constants";
+import type * as fsType from "node:fs"
 
-const instance = memfs({}, mockCwd);
+import {memfs, type Volume} from "memfs"
+
+import {mockCwd, mockHome, mockTmp} from "./constants"
+
+const instance = memfs({}, mockCwd)
 
 /**
  * The [memfs](https://github.com/streamich/memfs) volume backing the mocked
  * `fs` and `fs/promises` modules. Relative paths resolve against
  * {@link mockCwd}, matching the mocked `process.cwd()`.
  */
-export const vol: Volume = instance.vol;
+export const vol: Volume = instance.vol
 
 const seedVol = (): void => {
 	for (const dir of [mockCwd, mockHome, mockTmp]) {
-		vol.mkdirSync(dir, { recursive: true });
+		vol.mkdirSync(dir, {recursive: true})
 	}
-};
-seedVol();
+}
+seedVol()
 
 /**
  * Reset {@link vol} to its initial state: every file is removed, then the
@@ -24,9 +26,9 @@ seedVol();
  * recreated. Call it in `afterEach` to keep tests isolated.
  */
 export const resetVol = (): void => {
-	vol.reset();
-	seedVol();
-};
+	vol.reset()
+	seedVol()
+}
 
 /**
  * Create a `node:fs` compatible object backed by {@link vol}.
@@ -38,5 +40,5 @@ export const resetVol = (): void => {
  * plain data property, so cloning it is safe.
  */
 export const createMockFs = (): typeof fsType => {
-	return { ...instance.fs } as unknown as typeof fsType;
-};
+	return {...instance.fs} as unknown as typeof fsType
+}

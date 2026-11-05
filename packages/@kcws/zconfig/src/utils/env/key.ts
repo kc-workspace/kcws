@@ -1,4 +1,4 @@
-const symbol = /\W/g;
+const symbol = /\W/g
 
 /**
  * Encodes a camelCase key path into an env name.
@@ -7,28 +7,24 @@ const symbol = /\W/g;
  * @param keySep separator used for nested keys
  * @returns encoded env name
  */
-export const encodeEnvKey = (
-	keys: string[],
-	prefix: string | undefined,
-	keySep: string,
-): string => {
-	const wSep = "_";
-	if (keySep === wSep) throw new Error(`keySep cannot be "${wSep}"`);
+export const encodeEnvKey = (keys: string[], prefix: string | undefined, keySep: string): string => {
+	const wSep = "_"
+	if (keySep === wSep) throw new Error(`keySep cannot be "${wSep}"`)
 
-	const prefixVal = getPrefixVal(prefix) ?? "";
-	const prefixEnv = prefixVal.replace(symbol, wSep).toUpperCase();
+	const prefixVal = getPrefixVal(prefix) ?? ""
+	const prefixEnv = prefixVal.replace(symbol, wSep).toUpperCase()
 	const keyEnv = keys
 		.map((key) => {
 			return key
 				.replace(/^\d+/g, "")
 				.replace(/([A-Z])/g, `${wSep}$1`)
-				.replace(symbol, wSep);
+				.replace(symbol, wSep)
 		})
 		.join(keySep)
-		.toUpperCase();
+		.toUpperCase()
 
-	return `${prefixEnv}${keyEnv}`;
-};
+	return `${prefixEnv}${keyEnv}`
+}
 
 /**
  * Decodes an env name into a camelCase key path.
@@ -37,44 +33,33 @@ export const encodeEnvKey = (
  * @param sep separator used for nested keys
  * @returns camelCase key path or undefined if the key does not match the prefix
  */
-export const decodeEnvKey = (
-	key: string,
-	prefix: string | undefined,
-	keySep: string,
-): string[] | undefined => {
-	const wSep = "_";
-	if (keySep === wSep) throw new Error(`keySep cannot be "${wSep}"`);
+export const decodeEnvKey = (key: string, prefix: string | undefined, keySep: string): string[] | undefined => {
+	const wSep = "_"
+	if (keySep === wSep) throw new Error(`keySep cannot be "${wSep}"`)
 
-	const prefixVal = getPrefixVal(prefix);
-	let encoded: string;
+	const prefixVal = getPrefixVal(prefix)
+	let encoded: string
 	if (prefixVal === undefined) {
-		encoded = key;
+		encoded = key
 	} else if (!key.startsWith(prefixVal)) {
-		return undefined;
+		return undefined
 	} else {
-		encoded = key.slice(prefixVal.length);
+		encoded = key.slice(prefixVal.length)
 	}
 
-	const segments = encoded.split(keySep);
-	if (
-		segments.some(
-			(segment) =>
-				segment.length === 0 ||
-				segment.startsWith(wSep) ||
-				segment.endsWith(wSep),
-		)
-	) {
-		return undefined;
+	const segments = encoded.split(keySep)
+	if (segments.some((segment) => segment.length === 0 || segment.startsWith(wSep) || segment.endsWith(wSep))) {
+		return undefined
 	}
 
-	return segments.map(convertSnakeToCamel);
-};
+	return segments.map(convertSnakeToCamel)
+}
 
 const getPrefixVal = (prefix: string | undefined): string | undefined => {
-	if (prefix === undefined || prefix === "") return undefined;
-	else if (prefix.endsWith("_")) return prefix;
-	else return `${prefix}_`;
-};
+	if (prefix === undefined || prefix === "") return undefined
+	else if (prefix.endsWith("_")) return prefix
+	else return `${prefix}_`
+}
 
 const convertSnakeToCamel = (str: string): string =>
-	str.toLowerCase().replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+	str.toLowerCase().replace(/_([a-z])/g, (_, letter) => letter.toUpperCase())

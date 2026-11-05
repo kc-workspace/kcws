@@ -1,11 +1,11 @@
-import { describe, expect, test } from "vitest";
+import {describe, expect, test} from "vitest"
 
-import { createNamespace, NS_SEP } from "./namespace";
+import {createNamespace, NS_SEP} from "./namespace"
 
 describe("namespace", () => {
 	test("should expose colon separator", () => {
-		expect(NS_SEP).toBe(":");
-	});
+		expect(NS_SEP).toBe(":")
+	})
 
 	test.for([
 		{
@@ -32,7 +32,7 @@ describe("namespace", () => {
 			segments: ["action-a", undefined, "parser"] as unknown as string[],
 			expected: "stm:action-a:parser",
 		},
-	])("should $name", ({ parent, segments, expected }) => {
-		expect(createNamespace(parent, segments)).toBe(expected);
-	});
-});
+	])("should $name", ({parent, segments, expected}) => {
+		expect(createNamespace(parent, segments)).toBe(expected)
+	})
+})

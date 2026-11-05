@@ -1,5 +1,6 @@
-import type { RawConfig } from "#types";
-import { mergeInto } from "./utils";
+import type {RawConfig} from "#types"
+
+import {mergeInto} from "./utils"
 
 /**
  * Combines configuration objects in order, with later sources winning.
@@ -14,9 +15,9 @@ import { mergeInto } from "./utils";
  * @internal
  */
 const deepMerge = (...sources: RawConfig[]): RawConfig => {
-	const result: RawConfig = Object.create(null);
-	for (const source of sources) mergeInto(result, source);
-	return result;
-};
+	const result: RawConfig = Object.create(null)
+	for (const source of sources) mergeInto(result, source)
+	return result
+}
 
-export default deepMerge;
+export default deepMerge

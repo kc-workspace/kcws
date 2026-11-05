@@ -1,4 +1,4 @@
-import type { RawConfig } from "#types";
+import type {RawConfig} from "#types"
 
 /**
  * Narrows to objects safe to recurse into.
@@ -10,11 +10,11 @@ import type { RawConfig } from "#types";
  * @internal
  */
 const isPlainObject = (value: unknown): value is RawConfig => {
-	if (typeof value !== "object" || value === null) return false;
-	if (Array.isArray(value)) return false;
+	if (typeof value !== "object" || value === null) return false
+	if (Array.isArray(value)) return false
 
-	const proto = Object.getPrototypeOf(value) as unknown;
-	return proto === null || proto === Object.prototype;
-};
+	const proto = Object.getPrototypeOf(value) as unknown
+	return proto === null || proto === Object.prototype
+}
 
-export default isPlainObject;
+export default isPlainObject

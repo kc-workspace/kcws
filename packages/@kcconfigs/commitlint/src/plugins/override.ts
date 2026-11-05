@@ -1,7 +1,9 @@
-import { definePluginAsync } from "@kcinternals/config-builder";
-import { overridePriority } from "../constants";
-import type { CommitlintConfig, CommitlintConfigPlugin } from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {CommitlintConfig, CommitlintConfigPlugin} from "../types"
+
+import {definePluginAsync} from "@kcinternals/config-builder"
+
+import {overridePriority} from "../constants"
+import mergeConfig from "../utils/mergeConfig"
 
 /**
  * Override plugin — deep merges raw commitlint config on top of everything else.
@@ -11,11 +13,9 @@ import mergeConfig from "../utils/mergeConfig";
  * @param overrides - commitlint configs merged from left to right
  * @returns commitlint config plugin
  */
-const overridePlugin = (
-	...overrides: CommitlintConfig[]
-): CommitlintConfigPlugin<"override"> =>
+const overridePlugin = (...overrides: CommitlintConfig[]): CommitlintConfigPlugin<"override"> =>
 	definePluginAsync("override", {
 		configPriority: overridePriority,
 		applyConfig: (base) => mergeConfig(base, ...overrides),
-	});
-export default overridePlugin;
+	})
+export default overridePlugin

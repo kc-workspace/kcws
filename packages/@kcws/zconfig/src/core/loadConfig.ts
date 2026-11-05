@@ -1,10 +1,11 @@
 /* jscpd:ignore-start */
-import type { ZodType, z } from "zod";
-import type { Adapter, RawConfig } from "#types";
-import { deepMerge } from "#utils/deepMerge";
-import { asAdapterError } from "#utils/errors";
-import { validateConfig, validateSchema } from "#utils/validators";
-import { useGenericAdapters } from "../adapters";
+import type {ZodType, z} from "zod"
+import type {Adapter, RawConfig} from "#types"
+
+import {deepMerge} from "#utils/deepMerge"
+import {asAdapterError} from "#utils/errors"
+import {validateConfig, validateSchema} from "#utils/validators"
+import {useGenericAdapters} from "../adapters"
 
 /* jscpd:ignore-end */
 
@@ -29,17 +30,17 @@ const loadConfig = async <S extends ZodType>(
 	schema: S,
 	adapters: Adapter[] = useGenericAdapters(),
 ): Promise<z.output<S>> => {
-	validateSchema(schema);
+	validateSchema(schema)
 
-	const sources: RawConfig[] = [];
+	const sources: RawConfig[] = []
 	for (const adapter of adapters) {
 		try {
-			sources.push(await adapter.load());
+			sources.push(await adapter.load())
 		} catch (cause) {
-			throw asAdapterError(adapter, cause);
+			throw asAdapterError(adapter, cause)
 		}
 	}
 
-	return validateConfig(schema, deepMerge(...sources));
-};
-export default loadConfig;
+	return validateConfig(schema, deepMerge(...sources))
+}
+export default loadConfig

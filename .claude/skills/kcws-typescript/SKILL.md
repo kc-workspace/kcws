@@ -1,4 +1,5 @@
 ---
+
 name: kcws-typescript
 description: "Use when creating or changing TypeScript packages in the KCWS pnpm monorepo. Covers package classification, source layout, exports, public API types, tsconfig, tsdown, dependencies, and package documentation."
 user-invocable: true

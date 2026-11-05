@@ -1,15 +1,11 @@
-import type { Adapter } from "#types";
-import { toAdapterError } from "#utils/errors";
-import { applyTransform } from "#utils/transforms";
-import type { FileAdapterOptions } from "./types";
-import {
-	findConfig,
-	normalizeOptions,
-	readConfig,
-	readConfigSync,
-} from "./utils";
+import type {Adapter} from "#types"
+import type {FileAdapterOptions} from "./types"
 
-const LOAD_ERR = "Failed to load config file";
+import {toAdapterError} from "#utils/errors"
+import {applyTransform} from "#utils/transforms"
+import {findConfig, normalizeOptions, readConfig, readConfigSync} from "./utils"
+
+const LOAD_ERR = "Failed to load config file"
 
 /**
  * Creates an adapter for a custom file format.
@@ -27,31 +23,29 @@ const fileAdapter = (options: FileAdapterOptions): Adapter => ({
 	load: async () => {
 		/* jscpd:ignore-start */
 		try {
-			const opts = normalizeOptions(options);
-			const path = findConfig(opts);
-			const config = await readConfig(path, opts.parse);
-			return applyTransform(config, opts.transform);
+			const opts = normalizeOptions(options)
+			const path = findConfig(opts)
+			const config = await readConfig(path, opts.parse)
+			return applyTransform(config, opts.transform)
 		} catch (cause) {
-			const message =
-				cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR;
-			throw toAdapterError(options.name, message, cause);
+			const message = cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR
+			throw toAdapterError(options.name, message, cause)
 		}
 		/* jscpd:ignore-end */
 	},
 	loadSync: () => {
 		/* jscpd:ignore-start */
 		try {
-			const opts = normalizeOptions(options);
-			const path = findConfig(opts);
-			const config = readConfigSync(path, opts.parseSync);
-			return applyTransform(config, opts.transform);
+			const opts = normalizeOptions(options)
+			const path = findConfig(opts)
+			const config = readConfigSync(path, opts.parseSync)
+			return applyTransform(config, opts.transform)
 		} catch (cause) {
-			const message =
-				cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR;
-			throw toAdapterError(options.name, message, cause);
+			const message = cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR
+			throw toAdapterError(options.name, message, cause)
 		}
 		/* jscpd:ignore-end */
 	},
-});
+})
 
-export default fileAdapter;
+export default fileAdapter

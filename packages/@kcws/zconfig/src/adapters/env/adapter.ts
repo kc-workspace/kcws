@@ -1,6 +1,7 @@
-import type { Adapter } from "#types";
-import type { EnvAdapterOptions } from "./types";
-import { createConfig, normalizeOptions } from "./utils";
+import type {Adapter} from "#types"
+import type {EnvAdapterOptions} from "./types"
+
+import {createConfig, normalizeOptions} from "./utils"
 
 /**
  * Creates an adapter that reads configuration values from environment
@@ -16,13 +17,13 @@ import { createConfig, normalizeOptions } from "./utils";
 const envAdapter = (options: Partial<EnvAdapterOptions> = {}): Adapter => ({
 	name: "env",
 	load: () => {
-		const opts = normalizeOptions(options);
-		return Promise.resolve(createConfig(opts.processEnv, opts));
+		const opts = normalizeOptions(options)
+		return Promise.resolve(createConfig(opts.processEnv, opts))
 	},
 	loadSync: () => {
-		const opts = normalizeOptions(options);
-		return createConfig(opts.processEnv, opts);
+		const opts = normalizeOptions(options)
+		return createConfig(opts.processEnv, opts)
 	},
-});
+})
 
-export default envAdapter;
+export default envAdapter

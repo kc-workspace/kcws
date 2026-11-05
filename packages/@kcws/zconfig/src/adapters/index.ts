@@ -1,21 +1,20 @@
 export {
 	getConfigDirs,
 	getConfigFiles,
-} from "./_internal";
+} from "./_internal"
 export {
 	useDefaultAdapters,
 	useEnvOnlyAdapters,
 	useGenericAdapters,
-} from "./_shared";
-
-export { autoAdapter, getAutoFiles } from "./auto";
-export { contentAdapter } from "./content";
-export { dotenvAdapter } from "./dotenv";
-export { envAdapter } from "./env";
-export { fileAdapter } from "./file";
-export { getJsonFiles, jsonAdapter } from "./json";
-export { getJson5Files, json5Adapter } from "./json5";
-export { staticAdapter } from "./static";
-export { streamAdapter } from "./stream";
-export { getTomlFiles, tomlAdapter } from "./toml";
-export { getYamlFiles, yamlAdapter } from "./yaml";
+} from "./_shared"
+export {autoAdapter, getAutoFiles} from "./auto"
+export {contentAdapter} from "./content"
+export {dotenvAdapter} from "./dotenv"
+export {envAdapter} from "./env"
+export {fileAdapter} from "./file"
+export {getJsonFiles, jsonAdapter} from "./json"
+export {getJson5Files, json5Adapter} from "./json5"
+export {staticAdapter} from "./static"
+export {streamAdapter} from "./stream"
+export {getTomlFiles, tomlAdapter} from "./toml"
+export {getYamlFiles, yamlAdapter} from "./yaml"

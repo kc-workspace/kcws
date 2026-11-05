@@ -1,22 +1,20 @@
-import { rm } from "node:fs/promises";
-import { isAbsolute, relative, resolve } from "node:path";
-import type { BuildConfig } from "bun";
-import type { Command } from "commander";
-import { DEFAULT_OUTPUT } from "#constants";
-import type { CommandFn } from "#types";
-import { defineCommand } from "#utils/command";
-import { createLogger } from "#utils/logger";
-import { cwdOption, readOptions } from "#utils/options";
-import { readPlugins } from "#utils/plugin";
-import { reportArtifacts, reportSummary } from "#utils/report";
-import { parseRouteFiles } from "#utils/routeFiles";
-import {
-	copyStaticFiles,
-	parseStaticFiles,
-	staticOption,
-} from "#utils/staticFiles";
+import type {BuildConfig} from "bun"
+import type {Command} from "commander"
+import type {CommandFn} from "#types"
 
-const logger = createLogger("commands/build");
+import {rm} from "node:fs/promises"
+import {isAbsolute, relative, resolve} from "node:path"
+
+import {DEFAULT_OUTPUT} from "#constants"
+import {defineCommand} from "#utils/command"
+import {createLogger} from "#utils/logger"
+import {cwdOption, readOptions} from "#utils/options"
+import {readPlugins} from "#utils/plugin"
+import {reportArtifacts, reportSummary} from "#utils/report"
+import {parseRouteFiles} from "#utils/routeFiles"
+import {copyStaticFiles, parseStaticFiles, staticOption} from "#utils/staticFiles"
+
+const logger = createLogger("commands/build")
 
 const define = (command: Command) => {
 	return command
@@ -25,111 +23,89 @@ const define = (command: Command) => {
 		.addOption(cwdOption)
 		.option("-M, --minify", "Enable minification", true)
 		.option("-N, --no-minify", "Disable minification")
-		.option(
-			"-E, --environment <name>",
-			"Replace process.env.NODE_ENV with the given environment",
-			"production",
-		)
+		.option("-E, --environment <name>", "Replace process.env.NODE_ENV with the given environment", "production")
 		.option("--no-environment", "Leave process.env.NODE_ENV untouched")
-		.option(
-			"-O, --out <directory>",
-			"Specify the output directory",
-			DEFAULT_OUTPUT,
-		)
-		.option("--clean", "Remove the output directory before building", false);
-};
+		.option("-O, --out <directory>", "Specify the output directory", DEFAULT_OUTPUT)
+		.option("--clean", "Remove the output directory before building", false)
+}
 
 /** Whether `out` is `cwd` itself or one of its ancestors. */
 const containsCwd = (cwd: string, out: string): boolean => {
-	const path = relative(out, cwd);
-	return !path.startsWith("..") && !isAbsolute(path);
-};
+	const path = relative(out, cwd)
+	return !path.startsWith("..") && !isAbsolute(path)
+}
 
-const build: CommandFn = defineCommand(
-	"build",
-	"Build the project using Bun.build()",
-	(command, Bun) => {
-		define(command).action(async (inputs, options) => {
-			const cwd = readOptions<string>(options, "cwd");
-			const out = resolve(cwd, readOptions<string>(options, "out"));
-			logger.debug({ inputs, options }, "building the project");
+const build: CommandFn = defineCommand("build", "Build the project using Bun.build()", (command, Bun) => {
+	define(command).action(async (inputs, options) => {
+		const cwd = readOptions<string>(options, "cwd")
+		const out = resolve(cwd, readOptions<string>(options, "out"))
+		logger.debug({inputs, options}, "building the project")
 
-			const { BUN_PUBLIC_BUILD_DATE: buildDate } = process.env;
-			const defines: Record<string, string> = {
-				"process.env.BUN_PUBLIC_BUILD_DATE": JSON.stringify(
-					buildDate ?? new Date().toISOString(),
-				),
-			};
-			const environment = readOptions<string | false>(options, "environment");
-			if (typeof environment === "string") {
-				defines["process.env.NODE_ENV"] = JSON.stringify(environment);
+		const {BUN_PUBLIC_BUILD_DATE: buildDate} = process.env
+		const defines: Record<string, string> = {
+			"process.env.BUN_PUBLIC_BUILD_DATE": JSON.stringify(buildDate ?? new Date().toISOString()),
+		}
+		const environment = readOptions<string | false>(options, "environment")
+		if (typeof environment === "string") {
+			defines["process.env.NODE_ENV"] = JSON.stringify(environment)
+		}
+
+		const routeFiles = await parseRouteFiles(Bun, inputs, options)
+		if (routeFiles.length === 0) {
+			logger.warn("No route files found. Nothing to build.")
+			return
+		}
+
+		const staticFiles = await parseStaticFiles(Bun, options)
+
+		const plugins = await readPlugins(Bun, options)
+
+		if (readOptions<boolean>(options, "clean")) {
+			if (containsCwd(cwd, out)) {
+				logger.error({out}, "Refuse to clean an output directory containing the working directory")
+				return
 			}
+			logger.debug({out}, "Cleaning the output directory")
+			await rm(out, {recursive: true, force: true})
+		}
 
-			const routeFiles = await parseRouteFiles(Bun, inputs, options);
-			if (routeFiles.length === 0) {
-				logger.warn("No route files found. Nothing to build.");
-				return;
-			}
+		const started = performance.now()
+		const buildConfig: BuildConfig = {
+			entrypoints: routeFiles.map((route) => route.path),
+			target: "browser",
+			format: "esm",
+			outdir: out,
+			minify: readOptions<boolean>(options, "minify"),
+			splitting: true,
+			sourcemap: "linked",
+			metafile: true,
+			env: "BUN_PUBLIC_*",
+			define: defines,
+			plugins,
+		}
+		logger.debug({buildConfig}, "Build configuration prepared")
+		const output = await Bun.build(buildConfig)
+		if (!output.success) {
+			logger.error("\nBuild failed!")
+			return
+		}
 
-			const staticFiles = await parseStaticFiles(Bun, options);
+		const bundled = new Set(output.outputs.map((artifact) => artifact.path))
+		const overwritten = staticFiles.filter((file) => bundled.has(file.target)).map((file) => file.target)
+		if (overwritten.length > 0) {
+			logger.error({overwritten}, `The following static files will overwrite build output`)
+			return
+		}
 
-			const plugins = await readPlugins(Bun, options);
+		const reportedFiles = await copyStaticFiles(Bun, staticFiles)
+		const elapsed = performance.now() - started
 
-			if (readOptions<boolean>(options, "clean")) {
-				if (containsCwd(cwd, out)) {
-					logger.error(
-						{ out },
-						"Refuse to clean an output directory containing the working directory",
-					);
-					return;
-				}
-				logger.debug({ out }, "Cleaning the output directory");
-				await rm(out, { recursive: true, force: true });
-			}
+		const artifacts = [...output.outputs, ...reportedFiles]
+		for (const message of reportArtifacts(cwd, artifacts)) {
+			logger.info(message)
+		}
+		logger.info(reportSummary(elapsed, artifacts))
+	})
+})
 
-			const started = performance.now();
-			const buildConfig: BuildConfig = {
-				entrypoints: routeFiles.map((route) => route.path),
-				target: "browser",
-				format: "esm",
-				outdir: out,
-				minify: readOptions<boolean>(options, "minify"),
-				splitting: true,
-				sourcemap: "linked",
-				metafile: true,
-				env: "BUN_PUBLIC_*",
-				define: defines,
-				plugins,
-			};
-			logger.debug({ buildConfig }, "Build configuration prepared");
-			const output = await Bun.build(buildConfig);
-			if (!output.success) {
-				logger.error("\nBuild failed!");
-				return;
-			}
-
-			const bundled = new Set(output.outputs.map((artifact) => artifact.path));
-			const overwritten = staticFiles
-				.filter((file) => bundled.has(file.target))
-				.map((file) => file.target);
-			if (overwritten.length > 0) {
-				logger.error(
-					{ overwritten },
-					`The following static files will overwrite build output`,
-				);
-				return;
-			}
-
-			const reportedFiles = await copyStaticFiles(Bun, staticFiles);
-			const elapsed = performance.now() - started;
-
-			const artifacts = [...output.outputs, ...reportedFiles];
-			for (const message of reportArtifacts(cwd, artifacts)) {
-				logger.info(message);
-			}
-			logger.info(reportSummary(elapsed, artifacts));
-		});
-	},
-);
-
-export default build;
+export default build

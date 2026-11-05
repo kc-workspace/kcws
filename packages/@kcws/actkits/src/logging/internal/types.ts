@@ -1,5 +1,5 @@
-import type { AnnotationProperties as CoreAnnotationProperties } from "@actions/core";
-import type { NS_SEP } from "./namespace";
+import type {AnnotationProperties as CoreAnnotationProperties} from "@actions/core"
+import type {NS_SEP} from "./namespace"
 
 /**
  * Properties for GitHub Actions workflow annotations.
@@ -7,7 +7,7 @@ import type { NS_SEP } from "./namespace";
  *
  * @see {@link https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-a-notice-message | GitHub Actions Annotations}
  */
-export type AnnotationProperties = CoreAnnotationProperties;
+export type AnnotationProperties = CoreAnnotationProperties
 
 /**
  * Joins namespace segments using `:` at type level.
@@ -15,17 +15,14 @@ export type AnnotationProperties = CoreAnnotationProperties;
  * @typeParam NS - Base namespace.
  * @typeParam SS - Additional segments.
  */
-export type ExtendNamespace<
-	NS extends string,
-	SS extends string[] = [],
-> = SS extends [infer F, ...infer R]
+export type ExtendNamespace<NS extends string, SS extends string[] = []> = SS extends [infer F, ...infer R]
 	? R extends string[]
 		? ExtendNamespace<`${NS}${typeof NS_SEP}${F & string}`, R>
 		: `${NS}${typeof NS_SEP}${F & string}`
-	: NS;
+	: NS
 
 /** Function with no parameters that returns a value. */
-export type Getter<TValue> = () => TValue;
+export type Getter<TValue> = () => TValue
 
 /** Annotation-capable logger function signature. */
-export type Log = (msg: string, properties?: AnnotationProperties) => void;
+export type Log = (msg: string, properties?: AnnotationProperties) => void

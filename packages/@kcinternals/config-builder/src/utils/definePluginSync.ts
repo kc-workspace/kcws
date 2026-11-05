@@ -1,4 +1,4 @@
-import type { SyncConfigPlugin } from "../types";
+import type {SyncConfigPlugin} from "../types"
 
 /**
  * Create a plugin that supports synchronous actions.
@@ -16,7 +16,7 @@ const definePluginSync = <N extends string, C>(
 		applySetting: plugin.applySetting,
 		configPriority: plugin.configPriority ?? 0,
 		applyConfig: plugin.applyConfig,
-	};
-};
+	}
+}
 
-export default definePluginSync;
+export default definePluginSync

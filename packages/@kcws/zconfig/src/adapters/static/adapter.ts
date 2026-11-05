@@ -1,5 +1,6 @@
-import type { Adapter, RawConfig, TransformFn } from "#types";
-import { applyTransform } from "#utils/transforms";
+import type {Adapter, RawConfig, TransformFn} from "#types"
+
+import {applyTransform} from "#utils/transforms"
 
 /**
  * Creates an adapter from an already available raw configuration object.
@@ -8,13 +9,10 @@ import { applyTransform } from "#utils/transforms";
  * @param transform - optional transform applied to each leaf
  * @returns adapter suitable for {@link loadConfig} and {@link loadConfigSync}
  */
-const staticAdapter = (
-	config: RawConfig,
-	transform?: TransformFn,
-): Adapter => ({
+const staticAdapter = (config: RawConfig, transform?: TransformFn): Adapter => ({
 	name: "static",
 	load: () => Promise.resolve(applyTransform(config, transform)),
 	loadSync: () => applyTransform(config, transform),
-});
+})
 
-export default staticAdapter;
+export default staticAdapter

@@ -6,12 +6,12 @@
  */
 const decodePath = (url: string): string | undefined => {
 	try {
-		const pathname = decodeURIComponent(new URL(url).pathname);
-		return pathname.includes("\0") ? undefined : pathname;
+		const pathname = decodeURIComponent(new URL(url).pathname)
+		return pathname.includes("\0") ? undefined : pathname
 	} catch {
 		// malformed percent encoding
-		return undefined;
+		return undefined
 	}
-};
+}
 
-export default decodePath;
+export default decodePath

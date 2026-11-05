@@ -1,10 +1,11 @@
-import type { Adapter } from "#types";
-import { toAdapterError } from "#utils/errors";
-import { applyTransform } from "#utils/transforms";
-import type { ContentAdapterOptions, ContentSource } from "./types";
-import { decodeContent, resolveParser, toRawConfig } from "./utils";
+import type {Adapter} from "#types"
+import type {ContentAdapterOptions, ContentSource} from "./types"
 
-const LOAD_ERR = "Failed to load config content";
+import {toAdapterError} from "#utils/errors"
+import {applyTransform} from "#utils/transforms"
+import {decodeContent, resolveParser, toRawConfig} from "./utils"
+
+const LOAD_ERR = "Failed to load config content"
 
 /**
  * Creates an adapter that parses configuration from in-memory content.
@@ -19,40 +20,35 @@ const LOAD_ERR = "Failed to load config content";
  * @throws {ZconfigAdapterError} when the content cannot be produced or parsed
  */
 const contentAdapter = (options: ContentAdapterOptions): Adapter => {
-	const name = options.name ?? "content";
-	const parser = resolveParser(name, options);
+	const name = options.name ?? "content"
+	const parser = resolveParser(name, options)
 	const getContent = (): string =>
-		decodeContent(
-			typeof options.content === "function"
-				? options.content()
-				: (options.content as ContentSource),
-		);
+		decodeContent(typeof options.content === "function" ? options.content() : (options.content as ContentSource))
 
 	return {
 		name,
 		load: async () => {
 			try {
-				const config = toRawConfig(await parser.parse(getContent()));
-				return applyTransform(config, options.transform);
+				const config = toRawConfig(await parser.parse(getContent()))
+				return applyTransform(config, options.transform)
 			} catch (cause) {
-				throw toLoadError(name, cause);
+				throw toLoadError(name, cause)
 			}
 		},
 		loadSync: () => {
 			try {
-				const config = toRawConfig(parser.parseSync(getContent()));
-				return applyTransform(config, options.transform);
+				const config = toRawConfig(parser.parseSync(getContent()))
+				return applyTransform(config, options.transform)
 			} catch (cause) {
-				throw toLoadError(name, cause);
+				throw toLoadError(name, cause)
 			}
 		},
-	};
-};
+	}
+}
 
 const toLoadError = (name: string, cause: unknown) => {
-	const message =
-		cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR;
-	return toAdapterError(name, message, cause);
-};
+	const message = cause instanceof Error ? `${LOAD_ERR}: ${cause.message}` : LOAD_ERR
+	return toAdapterError(name, message, cause)
+}
 
-export default contentAdapter;
+export default contentAdapter

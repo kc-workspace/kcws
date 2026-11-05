@@ -2,7 +2,6 @@
 
 Shared [Vitest](https://vitest.dev/) configuration with composable plugins,
 a monorepo root/project split, and filesystem mock helpers.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -21,7 +20,6 @@ a monorepo root/project split, and filesystem mock helpers.
 - **Vite**: required peer dependency of Vitest 5
 
 Optional, only needed by the defaults they back:
-
 - `@vitest/coverage-v8` for the default v8 coverage provider
 - `@vitest/ui` for the default `html` reporter
 
@@ -46,10 +44,10 @@ Use `defineProjectConfig` in each package, including standalone repositories.
 It applies `rootPlugin()` and `projectPlugin()` before your own plugins:
 
 ```ts
-import { defineProjectConfig } from "@kcconfigs/vitest";
-import { debugPlugin } from "@kcconfigs/vitest/plugins";
+import {defineProjectConfig} from "@kcconfigs/vitest"
+import {debugPlugin} from "@kcconfigs/vitest/plugins"
 
-export default defineProjectConfig(debugPlugin());
+export default defineProjectConfig(debugPlugin())
 ```
 
 ### Root config
@@ -58,15 +56,15 @@ Use `defineRootConfig` only at the root of a monorepo. The first argument is
 the list of project paths or globs:
 
 ```ts
-import { defineRootConfig } from "@kcconfigs/vitest";
-import { coveragePlugin } from "@kcconfigs/vitest/plugins";
+import {defineRootConfig} from "@kcconfigs/vitest"
+import {coveragePlugin} from "@kcconfigs/vitest/plugins"
 
 export default defineRootConfig(
-  ["packages/**/vitest.config.ts"],
-  coveragePlugin({
-    thresholds: { branches: 0, functions: 0, lines: 0, statements: 0 },
-  }),
-);
+	["packages/**/vitest.config.ts"],
+	coveragePlugin({
+		thresholds: {branches: 0, functions: 0, lines: 0, statements: 0},
+	}),
+)
 ```
 
 ## API
@@ -115,7 +113,6 @@ optional `replace` flag:
 ## Defaults
 
 The shared root base config sets:
-
 - `environment`: `"node"`
 - `restoreMocks`, `mockReset`, `unstubGlobals`, `unstubEnvs`: `true`
   (`clearMocks` is already `true` by default in Vitest 5)
@@ -135,14 +132,14 @@ and `*.schema.*` files.
 in-memory implementations. Enable them per module:
 
 ```ts
-import { defineProjectConfig } from "@kcconfigs/vitest";
-import { useMockPlugin } from "@kcconfigs/vitest/plugins";
+import {defineProjectConfig} from "@kcconfigs/vitest"
+import {useMockPlugin} from "@kcconfigs/vitest/plugins"
 
 export default defineProjectConfig(
-  useMockPlugin({
-    flags: { fs: true, fsPromises: true, os: true, process: true },
-  }),
-);
+	useMockPlugin({
+		flags: {fs: true, fsPromises: true, os: true, process: true},
+	}),
+)
 ```
 
 Available flags: `fs`, `fsPromises`, `process`, `os`, and `console`.
@@ -151,32 +148,32 @@ matching mock file cannot be found.
 
 Tests then drive the in-memory filesystem through `@kcconfigs/vitest/mocks`:
 
-| Export           | Description                                                                         |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| `vol`            | The [memfs](https://github.com/streamich/memfs) volume backing `fs`                 |
-| `resetVol()`     | Clear `vol` and recreate `mockCwd`, `mockHome`, and `mockTmp`                       |
-| `createMockFs()` | A fresh `node:fs` compatible object backed by `vol`, safe to clone (graceful-fs)    |
-| `mockCwd`        | The mocked `process.cwd()` value, `/mock/cwd`; relative `vol` paths resolve here    |
-| `mockHome`       | The mocked home directory, `/mock/home`                                             |
-| `mockTmp`        | The mocked temp directory, `/mock/tmp`                                              |
+| Export           | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| `vol`            | The [memfs](https://github.com/streamich/memfs) volume backing `fs`              |
+| `resetVol()`     | Clear `vol` and recreate `mockCwd`, `mockHome`, and `mockTmp`                    |
+| `createMockFs()` | A fresh `node:fs` compatible object backed by `vol`, safe to clone (graceful-fs) |
+| `mockCwd`        | The mocked `process.cwd()` value, `/mock/cwd`; relative `vol` paths resolve here |
+| `mockHome`       | The mocked home directory, `/mock/home`                                          |
+| `mockTmp`        | The mocked temp directory, `/mock/tmp`                                           |
 
 Reset the volume in `afterEach` so tests stay isolated:
 
 ```ts
-import { resetVol, vol } from "@kcconfigs/vitest/mocks";
-import { afterEach, expect, test } from "vitest";
-import { readConfig } from ".";
+import {resetVol, vol} from "@kcconfigs/vitest/mocks"
+import {afterEach, expect, test} from "vitest"
+import {readConfig} from "."
 
 afterEach(() => {
-  resetVol();
-});
+	resetVol()
+})
 
 test("reads config from the working directory", () => {
-  // Relative paths resolve against mockCwd
-  vol.fromJSON({ "config.json": '{"name":"kcws"}' });
+	// Relative paths resolve against mockCwd
+	vol.fromJSON({"config.json": '{"name":"kcws"}'})
 
-  expect(readConfig()).toEqual({ name: "kcws" });
-});
+	expect(readConfig()).toEqual({name: "kcws"})
+})
 ```
 
 ## References

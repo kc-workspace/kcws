@@ -1,6 +1,6 @@
-import type { z } from "zod";
+import type {z} from "zod"
 
-import { createObjectParser } from "./createObjectParser";
+import {createObjectParser} from "./createObjectParser"
 
 /**
  * Zod schema for parsing JSON string input to object.
@@ -12,6 +12,4 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: '{"key": "value"}' }); // { config: { key: "value" } }
  * ```
  */
-export const zJsonString: z.ZodPreprocess<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>
-> = createObjectParser(JSON.parse);
+export const zJsonString: z.ZodPreprocess<z.ZodRecord<z.ZodString, z.ZodUnknown>> = createObjectParser(JSON.parse)

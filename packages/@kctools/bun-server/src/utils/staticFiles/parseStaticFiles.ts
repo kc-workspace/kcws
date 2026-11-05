@@ -1,26 +1,22 @@
-import type { BunType } from "#types";
-import { findDuplicateRoutes } from "#utils/url";
-import { logger } from "./constants";
-import createStaticSpecs from "./createStaticSpecs";
-import resolveStaticSpec from "./resolveStaticSpecs";
-import type { ResolvedStatic } from "./types";
+import type {BunType} from "#types"
+import type {ResolvedStatic} from "./types"
 
-const parseStaticFiles = async (
-	Bun: BunType,
-	options: AnyRecord,
-): Promise<ResolvedStatic[]> => {
-	const specs = await createStaticSpecs(Bun, options);
-	const files = await resolveStaticSpec(Bun, specs);
+import {findDuplicateRoutes} from "#utils/url"
+import {logger} from "./constants"
+import createStaticSpecs from "./createStaticSpecs"
+import resolveStaticSpec from "./resolveStaticSpecs"
 
-	const duplicatedRoutes = findDuplicateRoutes(files);
+const parseStaticFiles = async (Bun: BunType, options: AnyRecord): Promise<ResolvedStatic[]> => {
+	const specs = await createStaticSpecs(Bun, options)
+	const files = await resolveStaticSpec(Bun, specs)
+
+	const duplicatedRoutes = findDuplicateRoutes(files)
 	if (duplicatedRoutes.length > 0) {
-		throw new Error(
-			`Found duplicated static files: ${duplicatedRoutes.join(", ")}`,
-		);
+		throw new Error(`Found duplicated static files: ${duplicatedRoutes.join(", ")}`)
 	}
 
-	logger.debug({ length: files.length }, `found ${files.length} static files`);
-	return files;
-};
+	logger.debug({length: files.length}, `found ${files.length} static files`)
+	return files
+}
 
-export default parseStaticFiles;
+export default parseStaticFiles

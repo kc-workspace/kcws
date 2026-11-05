@@ -1,6 +1,7 @@
-import { definePluginSync } from "@kcinternals/config-builder";
-import { mergeConfig } from "tsdown";
-import type { TsdownConfigPlugin } from "../models";
+import type {TsdownConfigPlugin} from "../models"
+
+import {definePluginSync} from "@kcinternals/config-builder"
+import {mergeConfig} from "tsdown"
 
 /**
  * Minify plugin — toggles JavaScript and CSS minification.
@@ -20,7 +21,7 @@ const minifyPlugin = (minify: boolean = true): TsdownConfigPlugin<"minify"> =>
 				css: {
 					minify,
 				},
-			});
+			})
 		},
-	});
-export default minifyPlugin;
+	})
+export default minifyPlugin

@@ -9,14 +9,14 @@
  *
  * @internal
  */
-export const KEY_PATTERN: RegExp = /^[a-z][a-zA-Z0-9]*$/;
+export const KEY_PATTERN: RegExp = /^[a-z][a-zA-Z0-9]*$/
 
 /**
  * Placeholder path segment for values behind a runtime key.
  *
  * @internal
  */
-export const RUNTIME_KEY = "*";
+export const RUNTIME_KEY = "*"
 
 /**
  * Wrappers that hold exactly one child schema under `innerType`.
@@ -33,4 +33,4 @@ export const INNER_TYPE_WRAPPERS: ReadonlySet<string> = new Set([
 	"readonly",
 	"promise",
 	"success",
-]);
+])

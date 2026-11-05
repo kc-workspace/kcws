@@ -1,4 +1,5 @@
 ---
+
 name: kcws-biome
 description: "Use when formatting, linting, or configuring TypeScript and related files in the KCWS pnpm monorepo. Covers shared Biome presets, package scripts, safe fixes, and validation."
 user-invocable: true

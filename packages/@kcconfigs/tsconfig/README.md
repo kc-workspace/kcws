@@ -2,7 +2,6 @@
 
 Shared TypeScript configuration presets for the kc-workspace monorepo.
 Provides multiple tsconfig.json templates for different project types and use cases.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Recommended settings](#recommended-settings)
@@ -28,7 +27,6 @@ Provides multiple tsconfig.json templates for different project types and use ca
 
 These peer dependencies are optional and only needed by the presets or features
 that reference them:
-
 - `@types/node` for `features/types` and the `default` preset
 - `@types/bun` for `features/bun` and the `bun` preset
 - `@kctypes/generic` for `features/types` and `features/bun`
@@ -66,19 +64,18 @@ Example use presets
 
 ```json
 {
-  "extends": "@kcconfigs/tsconfig"
+	"extends": "@kcconfigs/tsconfig"
 }
 ```
 
 #### Root
 
 We are have some restriction:
-
 1. Your packages must be on `packages` directory
 
 ```json
 {
-  "extends": "@kcconfigs/tsconfig/root"
+	"extends": "@kcconfigs/tsconfig/root"
 }
 ```
 
@@ -91,10 +88,7 @@ We are have some restriction:
 
 ```json
 {
-  "extends": [
-    "@kcconfigs/tsconfig",
-    "@kcconfigs/tsconfig/envs/node"
-  ]
+	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"]
 }
 ```
 
@@ -125,10 +119,7 @@ Example use features
 
 ```json
 {
-  "extends": [
-    "@kcconfigs/tsconfig",
-    "@kcconfigs/tsconfig/features/noSourcemap"
-  ]
+	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/features/noSourcemap"]
 }
 ```
 
@@ -138,19 +129,18 @@ To extend configurations with custom settings:
 
 ```json
 {
-  "extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"],
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"],
-  "compilerOptions": {
-    "declaration": true
-  }
+	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"],
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist", "**/*.test.ts"],
+	"compilerOptions": {
+		"declaration": true
+	}
 }
 ```
 
 ## Compiler Options
 
 All configurations inherit base settings:
-
 - **Target**: ESNext
 - **Module**: `preserve` (`envs/node` switches it to `nodenext`,
   `envs/web` to `esnext`)
@@ -174,7 +164,7 @@ Below are the example configuration per tools or frameworks.
 
 ```json
 {
-  "extends": "@kcconfigs/tsconfig/bundler"
+	"extends": "@kcconfigs/tsconfig/bundler"
 }
 ```
 
@@ -184,7 +174,7 @@ The react preset extends from bundler with React support.
 
 ```json
 {
-  "extends": "@kcconfigs/tsconfig/react"
+	"extends": "@kcconfigs/tsconfig/react"
 }
 ```
 
@@ -197,10 +187,7 @@ under the project root (excluding `node_modules` and `dist`) instead of only
 
 ```json
 {
-  "extends": [
-    "@kcconfigs/tsconfig/bun",
-    "@kcconfigs/tsconfig/features/lit"
-  ]
+	"extends": ["@kcconfigs/tsconfig/bun", "@kcconfigs/tsconfig/features/lit"]
 }
 ```
 

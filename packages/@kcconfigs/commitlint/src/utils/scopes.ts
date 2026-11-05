@@ -1,7 +1,9 @@
-import { RuleConfigSeverity as Severity } from "@commitlint/types";
-import { DEFAULT_SCOPES } from "../constants";
-import type { CommitlintConfig } from "../types";
-import mergeConfig from "./mergeConfig";
+import type {CommitlintConfig} from "../types"
+
+import {RuleConfigSeverity as Severity} from "@commitlint/types"
+
+import {DEFAULT_SCOPES} from "../constants"
+import mergeConfig from "./mergeConfig"
 
 /**
  * Sets the `scope-enum` rule and the prompt `scope` question.
@@ -13,16 +15,13 @@ import mergeConfig from "./mergeConfig";
  * @param scopes - Scopes to allow
  * @returns A new config with the scopes applied
  */
-export const applyScopes = (
-	base: CommitlintConfig,
-	scopes: readonly string[],
-): CommitlintConfig => {
-	const resolved = scopes.length > 0 ? [...scopes] : [...DEFAULT_SCOPES];
+export const applyScopes = (base: CommitlintConfig, scopes: readonly string[]): CommitlintConfig => {
+	const resolved = scopes.length > 0 ? [...scopes] : [...DEFAULT_SCOPES]
 	const merged = mergeConfig(base, {
 		rules: {
 			"scope-enum": () => [Severity.Error, "always", resolved],
 		},
-	});
+	})
 	return {
 		...merged,
 		prompt: {
@@ -35,5 +34,5 @@ export const applyScopes = (
 				},
 			},
 		},
-	};
-};
+	}
+}

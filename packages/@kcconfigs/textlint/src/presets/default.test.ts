@@ -1,6 +1,7 @@
-import terminologyModule from "textlint-rule-terminology";
-import { describe, expect, test } from "vitest";
-import defaultPreset from "./default";
+import terminologyModule from "textlint-rule-terminology"
+import {describe, expect, test} from "vitest"
+
+import defaultPreset from "./default"
 
 describe("default preset", () => {
 	test("should expose the terminology rule preset", () => {
@@ -13,6 +14,6 @@ describe("default preset", () => {
 			rulesConfig: {
 				terminology: true,
 			},
-		});
-	});
-});
+		})
+	})
+})

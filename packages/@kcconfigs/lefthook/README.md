@@ -3,7 +3,6 @@
 Shared [Lefthook](https://github.com/evilmartians/lefthook) configuration
 for Git hooks. Provides composable presets, features, and individual hook
 definitions that can be mixed and matched via Lefthook's `extends` mechanism.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -147,7 +146,7 @@ package-manager agnostic. Define it in your `lefthook.yaml`:
 
 ```yaml
 templates:
-  pm_cmd: pnpm   # or npm, yarn, bun
+  pm_cmd: pnpm # or npm, yarn, bun
 ```
 
 ## Example

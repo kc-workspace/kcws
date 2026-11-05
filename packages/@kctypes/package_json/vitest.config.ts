@@ -1,4 +1,4 @@
-import { defineConfig, type ViteUserConfig } from "vitest/config";
+import {defineConfig, type ViteUserConfig} from "vitest/config"
 
 const config: ViteUserConfig = defineConfig({
 	test: {
@@ -7,6 +7,6 @@ const config: ViteUserConfig = defineConfig({
 			only: true,
 		},
 	},
-});
+})
 
-export default config;
+export default config

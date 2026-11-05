@@ -1,4 +1,4 @@
-import type { BasicRoute } from "#utils/url";
+import type {BasicRoute} from "#utils/url"
 
 export interface StaticSpec {
 	/**
@@ -7,20 +7,20 @@ export interface StaticSpec {
 	 * 	"src/images/*.png"
 	 * 	"assets"
 	 */
-	source: string;
+	source: string
 
 	/**
 	 * The root directory absolute path of the static source.
 	 * @example "/home/user/path"
 	 */
-	root: string;
+	root: string
 	/**
 	 * The pattern to match files within the {@link root} directory.
 	 * @example
 	 * 	"*.png"
 	 * 	"**\/*.jpg"
 	 */
-	pattern: string;
+	pattern: string
 
 	target: {
 		/**
@@ -29,24 +29,24 @@ export interface StaticSpec {
 		 * 	"/home/user/repo"
 		 * 	"/home/user/repo/dist"
 		 */
-		base: string;
+		base: string
 		/**
 		 * The directory name within the base directory where the static files will be copied to.
 		 * @example
 		 * 	"images"
 		 * 	"assets"
 		 */
-		dirname: string;
-	};
+		dirname: string
+	}
 }
 
 export interface ResolvedStatic extends BasicRoute {
 	/**
 	 * The source absolute path of the static files.
 	 */
-	source: string;
+	source: string
 	/**
 	 * The target absolute path where the static files will be copied to.
 	 */
-	target: string;
+	target: string
 }

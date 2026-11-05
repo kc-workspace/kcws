@@ -1,5 +1,6 @@
-import { mergeConfig as _mergeConfig } from "vitest/config";
-import type { UserConfig } from "../types";
+import type {UserConfig} from "../types"
+
+import {mergeConfig as _mergeConfig} from "vitest/config"
 
 /**
  * Merges Vitest configuration overrides into a base configuration in order.
@@ -12,14 +13,11 @@ import type { UserConfig } from "../types";
  * @param overrides - Configurations to merge from left to right.
  * @returns The merged Vitest configuration.
  */
-const mergeConfig = <C extends UserConfig>(
-	base: C,
-	...overrides: (C | undefined)[]
-): C => {
+const mergeConfig = <C extends UserConfig>(base: C, ...overrides: (C | undefined)[]): C => {
 	return overrides
 		.filter((o) => o !== undefined)
 		.reduce((acc, override) => {
-			return _mergeConfig(acc, override as AnyRecord);
-		}, base as AnyRecord) as C;
-};
-export default mergeConfig;
+			return _mergeConfig(acc, override as AnyRecord)
+		}, base as AnyRecord) as C
+}
+export default mergeConfig

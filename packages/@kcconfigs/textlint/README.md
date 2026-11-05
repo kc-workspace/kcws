@@ -8,7 +8,6 @@ definitions.
 > `@kcconfigs/*` packages are. Prefer configuring textlint directly in your
 > repository. This package is still published and is documented below for the
 > repositories that already depend on it.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -24,7 +23,6 @@ definitions.
 
 The bundled rule and filter modules ship as direct dependencies, so they do not
 need to be installed separately:
-
 - `textlint-rule-terminology`
 - `textlint-filter-rule-allowlist`
 - `textlint-filter-rule-comments`
@@ -41,9 +39,9 @@ The ready-made config is exported from `@kcconfigs/textlint/configs/default`.
 It enables the `terminology` rule with the `comments` and `allowlist` filters:
 
 ```ts
-import config from "@kcconfigs/textlint/configs/default";
+import config from "@kcconfigs/textlint/configs/default"
 
-export default config;
+export default config
 ```
 
 Because textlint reads `.textlintrc.*` rather than a TypeScript module, this is
@@ -73,12 +71,12 @@ Passing no config enables the rule with its own defaults.
 without `allow` falls back to `DEFAULT_ALLOWLIST`, which is also exported:
 
 ```ts
-import { DEFAULT_ALLOWLIST, allowlist } from "@kcconfigs/textlint";
+import {DEFAULT_ALLOWLIST, allowlist} from "@kcconfigs/textlint"
 
 // editorconfig, url, html, api, apis, github, typescript, json
-console.log(DEFAULT_ALLOWLIST);
+console.log(DEFAULT_ALLOWLIST)
 
-const filter = allowlist({ allow: [...DEFAULT_ALLOWLIST, "kcws"] });
+const filter = allowlist({allow: [...DEFAULT_ALLOWLIST, "kcws"]})
 ```
 
 ## Presets
@@ -102,16 +100,16 @@ filters, and presets:
 | `definePreset` | Build a `Preset` from a name and a list of rules |
 
 ```ts
-import { definePreset, defineRule, terminology } from "@kcconfigs/textlint";
-import maxComma from "textlint-rule-max-comma";
+import {definePreset, defineRule, terminology} from "@kcconfigs/textlint"
+import maxComma from "textlint-rule-max-comma"
 
 const commas = defineRule({
-  name: "max-comma",
-  module: maxComma,
-  config: { max: 4 },
-});
+	name: "max-comma",
+	module: maxComma,
+	config: {max: 4},
+})
 
-export default definePreset("my-preset", terminology(), commas);
+export default definePreset("my-preset", terminology(), commas)
 ```
 
 Types `Rule`, `Filter`, `Preset`, `Plugin`, `Config`, `UserConfig`, and their

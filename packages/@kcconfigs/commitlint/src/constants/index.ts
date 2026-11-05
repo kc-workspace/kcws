@@ -1,13 +1,11 @@
-import {
-	RuleConfigSeverity as Severity,
-	type UserConfig,
-} from "@commitlint/types";
-import type { MinimalType, StandardType, TypeEnum } from "../types";
+import type {MinimalType, StandardType, TypeEnum} from "../types"
+
+import {RuleConfigSeverity as Severity, type UserConfig} from "@commitlint/types"
 
 /** Setting priority used by the debug plugin so it runs before anything else. */
-export const debugPriority: number = Number.NEGATIVE_INFINITY;
+export const debugPriority: number = Number.NEGATIVE_INFINITY
 /** Config priority used by the override plugin so it runs after built-in plugins. */
-export const overridePriority: number = 1000;
+export const overridePriority: number = 1000
 
 /** Conventional commit types with prompt metadata. */
 export const STANDARD_TYPES: Record<StandardType, TypeEnum> = {
@@ -43,8 +41,7 @@ export const STANDARD_TYPES: Record<StandardType, TypeEnum> = {
 		emoji: "💎",
 	},
 	build: {
-		description:
-			"Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+		description: "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
 		title: "Builds",
 		emoji: "🛠",
 	},
@@ -69,7 +66,7 @@ export const STANDARD_TYPES: Record<StandardType, TypeEnum> = {
 		title: "Reverts",
 		emoji: "🗑",
 	},
-};
+}
 
 /** Subset of {@link STANDARD_TYPES} used by the `"minimal"` type mode. */
 export const MINIMAL_TYPES: Record<MinimalType, TypeEnum> = {
@@ -77,16 +74,10 @@ export const MINIMAL_TYPES: Record<MinimalType, TypeEnum> = {
 	perf: STANDARD_TYPES.perf,
 	fix: STANDARD_TYPES.fix,
 	chore: STANDARD_TYPES.chore,
-};
+}
 
 /** Scopes used when neither auto-detection nor user scopes produce any value. */
-export const DEFAULT_SCOPES: readonly string[] = [
-	"core",
-	"config",
-	"script",
-	"deps",
-	"deps-dev",
-];
+export const DEFAULT_SCOPES: readonly string[] = ["core", "config", "script", "deps", "deps-dev"]
 
 /**
  * Base commitlint configuration every {@link defineConfig} call starts from.
@@ -106,4 +97,4 @@ export const baseConfig: UserConfig = {
 			enableMultipleScopes: false,
 		},
 	},
-};
+}

@@ -1,5 +1,6 @@
-import { describe, expect, test } from "vitest";
-import { defineFilter } from "./defineFilter";
+import {describe, expect, test} from "vitest"
+
+import {defineFilter} from "./defineFilter"
 
 describe(defineFilter.name, () => {
 	test("should add the filter type to the returned object", () => {
@@ -12,6 +13,6 @@ describe(defineFilter.name, () => {
 			type: "filter",
 			name: "comments",
 			config: true,
-		});
-	});
-});
+		})
+	})
+})

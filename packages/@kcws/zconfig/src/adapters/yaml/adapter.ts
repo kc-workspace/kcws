@@ -1,8 +1,9 @@
-import type { Adapter } from "#types";
-import { resolveParser, toFileParser } from "../content/utils";
-import { fileAdapter } from "../file";
-import type { YamlAdapterOptions } from "./types";
-import { getYamlFiles } from "./utils";
+import type {Adapter} from "#types"
+import type {YamlAdapterOptions} from "./types"
+
+import {resolveParser, toFileParser} from "../content/utils"
+import {fileAdapter} from "../file"
+import {getYamlFiles} from "./utils"
 
 /**
  * Creates an adapter that reads a YAML configuration file.
@@ -19,8 +20,8 @@ const yamlAdapter = (options: YamlAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "yaml",
 		files: getYamlFiles(),
-		...toFileParser(resolveParser("yaml", { format: "yaml" })),
+		...toFileParser(resolveParser("yaml", {format: "yaml"})),
 		...options,
-	});
+	})
 
-export default yamlAdapter;
+export default yamlAdapter

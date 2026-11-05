@@ -1,25 +1,25 @@
-import { mockCwd, vol } from "@kcconfigs/vitest/mocks";
-import { afterEach, describe, expect, test } from "vitest";
-import { ZconfigAdapterError } from "#utils/errors";
-import { fileAdapter } from ".";
+import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
+import {afterEach, describe, expect, test} from "vitest"
+
+import {ZconfigAdapterError} from "#utils/errors"
+import {fileAdapter} from "."
 
 describe("fileAdapter", () => {
 	afterEach(() => {
-		vol.reset();
-	});
+		vol.reset()
+	})
 
 	test("uses the synchronous parser as the asynchronous default", async () => {
-		vol.fromJSON({ "config.custom": "debug=true" }, mockCwd);
+		vol.fromJSON({"config.custom": "debug=true"}, mockCwd)
 
 		const adapter = fileAdapter({
 			name: "custom",
 			files: ["config.custom"],
-			parseSync: <T>(content: string): T =>
-				({ debug: content === "debug=true" }) as T,
-		});
+			parseSync: <T>(content: string): T => ({debug: content === "debug=true"}) as T,
+		})
 
-		expect(await adapter.load()).toEqual({ debug: true });
-	});
+		expect(await adapter.load()).toEqual({debug: true})
+	})
 
 	test("returns an empty object for an explicit optional path that is missing", () => {
 		const adapter = fileAdapter({
@@ -28,22 +28,22 @@ describe("fileAdapter", () => {
 			path: "missing.custom",
 			parseSync: <T>(): T => ({}) as T,
 			optional: true,
-		});
+		})
 
-		expect(adapter.loadSync()).toEqual({});
-	});
+		expect(adapter.loadSync()).toEqual({})
+	})
 
 	test("wraps non-Error parser failures in a typed adapter error", () => {
-		vol.fromJSON({ "config.custom": "invalid" }, mockCwd);
+		vol.fromJSON({"config.custom": "invalid"}, mockCwd)
 
 		const adapter = fileAdapter({
 			name: "custom",
 			files: ["config.custom"],
 			parseSync: () => {
-				throw "invalid configuration";
+				throw "invalid configuration"
 			},
-		});
+		})
 
-		expect(() => adapter.loadSync()).toThrow(ZconfigAdapterError);
-	});
-});
+		expect(() => adapter.loadSync()).toThrow(ZconfigAdapterError)
+	})
+})

@@ -1,5 +1,6 @@
-import { describe, expect, test } from "vitest";
-import { allowlist, DEFAULT_ALLOWLIST } from "./allowlist";
+import {describe, expect, test} from "vitest"
+
+import {allowlist, DEFAULT_ALLOWLIST} from "./allowlist"
 
 describe(allowlist.name, () => {
 	test("should disable the filter when no config is provided", () => {
@@ -7,8 +8,8 @@ describe(allowlist.name, () => {
 			type: "filter",
 			name: "allowlist",
 			config: false,
-		});
-	});
+		})
+	})
 
 	test("should apply the default allow list when allow is omitted", () => {
 		expect(
@@ -22,8 +23,8 @@ describe(allowlist.name, () => {
 				allow: DEFAULT_ALLOWLIST,
 				allowlistConfigPaths: ["./allowlist.txt"],
 			},
-		});
-	});
+		})
+	})
 
 	test("should preserve an explicit allow list", () => {
 		expect(
@@ -36,6 +37,6 @@ describe(allowlist.name, () => {
 			config: {
 				allow: ["bun", "pnpm"],
 			},
-		});
-	});
-});
+		})
+	})
+})

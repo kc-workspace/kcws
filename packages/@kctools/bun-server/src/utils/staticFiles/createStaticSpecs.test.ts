@@ -1,27 +1,27 @@
-import { resolve } from "node:path";
-import { describe, expect, test, vi } from "vitest";
-import type { BunType } from "#types";
-import createStaticSpecs from "./createStaticSpecs";
+import type {BunType} from "#types"
+
+import {resolve} from "node:path"
+import {describe, expect, test, vi} from "vitest"
+
+import createStaticSpecs from "./createStaticSpecs"
 
 const createMockBun = (existing: string[] = []) =>
 	({
 		file: vi.fn((path: string) => ({
 			exists: () => Promise.resolve(existing.includes(path)),
 		})),
-	}) as unknown as BunType;
+	}) as unknown as BunType
 
 const options = (statics: string[]) => ({
 	cwd: "/repo",
 	statics,
 	out: "dist",
-});
+})
 
 describe("createStaticSpecs", () => {
 	test("creates nothing when there is no static item", async () => {
-		await expect(
-			createStaticSpecs(createMockBun(), options([])),
-		).resolves.toEqual([]);
-	});
+		await expect(createStaticSpecs(createMockBun(), options([]))).resolves.toEqual([])
+	})
 
 	test.for([
 		{
@@ -31,7 +31,7 @@ describe("createStaticSpecs", () => {
 				source: "assets",
 				root: "/repo/assets",
 				pattern: "**/*",
-				target: { base: "/repo/dist", dirname: "assets" },
+				target: {base: "/repo/dist", dirname: "assets"},
 			},
 		},
 		{
@@ -41,7 +41,7 @@ describe("createStaticSpecs", () => {
 				source: "public/*.png",
 				root: "/repo/public",
 				pattern: "*.png",
-				target: { base: "/repo/dist", dirname: "images" },
+				target: {base: "/repo/dist", dirname: "images"},
 			},
 		},
 		{
@@ -51,58 +51,48 @@ describe("createStaticSpecs", () => {
 				source: "a:b",
 				root: "/repo/a:b",
 				pattern: "**/*",
-				target: { base: "/repo/dist", dirname: "images" },
+				target: {base: "/repo/dist", dirname: "images"},
 			},
 		},
-	])("$name", async ({ item, expected }) => {
-		await expect(
-			createStaticSpecs(createMockBun(), options([item])),
-		).resolves.toEqual([expected]);
-	});
+	])("$name", async ({item, expected}) => {
+		await expect(createStaticSpecs(createMockBun(), options([item]))).resolves.toEqual([expected])
+	})
 
 	test("copies into the working directory when there is no output", async () => {
 		const specs = await createStaticSpecs(createMockBun(), {
 			cwd: "/repo",
 			statics: ["assets"],
 			out: undefined,
-		});
+		})
 
-		expect(specs[0]?.target.base).toBe("/repo");
-	});
+		expect(specs[0]?.target.base).toBe("/repo")
+	})
 
 	test("keeps an existing file as its own pattern", async () => {
-		const bun = createMockBun([resolve("/repo", "public/favicon.ico")]);
+		const bun = createMockBun([resolve("/repo", "public/favicon.ico")])
 
-		await expect(
-			createStaticSpecs(bun, options(["public/favicon.ico:."])),
-		).resolves.toMatchObject([
-			{ root: "/repo/public", pattern: "favicon.ico" },
-		]);
-	});
+		await expect(createStaticSpecs(bun, options(["public/favicon.ico:."]))).resolves.toMatchObject([
+			{root: "/repo/public", pattern: "favicon.ico"},
+		])
+	})
 
 	test("creates one spec per static item", async () => {
-		const specs = await createStaticSpecs(
-			createMockBun(),
-			options(["assets", "public:."]),
-		);
+		const specs = await createStaticSpecs(createMockBun(), options(["assets", "public:."]))
 
-		expect(specs.map((spec) => spec.target.dirname)).toEqual(["assets", "."]);
-	});
+		expect(specs.map((spec) => spec.target.dirname)).toEqual(["assets", "."])
+	})
 
 	test("accepts an absolute source with a target", async () => {
-		await expect(
-			createStaticSpecs(createMockBun(), options(["/etc/assets:assets"])),
-		).resolves.toMatchObject([
-			{ root: "/etc/assets", target: { dirname: "assets" } },
-		]);
-	});
+		await expect(createStaticSpecs(createMockBun(), options(["/etc/assets:assets"]))).resolves.toMatchObject([
+			{root: "/etc/assets", target: {dirname: "assets"}},
+		])
+	})
 
 	test.for([
 		{
 			name: "an absolute source has no target",
 			item: "/etc/assets",
-			message:
-				"Static source /etc/assets needs an explicit target: /etc/assets:<target>",
+			message: "Static source /etc/assets needs an explicit target: /etc/assets:<target>",
 		},
 		{
 			name: "the target escapes the output directory",
@@ -124,9 +114,7 @@ describe("createStaticSpecs", () => {
 			item: "..",
 			message: "Static target .. escapes the output directory",
 		},
-	])("throws when $name", async ({ item, message }) => {
-		await expect(
-			createStaticSpecs(createMockBun(), options([item])),
-		).rejects.toThrow(message);
-	});
-});
+	])("throws when $name", async ({item, message}) => {
+		await expect(createStaticSpecs(createMockBun(), options([item]))).rejects.toThrow(message)
+	})
+})

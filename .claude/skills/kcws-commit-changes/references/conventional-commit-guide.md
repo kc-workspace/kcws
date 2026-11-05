@@ -5,7 +5,6 @@ Use this guide when drafting commit headers for this skill.
 ## Header format
 
 Use one of:
-
 - `<type>(<scope>): <subject>`
 - `<type>: <subject>`
 
@@ -28,14 +27,12 @@ Write `<subject>` in imperative form and keep it concise.
 Use the narrowest scope that owns the change. In this repository, package
 scopes are detected automatically from `pnpm-workspace.yaml`; write the
 package name without the `@` prefix:
-
 - `feat(kcws/zconfig): add lazy config loading`
 - `fix(kcconfigs/vitest): preserve explicit project roots`
 - `refactor(kctools/bun-react): simplify the build command`
 
 For changes that affect the whole repository, use one of the configured
 shared scopes: `core`, `config`, `script`, `deps`, or `deps-dev`.
-
 - `build(deps): upgrade Biome`
 - `ci(config): run the docs workflow only for relevant files`
 
@@ -46,7 +43,6 @@ repository-wide release or housekeeping change.
 ## Splitting heuristics
 
 Split into separate commits when any of these are true:
-
 - The changes can be described with different commit types.
 - Files touch different subsystems with independent intent.
 - One part can be reverted independently without breaking the other.

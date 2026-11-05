@@ -1,6 +1,6 @@
-import { describe, expect, test } from "vitest";
+import {describe, expect, test} from "vitest"
 
-import { getContext } from ".";
+import {getContext} from "."
 
 describe("getContext", () => {
 	test("should create a normalized GitHub context snapshot", () => {
@@ -14,25 +14,25 @@ describe("getContext", () => {
 			GITHUB_REPOSITORY: "kc-workspace/kcws",
 			GITHUB_RUN_ID: "42",
 			GITHUB_SERVER_URL: "https://github.com",
-		});
+		})
 
-		expect(context.isGitHubActions).toBe(true);
-		expect(context.runId).toBe(42);
-		expect(context.actor).toBe("dependabot[bot]");
-		expect(context.eventName).toBe("pull_request_target");
-		expect(context.repository).toBe("kc-workspace/kcws");
-		expect(context.serverUrl).toBe("https://github.com");
-	});
+		expect(context.isGitHubActions).toBe(true)
+		expect(context.runId).toBe(42)
+		expect(context.actor).toBe("dependabot[bot]")
+		expect(context.eventName).toBe("pull_request_target")
+		expect(context.repository).toBe("kc-workspace/kcws")
+		expect(context.serverUrl).toBe("https://github.com")
+	})
 
 	test("should parse numeric fields and coerce invalid values to undefined", () => {
 		const context = getContext({
 			GITHUB_RUN_ATTEMPT: "",
 			GITHUB_RUN_ID: "abc",
 			GITHUB_RUN_NUMBER: "7",
-		});
+		})
 
-		expect(context.runAttempt).toBeUndefined();
-		expect(context.runId).toBeUndefined();
-		expect(context.runNumber).toBe(7);
-	});
-});
+		expect(context.runAttempt).toBeUndefined()
+		expect(context.runId).toBeUndefined()
+		expect(context.runNumber).toBe(7)
+	})
+})

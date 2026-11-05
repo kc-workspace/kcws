@@ -1,1 +1,1 @@
-export { default as defineCommand } from "./defineCommand";
+export {default as defineCommand} from "./defineCommand"

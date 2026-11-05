@@ -1,15 +1,15 @@
-import type { BasicRoute } from "#utils/url";
+import type {BasicRoute} from "#utils/url"
 
 export interface RouteSpec {
 	/** The original source path specified by the user. */
-	source: string;
+	source: string
 	/** The resolved path of the source. */
-	root: string;
+	root: string
 	/** The resolved route associated with the input file. */
-	pattern: string;
+	pattern: string
 }
 
 export interface ResolvedRoute extends BasicRoute {
 	/** Absolute path to the HTML document. */
-	path: string;
+	path: string
 }

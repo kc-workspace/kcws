@@ -16,21 +16,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": [
-		"lit",
-		"webcomponent",
-		"website",
-		"bun",
-		"bunjs",
-		"server"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src",
-		"!*.test.*"
-	],
+	"keywords": ["lit", "webcomponent", "website", "bun", "bunjs", "server"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*"],
 	"engines": {
 		"node": ">=22"
 	},

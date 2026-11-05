@@ -1,13 +1,14 @@
-import { createRequire } from "node:module";
-import { ZconfigAdapterError } from "../errors";
+import {createRequire} from "node:module"
+
+import {ZconfigAdapterError} from "../errors"
 
 /**
  * Resolution is anchored to this package rather than the caller's working
  * directory, so an optional peer installed alongside `@kcws/zconfig` is found
  * regardless of where the consuming process was started.
  */
-const requireSync = createRequire(import.meta.url);
-const cache = new Map<string, unknown>();
+const requireSync = createRequire(import.meta.url)
+const cache = new Map<string, unknown>()
 
 /**
  * Loads an optional peer format library on first use.
@@ -24,19 +25,15 @@ const cache = new Map<string, unknown>();
  * @internal
  */
 const importSync = <T>(adapter: string, moduleName: string): T => {
-	if (cache.has(moduleName)) return cache.get(moduleName) as T;
+	if (cache.has(moduleName)) return cache.get(moduleName) as T
 
 	try {
-		const loaded = requireSync(moduleName) as T;
-		cache.set(moduleName, loaded);
-		return loaded;
+		const loaded = requireSync(moduleName) as T
+		cache.set(moduleName, loaded)
+		return loaded
 	} catch (cause) {
-		throw new ZconfigAdapterError(
-			adapter,
-			`cannot resolve "${moduleName}"; install it to use this adapter`,
-			cause,
-		);
+		throw new ZconfigAdapterError(adapter, `cannot resolve "${moduleName}"; install it to use this adapter`, cause)
 	}
-};
+}
 
-export default importSync;
+export default importSync

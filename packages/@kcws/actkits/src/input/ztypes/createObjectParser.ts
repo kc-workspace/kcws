@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod"
 
 /**
  * Creates a Zod schema for parsing string input to object using a custom parser.
@@ -12,16 +12,16 @@ export const createObjectParser = (
 ): z.ZodPreprocess<z.ZodRecord<z.ZodString, z.ZodUnknown>> =>
 	z.preprocess(
 		(val) => {
-			if (val === "" || val === undefined || val === null) return undefined;
-			if (typeof val === "object") return val;
+			if (val === "" || val === undefined || val === null) return undefined
+			if (typeof val === "object") return val
 			if (typeof val === "string") {
 				try {
-					return parser(val);
+					return parser(val)
 				} catch {
-					return val;
+					return val
 				}
 			}
-			return val;
+			return val
 		},
 		z.record(z.string(), z.unknown()),
-	);
+	)

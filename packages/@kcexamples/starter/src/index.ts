@@ -6,5 +6,5 @@
  * @returns The product of a and b
  */
 export const multiply = (a: number, b: number): number => {
-	return a * b;
-};
+	return a * b
+}

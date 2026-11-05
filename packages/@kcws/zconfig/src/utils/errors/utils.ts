@@ -1,4 +1,4 @@
-import type { ZodError } from "zod";
+import type {ZodError} from "zod"
 
 /**
  * Removes the error constructor itself from the reported stack trace, so the
@@ -11,8 +11,8 @@ export const trimConstructorFrame = (
 	// biome-ignore lint/complexity/noBannedTypes: Error.captureStackTrace expects a bare Function
 	ctor: Function,
 ): void => {
-	Error.captureStackTrace?.(error, ctor);
-};
+	Error.captureStackTrace?.(error, ctor)
+}
 
 /**
  * Renders a compact `path: message` list for a validation error message.
@@ -25,7 +25,7 @@ export const trimConstructorFrame = (
 export const summarise = (error: ZodError): string =>
 	error.issues
 		.map((issue) => {
-			const path = issue.path.join(".");
-			return path === "" ? issue.message : `${path}: ${issue.message}`;
+			const path = issue.path.join(".")
+			return path === "" ? issue.message : `${path}: ${issue.message}`
 		})
-		.join("; ");
+		.join("; ")

@@ -1,7 +1,6 @@
 # @kcws/actkits
 
 Shared GitHub Actions toolkit utilities for context detection, typed input parsing, structured logging, and workflow outputs.
-
 - [Installation](#installation)
 - [What is included](#what-is-included)
 - [Usage](#usage)
@@ -37,52 +36,52 @@ pnpm add @kcws/actkits
 ### Parse typed inputs
 
 ```ts
-import { parseInput, z, zBoolean, zNumber } from "@kcws/actkits/input";
+import {parseInput, z, zBoolean, zNumber} from "@kcws/actkits/input"
 
 const schema = z.object({
-  dryRun: zBoolean().default(false),
-  retries: zNumber().int().min(0).default(0),
-  token: z.string().min(1),
-});
+	dryRun: zBoolean().default(false),
+	retries: zNumber().int().min(0).default(0),
+	token: z.string().min(1),
+})
 
-const input = parseInput(schema);
+const input = parseInput(schema)
 // input is strongly typed from the schema
 ```
 
 ### Work with GitHub context
 
 ```ts
-import { getContext, isPullRequestEvent, getRunUrl } from "@kcws/actkits/context";
+import {getContext, isPullRequestEvent, getRunUrl} from "@kcws/actkits/context"
 
-const context = getContext();
+const context = getContext()
 
 if (isPullRequestEvent(context)) {
-  const runUrl = getRunUrl(context);
-  console.log("Running on pull request", runUrl);
+	const runUrl = getRunUrl(context)
+	console.log("Running on pull request", runUrl)
 }
 ```
 
 ### Log with namespaces
 
 ```ts
-import { createLogger } from "@kcws/actkits/logging";
+import {createLogger} from "@kcws/actkits/logging"
 
-const logger = createLogger("release", "publish");
+const logger = createLogger("release", "publish")
 
-logger.info("Starting publish for %s", "my-package");
-logger.notice("Version %s is ready", "1.2.3");
+logger.info("Starting publish for %s", "my-package")
+logger.notice("Version %s is ready", "1.2.3")
 ```
 
 ### Set workflow outputs
 
 ```ts
-import { setOutput, setOutputs } from "@kcws/actkits/output";
+import {setOutput, setOutputs} from "@kcws/actkits/output"
 
-setOutput("version", "1.2.3");
+setOutput("version", "1.2.3")
 
 setOutputs({
-  published: true,
-  artifactCount: 2,
-  metadata: { channel: "stable" },
-});
+	published: true,
+	artifactCount: 2,
+	metadata: {channel: "stable"},
+})
 ```

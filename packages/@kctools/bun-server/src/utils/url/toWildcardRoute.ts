@@ -1,5 +1,5 @@
 const toWildcardRoute = (route: string): string => {
-	return route === "/" ? "/*" : `${route}/*`;
-};
+	return route === "/" ? "/*" : `${route}/*`
+}
 
-export default toWildcardRoute;
+export default toWildcardRoute

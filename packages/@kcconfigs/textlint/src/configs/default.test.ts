@@ -1,5 +1,6 @@
-import { describe, expect, test } from "vitest";
-import defaultConfig from "./default";
+import {describe, expect, test} from "vitest"
+
+import defaultConfig from "./default"
 
 describe("default config", () => {
 	test("should compose the package default textlint config", () => {
@@ -22,6 +23,6 @@ describe("default config", () => {
 			rules: {
 				terminology: true,
 			},
-		});
-	});
-});
+		})
+	})
+})

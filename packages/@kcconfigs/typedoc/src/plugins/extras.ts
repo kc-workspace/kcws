@@ -1,10 +1,10 @@
-import { definePlugin, type PluginConfig, type UserConfig } from "../configs";
+import {definePlugin, type PluginConfig, type UserConfig} from "../configs"
 
 interface ExtrasConfig extends UserConfig {
-	customTitle?: string;
-	customDescription?: string;
-	footerTypedocVersion?: boolean;
-	footerLastModified?: boolean;
+	customTitle?: string
+	customDescription?: string
+	footerTypedocVersion?: boolean
+	footerLastModified?: boolean
 }
 
 /**
@@ -17,6 +17,6 @@ const extras: PluginConfig<ExtrasConfig> = definePlugin<ExtrasConfig>({
 	// https://github.com/Drarig29/typedoc-plugin-extras#arguments
 	footerTypedocVersion: true,
 	footerLastModified: true,
-});
+})
 
-export default extras;
+export default extras

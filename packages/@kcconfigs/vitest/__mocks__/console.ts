@@ -1,7 +1,7 @@
-import { vi } from "vitest";
+import {vi} from "vitest"
 
 vi.mock(import("node:console"), async (importOriginal) => {
-	const actual = await importOriginal();
+	const actual = await importOriginal()
 	return {
 		...actual,
 		debug: vi.fn(),
@@ -9,5 +9,5 @@ vi.mock(import("node:console"), async (importOriginal) => {
 		log: vi.fn(),
 		warn: vi.fn(),
 		error: vi.fn(),
-	};
-});
+	}
+})

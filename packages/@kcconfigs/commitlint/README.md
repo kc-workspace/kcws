@@ -3,7 +3,6 @@
 Shared [commitlint](https://commitlint.js.org/) configuration with a typed
 `defineConfig` helper and composable plugins for commit types, fixed or
 workspace-detected scopes, and raw overrides.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -36,11 +35,11 @@ pnpm add --save-dev @commitlint/cli @kcconfigs/commitlint
 Create a `commitlint.config.ts` at your repository root.
 
 ```ts
-import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
+import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
 
-const config: CommitlintConfig = await defineConfig();
+const config: CommitlintConfig = await defineConfig()
 
-export default config;
+export default config
 ```
 
 ### Asynchronous config
@@ -53,15 +52,12 @@ Plugins may be passed as values or as promises, so asynchronous factories such
 as `autoScopePlugin` can be passed directly without awaiting them first:
 
 ```ts
-import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
-import { autoScopePlugin, typesPlugin } from "@kcconfigs/commitlint/plugins";
+import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
+import {autoScopePlugin, typesPlugin} from "@kcconfigs/commitlint/plugins"
 
-const config: CommitlintConfig = await defineConfig(
-  typesPlugin("minimal"),
-  autoScopePlugin(["core", "config"]),
-);
+const config: CommitlintConfig = await defineConfig(typesPlugin("minimal"), autoScopePlugin(["core", "config"]))
 
-export default config;
+export default config
 ```
 
 `defineConfig` takes plugins only; it has no separate options argument.
@@ -70,7 +66,6 @@ export default config;
 
 `defineConfig()` without plugins produces the same config as
 `defineConfig(typesPlugin("standard"), autoScopePlugin())`:
-
 - `parserPreset` is `@commitlint/config-conventional`
 - `type-enum` allows the standard conventional commit types
 - `scope-enum` allows the workspace packages detected in the current directory
@@ -158,60 +153,57 @@ Multiple scopes per commit are disabled (`enableMultipleScopes: false`).
 Add extra scopes on top of the detected workspace packages:
 
 ```ts
-import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
-import { autoScopePlugin } from "@kcconfigs/commitlint/plugins";
+import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
+import {autoScopePlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-  autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
-);
+	autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
+)
 
-export default config;
+export default config
 ```
 
 Use a fixed set of types and scopes in a single-package repository:
 
 ```ts
-import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
-import { scopePlugin, typesPlugin } from "@kcconfigs/commitlint/plugins";
+import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
+import {scopePlugin, typesPlugin} from "@kcconfigs/commitlint/plugins"
 
-const config: CommitlintConfig = await defineConfig(
-  typesPlugin("minimal"),
-  scopePlugin(["api", "web"]),
-);
+const config: CommitlintConfig = await defineConfig(typesPlugin("minimal"), scopePlugin(["api", "web"]))
 
-export default config;
+export default config
 ```
 
 Custom types with prompt metadata:
 
 ```ts
-import { type CommitlintConfig, defineConfig } from "@kcconfigs/commitlint";
-import { typesPlugin } from "@kcconfigs/commitlint/plugins";
+import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
+import {typesPlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-  typesPlugin({
-    feat: { description: "A new feature", title: "Features", emoji: "✨" },
-    fix: { description: "A bug fix", title: "Bugfixes", emoji: "🐛" },
-  }),
-);
+	typesPlugin({
+		feat: {description: "A new feature", title: "Features", emoji: "✨"},
+		fix: {description: "A bug fix", title: "Bugfixes", emoji: "🐛"},
+	}),
+)
 
-export default config;
+export default config
 ```
 
 Tighten a rule and debug the plugin pipeline:
 
 ```ts
-import { type CommitlintConfig, defineConfig, Severity } from "@kcconfigs/commitlint";
-import { debugPlugin, overridePlugin } from "@kcconfigs/commitlint/plugins";
+import {type CommitlintConfig, defineConfig, Severity} from "@kcconfigs/commitlint"
+import {debugPlugin, overridePlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-  debugPlugin(),
-  overridePlugin({
-    rules: { "subject-max-length": [Severity.Error, "always", 72] },
-  }),
-);
+	debugPlugin(),
+	overridePlugin({
+		rules: {"subject-max-length": [Severity.Error, "always", 72]},
+	}),
+)
 
-export default config;
+export default config
 ```
 
 ## References

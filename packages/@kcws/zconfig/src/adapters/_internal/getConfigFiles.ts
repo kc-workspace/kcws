@@ -4,11 +4,8 @@
  * @param name - Optional name to include in the file names
  * @returns An array of possible configuration file names
  */
-const getConfigFiles = (
-	extensions: string[],
-	name: string | undefined,
-): string[] => {
-	const files: string[] = [];
+const getConfigFiles = (extensions: string[], name: string | undefined): string[] => {
+	const files: string[] = []
 
 	if (name) {
 		files.push(
@@ -18,13 +15,10 @@ const getConfigFiles = (
 			...extensions.map((ext) => `${name}/config.${ext}`),
 			...extensions.map((ext) => `.config/${name}.${ext}`),
 			...extensions.map((ext) => `config/${name}.${ext}`),
-		);
+		)
 	}
-	files.push(
-		...extensions.map((ext) => `config.${ext}`),
-		...extensions.map((ext) => `.config.${ext}`),
-	);
+	files.push(...extensions.map((ext) => `config.${ext}`), ...extensions.map((ext) => `.config.${ext}`))
 
-	return files;
-};
-export default getConfigFiles;
+	return files
+}
+export default getConfigFiles

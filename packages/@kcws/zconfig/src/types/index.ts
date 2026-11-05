@@ -4,25 +4,25 @@
  * Values are intentionally `unknown` — adapters never coerce, so a value is
  * whatever its source format yielded. Environment values are always strings.
  */
-export type RawConfig = Record<string, unknown>;
+export type RawConfig = Record<string, unknown>
 
 /** Environment variables available to environment-based adapters. */
-export type EnvObject = Record<string, string>;
+export type EnvObject = Record<string, string>
 
 /** A single leaf value visited during a {@link TransformFn} walk. */
 export interface TransformInput {
 	/** Full path to the value, e.g. `["database", "host"]`. */
-	key: string[];
+	key: string[]
 	/** Value read from the adapter source before schema validation. */
-	value: unknown;
+	value: unknown
 }
 
 /** The relocated key and value a {@link TransformFn} chose to emit. */
 export interface TransformOutput {
 	/** Destination path for the transformed value. */
-	key: string[];
+	key: string[]
 	/** Value emitted at the destination path. */
-	value: unknown;
+	value: unknown
 }
 
 /**
@@ -33,9 +33,7 @@ export interface TransformOutput {
  * drops the key entirely. If two transformed keys resolve to the same path, the
  * later one wins.
  */
-export type TransformFn = (
-	input: TransformInput,
-) => TransformOutput | undefined;
+export type TransformFn = (input: TransformInput) => TransformOutput | undefined
 
 /**
  * A configuration source.
@@ -46,16 +44,16 @@ export type TransformFn = (
  */
 export interface Adapter {
 	/** Stable identifier used in {@link ZconfigAdapterError}, e.g. `"env"`. */
-	readonly name: string;
+	readonly name: string
 
 	/** Loads and parses configuration asynchronously. */
-	load(): Promise<RawConfig>;
+	load(): Promise<RawConfig>
 	/** Loads and parses configuration synchronously. */
-	loadSync(): RawConfig;
+	loadSync(): RawConfig
 }
 
 /** Options every adapter accepts. */
 export interface BaseAdapterOptions {
 	/** Transformation function applied to each leaf of the configuration. */
-	transform?: TransformFn;
+	transform?: TransformFn
 }

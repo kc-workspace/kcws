@@ -1,7 +1,9 @@
-import { readFileSync } from "node:fs";
-import { parse as parseYaml } from "yaml";
-import type { z } from "zod";
-import { createObjectParser } from "./createObjectParser";
+import type {z} from "zod"
+
+import {readFileSync} from "node:fs"
+import {parse as parseYaml} from "yaml"
+
+import {createObjectParser} from "./createObjectParser"
 
 /**
  * Zod schema for parsing YAML file path input to object.
@@ -13,6 +15,6 @@ import { createObjectParser } from "./createObjectParser";
  * schema.parse({ config: "./config.yaml" }); // { config: { key: "value" } }
  * ```
  */
-export const zYamlFile: z.ZodPreprocess<
-	z.ZodRecord<z.ZodString, z.ZodUnknown>
-> = createObjectParser((file) => parseYaml(readFileSync(file, "utf-8")));
+export const zYamlFile: z.ZodPreprocess<z.ZodRecord<z.ZodString, z.ZodUnknown>> = createObjectParser((file) =>
+	parseYaml(readFileSync(file, "utf-8")),
+)

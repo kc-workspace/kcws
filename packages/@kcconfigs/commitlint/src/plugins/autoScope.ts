@@ -1,14 +1,12 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-import { cwd as wd } from "node:process";
-import { definePluginAsync } from "@kcinternals/config-builder";
-import type { CommitlintConfigPlugin } from "../types";
-import {
-	findBunPackages,
-	findNpmPackages,
-	findPnpmPackages,
-} from "../utils/projects";
-import { applyScopes } from "../utils/scopes";
+import type {CommitlintConfigPlugin} from "../types"
+
+import {existsSync} from "node:fs"
+import {join} from "node:path"
+import {cwd as wd} from "node:process"
+import {definePluginAsync} from "@kcinternals/config-builder"
+
+import {findBunPackages, findNpmPackages, findPnpmPackages} from "../utils/projects"
+import {applyScopes} from "../utils/scopes"
 
 /**
  * Detects workspace package names based on the package manager in use.
@@ -20,19 +18,16 @@ import { applyScopes } from "../utils/scopes";
  * The root package is always excluded.
  */
 const detectScopes = (): Promise<string[]> => {
-	const cwd = wd();
+	const cwd = wd()
 
 	if (existsSync(join(cwd, "pnpm-workspace.yaml"))) {
-		return findPnpmPackages(false);
-	} else if (
-		existsSync(join(cwd, "bun.lock")) ||
-		existsSync(join(cwd, "bun.lockb"))
-	) {
-		return findBunPackages(false);
+		return findPnpmPackages(false)
+	} else if (existsSync(join(cwd, "bun.lock")) || existsSync(join(cwd, "bun.lockb"))) {
+		return findBunPackages(false)
 	}
 
-	return findNpmPackages(false);
-};
+	return findNpmPackages(false)
+}
 
 /**
  * Auto scope plugin — allows workspace packages detected in the current
@@ -46,12 +41,10 @@ const detectScopes = (): Promise<string[]> => {
  * @returns commitlint config plugin
  * @see scopePlugin to allow a fixed list of scopes instead
  */
-const autoScopePlugin = async (
-	additional: string[] = [],
-): Promise<CommitlintConfigPlugin<"autoScope">> => {
-	const scopes = [...additional, ...(await detectScopes())];
+const autoScopePlugin = async (additional: string[] = []): Promise<CommitlintConfigPlugin<"autoScope">> => {
+	const scopes = [...additional, ...(await detectScopes())]
 	return definePluginAsync("autoScope", {
 		applyConfig: (base) => applyScopes(base, scopes),
-	});
-};
-export default autoScopePlugin;
+	})
+}
+export default autoScopePlugin

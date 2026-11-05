@@ -1,8 +1,4 @@
 {
 	"$schema": "https://www.schemastore.org/tsconfig",
-	"extends": [
-		"./default.json",
-		"../features/noIncremental.json",
-		"../features/declarationOnly.json"
-	]
+	"extends": ["./default.json", "../features/noIncremental.json", "../features/declarationOnly.json"]
 }

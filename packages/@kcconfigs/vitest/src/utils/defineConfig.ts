@@ -1,5 +1,6 @@
-import { defineConfigSync } from "@kcinternals/config-builder";
-import type { AnyVitestConfigPlugin } from "../types";
+import type {AnyVitestConfigPlugin} from "../types"
+
+import {defineConfigSync} from "@kcinternals/config-builder"
 
 /**
  * Creates a Vitest configuration by applying configuration plugins to an empty
@@ -12,10 +13,7 @@ import type { AnyVitestConfigPlugin } from "../types";
  * @param plugins - Additional plugins to apply.
  * @returns The Vitest configuration produced by the plugins.
  */
-const defineConfig = <C>(
-	plugin: AnyVitestConfigPlugin<C>,
-	...plugins: AnyVitestConfigPlugin<C>[]
-): C => {
-	return defineConfigSync({} as C, plugin, ...plugins) as C;
-};
-export default defineConfig;
+const defineConfig = <C>(plugin: AnyVitestConfigPlugin<C>, ...plugins: AnyVitestConfigPlugin<C>[]): C => {
+	return defineConfigSync({} as C, plugin, ...plugins) as C
+}
+export default defineConfig

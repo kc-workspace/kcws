@@ -1,4 +1,4 @@
-export type RequestHandler = (request: Request) => Promise<Response>;
+export type RequestHandler = (request: Request) => Promise<Response>
 
 export interface BasicRoute {
 	/**
@@ -7,7 +7,7 @@ export interface BasicRoute {
 	 * 	"/images"
 	 * 	"/assets"
 	 */
-	route: string;
+	route: string
 
 	/**
 	 * Wildcard URL path for client side sub-routes.
@@ -15,5 +15,5 @@ export interface BasicRoute {
 	 * 	"/images/*"
 	 * 	"/assets/*"
 	 */
-	wildcard: string;
+	wildcard: string
 }

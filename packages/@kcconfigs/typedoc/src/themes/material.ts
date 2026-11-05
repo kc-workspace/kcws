@@ -1,4 +1,4 @@
-import { defineTheme, type ThemeConfig } from "../configs";
+import {defineTheme, type ThemeConfig} from "../configs"
 
 /**
  * Typedoc theme that use Material Design style
@@ -6,6 +6,6 @@ import { defineTheme, type ThemeConfig } from "../configs";
  */
 const material: ThemeConfig = defineTheme({
 	plugin: ["typedoc-material-theme"],
-});
+})
 
-export default material;
+export default material

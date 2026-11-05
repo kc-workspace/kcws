@@ -1,13 +1,15 @@
-import { definePluginAsync } from "@kcinternals/config-builder";
-import { debugPriority } from "../constants";
-import type { CommitlintConfigPlugin } from "../types";
+import type {CommitlintConfigPlugin} from "../types"
+
+import {definePluginAsync} from "@kcinternals/config-builder"
+
+import {debugPriority} from "../constants"
 
 /**
  * Options for {@link debugPlugin}.
  */
 export interface DebugPluginOption {
 	/** Enable verbose debug log too */
-	verbose?: true;
+	verbose?: true
 }
 
 /**
@@ -18,14 +20,12 @@ export interface DebugPluginOption {
  * @param opt - Debug options
  * @returns commitlint config plugin
  */
-const debugPlugin = (
-	opt?: DebugPluginOption,
-): CommitlintConfigPlugin<"debug"> =>
+const debugPlugin = (opt?: DebugPluginOption): CommitlintConfigPlugin<"debug"> =>
 	definePluginAsync("debug", {
 		settingPriority: debugPriority,
 		applySetting: (base) => ({
 			debug: true,
 			verbose: opt?.verbose ?? base.verbose,
 		}),
-	});
-export default debugPlugin;
+	})
+export default debugPlugin

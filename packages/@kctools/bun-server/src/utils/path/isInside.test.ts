@@ -1,15 +1,16 @@
-import { describe, expect, test } from "vitest";
-import isInside from "./isInside";
+import {describe, expect, test} from "vitest"
+
+import isInside from "./isInside"
 
 describe("isInside", () => {
 	test.for([
-		{ name: "a direct child", child: "/repo/dist/index.html", expected: true },
+		{name: "a direct child", child: "/repo/dist/index.html", expected: true},
 		{
 			name: "a nested child",
 			child: "/repo/dist/assets/app.js",
 			expected: true,
 		},
-		{ name: "the parent itself", child: "/repo/dist", expected: true },
+		{name: "the parent itself", child: "/repo/dist", expected: true},
 		{
 			name: "a sibling directory",
 			child: "/repo/src/index.html",
@@ -25,7 +26,7 @@ describe("isInside", () => {
 			child: "/repo/dist-other/index.html",
 			expected: false,
 		},
-	])("returns $expected for $name", ({ child, expected }) => {
-		expect(isInside("/repo/dist", child)).toBe(expected);
-	});
-});
+	])("returns $expected for $name", ({child, expected}) => {
+		expect(isInside("/repo/dist", child)).toBe(expected)
+	})
+})

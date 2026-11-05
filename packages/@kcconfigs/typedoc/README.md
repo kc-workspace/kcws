@@ -2,7 +2,6 @@
 
 Shared TypeDoc configuration with composable presets, themes, and plugins
 for generating consistent API documentation across the monorepo.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -58,8 +57,8 @@ Use a preset via the `extends` field in `typedoc.jsonc`:
 
 ```jsonc
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "extends": ["@kcconfigs/typedoc/package"]
+	"$schema": "https://typedoc.org/schema.json",
+	"extends": ["@kcconfigs/typedoc/package"]
 }
 ```
 
@@ -67,10 +66,10 @@ For a monorepo root:
 
 ```jsonc
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "extends": ["@kcconfigs/typedoc/root"],
-  "name": "My Workspace",
-  "entryPoints": ["packages/*"]
+	"$schema": "https://typedoc.org/schema.json",
+	"extends": ["@kcconfigs/typedoc/root"],
+	"name": "My Workspace",
+	"entryPoints": ["packages/*"]
 }
 ```
 
@@ -123,21 +122,20 @@ The default arrays are also exported directly as `defaultBlockTags`,
 `defaultKindSortOrder`, `defaultSort`, and `defaultRequiredToBeDocumented`.
 
 ```ts
-import { defineConfig, type UserConfig } from "@kcconfigs/typedoc";
-import all from "@kcconfigs/typedoc/plugins/all";
-import github from "@kcconfigs/typedoc/themes/github";
+import {defineConfig, type UserConfig} from "@kcconfigs/typedoc"
+import all from "@kcconfigs/typedoc/plugins/all"
+import github from "@kcconfigs/typedoc/themes/github"
 
 const config: UserConfig = defineConfig(github, all, {
-  highlightLanguages: ["http"],
-});
+	highlightLanguages: ["http"],
+})
 
-export default config;
+export default config
 ```
 
 ### Base options
 
 `defineBaseConfig` sets, among others:
-
 - `entryPointStrategy`: `"resolve"`
 - `emit`: `"docs"`, `cleanOutputDir`: `true`
 - `packageOptions.includeVersion`: `true`

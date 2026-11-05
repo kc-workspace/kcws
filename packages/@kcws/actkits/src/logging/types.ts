@@ -1,4 +1,4 @@
-import type { ExtendNamespace, Getter } from "./internal/types";
+import type {ExtendNamespace, Getter} from "./internal/types"
 
 /**
  * Public logger contract for the logging module.
@@ -7,33 +7,31 @@ import type { ExtendNamespace, Getter } from "./internal/types";
  */
 export interface ILogger<NS extends string> {
 	/** The namespace of this logger (colon-separated segments) */
-	readonly namespace: NS;
+	readonly namespace: NS
 	/** Whether debug logging is enabled */
-	readonly isDebug: boolean;
+	readonly isDebug: boolean
 
 	/** Logs a debug message with printf-style formatting */
-	debug(format: string, ...args: unknown[]): void;
+	debug(format: string, ...args: unknown[]): void
 	/** Logs an informational message with printf-style formatting */
-	info(format: string, ...args: unknown[]): void;
+	info(format: string, ...args: unknown[]): void
 	/** Logs a warning annotation with printf-style formatting */
-	warn(format: string, ...args: unknown[]): void;
+	warn(format: string, ...args: unknown[]): void
 	/** Logs an error annotation with printf-style formatting */
-	error(format: string, ...args: unknown[]): void;
+	error(format: string, ...args: unknown[]): void
 	/** Logs a notice annotation with printf-style formatting */
-	notice(format: string, ...args: unknown[]): void;
+	notice(format: string, ...args: unknown[]): void
 
 	/** Executes an asynchronous function within a log group */
-	group<R>(title: string, run: Getter<Promise<R>>): Promise<R>;
+	group<R>(title: string, run: Getter<Promise<R>>): Promise<R>
 	/** Executes a synchronous function within a log group */
-	groupSync<R>(title: string, run: Getter<R>): R;
+	groupSync<R>(title: string, run: Getter<R>): R
 
 	/** Starts a new log group */
-	startGroup(title: string): void;
+	startGroup(title: string): void
 	/** Ends the current log group */
-	endGroup(): void;
+	endGroup(): void
 
 	/** Creates a child logger with an extended namespace */
-	extend<SS extends string[]>(
-		...segments: SS
-	): ILogger<ExtendNamespace<NS, SS>>;
+	extend<SS extends string[]>(...segments: SS): ILogger<ExtendNamespace<NS, SS>>
 }

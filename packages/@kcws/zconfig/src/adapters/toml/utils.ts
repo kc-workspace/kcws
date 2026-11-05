@@ -1,4 +1,3 @@
-import { getConfigFiles } from "../_internal";
+import {getConfigFiles} from "../_internal"
 
-export const getTomlFiles = (name?: string): string[] =>
-	getConfigFiles(["toml"], name);
+export const getTomlFiles = (name?: string): string[] => getConfigFiles(["toml"], name)

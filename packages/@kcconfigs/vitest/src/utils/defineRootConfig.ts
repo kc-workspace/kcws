@@ -1,7 +1,8 @@
-import { rootPlugin } from "../plugins";
-import type { AnyVitestConfigPlugin, UserConfig } from "../types";
-import defineConfig from "./defineConfig";
-import type defineProjectConfig from "./defineProjectConfig";
+import type {AnyVitestConfigPlugin, UserConfig} from "../types"
+import type defineProjectConfig from "./defineProjectConfig"
+
+import {rootPlugin} from "../plugins"
+import defineConfig from "./defineConfig"
 
 /**
  * Creates a root Vitest configuration.
@@ -13,10 +14,7 @@ import type defineProjectConfig from "./defineProjectConfig";
  *
  * @see {@link defineProjectConfig} for creating project configurations.
  */
-const defineRootConfig = (
-	projects: string[],
-	...plugins: AnyVitestConfigPlugin<UserConfig>[]
-): UserConfig => {
-	return defineConfig(rootPlugin(projects), ...plugins);
-};
-export default defineRootConfig;
+const defineRootConfig = (projects: string[], ...plugins: AnyVitestConfigPlugin<UserConfig>[]): UserConfig => {
+	return defineConfig(rootPlugin(projects), ...plugins)
+}
+export default defineRootConfig

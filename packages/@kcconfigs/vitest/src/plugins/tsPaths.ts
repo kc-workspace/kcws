@@ -1,6 +1,8 @@
-import { definePluginSync } from "@kcinternals/config-builder";
-import type { AnyConfig, VitestConfigPlugin } from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {AnyConfig, VitestConfigPlugin} from "../types"
+
+import {definePluginSync} from "@kcinternals/config-builder"
+
+import mergeConfig from "../utils/mergeConfig"
 
 /**
  * When your tsconfig contains compilerOptions.paths, Vitest will not be able to resolve the paths correctly.
@@ -8,7 +10,6 @@ import mergeConfig from "../utils/mergeConfig";
  */
 const tsPathsPlugin = (): VitestConfigPlugin<"tsPaths", AnyConfig> =>
 	definePluginSync("tsPaths", {
-		applyConfig: (base) =>
-			mergeConfig(base, { resolve: { tsconfigPaths: true } }),
-	});
-export default tsPathsPlugin;
+		applyConfig: (base) => mergeConfig(base, {resolve: {tsconfigPaths: true}}),
+	})
+export default tsPathsPlugin

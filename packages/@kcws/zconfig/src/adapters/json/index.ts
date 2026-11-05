@@ -1,4 +1,4 @@
-export { default as jsonAdapter } from "./adapter";
-export type { JsonAdapterNormalizedOptions, JsonAdapterOptions } from "./types";
+export type {JsonAdapterNormalizedOptions, JsonAdapterOptions} from "./types"
 
-export { getJsonFiles } from "./utils";
+export {default as jsonAdapter} from "./adapter"
+export {getJsonFiles} from "./utils"

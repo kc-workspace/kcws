@@ -1,56 +1,56 @@
-import { expect, test } from "vitest";
-import type { AnySyncConfigPlugin } from "../types";
-import defineConfig from "./defineConfigSync";
-import definePlugin from "./definePluginSync";
+import type {AnySyncConfigPlugin} from "../types"
+
+import {expect, test} from "vitest"
+
+import defineConfig from "./defineConfigSync"
+import definePlugin from "./definePluginSync"
 
 interface BenchConfig {
-	values: number[];
+	values: number[]
 }
 
 const createPlugins = (count: number): AnySyncConfigPlugin<BenchConfig>[] =>
-	Array.from({ length: count }, (_, index) =>
+	Array.from({length: count}, (_, index) =>
 		definePlugin<string, BenchConfig>(`plugin-${index}`, {
 			settingPriority: count - index,
 			configPriority: index % 3,
 			applyConfig: (config) => {
-				config.values.push(index);
-				return config;
+				config.values.push(index)
+				return config
 			},
 		}),
-	);
+	)
 
-test("defineConfigSync scales with plugin count", async ({ bench }) => {
-	const small = createPlugins(5);
-	const large = createPlugins(50);
+test("defineConfigSync scales with plugin count", async ({bench}) => {
+	const small = createPlugins(5)
+	const large = createPlugins(50)
 
-	expect(defineConfig({ values: [] }, ...large).values).toHaveLength(50);
+	expect(defineConfig({values: []}, ...large).values).toHaveLength(50)
 
 	await bench.compare(
 		bench("5 plugins", () => {
-			defineConfig({ values: [] }, ...small);
+			defineConfig({values: []}, ...small)
 		}),
 		bench("50 plugins", () => {
-			defineConfig({ values: [] }, ...large);
+			defineConfig({values: []}, ...large)
 		}),
-	);
-});
+	)
+})
 
-test("defineConfigSync cost of debug and verbose logging", async ({
-	bench,
-}) => {
-	const plugins = createPlugins(10);
-	const noop = (): void => {};
+test("defineConfigSync cost of debug and verbose logging", async ({bench}) => {
+	const plugins = createPlugins(10)
+	const noop = (): void => {}
 	const logging = definePlugin<"logging", BenchConfig>("logging", {
 		settingPriority: Number.NEGATIVE_INFINITY,
-		applySetting: () => ({ debug: noop, verbose: noop }),
-	});
+		applySetting: () => ({debug: noop, verbose: noop}),
+	})
 
 	await bench.compare(
 		bench("logging disabled", () => {
-			defineConfig({ values: [] }, ...plugins);
+			defineConfig({values: []}, ...plugins)
 		}),
 		bench("logging enabled", () => {
-			defineConfig({ values: [] }, logging, ...plugins);
+			defineConfig({values: []}, logging, ...plugins)
 		}),
-	);
-});
+	)
+})

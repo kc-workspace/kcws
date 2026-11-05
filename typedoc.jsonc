@@ -22,7 +22,7 @@
 
 	// Comments: https://typedoc.org/documents/Options.Comments.html
 	"externalSymbolLinkMappings": {
-		"rolldown": { "transform": "#" }
+		"rolldown": {"transform": "#"}
 	},
 
 	// https://github.com/Drarig29/typedoc-plugin-extras#arguments

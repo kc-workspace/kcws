@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod"
 
 /**
  * Zod schema for parsing string input to number.
@@ -11,7 +11,7 @@ import { z } from "zod";
  * ```
  */
 export const zNumber: z.ZodPreprocess<z.ZodNumber> = z.preprocess((val) => {
-	if (val === "" || val === undefined || val === null) return undefined;
-	const num = Number(val);
-	return Number.isNaN(num) ? val : num;
-}, z.number());
+	if (val === "" || val === undefined || val === null) return undefined
+	const num = Number(val)
+	return Number.isNaN(num) ? val : num
+}, z.number())

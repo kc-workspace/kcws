@@ -1,11 +1,10 @@
-import {
-	definePluginSync,
-	type WithEnabled,
-} from "@kcinternals/config-builder";
-import type { CoverageOptions } from "vitest/node";
-import { defaultCoverage } from "../constants/config";
-import type { UserConfig, VitestConfigPlugin } from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {CoverageOptions} from "vitest/node"
+import type {UserConfig, VitestConfigPlugin} from "../types"
+
+import {definePluginSync, type WithEnabled} from "@kcinternals/config-builder"
+
+import {defaultCoverage} from "../constants/config"
+import mergeConfig from "../utils/mergeConfig"
 
 /**
  * Coverage plugin input.
@@ -14,20 +13,17 @@ import mergeConfig from "../utils/mergeConfig";
  * - `false`: remove coverage from config.
  * - `CoverageOptions`: apply custom coverage settings.
  */
-export type CoverageOption = WithEnabled<CoverageOptions>;
+export type CoverageOption = WithEnabled<CoverageOptions>
 
-const replaceCoverage = (
-	base: UserConfig,
-	coverage: CoverageOptions,
-): UserConfig => {
+const replaceCoverage = (base: UserConfig, coverage: CoverageOptions): UserConfig => {
 	return {
 		...base,
 		test: {
 			...base.test,
 			coverage,
 		},
-	};
-};
+	}
+}
 
 /**
  * Create a plugin that configures `test.coverage`.
@@ -42,30 +38,27 @@ const replaceCoverage = (
  * @param opt Coverage input option.
  * @param replace Whether to replace the coverage object instead of merging.
  */
-const coveragePlugin = (
-	opt: CoverageOption,
-	replace = false,
-): VitestConfigPlugin<"website", UserConfig> =>
+const coveragePlugin = (opt: CoverageOption, replace = false): VitestConfigPlugin<"website", UserConfig> =>
 	definePluginSync("website", {
 		applyConfig: (base) => {
 			if (opt === false) {
-				if (base.test?.coverage) delete base.test.coverage;
-				return base;
+				if (base.test?.coverage) delete base.test.coverage
+				return base
 			} else if (opt === true) {
 				if (replace) {
-					return replaceCoverage(base, { enabled: true });
+					return replaceCoverage(base, {enabled: true})
 				}
 
 				return mergeConfig(base, {
-					test: { coverage: defaultCoverage },
-				});
+					test: {coverage: defaultCoverage},
+				})
 			}
 
 			if (replace) {
-				return replaceCoverage(base, opt);
+				return replaceCoverage(base, opt)
 			}
 
-			return mergeConfig(base, { test: { coverage: opt } });
+			return mergeConfig(base, {test: {coverage: opt}})
 		},
-	});
-export default coveragePlugin;
+	})
+export default coveragePlugin

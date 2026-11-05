@@ -1,10 +1,11 @@
-import { describe, expect, test } from "vitest";
-import useDefaultAdapters from "./useDefaultAdapters";
+import {describe, expect, test} from "vitest"
+
+import useDefaultAdapters from "./useDefaultAdapters"
 
 describe("useDefaultAdapters", () => {
 	test("creates adapters scoped to a name", () => {
-		const adapters = useDefaultAdapters("app");
+		const adapters = useDefaultAdapters("app")
 
-		expect(adapters.map(({ name }) => name)).toEqual(["auto", "dotenv", "env"]);
-	});
-});
+		expect(adapters.map(({name}) => name)).toEqual(["auto", "dotenv", "env"])
+	})
+})

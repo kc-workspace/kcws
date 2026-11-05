@@ -1,5 +1,6 @@
-import type { RawConfig } from "#types";
-import { DANGEROUS_KEYS, isPlainObject } from "#utils/object";
+import type {RawConfig} from "#types"
+
+import {DANGEROUS_KEYS, isPlainObject} from "#utils/object"
 
 /**
  * Folds one source into a merge target, in place.
@@ -11,23 +12,21 @@ import { DANGEROUS_KEYS, isPlainObject } from "#utils/object";
  */
 export const mergeInto = (target: RawConfig, source: RawConfig): void => {
 	for (const key of Object.keys(source)) {
-		if (DANGEROUS_KEYS.has(key)) continue;
+		if (DANGEROUS_KEYS.has(key)) continue
 
-		const value = source[key];
+		const value = source[key]
 		// A source that omits a key must not clear what an earlier source set.
-		if (value === undefined) continue;
+		if (value === undefined) continue
 
 		if (!isPlainObject(value)) {
-			target[key] = value;
-			continue;
+			target[key] = value
+			continue
 		}
 
-		const existing = target[key];
-		const next: RawConfig = isPlainObject(existing)
-			? existing
-			: Object.create(null);
+		const existing = target[key]
+		const next: RawConfig = isPlainObject(existing) ? existing : Object.create(null)
 
-		mergeInto(next, value);
-		target[key] = next;
+		mergeInto(next, value)
+		target[key] = next
 	}
-};
+}

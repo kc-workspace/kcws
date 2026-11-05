@@ -1,12 +1,14 @@
-import { describe, expect, test } from "vitest";
-import findDuplicateRoutes from "./findDuplicateRoutes";
-import toWildcardRoute from "./toWildcardRoute";
-import type { BasicRoute } from "./types";
+import type {BasicRoute} from "./types"
+
+import {describe, expect, test} from "vitest"
+
+import findDuplicateRoutes from "./findDuplicateRoutes"
+import toWildcardRoute from "./toWildcardRoute"
 
 const file = (route: string): BasicRoute => ({
 	route,
 	wildcard: toWildcardRoute(route),
-});
+})
 
 describe("findDuplicateRoutes", () => {
 	test.for([
@@ -15,7 +17,7 @@ describe("findDuplicateRoutes", () => {
 			routes: ["/a.png", "/b.png"],
 			expected: [],
 		},
-		{ name: "there is no file", routes: [], expected: [] },
+		{name: "there is no file", routes: [], expected: []},
 		{
 			name: "two sources write the same route",
 			routes: ["/a.png", "/a.png"],
@@ -26,8 +28,8 @@ describe("findDuplicateRoutes", () => {
 			routes: ["/a.png", "/b.png", "/a.png", "/b.png"],
 			expected: ["/a.png", "/b.png"],
 		},
-	])("finds $expected when $name", ({ routes, expected }) => {
-		const resolved = routes.map((route) => file(route));
-		expect(findDuplicateRoutes(resolved)).toEqual(expected);
-	});
-});
+	])("finds $expected when $name", ({routes, expected}) => {
+		const resolved = routes.map((route) => file(route))
+		expect(findDuplicateRoutes(resolved)).toEqual(expected)
+	})
+})

@@ -1,17 +1,18 @@
-import { cwd } from "node:process";
-import { vol } from "@kcconfigs/vitest/mocks";
-import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { findBunPackages, findNpmPackages, findPnpmPackages } from "./projects";
+import {cwd} from "node:process"
+import {vol} from "@kcconfigs/vitest/mocks"
+import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
+
+import {findBunPackages, findNpmPackages, findPnpmPackages} from "./projects"
 
 describe("Project APIs", () => {
 	afterEach(() => {
-		vol.reset();
-	});
+		vol.reset()
+	})
 
 	describe(findNpmPackages.name, () => {
 		beforeEach(() => {
-			vi.mocked(cwd).mockReturnValue("/mock/npm-workspace");
-		});
+			vi.mocked(cwd).mockReturnValue("/mock/npm-workspace")
+		})
 
 		test("should find empty packages when no workspaces defined", async () => {
 			vol.fromJSON(
@@ -21,13 +22,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findNpmPackages(false);
+			const packages = await findNpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/npm-workspace");
-			expect(packages).toEqual([]);
-		});
+			expect(cwd()).toEqual("/mock/npm-workspace")
+			expect(packages).toEqual([])
+		})
 
 		test("should return workspace packages without root", async () => {
 			vol.fromJSON(
@@ -44,13 +45,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findNpmPackages(false);
+			const packages = await findNpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/npm-workspace");
-			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort());
-		});
+			expect(cwd()).toEqual("/mock/npm-workspace")
+			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should return workspace packages with root", async () => {
 			vol.fromJSON(
@@ -67,15 +68,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findNpmPackages(true);
+			const packages = await findNpmPackages(true)
 
-			expect(cwd()).toEqual("/mock/npm-workspace");
-			expect(packages.sort()).toEqual(
-				["npm-workspace", "scope/pkg-a", "scope/pkg-b"].sort(),
-			);
-		});
+			expect(cwd()).toEqual("/mock/npm-workspace")
+			expect(packages.sort()).toEqual(["npm-workspace", "scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should fallback to directory name when manifest name missing", async () => {
 			vol.fromJSON(
@@ -92,13 +91,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findNpmPackages(false);
+			const packages = await findNpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/npm-workspace");
-			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort());
-		});
+			expect(cwd()).toEqual("/mock/npm-workspace")
+			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort())
+		})
 
 		test("should handle packages without scope prefix", async () => {
 			vol.fromJSON(
@@ -115,19 +114,19 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findNpmPackages(false);
+			const packages = await findNpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/npm-workspace");
-			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort());
-		});
-	});
+			expect(cwd()).toEqual("/mock/npm-workspace")
+			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort())
+		})
+	})
 
 	describe(findPnpmPackages.name, () => {
 		beforeEach(() => {
-			vi.mocked(cwd).mockReturnValue("/mock/pnpm-workspace");
-		});
+			vi.mocked(cwd).mockReturnValue("/mock/pnpm-workspace")
+		})
 
 		test("should find empty packages when no packages defined", async () => {
 			vol.fromJSON(
@@ -135,13 +134,13 @@ describe("Project APIs", () => {
 					"./pnpm-workspace.yaml": "",
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages(false);
+			const packages = await findPnpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages).toEqual([]);
-		});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages).toEqual([])
+		})
 
 		test("should return workspace packages without root", async () => {
 			vol.fromJSON(
@@ -155,13 +154,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages(false);
+			const packages = await findPnpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort());
-		});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should return workspace packages with root", async () => {
 			vol.fromJSON(
@@ -178,15 +177,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages(true);
+			const packages = await findPnpmPackages(true)
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages.sort()).toEqual(
-				["pnpm-workspace", "scope/pkg-a", "scope/pkg-b"].sort(),
-			);
-		});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages.sort()).toEqual(["pnpm-workspace", "scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should fallback to directory name when manifest name missing", async () => {
 			vol.fromJSON(
@@ -200,13 +197,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages(false);
+			const packages = await findPnpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort());
-		});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort())
+		})
 
 		test("should handle multiple package patterns", async () => {
 			vol.fromJSON(
@@ -220,13 +217,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages(false);
+			const packages = await findPnpmPackages(false)
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/app-a"].sort());
-		});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/app-a"].sort())
+		})
 
 		test("should default to false when includeRoot is undefined", async () => {
 			vol.fromJSON(
@@ -240,19 +237,19 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findPnpmPackages();
+			const packages = await findPnpmPackages()
 
-			expect(cwd()).toEqual("/mock/pnpm-workspace");
-			expect(packages.sort()).toEqual(["scope/pkg-a"].sort());
-		});
-	});
+			expect(cwd()).toEqual("/mock/pnpm-workspace")
+			expect(packages.sort()).toEqual(["scope/pkg-a"].sort())
+		})
+	})
 
 	describe(findBunPackages.name, () => {
 		beforeEach(() => {
-			vi.mocked(cwd).mockReturnValue("/mock/bun-workspace");
-		});
+			vi.mocked(cwd).mockReturnValue("/mock/bun-workspace")
+		})
 
 		test("should find empty packages when no workspaces defined", async () => {
 			vol.fromJSON(
@@ -262,13 +259,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findBunPackages(false);
+			const packages = await findBunPackages(false)
 
-			expect(cwd()).toEqual("/mock/bun-workspace");
-			expect(packages).toEqual([]);
-		});
+			expect(cwd()).toEqual("/mock/bun-workspace")
+			expect(packages).toEqual([])
+		})
 
 		test("should return workspace packages without root", async () => {
 			vol.fromJSON(
@@ -285,13 +282,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findBunPackages(false);
+			const packages = await findBunPackages(false)
 
-			expect(cwd()).toEqual("/mock/bun-workspace");
-			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort());
-		});
+			expect(cwd()).toEqual("/mock/bun-workspace")
+			expect(packages.sort()).toEqual(["scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should return workspace packages with root", async () => {
 			vol.fromJSON(
@@ -308,15 +305,13 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findBunPackages(true);
+			const packages = await findBunPackages(true)
 
-			expect(cwd()).toEqual("/mock/bun-workspace");
-			expect(packages.sort()).toEqual(
-				["bun-workspace", "scope/pkg-a", "scope/pkg-b"].sort(),
-			);
-		});
+			expect(cwd()).toEqual("/mock/bun-workspace")
+			expect(packages.sort()).toEqual(["bun-workspace", "scope/pkg-a", "scope/pkg-b"].sort())
+		})
 
 		test("should fallback to directory name when manifest name missing", async () => {
 			vol.fromJSON(
@@ -333,12 +328,12 @@ describe("Project APIs", () => {
 					}),
 				},
 				cwd(),
-			);
+			)
 
-			const packages = await findBunPackages(false);
+			const packages = await findBunPackages(false)
 
-			expect(cwd()).toEqual("/mock/bun-workspace");
-			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort());
-		});
-	});
-});
+			expect(cwd()).toEqual("/mock/bun-workspace")
+			expect(packages.sort()).toEqual(["pkg-a", "pkg-b"].sort())
+		})
+	})
+})

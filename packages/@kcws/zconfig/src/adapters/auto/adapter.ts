@@ -1,9 +1,10 @@
-import type { Adapter } from "#types";
-import type { ContentFormat } from "../content";
-import { toFileParserByPath } from "../content/utils";
-import { fileAdapter } from "../file";
-import type { AutoAdapterOptions } from "./types";
-import { getAutoFiles } from "./utils";
+import type {Adapter} from "#types"
+import type {ContentFormat} from "../content"
+import type {AutoAdapterOptions} from "./types"
+
+import {toFileParserByPath} from "../content/utils"
+import {fileAdapter} from "../file"
+import {getAutoFiles} from "./utils"
 
 const FORMATS: [string, Exclude<ContentFormat, "dotenv">][] = [
 	[".yaml", "yaml"],
@@ -12,20 +13,20 @@ const FORMATS: [string, Exclude<ContentFormat, "dotenv">][] = [
 	[".jsonc", "jsonc"],
 	[".json", "json"],
 	[".toml", "toml"],
-];
+]
 
 const autoAdapter = (options: AutoAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "auto",
 		files: getAutoFiles(),
 		...toFileParserByPath("auto", (file) => {
-			const format = FORMATS.find(([extension]) => file.endsWith(extension));
+			const format = FORMATS.find(([extension]) => file.endsWith(extension))
 			if (format === undefined) {
-				throw new Error(`unsupported file extension: ${file}`);
+				throw new Error(`unsupported file extension: ${file}`)
 			}
-			return { format: format[1] };
+			return {format: format[1]}
 		}),
 		...options,
-	});
+	})
 
-export default autoAdapter;
+export default autoAdapter

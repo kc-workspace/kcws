@@ -1,18 +1,15 @@
-import type { RawConfig } from "#types";
-import { importAsync, importSync } from "#utils/imports";
-import { decodeDotenv } from "../dotenv/utils";
-import type { FileAdapterOptions } from "../file";
-import { parseJson, parseJsonc } from "../json/utils";
-import type { Json5ParserModule } from "../json5/types";
-import type { TomlParserModule } from "../toml/types";
-import type { YamlParserModule } from "../yaml/types";
-import type {
-	ContentParseOptions,
-	ContentParser,
-	ContentSource,
-} from "./types";
+import type {RawConfig} from "#types"
+import type {FileAdapterOptions} from "../file"
+import type {Json5ParserModule} from "../json5/types"
+import type {TomlParserModule} from "../toml/types"
+import type {YamlParserModule} from "../yaml/types"
+import type {ContentParseOptions, ContentParser, ContentSource} from "./types"
 
-const decoder = new TextDecoder();
+import {importAsync, importSync} from "#utils/imports"
+import {decodeDotenv} from "../dotenv/utils"
+import {parseJson, parseJsonc} from "../json/utils"
+
+const decoder = new TextDecoder()
 
 /**
  * Converts raw content into a string, decoding bytes as UTF-8.
@@ -21,7 +18,7 @@ const decoder = new TextDecoder();
  * @returns decoded string content
  */
 export const decodeContent = (content: ContentSource): string =>
-	typeof content === "string" ? content : decoder.decode(content);
+	typeof content === "string" ? content : decoder.decode(content)
 
 /**
  * Resolves a sync and async parser pair from a built-in format or custom parser.
@@ -32,53 +29,36 @@ export const decodeContent = (content: ContentSource): string =>
  * @param options - format or custom parser options
  * @returns parser pair used by content-based adapters
  */
-export const resolveParser = (
-	name: string,
-	options: ContentParseOptions,
-): ContentParser => {
+export const resolveParser = (name: string, options: ContentParseOptions): ContentParser => {
 	switch (options.format) {
 		case "yaml":
 			return {
-				parseSync: (content) =>
-					importSync<YamlParserModule>(name, "yaml").parse(content),
-				parse: (content) =>
-					importAsync<YamlParserModule>(name, "yaml").then((mod) =>
-						mod.parse(content),
-					),
-			};
+				parseSync: (content) => importSync<YamlParserModule>(name, "yaml").parse(content),
+				parse: (content) => importAsync<YamlParserModule>(name, "yaml").then((mod) => mod.parse(content)),
+			}
 		case "json5":
 			return {
-				parseSync: (content) =>
-					importSync<Json5ParserModule>(name, "json5").parse(content),
-				parse: (content) =>
-					importAsync<Json5ParserModule>(name, "json5").then((mod) =>
-						mod.parse(content),
-					),
-			};
+				parseSync: (content) => importSync<Json5ParserModule>(name, "json5").parse(content),
+				parse: (content) => importAsync<Json5ParserModule>(name, "json5").then((mod) => mod.parse(content)),
+			}
 		case "toml":
 			return {
-				parseSync: (content) =>
-					importSync<TomlParserModule>(name, "smol-toml").parse(content),
-				parse: (content) =>
-					importAsync<TomlParserModule>(name, "smol-toml").then((mod) =>
-						mod.parse(content),
-					),
-			};
+				parseSync: (content) => importSync<TomlParserModule>(name, "smol-toml").parse(content),
+				parse: (content) => importAsync<TomlParserModule>(name, "smol-toml").then((mod) => mod.parse(content)),
+			}
 		case "json":
-			return fromSync(parseJson);
+			return fromSync(parseJson)
 		case "jsonc":
-			return fromSync(parseJsonc);
+			return fromSync(parseJsonc)
 		case "dotenv":
-			return fromSync((content) => decodeDotenv(content, options));
+			return fromSync((content) => decodeDotenv(content, options))
 		default:
 			return {
 				parseSync: options.parseSync,
-				parse:
-					options.parse ??
-					((content) => Promise.resolve(options.parseSync(content))),
-			};
+				parse: options.parse ?? ((content) => Promise.resolve(options.parseSync(content))),
+			}
 	}
-};
+}
 
 /**
  * Parses content into a raw configuration object, treating an empty document
@@ -87,8 +67,7 @@ export const resolveParser = (
  * @param parsed - parser output
  * @returns raw configuration object
  */
-export const toRawConfig = (parsed: unknown): RawConfig =>
-	(parsed ?? {}) as RawConfig;
+export const toRawConfig = (parsed: unknown): RawConfig => (parsed ?? {}) as RawConfig
 
 /**
  * Adapts a resolved parser pair to the {@link fileAdapter} parser options.
@@ -96,13 +75,10 @@ export const toRawConfig = (parsed: unknown): RawConfig =>
  * @param parser - parser pair from {@link resolveParser}
  * @returns `parseSync` and `parse` options for {@link fileAdapter}
  */
-export const toFileParser = (
-	parser: ContentParser,
-): Required<Pick<FileAdapterOptions, "parse" | "parseSync">> => ({
+export const toFileParser = (parser: ContentParser): Required<Pick<FileAdapterOptions, "parse" | "parseSync">> => ({
 	parseSync: <T>(content: string): T => parser.parseSync(content) as T,
-	parse: <T>(content: string): Promise<T> =>
-		parser.parse(content) as Promise<T>,
-});
+	parse: <T>(content: string): Promise<T> => parser.parse(content) as Promise<T>,
+})
 
 /**
  * Adapts a per-file parser selection to the {@link fileAdapter} parser options.
@@ -115,13 +91,12 @@ export const toFileParserByPath = (
 	name: string,
 	select: (file: string) => ContentParseOptions,
 ): Required<Pick<FileAdapterOptions, "parse" | "parseSync">> => ({
-	parseSync: <T>(content: string, file: string): T =>
-		resolveParser(name, select(file)).parseSync(content) as T,
+	parseSync: <T>(content: string, file: string): T => resolveParser(name, select(file)).parseSync(content) as T,
 	parse: <T>(content: string, file: string): Promise<T> =>
 		resolveParser(name, select(file)).parse(content) as Promise<T>,
-});
+})
 
 const fromSync = (parseSync: (content: string) => unknown): ContentParser => ({
 	parseSync,
 	parse: (content) => Promise.resolve(parseSync(content)),
-});
+})

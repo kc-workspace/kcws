@@ -1,17 +1,19 @@
-import { definePluginSync } from "@kcinternals/config-builder";
-import { mergeConfig } from "tsdown";
-import { defaultIgnoreEntry } from "../constants";
-import type { TsdownConfigPlugin } from "../models";
+import type {TsdownConfigPlugin} from "../models"
+
+import {definePluginSync} from "@kcinternals/config-builder"
+import {mergeConfig} from "tsdown"
+
+import {defaultIgnoreEntry} from "../constants"
 
 export interface CssPluginOption {
 	/**
 	 * @default "css"
 	 */
-	lang?: "css" | "scss";
+	lang?: "css" | "scss"
 	/**
 	 * @default "index.css"
 	 */
-	output?: string;
+	output?: string
 }
 
 const cssPlugin = (option?: CssPluginOption): TsdownConfigPlugin<"css"> =>
@@ -27,7 +29,7 @@ const cssPlugin = (option?: CssPluginOption): TsdownConfigPlugin<"css"> =>
 				format: "esm",
 				publint: false,
 				attw: false,
-			});
+			})
 		},
-	});
-export default cssPlugin;
+	})
+export default cssPlugin

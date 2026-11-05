@@ -5,4 +5,4 @@
 /**
  * A record of output names to their values.
  */
-export type OutputMap = Record<string, unknown>;
+export type OutputMap = Record<string, unknown>

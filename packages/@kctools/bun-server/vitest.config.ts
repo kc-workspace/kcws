@@ -1,5 +1,5 @@
-import { defineProjectConfig } from "@kcconfigs/vitest";
-import { useMockPlugin } from "@kcconfigs/vitest/plugins";
+import {defineProjectConfig} from "@kcconfigs/vitest"
+import {useMockPlugin} from "@kcconfigs/vitest/plugins"
 
 const config = defineProjectConfig(
 	useMockPlugin({
@@ -8,5 +8,5 @@ const config = defineProjectConfig(
 			fsPromises: true,
 		},
 	}),
-);
-export default config;
+)
+export default config

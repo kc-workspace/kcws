@@ -1,6 +1,6 @@
-import { MAX_PORT, MIN_PORT } from "./constants";
+import {MAX_PORT, MIN_PORT} from "./constants"
 
-type NormalizePort = (port: number) => boolean;
+type NormalizePort = (port: number) => boolean
 
 const customPorts: Array<[number, NormalizePort]> = [
 	[80, (port: number) => port > 0 && port <= 80],
@@ -11,15 +11,14 @@ const customPorts: Array<[number, NormalizePort]> = [
 	[1025, (port: number) => port > 1024 && port <= 1999],
 	[0, (port: number) => port < MIN_PORT],
 	[0, (port: number) => port > MAX_PORT],
-];
+]
 
 const parsePort = (port: string | number): number => {
-	const parsedPort =
-		typeof port === "string" ? Number.parseInt(port, 10) : port;
-	if (!Number.isFinite(parsedPort)) throw new Error(`Invalid port: ${port}`);
+	const parsedPort = typeof port === "string" ? Number.parseInt(port, 10) : port
+	if (!Number.isFinite(parsedPort)) throw new Error(`Invalid port: ${port}`)
 
-	const customPort = customPorts.find(([_, validate]) => validate(parsedPort));
-	return customPort?.[0] ?? parsedPort;
-};
+	const customPort = customPorts.find(([_, validate]) => validate(parsedPort))
+	return customPort?.[0] ?? parsedPort
+}
 
-export default parsePort;
+export default parsePort

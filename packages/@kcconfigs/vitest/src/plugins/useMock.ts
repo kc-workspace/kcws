@@ -1,35 +1,35 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-import { definePluginSync } from "@kcinternals/config-builder";
-import type { AnyConfig, VitestConfigPlugin } from "../types";
-import mergeConfig from "../utils/mergeConfig";
+import type {AnyConfig, VitestConfigPlugin} from "../types"
+
+import {existsSync} from "node:fs"
+import {join} from "node:path"
+import {definePluginSync} from "@kcinternals/config-builder"
+
+import mergeConfig from "../utils/mergeConfig"
 
 export interface UseMockOption {
-	root?: string;
+	root?: string
 	flags: {
-		fs?: true;
-		fsPromises?: true;
-		process?: true;
-		os?: true;
-		console?: true;
-	};
+		fs?: true
+		fsPromises?: true
+		process?: true
+		os?: true
+		console?: true
+	}
 }
-type UseMockFlagKey = keyof UseMockOption["flags"];
+type UseMockFlagKey = keyof UseMockOption["flags"]
 
 const resolvePath = (name: string, base: string) => {
 	// import.meta.dirname is resolved to `dist` directory
-	const path = join(base, "__mocks__", `${name}.ts`);
+	const path = join(base, "__mocks__", `${name}.ts`)
 
-	if (existsSync(path)) return path;
-	throw new Error(`Mock file for "${name}" not found at path: ${path}`);
-};
+	if (existsSync(path)) return path
+	throw new Error(`Mock file for "${name}" not found at path: ${path}`)
+}
 
-const useMockPlugin = (
-	opt: UseMockOption,
-): VitestConfigPlugin<"use-mock", AnyConfig> => {
-	const base = opt.root ?? join(import.meta.dirname, "..", "..");
-	const keys = Object.keys(opt.flags) as UseMockFlagKey[];
-	const setupFiles = keys.map((key) => resolvePath(key, base));
+const useMockPlugin = (opt: UseMockOption): VitestConfigPlugin<"use-mock", AnyConfig> => {
+	const base = opt.root ?? join(import.meta.dirname, "..", "..")
+	const keys = Object.keys(opt.flags) as UseMockFlagKey[]
+	const setupFiles = keys.map((key) => resolvePath(key, base))
 
 	return definePluginSync("use-mock", {
 		applyConfig: (base) =>
@@ -38,7 +38,7 @@ const useMockPlugin = (
 					setupFiles,
 				},
 			}),
-	});
-};
+	})
+}
 
-export default useMockPlugin;
+export default useMockPlugin

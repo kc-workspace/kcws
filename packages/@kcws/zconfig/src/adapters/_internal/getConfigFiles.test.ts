@@ -1,5 +1,6 @@
-import { describe, expect, test } from "vitest";
-import getConfigFiles from "./getConfigFiles";
+import {describe, expect, test} from "vitest"
+
+import getConfigFiles from "./getConfigFiles"
 
 describe(getConfigFiles.name, () => {
 	test("returns base candidates without a config name", () => {
@@ -8,8 +9,8 @@ describe(getConfigFiles.name, () => {
 			"config.jsonc",
 			".config.json",
 			".config.jsonc",
-		]);
-	});
+		])
+	})
 
 	test("returns named candidates before base candidates", () => {
 		expect(getConfigFiles(["yaml"], "app")).toEqual([
@@ -21,6 +22,6 @@ describe(getConfigFiles.name, () => {
 			"config/app.yaml",
 			"config.yaml",
 			".config.yaml",
-		]);
-	});
-});
+		])
+	})
+})

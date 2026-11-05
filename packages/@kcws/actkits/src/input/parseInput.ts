@@ -1,6 +1,7 @@
-import { getInput } from "@actions/core";
-import { z } from "zod";
-import { type ActionEnv, getEnv } from "./env";
+import {getInput} from "@actions/core"
+import {z} from "zod"
+
+import {type ActionEnv, getEnv} from "./env"
 
 /**
  * Parses and validates GitHub Actions inputs against a Zod schema.
@@ -21,29 +22,25 @@ import { type ActionEnv, getEnv } from "./env";
  *
  * @includeExample
  */
-export const parseInput = <S extends z.ZodType>(
-	schema: S,
-	prefix?: string,
-	env?: Readonly<ActionEnv>,
-): z.infer<S> => {
-	const data: ActionEnv = {};
+export const parseInput = <S extends z.ZodType>(schema: S, prefix?: string, env?: Readonly<ActionEnv>): z.infer<S> => {
+	const data: ActionEnv = {}
 	if (schema instanceof z.ZodObject) {
-		const shape = schema.shape as Record<string, z.ZodType>;
+		const shape = schema.shape as Record<string, z.ZodType>
 		for (const [key] of Object.entries(shape)) {
-			const envValue = getEnv(key, prefix, env);
+			const envValue = getEnv(key, prefix, env)
 			// inputValue is always returns a string
 			const inputValue = getInput(key, {
 				trimWhitespace: true,
 				required: false,
-			});
+			})
 
-			if ((envValue?.length ?? 0) > 0) data[key] = envValue;
-			else if (inputValue.length > 0) data[key] = inputValue;
-			else data[key] = undefined;
+			if ((envValue?.length ?? 0) > 0) data[key] = envValue
+			else if (inputValue.length > 0) data[key] = inputValue
+			else data[key] = undefined
 		}
 	} else {
-		const msg = `schema must be a ZodObject, got ${schema.constructor.name}`;
-		throw new Error(msg);
+		const msg = `schema must be a ZodObject, got ${schema.constructor.name}`
+		throw new Error(msg)
 	}
-	return schema.parse(data);
-};
+	return schema.parse(data)
+}

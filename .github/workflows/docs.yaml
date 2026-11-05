@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - '**.md'
-      - '.github/release-please/manifest.json'
+      - "**.md"
+      - ".github/release-please/manifest.json"
   workflow_dispatch:
 
 permissions:

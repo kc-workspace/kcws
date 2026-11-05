@@ -1,63 +1,57 @@
-import { resolve } from "node:path";
-import type { BunPlugin } from "bun";
-import type { BunType } from "#types";
-import { readOptions } from "#utils/options";
-import { logger } from "./constants";
+import type {BunPlugin} from "bun"
+import type {BunType} from "#types"
 
-export const BUNFIG = "bunfig.toml";
+import {resolve} from "node:path"
+
+import {readOptions} from "#utils/options"
+import {logger} from "./constants"
+
+export const BUNFIG = "bunfig.toml"
 // https://bun.com/docs/bundler/html-static#plugins
 export interface Bunfig {
 	serve?: {
 		static?: {
-			plugins: string[];
-		};
-	};
+			plugins: string[]
+		}
+	}
 }
 
-const readPlugins = async (
-	Bun: BunType,
-	option: AnyRecord,
-): Promise<BunPlugin[]> => {
-	const cwd = readOptions<string>(option, "cwd");
-	const plugins: BunPlugin[] = [];
-	const file = Bun.file(resolve(cwd, BUNFIG));
+const readPlugins = async (Bun: BunType, option: AnyRecord): Promise<BunPlugin[]> => {
+	const cwd = readOptions<string>(option, "cwd")
+	const plugins: BunPlugin[] = []
+	const file = Bun.file(resolve(cwd, BUNFIG))
 	if (!(await file.exists())) {
-		logger.debug({ file: BUNFIG }, `load empty plugin because file is missing`);
-		return plugins;
+		logger.debug({file: BUNFIG}, `load empty plugin because file is missing`)
+		return plugins
 	}
 
 	try {
-		const toml: Bunfig = Bun.TOML.parse(await file.text());
-		const pluginNames = toml.serve?.static?.plugins;
+		const toml: Bunfig = Bun.TOML.parse(await file.text())
+		const pluginNames = toml.serve?.static?.plugins
 		if (!Array.isArray(pluginNames)) {
-			logger.debug(
-				{ file: BUNFIG },
-				`load empty plugin because the plugins array is missing or invalid`,
-			);
-			return plugins;
+			logger.debug({file: BUNFIG}, `load empty plugin because the plugins array is missing or invalid`)
+			return plugins
 		}
-		logger.info(`Bun plugins: ${pluginNames.join(", ")}`);
+		logger.info(`Bun plugins: ${pluginNames.join(", ")}`)
 
 		const loaded = await Promise.all(
 			pluginNames.map(async (plugin): Promise<BunPlugin | undefined> => {
 				try {
-					const pluginPath = await Bun.resolve(plugin, cwd);
-					const module = await import(pluginPath);
-					return module.default ?? module;
+					const pluginPath = await Bun.resolve(plugin, cwd)
+					const module = await import(pluginPath)
+					return module.default ?? module
 				} catch (error) {
-					logger.error({ error, plugin }, `Failed to load plugin: ${plugin}`);
-					return undefined;
+					logger.error({error, plugin}, `Failed to load plugin: ${plugin}`)
+					return undefined
 				}
 			}),
-		);
-		plugins.push(
-			...loaded.filter((plugin): plugin is BunPlugin => plugin !== undefined),
-		);
-		return plugins;
+		)
+		plugins.push(...loaded.filter((plugin): plugin is BunPlugin => plugin !== undefined))
+		return plugins
 	} catch (error) {
-		logger.error({ error }, "Failed to read plugins from bunfig.toml");
-		return plugins;
+		logger.error({error}, "Failed to read plugins from bunfig.toml")
+		return plugins
 	}
-};
+}
 
-export default readPlugins;
+export default readPlugins

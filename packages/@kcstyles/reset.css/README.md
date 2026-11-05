@@ -1,7 +1,6 @@
 # @kcstyles/reset.css
 
 A CSS reset for consistent styling across browsers.
-
 - [Installation](#installation)
 - [Usage](#usage)
   - [Via CSS](#via-css)
@@ -28,7 +27,7 @@ Import the reset style sheet at the entry point of your project, before any othe
 ### Via JavaScript/TypeScript bundler
 
 ```ts
-import "@kcstyles/reset.css";
+import "@kcstyles/reset.css"
 ```
 
 ### Via HTML

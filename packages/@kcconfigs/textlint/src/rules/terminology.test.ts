@@ -1,6 +1,7 @@
-import terminologyModule from "textlint-rule-terminology";
-import { describe, expect, test } from "vitest";
-import { terminology } from "./terminology";
+import terminologyModule from "textlint-rule-terminology"
+import {describe, expect, test} from "vitest"
+
+import {terminology} from "./terminology"
 
 describe(terminology.name, () => {
 	test("should enable the rule with the default module", () => {
@@ -9,8 +10,8 @@ describe(terminology.name, () => {
 			name: "terminology",
 			module: terminologyModule,
 			config: true,
-		});
-	});
+		})
+	})
 
 	test("should preserve a custom rule config", () => {
 		expect(
@@ -26,6 +27,6 @@ describe(terminology.name, () => {
 				skip: ["HTTP"],
 				terms: ["GitHub"],
 			},
-		});
-	});
-});
+		})
+	})
+})

@@ -1,8 +1,9 @@
 /** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
 
-import { ZconfigSchemaError } from "../errors";
-import { INNER_TYPE_WRAPPERS, KEY_PATTERN, RUNTIME_KEY } from "./constants";
-import type { SchemaDef, SchemaLike } from "./types";
+import type {SchemaDef, SchemaLike} from "./types"
+
+import {ZconfigSchemaError} from "../errors"
+import {INNER_TYPE_WRAPPERS, KEY_PATTERN, RUNTIME_KEY} from "./constants"
 
 /**
  * Explains precisely which part of the camelCase rule a key broke.
@@ -11,13 +12,13 @@ import type { SchemaDef, SchemaLike } from "./types";
  */
 export const explain = (key: string): string => {
 	if (key.includes("_")) {
-		return 'underscores are not allowed, because "_" separates words inside an environment variable name; use camelCase instead';
+		return 'underscores are not allowed, because "_" separates words inside an environment variable name; use camelCase instead'
 	}
 	if (!/^[a-z]/.test(key)) {
-		return "key must start with a lowercase letter";
+		return "key must start with a lowercase letter"
 	}
-	return "key must contain only letters and digits";
-};
+	return "key must contain only letters and digits"
+}
 
 /**
  * Reads a schema's definition, tolerating anything that is not a schema.
@@ -27,8 +28,7 @@ export const explain = (key: string): string => {
  *
  * @internal
  */
-export const defOf = (value: unknown): SchemaDef | undefined =>
-	(value as SchemaLike | null | undefined)?._zod?.def;
+export const defOf = (value: unknown): SchemaDef | undefined => (value as SchemaLike | null | undefined)?._zod?.def
 
 /**
  * Throws unless a single schema key satisfies the camelCase rule.
@@ -37,10 +37,10 @@ export const defOf = (value: unknown): SchemaDef | undefined =>
  * @internal
  */
 export const assertKey = (key: string, path: string[]): void => {
-	if (KEY_PATTERN.test(key)) return;
+	if (KEY_PATTERN.test(key)) return
 
-	throw new ZconfigSchemaError(path, explain(key));
-};
+	throw new ZconfigSchemaError(path, explain(key))
+}
 
 /**
  * Recursively walks a schema, asserting every reachable key.
@@ -51,108 +51,104 @@ export const assertKey = (key: string, path: string[]): void => {
  * @throws {ZconfigSchemaError} on the first offending key
  * @internal
  */
-export const visit = (
-	schema: unknown,
-	path: string[],
-	seen: Set<unknown>,
-): void => {
-	const def = defOf(schema);
-	if (def === undefined) return;
+export const visit = (schema: unknown, path: string[], seen: Set<unknown>): void => {
+	const def = defOf(schema)
+	if (def === undefined) return
 
 	// Guards against both a self-referencing lazy schema and a schema instance
 	// reused at many paths. A repeat visit would reach the same verdict anyway.
-	if (seen.has(schema)) return;
-	seen.add(schema);
+	if (seen.has(schema)) return
+	seen.add(schema)
 
 	switch (def["type"]) {
 		case "object": {
 			// Deliberately unguarded: Zod's own types make `shape` required, and
 			// defaulting a missing one to `{}` would silently validate nothing.
 			// A loud TypeError is the better failure if Zod's internals ever move.
-			const shape = def["shape"] as Record<string, unknown>;
+			const shape = def["shape"] as Record<string, unknown>
 
 			// Zod 4.5+ lets a shape declare symbol keys, which `Object.keys` skips.
 			// No adapter can produce one, so such a key could never be satisfied.
-			const [symbol] = Object.getOwnPropertySymbols(shape);
+			const [symbol] = Object.getOwnPropertySymbols(shape)
 			if (symbol !== undefined) {
 				throw new ZconfigSchemaError(
 					[...path, symbol.toString()],
 					"symbol keys are not allowed, because no configuration source can produce one",
-				);
+				)
 			}
 
 			for (const key of Object.keys(shape)) {
-				const keyPath = [...path, key];
-				assertKey(key, keyPath);
-				visit(shape[key], keyPath, seen);
+				const keyPath = [...path, key]
+				assertKey(key, keyPath)
+				visit(shape[key], keyPath, seen)
 			}
 
 			// A catchall accepts arbitrary runtime keys, so its own keys cannot be
 			// checked, but the shape of the values behind them still can be.
 			// `visit` ignores undefined, so an object without one costs nothing.
-			visit(def["catchall"], [...path, RUNTIME_KEY], seen);
-			return;
+			visit(def["catchall"], [...path, RUNTIME_KEY], seen)
+			return
 		}
 
 		case "record":
 		case "map": {
 			// Record keys exist only at runtime and are therefore unverifiable, but
 			// the value schema may still declare a static shape worth checking.
-			visit(def["valueType"], [...path, RUNTIME_KEY], seen);
-			return;
+			visit(def["valueType"], [...path, RUNTIME_KEY], seen)
+			return
 		}
 
 		case "array":
-			visit(def["element"], path, seen);
-			return;
+			visit(def["element"], path, seen)
+			return
 
 		case "set":
-			visit(def["valueType"], path, seen);
-			return;
+			visit(def["valueType"], path, seen)
+			return
 
 		case "union": {
 			// Covers z.discriminatedUnion, which shares the "union" discriminator.
-			const options = def["options"] as unknown[];
-			for (const option of options) visit(option, path, seen);
-			return;
+			const options = def["options"] as unknown[]
+			for (const option of options) visit(option, path, seen)
+			return
 		}
 
 		case "intersection":
-			visit(def["left"], path, seen);
-			visit(def["right"], path, seen);
-			return;
+			visit(def["left"], path, seen)
+			visit(def["right"], path, seen)
+			return
 
 		case "tuple": {
-			const items = def["items"] as unknown[];
-			for (const item of items) visit(item, path, seen);
+			const items = def["items"] as unknown[]
+			for (const item of items) visit(item, path, seen)
 			// `rest` is null on a fixed-length tuple, which `visit` ignores.
-			visit(def["rest"], path, seen);
-			return;
+			visit(def["rest"], path, seen)
+			return
 		}
 
 		case "pipe":
 			// Covers codecs such as z.stringbool() and anything built by z.coerce.
-			visit(def["in"], path, seen);
-			visit(def["out"], path, seen);
-			return;
+			visit(def["in"], path, seen)
+			visit(def["out"], path, seen)
+			return
 
 		case "lazy": {
-			const getter = def["getter"] as () => unknown;
+			const getter = def["getter"] as () => unknown
 
 			// Keyed on the getter rather than its result, since a getter that builds
 			// a fresh schema per call would otherwise never repeat and never settle.
-			if (seen.has(getter)) return;
-			seen.add(getter);
+			if (seen.has(getter)) return
+			seen.add(getter)
 
-			visit(getter(), path, seen);
-			return;
+			visit(getter(), path, seen)
+			return
 		}
 
 		default: {
-			const type = def["type"];
+			const type = def["type"]
 			if (typeof type === "string" && INNER_TYPE_WRAPPERS.has(type)) {
-				visit(def["innerType"], path, seen);
+				visit(def["innerType"], path, seen)
 			}
 		}
 	}
-};
+}

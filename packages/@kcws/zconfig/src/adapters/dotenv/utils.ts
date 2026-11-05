@@ -1,7 +1,8 @@
-import type { EnvObject } from "#types";
-import { decodeEnvObject } from "#utils/env";
-import { importSync } from "#utils/imports";
-import type { DotenvAdapterOptions, DotenvModule } from "./types";
+import type {EnvObject} from "#types"
+import type {DotenvAdapterOptions, DotenvModule} from "./types"
+
+import {decodeEnvObject} from "#utils/env"
+import {importSync} from "#utils/imports"
 
 /**
  * Parses dotenv file content into a decoded, nested configuration object.
@@ -15,21 +16,14 @@ import type { DotenvAdapterOptions, DotenvModule } from "./types";
  * @param options - prefix and path separator options
  * @returns decoded, nested configuration object
  */
-export const decodeDotenv = <T>(
-	content: string,
-	options: DotenvAdapterOptions,
-): T => {
-	const mod = importSync<DotenvModule>("dotenv", "dotenv");
-	const parsed = mod.parse(content) as EnvObject;
-	return decodeEnvObject(
-		parsed,
-		options.prefix,
-		options.pathSeparator ?? "__",
-	) as T;
-};
+export const decodeDotenv = <T>(content: string, options: DotenvAdapterOptions): T => {
+	const mod = importSync<DotenvModule>("dotenv", "dotenv")
+	const parsed = mod.parse(content) as EnvObject
+	return decodeEnvObject(parsed, options.prefix, options.pathSeparator ?? "__") as T
+}
 
 export const getDotenvFiles = (name?: string): string[] => {
-	const files = [];
+	const files = []
 	if (name) {
 		files.push(
 			`.${name}/.env.local`,
@@ -38,8 +32,8 @@ export const getDotenvFiles = (name?: string): string[] => {
 			`.${name}/.env`,
 			`${name}/.env`,
 			`.env.${name}`,
-		);
+		)
 	}
-	files.push(".env.local", ".env");
-	return files;
-};
+	files.push(".env.local", ".env")
+	return files
+}

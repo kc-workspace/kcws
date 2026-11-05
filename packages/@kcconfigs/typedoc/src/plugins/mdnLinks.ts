@@ -1,8 +1,8 @@
-import { definePlugin, type PluginConfig, type UserConfig } from "../configs";
+import {definePlugin, type PluginConfig, type UserConfig} from "../configs"
 
 interface MdnLinksConfig extends UserConfig {
-	resolveUtilityTypes?: boolean;
-	additionalModuleSources?: string[];
+	resolveUtilityTypes?: boolean
+	additionalModuleSources?: string[]
 }
 
 /**
@@ -14,6 +14,6 @@ const mdnLinks: PluginConfig<MdnLinksConfig> = definePlugin<MdnLinksConfig>({
 
 	// https://github.com/Gerrit0/typedoc-plugin-mdn-links#options
 	resolveUtilityTypes: true,
-});
+})
 
-export default mdnLinks;
+export default mdnLinks

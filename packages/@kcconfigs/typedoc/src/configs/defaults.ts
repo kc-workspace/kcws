@@ -1,21 +1,18 @@
-import { OptionDefaults, type TagString } from "typedoc";
-import type { ReflectionKinds, SortKinds } from "./model";
+import type {ReflectionKinds, SortKinds} from "./model"
 
-export const defaultBlockTags: ReadonlyArray<TagString> =
-	OptionDefaults.blockTags;
-export const defaultModifierTags: ReadonlyArray<TagString> =
-	OptionDefaults.modifierTags;
-export const defaultInlineTags: ReadonlyArray<TagString> =
-	OptionDefaults.inlineTags;
-export const defaultHighlightLanguages: ReadonlyArray<string> =
-	OptionDefaults.highlightLanguages;
+import {OptionDefaults, type TagString} from "typedoc"
+
+export const defaultBlockTags: ReadonlyArray<TagString> = OptionDefaults.blockTags
+export const defaultModifierTags: ReadonlyArray<TagString> = OptionDefaults.modifierTags
+export const defaultInlineTags: ReadonlyArray<TagString> = OptionDefaults.inlineTags
+export const defaultHighlightLanguages: ReadonlyArray<string> = OptionDefaults.highlightLanguages
 
 export const defaultSort: ReadonlyArray<SortKinds> = [
 	"visibility",
 	"static-first",
 	"enum-value-ascending",
 	"alphabetical-ignoring-documents",
-] as const;
+] as const
 
 export const defaultKindSortOrder: ReadonlyArray<ReflectionKinds> = [
 	"Document",
@@ -42,7 +39,7 @@ export const defaultKindSortOrder: ReadonlyArray<ReflectionKinds> = [
 	"IndexSignature",
 	"GetSignature",
 	"SetSignature",
-] as const;
+] as const
 
 export const defaultRequiredToBeDocumented: ReadonlyArray<ReflectionKinds> = [
 	"Namespace",
@@ -52,4 +49,4 @@ export const defaultRequiredToBeDocumented: ReadonlyArray<ReflectionKinds> = [
 	"Class",
 	"Method",
 	"Reference",
-] as const;
+] as const

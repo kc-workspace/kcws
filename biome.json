@@ -1,5 +1,8 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
 	"extends": ["@kcconfigs/biome/configs/default"],
-	"root": true
+	"root": true,
+	"files": {
+		"includes": ["!pnpm-lock.yaml", "!.github/linters/vale-styles", "!.github/release-please/manifest.json"]
+	}
 }

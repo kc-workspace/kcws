@@ -1,4 +1,4 @@
-import type { UserConfig } from "tsdown";
+import type {UserConfig} from "tsdown"
 
 const config: UserConfig = {
 	entry: [
@@ -37,5 +37,5 @@ const config: UserConfig = {
 		level: "error",
 		profile: "node16",
 	},
-};
-export default config;
+}
+export default config

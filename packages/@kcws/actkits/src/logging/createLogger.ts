@@ -1,3 +1,6 @@
+import type {ExtendNamespace} from "./internal/types"
+import type {ILogger} from "./types"
+
 import {
 	coreDebug,
 	coreEndGroup,
@@ -7,13 +10,11 @@ import {
 	coreStartGroup,
 	coreWarn,
 	coreWrap,
-} from "./internal/core";
-import { isDebug } from "./internal/debug";
-import { formatter } from "./internal/format";
-import { group, groupSync } from "./internal/group";
-import { createNamespace } from "./internal/namespace";
-import type { ExtendNamespace } from "./internal/types";
-import type { ILogger } from "./types";
+} from "./internal/core"
+import {isDebug} from "./internal/debug"
+import {formatter} from "./internal/format"
+import {group, groupSync} from "./internal/group"
+import {createNamespace} from "./internal/namespace"
 
 /**
  * Creates a logger instance wrapping `@actions/core` logging functions.
@@ -31,7 +32,7 @@ export const createLogger = <NS extends string, SS extends string[]>(
 	parent: NS,
 	...segments: SS
 ): ILogger<ExtendNamespace<NS, SS>> => {
-	const ns = createNamespace(parent, segments);
+	const ns = createNamespace(parent, segments)
 	return {
 		namespace: ns,
 		isDebug: isDebug(),
@@ -48,5 +49,5 @@ export const createLogger = <NS extends string, SS extends string[]>(
 		groupSync: groupSync,
 
 		extend: (...childSegments) => createLogger(ns, ...childSegments),
-	};
-};
+	}
+}

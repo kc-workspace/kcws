@@ -17,27 +17,23 @@ pnpm add dotenv yaml jsonc-parser json5 smol-toml
 ## Quick start
 
 ```typescript
-import { z } from "zod";
-import { loadConfig } from "@kcws/zconfig";
-import {
-  dotenvAdapter,
-  envAdapter,
-  yamlAdapter,
-} from "@kcws/zconfig/adapters";
+import {z} from "zod"
+import {loadConfig} from "@kcws/zconfig"
+import {dotenvAdapter, envAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
 
 const schema = z.object({
-  database: z.object({
-    host: z.string(),
-    port: z.coerce.number(),
-  }),
-  debug: z.union([z.boolean(), z.stringbool()]).default(false),
-});
+	database: z.object({
+		host: z.string(),
+		port: z.coerce.number(),
+	}),
+	debug: z.union([z.boolean(), z.stringbool()]).default(false),
+})
 
 const config = await loadConfig(schema, [
-  yamlAdapter({ path: "./config.yaml", optional: true }),
-  dotenvAdapter({ path: "./.env", optional: true, prefix: "APP" }),
-  envAdapter({ prefix: "APP" }),
-]);
+	yamlAdapter({path: "./config.yaml", optional: true}),
+	dotenvAdapter({path: "./.env", optional: true, prefix: "APP"}),
+	envAdapter({prefix: "APP"}),
+])
 ```
 
 With these environment variables, environment values override values from YAML:
@@ -53,20 +49,20 @@ APP_DEBUG=true
 ## Imports
 
 ```typescript
-import { loadConfig, loadConfigSync } from "@kcws/zconfig";
+import {loadConfig, loadConfigSync} from "@kcws/zconfig"
 import {
-  dotenvAdapter,
-  envAdapter,
-  autoAdapter,
-  contentAdapter,
-  jsonAdapter,
-  json5Adapter,
-  staticAdapter,
-  streamAdapter,
-  tomlAdapter,
-  yamlAdapter,
-} from "@kcws/zconfig/adapters";
-import jsonAdapter from "@kcws/zconfig/adapters/json";
+	dotenvAdapter,
+	envAdapter,
+	autoAdapter,
+	contentAdapter,
+	jsonAdapter,
+	json5Adapter,
+	staticAdapter,
+	streamAdapter,
+	tomlAdapter,
+	yamlAdapter,
+} from "@kcws/zconfig/adapters"
+import jsonAdapter from "@kcws/zconfig/adapters/json"
 ```
 
 The package exports `envAdapter`, `dotenvAdapter`, `staticAdapter`, `contentAdapter`, `streamAdapter`, `autoAdapter`,
@@ -82,19 +78,18 @@ use letters and digits only. Underscores and leading uppercase letters are rejec
 This rule makes environment names reversible.
 Nested paths use `__`; word boundaries inside one camelCase key use `_`:
 
-| Schema path | Environment name with `prefix: "APP"` |
-| --- | --- |
-| `database.host` | `APP_DATABASE__HOST` |
-| `databaseHost` | `APP_DATABASE_HOST` |
-| `database.hostName` | `APP_DATABASE__HOST_NAME` |
-| `a.b.c` | `APP_A__B__C` |
+| Schema path         | Environment name with `prefix: "APP"` |
+| ------------------- | ------------------------------------- |
+| `database.host`     | `APP_DATABASE__HOST`                  |
+| `databaseHost`      | `APP_DATABASE_HOST`                   |
+| `database.hostName` | `APP_DATABASE__HOST_NAME`             |
+| `a.b.c`             | `APP_A__B__C`                         |
 
 Keys from source files may use another convention. Rename them with an adapter `transform` before validation.
 
 ## Value coercion
 
 Adapters preserve source values. Put coercion in the schema, where the intended type is known:
-
 - Use `z.coerce.number()` when a number may arrive from YAML as a number or from the environment as a string.
 - Use `z.union([z.boolean(), z.stringbool()])` for booleans that may arrive from either source. Avoid
   `z.coerce.boolean()`: JavaScript truthiness makes the string `"false"` truthy.
@@ -128,25 +123,20 @@ Use `contentAdapter` and `streamAdapter` for configuration that is not a local f
 identify the source in errors.
 
 ```typescript
-import { loadConfig } from "@kcws/zconfig";
-import {
-  contentAdapter,
-  envAdapter,
-  streamAdapter,
-  yamlAdapter,
-} from "@kcws/zconfig/adapters";
+import {loadConfig} from "@kcws/zconfig"
+import {contentAdapter, envAdapter, streamAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
 
 const config = await loadConfig(schema, [
-  // Remote configuration first, then local files and the environment override it
-  streamAdapter({
-    name: "consul",
-    format: "json",
-    stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
-  }),
-  contentAdapter({ format: "yaml", content: process.argv[2] ?? "" }),
-  yamlAdapter({ path: "./config.yaml", optional: true }),
-  envAdapter({ prefix: "APP" }),
-]);
+	// Remote configuration first, then local files and the environment override it
+	streamAdapter({
+		name: "consul",
+		format: "json",
+		stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
+	}),
+	contentAdapter({format: "yaml", content: process.argv[2] ?? ""}),
+	yamlAdapter({path: "./config.yaml", optional: true}),
+	envAdapter({prefix: "APP"}),
+])
 ```
 
 `content` may be a value or a function called on every load. `stream` accepts any async iterable of strings or bytes,

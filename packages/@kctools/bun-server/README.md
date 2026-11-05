@@ -3,7 +3,6 @@
 Command line server for plain HTML websites, powered by [Bun](https://bun.com/).
 Serves HTML entrypoints in development, builds them for production, and
 previews the build output.
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -82,12 +81,12 @@ bun-server build --statics public:.
 **Source** is a path or glob, relative to the working directory or absolute. It
 is split into a root and a pattern:
 
-| Source              | Root          | Pattern      |
-| ------------------- | ------------- | ------------ |
-| `public`            | `public`      | `**/*`       |
-| `assets/**/*.png`   | `assets`      | `**/*.png`   |
-| `**/*.txt`          | working dir   | `**/*.txt`   |
-| `public/robots.txt` | `public`      | `robots.txt` |
+| Source              | Root        | Pattern      |
+| ------------------- | ----------- | ------------ |
+| `public`            | `public`    | `**/*`       |
+| `assets/**/*.png`   | `assets`    | `**/*.png`   |
+| `**/*.txt`          | working dir | `**/*.txt`   |
+| `public/robots.txt` | `public`    | `robots.txt` |
 
 **Target** is a directory inside the output directory; `.` is the output root.
 Default is the source root. The layout below the root is kept:
@@ -99,7 +98,6 @@ Default is the source root. The layout below the root is kept:
 | `--statics public:icons` | `dist/icons/img/logo.png`           |
 
 Rules:
-
 - The value is split at the last `:`.
 - An absolute source requires a target (`/shared/icons:icons`).
 - A target outside the output directory (`..`, `/`, `/etc`) is an error.
@@ -170,7 +168,6 @@ bun-server preview [directory] [options]
 Serves a built directory (default `dist`) without bundling. Takes the
 [server options](#server-options). A request `/x` resolves to the first that
 exists:
-
 1. `x`
 2. `x/index.html`
 3. `x.html`

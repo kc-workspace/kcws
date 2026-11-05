@@ -1,6 +1,7 @@
-import { defineConfig, defineProject } from "vitest/config";
-import type { CoverageOptions } from "vitest/node";
-import type { ProjectConfig, UserConfig } from "../types";
+import type {CoverageOptions} from "vitest/node"
+import type {ProjectConfig, UserConfig} from "../types"
+
+import {defineConfig, defineProject} from "vitest/config"
 
 export const defaultCoverage: CoverageOptions = {
 	enabled: true,
@@ -23,7 +24,7 @@ export const defaultCoverage: CoverageOptions = {
 		// Ignored schema files
 		"**/*.schema.?(c|m)[jt]s?(x)",
 	],
-};
+}
 
 /** @internal */
 export const baseRootConfig: UserConfig = defineConfig({
@@ -36,7 +37,7 @@ export const baseRootConfig: UserConfig = defineConfig({
 		reporters: ["default", "html", "junit"],
 		coverage: defaultCoverage,
 	},
-});
+})
 
 /** @internal */
-export const baseProjectConfig: ProjectConfig = defineProject({});
+export const baseProjectConfig: ProjectConfig = defineProject({})

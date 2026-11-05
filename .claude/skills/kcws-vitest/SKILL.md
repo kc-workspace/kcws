@@ -1,4 +1,5 @@
 ---
+
 name: kcws-vitest
 description: "Use when adding or changing Vitest tests or test configuration in the KCWS pnpm monorepo. Covers colocated tests, type tests, shared Vitest config, filesystem mocks, test isolation, and focused validation."
 user-invocable: true

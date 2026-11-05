@@ -1,7 +1,8 @@
-export { default as fileAdapter } from "./adapter";
 export type {
 	ExtendFileAdapterOptions,
 	FileAdapterNormalizedOptions,
 	FileAdapterOptions,
 	NormalizeFileAdapterOptions,
-} from "./types";
+} from "./types"
+
+export {default as fileAdapter} from "./adapter"

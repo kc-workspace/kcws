@@ -1,6 +1,6 @@
-import { setOutput as coreSetOutput } from "@actions/core";
+import type {OutputMap} from "./types"
 
-import type { OutputMap } from "./types";
+import {setOutput as coreSetOutput} from "@actions/core"
 
 /**
  * Serializes a value to a string representation for GitHub Actions output.
@@ -19,7 +19,7 @@ import type { OutputMap } from "./types";
  */
 const serializeOutput = (value: unknown): string => {
 	if (value == null) {
-		return "";
+		return ""
 	}
 
 	if (
@@ -28,11 +28,11 @@ const serializeOutput = (value: unknown): string => {
 		typeof value === "boolean" ||
 		typeof value === "bigint"
 	) {
-		return String(value);
+		return String(value)
 	}
 
-	return JSON.stringify(value);
-};
+	return JSON.stringify(value)
+}
 
 /**
  * Sets a single output value for GitHub Actions.
@@ -53,10 +53,10 @@ const serializeOutput = (value: unknown): string => {
  * ```
  */
 export const setOutput = (name: string, value: unknown): string => {
-	const serialized = serializeOutput(value);
-	coreSetOutput(name, serialized);
-	return serialized;
-};
+	const serialized = serializeOutput(value)
+	coreSetOutput(name, serialized)
+	return serialized
+}
 
 /**
  * Sets multiple output values for GitHub Actions.
@@ -74,13 +74,11 @@ export const setOutput = (name: string, value: unknown): string => {
  * // Returns { name: "my-package", version: "1.0.0", published: "true" }
  * ```
  */
-export const setOutputs = <TOutputs extends OutputMap>(
-	outputs: TOutputs,
-): { [K in keyof TOutputs]: string } => {
-	const serialized = {} as { [K in keyof TOutputs]: string };
+export const setOutputs = <TOutputs extends OutputMap>(outputs: TOutputs): {[K in keyof TOutputs]: string} => {
+	const serialized = {} as {[K in keyof TOutputs]: string}
 	for (const [name, value] of Object.entries(outputs)) {
-		serialized[name as keyof TOutputs] = setOutput(name, value);
+		serialized[name as keyof TOutputs] = setOutput(name, value)
 	}
 
-	return serialized;
-};
+	return serialized
+}

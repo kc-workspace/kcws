@@ -1,10 +1,11 @@
 /* jscpd:ignore-start */
-import type { ZodType, z } from "zod";
-import type { Adapter, RawConfig } from "#types";
-import { deepMerge } from "#utils/deepMerge";
-import { asAdapterError } from "#utils/errors";
-import { validateConfig, validateSchema } from "#utils/validators";
-import { useGenericAdapters } from "../adapters";
+import type {ZodType, z} from "zod"
+import type {Adapter, RawConfig} from "#types"
+
+import {deepMerge} from "#utils/deepMerge"
+import {asAdapterError} from "#utils/errors"
+import {validateConfig, validateSchema} from "#utils/validators"
+import {useGenericAdapters} from "../adapters"
 
 /* jscpd:ignore-end */
 
@@ -20,21 +21,18 @@ import { useGenericAdapters } from "../adapters";
  * @throws {ZconfigAdapterError} when an adapter cannot produce configuration
  * @throws {ZconfigValidationError} when the merged configuration is invalid
  */
-const loadConfigSync = <S extends ZodType>(
-	schema: S,
-	adapters: Adapter[] = useGenericAdapters(),
-): z.output<S> => {
-	validateSchema(schema);
+const loadConfigSync = <S extends ZodType>(schema: S, adapters: Adapter[] = useGenericAdapters()): z.output<S> => {
+	validateSchema(schema)
 
-	const sources: RawConfig[] = [];
+	const sources: RawConfig[] = []
 	for (const adapter of adapters) {
 		try {
-			sources.push(adapter.loadSync());
+			sources.push(adapter.loadSync())
 		} catch (cause) {
-			throw asAdapterError(adapter, cause);
+			throw asAdapterError(adapter, cause)
 		}
 	}
 
-	return validateConfig(schema, deepMerge(...sources));
-};
-export default loadConfigSync;
+	return validateConfig(schema, deepMerge(...sources))
+}
+export default loadConfigSync

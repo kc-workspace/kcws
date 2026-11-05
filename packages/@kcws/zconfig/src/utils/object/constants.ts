@@ -7,8 +7,4 @@
  *
  * @internal
  */
-export const DANGEROUS_KEYS: ReadonlySet<string> = new Set([
-	"__proto__",
-	"constructor",
-	"prototype",
-]);
+export const DANGEROUS_KEYS: ReadonlySet<string> = new Set(["__proto__", "constructor", "prototype"])

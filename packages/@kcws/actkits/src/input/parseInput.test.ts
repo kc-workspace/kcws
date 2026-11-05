@@ -1,144 +1,139 @@
-import { getInput } from "@actions/core";
-import { describe, expect, test, vi } from "vitest";
-import { z } from "zod";
+import {getInput} from "@actions/core"
+import {describe, expect, test, vi} from "vitest"
+import {z} from "zod"
 
-import { parseInput } from "./parseInput";
+import {parseInput} from "./parseInput"
 
 vi.mock("@actions/core", () => ({
 	getInput: vi.fn(() => ""),
-}));
+}))
 
 const mockGetInput = (mapper: string | Record<string, string>) => {
 	vi.mocked(getInput).mockImplementation((key, opt) => {
-		if (typeof mapper === "string") return mapper;
-		const output = mapper[key] ?? "";
-		return opt?.trimWhitespace ? output.trim() : output;
-	});
-};
+		if (typeof mapper === "string") return mapper
+		const output = mapper[key] ?? ""
+		return opt?.trimWhitespace ? output.trim() : output
+	})
+}
 
 const getInputOption = {
 	trimWhitespace: true,
 	required: false,
-};
+}
 
 describe(parseInput.name, () => {
 	test("should support default value from schema", () => {
 		const schema = z.object({
 			key: z.string().default("default"),
-		});
+		})
 
-		const input = parseInput(schema);
+		const input = parseInput(schema)
 
-		expect(input).toEqual({ key: "default" });
-	});
+		expect(input).toEqual({key: "default"})
+	})
 
 	test("should call getInput for each key", () => {
-		mockGetInput({ key: "mocked" });
+		mockGetInput({key: "mocked"})
 		const schema = z.object({
 			key: z.string(),
 			value: z.string().optional(),
-		});
+		})
 
-		const input = parseInput(schema);
+		const input = parseInput(schema)
 
-		expect(input).toEqual({ key: "mocked" });
-		expect(getInput).toHaveBeenNthCalledWith(1, "key", getInputOption);
-		expect(getInput).toHaveBeenNthCalledWith(2, "value", getInputOption);
-	});
+		expect(input).toEqual({key: "mocked"})
+		expect(getInput).toHaveBeenNthCalledWith(1, "key", getInputOption)
+		expect(getInput).toHaveBeenNthCalledWith(2, "value", getInputOption)
+	})
 
 	test("env should override getInput", () => {
-		mockGetInput({ key: "mocked" });
+		mockGetInput({key: "mocked"})
 		const schema = z.object({
 			key: z.string(),
-		});
+		})
 		const input = parseInput(schema, undefined, {
 			INPUT__KEY: "env",
-		});
+		})
 
-		expect(input).toEqual({ key: "env" });
-	});
+		expect(input).toEqual({key: "env"})
+	})
 
 	test("should read custom env prefix", () => {
-		mockGetInput({ key: "mocked" });
+		mockGetInput({key: "mocked"})
 		const schema = z.object({
 			key: z.string(),
-		});
+		})
 		const input = parseInput(schema, "custom", {
 			CUSTOM__KEY: "env",
-		});
+		})
 
-		expect(input).toEqual({ key: "env" });
-	});
+		expect(input).toEqual({key: "env"})
+	})
 
 	test.for<{
-		input: string;
-		env: string | undefined;
-		expected: string | undefined;
+		input: string
+		env: string | undefined
+		expected: string | undefined
 	}>([
-		{ input: "", env: undefined, expected: undefined },
-		{ input: "", env: "", expected: undefined },
-		{ input: "i", env: undefined, expected: "i" },
-		{ input: "i", env: "", expected: "i" },
-		{ input: "", env: "e", expected: "e" },
-		{ input: "i", env: "e", expected: "e" },
-	])(
-		"when input=$input env=$env should return $expected",
-		({ input: inputValue, env, expected }) => {
-			mockGetInput({ key: inputValue });
-			const schema = z.object({
-				key: z.string().optional(),
-			});
-			const input = parseInput(schema, undefined, {
-				INPUT__KEY: env,
-			});
+		{input: "", env: undefined, expected: undefined},
+		{input: "", env: "", expected: undefined},
+		{input: "i", env: undefined, expected: "i"},
+		{input: "i", env: "", expected: "i"},
+		{input: "", env: "e", expected: "e"},
+		{input: "i", env: "e", expected: "e"},
+	])("when input=$input env=$env should return $expected", ({input: inputValue, env, expected}) => {
+		mockGetInput({key: inputValue})
+		const schema = z.object({
+			key: z.string().optional(),
+		})
+		const input = parseInput(schema, undefined, {
+			INPUT__KEY: env,
+		})
 
-			expect(input).toEqual({ key: expected });
-		},
-	);
+		expect(input).toEqual({key: expected})
+	})
 
 	test("should throw error if schema is not a ZodObject", () => {
-		expect(() => parseInput(z.string())).toThrow("schema must be a ZodObject");
-	});
+		expect(() => parseInput(z.string())).toThrow("schema must be a ZodObject")
+	})
 
 	test("should throw error for invalid value", () => {
 		const schema = z.object({
 			key: z.string(),
-		});
-		expect(() => parseInput(schema)).not.toThrow(
-			"Invalid option: expected string, received undefined",
-		);
-	});
+		})
+		expect(() => parseInput(schema)).not.toThrow("Invalid option: expected string, received undefined")
+	})
 
 	test("should throw error for invalid enum value", () => {
-		mockGetInput({ key: "1" });
+		mockGetInput({key: "1"})
 		const schema = z.object({
 			key: z.enum(["true", "false"]),
-		});
+		})
 
-		expect(() => parseInput(schema)).toThrow("Invalid option: expected one of");
-	});
+		expect(() => parseInput(schema)).toThrow("Invalid option: expected one of")
+	})
 
 	test("should trim whitespace from input values", () => {
-		mockGetInput({ key: "  value  " });
+		mockGetInput({key: "  value  "})
 		const schema = z.object({
 			key: z.string(),
-		});
+		})
 
-		const input = parseInput(schema);
+		const input = parseInput(schema)
 
-		expect(input).toEqual({ key: "value" });
-	});
+		expect(input).toEqual({key: "value"})
+	})
 
 	test("should not trim whitespace from env values", () => {
-		mockGetInput({ key: "  value  " });
+		mockGetInput({key: "  value  "})
 		const schema = z.object({
 			key: z.string(),
-		});
+		})
 
 		const input = parseInput(schema, undefined, {
 			INPUT__KEY: "  env  ",
-		});
+		})
 
-		expect(input).toEqual({ key: "  env  " });
-	});
-});
+		expect(input).toEqual({key: "  env  "})
+	})
+})

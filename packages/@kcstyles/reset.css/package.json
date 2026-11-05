@@ -32,17 +32,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": [
-		"reset.css",
-		"css",
-		"stylesheet",
-		"frontend"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist"
-	],
+	"keywords": ["reset.css", "css", "stylesheet", "frontend"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist"],
 	"engines": {
 		"node": ">=22"
 	},

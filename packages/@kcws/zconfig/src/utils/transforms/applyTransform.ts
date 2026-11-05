@@ -1,5 +1,6 @@
-import type { RawConfig, TransformFn } from "#types";
-import { setPath, walk } from "./utils";
+import type {RawConfig, TransformFn} from "#types"
+
+import {setPath, walk} from "./utils"
 
 /**
  * Applies an adapter's `transform` to every leaf of its parsed output.
@@ -11,21 +12,18 @@ import { setPath, walk } from "./utils";
  *
  * @internal
  */
-const applyTransform = (
-	config: RawConfig,
-	transform?: TransformFn,
-): RawConfig => {
-	if (transform === undefined) return config;
+const applyTransform = (config: RawConfig, transform?: TransformFn): RawConfig => {
+	if (transform === undefined) return config
 
-	const result: RawConfig = Object.create(null);
+	const result: RawConfig = Object.create(null)
 	walk(config, [], (input) => {
-		const output = transform(input);
-		if (output === undefined) return;
+		const output = transform(input)
+		if (output === undefined) return
 
-		setPath(result, output.key, output.value);
-	});
+		setPath(result, output.key, output.value)
+	})
 
-	return result;
-};
+	return result
+}
 
-export default applyTransform;
+export default applyTransform

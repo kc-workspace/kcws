@@ -1,5 +1,6 @@
-import { pathToFileURL } from "node:url";
-import type { HTMLBundle } from "bun";
+import type {HTMLBundle} from "bun"
+
+import {pathToFileURL} from "node:url"
 
 /**
  * Import an HTML route file as a {@link HTMLBundle}.
@@ -14,9 +15,9 @@ import type { HTMLBundle } from "bun";
  */
 const loadRouteBundle = async (path: string): Promise<HTMLBundle> => {
 	const module = (await import(pathToFileURL(path).href)) as {
-		default: HTMLBundle;
-	};
-	return module.default;
-};
+		default: HTMLBundle
+	}
+	return module.default
+}
 
-export default loadRouteBundle;
+export default loadRouteBundle

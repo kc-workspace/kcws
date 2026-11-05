@@ -1,40 +1,40 @@
-import { describe, expect, test } from "vitest";
-import type { AnyPlugin } from "../models";
-import { defineConfig } from "./defineConfig";
-import { defineFilter } from "./defineFilter";
-import { definePreset } from "./definePreset";
-import { defineRule } from "./defineRule";
+import type {AnyPlugin} from "../models"
+
+import {describe, expect, test} from "vitest"
+
+import {defineConfig} from "./defineConfig"
+import {defineFilter} from "./defineFilter"
+import {definePreset} from "./definePreset"
+import {defineRule} from "./defineRule"
 
 describe(defineConfig.name, () => {
 	test("should return an empty object when no inputs are provided", () => {
-		expect(defineConfig({})).toEqual({});
-	});
+		expect(defineConfig({})).toEqual({})
+	})
 
 	test("should keep plugins and filters while merging preset and rule configs", () => {
 		const alpha = defineRule({
 			name: "alpha",
-			module: { lint: "alpha" },
-			config: { source: "preset" },
-		});
+			module: {lint: "alpha"},
+			config: {source: "preset"},
+		})
 		const beta = defineRule({
 			name: "beta",
-			module: { lint: "beta" },
+			module: {lint: "beta"},
 			config: false,
-		});
+		})
 		const override = defineRule({
 			name: "alpha",
-			module: { lint: "override" },
-			config: { source: "rule" },
-		});
+			module: {lint: "override"},
+			config: {source: "rule"},
+		})
 		const filters = [
 			defineFilter({
 				name: "comments",
 				config: true,
 			}),
-		];
-		const plugins: AnyPlugin[] = [
-			{ type: "plugin", name: "markdown", config: {} },
-		];
+		]
+		const plugins: AnyPlugin[] = [{type: "plugin", name: "markdown", config: {}}]
 
 		expect(
 			defineConfig({
@@ -47,9 +47,9 @@ describe(defineConfig.name, () => {
 			plugins,
 			filters,
 			rules: {
-				alpha: { source: "rule" },
+				alpha: {source: "rule"},
 				beta: false,
 			},
-		});
-	});
-});
+		})
+	})
+})

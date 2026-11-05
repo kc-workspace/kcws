@@ -1,27 +1,29 @@
-import { describe, expect, test, vi } from "vitest";
-import type { BunType } from "#types";
-import resolveStaticSpecs from "./resolveStaticSpecs";
-import type { StaticSpec } from "./types";
+import type {BunType} from "#types"
+import type {StaticSpec} from "./types"
+
+import {describe, expect, test, vi} from "vitest"
+
+import resolveStaticSpecs from "./resolveStaticSpecs"
 
 const createMockBun = (files: Record<string, string[]>) => {
-	const scan = vi.fn(function* (option: { cwd: string }): Generator<string> {
-		yield* files[option.cwd] ?? [];
-	});
+	const scan = vi.fn(function* (option: {cwd: string}): Generator<string> {
+		yield* files[option.cwd] ?? []
+	})
 
 	class Glob {
 		constructor(public readonly pattern: string) {}
-		scan = scan;
+		scan = scan
 	}
 
-	return { bun: { Glob } as unknown as BunType, scan };
-};
+	return {bun: {Glob} as unknown as BunType, scan}
+}
 
 const spec = (root: string, dirname: string, pattern = "**/*"): StaticSpec => ({
 	source: root,
 	root,
 	pattern,
-	target: { base: "/repo/dist", dirname },
-});
+	target: {base: "/repo/dist", dirname},
+})
 
 describe("resolveStaticSpecs", () => {
 	test.for([
@@ -52,51 +54,40 @@ describe("resolveStaticSpecs", () => {
 			wildcard: "/favicon.ico/*",
 			target: "/repo/dist/favicon.ico",
 		},
-	])(
-		"resolves $name",
-		async ({ root, dirname, file, route, wildcard, target }) => {
-			const { bun } = createMockBun({ [root]: [file] });
+	])("resolves $name", async ({root, dirname, file, route, wildcard, target}) => {
+		const {bun} = createMockBun({[root]: [file]})
 
-			await expect(
-				resolveStaticSpecs(bun, [spec(root, dirname)]),
-			).resolves.toEqual([{ route, wildcard, source: file, target }]);
-		},
-	);
+		await expect(resolveStaticSpecs(bun, [spec(root, dirname)])).resolves.toEqual([
+			{route, wildcard, source: file, target},
+		])
+	})
 
 	test("scans hidden files too", async () => {
-		const { bun, scan } = createMockBun({});
+		const {bun, scan} = createMockBun({})
 
-		await resolveStaticSpecs(bun, [spec("/repo/assets", "assets", "*.png")]);
+		await resolveStaticSpecs(bun, [spec("/repo/assets", "assets", "*.png")])
 
 		expect(scan).toHaveBeenCalledWith({
 			absolute: true,
 			cwd: "/repo/assets",
 			dot: true,
-		});
-	});
+		})
+	})
 
 	test("resolves every spec", async () => {
-		const { bun } = createMockBun({
+		const {bun} = createMockBun({
 			"/repo/assets": ["/repo/assets/logo.png"],
 			"/repo/public": ["/repo/public/favicon.ico"],
-		});
+		})
 
 		await expect(
-			resolveStaticSpecs(bun, [
-				spec("/repo/assets", "assets"),
-				spec("/repo/public", "."),
-			]),
-		).resolves.toMatchObject([
-			{ route: "/assets/logo.png" },
-			{ route: "/favicon.ico" },
-		]);
-	});
+			resolveStaticSpecs(bun, [spec("/repo/assets", "assets"), spec("/repo/public", ".")]),
+		).resolves.toMatchObject([{route: "/assets/logo.png"}, {route: "/favicon.ico"}])
+	})
 
 	test("resolves nothing when no file matches", async () => {
-		const { bun } = createMockBun({});
+		const {bun} = createMockBun({})
 
-		await expect(
-			resolveStaticSpecs(bun, [spec("/repo/assets", "assets")]),
-		).resolves.toEqual([]);
-	});
-});
+		await expect(resolveStaticSpecs(bun, [spec("/repo/assets", "assets")])).resolves.toEqual([])
+	})
+})

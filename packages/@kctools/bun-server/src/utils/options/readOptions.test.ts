@@ -1,17 +1,18 @@
-import { describe, expect, test } from "vitest";
-import readOptions from "./readOptions";
+import {describe, expect, test} from "vitest"
+
+import readOptions from "./readOptions"
 
 describe("readOptions", () => {
 	test.for([
 		{
 			name: "reads the value of the key",
-			options: { cwd: "/repo" },
+			options: {cwd: "/repo"},
 			key: "cwd",
 			expected: "/repo",
 		},
 		{
 			name: "keeps the value type as it is",
-			options: { statics: ["a", "b"] },
+			options: {statics: ["a", "b"]},
 			key: "statics",
 			expected: ["a", "b"],
 		},
@@ -21,7 +22,7 @@ describe("readOptions", () => {
 			key: "cwd",
 			expected: undefined,
 		},
-	])("$name", ({ options, key, expected }) => {
-		expect(readOptions(options, key)).toEqual(expected);
-	});
-});
+	])("$name", ({options, key, expected}) => {
+		expect(readOptions(options, key)).toEqual(expected)
+	})
+})

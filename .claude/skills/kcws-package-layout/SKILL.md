@@ -1,4 +1,5 @@
 ---
+
 name: kcws-package-layout
 description: "Use when creating or reorganizing a reusable TypeScript library package in the KCWS pnpm monorepo and deciding where core APIs, public types, and utility namespaces belong."
 user-invocable: true
@@ -12,7 +13,6 @@ disable-model-invocation: false
 Use this layout only for reusable runtime TypeScript libraries in `packages/`.
 
 Do not use it for:
-
 - Config-only packages, including configuration presets or shared tool configuration.
 - `@kctypes/*` type-definition utility packages.
 - `@kcstyles/*` CSS, Sass, or stylesheet packages.

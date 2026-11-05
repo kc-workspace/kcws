@@ -1,5 +1,5 @@
-import { defineConfig, type UserConfig } from "../configs";
+import {defineConfig, type UserConfig} from "../configs"
 
-const config: UserConfig = defineConfig({});
+const config: UserConfig = defineConfig({})
 
-export default config;
+export default config

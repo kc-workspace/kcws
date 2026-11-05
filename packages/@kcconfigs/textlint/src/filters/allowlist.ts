@@ -1,9 +1,10 @@
-import type { Filter } from "../models";
-import { defineFilter } from "../utils/defineFilter";
+import type {Filter} from "../models"
+
+import {defineFilter} from "../utils/defineFilter"
 
 export interface AllowListConfig {
-	allow?: string[];
-	allowlistConfigPaths?: string[];
+	allow?: string[]
+	allowlistConfigPaths?: string[]
 }
 
 export const DEFAULT_ALLOWLIST: string[] = [
@@ -15,22 +16,22 @@ export const DEFAULT_ALLOWLIST: string[] = [
 	"github",
 	"typescript",
 	"json",
-];
+]
 
-export type AllowListRule = Filter<"allowlist", AllowListConfig>;
+export type AllowListRule = Filter<"allowlist", AllowListConfig>
 
 export const allowlist = (config?: AllowListConfig): AllowListRule => {
-	const name = "allowlist";
+	const name = "allowlist"
 	if (!config) {
 		return defineFilter({
 			name,
 			config: false,
-		});
+		})
 	}
 
-	config.allow ??= DEFAULT_ALLOWLIST;
+	config.allow ??= DEFAULT_ALLOWLIST
 	return defineFilter({
 		name,
 		config,
-	});
-};
+	})
+}

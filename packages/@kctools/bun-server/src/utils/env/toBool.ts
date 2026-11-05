@@ -1,4 +1,4 @@
-import type { ConvertEnv } from "./types";
+import type {ConvertEnv} from "./types"
 
 const toBool: ConvertEnv<boolean> = (v) => {
 	switch (v?.toLowerCase()) {
@@ -6,14 +6,14 @@ const toBool: ConvertEnv<boolean> = (v) => {
 		case "1":
 		case "yes":
 		case "on":
-			return true;
+			return true
 		case "false":
 		case "0":
 		case "no":
 		case "off":
-			return false;
+			return false
 		default:
-			return undefined;
+			return undefined
 	}
-};
-export default toBool;
+}
+export default toBool

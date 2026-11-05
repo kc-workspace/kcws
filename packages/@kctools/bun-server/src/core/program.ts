@@ -1,20 +1,22 @@
-import { Command } from "commander";
-import { bin, description, name, version } from "#root/package.json";
-import type { BunType, CommandFn } from "#types";
-import { createLogger, type Logger } from "#utils/logger";
+import type {BunType, CommandFn} from "#types"
+
+import {Command} from "commander"
+
+import {bin, description, name, version} from "#root/package.json"
+import {createLogger, type Logger} from "#utils/logger"
 
 class Program {
-	readonly #root: Command;
-	readonly #bun: BunType;
-	readonly #logger: Logger;
+	readonly #root: Command
+	readonly #bun: BunType
+	readonly #logger: Logger
 
 	constructor(bun: BunType) {
-		this.#bun = bun;
+		this.#bun = bun
 		this.#root = new Command()
 			.name(Object.keys(bin).at(0) ?? name)
 			.description(description)
-			.version(version);
-		this.#logger = createLogger("core/program");
+			.version(version)
+		this.#logger = createLogger("core/program")
 	}
 
 	/**
@@ -23,11 +25,11 @@ class Program {
 	 * @returns The current instance of the program for chaining
 	 */
 	add(def: CommandFn): this {
-		this.#logger.debug(`adding command: ${def.name}`);
-		const cmd = this.#root.command(def.name).description(def.description);
-		def.action(cmd, this.#bun);
+		this.#logger.debug(`adding command: ${def.name}`)
+		const cmd = this.#root.command(def.name).description(def.description)
+		def.action(cmd, this.#bun)
 
-		return this;
+		return this
 	}
 
 	/**
@@ -37,8 +39,8 @@ class Program {
 	parse(args: string[]): void {
 		this.#root.parse(args, {
 			from: "node",
-		});
+		})
 	}
 }
 
-export { Program };
+export {Program}

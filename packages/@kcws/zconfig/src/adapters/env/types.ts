@@ -1,11 +1,11 @@
-import type { BaseAdapterOptions, EnvObject } from "#types";
+import type {BaseAdapterOptions, EnvObject} from "#types"
 
 /** Options for {@link envAdapter}. */
 export interface EnvAdapterOptions extends BaseAdapterOptions {
 	/** Prefix required by environment variables; an underscore is appended when absent. */
-	prefix?: string;
+	prefix?: string
 	/** Separator between nested configuration keys in environment variable names. @default `"__"` */
-	pathSeparator: string;
+	pathSeparator: string
 	/** Environment values read to build the configuration. @default `process.env` */
-	processEnv: EnvObject | false;
+	processEnv: EnvObject | false
 }

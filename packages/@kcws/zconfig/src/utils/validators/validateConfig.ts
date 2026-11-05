@@ -1,6 +1,7 @@
-import type { ZodType, z } from "zod";
-import type { RawConfig } from "#types";
-import { ZconfigValidationError } from "../errors";
+import type {ZodType, z} from "zod"
+import type {RawConfig} from "#types"
+
+import {ZconfigValidationError} from "../errors"
 
 /**
  * Parses an already merged configuration against its schema.
@@ -14,14 +15,11 @@ import { ZconfigValidationError } from "../errors";
  * @throws {ZconfigValidationError} when the configuration is invalid
  * @internal
  */
-const validateConfig = <S extends ZodType>(
-	schema: S,
-	config: RawConfig,
-): z.output<S> => {
-	const result = schema.safeParse(config);
-	if (!result.success) throw new ZconfigValidationError(result.error);
+const validateConfig = <S extends ZodType>(schema: S, config: RawConfig): z.output<S> => {
+	const result = schema.safeParse(config)
+	if (!result.success) throw new ZconfigValidationError(result.error)
 
-	return result.data;
-};
+	return result.data
+}
 
-export default validateConfig;
+export default validateConfig

@@ -1,5 +1,6 @@
-import type { ZodType } from "zod";
-import { visit } from "./utils";
+import type {ZodType} from "zod"
+
+import {visit} from "./utils"
 
 /**
  * Asserts that every key reachable in a schema is strict camelCase.
@@ -14,7 +15,7 @@ import { visit } from "./utils";
  * @internal
  */
 const validateSchema = (schema: ZodType): void => {
-	visit(schema, [], new Set());
-};
+	visit(schema, [], new Set())
+}
 
-export default validateSchema;
+export default validateSchema

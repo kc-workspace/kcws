@@ -1,7 +1,7 @@
-import type { TsdownConfig } from "../models";
+import type {TsdownConfig} from "../models"
 
-export const debugPriority: number = Number.NEGATIVE_INFINITY;
-export const normalizePriority: number = Number.POSITIVE_INFINITY;
+export const debugPriority: number = Number.NEGATIVE_INFINITY
+export const normalizePriority: number = Number.POSITIVE_INFINITY
 
 export const defaultIgnoreEntry = [
 	"!./src/**/*.example.ts",
@@ -9,7 +9,7 @@ export const defaultIgnoreEntry = [
 	"!./src/**/*.spec.ts",
 	"!./src/**/*.test-d.ts",
 	"!./src/**/*.spec-d.ts",
-] as const;
+] as const
 
 export const baseConfig: TsdownConfig = {
 	entry: ["./src/index.ts", ...defaultIgnoreEntry],
@@ -31,4 +31,4 @@ export const baseConfig: TsdownConfig = {
 	attw: {
 		enabled: true,
 	},
-};
+}

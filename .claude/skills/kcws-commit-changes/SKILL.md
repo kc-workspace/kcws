@@ -1,4 +1,5 @@
 ---
+
 name: kcws-commit-changes
 description: Create Git commits from local repository changes using Conventional Commits. Use when asked to commit changes, write commit messages, split a diff into multiple commits, or keep each commit scoped to a single functionality.
 ---
@@ -10,14 +11,12 @@ Create clear, reviewable commits from the current working tree.
 ## Workflow
 
 1. Map current changes.
-
    - Run `git status --short`.
    - Run `git diff --name-only`.
    - If staged files exist, inspect both staged and unstaged changes:
      `git diff --cached --name-only` and `git diff --name-only`.
 
 1. Define commit groups by functionality.
-
    - Group files by independent behavior or technical purpose.
    - Use one group only when all changes serve one cohesive outcome.
    - Split into multiple groups when changes are unrelated or only loosely
@@ -25,13 +24,11 @@ Create clear, reviewable commits from the current working tree.
    - If uncertain, prefer multiple smaller commits.
 
 1. Draft Conventional Commit messages.
-
    - Use `<type>(<scope>): <subject>` or `<type>: <subject>`.
    - Keep subjects imperative and concise (target 72 chars max).
    - Pick types from `references/conventional-commit-guide.md`.
 
 1. Commit each group non-interactively.
-
    - Stage one group at a time with `git add <file...>`.
    - Verify staging with `git diff --cached --name-only` and
      `git diff --cached`.
@@ -40,7 +37,6 @@ Create clear, reviewable commits from the current working tree.
    - Repeat for each group until all intended changes are committed.
 
 1. Verify and report.
-
    - Run `git status --short` to confirm leftovers.
    - Show created commits with `git log --oneline -n <count>`.
    - Report commit hashes, subjects, and remaining files.

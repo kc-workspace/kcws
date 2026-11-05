@@ -1,7 +1,4 @@
-import type {
-	UserWorkspaceConfig as _ProjectConfig,
-	ViteUserConfig as _UserConfig,
-} from "vitest/config";
+import type {UserWorkspaceConfig as _ProjectConfig, ViteUserConfig as _UserConfig} from "vitest/config"
 
 /**
  * Vitest user configuration type for root workspace setup.
@@ -9,7 +6,7 @@ import type {
  *
  * @see https://vitest.dev/config/
  */
-export type UserConfig = _UserConfig;
+export type UserConfig = _UserConfig
 
 /**
  * Vitest project configuration type for workspace projects.
@@ -20,9 +17,9 @@ export type UserConfig = _UserConfig;
  *
  * @see https://vitest.dev/config/
  */
-export type ProjectConfig = _ProjectConfig;
+export type ProjectConfig = _ProjectConfig
 
 /**
  * Vite + Vitest configuration type that can be either a root or project configuration.
  */
-export type AnyConfig = UserConfig | ProjectConfig;
+export type AnyConfig = UserConfig | ProjectConfig

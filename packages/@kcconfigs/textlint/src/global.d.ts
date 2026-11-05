@@ -1,1 +1,1 @@
-declare module "textlint-rule-terminology";
+declare module "textlint-rule-terminology"

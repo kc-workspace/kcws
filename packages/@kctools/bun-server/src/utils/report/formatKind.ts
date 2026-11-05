@@ -1,7 +1,7 @@
-import { KIND_LABEL } from "./constants";
+import {KIND_LABEL} from "./constants"
 
 const formatKind = (kind: string): string => {
-	return KIND_LABEL[kind] ?? kind;
-};
+	return KIND_LABEL[kind] ?? kind
+}
 
-export default formatKind;
+export default formatKind

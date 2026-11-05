@@ -1,5 +1,6 @@
-import { describe, expect, test } from "vitest";
-import formatPath from "./formatPath";
+import {describe, expect, test} from "vitest"
+
+import formatPath from "./formatPath"
 
 describe("formatPath", () => {
 	test.for([
@@ -18,7 +19,7 @@ describe("formatPath", () => {
 			path: "/other/index.html",
 			expected: "/other/index.html",
 		},
-	])("$name", ({ path, expected }) => {
-		expect(formatPath(path, "/repo")).toBe(expected);
-	});
-});
+	])("$name", ({path, expected}) => {
+		expect(formatPath(path, "/repo")).toBe(expected)
+	})
+})

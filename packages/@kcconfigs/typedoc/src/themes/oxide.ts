@@ -1,4 +1,4 @@
-import { defineTheme, type ThemeConfig } from "../configs";
+import {defineTheme, type ThemeConfig} from "../configs"
 
 /**
  * Typedoc theme looks just like rustdoc
@@ -6,6 +6,6 @@ import { defineTheme, type ThemeConfig } from "../configs";
  */
 const oxide: ThemeConfig = defineTheme({
 	plugin: ["typedoc-theme-oxide"],
-});
+})
 
-export default oxide;
+export default oxide

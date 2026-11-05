@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod"
 
 /**
  * Splits a string by newline (if present) or comma, trims each item,
@@ -9,12 +9,12 @@ import { z } from "zod";
  * @internal
  */
 const splitString = (val: string): string[] => {
-	const separator = val.includes("\n") ? "\n" : ",";
+	const separator = val.includes("\n") ? "\n" : ","
 	return val
 		.split(separator)
 		.map((s) => s.trim())
-		.filter((s) => s.length > 0);
-};
+		.filter((s) => s.length > 0)
+}
 
 /**
  * Creates a Zod schema for parsing string to array.
@@ -27,7 +27,7 @@ export const createArrayParser = <T extends z.ZodType>(
 	parser: (val: string | string[]) => z.input<z.ZodOptional<z.ZodArray<T>>>,
 ): z.ZodPreprocess<z.ZodArray<T>> =>
 	z.preprocess((val) => {
-		if (val === "" || val === undefined || val === null) return undefined;
-		if (typeof val === "string") return parser(splitString(val));
-		return parser(val as string | string[]);
-	}, z.array(type));
+		if (val === "" || val === undefined || val === null) return undefined
+		if (typeof val === "string") return parser(splitString(val))
+		return parser(val as string | string[])
+	}, z.array(type))

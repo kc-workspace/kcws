@@ -1,4 +1,3 @@
-export { default as contentAdapter } from "./adapter";
 export type {
 	BaseContentAdapterOptions,
 	ContentAdapterOptions,
@@ -9,4 +8,6 @@ export type {
 	ContentParser,
 	ContentParserOptions,
 	ContentSource,
-} from "./types";
+} from "./types"
+
+export {default as contentAdapter} from "./adapter"

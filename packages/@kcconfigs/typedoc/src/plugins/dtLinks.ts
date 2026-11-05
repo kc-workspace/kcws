@@ -1,4 +1,4 @@
-import { definePlugin, type PluginConfig } from "../configs";
+import {definePlugin, type PluginConfig} from "../configs"
 
 /**
  * Typedoc plugin to linking references to types declared on `@types` packages
@@ -6,6 +6,6 @@ import { definePlugin, type PluginConfig } from "../configs";
  */
 const dtLinks: PluginConfig = definePlugin({
 	plugin: ["typedoc-plugin-dt-links"],
-});
+})
 
-export default dtLinks;
+export default dtLinks

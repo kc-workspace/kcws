@@ -1,52 +1,54 @@
-import { describe, expect, test } from "vitest";
-import type { TsdownConfig } from "../models";
-import cssPlugin from "./css";
+import type {TsdownConfig} from "../models"
+
+import {describe, expect, test} from "vitest"
+
+import cssPlugin from "./css"
 
 describe("cssPlugin", () => {
 	test("should have correct plugin name", () => {
-		const plugin = cssPlugin();
-		expect(plugin.name).toBe("css");
-	});
+		const plugin = cssPlugin()
+		expect(plugin.name).toBe("css")
+	})
 
 	test("should set entry to ./src/index.css by default", () => {
-		const plugin = cssPlugin();
-		const base = {} as TsdownConfig;
-		const result = plugin.applyConfig?.(base);
-		expect(result?.entry).toContain("./src/index.css");
-	});
+		const plugin = cssPlugin()
+		const base = {} as TsdownConfig
+		const result = plugin.applyConfig?.(base)
+		expect(result?.entry).toContain("./src/index.css")
+	})
 
 	test("should set entry to ./src/index.scss when lang is scss", () => {
-		const plugin = cssPlugin({ lang: "scss" });
-		const base = { entry: undefined } as unknown as TsdownConfig;
-		const result = plugin.applyConfig?.(base);
-		expect(result?.entry).toContain("./src/index.scss");
-	});
+		const plugin = cssPlugin({lang: "scss"})
+		const base = {entry: undefined} as unknown as TsdownConfig
+		const result = plugin.applyConfig?.(base)
+		expect(result?.entry).toContain("./src/index.scss")
+	})
 
 	test("should exclude test and example files", () => {
-		const plugin = cssPlugin();
-		const base = {} as TsdownConfig;
-		const result = plugin.applyConfig?.(base);
-		expect(result?.entry).toContain("!./src/**/*.example.ts");
-		expect(result?.entry).toContain("!./src/**/*.test.ts");
-		expect(result?.entry).toContain("!./src/**/*.spec.ts");
-		expect(result?.entry).toContain("!./src/**/*.test-d.ts");
-		expect(result?.entry).toContain("!./src/**/*.spec-d.ts");
-	});
+		const plugin = cssPlugin()
+		const base = {} as TsdownConfig
+		const result = plugin.applyConfig?.(base)
+		expect(result?.entry).toContain("!./src/**/*.example.ts")
+		expect(result?.entry).toContain("!./src/**/*.test.ts")
+		expect(result?.entry).toContain("!./src/**/*.spec.ts")
+		expect(result?.entry).toContain("!./src/**/*.test-d.ts")
+		expect(result?.entry).toContain("!./src/**/*.spec-d.ts")
+	})
 
 	test("should disable css minify and force esm output", () => {
-		const plugin = cssPlugin();
-		const base = {} as TsdownConfig;
-		const result = plugin.applyConfig?.(base);
-		expect(result?.css?.minify).toBe(false);
-		expect(result?.css?.fileName).toBe("index.css");
-		expect(result?.format).toBe("esm");
-	});
+		const plugin = cssPlugin()
+		const base = {} as TsdownConfig
+		const result = plugin.applyConfig?.(base)
+		expect(result?.css?.minify).toBe(false)
+		expect(result?.css?.fileName).toBe("index.css")
+		expect(result?.format).toBe("esm")
+	})
 
 	test("should preserve existing base config when applying", () => {
-		const plugin = cssPlugin();
-		const base = { outDir: "dist", entry: [] };
-		const result = plugin.applyConfig?.(base);
-		expect(result?.outDir).toBe("dist");
-		expect(result?.entry).toContain("./src/index.css");
-	});
-});
+		const plugin = cssPlugin()
+		const base = {outDir: "dist", entry: []}
+		const result = plugin.applyConfig?.(base)
+		expect(result?.outDir).toBe("dist")
+		expect(result?.entry).toContain("./src/index.css")
+	})
+})

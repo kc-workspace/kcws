@@ -1,6 +1,8 @@
-import { definePluginAsync } from "@kcinternals/config-builder";
-import type { CommitlintConfigPlugin } from "../types";
-import { applyScopes } from "../utils/scopes";
+import type {CommitlintConfigPlugin} from "../types"
+
+import {definePluginAsync} from "@kcinternals/config-builder"
+
+import {applyScopes} from "../utils/scopes"
 
 /**
  * Scope plugin — allows exactly the given scopes.
@@ -15,5 +17,5 @@ import { applyScopes } from "../utils/scopes";
 const scopePlugin = (scopes: string[]): CommitlintConfigPlugin<"scope"> =>
 	definePluginAsync("scope", {
 		applyConfig: (base) => applyScopes(base, scopes),
-	});
-export default scopePlugin;
+	})
+export default scopePlugin

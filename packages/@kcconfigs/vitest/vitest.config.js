@@ -1,3 +1,3 @@
-import { defineProjectConfig } from "./dist/index.js";
+import {defineProjectConfig} from "./dist/index.js"
 
-export default defineProjectConfig();
+export default defineProjectConfig()

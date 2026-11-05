@@ -1,14 +1,14 @@
-import type { BasicRoute } from "./types";
+import type {BasicRoute} from "./types"
 
 const findDuplicateRoutes = (routes: BasicRoute[]): string[] => {
-	const seen = new Set<string>();
-	const duplicates = new Set<string>();
+	const seen = new Set<string>()
+	const duplicates = new Set<string>()
 
 	for (const route of routes) {
-		if (seen.has(route.route)) duplicates.add(route.route);
-		else seen.add(route.route);
+		if (seen.has(route.route)) duplicates.add(route.route)
+		else seen.add(route.route)
 	}
-	return Array.from(duplicates);
-};
+	return Array.from(duplicates)
+}
 
-export default findDuplicateRoutes;
+export default findDuplicateRoutes

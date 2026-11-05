@@ -1,4 +1,4 @@
-import { definePlugin, type PluginConfig } from "../configs";
+import {definePlugin, type PluginConfig} from "../configs"
 
 /**
  * Typedoc plugin to include code examples from *.example.ts files
@@ -10,6 +10,6 @@ const includeExample: PluginConfig = definePlugin({
 	packageOptions: {
 		blockTags: ["@includeExample"],
 	},
-});
+})
 
-export default includeExample;
+export default includeExample
