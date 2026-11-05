@@ -34,7 +34,7 @@ import "@kcstyles/reset.css"
 ### Via HTML
 
 ```html
-<link rel="stylesheet" href="node_modules/@kcstyles/reset.css/dist/index.css" />
+<link rel="stylesheet" href="node_modules/@kcstyles/reset.css/dist/index.css">
 ```
 
 ## References

@@ -66,7 +66,7 @@ Example use presets
 
 ```json
 {
-	"extends": "@kcconfigs/tsconfig"
+  "extends": "@kcconfigs/tsconfig"
 }
 ```
 
@@ -78,7 +78,7 @@ We are have some restriction:
 
 ```json
 {
-	"extends": "@kcconfigs/tsconfig/root"
+  "extends": "@kcconfigs/tsconfig/root"
 }
 ```
 
@@ -91,7 +91,7 @@ We are have some restriction:
 
 ```json
 {
-	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"]
+  "extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"]
 }
 ```
 
@@ -122,7 +122,7 @@ Example use features
 
 ```json
 {
-	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/features/noSourcemap"]
+  "extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/features/noSourcemap"]
 }
 ```
 
@@ -132,12 +132,12 @@ To extend configurations with custom settings:
 
 ```json
 {
-	"extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"],
-	"include": ["src/**/*"],
-	"exclude": ["node_modules", "dist", "**/*.test.ts"],
-	"compilerOptions": {
-		"declaration": true
-	}
+  "extends": ["@kcconfigs/tsconfig", "@kcconfigs/tsconfig/envs/node"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"],
+  "compilerOptions": {
+    "declaration": true
+  }
 }
 ```
 
@@ -168,7 +168,7 @@ Below are the example configuration per tools or frameworks.
 
 ```json
 {
-	"extends": "@kcconfigs/tsconfig/bundler"
+  "extends": "@kcconfigs/tsconfig/bundler"
 }
 ```
 
@@ -178,7 +178,7 @@ The react preset extends from bundler with React support.
 
 ```json
 {
-	"extends": "@kcconfigs/tsconfig/react"
+  "extends": "@kcconfigs/tsconfig/react"
 }
 ```
 
@@ -191,7 +191,7 @@ under the project root (excluding `node_modules` and `dist`) instead of only
 
 ```json
 {
-	"extends": ["@kcconfigs/tsconfig/bun", "@kcconfigs/tsconfig/features/lit"]
+  "extends": ["@kcconfigs/tsconfig/bun", "@kcconfigs/tsconfig/features/lit"]
 }
 ```
 

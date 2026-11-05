@@ -106,9 +106,9 @@ import {definePreset, defineRule, terminology} from "@kcconfigs/textlint"
 import maxComma from "textlint-rule-max-comma"
 
 const commas = defineRule({
-	name: "max-comma",
-	module: maxComma,
-	config: {max: 4},
+  name: "max-comma",
+  module: maxComma,
+  config: {max: 4},
 })
 
 export default definePreset("my-preset", terminology(), commas)

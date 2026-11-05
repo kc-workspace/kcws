@@ -62,10 +62,10 @@ import {defineRootConfig} from "@kcconfigs/vitest"
 import {coveragePlugin} from "@kcconfigs/vitest/plugins"
 
 export default defineRootConfig(
-	["packages/**/vitest.config.ts"],
-	coveragePlugin({
-		thresholds: {branches: 0, functions: 0, lines: 0, statements: 0},
-	}),
+  ["packages/**/vitest.config.ts"],
+  coveragePlugin({
+    thresholds: {branches: 0, functions: 0, lines: 0, statements: 0},
+  }),
 )
 ```
 
@@ -139,9 +139,9 @@ import {defineProjectConfig} from "@kcconfigs/vitest"
 import {useMockPlugin} from "@kcconfigs/vitest/plugins"
 
 export default defineProjectConfig(
-	useMockPlugin({
-		flags: {fs: true, fsPromises: true, os: true, process: true},
-	}),
+  useMockPlugin({
+    flags: {fs: true, fsPromises: true, os: true, process: true},
+  }),
 )
 ```
 
@@ -168,14 +168,14 @@ import {afterEach, expect, test} from "vitest"
 import {readConfig} from "."
 
 afterEach(() => {
-	resetVol()
+  resetVol()
 })
 
 test("reads config from the working directory", () => {
-	// Relative paths resolve against mockCwd
-	vol.fromJSON({"config.json": '{"name":"kcws"}'})
+  // Relative paths resolve against mockCwd
+  vol.fromJSON({"config.json": '{"name":"kcws"}'})
 
-	expect(readConfig()).toEqual({name: "kcws"})
+  expect(readConfig()).toEqual({name: "kcws"})
 })
 ```
 

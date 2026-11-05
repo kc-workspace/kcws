@@ -159,7 +159,7 @@ import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
 import {autoScopePlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-	autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
+  autoScopePlugin(["core", "config", "script", "deps", "deps-dev", "ai"]),
 )
 
 export default config
@@ -183,10 +183,10 @@ import {type CommitlintConfig, defineConfig} from "@kcconfigs/commitlint"
 import {typesPlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-	typesPlugin({
-		feat: {description: "A new feature", title: "Features", emoji: "✨"},
-		fix: {description: "A bug fix", title: "Bugfixes", emoji: "🐛"},
-	}),
+  typesPlugin({
+    feat: {description: "A new feature", title: "Features", emoji: "✨"},
+    fix: {description: "A bug fix", title: "Bugfixes", emoji: "🐛"},
+  }),
 )
 
 export default config
@@ -199,10 +199,10 @@ import {type CommitlintConfig, defineConfig, Severity} from "@kcconfigs/commitli
 import {debugPlugin, overridePlugin} from "@kcconfigs/commitlint/plugins"
 
 const config: CommitlintConfig = await defineConfig(
-	debugPlugin(),
-	overridePlugin({
-		rules: {"subject-max-length": [Severity.Error, "always", 72]},
-	}),
+  debugPlugin(),
+  overridePlugin({
+    rules: {"subject-max-length": [Severity.Error, "always", 72]},
+  }),
 )
 
 export default config

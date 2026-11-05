@@ -22,17 +22,17 @@ import {loadConfig} from "@kcws/zconfig"
 import {dotenvAdapter, envAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
 
 const schema = z.object({
-	database: z.object({
-		host: z.string(),
-		port: z.coerce.number(),
-	}),
-	debug: z.union([z.boolean(), z.stringbool()]).default(false),
+  database: z.object({
+    host: z.string(),
+    port: z.coerce.number(),
+  }),
+  debug: z.union([z.boolean(), z.stringbool()]).default(false),
 })
 
 const config = await loadConfig(schema, [
-	yamlAdapter({path: "./config.yaml", optional: true}),
-	dotenvAdapter({path: "./.env", optional: true, prefix: "APP"}),
-	envAdapter({prefix: "APP"}),
+  yamlAdapter({path: "./config.yaml", optional: true}),
+  dotenvAdapter({path: "./.env", optional: true, prefix: "APP"}),
+  envAdapter({prefix: "APP"}),
 ])
 ```
 
@@ -51,16 +51,16 @@ APP_DEBUG=true
 ```typescript
 import {loadConfig, loadConfigSync} from "@kcws/zconfig"
 import {
-	dotenvAdapter,
-	envAdapter,
-	autoAdapter,
-	contentAdapter,
-	jsonAdapter,
-	json5Adapter,
-	staticAdapter,
-	streamAdapter,
-	tomlAdapter,
-	yamlAdapter,
+  dotenvAdapter,
+  envAdapter,
+  autoAdapter,
+  contentAdapter,
+  jsonAdapter,
+  json5Adapter,
+  staticAdapter,
+  streamAdapter,
+  tomlAdapter,
+  yamlAdapter,
 } from "@kcws/zconfig/adapters"
 import jsonAdapter from "@kcws/zconfig/adapters/json"
 ```
@@ -128,15 +128,15 @@ import {loadConfig} from "@kcws/zconfig"
 import {contentAdapter, envAdapter, streamAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
 
 const config = await loadConfig(schema, [
-	// Remote configuration first, then local files and the environment override it
-	streamAdapter({
-		name: "consul",
-		format: "json",
-		stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
-	}),
-	contentAdapter({format: "yaml", content: process.argv[2] ?? ""}),
-	yamlAdapter({path: "./config.yaml", optional: true}),
-	envAdapter({prefix: "APP"}),
+  // Remote configuration first, then local files and the environment override it
+  streamAdapter({
+    name: "consul",
+    format: "json",
+    stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
+  }),
+  contentAdapter({format: "yaml", content: process.argv[2] ?? ""}),
+  yamlAdapter({path: "./config.yaml", optional: true}),
+  envAdapter({prefix: "APP"}),
 ])
 ```
 

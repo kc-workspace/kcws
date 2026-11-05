@@ -109,12 +109,12 @@ import {defineConfig} from "@kcconfigs/tsdown"
 import {entryPlugin, nodePlugin, outputPlugin, unusedPlugin} from "@kcconfigs/tsdown/plugins"
 
 export default defineConfig(
-	entryPlugin(["./src/index.ts", "./src/cli.ts"]),
-	nodePlugin(),
-	outputPlugin("dist"),
-	unusedPlugin({
-		ignore: ["publint", "@arethetypeswrong/core", "unplugin-unused", "unrun"],
-	}),
+  entryPlugin(["./src/index.ts", "./src/cli.ts"]),
+  nodePlugin(),
+  outputPlugin("dist"),
+  unusedPlugin({
+    ignore: ["publint", "@arethetypeswrong/core", "unplugin-unused", "unrun"],
+  }),
 )
 ```
 

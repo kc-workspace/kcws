@@ -15,17 +15,29 @@
 
 <!-- Badge setup -->
 <p align="center">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/kc-workspace/kcws?style=flat-square&logo=github&label=commit">
-  <img alt="Sonar Quality Gate" src="https://img.shields.io/sonar/quality_gate/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
-  <img alt="Sonar Tech Debt" src="https://img.shields.io/sonar/tech_debt/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
-  <img alt="Sonar Coverage" src="https://img.shields.io/sonar/coverage/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
+  <img
+    alt="GitHub commit activity"
+    src="https://img.shields.io/github/commit-activity/m/kc-workspace/kcws?style=flat-square&logo=github&label=commit">
+  <img
+    alt="Sonar Quality Gate"
+    src="https://img.shields.io/sonar/quality_gate/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
+  <img
+    alt="Sonar Tech Debt"
+    src="https://img.shields.io/sonar/tech_debt/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
+  <img
+    alt="Sonar Coverage"
+    src="https://img.shields.io/sonar/coverage/kc-workspace_kcws?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&logo=sonarqubecloud">
 </p>
 <p align="center">
   <a href="https://www.conventionalcommits.org/">
-    <img src="https://img.shields.io/badge/conventional--commits-brightgreen?style=flat-square&logo=conventionalcommits&color=black" alt="Conventional commits" />
+    <img
+      src="https://img.shields.io/badge/conventional--commits-brightgreen?style=flat-square&logo=conventionalcommits&color=black"
+      alt="Conventional commits">
   </a>
   <a href="http://commitizen.github.io/cz-cli/">
-    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square" alt="Commitizen friendly" />
+    <img
+      src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square"
+      alt="Commitizen friendly">
   </a>
 </p>
 

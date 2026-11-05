@@ -40,9 +40,9 @@ pnpm add @kcws/actkits
 import {parseInput, z, zBoolean, zNumber} from "@kcws/actkits/input"
 
 const schema = z.object({
-	dryRun: zBoolean().default(false),
-	retries: zNumber().int().min(0).default(0),
-	token: z.string().min(1),
+  dryRun: zBoolean().default(false),
+  retries: zNumber().int().min(0).default(0),
+  token: z.string().min(1),
 })
 
 const input = parseInput(schema)
@@ -57,8 +57,8 @@ import {getContext, isPullRequestEvent, getRunUrl} from "@kcws/actkits/context"
 const context = getContext()
 
 if (isPullRequestEvent(context)) {
-	const runUrl = getRunUrl(context)
-	console.log("Running on pull request", runUrl)
+  const runUrl = getRunUrl(context)
+  console.log("Running on pull request", runUrl)
 }
 ```
 
@@ -81,8 +81,8 @@ import {setOutput, setOutputs} from "@kcws/actkits/output"
 setOutput("version", "1.2.3")
 
 setOutputs({
-	published: true,
-	artifactCount: 2,
-	metadata: {channel: "stable"},
+  published: true,
+  artifactCount: 2,
+  metadata: {channel: "stable"},
 })
 ```

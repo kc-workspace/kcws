@@ -58,8 +58,8 @@ Use a preset via the `extends` field in `typedoc.jsonc`:
 
 ```jsonc
 {
-	"$schema": "https://typedoc.org/schema.json",
-	"extends": ["@kcconfigs/typedoc/package"]
+  "$schema": "https://typedoc.org/schema.json",
+  "extends": ["@kcconfigs/typedoc/package"]
 }
 ```
 
@@ -67,10 +67,10 @@ For a monorepo root:
 
 ```jsonc
 {
-	"$schema": "https://typedoc.org/schema.json",
-	"extends": ["@kcconfigs/typedoc/root"],
-	"name": "My Workspace",
-	"entryPoints": ["packages/*"]
+  "$schema": "https://typedoc.org/schema.json",
+  "extends": ["@kcconfigs/typedoc/root"],
+  "name": "My Workspace",
+  "entryPoints": ["packages/*"]
 }
 ```
 
@@ -128,7 +128,7 @@ import all from "@kcconfigs/typedoc/plugins/all"
 import github from "@kcconfigs/typedoc/themes/github"
 
 const config: UserConfig = defineConfig(github, all, {
-	highlightLanguages: ["http"],
+  highlightLanguages: ["http"],
 })
 
 export default config

@@ -4,6 +4,7 @@
 
 pnpm monorepo for My personal TypeScript/Node.js libraries, tooling,
 styles, examples, and shared configuration.
+
 - `@kcconfigs/*` - Shared configuration
 - `@kcexamples/*` - Starter and proof of concept packages
 - `@kcinternals/*` Monorepo-internal packages
@@ -18,6 +19,7 @@ strict peers, and the isolated node linker. All packages share one lockfile.
 ## Environment And Setup
 
 We have couple of way to set up environment. `nodejs` and `pnpm` is the only prerequisite requirement. To install correct version of those, we provide couple options.
+
 - Use `mise` (Prefer method)
 
 ```shell
