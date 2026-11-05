@@ -15,7 +15,11 @@
 		"indentWidth": 2,
 		"lineWidth": 120,
 		"attributePosition": "auto",
-		"lineEnding": "lf"
+		"lineEnding": "lf",
+		"trailingNewline": true,
+		"bracketSpacing": false,
+		"bracketSameLine": false,
+		"expand": "auto"
 	},
 	"linter": {
 		"enabled": true,
