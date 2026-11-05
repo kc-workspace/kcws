@@ -8,6 +8,7 @@ definitions.
 > `@kcconfigs/*` packages are. Prefer configuring textlint directly in your
 > repository. This package is still published and is documented below for the
 > repositories that already depend on it.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)

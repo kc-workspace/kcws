@@ -1,6 +1,7 @@
 # @kcstyles/reset.css
 
 A CSS reset for consistent styling across browsers.
+
 - [Installation](#installation)
 - [Usage](#usage)
   - [Via CSS](#via-css)

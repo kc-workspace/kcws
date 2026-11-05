@@ -13,6 +13,7 @@ disable-model-invocation: false
 Use this layout only for reusable runtime TypeScript libraries in `packages/`.
 
 Do not use it for:
+
 - Config-only packages, including configuration presets or shared tool configuration.
 - `@kctypes/*` type-definition utility packages.
 - `@kcstyles/*` CSS, Sass, or stylesheet packages.
