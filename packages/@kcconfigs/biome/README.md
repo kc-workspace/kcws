@@ -70,12 +70,13 @@ Features are config pieces shared by more than one preset. Extend them after a p
 | ------------------------------------------------ | --------------------------------------------------------------------------------- |
 | `@kcconfigs/biome/configs/features.ignores`      | Include `**`, exclude `.vitest`, `dist`, `dist.*`, `.*.old`, `node_modules`       |
 | `@kcconfigs/biome/configs/features.ignoresBuild` | Exclude `.dist`, `build`, `build.*`, `out`, `out.*`, and generated `CHANGELOG.md` |
-| `@kcconfigs/biome/configs/features.htmlFull`     | Enable `html.experimentalFullSupportEnabled` for `*.astro` and `*.svelte`         |
+| `@kcconfigs/biome/configs/features.htmlFull`     | Enable `html.experimentalFullSupportEnabled` and the HTML formatter               |
 
 `files.includes` from every extended config is concatenated in `extends` order, and later patterns win.
 Only `features.ignores` includes `**`. Do not add `**` to your own `files.includes`: it re-includes everything excluded before it.
 
-With `htmlFull`, Biome analyzes both the script and the template of `*.astro` and `*.svelte` files.
+With `htmlFull`, Biome analyzes and formats both the script and the template of `*.astro` and `*.svelte` files,
+including Astro frontmatter. Plain `*.html` files are formatted as well.
 Variables and imports used only in the template are not reported as unused.
 
 ## Formatter defaults
