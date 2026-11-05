@@ -85,9 +85,14 @@
   - **Workaround 1**: use release-as commit to force which version to deploy (go with this on ./scripts/package-*.sh)
   - Workaround 2: use multiple config ([release-please-example](https://github.com/sonderformat-llc/release-please-prerelease-example))
   - Workaround 3: manually update manifest.json file to previous version
+- commit message using html syntax (`<name>`) makes release-please silently skip releases ([googleapis/release-please#2801][googleapis/release-please#2801])
+  - **Workaround**: avoid `<...>` in commit messages (write `{name}` instead). If a release PR already contains one, replace it with `{name}` in the PR body right before merging; any push to `main` regenerates the body.
+- release notes for oversized release PRs are saved with broken encoding ([googleapis/release-please#2953][googleapis/release-please#2953])
 
 [googleapis/release-please#2545]: https://github.com/googleapis/release-please/issues/2545
 [googleapis/release-please#2515]: https://github.com/googleapis/release-please/issues/2515
+[googleapis/release-please#2801]: https://github.com/googleapis/release-please/issues/2801
+[googleapis/release-please#2953]: https://github.com/googleapis/release-please/issues/2953
 
 ## Get start
 
