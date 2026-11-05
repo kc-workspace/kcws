@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.1.0...@kcconfigs/biome+v4.2.0) (2026-11-05)
+
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+
 ## [4.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.0.0...@kcconfigs/biome+v4.1.0) (2026-11-05)
 
 

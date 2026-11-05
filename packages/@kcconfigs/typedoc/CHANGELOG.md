@@ -1,5 +1,63 @@
 # Changelog
 
+## [0.4.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.3.0...@kcconfigs/typedoc+v0.4.4) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/typedoc:** Require Node.js 22 or newer.
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Bugfixes
+
+* **kcconfigs/typedoc:** upgrade typedoc-github-theme peer to match with root ([63f6c91](https://github.com/kc-workspace/kcws/commit/63f6c9155007658607c6f4ad6c31dc6507f636a5))
+
+
+### Documentation
+
+* **kcconfigs/typedoc:** commit as is ([9c29194](https://github.com/kc-workspace/kcws/commit/9c29194c4f91b27a08bd867ab731785f71c8eed5))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/typedoc:** force update v0.3.0 =&gt; v0.4.4 ([a23f087](https://github.com/kc-workspace/kcws/commit/a23f087b7d5602bd1f2167c3a656f9b411b7f539))
+* **kcconfigs/typedoc:** require Node 22 ([ed9dda1](https://github.com/kc-workspace/kcws/commit/ed9dda110f42064a59cf85cb7329ff07d12e5c32))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.0
+    * @kcconfigs/tsconfig bumped to 2.1.3
+    * @kcconfigs/tsdown bumped to 0.4.4
+    * @kcconfigs/vitest bumped to 0.4.4
+
 ## [0.4.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/typedoc+v0.4.2...@kcconfigs/typedoc+v0.4.3) (2026-11-05)
 
 

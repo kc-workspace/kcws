@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/biome",
-	"version": "4.1.0",
+	"version": "4.2.0",
 	"description": "Shared biome configuration",
 	"scripts": {
 		"fix": "biome check --fix --unsafe",

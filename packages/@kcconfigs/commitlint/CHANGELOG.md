@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.6.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.6.0...@kcconfigs/commitlint+v0.6.1) (2026-11-05)
+
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.4
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.0
+    * @kcconfigs/tsconfig bumped to 2.1.3
+    * @kcconfigs/tsdown bumped to 0.4.4
+    * @kcconfigs/vitest bumped to 0.4.4
+
 ## [0.6.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.4.3...@kcconfigs/commitlint+v0.6.0) (2026-11-05)
 
 
