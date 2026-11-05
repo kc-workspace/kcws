@@ -4,6 +4,9 @@
 	"MD004": {
 		"style": "consistent"
 	},
+	"MD010": {
+		"code_blocks": false
+	},
 	"MD007": {
 		"indent": 2
 	},
