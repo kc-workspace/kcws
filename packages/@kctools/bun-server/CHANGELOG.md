@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.6](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.5...@kctools/bun-server+v0.4.6) (2026-11-05)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.1
+    * @kcconfigs/tsconfig bumped to 2.1.4
+    * @kcconfigs/tsdown bumped to 0.4.5
+    * @kcconfigs/vitest bumped to 0.4.5
+
 ## [0.4.5](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.2.0...@kctools/bun-server+v0.4.5) (2026-11-05)
 
 

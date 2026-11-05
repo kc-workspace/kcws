@@ -1,6 +1,6 @@
 {
 	"name": "@kcconfigs/tsdown",
-	"version": "0.4.4",
+	"version": "0.4.5",
 	"description": "Shared tsdown configuration",
 	"type": "module",
 	"scripts": {

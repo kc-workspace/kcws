@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.4.4...@kcconfigs/vitest+v0.4.5) (2026-11-05)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.5
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.1
+    * @kcconfigs/tsconfig bumped to 2.1.4
+    * @kcconfigs/tsdown bumped to 0.4.5
+
 ## [0.4.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.2.0...@kcconfigs/vitest+v0.4.4) (2026-11-05)
 
 
