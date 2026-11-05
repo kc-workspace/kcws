@@ -2,25 +2,7 @@
 	"$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
 	"extends": ["./base.json"],
 	"files": {
-		"includes": [
-			"**",
-			"!*.tsbuildinfo",
-			"!.vitest",
-			"!.astro",
-			"!dist",
-			"!dist.*",
-			"!.*.old",
-			"!package-lock.json",
-			"!yarn.lock",
-			"!pnpm-lock.yaml",
-			"!node_modules",
-			"!.release-please-config.json",
-			"!.github/release-please/config.json",
-			"!.release-please-manifest.json",
-			"!.github/release-please/manifest.json",
-			"!.claude/settings.local.json",
-			"!.worktrees"
-		]
+		"includes": ["**", "!.vitest", "!.astro", "!.*.old", "!node_modules"]
 	},
 	"html": {
 		"experimentalFullSupportEnabled": true
