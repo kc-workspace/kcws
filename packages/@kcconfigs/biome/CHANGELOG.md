@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.2.0...@kcconfigs/biome+v4.2.1) (2026-11-05)
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** enable html formatter in htmlFull feature ([#289](https://github.com/kc-workspace/kcws/issues/289)) ([d5ba5d3](https://github.com/kc-workspace/kcws/commit/d5ba5d321a9c3e0257fda87329664939a80d8d72))
+
 ## [4.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.1.0...@kcconfigs/biome+v4.2.0) (2026-11-05)
 
 

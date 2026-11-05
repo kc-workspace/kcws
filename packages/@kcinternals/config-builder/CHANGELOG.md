@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.5](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.3.4...@kcinternals/config-builder+v0.3.5) (2026-11-05)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.1
+    * @kcconfigs/tsconfig bumped to 2.1.4
+
 ## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.5.0...@kcinternals/config-builder+v0.3.4) (2026-11-05)
 
 
