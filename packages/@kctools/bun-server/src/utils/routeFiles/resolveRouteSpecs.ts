@@ -1,23 +1,23 @@
-import type {BunType} from "#types"
-import type {ResolvedRoute, RouteSpec} from "./types"
+import type { BunType } from "#types"
+import type { ResolvedRoute, RouteSpec } from "./types"
 
-import {sep as OS_PATH_SEP, relative} from "node:path"
+import { sep as OS_PATH_SEP, relative } from "node:path"
 
-import {scanFiles} from "#utils/path"
-import {toWildcardRoute} from "#utils/url"
-import {HTML_EXTENSION, HTML_INDEX, HTML_SEP, logger} from "./constants"
+import { scanFiles } from "#utils/path"
+import { toWildcardRoute } from "#utils/url"
+import { HTML_EXTENSION, HTML_INDEX, HTML_SEP, logger } from "./constants"
 
 const resolveRouteSpecs = async (Bun: BunType, specs: RouteSpec[]): Promise<ResolvedRoute[]> => {
 	const resolved = await Promise.all(
 		specs.map(async (spec) => {
-			logger.debug({spec}, `resolving route spec`)
+			logger.debug({ spec }, `resolving route spec`)
 			const files = await scanFiles(Bun, spec.pattern, {
 				cwd: spec.root,
 				dot: false,
 			})
 
 			const routes = files.map((file) => toResolvedRoute(spec.root, file))
-			logger.debug({routes}, `resolved ${routes.length} routes for route spec`)
+			logger.debug({ routes }, `resolved ${routes.length} routes for route spec`)
 			return routes
 		}),
 	)

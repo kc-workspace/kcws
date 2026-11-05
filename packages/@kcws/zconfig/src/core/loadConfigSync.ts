@@ -1,11 +1,11 @@
 /* jscpd:ignore-start */
-import type {ZodType, z} from "zod"
-import type {Adapter, RawConfig} from "#types"
+import type { ZodType, z } from "zod"
+import type { Adapter, RawConfig } from "#types"
 
-import {deepMerge} from "#utils/deepMerge"
-import {asAdapterError} from "#utils/errors"
-import {validateConfig, validateSchema} from "#utils/validators"
-import {useGenericAdapters} from "../adapters"
+import { deepMerge } from "#utils/deepMerge"
+import { asAdapterError } from "#utils/errors"
+import { validateConfig, validateSchema } from "#utils/validators"
+import { useGenericAdapters } from "../adapters"
 
 /* jscpd:ignore-end */
 

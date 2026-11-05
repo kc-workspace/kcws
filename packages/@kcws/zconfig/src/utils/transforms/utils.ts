@@ -1,6 +1,6 @@
-import type {RawConfig, TransformInput} from "#types"
+import type { RawConfig, TransformInput } from "#types"
 
-import {DANGEROUS_KEYS, isPlainObject} from "../object"
+import { DANGEROUS_KEYS, isPlainObject } from "../object"
 
 /**
  * Visits every leaf of a parsed configuration, deepest first within each branch.
@@ -18,7 +18,7 @@ export const walk = (config: RawConfig, path: string[], visit: (input: Transform
 		if (isPlainObject(value) && Object.keys(value).length > 0) {
 			walk(value, keyPath, visit)
 		} else {
-			visit({key: keyPath, value})
+			visit({ key: keyPath, value })
 		}
 	}
 }

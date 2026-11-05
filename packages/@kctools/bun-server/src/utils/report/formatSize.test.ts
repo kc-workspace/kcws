@@ -1,10 +1,10 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import formatSize from "./formatSize"
 
 describe("formatSize", () => {
 	test.for([
-		{name: "keeps plain bytes whole", bytes: 512, expected: "512 B"},
+		{ name: "keeps plain bytes whole", bytes: 512, expected: "512 B" },
 		{
 			name: "switches to kilobytes at the step",
 			bytes: 1024,
@@ -30,8 +30,8 @@ describe("formatSize", () => {
 			bytes: 1024 ** 5,
 			expected: "1024.00 TB",
 		},
-		{name: "formats an empty file", bytes: 0, expected: "0 B"},
-		{name: "formats a negative size", bytes: -1, expected: "0 B"},
+		{ name: "formats an empty file", bytes: 0, expected: "0 B" },
+		{ name: "formats a negative size", bytes: -1, expected: "0 B" },
 		{
 			name: "formats a size that is not a number",
 			bytes: Number.NaN,
@@ -42,7 +42,7 @@ describe("formatSize", () => {
 			bytes: Number.POSITIVE_INFINITY,
 			expected: "0 B",
 		},
-	])("$name", ({bytes, expected}) => {
+	])("$name", ({ bytes, expected }) => {
 		expect(formatSize(bytes)).toBe(expected)
 	})
 })

@@ -1,6 +1,6 @@
-import type {Adapter, RawConfig, TransformFn} from "#types"
+import type { Adapter, RawConfig, TransformFn } from "#types"
 
-import {applyTransform} from "#utils/transforms"
+import { applyTransform } from "#utils/transforms"
 
 /**
  * Creates an adapter from an already available raw configuration object.

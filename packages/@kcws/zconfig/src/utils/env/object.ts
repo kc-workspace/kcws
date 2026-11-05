@@ -1,6 +1,6 @@
-import type {EnvObject, RawConfig} from "#types"
+import type { EnvObject, RawConfig } from "#types"
 
-import {decodeEnvKey} from "./key"
+import { decodeEnvKey } from "./key"
 
 /**
  * Decodes a flat env object into a nested configuration object, using the

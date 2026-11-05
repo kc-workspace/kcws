@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {decodeEnvKey, encodeEnvKey} from "./key"
+import { decodeEnvKey, encodeEnvKey } from "./key"
 
 describe("encodeEnvKey", () => {
 	test.each`
@@ -14,7 +14,7 @@ describe("encodeEnvKey", () => {
 		${["databasePort"]}     | ${"_M__"}    | ${"_M__DATABASE_PORT"}
 		${["dbURL"]}            | ${undefined} | ${"DB_U_R_L"}
 		${["db2Host"]}          | ${undefined} | ${"DB2_HOST"}
-	`("encodeEnvKey($keys, $prefix) -> $expected", ({keys, prefix, expected}) => {
+	`("encodeEnvKey($keys, $prefix) -> $expected", ({ keys, prefix, expected }) => {
 		expect(encodeEnvKey(keys, prefix, "__")).toBe(expected)
 	})
 
@@ -23,7 +23,7 @@ describe("encodeEnvKey", () => {
 		${["database", "host"]} | ${"__"} | ${"DATABASE__HOST"}
 		${["database", "host"]} | ${"--"} | ${"DATABASE--HOST"}
 		${["database", "host"]} | ${"++"} | ${"DATABASE++HOST"}
-	`("encodeEnvKey($keys, undefined, $keySep) -> $expected", ({keys, keySep, expected}) => {
+	`("encodeEnvKey($keys, undefined, $keySep) -> $expected", ({ keys, keySep, expected }) => {
 		expect(encodeEnvKey(keys, undefined, keySep)).toBe(expected)
 	})
 
@@ -42,7 +42,7 @@ describe("decodeEnvKey", () => {
 		${"OTHER_VALUE"}        | ${"APP"}     | ${undefined}
 		${"APP__VALUE"}         | ${"APP"}     | ${undefined}
 		${"APP_VALUE__"}        | ${"APP"}     | ${undefined}
-	`("decodeEnvKey($name, $prefix) -> $expected", ({name, prefix, expected}) => {
+	`("decodeEnvKey($name, $prefix) -> $expected", ({ name, prefix, expected }) => {
 		expect(decodeEnvKey(name, prefix, "__")).toEqual(expected)
 	})
 
@@ -50,14 +50,14 @@ describe("decodeEnvKey", () => {
 		name                 | keySep  | expected
 		${"DATABASE.HOST"}   | ${"."}  | ${["database", "host"]}
 		${"DATABASE:::HOST"} | ${"::"} | ${["database", ":host"]}
-	`("decodeEnvKey($name, $keySep) -> $expected", ({name, keySep, expected}) => {
+	`("decodeEnvKey($name, $keySep) -> $expected", ({ name, keySep, expected }) => {
 		expect(decodeEnvKey(name, undefined, keySep)).toEqual(expected)
 	})
 
 	test.each`
 		keys                    | name                   | prefix   | keySep
 		${["database", "host"]} | ${"APP_DATABASE.HOST"} | ${"APP"} | ${"."}
-	`("round-trips '$keys' <-> '$name' should be reversible", ({keys, name, prefix, keySep}) => {
+	`("round-trips '$keys' <-> '$name' should be reversible", ({ keys, name, prefix, keySep }) => {
 		const actualName = encodeEnvKey(keys, prefix, keySep)
 		expect(actualName).toBe(name)
 		const expectedKeys = decodeEnvKey(actualName, prefix, keySep)

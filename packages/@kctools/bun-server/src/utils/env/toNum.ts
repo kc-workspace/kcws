@@ -1,4 +1,4 @@
-import type {ConvertEnv} from "./types"
+import type { ConvertEnv } from "./types"
 
 const toNum: ConvertEnv<number> = (v) => {
 	if (v === undefined) return undefined

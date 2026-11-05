@@ -1,12 +1,12 @@
-import type {Adapter, RawConfig} from "#types"
+import type { Adapter, RawConfig } from "#types"
 
-import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
-import {describe, expect, expectTypeOf, test, vi} from "vitest"
-import {z} from "zod"
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks"
+import { describe, expect, expectTypeOf, test, vi } from "vitest"
+import { z } from "zod"
 
-import {ZconfigAdapterError, ZconfigSchemaError, ZconfigValidationError} from "#utils/errors"
-import {dotenvAdapter, envAdapter, yamlAdapter} from "../adapters"
-import {loadConfig} from "."
+import { ZconfigAdapterError, ZconfigSchemaError, ZconfigValidationError } from "#utils/errors"
+import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters"
+import { loadConfig } from "."
 
 /** Adapter returning a fixed payload from both entry points. */
 const stub = (name: string, value: RawConfig): Adapter => ({
@@ -46,24 +46,24 @@ const rejection = async <T>(promise: Promise<unknown>): Promise<T> => {
 }
 
 const schema = z.object({
-	database: z.object({host: z.string(), port: z.number()}),
+	database: z.object({ host: z.string(), port: z.number() }),
 	debug: z.boolean().default(false),
 })
 
-const base: RawConfig = {database: {host: "localhost", port: 5432}}
+const base: RawConfig = { database: { host: "localhost", port: 5432 } }
 
 describe("loadConfig", () => {
 	test("should validate a single adapter and return the parsed config", async () => {
 		await expect(loadConfig(schema, [stub("json", base)])).resolves.toEqual({
-			database: {host: "localhost", port: 5432},
+			database: { host: "localhost", port: 5432 },
 			debug: false,
 		})
 	})
 
 	test("should deep merge adapters with the later one winning", async () => {
-		const config = await loadConfig(schema, [stub("yaml", base), stub("env", {database: {host: "db.internal"}})])
+		const config = await loadConfig(schema, [stub("yaml", base), stub("env", { database: { host: "db.internal" } })])
 
-		expect(config.database).toEqual({host: "db.internal", port: 5432})
+		expect(config.database).toEqual({ host: "db.internal", port: 5432 })
 	})
 
 	test("should load adapters in the declared order", async () => {
@@ -98,14 +98,14 @@ describe("loadConfig", () => {
 	})
 
 	test("should reject with ZconfigValidationError when the merged config is invalid", async () => {
-		await expect(loadConfig(schema, [stub("json", {database: {host: 1, port: "bad"}})])).rejects.toBeInstanceOf(
+		await expect(loadConfig(schema, [stub("json", { database: { host: 1, port: "bad" } })])).rejects.toBeInstanceOf(
 			ZconfigValidationError,
 		)
 	})
 
 	test("should populate issues on the validation error", async () => {
 		const error = await rejection<ZconfigValidationError>(
-			loadConfig(schema, [stub("json", {database: {host: "localhost"}})]),
+			loadConfig(schema, [stub("json", { database: { host: "localhost" } })]),
 		)
 
 		expect(error.issues.length).toBeGreaterThan(0)
@@ -114,7 +114,7 @@ describe("loadConfig", () => {
 })
 
 describe("schema validation ordering", () => {
-	const invalidSchema = z.object({database_host: z.string()})
+	const invalidSchema = z.object({ database_host: z.string() })
 
 	test("should throw ZconfigSchemaError before any adapter runs", async () => {
 		const adapter = stub("json", base)
@@ -187,30 +187,34 @@ describe("integration", () => {
 		vi.stubEnv("APP_DEBUG", "false")
 
 		await expect(
-			loadConfig(dotenvIntegrationSchema, [yamlAdapter(), dotenvAdapter({prefix: "APP"}), envAdapter({prefix: "APP"})]),
+			loadConfig(dotenvIntegrationSchema, [
+				yamlAdapter(),
+				dotenvAdapter({ prefix: "APP" }),
+				envAdapter({ prefix: "APP" }),
+			]),
 		).resolves.toEqual({
-			database: {host: "env.internal", port: 6543},
+			database: { host: "env.internal", port: 6543 },
 			dotenvOnly: "dotenv-value",
 			debug: false,
 		})
 	})
 
 	test("should accept real YAML numbers and string environment values", async () => {
-		vol.fromJSON({"config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n"}, mockCwd)
+		vol.fromJSON({ "config.yaml": "database:\n  host: yaml.internal\n  port: 5432\n" }, mockCwd)
 
 		const yamlConfig = await loadConfig(integrationSchema, [yamlAdapter()])
 
 		vi.stubEnv("APP_DATABASE__HOST", "env.internal")
 		vi.stubEnv("APP_DATABASE__PORT", "6543")
 
-		const envConfig = await loadConfig(integrationSchema, [envAdapter({prefix: "APP"})])
+		const envConfig = await loadConfig(integrationSchema, [envAdapter({ prefix: "APP" })])
 
 		expect(yamlConfig.database.port).toBe(5432)
 		expect(envConfig.database.port).toBe(6543)
 	})
 
 	test("should expose schema issue paths in validation errors", async () => {
-		vol.fromJSON({"config.yaml": "database:\n  host: yaml.internal\n  port: invalid\n"}, mockCwd)
+		vol.fromJSON({ "config.yaml": "database:\n  host: yaml.internal\n  port: invalid\n" }, mockCwd)
 
 		const error = await rejection<ZconfigValidationError>(loadConfig(integrationSchema, [yamlAdapter()]))
 
@@ -223,7 +227,7 @@ describe("types", () => {
 		const config = await loadConfig(schema, [stub("json", base)])
 
 		expectTypeOf(config).toEqualTypeOf<{
-			database: {host: string; port: number}
+			database: { host: string; port: number }
 			debug: boolean
 		}>()
 		// `debug` is optional on input and required on output, so this asserts the

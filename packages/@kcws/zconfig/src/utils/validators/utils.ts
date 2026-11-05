@@ -1,9 +1,9 @@
 /** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
 
-import type {SchemaDef, SchemaLike} from "./types"
+import type { SchemaDef, SchemaLike } from "./types"
 
-import {ZconfigSchemaError} from "../errors"
-import {INNER_TYPE_WRAPPERS, KEY_PATTERN, RUNTIME_KEY} from "./constants"
+import { ZconfigSchemaError } from "../errors"
+import { INNER_TYPE_WRAPPERS, KEY_PATTERN, RUNTIME_KEY } from "./constants"
 
 /**
  * Explains precisely which part of the camelCase rule a key broke.

@@ -1,6 +1,6 @@
-import {z} from "zod"
+import { z } from "zod"
 
-import {parseInput} from "./parseInput"
+import { parseInput } from "./parseInput"
 
 const schema = z.object({
 	mode: z.enum(["warn", "fail"]),

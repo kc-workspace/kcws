@@ -1,4 +1,4 @@
-import type {AnyRule} from "../models"
+import type { AnyRule } from "../models"
 
 export const defineRule = <R extends AnyRule>(rule: Omit<R, "type">): R => {
 	return {

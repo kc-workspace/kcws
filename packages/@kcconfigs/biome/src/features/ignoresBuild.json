@@ -1,4 +1,4 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
-	"files": {"includes": ["!.dist", "!build", "!build.*", "!out", "!out.*", "!**/CHANGELOG.md"]}
+	"files": { "includes": ["!.dist", "!build", "!build.*", "!out", "!out.*", "!**/CHANGELOG.md"] }
 }

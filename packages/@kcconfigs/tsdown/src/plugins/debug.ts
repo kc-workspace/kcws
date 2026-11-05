@@ -1,9 +1,9 @@
-import type {TsdownConfigPlugin} from "../models"
+import type { TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {mergeConfig} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { mergeConfig } from "tsdown"
 
-import {debugPriority} from "../constants"
+import { debugPriority } from "../constants"
 
 interface DebugPluginOption {
 	/** Enable verbose debug log too */

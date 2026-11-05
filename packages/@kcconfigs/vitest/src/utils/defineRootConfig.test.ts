@@ -1,7 +1,7 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {baseRootConfig} from "../constants/config"
-import {overridePlugin} from "../plugins"
+import { baseRootConfig } from "../constants/config"
+import { overridePlugin } from "../plugins"
 import defineRootConfig from "./defineRootConfig"
 
 describe("defineRootConfig", () => {
@@ -23,7 +23,7 @@ describe("defineRootConfig", () => {
 	})
 
 	test("should apply additional plugins on top of root config", () => {
-		const result = defineRootConfig([], overridePlugin({environment: "jsdom"}))
+		const result = defineRootConfig([], overridePlugin({ environment: "jsdom" }))
 		expect(result.test?.environment).toBe("jsdom")
 		// root settings preserved
 		expect(result.test?.restoreMocks).toBe(true)

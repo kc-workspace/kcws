@@ -1,4 +1,4 @@
-import type {BaseContentAdapterOptions, ContentSource} from "../content"
+import type { BaseContentAdapterOptions, ContentSource } from "../content"
 
 /**
  * A readable source of configuration chunks, such as a Node.js `Readable`,

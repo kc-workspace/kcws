@@ -1,8 +1,8 @@
-import type {BunType} from "#types"
-import type {ResolvedStatic} from "./types"
+import type { BunType } from "#types"
+import type { ResolvedStatic } from "./types"
 
-import {findDuplicateRoutes} from "#utils/url"
-import {logger} from "./constants"
+import { findDuplicateRoutes } from "#utils/url"
+import { logger } from "./constants"
 import createStaticSpecs from "./createStaticSpecs"
 import resolveStaticSpec from "./resolveStaticSpecs"
 
@@ -15,7 +15,7 @@ const parseStaticFiles = async (Bun: BunType, options: AnyRecord): Promise<Resol
 		throw new Error(`Found duplicated static files: ${duplicatedRoutes.join(", ")}`)
 	}
 
-	logger.debug({length: files.length}, `found ${files.length} static files`)
+	logger.debug({ length: files.length }, `found ${files.length} static files`)
 	return files
 }
 

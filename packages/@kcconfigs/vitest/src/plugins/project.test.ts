@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {baseProjectConfig} from "../constants/config"
+import { baseProjectConfig } from "../constants/config"
 import projectPlugin from "./project"
 
 describe("projectPlugin", () => {

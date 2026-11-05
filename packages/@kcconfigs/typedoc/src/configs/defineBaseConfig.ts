@@ -1,6 +1,6 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {mergeConfig} from "./mergeConfig"
+import { mergeConfig } from "./mergeConfig"
 
 export const defineBaseConfig = (config?: UserConfig): UserConfig => {
 	const baseConfig: UserConfig = {

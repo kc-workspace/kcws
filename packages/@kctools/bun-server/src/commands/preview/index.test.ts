@@ -1,8 +1,8 @@
-import type {Serve} from "bun"
-import type {BunType} from "#types"
+import type { Serve } from "bun"
+import type { BunType } from "#types"
 
-import {Command} from "commander"
-import {describe, expect, test, vi} from "vitest"
+import { Command } from "commander"
+import { describe, expect, test, vi } from "vitest"
 
 import preview from "./index"
 
@@ -27,7 +27,7 @@ const createFile = (path: string, content: string | undefined) =>
 	})
 
 const createMockBun = (files: Record<string, string>) => {
-	const serve = vi.fn(() => ({url: "http://127.0.0.1:4000"}))
+	const serve = vi.fn(() => ({ url: "http://127.0.0.1:4000" }))
 	return {
 		bun: {
 			file: vi.fn((path: string) => createFile(path, files[path])),
@@ -40,7 +40,7 @@ const createMockBun = (files: Record<string, string>) => {
 const run = async (bun: BunType, args: string[]): Promise<void> => {
 	const command = new Command("preview")
 	preview.action(command, bun)
-	await command.parseAsync(args, {from: "user"})
+	await command.parseAsync(args, { from: "user" })
 }
 
 const config = (serve: ReturnType<typeof vi.fn>): ServeConfig => serve.mock.lastCall?.[0] as ServeConfig
@@ -63,7 +63,7 @@ const request = async (
 	url: string,
 	args: string[] = ["--cwd", "/repo"],
 ): Promise<Response> => {
-	const {bun, serve} = createMockBun(files)
+	const { bun, serve } = createMockBun(files)
 	await run(bun, args)
 	return config(serve).fetch(new Request(url))
 }
@@ -80,15 +80,15 @@ describe("preview", () => {
 		{
 			name: "binds the default hostname and port",
 			args: [],
-			expected: {hostname: "127.0.0.1", port: 4000, development: false},
+			expected: { hostname: "127.0.0.1", port: 4000, development: false },
 		},
 		{
 			name: "binds the given hostname and port",
 			args: ["-h", "0.0.0.0", "-p", "8080"],
-			expected: {hostname: "0.0.0.0", port: 8080, development: false},
+			expected: { hostname: "0.0.0.0", port: 8080, development: false },
 		},
-	])("$name", async ({args, expected}) => {
-		const {bun, serve} = createMockBun({})
+	])("$name", async ({ args, expected }) => {
+		const { bun, serve } = createMockBun({})
 
 		await run(bun, ["--cwd", "/repo", ...args])
 
@@ -99,35 +99,35 @@ describe("preview", () => {
 		test.for<RequestCase>([
 			{
 				name: "serves a file below the served directory",
-				files: {"/repo/dist/app.js": "console.log(1)"},
+				files: { "/repo/dist/app.js": "console.log(1)" },
 				path: "/app.js",
 				status: 200,
 				body: "console.log(1)",
 			},
 			{
 				name: "serves the index of a directory",
-				files: {"/repo/dist/blog/index.html": "<h1>blog</h1>"},
+				files: { "/repo/dist/blog/index.html": "<h1>blog</h1>" },
 				path: "/blog",
 				status: 200,
 				body: "<h1>blog</h1>",
 			},
 			{
 				name: "serves the html file of an extension less path",
-				files: {"/repo/dist/about.html": "<h1>about</h1>"},
+				files: { "/repo/dist/about.html": "<h1>about</h1>" },
 				path: "/about",
 				status: 200,
 				body: "<h1>about</h1>",
 			},
 			{
 				name: "decodes the requested path",
-				files: {"/repo/dist/my file.html": "<h1>file</h1>"},
+				files: { "/repo/dist/my file.html": "<h1>file</h1>" },
 				path: "/my%20file.html",
 				status: 200,
 				body: "<h1>file</h1>",
 			},
 			{
 				name: "serves from the directory given as argument",
-				files: {"/repo/public/app.js": "console.log(1)"},
+				files: { "/repo/public/app.js": "console.log(1)" },
 				path: "/app.js",
 				args: ["public", "--cwd", "/repo"],
 				status: 200,
@@ -149,12 +149,12 @@ describe("preview", () => {
 			},
 			{
 				name: "answers forbidden when the path escapes the served directory",
-				files: {"/repo/secret.txt": "secret"},
+				files: { "/repo/secret.txt": "secret" },
 				path: "/..%2Fsecret.txt",
 				status: 403,
 				body: "Forbidden",
 			},
-		])("$name", async ({files, path, args, status, body}) => {
+		])("$name", async ({ files, path, args, status, body }) => {
 			const response = await request(files, `http://127.0.0.1:4000${path}`, args)
 
 			expect(response.status).toBe(status)

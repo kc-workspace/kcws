@@ -1,12 +1,12 @@
-import type {BunType} from "#types"
-import type {RouteSpec} from "./types"
+import type { BunType } from "#types"
+import type { RouteSpec } from "./types"
 
-import {describe, expect, test, vi} from "vitest"
+import { describe, expect, test, vi } from "vitest"
 
 import resolveRouteSpecs from "./resolveRouteSpecs"
 
 const createMockBun = (files: Record<string, string[]>) => {
-	const scan = vi.fn(function* (option: {cwd: string}): Generator<string> {
+	const scan = vi.fn(function* (option: { cwd: string }): Generator<string> {
 		yield* files[option.cwd] ?? []
 	})
 
@@ -15,7 +15,7 @@ const createMockBun = (files: Record<string, string[]>) => {
 		scan = scan
 	}
 
-	return {bun: {Glob} as unknown as BunType, scan}
+	return { bun: { Glob } as unknown as BunType, scan }
 }
 
 const spec = (root: string, pattern = "**/*.html"): RouteSpec => ({
@@ -50,15 +50,15 @@ describe("resolveRouteSpecs", () => {
 			route: "/blog/first-post",
 			wildcard: "/blog/first-post/*",
 		},
-	])("maps $name", async ({file, route, wildcard}) => {
+	])("maps $name", async ({ file, route, wildcard }) => {
 		const path = `/repo/pages/${file}`
-		const {bun} = createMockBun({"/repo/pages": [path]})
+		const { bun } = createMockBun({ "/repo/pages": [path] })
 
-		await expect(resolveRouteSpecs(bun, [spec("/repo/pages")])).resolves.toEqual([{path, route, wildcard}])
+		await expect(resolveRouteSpecs(bun, [spec("/repo/pages")])).resolves.toEqual([{ path, route, wildcard }])
 	})
 
 	test("scans each spec with its own pattern and root", async () => {
-		const {bun, scan} = createMockBun({})
+		const { bun, scan } = createMockBun({})
 
 		await resolveRouteSpecs(bun, [spec("/repo/pages", "*.html")])
 
@@ -70,19 +70,19 @@ describe("resolveRouteSpecs", () => {
 	})
 
 	test("resolves every spec", async () => {
-		const {bun} = createMockBun({
+		const { bun } = createMockBun({
 			"/repo/pages": ["/repo/pages/index.html"],
 			"/repo/docs": ["/repo/docs/guide.html"],
 		})
 
 		await expect(resolveRouteSpecs(bun, [spec("/repo/pages"), spec("/repo/docs")])).resolves.toMatchObject([
-			{route: "/"},
-			{route: "/guide"},
+			{ route: "/" },
+			{ route: "/guide" },
 		])
 	})
 
 	test("resolves nothing when no file matches", async () => {
-		const {bun} = createMockBun({})
+		const { bun } = createMockBun({})
 
 		await expect(resolveRouteSpecs(bun, [spec("/repo/pages")])).resolves.toEqual([])
 	})

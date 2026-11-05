@@ -1,10 +1,10 @@
-import type {BunPlugin} from "bun"
-import type {BunType} from "#types"
+import type { BunPlugin } from "bun"
+import type { BunType } from "#types"
 
-import {resolve} from "node:path"
+import { resolve } from "node:path"
 
-import {readOptions} from "#utils/options"
-import {logger} from "./constants"
+import { readOptions } from "#utils/options"
+import { logger } from "./constants"
 
 export const BUNFIG = "bunfig.toml"
 // https://bun.com/docs/bundler/html-static#plugins
@@ -21,7 +21,7 @@ const readPlugins = async (Bun: BunType, option: AnyRecord): Promise<BunPlugin[]
 	const plugins: BunPlugin[] = []
 	const file = Bun.file(resolve(cwd, BUNFIG))
 	if (!(await file.exists())) {
-		logger.debug({file: BUNFIG}, `load empty plugin because file is missing`)
+		logger.debug({ file: BUNFIG }, `load empty plugin because file is missing`)
 		return plugins
 	}
 
@@ -29,7 +29,7 @@ const readPlugins = async (Bun: BunType, option: AnyRecord): Promise<BunPlugin[]
 		const toml: Bunfig = Bun.TOML.parse(await file.text())
 		const pluginNames = toml.serve?.static?.plugins
 		if (!Array.isArray(pluginNames)) {
-			logger.debug({file: BUNFIG}, `load empty plugin because the plugins array is missing or invalid`)
+			logger.debug({ file: BUNFIG }, `load empty plugin because the plugins array is missing or invalid`)
 			return plugins
 		}
 		logger.info(`Bun plugins: ${pluginNames.join(", ")}`)
@@ -41,7 +41,7 @@ const readPlugins = async (Bun: BunType, option: AnyRecord): Promise<BunPlugin[]
 					const module = await import(pluginPath)
 					return module.default ?? module
 				} catch (error) {
-					logger.error({error, plugin}, `Failed to load plugin: ${plugin}`)
+					logger.error({ error, plugin }, `Failed to load plugin: ${plugin}`)
 					return undefined
 				}
 			}),
@@ -49,7 +49,7 @@ const readPlugins = async (Bun: BunType, option: AnyRecord): Promise<BunPlugin[]
 		plugins.push(...loaded.filter((plugin): plugin is BunPlugin => plugin !== undefined))
 		return plugins
 	} catch (error) {
-		logger.error({error}, "Failed to read plugins from bunfig.toml")
+		logger.error({ error }, "Failed to read plugins from bunfig.toml")
 		return plugins
 	}
 }

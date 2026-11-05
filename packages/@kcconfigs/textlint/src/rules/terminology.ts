@@ -1,8 +1,8 @@
-import type {Rule} from "../models"
+import type { Rule } from "../models"
 
 import terminologyModule from "textlint-rule-terminology"
 
-import {defineRule} from "../utils/defineRule"
+import { defineRule } from "../utils/defineRule"
 
 export interface TerminologyConfig {
 	defaultTerms?: boolean

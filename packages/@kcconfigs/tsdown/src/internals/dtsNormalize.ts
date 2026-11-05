@@ -1,9 +1,9 @@
-import type {EnableOption, TsdownConfig, TsdownConfigPlugin} from "../models"
+import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {type CIOption, type DtsOptions, mergeConfig} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { type CIOption, type DtsOptions, mergeConfig } from "tsdown"
 
-import {normalizePriority} from "../constants"
+import { normalizePriority } from "../constants"
 
 const normalize = (config: TsdownConfig): EnableOption<DtsOptions> => {
 	const dts = config.dts
@@ -40,7 +40,7 @@ const dtsNormalize = (): TsdownConfigPlugin<"dts"> =>
 		applyConfig: (config) => {
 			const dts = normalize(config)
 			return mergeConfig(config, {
-				dts: dts.enabled ? dts : {enabled: false},
+				dts: dts.enabled ? dts : { enabled: false },
 			})
 		},
 	})

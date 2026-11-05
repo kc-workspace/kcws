@@ -1,6 +1,6 @@
-import type {GitHubContext} from "./types"
+import type { GitHubContext } from "./types"
 
-import {getContext} from "./getContext"
+import { getContext } from "./getContext"
 
 const PULL_REQUEST_EVENT_PREFIX = "pull_request"
 

@@ -1,5 +1,5 @@
-import {defineProjectConfig} from "@kcconfigs/vitest"
-import {useMockPlugin} from "@kcconfigs/vitest/plugins"
+import { defineProjectConfig } from "@kcconfigs/vitest"
+import { useMockPlugin } from "@kcconfigs/vitest/plugins"
 
 const config = defineProjectConfig(
 	useMockPlugin({

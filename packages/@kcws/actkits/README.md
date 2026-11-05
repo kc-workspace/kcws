@@ -37,7 +37,7 @@ pnpm add @kcws/actkits
 ### Parse typed inputs
 
 ```ts
-import {parseInput, z, zBoolean, zNumber} from "@kcws/actkits/input"
+import { parseInput, z, zBoolean, zNumber } from "@kcws/actkits/input"
 
 const schema = z.object({
   dryRun: zBoolean().default(false),
@@ -52,7 +52,7 @@ const input = parseInput(schema)
 ### Work with GitHub context
 
 ```ts
-import {getContext, isPullRequestEvent, getRunUrl} from "@kcws/actkits/context"
+import { getContext, isPullRequestEvent, getRunUrl } from "@kcws/actkits/context"
 
 const context = getContext()
 
@@ -65,7 +65,7 @@ if (isPullRequestEvent(context)) {
 ### Log with namespaces
 
 ```ts
-import {createLogger} from "@kcws/actkits/logging"
+import { createLogger } from "@kcws/actkits/logging"
 
 const logger = createLogger("release", "publish")
 
@@ -76,13 +76,13 @@ logger.notice("Version %s is ready", "1.2.3")
 ### Set workflow outputs
 
 ```ts
-import {setOutput, setOutputs} from "@kcws/actkits/output"
+import { setOutput, setOutputs } from "@kcws/actkits/output"
 
 setOutput("version", "1.2.3")
 
 setOutputs({
   published: true,
   artifactCount: 2,
-  metadata: {channel: "stable"},
+  metadata: { channel: "stable" },
 })
 ```

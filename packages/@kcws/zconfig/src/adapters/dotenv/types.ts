@@ -1,4 +1,4 @@
-import type {ExtendFileAdapterOptions} from "../file"
+import type { ExtendFileAdapterOptions } from "../file"
 
 /** Options for {@link dotenvAdapter}. */
 export interface DotenvAdapterOptions extends ExtendFileAdapterOptions {

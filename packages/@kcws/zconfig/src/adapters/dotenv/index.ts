@@ -1,3 +1,3 @@
-export type {DotenvAdapterOptions} from "./types"
+export type { DotenvAdapterOptions } from "./types"
 
-export {default as dotenvAdapter} from "./adapter"
+export { default as dotenvAdapter } from "./adapter"

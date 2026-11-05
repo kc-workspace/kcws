@@ -1,12 +1,12 @@
-import type {CommitlintConfigPlugin} from "../types"
+import type { CommitlintConfigPlugin } from "../types"
 
-import {existsSync} from "node:fs"
-import {join} from "node:path"
-import {cwd as wd} from "node:process"
-import {definePluginAsync} from "@kcinternals/config-builder"
+import { existsSync } from "node:fs"
+import { join } from "node:path"
+import { cwd as wd } from "node:process"
+import { definePluginAsync } from "@kcinternals/config-builder"
 
-import {findBunPackages, findNpmPackages, findPnpmPackages} from "../utils/projects"
-import {applyScopes} from "../utils/scopes"
+import { findBunPackages, findNpmPackages, findPnpmPackages } from "../utils/projects"
+import { applyScopes } from "../utils/scopes"
 
 /**
  * Detects workspace package names based on the package manager in use.

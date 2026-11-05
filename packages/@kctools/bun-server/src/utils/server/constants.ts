@@ -1,4 +1,4 @@
-import {createLogger, type Logger} from "#utils/logger"
+import { createLogger, type Logger } from "#utils/logger"
 
 /** Min possible port number (0 will random any available port) */
 export const MIN_PORT = 0

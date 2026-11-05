@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {getContext} from "."
+import { getContext } from "."
 
 describe("getContext", () => {
 	test("should create a normalized GitHub context snapshot", () => {

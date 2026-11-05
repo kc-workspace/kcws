@@ -1,6 +1,6 @@
-import type {OutputMap} from "./types"
+import type { OutputMap } from "./types"
 
-import {setOutput as coreSetOutput} from "@actions/core"
+import { setOutput as coreSetOutput } from "@actions/core"
 
 /**
  * Serializes a value to a string representation for GitHub Actions output.
@@ -74,8 +74,8 @@ export const setOutput = (name: string, value: unknown): string => {
  * // Returns { name: "my-package", version: "1.0.0", published: "true" }
  * ```
  */
-export const setOutputs = <TOutputs extends OutputMap>(outputs: TOutputs): {[K in keyof TOutputs]: string} => {
-	const serialized = {} as {[K in keyof TOutputs]: string}
+export const setOutputs = <TOutputs extends OutputMap>(outputs: TOutputs): { [K in keyof TOutputs]: string } => {
+	const serialized = {} as { [K in keyof TOutputs]: string }
 	for (const [name, value] of Object.entries(outputs)) {
 		serialized[name as keyof TOutputs] = setOutput(name, value)
 	}

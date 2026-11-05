@@ -1,1 +1,1 @@
-export {default as readPlugins} from "./readPlugins"
+export { default as readPlugins } from "./readPlugins"

@@ -17,9 +17,9 @@ pnpm add dotenv yaml jsonc-parser json5 smol-toml
 ## Quick start
 
 ```typescript
-import {z} from "zod"
-import {loadConfig} from "@kcws/zconfig"
-import {dotenvAdapter, envAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
+import { z } from "zod"
+import { loadConfig } from "@kcws/zconfig"
+import { dotenvAdapter, envAdapter, yamlAdapter } from "@kcws/zconfig/adapters"
 
 const schema = z.object({
   database: z.object({
@@ -30,9 +30,9 @@ const schema = z.object({
 })
 
 const config = await loadConfig(schema, [
-  yamlAdapter({path: "./config.yaml", optional: true}),
-  dotenvAdapter({path: "./.env", optional: true, prefix: "APP"}),
-  envAdapter({prefix: "APP"}),
+  yamlAdapter({ path: "./config.yaml", optional: true }),
+  dotenvAdapter({ path: "./.env", optional: true, prefix: "APP" }),
+  envAdapter({ prefix: "APP" }),
 ])
 ```
 
@@ -49,7 +49,7 @@ APP_DEBUG=true
 ## Imports
 
 ```typescript
-import {loadConfig, loadConfigSync} from "@kcws/zconfig"
+import { loadConfig, loadConfigSync } from "@kcws/zconfig"
 import {
   dotenvAdapter,
   envAdapter,
@@ -124,8 +124,8 @@ Use `contentAdapter` and `streamAdapter` for configuration that is not a local f
 identify the source in errors.
 
 ```typescript
-import {loadConfig} from "@kcws/zconfig"
-import {contentAdapter, envAdapter, streamAdapter, yamlAdapter} from "@kcws/zconfig/adapters"
+import { loadConfig } from "@kcws/zconfig"
+import { contentAdapter, envAdapter, streamAdapter, yamlAdapter } from "@kcws/zconfig/adapters"
 
 const config = await loadConfig(schema, [
   // Remote configuration first, then local files and the environment override it
@@ -134,9 +134,9 @@ const config = await loadConfig(schema, [
     format: "json",
     stream: async () => (await fetch("http://consul:8500/v1/kv/app?raw")).body ?? "",
   }),
-  contentAdapter({format: "yaml", content: process.argv[2] ?? ""}),
-  yamlAdapter({path: "./config.yaml", optional: true}),
-  envAdapter({prefix: "APP"}),
+  contentAdapter({ format: "yaml", content: process.argv[2] ?? "" }),
+  yamlAdapter({ path: "./config.yaml", optional: true }),
+  envAdapter({ prefix: "APP" }),
 ])
 ```
 

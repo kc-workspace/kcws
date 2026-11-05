@@ -1,8 +1,8 @@
-import {vi} from "vitest"
+import { vi } from "vitest"
 
 // Import from dist, the same module `@kcconfigs/vitest/mocks` resolves to,
 // so tests and mocks share a single memfs volume.
-import {createMockFs} from "../dist/mockHelpers/index.js"
+import { createMockFs } from "../dist/mockHelpers/index.js"
 
 const memfs = createMockFs().promises
 
@@ -18,7 +18,7 @@ vi.mock(import("fs/promises"), () => {
 
 // Support CJS require() method since vi.mock didn't support require()
 vi.hoisted(async () => {
-	const {createMockFs} = await import("../dist/mockHelpers/index.js")
+	const { createMockFs } = await import("../dist/mockHelpers/index.js")
 	require.cache["fs/promises"] = {
 		exports: createMockFs().promises,
 	} as never

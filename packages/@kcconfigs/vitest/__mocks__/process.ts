@@ -1,6 +1,6 @@
 import type * as processType from "node:process"
 
-import {vi} from "vitest"
+import { vi } from "vitest"
 
 const processMock = (actual: typeof processType) => {
 	return {

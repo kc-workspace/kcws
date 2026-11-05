@@ -1,4 +1,4 @@
-import {isAbsolute, relative} from "node:path"
+import { isAbsolute, relative } from "node:path"
 
 const isInside = (parent: string, child: string): boolean => {
 	const path = relative(parent, child)

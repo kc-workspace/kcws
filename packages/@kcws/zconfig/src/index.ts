@@ -8,7 +8,7 @@ export type {
 	TransformOutput,
 } from "./types"
 
-export {loadConfig, loadConfigSync} from "./core"
+export { loadConfig, loadConfigSync } from "./core"
 export {
 	ZconfigAdapterError,
 	ZconfigSchemaError,

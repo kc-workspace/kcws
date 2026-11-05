@@ -1,7 +1,7 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {appendArray, uniqueArray} from "../utils/array"
-import {normalizeObject} from "../utils/object"
+import { appendArray, uniqueArray } from "../utils/array"
+import { normalizeObject } from "../utils/object"
 import {
 	defaultBlockTags,
 	defaultHighlightLanguages,

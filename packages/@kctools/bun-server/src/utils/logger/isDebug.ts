@@ -1,4 +1,4 @@
-import {getEnv, toBool} from "#utils/env"
+import { getEnv, toBool } from "#utils/env"
 
 const isDebug = (): boolean => {
 	return getEnv("DEBUG", toBool) ?? false

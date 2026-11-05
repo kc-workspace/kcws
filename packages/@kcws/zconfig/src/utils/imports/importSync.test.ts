@@ -1,15 +1,15 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {ZconfigAdapterError} from "../errors"
+import { ZconfigAdapterError } from "../errors"
 import importSync from "./importSync"
 
 describe(importSync.name, () => {
 	test("should resolve an installed optional peer dependency", () => {
-		type JsonModule = {parse: (text: string) => unknown}
+		type JsonModule = { parse: (text: string) => unknown }
 		const json5 = importSync<JsonModule>("json5", "json5")
 
 		expect(typeof json5.parse).toBe("function")
-		expect(json5.parse("{a: 1}")).toStrictEqual({a: 1})
+		expect(json5.parse("{a: 1}")).toStrictEqual({ a: 1 })
 	})
 
 	test("should return the identical module on a repeat call", () => {
@@ -20,7 +20,7 @@ describe(importSync.name, () => {
 	})
 
 	test("should resolve a package whose only CJS entry is an exports condition", () => {
-		type TomlModule = {parse: (text: string) => unknown}
+		type TomlModule = { parse: (text: string) => unknown }
 		const toml = importSync<TomlModule>("toml", "smol-toml")
 
 		expect(typeof toml.parse).toBe("function")

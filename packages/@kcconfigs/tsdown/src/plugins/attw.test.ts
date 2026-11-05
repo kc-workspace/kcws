@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import attwPlugin from "./attw"
 
@@ -10,36 +10,36 @@ describe("attwPlugin", () => {
 
 	test("should apply attw config when true", () => {
 		const plugin = attwPlugin(true)
-		const base = {attw: undefined}
+		const base = { attw: undefined }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.attw).toBe(true)
 	})
 
 	test("should apply attw config when false", () => {
 		const plugin = attwPlugin(false)
-		const base = {attw: undefined}
+		const base = { attw: undefined }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.attw).toBe(false)
 	})
 
 	test("should apply attw config with object options", () => {
-		const attwConfig = {enabled: true, profile: "node16" as const}
+		const attwConfig = { enabled: true, profile: "node16" as const }
 		const plugin = attwPlugin(attwConfig)
-		const base = {attw: undefined}
+		const base = { attw: undefined }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.attw).toEqual(attwConfig)
 	})
 
 	test("should apply attw with CIOption string", () => {
 		const plugin = attwPlugin("ci-only" as const)
-		const base = {attw: undefined}
+		const base = { attw: undefined }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.attw).toBe("ci-only")
 	})
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = attwPlugin(true)
-		const base = {entry: ["./src/index.ts"], attw: undefined}
+		const base = { entry: ["./src/index.ts"], attw: undefined }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.entry).toEqual(["./src/index.ts"])
 		expect(result?.attw).toBe(true)

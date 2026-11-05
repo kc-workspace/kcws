@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {JsonAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { JsonAdapterOptions } from "./types"
 
-import {toFileParserByPath} from "../content/utils"
-import {fileAdapter} from "../file"
-import {getJsonFiles} from "./utils"
+import { toFileParserByPath } from "../content/utils"
+import { fileAdapter } from "../file"
+import { getJsonFiles } from "./utils"
 
 /**
  * Creates an adapter that reads a JSON or JSONC configuration file.

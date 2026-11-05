@@ -1,8 +1,8 @@
-import type {CommitlintConfigPlugin} from "../types"
+import type { CommitlintConfigPlugin } from "../types"
 
-import {definePluginAsync} from "@kcinternals/config-builder"
+import { definePluginAsync } from "@kcinternals/config-builder"
 
-import {applyScopes} from "../utils/scopes"
+import { applyScopes } from "../utils/scopes"
 
 /**
  * Scope plugin — allows exactly the given scopes.

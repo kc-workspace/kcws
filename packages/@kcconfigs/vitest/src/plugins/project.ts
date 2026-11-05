@@ -1,8 +1,8 @@
-import type {ProjectConfig, VitestConfigPlugin} from "../types"
+import type { ProjectConfig, VitestConfigPlugin } from "../types"
 
-import {definePluginSync} from "@kcinternals/config-builder"
+import { definePluginSync } from "@kcinternals/config-builder"
 
-import {baseProjectConfig} from "../constants/config"
+import { baseProjectConfig } from "../constants/config"
 import mergeConfig from "../utils/mergeConfig"
 
 const projectPlugin = (): VitestConfigPlugin<"project", ProjectConfig> =>

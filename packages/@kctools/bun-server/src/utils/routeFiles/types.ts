@@ -1,4 +1,4 @@
-import type {BasicRoute} from "#utils/url"
+import type { BasicRoute } from "#utils/url"
 
 export interface RouteSpec {
 	/** The original source path specified by the user. */

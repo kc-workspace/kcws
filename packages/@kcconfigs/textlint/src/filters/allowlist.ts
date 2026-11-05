@@ -1,6 +1,6 @@
-import type {Filter} from "../models"
+import type { Filter } from "../models"
 
-import {defineFilter} from "../utils/defineFilter"
+import { defineFilter } from "../utils/defineFilter"
 
 export interface AllowListConfig {
 	allow?: string[]

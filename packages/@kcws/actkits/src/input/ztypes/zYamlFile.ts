@@ -1,9 +1,9 @@
-import type {z} from "zod"
+import type { z } from "zod"
 
-import {readFileSync} from "node:fs"
-import {parse as parseYaml} from "yaml"
+import { readFileSync } from "node:fs"
+import { parse as parseYaml } from "yaml"
 
-import {createObjectParser} from "./createObjectParser"
+import { createObjectParser } from "./createObjectParser"
 
 /**
  * Zod schema for parsing YAML file path input to object.

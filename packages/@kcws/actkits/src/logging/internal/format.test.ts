@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {formatter} from "./format"
+import { formatter } from "./format"
 
 describe("formatter", () => {
 	test.for([
@@ -32,7 +32,7 @@ describe("formatter", () => {
 			namespace: undefined,
 			expected: "plain message",
 		},
-	])("should format with $name", ({format, args, namespace, expected}) => {
+	])("should format with $name", ({ format, args, namespace, expected }) => {
 		expect(formatter(format, args, namespace)).toBe(expected)
 	})
 })

@@ -1,5 +1,5 @@
-import {homedir} from "node:os"
-import {cwd} from "node:process"
+import { homedir } from "node:os"
+import { cwd } from "node:process"
 
 /**
  * Returns the default directories to search for configuration files.

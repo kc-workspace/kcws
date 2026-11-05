@@ -1,8 +1,8 @@
-import type {CommitlintConfig} from "../types"
+import type { CommitlintConfig } from "../types"
 
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
 
-import {DEFAULT_SCOPES} from "../constants"
+import { DEFAULT_SCOPES } from "../constants"
 import mergeConfig from "./mergeConfig"
 
 /**

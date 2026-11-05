@@ -1,7 +1,7 @@
-import type {BunType} from "#types"
+import type { BunType } from "#types"
 
-import {resolve} from "node:path"
-import {describe, expect, test, vi} from "vitest"
+import { resolve } from "node:path"
+import { describe, expect, test, vi } from "vitest"
 
 import createStaticSpecs from "./createStaticSpecs"
 
@@ -31,7 +31,7 @@ describe("createStaticSpecs", () => {
 				source: "assets",
 				root: "/repo/assets",
 				pattern: "**/*",
-				target: {base: "/repo/dist", dirname: "assets"},
+				target: { base: "/repo/dist", dirname: "assets" },
 			},
 		},
 		{
@@ -41,7 +41,7 @@ describe("createStaticSpecs", () => {
 				source: "public/*.png",
 				root: "/repo/public",
 				pattern: "*.png",
-				target: {base: "/repo/dist", dirname: "images"},
+				target: { base: "/repo/dist", dirname: "images" },
 			},
 		},
 		{
@@ -51,10 +51,10 @@ describe("createStaticSpecs", () => {
 				source: "a:b",
 				root: "/repo/a:b",
 				pattern: "**/*",
-				target: {base: "/repo/dist", dirname: "images"},
+				target: { base: "/repo/dist", dirname: "images" },
 			},
 		},
-	])("$name", async ({item, expected}) => {
+	])("$name", async ({ item, expected }) => {
 		await expect(createStaticSpecs(createMockBun(), options([item]))).resolves.toEqual([expected])
 	})
 
@@ -72,7 +72,7 @@ describe("createStaticSpecs", () => {
 		const bun = createMockBun([resolve("/repo", "public/favicon.ico")])
 
 		await expect(createStaticSpecs(bun, options(["public/favicon.ico:."]))).resolves.toMatchObject([
-			{root: "/repo/public", pattern: "favicon.ico"},
+			{ root: "/repo/public", pattern: "favicon.ico" },
 		])
 	})
 
@@ -84,7 +84,7 @@ describe("createStaticSpecs", () => {
 
 	test("accepts an absolute source with a target", async () => {
 		await expect(createStaticSpecs(createMockBun(), options(["/etc/assets:assets"]))).resolves.toMatchObject([
-			{root: "/etc/assets", target: {dirname: "assets"}},
+			{ root: "/etc/assets", target: { dirname: "assets" } },
 		])
 	})
 
@@ -114,7 +114,7 @@ describe("createStaticSpecs", () => {
 			item: "..",
 			message: "Static target .. escapes the output directory",
 		},
-	])("throws when $name", async ({item, message}) => {
+	])("throws when $name", async ({ item, message }) => {
 		await expect(createStaticSpecs(createMockBun(), options([item]))).rejects.toThrow(message)
 	})
 })

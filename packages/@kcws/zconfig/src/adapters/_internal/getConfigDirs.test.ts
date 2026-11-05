@@ -1,5 +1,5 @@
-import {mockCwd, mockHome} from "@kcconfigs/vitest/mocks"
-import {describe, expect, test} from "vitest"
+import { mockCwd, mockHome } from "@kcconfigs/vitest/mocks"
+import { describe, expect, test } from "vitest"
 
 import getConfigDirs from "./getConfigDirs"
 

@@ -1,9 +1,9 @@
-import type {BunType} from "#types"
+import type { BunType } from "#types"
 
-import {resolve} from "node:path"
-import {describe, expect, test, vi} from "vitest"
+import { resolve } from "node:path"
+import { describe, expect, test, vi } from "vitest"
 
-import readPlugins, {BUNFIG, type Bunfig} from "./readPlugins"
+import readPlugins, { BUNFIG, type Bunfig } from "./readPlugins"
 
 vi.mock("#utils/logger", () => ({
 	createLogger: () => ({
@@ -23,7 +23,7 @@ interface MockBunOption {
 	resolved?: Record<string, string>
 }
 
-const createMockBun = ({bunfig, toml, resolved = {}}: MockBunOption) => {
+const createMockBun = ({ bunfig, toml, resolved = {} }: MockBunOption) => {
 	const file = vi.fn(() => ({
 		exists: () => Promise.resolve(bunfig !== undefined),
 		text: () => Promise.resolve(bunfig ?? ""),
@@ -44,48 +44,48 @@ const createMockBun = ({bunfig, toml, resolved = {}}: MockBunOption) => {
 		bun: {
 			file,
 			resolve: bunResolve,
-			TOML: {parse},
+			TOML: { parse },
 		} as unknown as BunType,
 		file,
 	}
 }
 
-const option = {cwd: "/repo"}
+const option = { cwd: "/repo" }
 
 describe("readPlugins", () => {
 	test("reads the bunfig of the working directory", async () => {
-		const {bun, file} = createMockBun({})
+		const { bun, file } = createMockBun({})
 
 		await readPlugins(bun, option)
 
 		expect(file).toHaveBeenCalledWith(resolve("/repo", BUNFIG))
 	})
 
-	test.for<{name: string; mock: MockBunOption}>([
-		{name: "bunfig.toml is missing", mock: {}},
-		{name: "the plugins array is missing", mock: {bunfig: "", toml: {}}},
+	test.for<{ name: string; mock: MockBunOption }>([
+		{ name: "bunfig.toml is missing", mock: {} },
+		{ name: "the plugins array is missing", mock: { bunfig: "", toml: {} } },
 		{
 			name: "the plugins array is not an array",
 			mock: {
 				bunfig: "",
-				toml: {serve: {static: {plugins: "one"}}} as unknown as Bunfig,
+				toml: { serve: { static: { plugins: "one" } } } as unknown as Bunfig,
 			},
 		},
 		{
 			name: "the content cannot be parsed",
-			mock: {bunfig: "not toml", toml: new Error("invalid toml")},
+			mock: { bunfig: "not toml", toml: new Error("invalid toml") },
 		},
-	])("loads nothing when $name", async ({mock}) => {
-		const {bun} = createMockBun(mock)
+	])("loads nothing when $name", async ({ mock }) => {
+		const { bun } = createMockBun(mock)
 
 		await expect(readPlugins(bun, option)).resolves.toEqual([])
 	})
 
 	test("loads the default export of every plugin", async () => {
-		const {bun} = createMockBun({
+		const { bun } = createMockBun({
 			bunfig: "",
-			toml: {serve: {static: {plugins: ["node:path"]}}},
-			resolved: {"node:path": "node:path"},
+			toml: { serve: { static: { plugins: ["node:path"] } } },
+			resolved: { "node:path": "node:path" },
 		})
 
 		const plugins = await readPlugins(bun, option)
@@ -95,22 +95,22 @@ describe("readPlugins", () => {
 	})
 
 	test("loads the module itself when it has no default export", async () => {
-		const {bun} = createMockBun({
+		const { bun } = createMockBun({
 			bunfig: "",
-			toml: {serve: {static: {plugins: ["named"]}}},
+			toml: { serve: { static: { plugins: ["named"] } } },
 			resolved: {
 				named: "data:text/javascript,export const name = 'named'",
 			},
 		})
 
-		await expect(readPlugins(bun, option)).resolves.toMatchObject([{name: "named"}])
+		await expect(readPlugins(bun, option)).resolves.toMatchObject([{ name: "named" }])
 	})
 
 	test("skips a plugin that cannot be resolved", async () => {
-		const {bun} = createMockBun({
+		const { bun } = createMockBun({
 			bunfig: "",
-			toml: {serve: {static: {plugins: ["missing", "node:path"]}}},
-			resolved: {"node:path": "node:path"},
+			toml: { serve: { static: { plugins: ["missing", "node:path"] } } },
+			resolved: { "node:path": "node:path" },
 		})
 
 		await expect(readPlugins(bun, option)).resolves.toHaveLength(1)

@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {Json5AdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { Json5AdapterOptions } from "./types"
 
-import {resolveParser, toFileParser} from "../content/utils"
-import {fileAdapter} from "../file"
-import {getJson5Files} from "./utils"
+import { resolveParser, toFileParser } from "../content/utils"
+import { fileAdapter } from "../file"
+import { getJson5Files } from "./utils"
 
 /**
  * Creates an adapter that reads a JSON5 configuration file.
@@ -20,7 +20,7 @@ const json5Adapter = (options: Json5AdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "json5",
 		files: getJson5Files(),
-		...toFileParser(resolveParser("json5", {format: "json5"})),
+		...toFileParser(resolveParser("json5", { format: "json5" })),
 		...options,
 	})
 

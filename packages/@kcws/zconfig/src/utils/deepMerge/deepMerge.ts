@@ -1,6 +1,6 @@
-import type {RawConfig} from "#types"
+import type { RawConfig } from "#types"
 
-import {mergeInto} from "./utils"
+import { mergeInto } from "./utils"
 
 /**
  * Combines configuration objects in order, with later sources winning.

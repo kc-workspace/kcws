@@ -1,6 +1,6 @@
-import type {AnyConfig, VitestConfigPlugin} from "../types"
+import type { AnyConfig, VitestConfigPlugin } from "../types"
 
-import {definePluginSync} from "@kcinternals/config-builder"
+import { definePluginSync } from "@kcinternals/config-builder"
 
 import mergeConfig from "../utils/mergeConfig"
 
@@ -10,6 +10,6 @@ import mergeConfig from "../utils/mergeConfig"
  */
 const tsPathsPlugin = (): VitestConfigPlugin<"tsPaths", AnyConfig> =>
 	definePluginSync("tsPaths", {
-		applyConfig: (base) => mergeConfig(base, {resolve: {tsconfigPaths: true}}),
+		applyConfig: (base) => mergeConfig(base, { resolve: { tsconfigPaths: true } }),
 	})
 export default tsPathsPlugin

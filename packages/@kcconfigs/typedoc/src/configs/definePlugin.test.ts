@@ -1,13 +1,13 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {definePlugin} from "./definePlugin"
-import {defineTheme} from "./defineTheme"
+import { definePlugin } from "./definePlugin"
+import { defineTheme } from "./defineTheme"
 
 describe("definePlugin", () => {
 	test("should return plugin config", () => {
-		const config: UserConfig = {plugin: []}
+		const config: UserConfig = { plugin: [] }
 		const result = definePlugin(config)
 
 		expect(result).toBeDefined()
@@ -15,7 +15,7 @@ describe("definePlugin", () => {
 	})
 
 	test("should preserve config properties", () => {
-		const config: UserConfig = {plugin: ["test-plugin"]}
+		const config: UserConfig = { plugin: ["test-plugin"] }
 		const result = definePlugin(config)
 
 		expect(result.plugin).toEqual(["test-plugin"])
@@ -31,7 +31,7 @@ describe("definePlugin", () => {
 
 describe("defineTheme", () => {
 	test("should return theme config", () => {
-		const config: UserConfig = {theme: "default"}
+		const config: UserConfig = { theme: "default" }
 		const result = defineTheme(config)
 
 		expect(result).toBeDefined()
@@ -39,7 +39,7 @@ describe("defineTheme", () => {
 	})
 
 	test("should preserve theme configuration", () => {
-		const config: UserConfig = {theme: "custom"}
+		const config: UserConfig = { theme: "custom" }
 		const result = defineTheme(config)
 
 		expect(result.theme).toBe("custom")

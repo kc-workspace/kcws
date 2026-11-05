@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {defineFilter} from "./defineFilter"
+import { defineFilter } from "./defineFilter"
 
 describe(defineFilter.name, () => {
 	test("should add the filter type to the returned object", () => {

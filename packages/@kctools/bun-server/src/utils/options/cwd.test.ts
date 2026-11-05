@@ -1,12 +1,12 @@
-import {resolve} from "node:path"
-import {Command} from "commander"
-import {describe, expect, test} from "vitest"
+import { resolve } from "node:path"
+import { Command } from "commander"
+import { describe, expect, test } from "vitest"
 
-import {cwdOption} from "./cwd"
+import { cwdOption } from "./cwd"
 
 const parse = (args: string[]): string => {
 	const command = new Command().addOption(cwdOption).action(() => {})
-	command.parse(args, {from: "user"})
+	command.parse(args, { from: "user" })
 	return command.opts()["cwd"] as string
 }
 
@@ -31,7 +31,7 @@ describe("cwdOption", () => {
 			args: ["-C", "/repo/website"],
 			expected: "/repo/website",
 		},
-	])("$name", ({args, expected}) => {
+	])("$name", ({ args, expected }) => {
 		expect(parse(args)).toBe(expected)
 	})
 })

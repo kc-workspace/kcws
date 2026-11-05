@@ -1,13 +1,13 @@
-import type {Serve} from "bun"
-import type {Command} from "commander"
-import type {CommandFn} from "#types"
+import type { Serve } from "bun"
+import type { Command } from "commander"
+import type { CommandFn } from "#types"
 
-import {defineCommand} from "#utils/command"
-import {createLogger} from "#utils/logger"
-import {cwdOption, readOptions} from "#utils/options"
-import {loadRouteBundle, parseRouteFiles} from "#utils/routeFiles"
-import {createServer} from "#utils/server"
-import {parseStaticFiles, staticOption} from "#utils/staticFiles"
+import { defineCommand } from "#utils/command"
+import { createLogger } from "#utils/logger"
+import { cwdOption, readOptions } from "#utils/options"
+import { loadRouteBundle, parseRouteFiles } from "#utils/routeFiles"
+import { createServer } from "#utils/server"
+import { parseStaticFiles, staticOption } from "#utils/staticFiles"
 
 const define = (command: Command) => {
 	return command
@@ -24,7 +24,7 @@ const logger = createLogger("commands/dev")
 
 const dev: CommandFn = defineCommand("dev", "Start the development server using Bun.serve()", (command, Bun) => {
 	define(command).action(async (inputs, options) => {
-		logger.debug({inputs, options}, "starting the development server")
+		logger.debug({ inputs, options }, "starting the development server")
 
 		const routes: Serve.Routes<undefined, string> = {}
 
@@ -35,7 +35,7 @@ const dev: CommandFn = defineCommand("dev", "Start the development server using 
 				bundle: await loadRouteBundle(routeFile.path),
 			})),
 		)
-		for (const {routeFile, bundle} of bundles) {
+		for (const { routeFile, bundle } of bundles) {
 			routes[routeFile.route] = bundle
 			routes[routeFile.wildcard] = bundle
 		}
@@ -50,7 +50,7 @@ const dev: CommandFn = defineCommand("dev", "Start the development server using 
 			readOptions<string>(options, "hostname"),
 			readOptions<string>(options, "port"),
 			readOptions<boolean>(options, "nextPort"),
-			{routes},
+			{ routes },
 		)
 		logger.info(`Listening on ${server.url}`)
 	})

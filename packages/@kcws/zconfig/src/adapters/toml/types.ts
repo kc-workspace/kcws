@@ -1,4 +1,4 @@
-import type {ExtendFileAdapterOptions, NormalizeFileAdapterOptions} from "../file"
+import type { ExtendFileAdapterOptions, NormalizeFileAdapterOptions } from "../file"
 
 /** Options for {@link tomlAdapter}. */
 export interface TomlAdapterOptions extends ExtendFileAdapterOptions {}

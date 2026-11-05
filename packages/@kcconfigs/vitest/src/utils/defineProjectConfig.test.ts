@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {overridePlugin} from "../plugins"
+import { overridePlugin } from "../plugins"
 import defineProjectConfig from "./defineProjectConfig"
 
 describe("defineProjectConfig", () => {
@@ -11,14 +11,14 @@ describe("defineProjectConfig", () => {
 	})
 
 	test("should apply additional plugins on top of base config", () => {
-		const result = defineProjectConfig(overridePlugin({environment: "jsdom"}))
+		const result = defineProjectConfig(overridePlugin({ environment: "jsdom" }))
 		expect(result.test?.environment).toBe("jsdom")
 		// shared settings preserved
 		expect(result.test?.restoreMocks).toBe(true)
 	})
 
 	test("should apply multiple additional plugins", () => {
-		const result = defineProjectConfig(overridePlugin({environment: "jsdom"}), overridePlugin({testTimeout: 10000}))
+		const result = defineProjectConfig(overridePlugin({ environment: "jsdom" }), overridePlugin({ testTimeout: 10000 }))
 		expect(result.test?.environment).toBe("jsdom")
 		expect(result.test?.testTimeout).toBe(10000)
 	})

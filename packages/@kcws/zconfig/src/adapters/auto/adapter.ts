@@ -1,10 +1,10 @@
-import type {Adapter} from "#types"
-import type {ContentFormat} from "../content"
-import type {AutoAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { ContentFormat } from "../content"
+import type { AutoAdapterOptions } from "./types"
 
-import {toFileParserByPath} from "../content/utils"
-import {fileAdapter} from "../file"
-import {getAutoFiles} from "./utils"
+import { toFileParserByPath } from "../content/utils"
+import { fileAdapter } from "../file"
+import { getAutoFiles } from "./utils"
 
 const FORMATS: [string, Exclude<ContentFormat, "dotenv">][] = [
 	[".yaml", "yaml"],
@@ -24,7 +24,7 @@ const autoAdapter = (options: AutoAdapterOptions = {}): Adapter =>
 			if (format === undefined) {
 				throw new Error(`unsupported file extension: ${file}`)
 			}
-			return {format: format[1]}
+			return { format: format[1] }
 		}),
 		...options,
 	})

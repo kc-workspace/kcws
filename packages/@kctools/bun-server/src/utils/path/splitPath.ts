@@ -1,8 +1,8 @@
-import type {BunType} from "#types"
+import type { BunType } from "#types"
 
-import {basename, dirname, sep as OS_PATH_SEP, resolve} from "node:path"
+import { basename, dirname, sep as OS_PATH_SEP, resolve } from "node:path"
 
-import {logger, STATIC_GLOB_MAGIC} from "./constants"
+import { logger, STATIC_GLOB_MAGIC } from "./constants"
 
 interface SplitPathResult {
 	root: string
@@ -10,7 +10,7 @@ interface SplitPathResult {
 }
 
 const createResult = (source: string, describe: string, result: SplitPathResult): SplitPathResult => {
-	logger.debug({source, result}, describe)
+	logger.debug({ source, result }, describe)
 	return result
 }
 

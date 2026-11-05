@@ -1,9 +1,9 @@
-import type {CommitlintConfig} from "../types"
+import type { CommitlintConfig } from "../types"
 
-import {cwd} from "node:process"
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
-import {vol} from "@kcconfigs/vitest/mocks"
-import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
+import { cwd } from "node:process"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
+import { vol } from "@kcconfigs/vitest/mocks"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 import autoScopePlugin from "./autoScope"
 import scopePlugin from "./scope"
@@ -13,7 +13,7 @@ const readScopes = (config: CommitlintConfig | undefined) => {
 	return rule()
 }
 
-const pkgA = JSON.stringify({name: "@scope/pkg-a"})
+const pkgA = JSON.stringify({ name: "@scope/pkg-a" })
 
 describe("autoScopePlugin", () => {
 	afterEach(() => {
@@ -25,7 +25,7 @@ describe("autoScopePlugin", () => {
 	})
 
 	test("should have correct plugin name", async () => {
-		vol.fromJSON({"./package.json": "{}"}, cwd())
+		vol.fromJSON({ "./package.json": "{}" }, cwd())
 		const plugin = await autoScopePlugin()
 		expect(plugin.name).toBe("autoScope")
 	})
@@ -52,7 +52,7 @@ describe("autoScopePlugin", () => {
 		vol.fromJSON(
 			{
 				"./bun.lock": "",
-				"./package.json": JSON.stringify({workspaces: ["packages/*"]}),
+				"./package.json": JSON.stringify({ workspaces: ["packages/*"] }),
 				"./packages/pkg-a/package.json": pkgA,
 			},
 			cwd(),
@@ -66,7 +66,7 @@ describe("autoScopePlugin", () => {
 		vol.fromJSON(
 			{
 				"./bun.lockb": "",
-				"./package.json": JSON.stringify({workspaces: ["packages/*"]}),
+				"./package.json": JSON.stringify({ workspaces: ["packages/*"] }),
 				"./packages/pkg-a/package.json": pkgA,
 			},
 			cwd(),
@@ -79,7 +79,7 @@ describe("autoScopePlugin", () => {
 	test("should fall back to npm workspaces", async () => {
 		vol.fromJSON(
 			{
-				"./package.json": JSON.stringify({workspaces: ["packages/*"]}),
+				"./package.json": JSON.stringify({ workspaces: ["packages/*"] }),
 				"./packages/pkg-a/package.json": pkgA,
 			},
 			cwd(),
@@ -119,7 +119,7 @@ describe("autoScopePlugin", () => {
 	})
 
 	test("should fall back to default scopes when nothing is detected", async () => {
-		vol.fromJSON({"./package.json": JSON.stringify({name: "single"})}, cwd())
+		vol.fromJSON({ "./package.json": JSON.stringify({ name: "single" }) }, cwd())
 		const plugin = await autoScopePlugin()
 		const [, , scopes] = readScopes(await plugin.applyConfig?.({}))
 		expect(scopes.sort()).toEqual(["core", "config", "script", "deps", "deps-dev"].sort())
@@ -143,19 +143,19 @@ describe("autoScopePlugin", () => {
 	})
 
 	test("should preserve existing base config when applying", async () => {
-		vol.fromJSON({"./package.json": JSON.stringify({name: "single"})}, cwd())
+		vol.fromJSON({ "./package.json": JSON.stringify({ name: "single" }) }, cwd())
 		const plugin = await autoScopePlugin(["api"])
 		const result = await plugin.applyConfig?.({
 			helpUrl: "help",
-			rules: {"type-enum": [Severity.Error, "always", ["feat"]]},
+			rules: { "type-enum": [Severity.Error, "always", ["feat"]] },
 			prompt: {
-				questions: {type: {enum: {feat: {}}}},
-				settings: {enableMultipleScopes: false},
+				questions: { type: { enum: { feat: {} } } },
+				settings: { enableMultipleScopes: false },
 			},
 		})
 		expect(result?.helpUrl).toBe("help")
 		expect(result?.rules?.["type-enum"]).toEqual([Severity.Error, "always", ["feat"]])
-		expect(result?.prompt?.questions?.type?.enum).toEqual({feat: {}})
+		expect(result?.prompt?.questions?.type?.enum).toEqual({ feat: {} })
 		expect(result?.prompt?.settings?.enableMultipleScopes).toBe(false)
 	})
 })

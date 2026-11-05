@@ -1,4 +1,4 @@
-import {definePlugin, type PluginConfig, type UserConfig} from "../configs"
+import { definePlugin, type PluginConfig, type UserConfig } from "../configs"
 
 interface MissingExportsConfig extends UserConfig {
 	internalModule?: string

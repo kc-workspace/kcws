@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {comments} from "./comment"
+import { comments } from "./comment"
 
 describe(comments.name, () => {
 	test("should enable the filter by default", () => {

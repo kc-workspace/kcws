@@ -1,4 +1,4 @@
-import {defineConfig, type UserConfig} from "../configs"
+import { defineConfig, type UserConfig } from "../configs"
 import all from "../plugins/all"
 import github from "../themes/github"
 

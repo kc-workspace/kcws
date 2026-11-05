@@ -1,4 +1,4 @@
-import {describe, expect, test, vi} from "vitest"
+import { describe, expect, test, vi } from "vitest"
 
 import getEnv from "./getEnv"
 import toBool from "./toBool"

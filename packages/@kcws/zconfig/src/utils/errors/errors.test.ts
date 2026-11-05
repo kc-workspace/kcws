@@ -1,8 +1,8 @@
-import {describe, expect, test} from "vitest"
-import {z} from "zod"
+import { describe, expect, test } from "vitest"
+import { z } from "zod"
 
-import {ZconfigValidationError} from "."
-import {ZconfigAdapterError, ZconfigSchemaError} from "./errors"
+import { ZconfigValidationError } from "."
+import { ZconfigAdapterError, ZconfigSchemaError } from "./errors"
 
 describe("errors", () => {
 	describe("ZconfigAdapterError", () => {
@@ -69,8 +69,8 @@ describe("errors", () => {
 
 	describe("ZconfigValidationError", () => {
 		const buildZodError = () => {
-			const schema = z.object({port: z.number()})
-			const result = schema.safeParse({port: "not-a-number"})
+			const schema = z.object({ port: z.number() })
+			const result = schema.safeParse({ port: "not-a-number" })
 			if (result.success) throw new Error("fixture should not parse")
 			return result.error
 		}
@@ -106,7 +106,7 @@ describe("errors", () => {
 		})
 
 		test("should summarise a root level issue without a path prefix", () => {
-			const result = z.object({port: z.number()}).safeParse("not-an-object")
+			const result = z.object({ port: z.number() }).safeParse("not-an-object")
 			if (result.success) throw new Error("fixture should not parse")
 
 			const error = new ZconfigValidationError(result.error)

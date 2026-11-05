@@ -1,4 +1,4 @@
-import type {BaseConfigPlugin} from "../types"
+import type { BaseConfigPlugin } from "../types"
 
 export const sortPlugins = <PS extends BaseConfigPlugin<string>[]>(
 	plugins: PS,

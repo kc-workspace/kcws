@@ -1,4 +1,4 @@
-import type {AnyConfig, UserConfig} from "../models"
+import type { AnyConfig, UserConfig } from "../models"
 
 export const defineConfig = <C extends AnyConfig>(c: C): UserConfig<C> => {
 	type Rules = NonNullable<UserConfig<C>["rules"]>

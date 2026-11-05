@@ -1,14 +1,14 @@
-import type {AnyUserConfig} from "../models"
+import type { AnyUserConfig } from "../models"
 
-import {allowlist} from "../filters/allowlist"
-import {comments} from "../filters/comment"
-import {terminology} from "../rules/terminology"
-import {defineConfig} from "../utils/defineConfig"
+import { allowlist } from "../filters/allowlist"
+import { comments } from "../filters/comment"
+import { terminology } from "../rules/terminology"
+import { defineConfig } from "../utils/defineConfig"
 
 const config: AnyUserConfig = defineConfig({
 	presets: [],
 	rules: [terminology()],
-	filters: [comments(), allowlist({allow: [""]})],
+	filters: [comments(), allowlist({ allow: [""] })],
 	plugins: [],
 })
 

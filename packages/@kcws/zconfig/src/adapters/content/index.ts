@@ -10,4 +10,4 @@ export type {
 	ContentSource,
 } from "./types"
 
-export {default as contentAdapter} from "./adapter"
+export { default as contentAdapter } from "./adapter"

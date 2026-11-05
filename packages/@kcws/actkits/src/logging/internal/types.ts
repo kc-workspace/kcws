@@ -1,5 +1,5 @@
-import type {AnnotationProperties as CoreAnnotationProperties} from "@actions/core"
-import type {NS_SEP} from "./namespace"
+import type { AnnotationProperties as CoreAnnotationProperties } from "@actions/core"
+import type { NS_SEP } from "./namespace"
 
 /**
  * Properties for GitHub Actions workflow annotations.

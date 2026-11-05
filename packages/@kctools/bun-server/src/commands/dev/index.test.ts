@@ -1,14 +1,14 @@
-import type {Serve} from "bun"
-import type {BunType} from "#types"
+import type { Serve } from "bun"
+import type { BunType } from "#types"
 
-import {Command} from "commander"
-import {describe, expect, test, vi} from "vitest"
+import { Command } from "commander"
+import { describe, expect, test, vi } from "vitest"
 
 import dev from "./index"
 
 vi.mock("#utils/routeFiles", async (importOriginal) => ({
 	...(await importOriginal<typeof import("#utils/routeFiles")>()),
-	loadRouteBundle: vi.fn((path: string) => Promise.resolve({name: path, kind: "bundle"})),
+	loadRouteBundle: vi.fn((path: string) => Promise.resolve({ name: path, kind: "bundle" })),
 }))
 
 vi.mock("#utils/logger", () => ({
@@ -23,7 +23,7 @@ vi.mock("#utils/logger", () => ({
 type ServeConfig = Serve.Options<undefined, string>
 
 const createMockBun = (files: Record<string, string[]>) => {
-	const scan = vi.fn(function* (option: {cwd: string}): Generator<string> {
+	const scan = vi.fn(function* (option: { cwd: string }): Generator<string> {
 		yield* files[option.cwd] ?? []
 	})
 
@@ -32,7 +32,7 @@ const createMockBun = (files: Record<string, string[]>) => {
 		scan = scan
 	}
 
-	const serve = vi.fn(() => ({url: "http://127.0.0.1:3000"}))
+	const serve = vi.fn(() => ({ url: "http://127.0.0.1:3000" }))
 
 	return {
 		bun: {
@@ -51,7 +51,7 @@ const createMockBun = (files: Record<string, string[]>) => {
 const run = async (bun: BunType, args: string[]): Promise<void> => {
 	const command = new Command("dev")
 	dev.action(command, bun)
-	await command.parseAsync(args, {from: "user"})
+	await command.parseAsync(args, { from: "user" })
 }
 
 const config = (serve: ReturnType<typeof vi.fn>): ServeConfig => serve.mock.lastCall?.[0] as ServeConfig
@@ -61,11 +61,11 @@ const routes = (serve: ReturnType<typeof vi.fn>): Record<string, unknown> =>
 
 /** The route table reduced to the file name each route is served from. */
 const servedFiles = (serve: ReturnType<typeof vi.fn>): Record<string, string> =>
-	Object.fromEntries(Object.entries(routes(serve)).map(([route, file]) => [route, (file as {name: string}).name]))
+	Object.fromEntries(Object.entries(routes(serve)).map(([route, file]) => [route, (file as { name: string }).name]))
 
 /** The route table reduced to how each route is served. */
 const servedKinds = (serve: ReturnType<typeof vi.fn>): Record<string, string> =>
-	Object.fromEntries(Object.entries(routes(serve)).map(([route, value]) => [route, (value as {kind: string}).kind]))
+	Object.fromEntries(Object.entries(routes(serve)).map(([route, value]) => [route, (value as { kind: string }).kind]))
 
 describe("dev", () => {
 	test("is described as the development server command", () => {
@@ -76,7 +76,7 @@ describe("dev", () => {
 	})
 
 	test("serves each route and its wildcard from the route file", async () => {
-		const {bun, serve} = createMockBun({
+		const { bun, serve } = createMockBun({
 			"/repo/pages": ["/repo/pages/index.html", "/repo/pages/about.html"],
 		})
 
@@ -91,17 +91,17 @@ describe("dev", () => {
 	})
 
 	test("serves html routes as bundles so their assets are resolved", async () => {
-		const {bun, serve} = createMockBun({
+		const { bun, serve } = createMockBun({
 			"/repo/pages": ["/repo/pages/index.html"],
 		})
 
 		await run(bun, ["pages", "--cwd", "/repo"])
 
-		expect(servedKinds(serve)).toEqual({"/": "bundle", "/*": "bundle"})
+		expect(servedKinds(serve)).toEqual({ "/": "bundle", "/*": "bundle" })
 	})
 
 	test("serves the static files from their source", async () => {
-		const {bun, serve} = createMockBun({
+		const { bun, serve } = createMockBun({
 			"/repo/assets": ["/repo/assets/logo.png"],
 		})
 
@@ -112,7 +112,7 @@ describe("dev", () => {
 	})
 
 	test("falls back to the default route directory", async () => {
-		const {bun, serve} = createMockBun({
+		const { bun, serve } = createMockBun({
 			"/repo/src/routes": ["/repo/src/routes/index.html"],
 		})
 
@@ -125,15 +125,15 @@ describe("dev", () => {
 		{
 			name: "binds the default hostname and port",
 			args: [],
-			expected: {hostname: "127.0.0.1", port: 3000},
+			expected: { hostname: "127.0.0.1", port: 3000 },
 		},
 		{
 			name: "binds the given hostname and port",
 			args: ["-h", "0.0.0.0", "-p", "8080"],
-			expected: {hostname: "0.0.0.0", port: 8080},
+			expected: { hostname: "0.0.0.0", port: 8080 },
 		},
-	])("$name", async ({args, expected}) => {
-		const {bun, serve} = createMockBun({})
+	])("$name", async ({ args, expected }) => {
+		const { bun, serve } = createMockBun({})
 
 		await run(bun, ["--cwd", "/repo", ...args])
 
@@ -141,7 +141,7 @@ describe("dev", () => {
 	})
 
 	test("starts the server even without any route", async () => {
-		const {bun, serve} = createMockBun({})
+		const { bun, serve } = createMockBun({})
 
 		await run(bun, ["--cwd", "/repo"])
 
@@ -150,7 +150,7 @@ describe("dev", () => {
 	})
 
 	test("fails when two route files answer the same route", async () => {
-		const {bun} = createMockBun({
+		const { bun } = createMockBun({
 			"/repo/pages": ["/repo/pages/about.html"],
 			"/repo/docs": ["/repo/docs/about.html"],
 		})

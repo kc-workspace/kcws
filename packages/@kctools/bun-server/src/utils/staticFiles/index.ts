@@ -1,3 +1,3 @@
-export {default as copyStaticFiles} from "./copyStaticFiles"
+export { default as copyStaticFiles } from "./copyStaticFiles"
 export * from "./option"
-export {default as parseStaticFiles} from "./parseStaticFiles"
+export { default as parseStaticFiles } from "./parseStaticFiles"

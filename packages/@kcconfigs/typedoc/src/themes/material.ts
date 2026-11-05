@@ -1,4 +1,4 @@
-import {defineTheme, type ThemeConfig} from "../configs"
+import { defineTheme, type ThemeConfig } from "../configs"
 
 /**
  * Typedoc theme that use Material Design style

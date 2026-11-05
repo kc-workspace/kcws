@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {DotenvAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { DotenvAdapterOptions } from "./types"
 
-import {resolveParser, toFileParser} from "../content/utils"
-import {fileAdapter} from "../file"
-import {getDotenvFiles} from "./utils"
+import { resolveParser, toFileParser } from "../content/utils"
+import { fileAdapter } from "../file"
+import { getDotenvFiles } from "./utils"
 
 /**
  * Creates an adapter that reads configuration values from a dotenv-style
@@ -22,7 +22,7 @@ const dotenvAdapter = (options: DotenvAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "dotenv",
 		files: getDotenvFiles(),
-		...toFileParser(resolveParser("dotenv", {...options, format: "dotenv"})),
+		...toFileParser(resolveParser("dotenv", { ...options, format: "dotenv" })),
 		...options,
 	})
 

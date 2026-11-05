@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import debugPlugin from "./debug"
 
@@ -21,7 +21,7 @@ describe("debugPlugin", () => {
 
 	test("should preserve existing settings when applying", () => {
 		const plugin = debugPlugin()
-		const result = plugin.applySetting?.({verbose: true})
+		const result = plugin.applySetting?.({ verbose: true })
 		expect(result?.verbose).toBe(true)
 		expect(result?.debug).toBe(true)
 	})

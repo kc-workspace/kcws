@@ -1,6 +1,6 @@
-import type {ZodType} from "zod"
+import type { ZodType } from "zod"
 
-import {visit} from "./utils"
+import { visit } from "./utils"
 
 /**
  * Asserts that every key reachable in a schema is strict camelCase.

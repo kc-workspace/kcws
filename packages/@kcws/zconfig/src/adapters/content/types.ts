@@ -1,4 +1,4 @@
-import type {BaseAdapterOptions} from "#types"
+import type { BaseAdapterOptions } from "#types"
 
 /** Built-in formats that {@link contentAdapter} and {@link streamAdapter} can parse. */
 export type ContentFormat = "yaml" | "json" | "jsonc" | "json5" | "toml" | "dotenv"

@@ -1,4 +1,4 @@
-import {relative} from "node:path"
+import { relative } from "node:path"
 
 const formatPath = (path: string, cwd: string): string => {
 	const short = relative(cwd, path)

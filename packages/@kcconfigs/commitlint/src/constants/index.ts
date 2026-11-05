@@ -1,6 +1,6 @@
-import type {MinimalType, StandardType, TypeEnum} from "../types"
+import type { MinimalType, StandardType, TypeEnum } from "../types"
 
-import {RuleConfigSeverity as Severity, type UserConfig} from "@commitlint/types"
+import { RuleConfigSeverity as Severity, type UserConfig } from "@commitlint/types"
 
 /** Setting priority used by the debug plugin so it runs before anything else. */
 export const debugPriority: number = Number.NEGATIVE_INFINITY

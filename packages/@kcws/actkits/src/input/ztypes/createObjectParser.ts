@@ -1,4 +1,4 @@
-import {z} from "zod"
+import { z } from "zod"
 
 /**
  * Creates a Zod schema for parsing string input to object using a custom parser.

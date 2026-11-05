@@ -1,4 +1,4 @@
-import type {UserConfig, WithEnabled} from "tsdown"
+import type { UserConfig, WithEnabled } from "tsdown"
 
 export type TsdownConfig = UserConfig
 

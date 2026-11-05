@@ -1,7 +1,7 @@
-import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
-import {afterEach, describe, expect, test, vi} from "vitest"
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks"
+import { afterEach, describe, expect, test, vi } from "vitest"
 
-import {envAdapter} from "."
+import { envAdapter } from "."
 
 describe("envAdapter", () => {
 	afterEach(() => {
@@ -14,11 +14,11 @@ describe("envAdapter", () => {
 		vi.stubEnv("APP_DATABASE__PORT", "5432")
 		vi.stubEnv("OTHER_VALUE", "ignored")
 
-		const adapter = envAdapter({prefix: "APP"})
+		const adapter = envAdapter({ prefix: "APP" })
 
 		expect(adapter.name).toBe("env")
 		expect(adapter.loadSync()).toEqual({
-			database: {host: "localhost", port: "5432"},
+			database: { host: "localhost", port: "5432" },
 		})
 	})
 
@@ -30,7 +30,7 @@ describe("envAdapter", () => {
 				prefix: "APP",
 				pathSeparator: ".",
 			}).loadSync(),
-		).toEqual({database: {host: "localhost"}})
+		).toEqual({ database: { host: "localhost" } })
 	})
 
 	test("applies a transform to decoded leaves", () => {
@@ -44,21 +44,21 @@ describe("envAdapter", () => {
 			}),
 		}).loadSync()
 
-		expect(result).toEqual({database: {host: "localhost"}})
+		expect(result).toEqual({ database: { host: "localhost" } })
 	})
 
 	test("reads only process environment values", () => {
-		vol.fromJSON({".env": "APP_DEBUG=true\n"}, mockCwd)
+		vol.fromJSON({ ".env": "APP_DEBUG=true\n" }, mockCwd)
 		vi.stubEnv("APP_DEBUG", "false")
 
-		expect(envAdapter({prefix: "APP"}).loadSync()).toEqual({
+		expect(envAdapter({ prefix: "APP" }).loadSync()).toEqual({
 			debug: "false",
 		})
 	})
 
 	test("uses the same synchronous implementation for load", async () => {
 		vi.stubEnv("APP_DEBUG", "true")
-		const adapter = envAdapter({prefix: "APP"})
+		const adapter = envAdapter({ prefix: "APP" })
 
 		expect(await adapter.load()).toEqual(adapter.loadSync())
 	})

@@ -1,5 +1,5 @@
-import {fileURLToPath} from "node:url"
-import {describe, expect, test} from "vitest"
+import { fileURLToPath } from "node:url"
+import { describe, expect, test } from "vitest"
 
 import loadRouteBundle from "./loadRouteBundle"
 

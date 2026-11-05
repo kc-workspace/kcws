@@ -1,7 +1,7 @@
-import type {CommitlintConfig} from "../types"
+import type { CommitlintConfig } from "../types"
 
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
-import {describe, expect, test} from "vitest"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
+import { describe, expect, test } from "vitest"
 
 import scopePlugin from "./scope"
 
@@ -44,22 +44,22 @@ describe("scopePlugin", () => {
 		const result = await scopePlugin(["new"]).applyConfig?.(first)
 		const [, , scopes] = readScopes(result)
 		expect(scopes).toEqual(["new"])
-		expect(result?.prompt?.questions?.scope?.enum).toEqual({new: {}})
+		expect(result?.prompt?.questions?.scope?.enum).toEqual({ new: {} })
 	})
 
 	test("should preserve existing base config when applying", async () => {
 		const plugin = scopePlugin(["api"])
 		const result = await plugin.applyConfig?.({
 			helpUrl: "help",
-			rules: {"type-enum": [Severity.Error, "always", ["feat"]]},
+			rules: { "type-enum": [Severity.Error, "always", ["feat"]] },
 			prompt: {
-				questions: {type: {enum: {feat: {}}}},
-				settings: {enableMultipleScopes: false},
+				questions: { type: { enum: { feat: {} } } },
+				settings: { enableMultipleScopes: false },
 			},
 		})
 		expect(result?.helpUrl).toBe("help")
 		expect(result?.rules?.["type-enum"]).toEqual([Severity.Error, "always", ["feat"]])
-		expect(result?.prompt?.questions?.type?.enum).toEqual({feat: {}})
+		expect(result?.prompt?.questions?.type?.enum).toEqual({ feat: {} })
 		expect(result?.prompt?.settings?.enableMultipleScopes).toBe(false)
 	})
 })

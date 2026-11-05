@@ -1,7 +1,7 @@
-import type {AnyArray, AnyObject} from "../configs"
+import type { AnyArray, AnyObject } from "../configs"
 
-import {isArray, mergeArray, normalizeArray} from "./array"
-import {isEmpty} from "./empty"
+import { isArray, mergeArray, normalizeArray } from "./array"
+import { isEmpty } from "./empty"
 
 export const isObject = <T extends AnyArray>(value: unknown): value is T => {
 	return typeof value === "object" && value !== null && !isArray(value)

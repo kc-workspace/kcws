@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import {
 	getContext,
@@ -28,8 +28,8 @@ describe("context predicates", () => {
 	})
 
 	test("should detect release and dispatch events", () => {
-		expect(isReleaseEvent(getContext({GITHUB_EVENT_NAME: "release"}))).toBe(true)
-		expect(isWorkflowDispatchEvent(getContext({GITHUB_EVENT_NAME: "workflow_dispatch"}))).toBe(true)
+		expect(isReleaseEvent(getContext({ GITHUB_EVENT_NAME: "release" }))).toBe(true)
+		expect(isWorkflowDispatchEvent(getContext({ GITHUB_EVENT_NAME: "workflow_dispatch" }))).toBe(true)
 	})
 
 	test("should detect push and github actions flags", () => {
@@ -55,8 +55,8 @@ describe("context predicates", () => {
 	})
 
 	test("should infer branch and tag from refs when refType is absent", () => {
-		const branchContext = getContext({GITHUB_REF: "refs/heads/feature-x"})
-		const tagContext = getContext({GITHUB_REF: "refs/tags/v1.2.3"})
+		const branchContext = getContext({ GITHUB_REF: "refs/heads/feature-x" })
+		const tagContext = getContext({ GITHUB_REF: "refs/tags/v1.2.3" })
 
 		expect(isBranchRef(branchContext)).toBe(true)
 		expect(isTagRef(branchContext)).toBe(false)

@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import defineConfigSync from "./defineConfigSync"
 import definePluginSync from "./definePluginSync"
@@ -6,7 +6,7 @@ import definePluginSync from "./definePluginSync"
 describe(defineConfigSync.name, () => {
 	test("applies settings and configs in priority order without reordering plugins", () => {
 		const calls: string[] = []
-		const base = {calls: [] as string[]}
+		const base = { calls: [] as string[] }
 		const plugins = [
 			definePluginSync<"later", typeof base>("later", {
 				settingPriority: 10,
@@ -15,7 +15,7 @@ describe(defineConfigSync.name, () => {
 					calls.push("setting:later")
 					return setting
 				},
-				applyConfig: (config) => ({calls: [...config.calls, "later"]}),
+				applyConfig: (config) => ({ calls: [...config.calls, "later"] }),
 			}),
 			definePluginSync<"earlier", typeof base>("earlier", {
 				settingPriority: 0,
@@ -24,7 +24,7 @@ describe(defineConfigSync.name, () => {
 					calls.push("setting:earlier")
 					return setting
 				},
-				applyConfig: (config) => ({calls: [...config.calls, "earlier"]}),
+				applyConfig: (config) => ({ calls: [...config.calls, "earlier"] }),
 			}),
 		]
 
@@ -39,9 +39,9 @@ describe(defineConfigSync.name, () => {
 		const messages: string[] = []
 
 		const result = defineConfigSync(
-			{value: 1},
-			definePluginSync<"logger", {value: number}>("logger", {
-				applySetting: () => ({verbose: (message) => messages.push(message)}),
+			{ value: 1 },
+			definePluginSync<"logger", { value: number }>("logger", {
+				applySetting: () => ({ verbose: (message) => messages.push(message) }),
 				applyConfig: (config) => {
 					config.value += 1
 					return config
@@ -49,20 +49,20 @@ describe(defineConfigSync.name, () => {
 			}),
 		)
 
-		expect(result).toEqual({value: 2})
+		expect(result).toEqual({ value: 2 })
 		expect(messages).toContain("[logger] before config: { value: 1 }")
 		expect(messages).toContain("[logger] after config: { value: 2 }")
 	})
 
 	test("keeps the base config when plugins omit apply hooks", () => {
-		const base = {value: 1}
+		const base = { value: 1 }
 		const result = defineConfigSync(base, definePluginSync<"noop", typeof base>("noop", {}))
 
 		expect(result).toBe(base)
 	})
 
 	test("falls back to the previous values when hooks return undefined", () => {
-		const base = {value: 1}
+		const base = { value: 1 }
 		const result = defineConfigSync(
 			base,
 			definePluginSync<"undefined", typeof base>("undefined", {
@@ -79,17 +79,17 @@ describe(defineConfigSync.name, () => {
 		const verboseMessages: string[] = []
 
 		const result = defineConfigSync(
-			{value: 1},
-			definePluginSync<"logger", {value: number}>("logger", {
+			{ value: 1 },
+			definePluginSync<"logger", { value: number }>("logger", {
 				applySetting: () => ({
 					debug: (message) => debugMessages.push(message),
 					verbose: (message) => verboseMessages.push(message),
 				}),
-				applyConfig: (config) => ({value: config.value + 1}),
+				applyConfig: (config) => ({ value: config.value + 1 }),
 			}),
 		)
 
-		expect(result).toEqual({value: 2})
+		expect(result).toEqual({ value: 2 })
 		expect(debugMessages).toEqual([
 			"applying setting: logger (0)",
 			"applying config: logger (0)",

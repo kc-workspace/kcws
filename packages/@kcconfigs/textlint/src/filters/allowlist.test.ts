@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {allowlist, DEFAULT_ALLOWLIST} from "./allowlist"
+import { allowlist, DEFAULT_ALLOWLIST } from "./allowlist"
 
 describe(allowlist.name, () => {
 	test("should disable the filter when no config is provided", () => {

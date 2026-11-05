@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import nodePlugin from "./node"
 
@@ -10,7 +10,7 @@ describe("nodePlugin", () => {
 
 	test("should set platform to node", () => {
 		const plugin = nodePlugin()
-		const base = {platform: undefined} as any
+		const base = { platform: undefined } as any
 		const result = plugin.applyConfig?.(base)
 		expect(result?.platform).toBe("node")
 	})

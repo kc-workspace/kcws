@@ -1,6 +1,6 @@
-import type {ReportedFile} from "./types"
+import type { ReportedFile } from "./types"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import reportArtifacts from "./reportArtifacts"
 
@@ -35,7 +35,7 @@ describe("reportArtifacts", () => {
 			artifacts: [file("/repo/dist/unknown.js", "something-else"), file("/repo/dist/static.txt", "static")],
 			expected: ["dist/static.txt", "dist/unknown.js"],
 		},
-	])("orders $name", ({artifacts, expected}) => {
+	])("orders $name", ({ artifacts, expected }) => {
 		expect(paths(report(artifacts))).toEqual(expected)
 	})
 

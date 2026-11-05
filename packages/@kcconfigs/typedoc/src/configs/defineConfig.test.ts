@@ -1,8 +1,8 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {defineConfig} from "./defineConfig"
+import { defineConfig } from "./defineConfig"
 
 describe("defineConfig", () => {
 	test("should return a config object", () => {
@@ -28,8 +28,8 @@ describe("defineConfig", () => {
 	})
 
 	test("should apply overrides in correct order", () => {
-		const config1: UserConfig = {sort: ["visibility"]}
-		const config2: UserConfig = {sort: ["alphabetical"]}
+		const config1: UserConfig = { sort: ["visibility"] }
+		const config2: UserConfig = { sort: ["alphabetical"] }
 		const config = defineConfig(config1, config2)
 
 		expect(config.sort).toContain("alphabetical")

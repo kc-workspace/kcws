@@ -1,8 +1,8 @@
-import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
-import {afterEach, describe, expect, test} from "vitest"
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks"
+import { afterEach, describe, expect, test } from "vitest"
 
-import {ZconfigAdapterError} from "#utils/errors"
-import {autoAdapter} from "."
+import { ZconfigAdapterError } from "#utils/errors"
+import { autoAdapter } from "."
 
 describe("autoAdapter", () => {
 	afterEach(() => {
@@ -13,35 +13,35 @@ describe("autoAdapter", () => {
 		{
 			extension: "yaml",
 			content: "database:\n  port: 5432\n",
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
 		{
 			extension: "yml",
 			content: "database:\n  port: 5432\n",
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
 		{
 			extension: "json5",
 			content: "{ database: { port: 5432, }, }",
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
 		{
 			extension: "jsonc",
 			content: '{\n // comment\n "database": { "port": 5432 }\n}',
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
 		{
 			extension: "json",
 			content: '{\n "database": { "port": 5432 }\n}',
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
 		{
 			extension: "toml",
 			content: "[database]\nport = 5432\n",
-			expected: {database: {port: 5432}},
+			expected: { database: { port: 5432 } },
 		},
-	])("parses .$extension with the matching standard parser", ({extension, content, expected}) => {
-		vol.fromJSON({[`config.${extension}`]: content}, mockCwd)
+	])("parses .$extension with the matching standard parser", ({ extension, content, expected }) => {
+		vol.fromJSON({ [`config.${extension}`]: content }, mockCwd)
 
 		expect(autoAdapter().loadSync()).toEqual(expected)
 	})
@@ -58,33 +58,33 @@ describe("autoAdapter", () => {
 	})
 
 	test("loads an explicit file asynchronously", async () => {
-		vol.fromJSON({"config/app.yaml": "debug: true\n"}, mockCwd)
+		vol.fromJSON({ "config/app.yaml": "debug: true\n" }, mockCwd)
 
-		const adapter = autoAdapter({path: "config/app.yaml"})
+		const adapter = autoAdapter({ path: "config/app.yaml" })
 		expect(adapter.name).toBe("auto")
-		expect(await adapter.load()).toEqual({debug: true})
+		expect(await adapter.load()).toEqual({ debug: true })
 	})
 
 	test("returns an empty object when optional input is missing", () => {
-		expect(autoAdapter({optional: true}).loadSync()).toEqual({})
+		expect(autoAdapter({ optional: true }).loadSync()).toEqual({})
 	})
 
 	test("throws a typed error for malformed input", () => {
-		vol.fromJSON({"config.yaml": "database: [\n"}, mockCwd)
+		vol.fromJSON({ "config.yaml": "database: [\n" }, mockCwd)
 
 		expect(() => autoAdapter().loadSync()).toThrow(ZconfigAdapterError)
 	})
 
 	test("throws a typed error for an unsupported explicit file extension", async () => {
-		vol.fromJSON({"config.ini": "debug=true\n"}, mockCwd)
+		vol.fromJSON({ "config.ini": "debug=true\n" }, mockCwd)
 
-		const adapter = autoAdapter({path: "config.ini"})
+		const adapter = autoAdapter({ path: "config.ini" })
 		expect(() => adapter.loadSync()).toThrow(/unsupported file extension/)
 		await expect(adapter.load()).rejects.toThrow(ZconfigAdapterError)
 	})
 
 	test("applies a leaf transform", () => {
-		vol.fromJSON({"config.yaml": "snake_key: value\n"}, mockCwd)
+		vol.fromJSON({ "config.yaml": "snake_key: value\n" }, mockCwd)
 
 		expect(
 			autoAdapter({
@@ -93,6 +93,6 @@ describe("autoAdapter", () => {
 					value: input.value,
 				}),
 			}).loadSync(),
-		).toEqual({snakeKey: "value"})
+		).toEqual({ snakeKey: "value" })
 	})
 })

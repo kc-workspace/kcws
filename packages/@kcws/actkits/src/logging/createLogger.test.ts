@@ -1,6 +1,6 @@
-import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
-import {createLogger} from "./createLogger"
+import { createLogger } from "./createLogger"
 
 vi.mock("@actions/core", () => ({
 	debug: vi.fn(),
@@ -32,11 +32,11 @@ describe("createLogger", () => {
 	})
 
 	test("should support printf style formatting for info/debug", async () => {
-		const {info: mockInfo, debug: mockDebug} = await vi.importMock<typeof import("@actions/core")>("@actions/core")
+		const { info: mockInfo, debug: mockDebug } = await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		const logger = createLogger("stm", "action-a")
 		logger.info("%s world", "hello")
-		logger.debug("count=%d payload=%j", 2, {ok: true})
+		logger.debug("count=%d payload=%j", 2, { ok: true })
 
 		expect(mockInfo).toHaveBeenCalledWith("[stm:action-a] hello world")
 		expect(mockDebug).toHaveBeenCalledWith('[stm:action-a] count=2 payload={"ok":true}')
@@ -51,9 +51,9 @@ describe("createLogger", () => {
 
 		const logger = createLogger("stm")
 
-		logger.warn("warn %s", "msg", {file: "a.ts", startLine: 1})
-		logger.error("error %s", "msg", {title: "boom"})
-		logger.notice("notice %s", "msg", {file: "b.ts", endLine: 3})
+		logger.warn("warn %s", "msg", { file: "a.ts", startLine: 1 })
+		logger.error("error %s", "msg", { title: "boom" })
+		logger.notice("notice %s", "msg", { file: "b.ts", endLine: 3 })
 
 		expect(mockWarning).toHaveBeenCalledWith("[stm] warn msg", {
 			file: "a.ts",
@@ -69,16 +69,16 @@ describe("createLogger", () => {
 	})
 
 	test("should call annotation log without properties when last arg is not annotation object", async () => {
-		const {warning: mockWarning} = await vi.importMock<typeof import("@actions/core")>("@actions/core")
+		const { warning: mockWarning } = await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		const logger = createLogger("stm")
-		logger.warn("warn %j", {custom: true})
+		logger.warn("warn %j", { custom: true })
 
 		expect(mockWarning).toHaveBeenCalledWith('[stm] warn {"custom":true}')
 	})
 
 	test("should run async group and always close it", async () => {
-		const {startGroup: mockStartGroup, endGroup: mockEndGroup} =
+		const { startGroup: mockStartGroup, endGroup: mockEndGroup } =
 			await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		const logger = createLogger("stm")
@@ -90,7 +90,7 @@ describe("createLogger", () => {
 	})
 
 	test("should run sync group and always close it", async () => {
-		const {startGroup: mockStartGroup, endGroup: mockEndGroup} =
+		const { startGroup: mockStartGroup, endGroup: mockEndGroup } =
 			await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		const logger = createLogger("stm")
@@ -102,14 +102,14 @@ describe("createLogger", () => {
 	})
 
 	test("should expose isDebug based on @actions/core", async () => {
-		const {isDebug: mockIsDebug} = await vi.importMock<typeof import("@actions/core")>("@actions/core")
+		const { isDebug: mockIsDebug } = await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		vi.mocked(mockIsDebug).mockReturnValue(true)
 		expect(createLogger("stm").isDebug).toBe(true)
 	})
 
 	test("should expose isDebug based on DEBUG env when core debug is false", async () => {
-		const {isDebug: mockIsDebug} = await vi.importMock<typeof import("@actions/core")>("@actions/core")
+		const { isDebug: mockIsDebug } = await vi.importMock<typeof import("@actions/core")>("@actions/core")
 
 		vi.mocked(mockIsDebug).mockReturnValue(false)
 		process.env["DEBUG"] = "1"

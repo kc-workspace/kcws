@@ -1,12 +1,12 @@
-import type {Adapter} from "#types"
-import type {ContentSource} from "../content"
-import type {StreamAdapterOptions, StreamSource} from "./types"
+import type { Adapter } from "#types"
+import type { ContentSource } from "../content"
+import type { StreamAdapterOptions, StreamSource } from "./types"
 
-import {text} from "node:stream/consumers"
+import { text } from "node:stream/consumers"
 
-import {toAdapterError, ZconfigAdapterError} from "#utils/errors"
-import {applyTransform} from "#utils/transforms"
-import {decodeContent, resolveParser, toRawConfig} from "../content/utils"
+import { toAdapterError, ZconfigAdapterError } from "#utils/errors"
+import { applyTransform } from "#utils/transforms"
+import { decodeContent, resolveParser, toRawConfig } from "../content/utils"
 
 const LOAD_ERR = "Failed to load config stream"
 

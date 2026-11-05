@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import minifyPlugin from "../plugins/minify"
 import outputPlugin from "../plugins/output"

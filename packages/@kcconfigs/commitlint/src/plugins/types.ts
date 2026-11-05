@@ -1,9 +1,9 @@
-import type {CommitlintConfigPlugin, TypeMode, TypeObject} from "../types"
+import type { CommitlintConfigPlugin, TypeMode, TypeObject } from "../types"
 
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
-import {definePluginAsync} from "@kcinternals/config-builder"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
+import { definePluginAsync } from "@kcinternals/config-builder"
 
-import {MINIMAL_TYPES, STANDARD_TYPES} from "../constants"
+import { MINIMAL_TYPES, STANDARD_TYPES } from "../constants"
 import mergeConfig from "../utils/mergeConfig"
 
 /**
@@ -55,7 +55,7 @@ const typesPlugin = (mode: TypeMode = "standard"): CommitlintConfigPlugin<"types
 					...merged.prompt,
 					questions: {
 						...merged.prompt?.questions,
-						type: {...merged.prompt?.questions?.type, enum: types},
+						type: { ...merged.prompt?.questions?.type, enum: types },
 					},
 				},
 			}

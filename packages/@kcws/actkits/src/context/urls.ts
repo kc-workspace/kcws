@@ -1,6 +1,6 @@
-import type {GitHubContext} from "./types"
+import type { GitHubContext } from "./types"
 
-import {getContext} from "./getContext"
+import { getContext } from "./getContext"
 
 export const getRepositoryUrl = (context: GitHubContext = getContext()): string | undefined => {
 	if (context.serverUrl == null || context.repository == null) {

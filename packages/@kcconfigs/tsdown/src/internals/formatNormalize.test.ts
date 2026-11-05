@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import formatNormalize from "./formatNormalize"
 
@@ -10,7 +10,7 @@ describe("formatNormalize", () => {
 
 	test("should default to esm + cjs when format is undefined", () => {
 		const plugin = formatNormalize()
-		const config = {format: undefined}
+		const config = { format: undefined }
 		const result = plugin.applyConfig?.(config as any)
 		expect(result?.format).toHaveProperty("esm")
 		expect(result?.format).toHaveProperty("cjs")
@@ -25,65 +25,65 @@ describe("formatNormalize", () => {
 	test.for([
 		{
 			name: "should default to esm + cjs when format is null",
-			input: {format: null},
+			input: { format: null },
 			hasProps: ["esm", "cjs"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize 'esm' string to esm format object",
-			input: {format: "esm"},
+			input: { format: "esm" },
 			hasProps: ["esm"],
 			notHasProps: ["cjs"],
 		},
 		{
 			name: "should normalize 'es' alias to esm format object",
-			input: {format: "es"},
+			input: { format: "es" },
 			hasProps: ["esm"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize 'module' alias to esm format object",
-			input: {format: "module"},
+			input: { format: "module" },
 			hasProps: ["esm"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize 'cjs' string to cjs format object",
-			input: {format: "cjs"},
+			input: { format: "cjs" },
 			hasProps: ["cjs"],
 			notHasProps: ["esm"],
 		},
 		{
 			name: "should normalize 'commonjs' alias to cjs format object",
-			input: {format: "commonjs"},
+			input: { format: "commonjs" },
 			hasProps: ["cjs"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize 'iife' string to iife format object",
-			input: {format: "iife"},
+			input: { format: "iife" },
 			hasProps: ["iife"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize 'umd' string to umd format object",
-			input: {format: "umd"},
+			input: { format: "umd" },
 			hasProps: ["umd"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize array of formats",
-			input: {format: ["esm", "cjs"]},
+			input: { format: ["esm", "cjs"] },
 			hasProps: ["esm", "cjs"],
 			notHasProps: [],
 		},
 		{
 			name: "should normalize array with aliases",
-			input: {format: ["es", "commonjs"]},
+			input: { format: ["es", "commonjs"] },
 			hasProps: ["esm", "cjs"],
 			notHasProps: [],
 		},
-	])("$name", ({input, hasProps, notHasProps}) => {
+	])("$name", ({ input, hasProps, notHasProps }) => {
 		const plugin = formatNormalize()
 		const result = plugin.applyConfig?.(input as any)
 		for (const prop of hasProps) {
@@ -98,7 +98,7 @@ describe("formatNormalize", () => {
 		{
 			name: "should normalize object format with aliases",
 			input: {
-				format: {es: {minify: false}, commonjs: {sourcemap: false}},
+				format: { es: { minify: false }, commonjs: { sourcemap: false } },
 			},
 			checks: [
 				["esm", "minify", false],
@@ -107,7 +107,7 @@ describe("formatNormalize", () => {
 		},
 		{
 			name: "should normalize object format with standard keys",
-			input: {format: {esm: {minify: false}, cjs: {sourcemap: false}}},
+			input: { format: { esm: { minify: false }, cjs: { sourcemap: false } } },
 			checks: [
 				["esm", "minify", false],
 				["cjs", "sourcemap", false],
@@ -115,20 +115,20 @@ describe("formatNormalize", () => {
 		},
 		{
 			name: "should normalize object format with module alias",
-			input: {format: {module: {minify: false}}},
+			input: { format: { module: { minify: false } } },
 			checks: [["esm", "minify", false]] as const,
 		},
 		{
 			name: "should normalize object format with iife key",
-			input: {format: {iife: {minify: false}}},
+			input: { format: { iife: { minify: false } } },
 			checks: [["iife", "minify", false]] as const,
 		},
 		{
 			name: "should normalize object format with umd key",
-			input: {format: {umd: {minify: false}}},
+			input: { format: { umd: { minify: false } } },
 			checks: [["umd", "minify", false]] as const,
 		},
-	])("$name", ({input, checks}) => {
+	])("$name", ({ input, checks }) => {
 		const plugin = formatNormalize()
 		const result = plugin.applyConfig?.(input as any)
 		const format = result?.format as Record<string, Record<string, unknown>>
@@ -148,13 +148,13 @@ describe("formatNormalize", () => {
 
 	test("should return empty object for unknown format string", () => {
 		const plugin = formatNormalize()
-		const result = plugin.applyConfig?.({format: "unknown" as any})
+		const result = plugin.applyConfig?.({ format: "unknown" as any })
 		expect(result?.format).toEqual({})
 	})
 
 	test("should preserve other config properties", () => {
 		const plugin = formatNormalize()
-		const config = {entry: ["./src/index.ts"], format: "esm" as const}
+		const config = { entry: ["./src/index.ts"], format: "esm" as const }
 		const result = plugin.applyConfig?.(config as any)
 		expect(result?.entry).toEqual(["./src/index.ts"])
 		expect(result?.format).toHaveProperty("esm")

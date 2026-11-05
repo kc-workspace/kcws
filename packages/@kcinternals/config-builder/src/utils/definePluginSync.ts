@@ -1,4 +1,4 @@
-import type {SyncConfigPlugin} from "../types"
+import type { SyncConfigPlugin } from "../types"
 
 /**
  * Create a plugin that supports synchronous actions.

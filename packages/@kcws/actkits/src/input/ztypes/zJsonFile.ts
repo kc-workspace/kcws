@@ -1,8 +1,8 @@
-import type {z} from "zod"
+import type { z } from "zod"
 
-import {readFileSync} from "node:fs"
+import { readFileSync } from "node:fs"
 
-import {createObjectParser} from "./createObjectParser"
+import { createObjectParser } from "./createObjectParser"
 
 /**
  * Zod schema for parsing JSON file path input to object.

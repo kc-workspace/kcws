@@ -5,4 +5,4 @@ export type {
 	NormalizeFileAdapterOptions,
 } from "./types"
 
-export {default as fileAdapter} from "./adapter"
+export { default as fileAdapter } from "./adapter"

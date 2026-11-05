@@ -1,7 +1,7 @@
-import type {CommitlintConfig, TypeMode, TypeObject} from "../types"
+import type { CommitlintConfig, TypeMode, TypeObject } from "../types"
 
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
-import {describe, expect, test} from "vitest"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
+import { describe, expect, test } from "vitest"
 
 import typesPlugin from "./types"
 
@@ -128,7 +128,7 @@ describe("typesPlugin", () => {
 	})
 
 	test("should configure custom types object", async () => {
-		const plugin = typesPlugin({type1: {description: "Type 1"}})
+		const plugin = typesPlugin({ type1: { description: "Type 1" } })
 		const result = await plugin.applyConfig?.({})
 		const [, , types] = readTypeRule(result)
 		expect(types).toEqual(["type1"])
@@ -149,15 +149,15 @@ describe("typesPlugin", () => {
 		const plugin = typesPlugin("minimal")
 		const result = await plugin.applyConfig?.({
 			helpUrl: "help",
-			rules: {"subject-max-length": [Severity.Warning, "always", 80]},
+			rules: { "subject-max-length": [Severity.Warning, "always", 80] },
 			prompt: {
-				questions: {scope: {enum: {core: {}}}},
-				settings: {enableMultipleScopes: false},
+				questions: { scope: { enum: { core: {} } } },
+				settings: { enableMultipleScopes: false },
 			},
 		})
 		expect(result?.helpUrl).toBe("help")
 		expect(result?.rules?.["subject-max-length"]).toEqual([Severity.Warning, "always", 80])
-		expect(result?.prompt?.questions?.scope?.enum).toEqual({core: {}})
+		expect(result?.prompt?.questions?.scope?.enum).toEqual({ core: {} })
 		expect(result?.prompt?.settings?.enableMultipleScopes).toBe(false)
 	})
 })

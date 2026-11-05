@@ -1,10 +1,10 @@
-import type {EnvObject, RawConfig} from "#types"
-import type {EnvAdapterOptions} from "./types"
+import type { EnvObject, RawConfig } from "#types"
+import type { EnvAdapterOptions } from "./types"
 
-import {env as pEnv} from "node:process"
+import { env as pEnv } from "node:process"
 
-import {decodeEnvObject} from "#utils/env"
-import {applyTransform} from "#utils/transforms"
+import { decodeEnvObject } from "#utils/env"
+import { applyTransform } from "#utils/transforms"
 
 /**
  * Normalizes the options for the env adapter, providing default values for missing options.

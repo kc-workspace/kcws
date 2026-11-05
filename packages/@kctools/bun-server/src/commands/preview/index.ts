@@ -1,15 +1,15 @@
-import type {Command} from "commander"
-import type {BunType, CommandFn} from "#types"
+import type { Command } from "commander"
+import type { BunType, CommandFn } from "#types"
 
-import {join, relative, resolve} from "node:path"
+import { join, relative, resolve } from "node:path"
 
-import {DEFAULT_NOT_FOUND, DEFAULT_OUTPUT} from "#constants"
-import {defineCommand} from "#utils/command"
-import {createLogger} from "#utils/logger"
-import {cwdOption, readOptions} from "#utils/options"
-import {getFile, isInside} from "#utils/path"
-import {createServer} from "#utils/server"
-import {decodePath, type RequestHandler} from "#utils/url"
+import { DEFAULT_NOT_FOUND, DEFAULT_OUTPUT } from "#constants"
+import { defineCommand } from "#utils/command"
+import { createLogger } from "#utils/logger"
+import { cwdOption, readOptions } from "#utils/options"
+import { getFile, isInside } from "#utils/path"
+import { createServer } from "#utils/server"
+import { decodePath, type RequestHandler } from "#utils/url"
 
 const define = (command: Command) => {
 	return command
@@ -25,7 +25,7 @@ const logger = createLogger("commands/preview")
 
 const preview: CommandFn = defineCommand("preview", "Preview the built website using Bun.serve()", (command, Bun) => {
 	define(command).action((input, options) => {
-		logger.debug({input, options}, "starting the preview server")
+		logger.debug({ input, options }, "starting the preview server")
 
 		const cwd = readOptions<string>(options, "cwd")
 		const root = resolve(cwd, input)
@@ -35,7 +35,7 @@ const preview: CommandFn = defineCommand("preview", "Preview the built website u
 			readOptions<string>(options, "hostname"),
 			readOptions<string>(options, "port"),
 			readOptions<boolean>(options, "nextPort"),
-			{development: false, fetch: createHandler(Bun, root)},
+			{ development: false, fetch: createHandler(Bun, root) },
 		)
 		logger.info(`Listening on ${server.url}`)
 	})
@@ -45,12 +45,12 @@ const createHandler = (Bun: BunType, root: string): RequestHandler => {
 	return async (request: Request): Promise<Response> => {
 		const pathname = decodePath(request.url)
 		if (pathname === undefined) {
-			return new Response("Bad Request", {status: 400})
+			return new Response("Bad Request", { status: 400 })
 		}
 
 		const target = resolve(root, `.${pathname}`)
 		if (!isInside(root, target)) {
-			return new Response("Forbidden", {status: 403})
+			return new Response("Forbidden", { status: 403 })
 		}
 
 		const file =
@@ -60,8 +60,8 @@ const createHandler = (Bun: BunType, root: string): RequestHandler => {
 
 		if (file) {
 			logger.debug(`GET ${pathname} > ${relative(root, file?.name ?? "")}`)
-			return new Response(file, {status: 200})
-		} else return new Response(DEFAULT_NOT_FOUND, {status: 404})
+			return new Response(file, { status: 200 })
+		} else return new Response(DEFAULT_NOT_FOUND, { status: 404 })
 	}
 }
 

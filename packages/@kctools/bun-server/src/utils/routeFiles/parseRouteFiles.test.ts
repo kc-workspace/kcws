@@ -1,11 +1,11 @@
-import type {BunType} from "#types"
+import type { BunType } from "#types"
 
-import {describe, expect, test, vi} from "vitest"
+import { describe, expect, test, vi } from "vitest"
 
 import parseRouteFiles from "./parseRouteFiles"
 
 const createMockBun = (files: Record<string, string[]>) => {
-	const scan = vi.fn(function* (option: {cwd: string}): Generator<string> {
+	const scan = vi.fn(function* (option: { cwd: string }): Generator<string> {
 		yield* files[option.cwd] ?? []
 	})
 
@@ -16,11 +16,11 @@ const createMockBun = (files: Record<string, string[]>) => {
 
 	return {
 		Glob,
-		file: vi.fn(() => ({exists: () => Promise.resolve(false)})),
+		file: vi.fn(() => ({ exists: () => Promise.resolve(false) })),
 	} as unknown as BunType
 }
 
-const option = {cwd: "/repo"}
+const option = { cwd: "/repo" }
 
 describe("parseRouteFiles", () => {
 	test("resolves the routes of the given inputs", async () => {
@@ -29,7 +29,7 @@ describe("parseRouteFiles", () => {
 		})
 
 		await expect(parseRouteFiles(bun, ["pages"], option)).resolves.toEqual([
-			{path: "/repo/pages/index.html", route: "/", wildcard: "/*"},
+			{ path: "/repo/pages/index.html", route: "/", wildcard: "/*" },
 			{
 				path: "/repo/pages/about.html",
 				route: "/about",
@@ -43,7 +43,7 @@ describe("parseRouteFiles", () => {
 			"/repo/src/routes": ["/repo/src/routes/index.html"],
 		})
 
-		await expect(parseRouteFiles(bun, [], option)).resolves.toMatchObject([{route: "/"}])
+		await expect(parseRouteFiles(bun, [], option)).resolves.toMatchObject([{ route: "/" }])
 	})
 
 	test("resolves nothing when no file matches", async () => {

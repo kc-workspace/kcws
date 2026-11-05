@@ -1,7 +1,7 @@
-import type {AnyVitestConfigPlugin, ProjectConfig, UserConfig} from "../types"
+import type { AnyVitestConfigPlugin, ProjectConfig, UserConfig } from "../types"
 import type defineRootConfig from "./defineRootConfig"
 
-import {projectPlugin, rootPlugin} from "../plugins"
+import { projectPlugin, rootPlugin } from "../plugins"
 import defineConfig from "./defineConfig"
 
 /**

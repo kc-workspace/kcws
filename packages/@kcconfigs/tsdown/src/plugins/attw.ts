@@ -1,7 +1,7 @@
-import type {TsdownConfigPlugin} from "../models"
+import type { TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {type AttwOptions, mergeConfig, type WithEnabled} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { type AttwOptions, mergeConfig, type WithEnabled } from "tsdown"
 
 const attwPlugin = (config: WithEnabled<AttwOptions>): TsdownConfigPlugin<"attw"> =>
 	definePluginSync("attw", {

@@ -1,5 +1,5 @@
-import type {ExtendNamespace} from "./internal/types"
-import type {ILogger} from "./types"
+import type { ExtendNamespace } from "./internal/types"
+import type { ILogger } from "./types"
 
 import {
 	coreDebug,
@@ -11,10 +11,10 @@ import {
 	coreWarn,
 	coreWrap,
 } from "./internal/core"
-import {isDebug} from "./internal/debug"
-import {formatter} from "./internal/format"
-import {group, groupSync} from "./internal/group"
-import {createNamespace} from "./internal/namespace"
+import { isDebug } from "./internal/debug"
+import { formatter } from "./internal/format"
+import { group, groupSync } from "./internal/group"
+import { createNamespace } from "./internal/namespace"
 
 /**
  * Creates a logger instance wrapping `@actions/core` logging functions.

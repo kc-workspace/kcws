@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import browserPlugin from "./browser"
 
@@ -10,7 +10,7 @@ describe("browserPlugin", () => {
 
 	test("should set platform to browser", () => {
 		const plugin = browserPlugin()
-		const base = {platform: undefined} as any
+		const base = { platform: undefined } as any
 		const result = plugin.applyConfig?.(base)
 		expect(result?.platform).toBe("browser")
 	})

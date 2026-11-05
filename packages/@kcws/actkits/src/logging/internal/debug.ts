@@ -1,4 +1,4 @@
-import {isDebug as coreIsDebug} from "@actions/core"
+import { isDebug as coreIsDebug } from "@actions/core"
 
 /**
  * Returns whether debug logging is enabled via `@actions/core` or `DEBUG` env.

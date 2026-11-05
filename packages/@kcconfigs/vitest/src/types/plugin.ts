@@ -1,4 +1,4 @@
-import type {SyncConfigPlugin} from "@kcinternals/config-builder"
+import type { SyncConfigPlugin } from "@kcinternals/config-builder"
 
 export type VitestConfigPlugin<N extends string, C> = SyncConfigPlugin<N, C>
 

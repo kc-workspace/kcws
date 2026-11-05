@@ -123,7 +123,7 @@ The default arrays are also exported directly as `defaultBlockTags`,
 `defaultKindSortOrder`, `defaultSort`, and `defaultRequiredToBeDocumented`.
 
 ```ts
-import {defineConfig, type UserConfig} from "@kcconfigs/typedoc"
+import { defineConfig, type UserConfig } from "@kcconfigs/typedoc"
 import all from "@kcconfigs/typedoc/plugins/all"
 import github from "@kcconfigs/typedoc/themes/github"
 

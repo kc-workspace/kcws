@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {isEmpty} from "./empty"
+import { isEmpty } from "./empty"
 
 describe("empty utilities", () => {
 	describe("isEmpty", () => {

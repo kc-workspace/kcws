@@ -1,9 +1,9 @@
-import type {BunType, CommandFn} from "#types"
+import type { BunType, CommandFn } from "#types"
 
-import {Command} from "commander"
+import { Command } from "commander"
 
-import {bin, description, name, version} from "#root/package.json"
-import {createLogger, type Logger} from "#utils/logger"
+import { bin, description, name, version } from "#root/package.json"
+import { createLogger, type Logger } from "#utils/logger"
 
 class Program {
 	readonly #root: Command
@@ -43,4 +43,4 @@ class Program {
 	}
 }
 
-export {Program}
+export { Program }

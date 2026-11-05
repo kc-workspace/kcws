@@ -1,6 +1,6 @@
-import type {HTMLBundle} from "bun"
+import type { HTMLBundle } from "bun"
 
-import {pathToFileURL} from "node:url"
+import { pathToFileURL } from "node:url"
 
 /**
  * Import an HTML route file as a {@link HTMLBundle}.

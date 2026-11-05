@@ -1,5 +1,5 @@
-import {defineConfig, type TsdownConfig} from "./src/index"
-import {entryPlugin, nodePlugin, unusedPlugin} from "./src/plugins"
+import { defineConfig, type TsdownConfig } from "./src/index"
+import { entryPlugin, nodePlugin, unusedPlugin } from "./src/plugins"
 
 const config: TsdownConfig = defineConfig(
 	entryPlugin(["./src/index.ts", "./src/plugins/*.ts"]),

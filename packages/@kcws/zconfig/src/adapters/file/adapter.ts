@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {FileAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { FileAdapterOptions } from "./types"
 
-import {toAdapterError} from "#utils/errors"
-import {applyTransform} from "#utils/transforms"
-import {findConfig, normalizeOptions, readConfig, readConfigSync} from "./utils"
+import { toAdapterError } from "#utils/errors"
+import { applyTransform } from "#utils/transforms"
+import { findConfig, normalizeOptions, readConfig, readConfigSync } from "./utils"
 
 const LOAD_ERR = "Failed to load config file"
 

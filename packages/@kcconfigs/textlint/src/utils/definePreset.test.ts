@@ -1,16 +1,16 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {definePreset} from "./definePreset"
-import {defineRule} from "./defineRule"
+import { definePreset } from "./definePreset"
+import { defineRule } from "./defineRule"
 
 describe(definePreset.name, () => {
 	test("should map rule modules and rule configs by name", () => {
-		const alphaModule = {lint: "alpha"}
-		const betaModule = {lint: "beta"}
+		const alphaModule = { lint: "alpha" }
+		const betaModule = { lint: "beta" }
 		const alpha = defineRule({
 			name: "alpha",
 			module: alphaModule,
-			config: {enabled: true},
+			config: { enabled: true },
 		})
 		const beta = defineRule({
 			name: "beta",
@@ -26,7 +26,7 @@ describe(definePreset.name, () => {
 				beta: betaModule,
 			},
 			rulesConfig: {
-				alpha: {enabled: true},
+				alpha: { enabled: true },
 				beta: false,
 			},
 		})

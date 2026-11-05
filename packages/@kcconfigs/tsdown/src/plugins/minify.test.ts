@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import minifyPlugin from "./minify"
 
@@ -13,20 +13,20 @@ describe("minifyPlugin", () => {
 		const base = {}
 		const result = plugin.applyConfig?.(base)
 		expect(result?.minify).toBe(true)
-		expect(result?.css).toMatchObject({minify: true})
+		expect(result?.css).toMatchObject({ minify: true })
 	})
 
 	test("should disable minify when false is given", () => {
 		const plugin = minifyPlugin(false)
-		const base = {minify: true, css: {minify: true}}
+		const base = { minify: true, css: { minify: true } }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.minify).toBe(false)
-		expect(result?.css).toMatchObject({minify: false})
+		expect(result?.css).toMatchObject({ minify: false })
 	})
 
 	test("should override existing minify config", () => {
 		const plugin = minifyPlugin(true)
-		const base = {minify: false}
+		const base = { minify: false }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.minify).toBe(true)
 	})
@@ -35,10 +35,10 @@ describe("minifyPlugin", () => {
 		const plugin = minifyPlugin()
 		const base = {
 			entry: ["./src/index.ts"],
-			css: {fileName: "index.css"},
+			css: { fileName: "index.css" },
 		}
 		const result = plugin.applyConfig?.(base)
 		expect(result?.entry).toEqual(["./src/index.ts"])
-		expect(result?.css).toMatchObject({fileName: "index.css", minify: true})
+		expect(result?.css).toMatchObject({ fileName: "index.css", minify: true })
 	})
 })

@@ -1,4 +1,4 @@
-import type {BaseSetting} from "./setting"
+import type { BaseSetting } from "./setting"
 
 export interface BaseConfig<C> {
 	readonly setting: BaseSetting

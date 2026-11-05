@@ -1,6 +1,6 @@
-import type {AnyArray} from "../configs"
+import type { AnyArray } from "../configs"
 
-import {isEmpty} from "./empty"
+import { isEmpty } from "./empty"
 
 export const isArray = <T extends AnyArray>(value: unknown): value is T => {
 	return Array.isArray(value)

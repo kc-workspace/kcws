@@ -1,6 +1,6 @@
-import type {ReflectionKinds, SortKinds} from "./model"
+import type { ReflectionKinds, SortKinds } from "./model"
 
-import {OptionDefaults, type TagString} from "typedoc"
+import { OptionDefaults, type TagString } from "typedoc"
 
 export const defaultBlockTags: ReadonlyArray<TagString> = OptionDefaults.blockTags
 export const defaultModifierTags: ReadonlyArray<TagString> = OptionDefaults.modifierTags

@@ -1,13 +1,13 @@
-import type {RawConfig} from "#types"
-import type {FileAdapterNormalizedOptions, FileAdapterOptions} from "./types"
+import type { RawConfig } from "#types"
+import type { FileAdapterNormalizedOptions, FileAdapterOptions } from "./types"
 
-import {existsSync, readFileSync} from "node:fs"
-import {readFile} from "node:fs/promises"
-import {resolve} from "node:path"
-import {cwd} from "node:process"
+import { existsSync, readFileSync } from "node:fs"
+import { readFile } from "node:fs/promises"
+import { resolve } from "node:path"
+import { cwd } from "node:process"
 
-import {ZconfigAdapterError} from "#utils/errors"
-import {getConfigDirs} from "../_internal"
+import { ZconfigAdapterError } from "#utils/errors"
+import { getConfigDirs } from "../_internal"
 
 /**
  * Normalizes the options for the file adapter, providing default values for missing options.
@@ -31,7 +31,7 @@ export const readConfig = async (
 	parse: FileAdapterNormalizedOptions["parse"],
 ): Promise<RawConfig> => {
 	if (!path) return {}
-	const content = await readFile(path, {encoding: "utf-8"})
+	const content = await readFile(path, { encoding: "utf-8" })
 	return parse(content, path)
 }
 
@@ -40,7 +40,7 @@ export const readConfigSync = (
 	parseSync: FileAdapterNormalizedOptions["parseSync"],
 ): RawConfig => {
 	if (!path) return {}
-	const content = readFileSync(path, {encoding: "utf-8"})
+	const content = readFileSync(path, { encoding: "utf-8" })
 	return parseSync(content, path)
 }
 

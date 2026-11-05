@@ -1,4 +1,4 @@
-import {ZconfigAdapterError} from "../errors"
+import { ZconfigAdapterError } from "../errors"
 
 const importAsync = async <T>(adapter: string, moduleName: string): Promise<T> => {
 	try {

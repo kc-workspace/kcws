@@ -1,7 +1,7 @@
-import type {BunType} from "#types"
+import type { BunType } from "#types"
 
-import {resolve} from "node:path"
-import {describe, expect, test, vi} from "vitest"
+import { resolve } from "node:path"
+import { describe, expect, test, vi } from "vitest"
 
 import splitPath from "./splitPath"
 
@@ -17,19 +17,19 @@ describe("splitPath", () => {
 		{
 			name: "splits at the first segment holding a pattern",
 			source: "src/images/*.png",
-			expected: {root: "src/images", pattern: "*.png"},
+			expected: { root: "src/images", pattern: "*.png" },
 		},
 		{
 			name: "keeps the whole source as pattern when it starts with one",
 			source: "**/*.html",
-			expected: {root: "", pattern: "**/*.html"},
+			expected: { root: "", pattern: "**/*.html" },
 		},
 		{
 			name: "uses the default pattern when the source is a directory",
 			source: "assets",
-			expected: {root: "assets", pattern: "**/*"},
+			expected: { root: "assets", pattern: "**/*" },
 		},
-	])("$name", async ({source, expected}) => {
+	])("$name", async ({ source, expected }) => {
 		await expect(splitPath(createMockBun(), source, "/repo")).resolves.toEqual(expected)
 	})
 

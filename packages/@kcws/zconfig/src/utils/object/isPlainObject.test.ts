@@ -1,11 +1,11 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import isPlainObject from "./isPlainObject"
 
 describe("isPlainObject", () => {
 	test("should accept an object literal", () => {
 		expect(isPlainObject({})).toBe(true)
-		expect(isPlainObject({a: 1})).toBe(true)
+		expect(isPlainObject({ a: 1 })).toBe(true)
 	})
 
 	test("should accept a null prototype object", () => {

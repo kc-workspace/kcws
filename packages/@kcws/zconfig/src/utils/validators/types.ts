@@ -8,7 +8,7 @@
  * @internal
  */
 export interface SchemaLike {
-	_zod?: {def?: SchemaDef}
+	_zod?: { def?: SchemaDef }
 }
 
 /**
@@ -16,4 +16,4 @@ export interface SchemaLike {
  *
  * @internal
  */
-export type SchemaDef = {type?: string} & Record<string, unknown>
+export type SchemaDef = { type?: string } & Record<string, unknown>

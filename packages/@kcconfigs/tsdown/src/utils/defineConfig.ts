@@ -1,8 +1,8 @@
-import type {TsdownConfig, TsdownConfigPlugin} from "../models"
+import type { TsdownConfig, TsdownConfigPlugin } from "../models"
 
-import {defineConfigSync} from "@kcinternals/config-builder"
+import { defineConfigSync } from "@kcinternals/config-builder"
 
-import {baseConfig} from "../constants"
+import { baseConfig } from "../constants"
 import attwNormalize from "../internals/attwNormalize"
 import dtsNormalize from "../internals/dtsNormalize"
 import formatNormalize from "../internals/formatNormalize"

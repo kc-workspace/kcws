@@ -1,6 +1,6 @@
-import type {Adapter} from "#types"
+import type { Adapter } from "#types"
 
-import {ZconfigAdapterError} from "./errors"
+import { ZconfigAdapterError } from "./errors"
 
 /**
  * Normalises anything an adapter throws into a {@link ZconfigAdapterError}.

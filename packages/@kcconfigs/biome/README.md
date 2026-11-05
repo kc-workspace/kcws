@@ -109,7 +109,7 @@ Base preset with custom includes and a rule override:
 {
   "$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
   "extends": ["@kcconfigs/biome/configs/base"],
-  "files": {"includes": ["src/**/*.ts", "tests/**/*.ts"]},
+  "files": { "includes": ["src/**/*.ts", "tests/**/*.ts"] },
   "linter": {
     "rules": {
       "complexity": {
