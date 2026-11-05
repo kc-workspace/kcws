@@ -46,13 +46,18 @@ I recommended to add following to `.vscode/settings.json`.
 
 ### Presets
 
-| Name                    | Description                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------- |
-| `@kcconfigs/biome`      | Default preset. Extends `base` and adds file includes/excludes plus `useEditorconfig`         |
-| `@kcconfigs/biome/base` | Bare preset with formatter, linter, and assist rules only, without workspace-specific filters |
+| Name                      | Description                                                                                                     |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `@kcconfigs/biome`        | Default preset. Extends `base` and adds file includes/excludes plus `useEditorconfig`                           |
+| `@kcconfigs/biome/base`   | Bare preset with formatter, linter, and assist rules only, without workspace-specific filters                   |
+| `@kcconfigs/biome/svelte` | Svelte preset. Extends `base`, adds file includes/excludes (including `build`), and enables full Svelte support |
 
 The default preset excludes generated artifacts such as `dist`, `.vitest`, `node_modules`, lock files, `*.tsbuildinfo`, and release-please manifests.
 See [default.json](./src/presets/default.json) for the full list.
+
+The Svelte preset enables `html.experimentalFullSupportEnabled`, so Biome analyzes both the script
+and the template of `*.svelte` files. Variables and imports used only in the template are not reported as unused.
+This preset does not set `formatter.useEditorconfig` and do not include the [test file relaxations](#test-file-relaxations).
 
 Use `base` when you need to own the include/exclude patterns yourself.
 
