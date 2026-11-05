@@ -1,5 +1,76 @@
 # Changelog
 
+## [0.5.0](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.4.0...@kcinternals/config-builder+v0.5.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcinternals/config-builder:** Require Node.js 22 or newer.
+* **kcinternals/config-builder:** defineConfig, definePlugin and ConfigPlugin are removed; use the Sync or Async variants.
+* **kcinternals/config-builder:** replace ConfigPlugin.priority with settingPriority and configPriority.
+* **kcinternals/config-builder:** replace plugin.apply(baseConfig) with optional applySetting(setting) and applyConfig(config) hooks in ConfigPlugin.
+
+### Features
+
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcinternals/config-builder:** add base config wrapper ([447333d](https://github.com/kc-workspace/kcws/commit/447333d20c54c02c823061155eefe19feb4a5c2f))
+* **kcinternals/config-builder:** add withEnabled utility ([cf6a19c](https://github.com/kc-workspace/kcws/commit/cf6a19c61d2eb1ebd559786403a441a24aaf7cf6))
+* **kcinternals/config-builder:** refactor definePlugin api ([3e68cec](https://github.com/kc-workspace/kcws/commit/3e68cec1fb6338e2807be84aed5c75d6161ed42f))
+* **kcinternals/config-builder:** split define APIs into sync and async variants ([16bf1e5](https://github.com/kc-workspace/kcws/commit/16bf1e56edaeb8fc053c52d476230442a37a54e1))
+* **kcinternals/config-builder:** split plugin apply hooks ([7b2532a](https://github.com/kc-workspace/kcws/commit/7b2532a539cbc1d5874adf15d45191de279f0611))
+* **kcinternals/config-builder:** split plugin priorities ([f1fb222](https://github.com/kc-workspace/kcws/commit/f1fb22251760ceec8731ebb68cac4fbdd72f93db))
+* **kcinternals/config-builder:** split setting and config apply phases ([3f1edce](https://github.com/kc-workspace/kcws/commit/3f1edce1d12497f7cf8a1774805e43a88b56bcf3))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+* **kcinternals/config-builder:** export withEnabled for WithEnabled helpers ([fbe2b58](https://github.com/kc-workspace/kcws/commit/fbe2b58820633ab076e8568542e37c0fb59a98d1))
+
+
+### Bugfixes
+
+* **kcinternals/config-builder:** improve undefined applySetting and applyConfig in plugin better ([422b803](https://github.com/kc-workspace/kcws/commit/422b80345e7e97f3da74bfc69f57d0104cc4beb4))
+* **kcinternals/config-builder:** use toSorted to avoid mutating plugins array ([2c1ee0a](https://github.com/kc-workspace/kcws/commit/2c1ee0a7f70a245ac30e4a237a933fb00c2b3fa6))
+
+
+### Documentation
+
+* **kcinternals/config-builder:** replace hard tabs with spaces in README examples ([82a7850](https://github.com/kc-workspace/kcws/commit/82a78505a1994ebe60a819f7c1d69f12c05a147f))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* **kcinternals/config-builder:** drop clearMocks now default in Vitest 5 ([7649e92](https://github.com/kc-workspace/kcws/commit/7649e923a7c83398d73bdf8b6ffe25afe1718e23))
+* **kcinternals/config-builder:** extract debug logger helpers ([695a28d](https://github.com/kc-workspace/kcws/commit/695a28d921ac0017192b8f75cab3e9d4cecd39bd))
+* **kcinternals/config-builder:** remove redundant PluginPriority type alias ([9c7dc40](https://github.com/kc-workspace/kcws/commit/9c7dc400f8a6125164c654d7562d387c13984465))
+* **kcinternals/config-builder:** rename models to types ([953851d](https://github.com/kc-workspace/kcws/commit/953851d988188dcfd41ca23896d9389033d0c8a2))
+* **kcinternals/config-builder:** simplify defineConfig pipeline ([f53542f](https://github.com/kc-workspace/kcws/commit/f53542fb5a1f9c091708982928962443580d41c7))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcinternals/config-builder:** require Node 22 ([5cbca76](https://github.com/kc-workspace/kcws/commit/5cbca760888d4416707070c6c1de5b0460ef28a8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.1.0
+    * @kcconfigs/tsconfig bumped to 3.0.1
+
 ## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcinternals/config-builder+v0.3.3...@kcinternals/config-builder+v0.4.0) (2026-11-05)
 
 

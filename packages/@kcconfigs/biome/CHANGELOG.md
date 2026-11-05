@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.0.0...@kcconfigs/biome+v4.1.0) (2026-11-05)
+
+
+### Features
+
+* **kcconfigs/biome:** indent markdown with spaces ([06fde9a](https://github.com/kc-workspace/kcws/commit/06fde9acdd7bb7917fed94896639b6580fe6ba89))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+
 ## [4.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v3.1.0...@kcconfigs/biome+v4.0.0) (2026-11-05)
 
 

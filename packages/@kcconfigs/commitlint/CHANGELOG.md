@@ -1,5 +1,67 @@
 # Changelog
 
+## [0.6.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.5.0...@kcconfigs/commitlint+v0.6.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/commitlint:** defineConfig no longer accepts { types, autoScopes, scopes }. Use typesPlugin(mode), scopePlugin(scopes) or autoScopePlugin(additional) from @kcconfigs/commitlint/plugins instead.
+
+### Features
+
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcconfigs/commitlint:** migrate to @kcinternals/config-builder plugin API ([96e4213](https://github.com/kc-workspace/kcws/commit/96e42134892610b091e40a598549b4685266ff0f))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps-dev:** bump the commitlint group across 1 directory with 3 updates ([#215](https://github.com/kc-workspace/kcws/issues/215)) ([76f6943](https://github.com/kc-workspace/kcws/commit/76f6943767aad9c8a479c2ccc8ebc9359dd58419))
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **deps:** bump the commitlint group across 1 directory with 4 updates ([#168](https://github.com/kc-workspace/kcws/issues/168)) ([68ce0be](https://github.com/kc-workspace/kcws/commit/68ce0be74f6d1d450b52dade886d04ff3885c6c8))
+* **deps:** bump the commitlint group across 1 directory with 5 updates ([#159](https://github.com/kc-workspace/kcws/issues/159)) ([456e4e0](https://github.com/kc-workspace/kcws/commit/456e4e0937dcfb22f6263a2bc9efd7b5a4863e03))
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+* **kcconfigs/commitlint:** migrate tsdown config to new apis ([dd891b1](https://github.com/kc-workspace/kcws/commit/dd891b1943a12c7942c42391ce7adbd15cff2613))
+
+
+### Documentation
+
+* **kcconfigs/commitlint:** init readme ([c61646e](https://github.com/kc-workspace/kcws/commit/c61646e3c3bd53e393435da1c7773dda6e81c122))
+* **kcconfigs/commitlint:** split async config section and align plugin table ([3a69502](https://github.com/kc-workspace/kcws/commit/3a69502bdee65efd5b7047a12e27d23cc3fef867))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* **kcconfigs/commitlint:** migrate to async config-builder APIs ([5f8d350](https://github.com/kc-workspace/kcws/commit/5f8d3503d5bbc956af8ef6a6e5ff8a3cef4ab635))
+* **kcconfigs/commitlint:** re-export Severity directly ([47368c5](https://github.com/kc-workspace/kcws/commit/47368c534df4113e1f108fafddb1d89dc6c35baf))
+* **kcconfigs/commitlint:** use number type for plugin priority constants ([a70843d](https://github.com/kc-workspace/kcws/commit/a70843dbc5290529b79038b6bbf1031c4d5a8369))
+* **kcconfigs/commitlint:** wrap plugin inputs with Promise.resolve ([2bff15a](https://github.com/kc-workspace/kcws/commit/2bff15a98a80c9a6d85ed92c5db3f4a2af2b0b9e))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.5.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.1.0
+    * @kcconfigs/tsconfig bumped to 3.0.1
+    * @kcconfigs/tsdown bumped to 0.6.0
+    * @kcconfigs/vitest bumped to 0.2.0
+
 ## [0.5.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.4.3...@kcconfigs/commitlint+v0.5.0) (2026-11-05)
 
 

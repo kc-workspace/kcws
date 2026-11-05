@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.0.5](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v2.0.4...@kcstyles/reset.css+v2.0.5) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+
+
+### Documentation
+
+* add blank lines around markdown lists ([af84f16](https://github.com/kc-workspace/kcws/commit/af84f167a4e9545d480c20097953c7b5f4663d77))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 3.0.1
+    * @kcconfigs/tsdown bumped to 0.6.0
+
 ## [2.0.4](https://github.com/kc-workspace/kcws/compare/@kcstyles/reset.css+v2.0.3...@kcstyles/reset.css+v2.0.4) (2026-11-05)
 
 
