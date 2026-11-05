@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.2](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.2.1...@kcws/actkits+v0.2.2) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps:** bump zod from 4.6.5 to 4.6.7 ([#277](https://github.com/kc-workspace/kcws/issues/277)) ([20d6a9b](https://github.com/kc-workspace/kcws/commit/20d6a9b905776af29beca0f45fca7ee8e4ee3a5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.1.1
+    * @kcconfigs/tsdown bumped to 0.4.2
+    * @kcconfigs/vitest bumped to 0.4.2
+
 ## [0.2.1](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.2.0...@kcws/actkits+v0.2.1) (2026-10-12)
 
 
