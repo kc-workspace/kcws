@@ -1,5 +1,28 @@
 # Changelog
 
+## [3.0.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v2.1.2...@kcconfigs/tsconfig+v3.0.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+
+### Features
+
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.0.0
+
 ## [2.1.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v2.1.1...@kcconfigs/tsconfig+v2.1.2) (2026-11-05)
 
 
