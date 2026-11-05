@@ -1,5 +1,66 @@
 # Changelog
 
+## [0.3.4](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.2.0...@kcws/zconfig+v0.3.4) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcws/zconfig:** Require Node.js 22 or newer.
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcws/zconfig:** add auto config adapter ([7eb1586](https://github.com/kc-workspace/kcws/commit/7eb1586a7ad2efc6fdff7480a3e7f9f243f89401))
+* **kcws/zconfig:** add content and stream adapters ([#262](https://github.com/kc-workspace/kcws/issues/262)) ([a35afcc](https://github.com/kc-workspace/kcws/commit/a35afcc763ac6605cfebeea3373506d626cb5eaa))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps-dev:** bump dotenv from 18.0.6 to 18.0.8 ([#273](https://github.com/kc-workspace/kcws/issues/273)) ([8079857](https://github.com/kc-workspace/kcws/commit/8079857713ba9a2016ecf7d02a40ff0f6ef10a38))
+* **deps-dev:** bump smol-toml from 1.9.0 to 1.9.1 ([#270](https://github.com/kc-workspace/kcws/issues/270)) ([a5c8c1c](https://github.com/kc-workspace/kcws/commit/a5c8c1c8fc074c4d54fb4de154ef3fcf34a6cfc7))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** bump zod from 4.4.3 to 4.6.5 ([#255](https://github.com/kc-workspace/kcws/issues/255)) ([aeee6fe](https://github.com/kc-workspace/kcws/commit/aeee6fefd47d4b4a4cc9d14da5db58b1c8bed34e))
+* **deps:** bump zod from 4.6.5 to 4.6.7 ([#277](https://github.com/kc-workspace/kcws/issues/277)) ([20d6a9b](https://github.com/kc-workspace/kcws/commit/20d6a9b905776af29beca0f45fca7ee8e4ee3a5e))
+* **kcws/zconfig:** add autoAdapter and getAutoFiles to `@kcws/zconfig/adapters` ns ([5e37832](https://github.com/kc-workspace/kcws/commit/5e37832c9abc19d207edd7009bdeeb18559f53ee))
+* **kcws/zconfig:** update use*Adapters to use auto adapters instead ([bda371a](https://github.com/kc-workspace/kcws/commit/bda371a7a161b865fa7e5e367114a80c4e0235c7))
+
+
+### Bugfixes
+
+* **kcws/zconfig:** load JSONC parser correctly ([329a512](https://github.com/kc-workspace/kcws/commit/329a5120bc1f02f6cfc76d2a2756f800dbeb1910))
+
+
+### Code Refactoring
+
+* **kcws/zconfig:** reduce complex string template ([e35dbae](https://github.com/kc-workspace/kcws/commit/e35dbaeb766feabdb4c0d9a81cc95a575a1c083c))
+* **kcws/zconfig:** return Promise.resolve in env adapter load ([ee023bb](https://github.com/kc-workspace/kcws/commit/ee023bbb222ab7580fe879802a7e96497bbe0d50))
+* **kcws/zconfig:** return Promise.resolve in static adapter load ([0d43ce7](https://github.com/kc-workspace/kcws/commit/0d43ce73eae00a98d9ad1408fa2ffee49a57546c))
+* **kcws/zconfig:** simplify logic in decodeEnvKey function ([d1cb8ff](https://github.com/kc-workspace/kcws/commit/d1cb8ff1690243f1cc2c8bf7fc63a5d8ed62100e))
+* **kcws/zconfig:** use shorthand character classes in env key regex ([e22d334](https://github.com/kc-workspace/kcws/commit/e22d334aefb623dc42644cc919f1d080ee50dcd0))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcws/zconfig:** force update v0.2.0 =&gt; v0.3.4 ([286e1c1](https://github.com/kc-workspace/kcws/commit/286e1c1ebbe1ce6f5ba17cd7956cac054556e59e))
+* **kcws/zconfig:** require Node 22 ([29cc46e](https://github.com/kc-workspace/kcws/commit/29cc46e74617cd9ebf2eb354dff14f0f433ef7eb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.0
+    * @kcconfigs/tsconfig bumped to 2.1.3
+    * @kcconfigs/tsdown bumped to 0.4.4
+    * @kcconfigs/vitest bumped to 0.4.4
+
 ## [0.3.3](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.2...@kcws/zconfig+v0.3.3) (2026-11-05)
 
 

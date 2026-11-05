@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v3.0.1...@kctypes/generic+v3.1.0) (2026-11-05)
+
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+
 ## [3.0.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v3.0.0...@kctypes/generic+v3.0.1) (2026-11-05)
 
 

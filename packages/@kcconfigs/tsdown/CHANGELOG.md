@@ -1,5 +1,81 @@
 # Changelog
 
+## [0.4.4](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.6.0...@kcconfigs/tsdown+v0.4.4) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/tsdown:** Require Node.js 22 or newer.
+* **kcconfigs/tsdown:** `minify` and `css.minify` default to `false`. Add `minifyPlugin()` to keep minified output.
+
+### Features
+
+* **kcconfigs/biome:** enable bracket spacing for objects ([#288](https://github.com/kc-workspace/kcws/issues/288)) ([f5769dc](https://github.com/kc-workspace/kcws/commit/f5769dcbc3d21f1589834e01a5bef32b44688c28))
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcconfigs/tsdown:** add CSS output configuration to css and debug plugins ([7f58915](https://github.com/kc-workspace/kcws/commit/7f5891530bfd55d9593c1ed4eb5d9d3b2bef91a9))
+* **kcconfigs/tsdown:** add output option to cssPlugin ([92abc60](https://github.com/kc-workspace/kcws/commit/92abc60c6a432d7948789898b11ff04c2184cd0c))
+* **kcconfigs/tsdown:** add plugin barrel exports ([ab96809](https://github.com/kc-workspace/kcws/commit/ab9680913b2bb954ce62b0c2224b69be19580b0a))
+* **kcconfigs/tsdown:** add verbose option and applySetting to debugPlugin ([fb6154f](https://github.com/kc-workspace/kcws/commit/fb6154f6d5c86b32f81e0512c17a152f1dbca8c3))
+* **kcconfigs/tsdown:** disable minify by default and add minifyPlugin ([18ec633](https://github.com/kc-workspace/kcws/commit/18ec6332702f1d447f435c861015a76823aab9c5))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **deps:** bump publint from 0.3.21 to 0.3.23 ([#206](https://github.com/kc-workspace/kcws/issues/206)) ([76dd726](https://github.com/kc-workspace/kcws/commit/76dd726c36c426925ba46fc5e5ac5f4b7080ca47))
+* **deps:** bump publint from 0.3.23 to 0.3.24 ([#223](https://github.com/kc-workspace/kcws/issues/223)) ([89be044](https://github.com/kc-workspace/kcws/commit/89be044ea0b4e2db384ec5836f638f3f57a7b982))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Bugfixes
+
+* **kcconfigs/tsdown:** align Node.js engines with tsdown 0.23 ([b767198](https://github.com/kc-workspace/kcws/commit/b7671983e0db0db0ac1132c9b28c2172d566494f))
+* **kcconfigs/tsdown:** invalid build script ([46408a3](https://github.com/kc-workspace/kcws/commit/46408a3bde2ae0659ae12977d8f7341560123cea))
+* **kcconfigs/tsdown:** previously tsconfig ignore test file by default cause some error to face up ([a2134ed](https://github.com/kc-workspace/kcws/commit/a2134edf9ee135d3fbcbbdb8dad85acec20990a2))
+* **kcconfigs/tsdown:** still publish old cjs for tsdown on node v22.0.0 to v22.18.0 for now ([fd49d67](https://github.com/kc-workspace/kcws/commit/fd49d67d7c93f9c61a8179b909f83e06e43d1b8c))
+
+
+### Documentation
+
+* **kcconfigs/tsdown:** add readme ([a386e5e](https://github.com/kc-workspace/kcws/commit/a386e5ea32b18986880cbf66b3862ca08a048b62))
+* **kcconfigs/tsdown:** refresh docs ([180065c](https://github.com/kc-workspace/kcws/commit/180065c1b9af1ea5f0e5183d6a3a93e53e4b21c5))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* **kcconfigs/tsdown:** merge duplicate tsdown imports ([fc99d41](https://github.com/kc-workspace/kcws/commit/fc99d416bbaad48735b105a0601819fa33602357))
+* **kcconfigs/tsdown:** migrate internals plugins to config-builder API ([1aa51ba](https://github.com/kc-workspace/kcws/commit/1aa51ba0e0b99838ae78f7f880c71fd486f79586))
+* **kcconfigs/tsdown:** migrate to sync config-builder APIs ([627c7bd](https://github.com/kc-workspace/kcws/commit/627c7bdc934a14355da55009b4da29aeb394741e))
+* **kcconfigs/tsdown:** rename apply to applyConfig and TsdownPlugin to TsdownConfigPlugin ([c405e5f](https://github.com/kc-workspace/kcws/commit/c405e5fc5face3ca0dfc470ec9400c886d5b6e1f))
+* **kcconfigs/tsdown:** simplify defineConfig by removing DefineOption parameter ([3f0845f](https://github.com/kc-workspace/kcws/commit/3f0845fa6d518d5a70786aa38168ec2c97baa5d0))
+* **kcconfigs/tsdown:** update models for config-builder API ([aed121c](https://github.com/kc-workspace/kcws/commit/aed121c595f7bab8cf4531bc16dc552b39e7ccda))
+* **kcconfigs/tsdown:** use barrel import for plugins and clean up index exports ([86b7bd5](https://github.com/kc-workspace/kcws/commit/86b7bd5c7d31dc7a18bd4b9b8a5675839b77f3e9))
+* **kcconfigs/tsdown:** use number type for plugin priority constants ([15b4682](https://github.com/kc-workspace/kcws/commit/15b46825492474eb96e5ec42ded27698b85ccbde))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/tsdown:** force update v0.6.0 =&gt; v0.4.4 ([d0eb60b](https://github.com/kc-workspace/kcws/commit/d0eb60bd82507d2a8aa5d7e944533d7008d72c25))
+* **kcconfigs/tsdown:** require Node 22 ([d26ffe7](https://github.com/kc-workspace/kcws/commit/d26ffe771ff4d89a3fb8bbeb0710a964e1b0096c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.4
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.0
+    * @kcconfigs/tsconfig bumped to 2.1.3
+
 ## [0.4.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.4.2...@kcconfigs/tsdown+v0.4.3) (2026-11-05)
 
 
