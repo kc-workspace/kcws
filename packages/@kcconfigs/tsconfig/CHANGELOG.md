@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v2.1.0...@kcconfigs/tsconfig+v2.1.1) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps:** bump @types/bun from 1.4.2 to 1.4.3 ([#274](https://github.com/kc-workspace/kcws/issues/274)) ([e33537a](https://github.com/kc-workspace/kcws/commit/e33537a54e04099ce4b4c51a3ff6e2e2c3ccaf32))
+* **deps:** bump @types/node from 24.19.0 to 24.19.2 ([#268](https://github.com/kc-workspace/kcws/issues/268)) ([2f1b372](https://github.com/kc-workspace/kcws/commit/2f1b372b7ab3e8d3778cb01624c8edaf86777e81))
+
 ## [2.1.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsconfig+v2.0.0...@kcconfigs/tsconfig+v2.1.0) (2026-10-12)
 
 

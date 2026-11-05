@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.3](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.2...@kctools/bun-server+v0.4.3) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps:** bump @types/bun from 1.4.2 to 1.4.3 ([#274](https://github.com/kc-workspace/kcws/issues/274)) ([e33537a](https://github.com/kc-workspace/kcws/commit/e33537a54e04099ce4b4c51a3ff6e2e2c3ccaf32))
+
+
+### Bugfixes
+
+* **kctools/bun-server:** preserve build date env ([6dda797](https://github.com/kc-workspace/kcws/commit/6dda797e4a3569ddd4109ac18952dca2521e4ef5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.1.1
+    * @kcconfigs/tsdown bumped to 0.4.2
+    * @kcconfigs/vitest bumped to 0.4.2
+
 ## [0.4.2](https://github.com/kc-workspace/kcws/compare/@kctools/bun-server+v0.4.1...@kctools/bun-server+v0.4.2) (2026-10-12)
 
 

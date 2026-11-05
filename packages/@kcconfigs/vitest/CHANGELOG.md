@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.4.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.4.1...@kcconfigs/vitest+v0.4.2) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps:** bump memfs ([56d2219](https://github.com/kc-workspace/kcws/commit/56d22196d0ec787878f698d3050969698178e1d7))
+* **deps:** bump memfs from 4.79.0 to 4.80.0 in the vitest group across 1 directory ([#264](https://github.com/kc-workspace/kcws/issues/264)) ([56d2219](https://github.com/kc-workspace/kcws/commit/56d22196d0ec787878f698d3050969698178e1d7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.2
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.1.1
+    * @kcconfigs/tsdown bumped to 0.4.2
+
 ## [0.4.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.4.0...@kcconfigs/vitest+v0.4.1) (2026-10-12)
 
 

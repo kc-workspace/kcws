@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.2](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.1...@kcws/zconfig+v0.3.2) (2026-11-05)
+
+
+### Features
+
+* **kcws/zconfig:** add content and stream adapters ([#262](https://github.com/kc-workspace/kcws/issues/262)) ([a35afcc](https://github.com/kc-workspace/kcws/commit/a35afcc763ac6605cfebeea3373506d626cb5eaa))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump dotenv from 18.0.6 to 18.0.8 ([#273](https://github.com/kc-workspace/kcws/issues/273)) ([8079857](https://github.com/kc-workspace/kcws/commit/8079857713ba9a2016ecf7d02a40ff0f6ef10a38))
+* **deps-dev:** bump smol-toml from 1.9.0 to 1.9.1 ([#270](https://github.com/kc-workspace/kcws/issues/270)) ([a5c8c1c](https://github.com/kc-workspace/kcws/commit/a5c8c1c8fc074c4d54fb4de154ef3fcf34a6cfc7))
+* **deps:** bump zod from 4.6.5 to 4.6.7 ([#277](https://github.com/kc-workspace/kcws/issues/277)) ([20d6a9b](https://github.com/kc-workspace/kcws/commit/20d6a9b905776af29beca0f45fca7ee8e4ee3a5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/tsconfig bumped to 2.1.1
+    * @kcconfigs/tsdown bumped to 0.4.2
+    * @kcconfigs/vitest bumped to 0.4.2
+
 ## [0.3.1](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.0...@kcws/zconfig+v0.3.1) (2026-10-12)
 
 
