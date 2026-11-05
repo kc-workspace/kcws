@@ -18,12 +18,12 @@
 		"@arethetypeswrong/core": "0.18.5",
 		"@kcinternals/config-builder": "workspace:*",
 		"publint": "0.3.25",
-		"tsdown": "0.23.0",
+		"tsdown": "0.23.5",
 		"unplugin-unused": "0.5.7",
 		"unrun": "0.3.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.2",
+		"@biomejs/biome": "2.6.5",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*"
 	},

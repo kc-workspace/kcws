@@ -30,7 +30,7 @@ Presets are referenced as `@kcconfigs/biome/configs/<name>`:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"extends": ["@kcconfigs/biome/configs/default"]
 }
 ```
@@ -103,7 +103,7 @@ Base preset with custom includes and a rule override:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"extends": ["@kcconfigs/biome/configs/base"],
 	"files": {"includes": ["src/**/*.ts", "tests/**/*.ts"]},
 	"linter": {
@@ -120,7 +120,7 @@ Base preset with shared ignores and full HTML support:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"extends": [
 		"@kcconfigs/biome/configs/base",
 		"@kcconfigs/biome/configs/features.ignores",

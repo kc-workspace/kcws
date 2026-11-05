@@ -16,17 +16,17 @@
 		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.2",
+		"@biomejs/biome": "2.6.5",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
-		"dotenv": "18.0.8",
+		"dotenv": "18.0.9",
 		"json5": "2.2.3",
 		"jsonc-parser": "3.3.1",
 		"smol-toml": "1.9.1",
-		"tsdown": "0.23.0",
-		"vitest": "5.0.3",
+		"tsdown": "0.23.5",
+		"vitest": "5.1.0",
 		"yaml": "2.9.1",
 		"zod": "4.6.7"
 	},

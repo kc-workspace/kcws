@@ -16,13 +16,13 @@
 		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.2",
+		"@biomejs/biome": "2.6.5",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kcconfigs/vitest": "workspace:*",
-		"tsdown": "0.23.0",
-		"vitest": "5.0.3"
+		"tsdown": "0.23.5",
+		"vitest": "5.1.0"
 	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.cts",

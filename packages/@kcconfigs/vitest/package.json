@@ -17,15 +17,15 @@
 	"dependencies": {
 		"@kcinternals/config-builder": "workspace:*",
 		"memfs": "4.80.0",
-		"vitest": "5.0.3"
+		"vitest": "5.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.2",
+		"@biomejs/biome": "2.6.5",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
 		"@kctypes/generic": "workspace:*",
-		"tsdown": "0.23.0"
+		"tsdown": "0.23.5"
 	},
 	"peerDependencies": {
 		"vitest": "^5.0.0"

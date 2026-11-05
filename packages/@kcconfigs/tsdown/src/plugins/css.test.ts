@@ -39,8 +39,7 @@ describe("cssPlugin", () => {
 		const plugin = cssPlugin()
 		const base = {} as TsdownConfig
 		const result = plugin.applyConfig?.(base)
-		expect(result?.css?.minify).toBe(false)
-		expect(result?.css?.fileName).toBe("index.css")
+		expect(result?.css).toMatchObject({minify: false, fileName: "index.css"})
 		expect(result?.format).toBe("esm")
 	})
 

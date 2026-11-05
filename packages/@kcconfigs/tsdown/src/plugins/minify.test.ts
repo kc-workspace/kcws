@@ -13,7 +13,7 @@ describe("minifyPlugin", () => {
 		const base = {}
 		const result = plugin.applyConfig?.(base)
 		expect(result?.minify).toBe(true)
-		expect(result?.css?.minify).toBe(true)
+		expect(result?.css).toMatchObject({minify: true})
 	})
 
 	test("should disable minify when false is given", () => {
@@ -21,7 +21,7 @@ describe("minifyPlugin", () => {
 		const base = {minify: true, css: {minify: true}}
 		const result = plugin.applyConfig?.(base)
 		expect(result?.minify).toBe(false)
-		expect(result?.css?.minify).toBe(false)
+		expect(result?.css).toMatchObject({minify: false})
 	})
 
 	test("should override existing minify config", () => {
@@ -39,7 +39,6 @@ describe("minifyPlugin", () => {
 		}
 		const result = plugin.applyConfig?.(base)
 		expect(result?.entry).toEqual(["./src/index.ts"])
-		expect(result?.css?.fileName).toBe("index.css")
-		expect(result?.css?.minify).toBe(true)
+		expect(result?.css).toMatchObject({fileName: "index.css", minify: true})
 	})
 })
