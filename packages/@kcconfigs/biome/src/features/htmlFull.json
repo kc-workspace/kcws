@@ -1,4 +1,7 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
-	"html": { "experimentalFullSupportEnabled": true }
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": { "enabled": true }
+	}
 }
