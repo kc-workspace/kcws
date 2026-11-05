@@ -76,6 +76,13 @@
 			"formatter": {
 				"expand": "always"
 			}
+		},
+		{
+			"includes": ["**/*.md"],
+			"formatter": {
+				"indentStyle": "space",
+				"indentWidth": 2
+			}
 		}
 	]
 }

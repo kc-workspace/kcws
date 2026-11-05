@@ -31,8 +31,8 @@ Presets are referenced as `@kcconfigs/biome/configs/<name>`:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
-	"extends": ["@kcconfigs/biome/configs/default"]
+  "$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
+  "extends": ["@kcconfigs/biome/configs/default"]
 }
 ```
 
@@ -42,9 +42,9 @@ I recommended to add following to `.vscode/settings.json`.
 
 ```json
 {
-	"editor.codeActionsOnSave": {
-		"source.fixAll.biome": "explicit"
-	}
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  }
 }
 ```
 
@@ -87,6 +87,7 @@ Inherited from [base.json](./src/presets/base.json):
 - **Line width**: 120
 - **Line ending**: LF
 - **package.json**: arrays and objects always expanded, one item per line
+- **Markdown** (`**/*.md`): indented with 2 spaces instead of tabs, including fenced code blocks
 - **VCS integration**: enabled, uses `.gitignore`, default branch `main`
 
 The default preset also sets `formatter.useEditorconfig` to `true`,
@@ -106,16 +107,16 @@ Base preset with custom includes and a rule override:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
-	"extends": ["@kcconfigs/biome/configs/base"],
-	"files": {"includes": ["src/**/*.ts", "tests/**/*.ts"]},
-	"linter": {
-		"rules": {
-			"complexity": {
-				"noUselessSwitchCase": "warn"
-			}
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
+  "extends": ["@kcconfigs/biome/configs/base"],
+  "files": {"includes": ["src/**/*.ts", "tests/**/*.ts"]},
+  "linter": {
+    "rules": {
+      "complexity": {
+        "noUselessSwitchCase": "warn"
+      }
+    }
+  }
 }
 ```
 
@@ -123,12 +124,12 @@ Base preset with shared ignores and full HTML support:
 
 ```jsonc
 {
-	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
-	"extends": [
-		"@kcconfigs/biome/configs/base",
-		"@kcconfigs/biome/configs/features.ignores",
-		"@kcconfigs/biome/configs/features.htmlFull"
-	]
+  "$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
+  "extends": [
+    "@kcconfigs/biome/configs/base",
+    "@kcconfigs/biome/configs/features.ignores",
+    "@kcconfigs/biome/configs/features.htmlFull"
+  ]
 }
 ```
 
