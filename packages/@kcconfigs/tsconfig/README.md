@@ -2,6 +2,7 @@
 
 Shared TypeScript configuration presets for the kc-workspace monorepo.
 Provides multiple tsconfig.json templates for different project types and use cases.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Recommended settings](#recommended-settings)
@@ -27,6 +28,7 @@ Provides multiple tsconfig.json templates for different project types and use ca
 
 These peer dependencies are optional and only needed by the presets or features
 that reference them:
+
 - `@types/node` for `features/types` and the `default` preset
 - `@types/bun` for `features/bun` and the `bun` preset
 - `@kctypes/generic` for `features/types` and `features/bun`
@@ -71,6 +73,7 @@ Example use presets
 #### Root
 
 We are have some restriction:
+
 1. Your packages must be on `packages` directory
 
 ```json
@@ -141,6 +144,7 @@ To extend configurations with custom settings:
 ## Compiler Options
 
 All configurations inherit base settings:
+
 - **Target**: ESNext
 - **Module**: `preserve` (`envs/node` switches it to `nodenext`,
   `envs/web` to `esnext`)

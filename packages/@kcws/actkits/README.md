@@ -1,6 +1,7 @@
 # @kcws/actkits
 
 Shared GitHub Actions toolkit utilities for context detection, typed input parsing, structured logging, and workflow outputs.
+
 - [Installation](#installation)
 - [What is included](#what-is-included)
 - [Usage](#usage)

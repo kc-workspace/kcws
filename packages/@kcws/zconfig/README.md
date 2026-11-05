@@ -90,6 +90,7 @@ Keys from source files may use another convention. Rename them with an adapter `
 ## Value coercion
 
 Adapters preserve source values. Put coercion in the schema, where the intended type is known:
+
 - Use `z.coerce.number()` when a number may arrive from YAML as a number or from the environment as a string.
 - Use `z.union([z.boolean(), z.stringbool()])` for booleans that may arrive from either source. Avoid
   `z.coerce.boolean()`: JavaScript truthiness makes the string `"false"` truthy.

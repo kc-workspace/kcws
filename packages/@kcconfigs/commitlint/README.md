@@ -3,6 +3,7 @@
 Shared [commitlint](https://commitlint.js.org/) configuration with a typed
 `defineConfig` helper and composable plugins for commit types, fixed or
 workspace-detected scopes, and raw overrides.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -66,6 +67,7 @@ export default config
 
 `defineConfig()` without plugins produces the same config as
 `defineConfig(typesPlugin("standard"), autoScopePlugin())`:
+
 - `parserPreset` is `@commitlint/config-conventional`
 - `type-enum` allows the standard conventional commit types
 - `scope-enum` allows the workspace packages detected in the current directory

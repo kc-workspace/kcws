@@ -2,6 +2,7 @@
 
 Shared TypeDoc configuration with composable presets, themes, and plugins
 for generating consistent API documentation across the monorepo.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -136,6 +137,7 @@ export default config
 ### Base options
 
 `defineBaseConfig` sets, among others:
+
 - `entryPointStrategy`: `"resolve"`
 - `emit`: `"docs"`, `cleanOutputDir`: `true`
 - `packageOptions.includeVersion`: `true`

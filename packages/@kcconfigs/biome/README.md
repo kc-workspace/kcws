@@ -1,6 +1,7 @@
 # @kcconfigs/biome
 
 Shared [Biome](https://biomejs.dev/) formatter, linter, and assist settings.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -80,6 +81,7 @@ Variables and imports used only in the template are not reported as unused.
 ## Formatter defaults
 
 Inherited from [base.json](./src/presets/base.json):
+
 - **Indent style**: tab
 - **Indent width**: 2
 - **Line width**: 120
@@ -94,6 +96,7 @@ so an `.editorconfig` in your repository takes precedence over the values above.
 
 The default preset relaxes a few rules for `**/*.test.*`, `**/*.spec.*`,
 and `**/__mocks__/**`:
+
 - `suspicious/noExplicitAny`: off
 - `style/noNonNullAssertion`: off
 

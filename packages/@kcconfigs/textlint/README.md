@@ -23,6 +23,7 @@ definitions.
 
 The bundled rule and filter modules ship as direct dependencies, so they do not
 need to be installed separately:
+
 - `textlint-rule-terminology`
 - `textlint-filter-rule-allowlist`
 - `textlint-filter-rule-comments`

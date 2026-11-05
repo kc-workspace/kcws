@@ -3,6 +3,7 @@
 Command line server for plain HTML websites, powered by [Bun](https://bun.com/).
 Serves HTML entrypoints in development, builds them for production, and
 previews the build output.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -98,6 +99,7 @@ Default is the source root. The layout below the root is kept:
 | `--statics public:icons` | `dist/icons/img/logo.png`           |
 
 Rules:
+
 - The value is split at the last `:`.
 - An absolute source requires a target (`/shared/icons:icons`).
 - A target outside the output directory (`..`, `/`, `/etc`) is an error.
@@ -168,6 +170,7 @@ bun-server preview [directory] [options]
 Serves a built directory (default `dist`) without bundling. Takes the
 [server options](#server-options). A request `/x` resolves to the first that
 exists:
+
 1. `x`
 2. `x/index.html`
 3. `x.html`

@@ -2,6 +2,7 @@
 
 Shared [Vitest](https://vitest.dev/) configuration with composable plugins,
 a monorepo root/project split, and filesystem mock helpers.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -20,6 +21,7 @@ a monorepo root/project split, and filesystem mock helpers.
 - **Vite**: required peer dependency of Vitest 5
 
 Optional, only needed by the defaults they back:
+
 - `@vitest/coverage-v8` for the default v8 coverage provider
 - `@vitest/ui` for the default `html` reporter
 
@@ -113,6 +115,7 @@ optional `replace` flag:
 ## Defaults
 
 The shared root base config sets:
+
 - `environment`: `"node"`
 - `restoreMocks`, `mockReset`, `unstubGlobals`, `unstubEnvs`: `true`
   (`clearMocks` is already `true` by default in Vitest 5)

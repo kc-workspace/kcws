@@ -2,6 +2,7 @@
 
 Shared [tsdown](https://tsdown.dev/) configuration with a typed
 `defineConfig` helper and composable plugins for common package build setups.
+
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -13,10 +14,12 @@ Shared [tsdown](https://tsdown.dev/) configuration with a typed
 ## Prerequisites
 
 Required peer dependencies:
+
 - `tsdown`: 0.22.7 or higher
 - `unrun`: 0.3.0 or higher
 
 Optional peer dependencies, used by the checks that are enabled by default:
+
 - `publint`
 - `@arethetypeswrong/core`
 - `unplugin-unused`
@@ -57,6 +60,7 @@ To merge a plain tsdown config object, wrap it in `overridePlugin`.
 `defineConfig()` starts from an internal base config, applies your plugins,
 then appends internal normalizers for `attw`, `dts`, `format`, and `publint`.
 Current defaults include:
+
 - `entry`: `./src/index.ts`, excluding `*.example.ts`, `*.test.ts`, `*.spec.ts`,
   `*.test-d.ts`, and `*.spec-d.ts` under `./src`
 - `platform`: `"neutral"`
