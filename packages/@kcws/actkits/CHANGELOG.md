@@ -1,5 +1,69 @@
 # Changelog
 
+## [0.4.0](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.3.0...@kcws/actkits+v0.4.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcws/actkits:** Require Node.js 22 or newer.
+
+### Features
+
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcws/actkits:** add json/yaml string and file ztypes ([bae7726](https://github.com/kc-workspace/kcws/commit/bae77266f34b25077777f2f83bb93c9ccd00a784))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **deps:** bump the commitlint group across 1 directory with 4 updates ([#168](https://github.com/kc-workspace/kcws/issues/168)) ([68ce0be](https://github.com/kc-workspace/kcws/commit/68ce0be74f6d1d450b52dade886d04ff3885c6c8))
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** bump zod from 4.3.6 to 4.4.3 ([#172](https://github.com/kc-workspace/kcws/issues/172)) ([19c3c99](https://github.com/kc-workspace/kcws/commit/19c3c99e52b1dfc16ee108a51232d11c2e24bf96))
+* **deps:** bump zod from 4.4.3 to 4.6.5 ([#255](https://github.com/kc-workspace/kcws/issues/255)) ([aeee6fe](https://github.com/kc-workspace/kcws/commit/aeee6fefd47d4b4a4cc9d14da5db58b1c8bed34e))
+* **deps:** bump zod from 4.6.5 to 4.6.7 ([#277](https://github.com/kc-workspace/kcws/issues/277)) ([20d6a9b](https://github.com/kc-workspace/kcws/commit/20d6a9b905776af29beca0f45fca7ee8e4ee3a5e))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+
+
+### Bugfixes
+
+* **kcws/actkits:** refine parseInput env precedence ([0f0abdf](https://github.com/kc-workspace/kcws/commit/0f0abdfe3d616f85b29bcbd584774088edef66f2))
+
+
+### Documentation
+
+* **kcws/actkits:** add README ([fd3030b](https://github.com/kc-workspace/kcws/commit/fd3030b0eea1aa851e70352f143ae6994dd33bbc))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* **kcws/actkits:** pass Number directly to map in zNumberArray ([cf7f83f](https://github.com/kc-workspace/kcws/commit/cf7f83ffb8ffc534c9937f8d31b12867ac0b80d5))
+* **kcws/actkits:** replace createFileObjectParser with createObjectParser in zJsonFile and zYamlFile ([bc8e067](https://github.com/kc-workspace/kcws/commit/bc8e06711ee14d18e055ef46238618f305c782a7))
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcws/actkits:** require Node 22 ([3743028](https://github.com/kc-workspace/kcws/commit/3743028cd657884fa81e84748796feb97eb6f28e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.1.0
+    * @kcconfigs/tsconfig bumped to 3.0.1
+    * @kcconfigs/tsdown bumped to 0.6.0
+    * @kcconfigs/vitest bumped to 0.2.0
+
 ## [0.3.0](https://github.com/kc-workspace/kcws/compare/@kcws/actkits+v0.2.3...@kcws/actkits+v0.3.0) (2026-11-05)
 
 

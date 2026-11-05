@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v3.0.0...@kctypes/generic+v3.0.1) (2026-11-05)
+
+
+### Performance Improvements
+
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+
 ## [3.0.0](https://github.com/kc-workspace/kcws/compare/@kctypes/generic+v2.0.1...@kctypes/generic+v3.0.0) (2026-10-11)
 
 

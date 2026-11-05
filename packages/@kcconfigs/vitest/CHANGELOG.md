@@ -1,5 +1,98 @@
 # Changelog
 
+## [0.2.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.5.0...@kcconfigs/vitest+v0.2.0) (2026-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
+* **deps-dev:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/vitest:** test reports move from reports/test-results and reports/coverage to .vitest/.
+* **kcconfigs/vitest:** requires vitest ^5.0.0 (and vite as its peer dependency).
+* **kcconfigs/vitest:** Require Node.js 22 or newer.
+* **kcconfigs/vitest:** update fs mock and paths as well as export mock*
+
+### Features
+
+* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
+* **kcconfigs/vitest:** add plugin infrastructure ([0377376](https://github.com/kc-workspace/kcws/commit/037737640b30face0560429474160ad2003147fe))
+* **kcconfigs/vitest:** add replace mode to coverage plugin ([f98bbe4](https://github.com/kc-workspace/kcws/commit/f98bbe4232549e381babb0037bfd37757fb95494))
+* **kcconfigs/vitest:** add tsPathsPlugin for tsconfig paths resolution ([c1af818](https://github.com/kc-workspace/kcws/commit/c1af818c64f862e2048831372615a2fcee5c125d))
+* **kcconfigs/vitest:** exclude benchmark files from default coverage ([9bab9fc](https://github.com/kc-workspace/kcws/commit/9bab9fc072fe027ecf78db0554351e2c64168eed))
+* **kcconfigs/vitest:** export plugin entrypoints ([7adb9b9](https://github.com/kc-workspace/kcws/commit/7adb9b952080cab3071227b3184a4ea903a65e67))
+* **kcconfigs/vitest:** require Vitest 5 ([62be68f](https://github.com/kc-workspace/kcws/commit/62be68f6162dd3570da59b810354de518b045e2f))
+* **kcconfigs/vitest:** support explicit root projects ([373f1be](https://github.com/kc-workspace/kcws/commit/373f1be40fc384ecaed7f7d57bb82194207bc419))
+* **kcconfigs/vitest:** write reports to Vitest 5 .vitest directory ([628a23f](https://github.com/kc-workspace/kcws/commit/628a23f547429ef4383a022245fc0413ef32e3b9))
+
+
+### Performance Improvements
+
+* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
+* **deps-dev:** bump @biomejs/biome from 2.5.6 to 2.5.7 ([#205](https://github.com/kc-workspace/kcws/issues/205)) ([025fbd5](https://github.com/kc-workspace/kcws/commit/025fbd552f6166290dabbbc9a30fb91b5c819ffa))
+* **deps-dev:** bump @biomejs/biome from 2.5.7 to 2.5.11 ([#227](https://github.com/kc-workspace/kcws/issues/227)) ([25dcfae](https://github.com/kc-workspace/kcws/commit/25dcfae79543746f01a39a2d8463643d2d662926))
+* **deps-dev:** bump biome, vitest, tsdown and dev tooling ([b396c8c](https://github.com/kc-workspace/kcws/commit/b396c8c4d500142b6ee41d8d993f7a6aa9a0bdda))
+* **deps:** bump @biomejs/biome from 2.4.15 to 2.5.3 ([#171](https://github.com/kc-workspace/kcws/issues/171)) ([97638f0](https://github.com/kc-workspace/kcws/commit/97638f01c158a1a55c620edf1126480e314e783d))
+* **deps:** bump memfs ([56d2219](https://github.com/kc-workspace/kcws/commit/56d22196d0ec787878f698d3050969698178e1d7))
+* **deps:** bump memfs from 4.64.0 to 4.68.0 in the vitest group across 1 directory ([#203](https://github.com/kc-workspace/kcws/issues/203)) ([af8503a](https://github.com/kc-workspace/kcws/commit/af8503af1b0ff8d16d2c3b4d30ae75b2061c7315))
+* **deps:** bump memfs from 4.68.2 to 4.79.0 in the vitest group across 1 directory ([#254](https://github.com/kc-workspace/kcws/issues/254)) ([0b9814b](https://github.com/kc-workspace/kcws/commit/0b9814b3724d3d2b9126255d07b191847d3d282e))
+* **deps:** bump memfs from 4.79.0 to 4.80.0 in the vitest group across 1 directory ([#264](https://github.com/kc-workspace/kcws/issues/264)) ([56d2219](https://github.com/kc-workspace/kcws/commit/56d22196d0ec787878f698d3050969698178e1d7))
+* **deps:** bump memfs in the vitest group across 1 directory ([af8503a](https://github.com/kc-workspace/kcws/commit/af8503af1b0ff8d16d2c3b4d30ae75b2061c7315))
+* **deps:** bump the vitest group across 1 directory with 3 updates ([#188](https://github.com/kc-workspace/kcws/issues/188)) ([9159e1b](https://github.com/kc-workspace/kcws/commit/9159e1b1b9e192ee93b1528a45b8d4f13b2c35bd))
+* **deps:** bump the vitest group across 1 directory with 4 updates ([#219](https://github.com/kc-workspace/kcws/issues/219)) ([9f02e3e](https://github.com/kc-workspace/kcws/commit/9f02e3e8c28d3f6353d10f9e0b067963e4ca5abd))
+* **deps:** upgrade biome from 2.5.3 to 2.5.6 ([dc5e4ef](https://github.com/kc-workspace/kcws/commit/dc5e4efb2a521538f7bb27be922390a4ed67d53c))
+* **kcconfigs/vitest:** export mergeConfig(base, ...overrides) instead of built-in that support only single override ([431e313](https://github.com/kc-workspace/kcws/commit/431e31398eea581ccae90fd386351bd24ea852f9))
+* **kcconfigs/vitest:** update fs mock and paths as well as export mock* ([0836522](https://github.com/kc-workspace/kcws/commit/083652287f7bf824714d4837eb51cbe870978cfa))
+
+
+### Bugfixes
+
+* **kcconfigs/vitest:** load built config so package tests can run ([cd3add0](https://github.com/kc-workspace/kcws/commit/cd3add061a0e7b71080de5657062da4484a87658))
+* **kcconfigs/vitest:** remove unused files whitelist in package.json ([b00e754](https://github.com/kc-workspace/kcws/commit/b00e7547fe73c24fe7ff46ed0e3f372e37297d95))
+* **kcconfigs/vitest:** when import plugins from `@kcconfigs/vitest/plugins`, mock file didn't load correctly ([2a6c1f7](https://github.com/kc-workspace/kcws/commit/2a6c1f76c15181ab6d8456b99bed3948c08c0e62))
+
+
+### Documentation
+
+* **kcconfigs/vitest:** add tsdoc to expose utils and readme ([0bc2e30](https://github.com/kc-workspace/kcws/commit/0bc2e30aec59ffc16200e7f17c6b3fcc5617b951))
+* **kcconfigs/vitest:** refresh docs ([be4880a](https://github.com/kc-workspace/kcws/commit/be4880af5d329e2be3680db37daa7acdca3871bf))
+
+
+### Code Refactoring
+
+* change scripts from `:check` to `check:*` ([e904cd2](https://github.com/kc-workspace/kcws/commit/e904cd268f9935c784a9693b1ec12dd60f5e5fa3))
+* **kcconfigs/vitest:** drop clearMocks now default in Vitest 5 ([8e362b2](https://github.com/kc-workspace/kcws/commit/8e362b2e804a92cbcc291239bbc768d67e72aeab))
+* **kcconfigs/vitest:** drop redundant fallback when spreading test config ([d104487](https://github.com/kc-workspace/kcws/commit/d104487cff19dc75ac136405b3d49680a4da5aa9))
+* **kcconfigs/vitest:** drop unneeded async in fs mock factory ([82c3e8e](https://github.com/kc-workspace/kcws/commit/82c3e8ee58822e48038e9be84d16fd08c0546b51))
+* **kcconfigs/vitest:** drop unneeded async in fs/promises mock factory ([794f424](https://github.com/kc-workspace/kcws/commit/794f424edd7b71bce2f4de1045fec71c04275177))
+* **kcconfigs/vitest:** migrate to sync config-builder APIs ([2e154b0](https://github.com/kc-workspace/kcws/commit/2e154b0ff8f1493c95e96d3a8ab9e11a344dfca5))
+* **kcconfigs/vitest:** rename models directory to types ([5210aa2](https://github.com/kc-workspace/kcws/commit/5210aa2964dd88e469931c5046081dfdc363d757))
+* **kcconfigs/vitest:** replace define utils with plugin-based API ([50b03e4](https://github.com/kc-workspace/kcws/commit/50b03e47c3aef298fd2778cb60d9eb2c421d5b97))
+* **kcconfigs/vitest:** restructure constants into directory ([c63d675](https://github.com/kc-workspace/kcws/commit/c63d67510c87d71619f1f6e3a56c9df24dae020d))
+* **kcconfigs/vitest:** restructure models into directory ([15353c8](https://github.com/kc-workspace/kcws/commit/15353c8d6bf6dc5829ab0328d1908252143a9ac6))
+* **kcconfigs/vitest:** scope default coverage include to src ([1ee0d3b](https://github.com/kc-workspace/kcws/commit/1ee0d3b18b31328b07cca597cff5a1c7b1a991d2))
+* **kcconfigs/vitest:** update public API and add config-builder dependency ([8882933](https://github.com/kc-workspace/kcws/commit/8882933daf1237e59b622c33f883ffd329515ded))
+* **kcconfigs/vitest:** use local mergeConfig utility ([a6eecc1](https://github.com/kc-workspace/kcws/commit/a6eecc1f1500e1f894be5c06140f3540a06fa7b7))
+* use barrel import for plugins and remove empty defineConfig option ([9474fd0](https://github.com/kc-workspace/kcws/commit/9474fd0c9668bad18d259a49ac0c727f21112642))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** migrate to Vitest 5 ([#253](https://github.com/kc-workspace/kcws/issues/253)) ([d443847](https://github.com/kc-workspace/kcws/commit/d443847eb69177469110f0da19cb9ada8fad8f18))
+* **kcconfigs/vitest:** force update v0.1.2-beta.9 =&gt; v0.2.0 ([fbab386](https://github.com/kc-workspace/kcws/commit/fbab38668d9f63d6b73a0ab7f32496ea29a2c04b))
+* **kcconfigs/vitest:** require Node 22 ([0fceec3](https://github.com/kc-workspace/kcws/commit/0fceec32d5457ad54928fd3e9215c198202b1ee1))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.5.0
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.1.0
+    * @kcconfigs/tsconfig bumped to 3.0.1
+    * @kcconfigs/tsdown bumped to 0.6.0
+    * @kctypes/generic bumped to 3.0.1
+
 ## [0.5.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/vitest+v0.4.3...@kcconfigs/vitest+v0.5.0) (2026-11-05)
 
 
