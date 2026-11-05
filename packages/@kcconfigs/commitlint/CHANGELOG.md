@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.6.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.5.0...@kcconfigs/commitlint+v0.6.0) (2026-11-05)
+## [0.6.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.4.3...@kcconfigs/commitlint+v0.6.0) (2026-11-05)
 
 
 ### ⚠ BREAKING CHANGES
@@ -61,34 +61,6 @@
     * @kcconfigs/tsconfig bumped to 3.0.1
     * @kcconfigs/tsdown bumped to 0.6.0
     * @kcconfigs/vitest bumped to 0.2.0
-
-## [0.5.0](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.4.3...@kcconfigs/commitlint+v0.5.0) (2026-11-05)
-
-
-### ⚠ BREAKING CHANGES
-
-* **kcconfigs/biome:** requires Biome 2.6.0 or newer. Extend presets as @kcconfigs/biome/configs/<name> instead of @kcconfigs/biome or @kcconfigs/biome/<name>.
-
-### Features
-
-* **kcconfigs/biome:** publish presets through a Biome manifest ([56d882b](https://github.com/kc-workspace/kcws/commit/56d882bc43e081ec9dc8c4b341ae870d16337765))
-
-
-### Performance Improvements
-
-* **deps-dev:** bump @biomejs/biome from 2.5.15 to 2.6.2 ([169a69d](https://github.com/kc-workspace/kcws/commit/169a69df4a9259db4bb83b9b15c3d02d57f987ad))
-
-
-### Dependencies
-
-* The following workspace dependencies were updated
-  * dependencies
-    * @kcinternals/config-builder bumped to 0.4.0
-  * devDependencies
-    * @kcconfigs/biome bumped to 4.0.0
-    * @kcconfigs/tsconfig bumped to 3.0.0
-    * @kcconfigs/tsdown bumped to 0.5.0
-    * @kcconfigs/vitest bumped to 0.5.0
 
 ## [0.4.3](https://github.com/kc-workspace/kcws/compare/@kcconfigs/commitlint+v0.4.2...@kcconfigs/commitlint+v0.4.3) (2026-11-05)
 
