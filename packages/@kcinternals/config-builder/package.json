@@ -16,7 +16,7 @@
 		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
+		"@biomejs/biome": "2.6.2",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"tsdown": "0.23.0",
@@ -50,20 +50,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": [
-		"config",
-		"builder",
-		"plugin",
-		"kcconfigs"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src",
-		"!*.test.*",
-		"!*.bench.*"
-	],
+	"keywords": ["config", "builder", "plugin", "kcconfigs"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*", "!*.bench.*"],
 	"engines": {
 		"node": ">=22"
 	},

@@ -16,7 +16,7 @@
 		"check:type": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
+		"@biomejs/biome": "2.6.2",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
@@ -125,14 +125,7 @@
 		"environment",
 		"dotenv"
 	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src",
-		"!*.test.*",
-		"!*.bench.*"
-	],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*", "!*.bench.*"],
 	"engines": {
 		"node": ">=22"
 	},

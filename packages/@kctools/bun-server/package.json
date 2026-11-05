@@ -24,7 +24,7 @@
 		"pino-pretty": "13.2.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
+		"@biomejs/biome": "2.6.2",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*",
 		"@kcconfigs/tsdown": "workspace:*",
@@ -67,19 +67,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": [
-		"website",
-		"bun",
-		"bunjs",
-		"server"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src",
-		"!*.test.*"
-	],
+	"keywords": ["website", "bun", "bunjs", "server"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*"],
 	"engines": {
 		"node": ">=22",
 		"bun": ">=1.3"

@@ -23,7 +23,7 @@
 		"unrun": "0.3.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
+		"@biomejs/biome": "2.6.2",
 		"@kcconfigs/biome": "workspace:*",
 		"@kcconfigs/tsconfig": "workspace:*"
 	},
@@ -97,21 +97,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": [
-		"config",
-		"typescript",
-		"tsdown",
-		"library",
-		"compiler",
-		"bundler"
-	],
-	"files": [
-		"CHANGELOG.json",
-		"CHANGELOG.md",
-		"dist",
-		"src",
-		"!*.test.*"
-	],
+	"keywords": ["config", "typescript", "tsdown", "library", "compiler", "bundler"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "dist", "src", "!*.test.*"],
 	"engines": {
 		"node": ">=22.0.0"
 	},
