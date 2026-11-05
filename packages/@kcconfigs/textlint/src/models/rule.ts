@@ -1,4 +1,4 @@
-import type {AnyObject, BaseObject, UserBase, WithEnabled} from "./base"
+import type { AnyObject, BaseObject, UserBase, WithEnabled } from "./base"
 
 export interface Rule<N extends string, C extends AnyObject> extends BaseObject<"rule", N> {
 	// biome-ignore lint/suspicious/noExplicitAny: rule module is third-party type

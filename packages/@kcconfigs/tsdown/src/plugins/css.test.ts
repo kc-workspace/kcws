@@ -1,6 +1,6 @@
-import type {TsdownConfig} from "../models"
+import type { TsdownConfig } from "../models"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import cssPlugin from "./css"
 
@@ -18,8 +18,8 @@ describe("cssPlugin", () => {
 	})
 
 	test("should set entry to ./src/index.scss when lang is scss", () => {
-		const plugin = cssPlugin({lang: "scss"})
-		const base = {entry: undefined} as unknown as TsdownConfig
+		const plugin = cssPlugin({ lang: "scss" })
+		const base = { entry: undefined } as unknown as TsdownConfig
 		const result = plugin.applyConfig?.(base)
 		expect(result?.entry).toContain("./src/index.scss")
 	})
@@ -39,13 +39,13 @@ describe("cssPlugin", () => {
 		const plugin = cssPlugin()
 		const base = {} as TsdownConfig
 		const result = plugin.applyConfig?.(base)
-		expect(result?.css).toMatchObject({minify: false, fileName: "index.css"})
+		expect(result?.css).toMatchObject({ minify: false, fileName: "index.css" })
 		expect(result?.format).toBe("esm")
 	})
 
 	test("should preserve existing base config when applying", () => {
 		const plugin = cssPlugin()
-		const base = {outDir: "dist", entry: []}
+		const base = { outDir: "dist", entry: [] }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.outDir).toBe("dist")
 		expect(result?.entry).toContain("./src/index.css")

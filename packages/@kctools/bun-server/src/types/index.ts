@@ -1,5 +1,5 @@
 import type * as Bun from "bun"
-import type {Command} from "commander"
+import type { Command } from "commander"
 
 /** Represents the type of the Bun module */
 export type BunType = typeof Bun

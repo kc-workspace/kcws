@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {withEnabled} from "./enabled"
+import { withEnabled } from "./enabled"
 
 describe(withEnabled.name, () => {
 	test("should return ifTrue when value is true", () => {

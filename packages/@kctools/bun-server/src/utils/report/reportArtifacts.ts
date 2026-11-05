@@ -1,6 +1,6 @@
-import type {ReportedFile} from "./types"
+import type { ReportedFile } from "./types"
 
-import {KIND_ORDER} from "./constants"
+import { KIND_ORDER } from "./constants"
 import formatKind from "./formatKind"
 import formatPath from "./formatPath"
 import formatSize from "./formatSize"

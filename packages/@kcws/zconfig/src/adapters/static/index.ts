@@ -1,1 +1,1 @@
-export {default as staticAdapter} from "./adapter"
+export { default as staticAdapter } from "./adapter"

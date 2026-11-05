@@ -1,1 +1,1 @@
-export {default as applyTransform} from "./applyTransform"
+export { default as applyTransform } from "./applyTransform"

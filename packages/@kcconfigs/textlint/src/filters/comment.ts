@@ -1,6 +1,6 @@
-import type {EmptyObject, Filter} from "../models"
+import type { EmptyObject, Filter } from "../models"
 
-import {defineFilter} from "../utils/defineFilter"
+import { defineFilter } from "../utils/defineFilter"
 
 export type CommentRule = Filter<"comments", EmptyObject>
 

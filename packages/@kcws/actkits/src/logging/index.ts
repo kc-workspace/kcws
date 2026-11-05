@@ -10,17 +10,17 @@
 /**
  * Public logger interface.
  */
-export type {ILogger} from "./types"
+export type { ILogger } from "./types"
 
 /**
  * Creates a namespaced logger with printf-style formatting support.
  */
-export {createLogger} from "./createLogger"
+export { createLogger } from "./createLogger"
 /**
  * Returns whether debug logging is enabled.
  */
-export {isDebug} from "./internal/debug"
+export { isDebug } from "./internal/debug"
 /**
  * Formats a log message using Node.js printf-style substitutions.
  */
-export {formatter as format} from "./internal/format"
+export { formatter as format } from "./internal/format"

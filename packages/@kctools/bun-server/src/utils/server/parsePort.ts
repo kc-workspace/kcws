@@ -1,4 +1,4 @@
-import {MAX_PORT, MIN_PORT} from "./constants"
+import { MAX_PORT, MIN_PORT } from "./constants"
 
 type NormalizePort = (port: number) => boolean
 

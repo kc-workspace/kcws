@@ -1,6 +1,6 @@
-import type {RawConfig, TransformFn} from "#types"
+import type { RawConfig, TransformFn } from "#types"
 
-import {setPath, walk} from "./utils"
+import { setPath, walk } from "./utils"
 
 /**
  * Applies an adapter's `transform` to every leaf of its parsed output.

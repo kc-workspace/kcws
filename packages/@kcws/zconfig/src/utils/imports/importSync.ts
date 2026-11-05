@@ -1,6 +1,6 @@
-import {createRequire} from "node:module"
+import { createRequire } from "node:module"
 
-import {ZconfigAdapterError} from "../errors"
+import { ZconfigAdapterError } from "../errors"
 
 /**
  * Resolution is anchored to this package rather than the caller's working

@@ -1,5 +1,5 @@
 import terminologyModule from "textlint-rule-terminology"
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import defaultPreset from "./default"
 

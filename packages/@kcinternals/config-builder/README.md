@@ -8,7 +8,7 @@ Build configuration with ordered setting and configuration plugins.
 configuration directly.
 
 ```ts
-import {defineConfigSync, definePluginSync} from "@kcinternals/config-builder"
+import { defineConfigSync, definePluginSync } from "@kcinternals/config-builder"
 
 const increment = definePluginSync("increment", {
   applyConfig: (config: number) => config + 1,
@@ -24,16 +24,16 @@ const config = defineConfigSync(1, increment) // 2
 returns `Promise<C>`. Asynchronous plugins cannot be passed to `defineConfigSync`.
 
 ```ts
-import {defineConfigAsync, definePluginAsync} from "@kcinternals/config-builder"
+import { defineConfigAsync, definePluginAsync } from "@kcinternals/config-builder"
 
 const remoteConfig = definePluginAsync("remoteConfig", {
-  applyConfig: async (config: {endpoint: string; token: string}) => {
+  applyConfig: async (config: { endpoint: string; token: string }) => {
     const response = await fetch(config.endpoint)
-    return {...config, token: await response.text()}
+    return { ...config, token: await response.text() }
   },
 })
 
-const config = await defineConfigAsync({endpoint: "https://example.com/token", token: ""}, remoteConfig)
+const config = await defineConfigAsync({ endpoint: "https://example.com/token", token: "" }, remoteConfig)
 ```
 
 Both pipelines apply every setting action before any configuration action.

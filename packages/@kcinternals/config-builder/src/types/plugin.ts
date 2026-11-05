@@ -1,4 +1,4 @@
-import type {BaseSetting} from "./setting"
+import type { BaseSetting } from "./setting"
 
 /** Base interface for all configuration plugins */
 export interface BaseConfigPlugin<N extends string> {

@@ -1,4 +1,4 @@
-import {createLogger, type Logger} from "#utils/logger"
+import { createLogger, type Logger } from "#utils/logger"
 
 /** The default index file name used in routes */
 export const HTML_INDEX = "index" as const

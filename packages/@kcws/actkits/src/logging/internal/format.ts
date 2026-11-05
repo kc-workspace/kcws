@@ -1,4 +1,4 @@
-import {format} from "node:util"
+import { format } from "node:util"
 
 /**
  * Formats a message with namespace prefix and printf-style args.

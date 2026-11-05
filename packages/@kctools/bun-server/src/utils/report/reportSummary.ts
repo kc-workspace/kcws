@@ -1,4 +1,4 @@
-import type {ReportedFile} from "./types"
+import type { ReportedFile } from "./types"
 
 import formatDuration from "./formatDuration"
 import formatSize from "./formatSize"

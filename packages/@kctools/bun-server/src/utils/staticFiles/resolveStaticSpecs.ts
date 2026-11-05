@@ -1,23 +1,23 @@
-import type {BunType} from "#types"
-import type {ResolvedStatic, StaticSpec} from "./types"
+import type { BunType } from "#types"
+import type { ResolvedStatic, StaticSpec } from "./types"
 
-import {join, sep as OS_PATH_SEP, relative, resolve} from "node:path"
+import { join, sep as OS_PATH_SEP, relative, resolve } from "node:path"
 
-import {scanFiles} from "#utils/path"
-import {toWildcardRoute} from "#utils/url"
-import {logger} from "./constants"
+import { scanFiles } from "#utils/path"
+import { toWildcardRoute } from "#utils/url"
+import { logger } from "./constants"
 
 const resolveStaticSpec = async (Bun: BunType, specs: StaticSpec[]): Promise<ResolvedStatic[]> => {
 	const resolved = await Promise.all(
 		specs.map(async (spec) => {
-			logger.debug({spec}, "resolving static spec")
+			logger.debug({ spec }, "resolving static spec")
 			const files = await scanFiles(Bun, spec.pattern, {
 				cwd: spec.root,
 				dot: true,
 			})
 
 			const statics = files.map((file) => toResolvedStatic(file, spec))
-			logger.debug({statics}, `resolved ${statics.length} static files for static spec`)
+			logger.debug({ statics }, `resolved ${statics.length} static files for static spec`)
 			return statics
 		}),
 	)

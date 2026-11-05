@@ -1,6 +1,6 @@
-import type {Getter} from "./types"
+import type { Getter } from "./types"
 
-import {coreEndGroup, coreStartGroup} from "./core"
+import { coreEndGroup, coreStartGroup } from "./core"
 
 /**
  * Executes an async function within a log group and always closes the group.

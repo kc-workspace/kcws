@@ -30,7 +30,7 @@
 		"**/typedoc.*.json"
 	],
 	"dictionaries": ["en_US", "softwareTerms", "misc", "typescript", "node", "npm", "bash", "filetypes", "customDict"],
-	"dictionaryDefinitions": [{"name": "customDict", "path": "./cspell-custom.dict.txt"}],
+	"dictionaryDefinitions": [{ "name": "customDict", "path": "./cspell-custom.dict.txt" }],
 	"useGitignore": true,
 	"gitignoreRoot": "../.."
 }

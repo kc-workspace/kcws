@@ -1,6 +1,6 @@
-export type {GitHubContext} from "./types"
+export type { GitHubContext } from "./types"
 
-export {getContext} from "./getContext"
+export { getContext } from "./getContext"
 export {
 	isBranchRef,
 	isDependabotActor,
@@ -11,4 +11,4 @@ export {
 	isTagRef,
 	isWorkflowDispatchEvent,
 } from "./predicates"
-export {getRepositoryUrl, getRunUrl} from "./urls"
+export { getRepositoryUrl, getRunUrl } from "./urls"

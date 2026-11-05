@@ -1,4 +1,4 @@
-import {createLogger, type Logger} from "#utils/logger"
+import { createLogger, type Logger } from "#utils/logger"
 
 export const logger: Logger = createLogger("utils/report")
 

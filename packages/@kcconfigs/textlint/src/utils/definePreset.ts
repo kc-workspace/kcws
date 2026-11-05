@@ -1,4 +1,4 @@
-import type {AnyRule, Preset, UserRule} from "../models"
+import type { AnyRule, Preset, UserRule } from "../models"
 
 export const definePreset = <N extends string, RS extends AnyRule[]>(name: N, ...inputs: RS): Preset<N, RS> => {
 	const preset = {

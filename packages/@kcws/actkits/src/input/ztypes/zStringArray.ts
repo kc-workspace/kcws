@@ -1,6 +1,6 @@
-import {z} from "zod"
+import { z } from "zod"
 
-import {createArrayParser} from "./createArrayParser"
+import { createArrayParser } from "./createArrayParser"
 
 /**
  * Zod schema for parsing comma/newline-separated string to array of strings.

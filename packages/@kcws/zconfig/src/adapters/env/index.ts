@@ -1,3 +1,3 @@
-export type {EnvAdapterOptions} from "./types"
+export type { EnvAdapterOptions } from "./types"
 
-export {default as envAdapter} from "./adapter"
+export { default as envAdapter } from "./adapter"

@@ -1,4 +1,4 @@
-import type {ZodError} from "zod"
+import type { ZodError } from "zod"
 
 /**
  * Removes the error constructor itself from the reported stack trace, so the

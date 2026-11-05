@@ -1,6 +1,6 @@
-import {afterEach, describe, expect, test} from "vitest"
+import { afterEach, describe, expect, test } from "vitest"
 
-import {createMockFs, mockCwd, mockHome, mockTmp, resetVol, vol} from "./index"
+import { createMockFs, mockCwd, mockHome, mockTmp, resetVol, vol } from "./index"
 
 describe("Mock Helpers", () => {
 	afterEach(() => {
@@ -15,7 +15,7 @@ describe("Mock Helpers", () => {
 		})
 
 		test("should resolve relative paths against mockCwd", () => {
-			vol.fromJSON({"config.json": "{}"})
+			vol.fromJSON({ "config.json": "{}" })
 
 			expect(vol.existsSync(`${mockCwd}/config.json`)).toBe(true)
 			expect(vol.existsSync("/config.json")).toBe(false)
@@ -30,7 +30,7 @@ describe("Mock Helpers", () => {
 
 	describe(resetVol.name, () => {
 		test("should remove files and recreate mock directories", () => {
-			vol.fromJSON({"config.json": "{}"}, mockTmp)
+			vol.fromJSON({ "config.json": "{}" }, mockTmp)
 
 			resetVol()
 
@@ -43,7 +43,7 @@ describe("Mock Helpers", () => {
 
 	describe(createMockFs.name, () => {
 		test("should read files written to vol", () => {
-			vol.fromJSON({"config.json": '{"name":"kcws"}'})
+			vol.fromJSON({ "config.json": '{"name":"kcws"}' })
 
 			const fs = createMockFs()
 

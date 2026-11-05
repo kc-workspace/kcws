@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import overridePlugin from "./override"
 
@@ -14,14 +14,14 @@ describe("overridePlugin", () => {
 	})
 
 	test("should merge provided config into base", () => {
-		const plugin = overridePlugin({environment: "jsdom"})
-		const result = plugin.applyConfig?.({test: {}})
+		const plugin = overridePlugin({ environment: "jsdom" })
+		const result = plugin.applyConfig?.({ test: {} })
 		expect(result?.test?.environment).toBe("jsdom")
 	})
 
 	test("should deep merge config without discarding existing keys", () => {
-		const plugin = overridePlugin({testTimeout: 5000})
-		const result = plugin.applyConfig?.({test: {environment: "node"}})
+		const plugin = overridePlugin({ testTimeout: 5000 })
+		const result = plugin.applyConfig?.({ test: { environment: "node" } })
 		expect(result?.test?.environment).toBe("node")
 		expect(result?.test?.testTimeout).toBe(5000)
 	})

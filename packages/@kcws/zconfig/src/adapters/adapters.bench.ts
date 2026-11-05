@@ -1,14 +1,14 @@
-import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
-import {afterAll, beforeAll, expect, test} from "vitest"
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks"
+import { afterAll, beforeAll, expect, test } from "vitest"
 
-import {jsonAdapter} from "./json"
-import {json5Adapter} from "./json5"
-import {tomlAdapter} from "./toml"
-import {yamlAdapter} from "./yaml"
+import { jsonAdapter } from "./json"
+import { json5Adapter } from "./json5"
+import { tomlAdapter } from "./toml"
+import { yamlAdapter } from "./yaml"
 
 const expected = {
-	database: {host: "localhost", port: 5432},
-	features: {cache: true, retries: 3},
+	database: { host: "localhost", port: 5432 },
+	features: { cache: true, retries: 3 },
 }
 
 beforeAll(() => {
@@ -27,10 +27,10 @@ afterAll(() => {
 	vol.reset()
 })
 
-test("compare file adapters loading the same config", async ({bench}) => {
+test("compare file adapters loading the same config", async ({ bench }) => {
 	const adapters = {
-		json: jsonAdapter({jsonc: false}),
-		jsonc: jsonAdapter({jsonc: true}),
+		json: jsonAdapter({ jsonc: false }),
+		jsonc: jsonAdapter({ jsonc: true }),
 		json5: json5Adapter(),
 		yaml: yamlAdapter(),
 		toml: tomlAdapter(),

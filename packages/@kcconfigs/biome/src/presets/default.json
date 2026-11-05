@@ -1,14 +1,14 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"extends": ["./base.json", "../features/ignores.json", "../features/ignoresBuild.json"],
-	"formatter": {"useEditorconfig": true},
+	"formatter": { "useEditorconfig": true },
 	"overrides": [
 		{
 			"includes": ["**/*.test.*", "**/*.spec.*", "**/__mocks__/**"],
 			"linter": {
 				"rules": {
-					"suspicious": {"noExplicitAny": {"level": "off"}},
-					"style": {"noNonNullAssertion": {"level": "off", "fix": "none"}}
+					"suspicious": { "noExplicitAny": { "level": "off" } },
+					"style": { "noNonNullAssertion": { "level": "off", "fix": "none" } }
 				}
 			}
 		}

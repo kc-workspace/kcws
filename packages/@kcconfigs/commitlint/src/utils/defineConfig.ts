@@ -1,8 +1,8 @@
-import type {AnyCommitlintConfigPlugin, CommitlintConfig, CommitlintConfigPluginInput} from "../types"
+import type { AnyCommitlintConfigPlugin, CommitlintConfig, CommitlintConfigPluginInput } from "../types"
 
-import {defineConfigAsync} from "@kcinternals/config-builder"
+import { defineConfigAsync } from "@kcinternals/config-builder"
 
-import {baseConfig} from "../constants"
+import { baseConfig } from "../constants"
 import autoScopePlugin from "../plugins/autoScope"
 import typesPlugin from "../plugins/types"
 import mergeConfig from "./mergeConfig"

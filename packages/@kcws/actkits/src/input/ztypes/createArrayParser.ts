@@ -1,4 +1,4 @@
-import {z} from "zod"
+import { z } from "zod"
 
 /**
  * Splits a string by newline (if present) or comma, trims each item,

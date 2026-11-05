@@ -1,7 +1,7 @@
-import type {Adapter} from "#types"
-import type {EnvAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { EnvAdapterOptions } from "./types"
 
-import {createConfig, normalizeOptions} from "./utils"
+import { createConfig, normalizeOptions } from "./utils"
 
 /**
  * Creates an adapter that reads configuration values from environment

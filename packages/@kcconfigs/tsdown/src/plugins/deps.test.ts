@@ -1,6 +1,6 @@
-import type {DepsConfig} from "tsdown"
+import type { DepsConfig } from "tsdown"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import depsPlugin from "./deps"
 
@@ -11,24 +11,24 @@ describe("depsPlugin", () => {
 	})
 
 	test("should apply neverBundle config", () => {
-		const plugin = depsPlugin({neverBundle: ["picocolors"]})
+		const plugin = depsPlugin({ neverBundle: ["picocolors"] })
 		const base = {}
 		const result = plugin.applyConfig?.(base)
-		expect(result?.deps).toEqual({neverBundle: ["picocolors"]})
+		expect(result?.deps).toEqual({ neverBundle: ["picocolors"] })
 	})
 
 	test("should apply onlyBundle config as false", () => {
-		const plugin = depsPlugin({onlyBundle: false})
+		const plugin = depsPlugin({ onlyBundle: false })
 		const base = {}
 		const result = plugin.applyConfig?.(base)
-		expect(result?.deps).toEqual({onlyBundle: false})
+		expect(result?.deps).toEqual({ onlyBundle: false })
 	})
 
 	test("should apply alwaysBundle config", () => {
-		const plugin = depsPlugin({alwaysBundle: ["lodash-es"]})
+		const plugin = depsPlugin({ alwaysBundle: ["lodash-es"] })
 		const base = {}
 		const result = plugin.applyConfig?.(base)
-		expect(result?.deps).toEqual({alwaysBundle: ["lodash-es"]})
+		expect(result?.deps).toEqual({ alwaysBundle: ["lodash-es"] })
 	})
 
 	test("should apply full deps config", () => {
@@ -43,10 +43,10 @@ describe("depsPlugin", () => {
 	})
 
 	test("should preserve existing base config when applying", () => {
-		const plugin = depsPlugin({neverBundle: ["react"]})
-		const base = {entry: ["./src/index.ts"]}
+		const plugin = depsPlugin({ neverBundle: ["react"] })
+		const base = { entry: ["./src/index.ts"] }
 		const result = plugin.applyConfig?.(base)
 		expect(result?.entry).toEqual(["./src/index.ts"])
-		expect(result?.deps).toEqual({neverBundle: ["react"]})
+		expect(result?.deps).toEqual({ neverBundle: ["react"] })
 	})
 })

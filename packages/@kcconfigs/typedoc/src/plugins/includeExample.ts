@@ -1,4 +1,4 @@
-import {definePlugin, type PluginConfig} from "../configs"
+import { definePlugin, type PluginConfig } from "../configs"
 
 /**
  * Typedoc plugin to include code examples from *.example.ts files

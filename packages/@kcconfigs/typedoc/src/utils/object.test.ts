@@ -1,12 +1,12 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {isObject, mergeObject, normalizeObject} from "./object"
+import { isObject, mergeObject, normalizeObject } from "./object"
 
 describe("object utilities", () => {
 	describe("isObject", () => {
 		test("should return true for plain objects", () => {
 			expect(isObject({})).toBe(true)
-			expect(isObject({key: "value"})).toBe(true)
+			expect(isObject({ key: "value" })).toBe(true)
 		})
 
 		test("should return false for arrays", () => {
@@ -28,8 +28,8 @@ describe("object utilities", () => {
 
 	describe("mergeObject", () => {
 		test("should merge two objects", () => {
-			const base: Record<string, number> = {a: 1}
-			const obj: Record<string, number> = {b: 2}
+			const base: Record<string, number> = { a: 1 }
+			const obj: Record<string, number> = { b: 2 }
 			const result = mergeObject(base, obj)
 
 			expect(result["a"]).toBe(1)
@@ -37,8 +37,8 @@ describe("object utilities", () => {
 		})
 
 		test("should override existing properties", () => {
-			const base = {a: 1, b: 2}
-			const obj = {b: 3}
+			const base = { a: 1, b: 2 }
+			const obj = { b: 3 }
 			const result = mergeObject(base, obj)
 
 			expect(result.a).toBe(1)
@@ -46,15 +46,15 @@ describe("object utilities", () => {
 		})
 
 		test("should handle empty objects", () => {
-			const base = {a: 1}
+			const base = { a: 1 }
 			const result = mergeObject(base, {})
 
 			expect(result.a).toBe(1)
 		})
 
 		test("should handle nested objects", () => {
-			const base: Record<string, unknown> = {nested: {a: 1}}
-			const obj: Record<string, unknown> = {nested: {b: 2}}
+			const base: Record<string, unknown> = { nested: { a: 1 } }
+			const obj: Record<string, unknown> = { nested: { b: 2 } }
 			const result = mergeObject(base, obj)
 
 			const nested = result["nested"] as Record<string, unknown>
@@ -63,8 +63,8 @@ describe("object utilities", () => {
 		})
 
 		test("should handle arrays in objects", () => {
-			const base: Record<string, unknown> = {items: [1, 2]}
-			const obj: Record<string, unknown> = {items: [3]}
+			const base: Record<string, unknown> = { items: [1, 2] }
+			const obj: Record<string, unknown> = { items: [3] }
 			const result = mergeObject(base, obj)
 
 			expect(Array.isArray(result["items"])).toBe(true)
@@ -72,7 +72,7 @@ describe("object utilities", () => {
 
 		test("should handle null base", () => {
 			const base = null as unknown as Record<string, number>
-			const obj = {a: 1, b: 2}
+			const obj = { a: 1, b: 2 }
 			const result = mergeObject(base, obj)
 
 			expect(result["a"]).toBe(1)
@@ -81,14 +81,14 @@ describe("object utilities", () => {
 
 		test("should handle undefined base", () => {
 			const base = undefined as unknown as Record<string, number>
-			const obj = {a: 1}
+			const obj = { a: 1 }
 			const result = mergeObject(base, obj)
 
 			expect(result["a"]).toBe(1)
 		})
 
 		test("should handle null obj", () => {
-			const base = {a: 1}
+			const base = { a: 1 }
 			const obj = null as unknown as Record<string, number>
 			const result = mergeObject(base, obj)
 
@@ -97,10 +97,10 @@ describe("object utilities", () => {
 
 		test("should handle deeply nested objects", () => {
 			const base: Record<string, unknown> = {
-				level1: {level2: {level3: {value: 1}}},
+				level1: { level2: { level3: { value: 1 } } },
 			}
 			const obj: Record<string, unknown> = {
-				level1: {level2: {level3: {newValue: 2}}},
+				level1: { level2: { level3: { newValue: 2 } } },
 			}
 			const result = mergeObject(base, obj)
 
@@ -113,8 +113,8 @@ describe("object utilities", () => {
 		})
 
 		test("should use custom merge function when provided", () => {
-			const base: Record<string, number> = {a: 1, b: 2}
-			const obj: Record<string, number> = {b: 3, c: 4}
+			const base: Record<string, number> = { a: 1, b: 2 }
+			const obj: Record<string, number> = { b: 3, c: 4 }
 			const customFn = <K extends keyof typeof base>(
 				current: typeof base,
 				key: K,
@@ -135,10 +135,10 @@ describe("object utilities", () => {
 
 		test("should handle arrays merging in nested objects", () => {
 			const base: Record<string, unknown> = {
-				config: {plugins: ["a", "b"]},
+				config: { plugins: ["a", "b"] },
 			}
 			const obj: Record<string, unknown> = {
-				config: {plugins: ["c"]},
+				config: { plugins: ["c"] },
 			}
 			const result = mergeObject(base, obj)
 
@@ -151,7 +151,7 @@ describe("object utilities", () => {
 
 	describe("normalizeObject", () => {
 		test("should return normalized object", () => {
-			const obj = {a: 1, b: "value"}
+			const obj = { a: 1, b: "value" }
 			const result = normalizeObject(obj)
 
 			expect(result.a).toBe(1)
@@ -159,7 +159,7 @@ describe("object utilities", () => {
 		})
 
 		test("should handle nested objects", () => {
-			const obj: Record<string, unknown> = {nested: {a: 1}}
+			const obj: Record<string, unknown> = { nested: { a: 1 } }
 			const result = normalizeObject(obj)
 
 			expect(result).toBeDefined()
@@ -237,7 +237,7 @@ describe("object utilities", () => {
 
 		test("should handle object with mixed types in arrays", () => {
 			const obj: Record<string, unknown> = {
-				mixed: [1, "two", null, {three: 3}, undefined, false],
+				mixed: [1, "two", null, { three: 3 }, undefined, false],
 			}
 			const result = normalizeObject(obj)
 

@@ -1,10 +1,10 @@
 import type * as BunType from "bun"
-import type {CommandAction, CommandFn} from "#types"
+import type { CommandAction, CommandFn } from "#types"
 
-import {Command} from "commander"
-import {describe, expect, test, vi} from "vitest"
+import { Command } from "commander"
+import { describe, expect, test, vi } from "vitest"
 
-import {Program} from "./program"
+import { Program } from "./program"
 
 const createMockBun = () => ({}) as unknown as typeof BunType
 

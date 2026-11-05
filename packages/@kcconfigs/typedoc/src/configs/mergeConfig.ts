@@ -1,6 +1,6 @@
-import type {CustomConfig, Intersection, UserConfig} from "./model"
+import type { CustomConfig, Intersection, UserConfig } from "./model"
 
-import {mergeObject} from "../utils/object"
+import { mergeObject } from "../utils/object"
 
 export const mergeConfig = <C extends UserConfig, CO extends (UserConfig | undefined)[] = C[]>(
 	base: C,

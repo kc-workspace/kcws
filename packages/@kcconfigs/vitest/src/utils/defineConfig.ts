@@ -1,6 +1,6 @@
-import type {AnyVitestConfigPlugin} from "../types"
+import type { AnyVitestConfigPlugin } from "../types"
 
-import {defineConfigSync} from "@kcinternals/config-builder"
+import { defineConfigSync } from "@kcinternals/config-builder"
 
 /**
  * Creates a Vitest configuration by applying configuration plugins to an empty

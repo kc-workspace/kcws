@@ -1,6 +1,6 @@
-import type {BaseSetting} from "../types"
+import type { BaseSetting } from "../types"
 
-import {withEnabled} from "./enabled"
+import { withEnabled } from "./enabled"
 
 export const debug = (setting: BaseSetting, msg: string): void =>
 	withEnabled(setting?.debug, console.debug.bind(console))?.(msg)

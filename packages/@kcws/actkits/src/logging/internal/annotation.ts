@@ -1,4 +1,4 @@
-import type {AnnotationProperties} from "./types"
+import type { AnnotationProperties } from "./types"
 
 const validKeys = new Set(["title", "file", "startLine", "endLine", "startColumn", "endColumn"])
 

@@ -1,4 +1,4 @@
-import type {ExtendNamespace} from "./types"
+import type { ExtendNamespace } from "./types"
 
 /** Separator used to compose logger namespace segments. */
 export const NS_SEP = ":" as const

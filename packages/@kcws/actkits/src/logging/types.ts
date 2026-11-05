@@ -1,4 +1,4 @@
-import type {ExtendNamespace, Getter} from "./internal/types"
+import type { ExtendNamespace, Getter } from "./internal/types"
 
 /**
  * Public logger contract for the logging module.

@@ -1,9 +1,9 @@
-import type {TsdownConfig, TsdownConfigPlugin} from "../models"
+import type { TsdownConfig, TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {type Format, mergeConfig, type ResolvedConfig} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { type Format, mergeConfig, type ResolvedConfig } from "tsdown"
 
-import {normalizePriority} from "../constants"
+import { normalizePriority } from "../constants"
 
 type MinimalFormat = Exclude<Format, "es" | "module" | "commonjs">
 type FormatValue = Partial<ResolvedConfig>
@@ -25,14 +25,14 @@ const normalizeFormat = (format: Format): MinimalFormatObject => {
 		case "module":
 		case "esm":
 		case "es":
-			return {esm: defaultValue}
+			return { esm: defaultValue }
 		case "commonjs":
 		case "cjs":
-			return {cjs: defaultValue}
+			return { cjs: defaultValue }
 		case "iife":
-			return {iife: defaultValue}
+			return { iife: defaultValue }
 		case "umd":
-			return {umd: defaultValue}
+			return { umd: defaultValue }
 		default:
 			return {}
 	}

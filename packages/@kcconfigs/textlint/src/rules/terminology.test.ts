@@ -1,7 +1,7 @@
 import terminologyModule from "textlint-rule-terminology"
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {terminology} from "./terminology"
+import { terminology } from "./terminology"
 
 describe(terminology.name, () => {
 	test("should enable the rule with the default module", () => {

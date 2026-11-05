@@ -1,6 +1,6 @@
-import type {z} from "zod"
+import type { z } from "zod"
 
-import {createObjectParser} from "./createObjectParser"
+import { createObjectParser } from "./createObjectParser"
 
 /**
  * Zod schema for parsing JSON string input to object.

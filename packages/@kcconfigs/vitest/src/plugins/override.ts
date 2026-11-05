@@ -1,6 +1,6 @@
-import type {AnyConfig, AnyVitestConfigPlugin, ProjectConfig, UserConfig} from "../types"
+import type { AnyConfig, AnyVitestConfigPlugin, ProjectConfig, UserConfig } from "../types"
 
-import {definePluginSync} from "@kcinternals/config-builder"
+import { definePluginSync } from "@kcinternals/config-builder"
 
 import mergeConfig from "../utils/mergeConfig"
 
@@ -12,6 +12,6 @@ export type OverrideConfig = UserConfig["test"] | ProjectConfig["test"]
 const overridePlugin = (config: OverrideConfig): AnyVitestConfigPlugin<AnyConfig> =>
 	definePluginSync("override", {
 		configPriority: 1000,
-		applyConfig: (base) => mergeConfig(base, {test: config} as AnyConfig),
+		applyConfig: (base) => mergeConfig(base, { test: config } as AnyConfig),
 	})
 export default overridePlugin

@@ -1,7 +1,7 @@
-import type {ZodType, z} from "zod"
-import type {RawConfig} from "#types"
+import type { ZodType, z } from "zod"
+import type { RawConfig } from "#types"
 
-import {ZconfigValidationError} from "../errors"
+import { ZconfigValidationError } from "../errors"
 
 /**
  * Parses an already merged configuration against its schema.

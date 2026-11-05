@@ -1,6 +1,6 @@
-import type {Logger} from "./types"
+import type { Logger } from "./types"
 
-import {afterEach, describe, expect, test, vi} from "vitest"
+import { afterEach, describe, expect, test, vi } from "vitest"
 
 const importLogger = async (debug: string | undefined): Promise<Logger> => {
 	vi.stubEnv("DEBUG", debug)
@@ -15,10 +15,10 @@ afterEach(() => {
 
 describe("logger", () => {
 	test.for([
-		{name: "DEBUG is unset", debug: undefined, level: "info"},
-		{name: "DEBUG is disabled", debug: "false", level: "info"},
-		{name: "DEBUG is enabled", debug: "true", level: "debug"},
-	])("logs from the $level level when $name", async ({debug, level}) => {
-		await expect(importLogger(debug)).resolves.toMatchObject({level})
+		{ name: "DEBUG is unset", debug: undefined, level: "info" },
+		{ name: "DEBUG is disabled", debug: "false", level: "info" },
+		{ name: "DEBUG is enabled", debug: "true", level: "debug" },
+	])("logs from the $level level when $name", async ({ debug, level }) => {
+		await expect(importLogger(debug)).resolves.toMatchObject({ level })
 	})
 })

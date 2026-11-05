@@ -1,4 +1,4 @@
-import type {ExtendFileAdapterOptions, NormalizeFileAdapterOptions} from "../file"
+import type { ExtendFileAdapterOptions, NormalizeFileAdapterOptions } from "../file"
 
 /** Options for {@link jsonAdapter}. */
 export interface JsonAdapterOptions extends ExtendFileAdapterOptions {

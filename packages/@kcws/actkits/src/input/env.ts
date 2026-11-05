@@ -1,4 +1,4 @@
-import {env as dEnv} from "node:process"
+import { env as dEnv } from "node:process"
 
 const DEFAULT_INPUT_NS_SEP = "__"
 const DEFAULT_INPUT_KY_SEP = "_"

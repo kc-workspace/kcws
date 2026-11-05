@@ -1,8 +1,8 @@
 import type * as fsType from "node:fs"
 
-import {memfs, type Volume} from "memfs"
+import { memfs, type Volume } from "memfs"
 
-import {mockCwd, mockHome, mockTmp} from "./constants"
+import { mockCwd, mockHome, mockTmp } from "./constants"
 
 const instance = memfs({}, mockCwd)
 
@@ -15,7 +15,7 @@ export const vol: Volume = instance.vol
 
 const seedVol = (): void => {
 	for (const dir of [mockCwd, mockHome, mockTmp]) {
-		vol.mkdirSync(dir, {recursive: true})
+		vol.mkdirSync(dir, { recursive: true })
 	}
 }
 seedVol()
@@ -40,5 +40,5 @@ export const resetVol = (): void => {
  * plain data property, so cloning it is safe.
  */
 export const createMockFs = (): typeof fsType => {
-	return {...instance.fs} as unknown as typeof fsType
+	return { ...instance.fs } as unknown as typeof fsType
 }

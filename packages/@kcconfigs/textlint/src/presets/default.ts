@@ -1,7 +1,7 @@
-import type {Preset} from "../models"
+import type { Preset } from "../models"
 
-import {type TerminologyRule, terminology} from "../rules/terminology"
-import {definePreset} from "../utils/definePreset"
+import { type TerminologyRule, terminology } from "../rules/terminology"
+import { definePreset } from "../utils/definePreset"
 
 const name = "@kcconfigs/textlint/preset-default"
 

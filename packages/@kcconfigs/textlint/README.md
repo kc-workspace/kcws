@@ -73,12 +73,12 @@ Passing no config enables the rule with its own defaults.
 without `allow` falls back to `DEFAULT_ALLOWLIST`, which is also exported:
 
 ```ts
-import {DEFAULT_ALLOWLIST, allowlist} from "@kcconfigs/textlint"
+import { DEFAULT_ALLOWLIST, allowlist } from "@kcconfigs/textlint"
 
 // editorconfig, url, html, api, apis, github, typescript, json
 console.log(DEFAULT_ALLOWLIST)
 
-const filter = allowlist({allow: [...DEFAULT_ALLOWLIST, "kcws"]})
+const filter = allowlist({ allow: [...DEFAULT_ALLOWLIST, "kcws"] })
 ```
 
 ## Presets
@@ -102,13 +102,13 @@ filters, and presets:
 | `definePreset` | Build a `Preset` from a name and a list of rules |
 
 ```ts
-import {definePreset, defineRule, terminology} from "@kcconfigs/textlint"
+import { definePreset, defineRule, terminology } from "@kcconfigs/textlint"
 import maxComma from "textlint-rule-max-comma"
 
 const commas = defineRule({
   name: "max-comma",
   module: maxComma,
-  config: {max: 4},
+  config: { max: 4 },
 })
 
 export default definePreset("my-preset", terminology(), commas)

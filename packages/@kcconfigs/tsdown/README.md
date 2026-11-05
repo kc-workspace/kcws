@@ -44,8 +44,8 @@ pnpm add --save-dev publint @arethetypeswrong/core unplugin-unused
 Create `tsdown.config.ts`:
 
 ```ts
-import {defineConfig, type TsdownConfig} from "@kcconfigs/tsdown"
-import {entryPlugin, nodePlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig, type TsdownConfig } from "@kcconfigs/tsdown"
+import { entryPlugin, nodePlugin } from "@kcconfigs/tsdown/plugins"
 
 const config: TsdownConfig = defineConfig(entryPlugin(["./src/index.ts"]), nodePlugin())
 
@@ -105,8 +105,8 @@ like `@kcconfigs/tsdown/plugins/node`.
 Node package build with custom output and unused dependency ignore list:
 
 ```ts
-import {defineConfig} from "@kcconfigs/tsdown"
-import {entryPlugin, nodePlugin, outputPlugin, unusedPlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig } from "@kcconfigs/tsdown"
+import { entryPlugin, nodePlugin, outputPlugin, unusedPlugin } from "@kcconfigs/tsdown/plugins"
 
 export default defineConfig(
   entryPlugin(["./src/index.ts", "./src/cli.ts"]),
@@ -123,17 +123,17 @@ CSS-only package build.
 and disables the `publint` and `attw` checks:
 
 ```ts
-import {defineConfig} from "@kcconfigs/tsdown"
-import {cssPlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig } from "@kcconfigs/tsdown"
+import { cssPlugin } from "@kcconfigs/tsdown/plugins"
 
-export default defineConfig(cssPlugin({lang: "scss"}))
+export default defineConfig(cssPlugin({ lang: "scss" }))
 ```
 
 Opting in to minified output:
 
 ```ts
-import {defineConfig} from "@kcconfigs/tsdown"
-import {minifyPlugin, nodePlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig } from "@kcconfigs/tsdown"
+import { minifyPlugin, nodePlugin } from "@kcconfigs/tsdown/plugins"
 
 export default defineConfig(nodePlugin(), minifyPlugin())
 ```
@@ -141,8 +141,8 @@ export default defineConfig(nodePlugin(), minifyPlugin())
 Merging a raw tsdown config object:
 
 ```ts
-import {defineConfig} from "@kcconfigs/tsdown"
-import {nodePlugin, overridePlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig } from "@kcconfigs/tsdown"
+import { nodePlugin, overridePlugin } from "@kcconfigs/tsdown/plugins"
 
-export default defineConfig(nodePlugin(), overridePlugin({sourcemap: true, treeshake: false}))
+export default defineConfig(nodePlugin(), overridePlugin({ sourcemap: true, treeshake: false }))
 ```

@@ -11,9 +11,9 @@
  * Re-export of Zod for convenient schema definition.
  * @see {@link https://zod.dev | Zod Documentation}
  */
-export {z} from "zod"
+export { z } from "zod"
 
-export {parseInput} from "./parseInput"
+export { parseInput } from "./parseInput"
 export {
 	zBoolean,
 	zJsonFile,

@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {appendArray, asArray, isArray, mergeArray, normalizeArray, uniqueArray} from "./array"
+import { appendArray, asArray, isArray, mergeArray, normalizeArray, uniqueArray } from "./array"
 
 describe("array utilities", () => {
 	describe("isArray", () => {
@@ -13,7 +13,7 @@ describe("array utilities", () => {
 		test("should return false for non-arrays", () => {
 			expect(isArray("string")).toBe(false)
 			expect(isArray(123)).toBe(false)
-			expect(isArray({key: "value"})).toBe(false)
+			expect(isArray({ key: "value" })).toBe(false)
 			expect(isArray(null)).toBe(false)
 			expect(isArray(undefined)).toBe(false)
 		})
@@ -36,7 +36,7 @@ describe("array utilities", () => {
 		})
 
 		test("should wrap objects in array", () => {
-			const obj = {key: "value"}
+			const obj = { key: "value" }
 			expect(asArray(obj)).toEqual([obj])
 		})
 
@@ -199,7 +199,7 @@ describe("array utilities", () => {
 		})
 
 		test("should preserve nested structures", () => {
-			const obj = {nested: {value: 1}}
+			const obj = { nested: { value: 1 } }
 			const arr = [1, 2, 3]
 			const result = normalizeArray([obj, undefined, arr, null])
 			expect(result).toEqual([obj, arr])

@@ -1,6 +1,6 @@
-import type {core, ZodError} from "zod"
+import type { core, ZodError } from "zod"
 
-import {summarise, trimConstructorFrame} from "./utils"
+import { summarise, trimConstructorFrame } from "./utils"
 
 /**
  * Thrown when an adapter fails to produce a configuration object.
@@ -16,7 +16,7 @@ export class ZconfigAdapterError extends Error {
 	readonly adapter: string
 
 	constructor(adapter: string, message: string, cause?: unknown) {
-		super(`[${adapter}] ${message}`, {cause})
+		super(`[${adapter}] ${message}`, { cause })
 
 		this.adapter = adapter
 		trimConstructorFrame(this, ZconfigAdapterError)

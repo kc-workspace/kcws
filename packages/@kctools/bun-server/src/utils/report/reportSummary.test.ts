@@ -1,6 +1,6 @@
-import type {ReportedFile} from "./types"
+import type { ReportedFile } from "./types"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import reportSummary from "./reportSummary"
 

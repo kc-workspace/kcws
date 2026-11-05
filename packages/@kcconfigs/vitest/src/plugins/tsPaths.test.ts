@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import tsPathsPlugin from "./tsPaths"
 
@@ -12,7 +12,7 @@ describe("tsPathsPlugin", () => {
 	test("should enable tsconfig paths resolution", () => {
 		const plugin = tsPathsPlugin()
 		const result = plugin.applyConfig?.({
-			test: {environment: "node"},
+			test: { environment: "node" },
 		})
 
 		expect(result?.resolve?.tsconfigPaths).toBe(true)

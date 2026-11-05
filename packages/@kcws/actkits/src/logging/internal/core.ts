@@ -1,7 +1,7 @@
-import type {Log} from "./types"
+import type { Log } from "./types"
 
-import {isAnnotationProps} from "./annotation"
-import {formatter} from "./format"
+import { isAnnotationProps } from "./annotation"
+import { formatter } from "./format"
 
 export {
 	debug as coreDebug,

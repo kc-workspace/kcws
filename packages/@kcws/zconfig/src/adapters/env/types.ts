@@ -1,4 +1,4 @@
-import type {BaseAdapterOptions, EnvObject} from "#types"
+import type { BaseAdapterOptions, EnvObject } from "#types"
 
 /** Options for {@link envAdapter}. */
 export interface EnvAdapterOptions extends BaseAdapterOptions {

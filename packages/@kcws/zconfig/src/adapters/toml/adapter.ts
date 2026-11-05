@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {TomlAdapterOptions} from "./types"
+import type { Adapter } from "#types"
+import type { TomlAdapterOptions } from "./types"
 
-import {resolveParser, toFileParser} from "../content/utils"
-import {fileAdapter} from "../file"
-import {getTomlFiles} from "./utils"
+import { resolveParser, toFileParser } from "../content/utils"
+import { fileAdapter } from "../file"
+import { getTomlFiles } from "./utils"
 
 /**
  * Creates an adapter that reads a TOML configuration file.
@@ -20,7 +20,7 @@ const tomlAdapter = (options: TomlAdapterOptions = {}): Adapter =>
 	fileAdapter({
 		name: "toml",
 		files: getTomlFiles(),
-		...toFileParser(resolveParser("toml", {format: "toml"})),
+		...toFileParser(resolveParser("toml", { format: "toml" })),
 		...options,
 	})
 

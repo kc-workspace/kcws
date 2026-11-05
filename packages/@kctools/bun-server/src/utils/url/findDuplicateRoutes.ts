@@ -1,4 +1,4 @@
-import type {BasicRoute} from "./types"
+import type { BasicRoute } from "./types"
 
 const findDuplicateRoutes = (routes: BasicRoute[]): string[] => {
 	const seen = new Set<string>()

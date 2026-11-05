@@ -1,14 +1,14 @@
-import type {BunType} from "#types"
-import type {ResolvedStatic} from "./types"
+import type { BunType } from "#types"
+import type { ResolvedStatic } from "./types"
 
-import {describe, expect, test, vi} from "vitest"
+import { describe, expect, test, vi } from "vitest"
 
 import copyStaticFiles from "./copyStaticFiles"
 
 const createMockBun = (sizes: Record<string, number> = {}) => {
-	const file = vi.fn((path: string) => ({name: path}))
+	const file = vi.fn((path: string) => ({ name: path }))
 	const write = vi.fn((target: string) => Promise.resolve(sizes[target] ?? 0))
-	return {bun: {file, write} as unknown as BunType, file, write}
+	return { bun: { file, write } as unknown as BunType, file, write }
 }
 
 const statik = (name: string): ResolvedStatic => ({
@@ -20,15 +20,15 @@ const statik = (name: string): ResolvedStatic => ({
 
 describe("copyStaticFiles", () => {
 	test("reports every copied file as a static artifact", async () => {
-		const {bun} = createMockBun({"/repo/dist/assets/logo.png": 1024})
+		const { bun } = createMockBun({ "/repo/dist/assets/logo.png": 1024 })
 
 		await expect(copyStaticFiles(bun, [statik("logo.png")])).resolves.toEqual([
-			{path: "/repo/dist/assets/logo.png", size: 1024, kind: "static"},
+			{ path: "/repo/dist/assets/logo.png", size: 1024, kind: "static" },
 		])
 	})
 
 	test("writes the source into the target", async () => {
-		const {bun, write, file} = createMockBun()
+		const { bun, write, file } = createMockBun()
 
 		await copyStaticFiles(bun, [statik("logo.png")])
 
@@ -39,7 +39,7 @@ describe("copyStaticFiles", () => {
 	})
 
 	test("copies every file", async () => {
-		const {bun, write} = createMockBun()
+		const { bun, write } = createMockBun()
 
 		await copyStaticFiles(bun, [statik("a.png"), statik("b.png")])
 
@@ -47,7 +47,7 @@ describe("copyStaticFiles", () => {
 	})
 
 	test("reports nothing when there is no file", async () => {
-		const {bun, write} = createMockBun()
+		const { bun, write } = createMockBun()
 
 		await expect(copyStaticFiles(bun, [])).resolves.toEqual([])
 		expect(write).not.toHaveBeenCalled()

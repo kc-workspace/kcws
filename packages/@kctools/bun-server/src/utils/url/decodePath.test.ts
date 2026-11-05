@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import decodePath from "./decodePath"
 
@@ -39,7 +39,7 @@ describe("decodePath", () => {
 			url: "not a url",
 			expected: undefined,
 		},
-	])("returns $name", ({url, expected}) => {
+	])("returns $name", ({ url, expected }) => {
 		expect(decodePath(url)).toBe(expected)
 	})
 })

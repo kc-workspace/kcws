@@ -1,13 +1,13 @@
-import type {RawConfig} from "#types"
-import type {FileAdapterOptions} from "../file"
-import type {Json5ParserModule} from "../json5/types"
-import type {TomlParserModule} from "../toml/types"
-import type {YamlParserModule} from "../yaml/types"
-import type {ContentParseOptions, ContentParser, ContentSource} from "./types"
+import type { RawConfig } from "#types"
+import type { FileAdapterOptions } from "../file"
+import type { Json5ParserModule } from "../json5/types"
+import type { TomlParserModule } from "../toml/types"
+import type { YamlParserModule } from "../yaml/types"
+import type { ContentParseOptions, ContentParser, ContentSource } from "./types"
 
-import {importAsync, importSync} from "#utils/imports"
-import {decodeDotenv} from "../dotenv/utils"
-import {parseJson, parseJsonc} from "../json/utils"
+import { importAsync, importSync } from "#utils/imports"
+import { decodeDotenv } from "../dotenv/utils"
+import { parseJson, parseJsonc } from "../json/utils"
 
 const decoder = new TextDecoder()
 

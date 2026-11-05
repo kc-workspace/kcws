@@ -1,8 +1,8 @@
-import {cwd} from "node:process"
-import {vol} from "@kcconfigs/vitest/mocks"
-import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
+import { cwd } from "node:process"
+import { vol } from "@kcconfigs/vitest/mocks"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
-import {findBunPackages, findNpmPackages, findPnpmPackages} from "./projects"
+import { findBunPackages, findNpmPackages, findPnpmPackages } from "./projects"
 
 describe("Project APIs", () => {
 	afterEach(() => {

@@ -1,8 +1,8 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {mergeConfig} from "./mergeConfig"
+import { mergeConfig } from "./mergeConfig"
 
 describe("mergeConfig", () => {
 	test("should merge base config with no overrides", () => {
@@ -14,23 +14,23 @@ describe("mergeConfig", () => {
 
 	test("should apply single override", () => {
 		const base: UserConfig = {}
-		const override: UserConfig = {sort: ["visibility"]}
+		const override: UserConfig = { sort: ["visibility"] }
 		const result = mergeConfig(base, override)
 
 		expect(result.sort).toEqual(["visibility"])
 	})
 
 	test("should apply multiple overrides in order", () => {
-		const base: UserConfig = {sort: ["visibility"]}
-		const override1: UserConfig = {sort: ["alphabetical"]}
-		const override2: UserConfig = {sort: ["static-first"]}
+		const base: UserConfig = { sort: ["visibility"] }
+		const override1: UserConfig = { sort: ["alphabetical"] }
+		const override2: UserConfig = { sort: ["static-first"] }
 		const result = mergeConfig(base, override1, override2)
 
 		expect(result.sort).toContain("static-first")
 	})
 
 	test("should skip undefined overrides", () => {
-		const base: UserConfig = {sort: ["visibility"]}
+		const base: UserConfig = { sort: ["visibility"] }
 		const result = mergeConfig(base, undefined)
 
 		expect(result).toBeDefined()
@@ -38,7 +38,7 @@ describe("mergeConfig", () => {
 
 	test("should merge multiple overrides without base config", () => {
 		const override1: UserConfig = {}
-		const override2: UserConfig = {sort: ["alphabetical"]}
+		const override2: UserConfig = { sort: ["alphabetical"] }
 		const result = mergeConfig(override1, override2)
 
 		expect(result).toBeDefined()

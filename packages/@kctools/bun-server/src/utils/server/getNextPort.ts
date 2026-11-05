@@ -1,4 +1,4 @@
-import {MAX_PORT} from "./constants"
+import { MAX_PORT } from "./constants"
 import parsePort from "./parsePort"
 
 const getNextPort = (port: number): number => {

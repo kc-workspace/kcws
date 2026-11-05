@@ -1,11 +1,11 @@
-import type {BunType} from "#types"
-import type {StaticSpec} from "./types"
+import type { BunType } from "#types"
+import type { StaticSpec } from "./types"
 
-import {isAbsolute, normalize, sep as OS_PATH_SEP, resolve} from "node:path"
+import { isAbsolute, normalize, sep as OS_PATH_SEP, resolve } from "node:path"
 
-import {readOptions} from "#utils/options"
-import {splitPath} from "#utils/path"
-import {logger, STATIC_SEPARATOR} from "./constants"
+import { readOptions } from "#utils/options"
+import { splitPath } from "#utils/path"
+import { logger, STATIC_SEPARATOR } from "./constants"
 
 const createStaticSpecs = async (Bun: BunType, options: AnyRecord): Promise<StaticSpec[]> => {
 	const specs: StaticSpec[] = []
@@ -13,16 +13,16 @@ const createStaticSpecs = async (Bun: BunType, options: AnyRecord): Promise<Stat
 	const statics = readOptions<string[]>(options, "statics")
 	const out = readOptions<string | undefined>(options, "out")
 
-	logger.debug({statics}, "processing static items to spec")
+	logger.debug({ statics }, "processing static items to spec")
 	const splits = await Promise.all(
 		statics.map(async (item) => {
 			const separator = item.lastIndexOf(STATIC_SEPARATOR)
 			const source = separator === -1 ? item : item.slice(0, separator)
 			const written = separator === -1 ? undefined : item.slice(separator + 1)
-			return {source, written, ...(await splitPath(Bun, source, cwd))}
+			return { source, written, ...(await splitPath(Bun, source, cwd)) }
 		}),
 	)
-	for (const {source, written, root, pattern} of splits) {
+	for (const { source, written, root, pattern } of splits) {
 		if (written === undefined && isAbsolute(root)) {
 			throw new Error(`Static source ${source} needs an explicit target: ${source}:<target>`)
 		}
@@ -42,12 +42,12 @@ const createStaticSpecs = async (Bun: BunType, options: AnyRecord): Promise<Stat
 				dirname: target,
 			},
 		}
-		logger.debug({spec}, "created static spec")
+		logger.debug({ spec }, "created static spec")
 		specs.push(spec)
 	}
 
 	if (specs.length > 0) {
-		logger.debug({length: specs.length}, "created all static specs")
+		logger.debug({ length: specs.length }, "created all static specs")
 	} else {
 		logger.debug("no static specs were created")
 	}

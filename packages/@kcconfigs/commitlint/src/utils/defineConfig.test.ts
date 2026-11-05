@@ -1,9 +1,9 @@
-import type {CommitlintConfig} from "../types"
+import type { CommitlintConfig } from "../types"
 
-import {cwd} from "node:process"
-import {RuleConfigSeverity as Severity} from "@commitlint/types"
-import {vol} from "@kcconfigs/vitest/mocks"
-import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
+import { cwd } from "node:process"
+import { RuleConfigSeverity as Severity } from "@commitlint/types"
+import { vol } from "@kcconfigs/vitest/mocks"
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 import autoScopePlugin from "../plugins/autoScope"
 import overridePlugin from "../plugins/override"
@@ -23,7 +23,7 @@ const readScopes = (config: CommitlintConfig) => {
 	return rule()[2]
 }
 
-const singlePackage = () => vol.fromJSON({"./package.json": JSON.stringify({name: "test-workspace"})}, cwd())
+const singlePackage = () => vol.fromJSON({ "./package.json": JSON.stringify({ name: "test-workspace" }) }, cwd())
 
 const pnpmWorkspace = () =>
 	vol.fromJSON(
@@ -167,7 +167,7 @@ describe("defineConfig", () => {
 			const config = await defineConfig(
 				overridePlugin({
 					helpUrl: "custom",
-					rules: {"type-enum": [Severity.Disabled, "always", []]},
+					rules: { "type-enum": [Severity.Disabled, "always", []] },
 				}),
 				typesPlugin("minimal"),
 			)

@@ -1,4 +1,4 @@
-import type {UserWorkspaceConfig as _ProjectConfig, ViteUserConfig as _UserConfig} from "vitest/config"
+import type { UserWorkspaceConfig as _ProjectConfig, ViteUserConfig as _UserConfig } from "vitest/config"
 
 /**
  * Vitest user configuration type for root workspace setup.

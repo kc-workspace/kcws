@@ -1,4 +1,4 @@
-import type {TsdownConfig} from "../models"
+import type { TsdownConfig } from "../models"
 
 export const debugPriority: number = Number.NEGATIVE_INFINITY
 export const normalizePriority: number = Number.POSITIVE_INFINITY

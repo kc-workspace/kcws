@@ -1,4 +1,4 @@
-import type {CommitlintConfig} from "../types"
+import type { CommitlintConfig } from "../types"
 
 const isPlainObject = (value: unknown): value is AnyRecord =>
 	typeof value === "object" &&
@@ -7,7 +7,7 @@ const isPlainObject = (value: unknown): value is AnyRecord =>
 	Object.getPrototypeOf(value) === Object.prototype
 
 const deepMerge = (base: AnyRecord, override: AnyRecord): AnyRecord => {
-	const result: AnyRecord = {...base}
+	const result: AnyRecord = { ...base }
 	for (const [key, value] of Object.entries(override)) {
 		if (value === undefined) continue
 		const current = result[key]

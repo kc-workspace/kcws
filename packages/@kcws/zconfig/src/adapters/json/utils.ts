@@ -1,8 +1,8 @@
-import type {ParseError as JsoncParseError} from "jsonc-parser"
-import type {JsonAdapterNormalizedOptions, JsonAdapterOptions, JsonParserModule} from "./types"
+import type { ParseError as JsoncParseError } from "jsonc-parser"
+import type { JsonAdapterNormalizedOptions, JsonAdapterOptions, JsonParserModule } from "./types"
 
-import {importSync} from "#utils/imports"
-import {getConfigFiles} from "../_internal"
+import { importSync } from "#utils/imports"
+import { getConfigFiles } from "../_internal"
 
 /**
  * Normalizes the options for the JSON adapter.
@@ -20,7 +20,7 @@ export const parseJsonc = <T>(content: string): T => {
 	const parsed = parser.parse(content, errors)
 	if (errors.length > 0) {
 		const diagnostics = errors
-			.map(({error, offset, length}) => {
+			.map(({ error, offset, length }) => {
 				const code = parser.printParseErrorCode?.(error) ?? `error ${error}`
 				return `${code} at ${offset}:${length}`
 			})

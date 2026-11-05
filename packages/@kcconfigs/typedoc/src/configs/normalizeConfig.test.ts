@@ -1,8 +1,8 @@
-import type {UserConfig} from "./model"
+import type { UserConfig } from "./model"
 
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {normalizeConfig} from "./normalizeConfig"
+import { normalizeConfig } from "./normalizeConfig"
 
 describe("normalizeConfig", () => {
 	test("should return normalized config object", () => {
@@ -14,7 +14,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate plugins", () => {
-		const config: UserConfig = {plugin: ["plugin-a", "plugin-b", "plugin-a"]}
+		const config: UserConfig = { plugin: ["plugin-a", "plugin-b", "plugin-a"] }
 		const result = normalizeConfig(config)
 
 		expect(result.plugin).toBeDefined()
@@ -24,7 +24,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append blockTags", () => {
-		const config: UserConfig = {blockTags: ["@custom"]}
+		const config: UserConfig = { blockTags: ["@custom"] }
 		const result = normalizeConfig(config)
 
 		expect(result.blockTags).toBeDefined()
@@ -35,7 +35,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate blockTags", () => {
-		const config: UserConfig = {blockTags: ["@custom", "@custom"]}
+		const config: UserConfig = { blockTags: ["@custom", "@custom"] }
 		const result = normalizeConfig(config)
 
 		expect(result.blockTags).toBeDefined()
@@ -46,7 +46,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append inlineTags", () => {
-		const config: UserConfig = {inlineTags: ["@inline"]}
+		const config: UserConfig = { inlineTags: ["@inline"] }
 		const result = normalizeConfig(config)
 
 		expect(result.inlineTags).toBeDefined()
@@ -54,7 +54,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate inlineTags", () => {
-		const config: UserConfig = {inlineTags: ["@inline", "@inline"]}
+		const config: UserConfig = { inlineTags: ["@inline", "@inline"] }
 		const result = normalizeConfig(config)
 
 		expect(result.inlineTags).toBeDefined()
@@ -65,7 +65,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append modifierTags", () => {
-		const config: UserConfig = {modifierTags: ["@modifier"]}
+		const config: UserConfig = { modifierTags: ["@modifier"] }
 		const result = normalizeConfig(config)
 
 		expect(result.modifierTags).toBeDefined()
@@ -73,7 +73,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate modifierTags", () => {
-		const config: UserConfig = {modifierTags: ["@modifier", "@modifier"]}
+		const config: UserConfig = { modifierTags: ["@modifier", "@modifier"] }
 		const result = normalizeConfig(config)
 
 		expect(result.modifierTags).toBeDefined()
@@ -84,7 +84,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append highlightLanguages", () => {
-		const config: UserConfig = {highlightLanguages: ["custom-lang"]}
+		const config: UserConfig = { highlightLanguages: ["custom-lang"] }
 		const result = normalizeConfig(config)
 
 		expect(result.highlightLanguages).toBeDefined()
@@ -105,7 +105,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append kindSortOrder", () => {
-		const config: UserConfig = {kindSortOrder: ["Class"]}
+		const config: UserConfig = { kindSortOrder: ["Class"] }
 		const result = normalizeConfig(config)
 
 		expect(result.kindSortOrder).toBeDefined()
@@ -113,7 +113,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate kindSortOrder", () => {
-		const config: UserConfig = {kindSortOrder: ["Class", "Class"]}
+		const config: UserConfig = { kindSortOrder: ["Class", "Class"] }
 		const result = normalizeConfig(config)
 
 		expect(result.kindSortOrder).toBeDefined()
@@ -124,7 +124,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append sort", () => {
-		const config: UserConfig = {sort: ["alphabetical"]}
+		const config: UserConfig = { sort: ["alphabetical"] }
 		const result = normalizeConfig(config)
 
 		expect(result.sort).toBeDefined()
@@ -132,7 +132,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should remove duplicate sort values", () => {
-		const config: UserConfig = {sort: ["alphabetical", "alphabetical"]}
+		const config: UserConfig = { sort: ["alphabetical", "alphabetical"] }
 		const result = normalizeConfig(config)
 
 		expect(result.sort).toBeDefined()
@@ -143,7 +143,7 @@ describe("normalizeConfig", () => {
 	})
 
 	test("should normalize and append requiredToBeDocumented", () => {
-		const config: UserConfig = {requiredToBeDocumented: ["Class"]}
+		const config: UserConfig = { requiredToBeDocumented: ["Class"] }
 		const result = normalizeConfig(config)
 
 		expect(result.requiredToBeDocumented).toBeDefined()
@@ -165,7 +165,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions blockTags", () => {
 		const config: UserConfig = {
-			packageOptions: {blockTags: ["@custom"]},
+			packageOptions: { blockTags: ["@custom"] },
 		}
 		const result = normalizeConfig(config)
 
@@ -176,7 +176,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions inlineTags", () => {
 		const config: UserConfig = {
-			packageOptions: {inlineTags: ["@inline"]},
+			packageOptions: { inlineTags: ["@inline"] },
 		}
 		const result = normalizeConfig(config)
 
@@ -187,7 +187,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions modifierTags", () => {
 		const config: UserConfig = {
-			packageOptions: {modifierTags: ["@modifier"]},
+			packageOptions: { modifierTags: ["@modifier"] },
 		}
 		const result = normalizeConfig(config)
 
@@ -198,7 +198,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions kindSortOrder", () => {
 		const config: UserConfig = {
-			packageOptions: {kindSortOrder: ["Class"]},
+			packageOptions: { kindSortOrder: ["Class"] },
 		}
 		const result = normalizeConfig(config)
 
@@ -209,7 +209,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions sort", () => {
 		const config: UserConfig = {
-			packageOptions: {sort: ["alphabetical"]},
+			packageOptions: { sort: ["alphabetical"] },
 		}
 		const result = normalizeConfig(config)
 
@@ -220,7 +220,7 @@ describe("normalizeConfig", () => {
 
 	test("should normalize packageOptions requiredToBeDocumented", () => {
 		const config: UserConfig = {
-			packageOptions: {requiredToBeDocumented: ["Class"]},
+			packageOptions: { requiredToBeDocumented: ["Class"] },
 		}
 		const result = normalizeConfig(config)
 

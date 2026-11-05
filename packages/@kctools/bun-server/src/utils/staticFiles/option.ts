@@ -1,4 +1,4 @@
-import {Option} from "commander"
+import { Option } from "commander"
 
 const flag = "-s, --statics <source[:target]>"
 const description = "Files copied as they are, repeatable"

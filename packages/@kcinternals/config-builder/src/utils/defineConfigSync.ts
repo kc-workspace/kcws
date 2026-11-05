@@ -1,10 +1,10 @@
-import type {AnySyncConfigPlugin} from "../types"
+import type { AnySyncConfigPlugin } from "../types"
 
-import {format} from "node:util"
+import { format } from "node:util"
 
 import defineBaseConfig from "./defineBaseConfig"
-import {sortPlugins} from "./helpers"
-import {debug, verbose} from "./logger"
+import { sortPlugins } from "./helpers"
+import { debug, verbose } from "./logger"
 
 /**
  * Apply plugins sequentially, completing all settings before configurations.
@@ -13,7 +13,7 @@ import {debug, verbose} from "./logger"
  * @returns The final configuration object after applying all plugins.
  */
 const defineConfigSync = <C>(base: C, ...plugins: AnySyncConfigPlugin<C>[]): C => {
-	const {config: baseConfig, setting: baseSetting} = defineBaseConfig(base)
+	const { config: baseConfig, setting: baseSetting } = defineBaseConfig(base)
 
 	const setting = sortPlugins(plugins, "settingPriority").reduce((before, plugin) => {
 		const name = plugin.name

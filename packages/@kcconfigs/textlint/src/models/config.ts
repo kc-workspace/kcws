@@ -1,7 +1,7 @@
-import type {AnyFilter} from "./filter"
-import type {AnyPlugin} from "./plugin"
-import type {AnyPreset, UserPreset} from "./preset"
-import type {AnyRule, UserRule} from "./rule"
+import type { AnyFilter } from "./filter"
+import type { AnyPlugin } from "./plugin"
+import type { AnyPreset, UserPreset } from "./preset"
+import type { AnyRule, UserRule } from "./rule"
 
 export interface Config<PL extends AnyPlugin[], PR extends AnyPreset[], RU extends AnyRule[], FL extends AnyFilter[]> {
 	plugins?: PL

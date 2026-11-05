@@ -1,7 +1,7 @@
-import type {TsdownConfigPlugin} from "../models"
+import type { TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {type Format, mergeConfig, type ResolvedConfig} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { type Format, mergeConfig, type ResolvedConfig } from "tsdown"
 
 type MinimalFormat = Exclude<Format, "es" | "module" | "commonjs">
 type FormatValue = Partial<ResolvedConfig>

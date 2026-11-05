@@ -1,7 +1,7 @@
-import type {GlobScanOptions} from "bun"
-import type {BunType} from "#types"
+import type { GlobScanOptions } from "bun"
+import type { BunType } from "#types"
 
-import {logger} from "./constants"
+import { logger } from "./constants"
 
 type ScanFileOption = GlobScanOptions
 
@@ -20,7 +20,7 @@ const scanFiles = async (Bun: BunType, pattern: string, option: ScanFileOption):
 		)
 		return files
 	} catch (e) {
-		const code = (e as {code?: string}).code
+		const code = (e as { code?: string }).code
 		if (code !== undefined && MISSING.has(code)) return []
 		throw e
 	}

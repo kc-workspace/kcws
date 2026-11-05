@@ -1,4 +1,4 @@
-import type {EnumKeys, ReflectionKind, TypeDocOptions} from "typedoc"
+import type { EnumKeys, ReflectionKind, TypeDocOptions } from "typedoc"
 
 // biome-ignore lint/suspicious/noExplicitAny: any object type
 export type AnyObject = Record<string, any>

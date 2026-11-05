@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {multiply} from "."
+import { multiply } from "."
 
 describe(multiply.name, () => {
 	test("should multiply two numbers correctly", () => {

@@ -1,12 +1,12 @@
-import type {Adapter, RawConfig} from "#types"
+import type { Adapter, RawConfig } from "#types"
 
-import {mockCwd, vol} from "@kcconfigs/vitest/mocks"
-import {describe, expect, expectTypeOf, test, vi} from "vitest"
-import {z} from "zod"
+import { mockCwd, vol } from "@kcconfigs/vitest/mocks"
+import { describe, expect, expectTypeOf, test, vi } from "vitest"
+import { z } from "zod"
 
-import {ZconfigAdapterError, ZconfigSchemaError, ZconfigValidationError} from "#utils/errors"
-import {dotenvAdapter, envAdapter, yamlAdapter} from "../adapters"
-import {loadConfig, loadConfigSync} from "."
+import { ZconfigAdapterError, ZconfigSchemaError, ZconfigValidationError } from "#utils/errors"
+import { dotenvAdapter, envAdapter, yamlAdapter } from "../adapters"
+import { loadConfig, loadConfigSync } from "."
 
 /** Adapter returning a fixed payload from both entry points. */
 const stub = (name: string, value: RawConfig): Adapter => ({
@@ -25,16 +25,16 @@ const failing = (name: string, error: unknown): Adapter => ({
 })
 
 const schema = z.object({
-	database: z.object({host: z.string(), port: z.number()}),
+	database: z.object({ host: z.string(), port: z.number() }),
 	debug: z.boolean().default(false),
 })
 
-const base: RawConfig = {database: {host: "localhost", port: 5432}}
+const base: RawConfig = { database: { host: "localhost", port: 5432 } }
 
 describe("loadConfigSync", () => {
 	test("should validate a single adapter and return the parsed config", () => {
 		expect(loadConfigSync(schema, [stub("json", base)])).toEqual({
-			database: {host: "localhost", port: 5432},
+			database: { host: "localhost", port: 5432 },
 			debug: false,
 		})
 	})
@@ -54,7 +54,7 @@ describe("loadConfigSync", () => {
 })
 
 describe("schema validation ordering", () => {
-	const invalidSchema = z.object({database_host: z.string()})
+	const invalidSchema = z.object({ database_host: z.string() })
 
 	test("should throw ZconfigSchemaError before any adapter runs when sync", () => {
 		const adapter = stub("json", base)
@@ -82,9 +82,9 @@ describe("adapter error handling", () => {
 describe("sync and async parity", () => {
 	test("should produce identical results across a multi adapter fixture", async () => {
 		const adapters = (): Adapter[] => [
-			stub("yaml", {database: {host: "localhost", port: 5432}}),
-			stub("json", {database: {port: 6543}, debug: true}),
-			stub("env", {database: {host: "db.internal"}}),
+			stub("yaml", { database: { host: "localhost", port: 5432 } }),
+			stub("json", { database: { port: 6543 }, debug: true }),
+			stub("env", { database: { host: "db.internal" } }),
 		]
 
 		const asyncConfig = await loadConfig(schema, adapters())
@@ -92,7 +92,7 @@ describe("sync and async parity", () => {
 
 		expect(syncConfig).toEqual(asyncConfig)
 		expect(syncConfig).toEqual({
-			database: {host: "db.internal", port: 6543},
+			database: { host: "db.internal", port: 6543 },
 			debug: true,
 		})
 	})
@@ -122,13 +122,13 @@ describe("integration", () => {
 		vi.stubEnv("APP_DATABASE__PORT", "6543")
 		vi.stubEnv("APP_DEBUG", "true")
 
-		const adapters = [yamlAdapter(), dotenvAdapter({prefix: "APP"}), envAdapter({prefix: "APP"})]
+		const adapters = [yamlAdapter(), dotenvAdapter({ prefix: "APP" }), envAdapter({ prefix: "APP" })]
 		const asyncConfig = await loadConfig(dotenvIntegrationSchema, adapters)
 		const syncConfig = loadConfigSync(dotenvIntegrationSchema, adapters)
 
 		expect(syncConfig).toEqual(asyncConfig)
 		expect(syncConfig).toEqual({
-			database: {host: "env.internal", port: 6543},
+			database: { host: "env.internal", port: 6543 },
 			dotenvOnly: "dotenv-value",
 			debug: true,
 		})
@@ -140,7 +140,7 @@ describe("types", () => {
 		const config = loadConfigSync(schema, [stub("json", base)])
 
 		expectTypeOf(config).toEqualTypeOf<{
-			database: {host: string; port: number}
+			database: { host: string; port: number }
 			debug: boolean
 		}>()
 	})

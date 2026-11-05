@@ -1,7 +1,7 @@
-import type {Logger} from "./types"
+import type { Logger } from "./types"
 
-import {type LoggerOptions, pino} from "pino"
-import {build} from "pino-pretty"
+import { type LoggerOptions, pino } from "pino"
+import { build } from "pino-pretty"
 
 import isDebug from "./isDebug"
 

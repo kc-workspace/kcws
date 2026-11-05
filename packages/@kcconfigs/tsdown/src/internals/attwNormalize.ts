@@ -1,15 +1,15 @@
-import type {EnableOption, TsdownConfig, TsdownConfigPlugin} from "../models"
+import type { EnableOption, TsdownConfig, TsdownConfigPlugin } from "../models"
 
-import {definePluginSync} from "@kcinternals/config-builder"
-import {type AttwOptions, type CIOption, mergeConfig} from "tsdown"
+import { definePluginSync } from "@kcinternals/config-builder"
+import { type AttwOptions, type CIOption, mergeConfig } from "tsdown"
 
-import {normalizePriority} from "../constants"
+import { normalizePriority } from "../constants"
 
 const isEsm = (format: TsdownConfig["format"]): boolean => {
 	if (typeof format === "string") return format === "es" || format === "esm" || format === "module"
 	if (Array.isArray(format)) return format.some((f) => isEsm(f))
 	if (typeof format === "object" && format !== null) {
-		const {es, esm, module} = format
+		const { es, esm, module } = format
 		return Boolean(es || esm || module)
 	}
 	return false
@@ -52,7 +52,7 @@ const attwNormalize = (): TsdownConfigPlugin<"attw"> =>
 		applyConfig: (config) => {
 			const attw = normalize(config)
 			return mergeConfig(config, {
-				attw: attw.enabled ? attw : {enabled: false},
+				attw: attw.enabled ? attw : { enabled: false },
 			})
 		},
 	})

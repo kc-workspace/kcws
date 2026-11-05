@@ -1,8 +1,8 @@
-import type {z} from "zod"
+import type { z } from "zod"
 
-import {parse as parseYaml} from "yaml"
+import { parse as parseYaml } from "yaml"
 
-import {createObjectParser} from "./createObjectParser"
+import { createObjectParser } from "./createObjectParser"
 
 /**
  * Zod schema for parsing YAML string input to object.

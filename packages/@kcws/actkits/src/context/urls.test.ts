@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {getContext, getRepositoryUrl, getRunUrl} from "."
+import { getContext, getRepositoryUrl, getRunUrl } from "."
 
 describe("context urls", () => {
 	test("should build repository and run urls", () => {
@@ -15,8 +15,8 @@ describe("context urls", () => {
 	})
 
 	test("should return undefined urls when required values are missing", () => {
-		expect(getRepositoryUrl(getContext({GITHUB_REPOSITORY: "kc/kcws"}))).toBeUndefined()
-		expect(getRunUrl(getContext({GITHUB_SERVER_URL: "https://github.com"}))).toBeUndefined()
+		expect(getRepositoryUrl(getContext({ GITHUB_REPOSITORY: "kc/kcws" }))).toBeUndefined()
+		expect(getRunUrl(getContext({ GITHUB_SERVER_URL: "https://github.com" }))).toBeUndefined()
 		expect(
 			getRunUrl(
 				getContext({

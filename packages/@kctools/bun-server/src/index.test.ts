@@ -1,9 +1,9 @@
 import type * as BunType from "bun"
 
-import {describe, expect, test, vi} from "vitest"
+import { describe, expect, test, vi } from "vitest"
 
-import {Program} from "#core/program"
-import {setup} from "./index"
+import { Program } from "#core/program"
+import { setup } from "./index"
 
 const createMockBun = () => ({}) as unknown as typeof BunType
 

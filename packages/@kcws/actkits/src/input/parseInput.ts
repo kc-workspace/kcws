@@ -1,7 +1,7 @@
-import {getInput} from "@actions/core"
-import {z} from "zod"
+import { getInput } from "@actions/core"
+import { z } from "zod"
 
-import {type ActionEnv, getEnv} from "./env"
+import { type ActionEnv, getEnv } from "./env"
 
 /**
  * Parses and validates GitHub Actions inputs against a Zod schema.

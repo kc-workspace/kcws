@@ -1,8 +1,8 @@
-import type {EnvObject} from "#types"
-import type {DotenvAdapterOptions, DotenvModule} from "./types"
+import type { EnvObject } from "#types"
+import type { DotenvAdapterOptions, DotenvModule } from "./types"
 
-import {decodeEnvObject} from "#utils/env"
-import {importSync} from "#utils/imports"
+import { decodeEnvObject } from "#utils/env"
+import { importSync } from "#utils/imports"
 
 /**
  * Parses dotenv file content into a decoded, nested configuration object.

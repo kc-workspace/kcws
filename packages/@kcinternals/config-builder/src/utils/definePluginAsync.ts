@@ -1,4 +1,4 @@
-import type {AsyncConfigPlugin} from "../types"
+import type { AsyncConfigPlugin } from "../types"
 
 /**
  * Create a plugin that supports synchronous and asynchronous actions.

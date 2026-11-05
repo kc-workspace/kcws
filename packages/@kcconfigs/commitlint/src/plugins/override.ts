@@ -1,8 +1,8 @@
-import type {CommitlintConfig, CommitlintConfigPlugin} from "../types"
+import type { CommitlintConfig, CommitlintConfigPlugin } from "../types"
 
-import {definePluginAsync} from "@kcinternals/config-builder"
+import { definePluginAsync } from "@kcinternals/config-builder"
 
-import {overridePriority} from "../constants"
+import { overridePriority } from "../constants"
 import mergeConfig from "../utils/mergeConfig"
 
 /**

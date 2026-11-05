@@ -1,4 +1,4 @@
-import {mergeConfig, type PluginConfig} from "../configs"
+import { mergeConfig, type PluginConfig } from "../configs"
 import github from "../themes/github"
 import dtLinks from "./dtLinks"
 import extras from "./extras"

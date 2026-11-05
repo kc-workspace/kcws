@@ -1,4 +1,4 @@
-import {getEnv} from "./env"
+import { getEnv } from "./env"
 
 // Example with default INPUT prefix and process.env
 getEnv("token")

@@ -1,9 +1,9 @@
 /** biome-ignore-all lint/complexity/useLiteralKeys: Conflict with ts(4111) */
 
-import type {ActionEnv} from "../input/env"
-import type {GitHubContext} from "./types"
+import type { ActionEnv } from "../input/env"
+import type { GitHubContext } from "./types"
 
-import {env as dEnv} from "node:process"
+import { env as dEnv } from "node:process"
 
 const GITHUB_ACTIONS_TRUE = "true"
 

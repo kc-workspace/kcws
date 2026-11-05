@@ -1,6 +1,6 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
-import {baseRootConfig} from "../constants/config"
+import { baseRootConfig } from "../constants/config"
 import rootPlugin from "./root"
 
 describe("rootPlugin", () => {

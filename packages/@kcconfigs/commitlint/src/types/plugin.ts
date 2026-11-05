@@ -1,5 +1,5 @@
-import type {AsyncConfigPlugin} from "@kcinternals/config-builder"
-import type {CommitlintConfig} from "./config"
+import type { AsyncConfigPlugin } from "@kcinternals/config-builder"
+import type { CommitlintConfig } from "./config"
 
 /**
  * A config-builder plugin that produces a {@link CommitlintConfig}.

@@ -1,4 +1,4 @@
-import type {BaseConfig, BaseSetting} from "../types"
+import type { BaseConfig, BaseSetting } from "../types"
 
 const defineBaseConfig = <C>(base: C, setting?: Partial<BaseSetting>): BaseConfig<C> => {
 	return {

@@ -1,4 +1,4 @@
-import type {AnyObject, BaseObject, UserBase} from "./base"
+import type { AnyObject, BaseObject, UserBase } from "./base"
 
 export interface Plugin<N extends string, C extends AnyObject> extends BaseObject<"plugin", N> {
 	config: C

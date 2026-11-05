@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import defineConfigAsync from "./defineConfigAsync"
 import definePluginAsync from "./definePluginAsync"
@@ -6,7 +6,7 @@ import definePluginAsync from "./definePluginAsync"
 describe(defineConfigAsync.name, () => {
 	test("awaits plugins in priority order, completing settings before configs", async () => {
 		const calls: string[] = []
-		const base = {calls: [] as string[]}
+		const base = { calls: [] as string[] }
 		const plugins = [
 			definePluginAsync<"later", typeof base>("later", {
 				settingPriority: 10,
@@ -15,7 +15,7 @@ describe(defineConfigAsync.name, () => {
 					calls.push("setting:later")
 					return setting
 				},
-				applyConfig: async (config) => ({calls: [...config.calls, "later"]}),
+				applyConfig: async (config) => ({ calls: [...config.calls, "later"] }),
 			}),
 			definePluginAsync<"earlier", typeof base>("earlier", {
 				settingPriority: 0,
@@ -41,9 +41,9 @@ describe(defineConfigAsync.name, () => {
 		const messages: string[] = []
 
 		const result = await defineConfigAsync(
-			{value: 1},
-			definePluginAsync<"logger", {value: number}>("logger", {
-				applySetting: () => ({verbose: (message) => messages.push(message)}),
+			{ value: 1 },
+			definePluginAsync<"logger", { value: number }>("logger", {
+				applySetting: () => ({ verbose: (message) => messages.push(message) }),
 				applyConfig: async (config) => {
 					config.value += 1
 					return config
@@ -51,20 +51,20 @@ describe(defineConfigAsync.name, () => {
 			}),
 		)
 
-		expect(result).toEqual({value: 2})
+		expect(result).toEqual({ value: 2 })
 		expect(messages).toContain("[logger] before config: { value: 1 }")
 		expect(messages).toContain("[logger] after config: { value: 2 }")
 	})
 
 	test("keeps the base config when plugins omit apply hooks", async () => {
-		const base = {value: 1}
+		const base = { value: 1 }
 		const result = await defineConfigAsync(base, definePluginAsync<"noop", typeof base>("noop", {}))
 
 		expect(result).toBe(base)
 	})
 
 	test("falls back to the previous values when hooks return undefined", async () => {
-		const base = {value: 1}
+		const base = { value: 1 }
 		const result = await defineConfigAsync(
 			base,
 			definePluginAsync<"undefined", typeof base>("undefined", {
@@ -81,17 +81,17 @@ describe(defineConfigAsync.name, () => {
 		const verboseMessages: string[] = []
 
 		const result = await defineConfigAsync(
-			{value: 1},
-			definePluginAsync<"logger", {value: number}>("logger", {
+			{ value: 1 },
+			definePluginAsync<"logger", { value: number }>("logger", {
 				applySetting: () => ({
 					debug: (message) => debugMessages.push(message),
 					verbose: (message) => verboseMessages.push(message),
 				}),
-				applyConfig: (config) => ({value: config.value + 1}),
+				applyConfig: (config) => ({ value: config.value + 1 }),
 			}),
 		)
 
-		expect(result).toEqual({value: 2})
+		expect(result).toEqual({ value: 2 })
 		expect(debugMessages).toEqual([
 			"applying setting: logger (0)",
 			"applying config: logger (0)",

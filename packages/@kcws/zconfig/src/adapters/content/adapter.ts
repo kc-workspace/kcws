@@ -1,9 +1,9 @@
-import type {Adapter} from "#types"
-import type {ContentAdapterOptions, ContentSource} from "./types"
+import type { Adapter } from "#types"
+import type { ContentAdapterOptions, ContentSource } from "./types"
 
-import {toAdapterError} from "#utils/errors"
-import {applyTransform} from "#utils/transforms"
-import {decodeContent, resolveParser, toRawConfig} from "./utils"
+import { toAdapterError } from "#utils/errors"
+import { applyTransform } from "#utils/transforms"
+import { decodeContent, resolveParser, toRawConfig } from "./utils"
 
 const LOAD_ERR = "Failed to load config content"
 

@@ -1,8 +1,8 @@
-import type {AnyConfig, VitestConfigPlugin} from "../types"
+import type { AnyConfig, VitestConfigPlugin } from "../types"
 
-import {existsSync} from "node:fs"
-import {join} from "node:path"
-import {definePluginSync} from "@kcinternals/config-builder"
+import { existsSync } from "node:fs"
+import { join } from "node:path"
+import { definePluginSync } from "@kcinternals/config-builder"
 
 import mergeConfig from "../utils/mergeConfig"
 

@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import debugPlugin from "./debug"
 
@@ -20,14 +20,14 @@ describe("debugPlugin", () => {
 	})
 
 	test("should enable verbose when requested", async () => {
-		const plugin = debugPlugin({verbose: true})
+		const plugin = debugPlugin({ verbose: true })
 		const result = await plugin.applySetting?.({})
 		expect(result?.verbose).toBe(true)
 	})
 
 	test("should inherit verbose from base setting when not specified", async () => {
 		const plugin = debugPlugin()
-		const result = await plugin.applySetting?.({verbose: true})
+		const result = await plugin.applySetting?.({ verbose: true })
 		expect(result?.verbose).toBe(true)
 	})
 

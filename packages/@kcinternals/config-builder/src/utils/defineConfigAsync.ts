@@ -1,10 +1,10 @@
-import type {AnyAsyncConfigPlugin} from "../types"
+import type { AnyAsyncConfigPlugin } from "../types"
 
-import {format} from "node:util"
+import { format } from "node:util"
 
 import defineBaseConfig from "./defineBaseConfig"
-import {sortPlugins} from "./helpers"
-import {debug, verbose} from "./logger"
+import { sortPlugins } from "./helpers"
+import { debug, verbose } from "./logger"
 
 /**
  * Apply plugins sequentially, completing all settings before configurations.
@@ -13,7 +13,7 @@ import {debug, verbose} from "./logger"
  * @returns The final configuration object after applying all plugins.
  */
 const defineConfigAsync = async <C>(base: C, ...plugins: AnyAsyncConfigPlugin<C>[]): Promise<C> => {
-	let {config, setting} = defineBaseConfig(base)
+	let { config, setting } = defineBaseConfig(base)
 
 	for (const plugin of sortPlugins(plugins, "settingPriority")) {
 		const name = plugin.name

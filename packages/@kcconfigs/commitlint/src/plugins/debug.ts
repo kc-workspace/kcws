@@ -1,8 +1,8 @@
-import type {CommitlintConfigPlugin} from "../types"
+import type { CommitlintConfigPlugin } from "../types"
 
-import {definePluginAsync} from "@kcinternals/config-builder"
+import { definePluginAsync } from "@kcinternals/config-builder"
 
-import {debugPriority} from "../constants"
+import { debugPriority } from "../constants"
 
 /**
  * Options for {@link debugPlugin}.

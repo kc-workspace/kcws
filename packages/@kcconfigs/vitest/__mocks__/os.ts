@@ -1,6 +1,6 @@
 import type * as osType from "node:os"
 
-import {vi} from "vitest"
+import { vi } from "vitest"
 
 const osMock = (actual: typeof osType) => {
 	return {

@@ -1,18 +1,18 @@
-import type {BuildConfig} from "bun"
-import type {Command} from "commander"
-import type {CommandFn} from "#types"
+import type { BuildConfig } from "bun"
+import type { Command } from "commander"
+import type { CommandFn } from "#types"
 
-import {rm} from "node:fs/promises"
-import {isAbsolute, relative, resolve} from "node:path"
+import { rm } from "node:fs/promises"
+import { isAbsolute, relative, resolve } from "node:path"
 
-import {DEFAULT_OUTPUT} from "#constants"
-import {defineCommand} from "#utils/command"
-import {createLogger} from "#utils/logger"
-import {cwdOption, readOptions} from "#utils/options"
-import {readPlugins} from "#utils/plugin"
-import {reportArtifacts, reportSummary} from "#utils/report"
-import {parseRouteFiles} from "#utils/routeFiles"
-import {copyStaticFiles, parseStaticFiles, staticOption} from "#utils/staticFiles"
+import { DEFAULT_OUTPUT } from "#constants"
+import { defineCommand } from "#utils/command"
+import { createLogger } from "#utils/logger"
+import { cwdOption, readOptions } from "#utils/options"
+import { readPlugins } from "#utils/plugin"
+import { reportArtifacts, reportSummary } from "#utils/report"
+import { parseRouteFiles } from "#utils/routeFiles"
+import { copyStaticFiles, parseStaticFiles, staticOption } from "#utils/staticFiles"
 
 const logger = createLogger("commands/build")
 
@@ -39,9 +39,9 @@ const build: CommandFn = defineCommand("build", "Build the project using Bun.bui
 	define(command).action(async (inputs, options) => {
 		const cwd = readOptions<string>(options, "cwd")
 		const out = resolve(cwd, readOptions<string>(options, "out"))
-		logger.debug({inputs, options}, "building the project")
+		logger.debug({ inputs, options }, "building the project")
 
-		const {BUN_PUBLIC_BUILD_DATE: buildDate} = process.env
+		const { BUN_PUBLIC_BUILD_DATE: buildDate } = process.env
 		const defines: Record<string, string> = {
 			"process.env.BUN_PUBLIC_BUILD_DATE": JSON.stringify(buildDate ?? new Date().toISOString()),
 		}
@@ -62,11 +62,11 @@ const build: CommandFn = defineCommand("build", "Build the project using Bun.bui
 
 		if (readOptions<boolean>(options, "clean")) {
 			if (containsCwd(cwd, out)) {
-				logger.error({out}, "Refuse to clean an output directory containing the working directory")
+				logger.error({ out }, "Refuse to clean an output directory containing the working directory")
 				return
 			}
-			logger.debug({out}, "Cleaning the output directory")
-			await rm(out, {recursive: true, force: true})
+			logger.debug({ out }, "Cleaning the output directory")
+			await rm(out, { recursive: true, force: true })
 		}
 
 		const started = performance.now()
@@ -83,7 +83,7 @@ const build: CommandFn = defineCommand("build", "Build the project using Bun.bui
 			define: defines,
 			plugins,
 		}
-		logger.debug({buildConfig}, "Build configuration prepared")
+		logger.debug({ buildConfig }, "Build configuration prepared")
 		const output = await Bun.build(buildConfig)
 		if (!output.success) {
 			logger.error("\nBuild failed!")
@@ -93,7 +93,7 @@ const build: CommandFn = defineCommand("build", "Build the project using Bun.bui
 		const bundled = new Set(output.outputs.map((artifact) => artifact.path))
 		const overwritten = staticFiles.filter((file) => bundled.has(file.target)).map((file) => file.target)
 		if (overwritten.length > 0) {
-			logger.error({overwritten}, `The following static files will overwrite build output`)
+			logger.error({ overwritten }, `The following static files will overwrite build output`)
 			return
 		}
 

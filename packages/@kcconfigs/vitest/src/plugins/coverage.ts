@@ -1,9 +1,9 @@
-import type {CoverageOptions} from "vitest/node"
-import type {UserConfig, VitestConfigPlugin} from "../types"
+import type { CoverageOptions } from "vitest/node"
+import type { UserConfig, VitestConfigPlugin } from "../types"
 
-import {definePluginSync, type WithEnabled} from "@kcinternals/config-builder"
+import { definePluginSync, type WithEnabled } from "@kcinternals/config-builder"
 
-import {defaultCoverage} from "../constants/config"
+import { defaultCoverage } from "../constants/config"
 import mergeConfig from "../utils/mergeConfig"
 
 /**
@@ -46,11 +46,11 @@ const coveragePlugin = (opt: CoverageOption, replace = false): VitestConfigPlugi
 				return base
 			} else if (opt === true) {
 				if (replace) {
-					return replaceCoverage(base, {enabled: true})
+					return replaceCoverage(base, { enabled: true })
 				}
 
 				return mergeConfig(base, {
-					test: {coverage: defaultCoverage},
+					test: { coverage: defaultCoverage },
 				})
 			}
 
@@ -58,7 +58,7 @@ const coveragePlugin = (opt: CoverageOption, replace = false): VitestConfigPlugi
 				return replaceCoverage(base, opt)
 			}
 
-			return mergeConfig(base, {test: {coverage: opt}})
+			return mergeConfig(base, { test: { coverage: opt } })
 		},
 	})
 export default coveragePlugin

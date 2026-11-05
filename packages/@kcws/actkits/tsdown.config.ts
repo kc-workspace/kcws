@@ -1,5 +1,5 @@
-import {defineConfig, type TsdownConfig} from "@kcconfigs/tsdown"
-import {entryPlugin, formatPlugin, nodePlugin} from "@kcconfigs/tsdown/plugins"
+import { defineConfig, type TsdownConfig } from "@kcconfigs/tsdown"
+import { entryPlugin, formatPlugin, nodePlugin } from "@kcconfigs/tsdown/plugins"
 
 const config: TsdownConfig = defineConfig(
 	nodePlugin(),

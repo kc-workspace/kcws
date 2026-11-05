@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest"
 
 import deepMerge from "./deepMerge"
 
@@ -8,58 +8,58 @@ describe("deepMerge", () => {
 	})
 
 	test("should merge disjoint keys from every source", () => {
-		const merged = deepMerge({a: 1}, {b: 2}, {c: 3})
+		const merged = deepMerge({ a: 1 }, { b: 2 }, { c: 3 })
 
-		expect(merged).toEqual({a: 1, b: 2, c: 3})
+		expect(merged).toEqual({ a: 1, b: 2, c: 3 })
 	})
 
 	test("should let a later source win on a conflicting key", () => {
-		const merged = deepMerge({host: "localhost"}, {host: "db.internal"})
+		const merged = deepMerge({ host: "localhost" }, { host: "db.internal" })
 
-		expect(merged).toEqual({host: "db.internal"})
+		expect(merged).toEqual({ host: "db.internal" })
 	})
 
 	test("should merge nested plain objects recursively", () => {
-		const merged = deepMerge({database: {host: "localhost", port: 5432}}, {database: {host: "db.internal"}})
+		const merged = deepMerge({ database: { host: "localhost", port: 5432 } }, { database: { host: "db.internal" } })
 
 		expect(merged).toEqual({
-			database: {host: "db.internal", port: 5432},
+			database: { host: "db.internal", port: 5432 },
 		})
 	})
 
 	test("should merge deeply nested branches independently", () => {
-		const merged = deepMerge({a: {b: {c: 1, d: 2}}}, {a: {b: {d: 3}}, e: 4})
+		const merged = deepMerge({ a: { b: { c: 1, d: 2 } } }, { a: { b: { d: 3 } }, e: 4 })
 
-		expect(merged).toEqual({a: {b: {c: 1, d: 3}}, e: 4})
+		expect(merged).toEqual({ a: { b: { c: 1, d: 3 } }, e: 4 })
 	})
 
 	test("should replace arrays wholesale rather than concatenating", () => {
-		const merged = deepMerge({hosts: ["a", "b", "c"]}, {hosts: ["d"]})
+		const merged = deepMerge({ hosts: ["a", "b", "c"] }, { hosts: ["d"] })
 
-		expect(merged).toEqual({hosts: ["d"]})
+		expect(merged).toEqual({ hosts: ["d"] })
 	})
 
 	test("should allow a later source to clear a list", () => {
-		const merged = deepMerge({hosts: ["a", "b"]}, {hosts: []})
+		const merged = deepMerge({ hosts: ["a", "b"] }, { hosts: [] })
 
-		expect(merged).toEqual({hosts: []})
+		expect(merged).toEqual({ hosts: [] })
 	})
 
 	test("should replace an object with a primitive and vice versa", () => {
-		expect(deepMerge({a: {b: 1}}, {a: "flat"})).toEqual({a: "flat"})
-		expect(deepMerge({a: "flat"}, {a: {b: 1}})).toEqual({a: {b: 1}})
+		expect(deepMerge({ a: { b: 1 } }, { a: "flat" })).toEqual({ a: "flat" })
+		expect(deepMerge({ a: "flat" }, { a: { b: 1 } })).toEqual({ a: { b: 1 } })
 	})
 
 	test("should let null replace an earlier value", () => {
-		const merged = deepMerge({a: 1, b: {c: 2}}, {a: null, b: null})
+		const merged = deepMerge({ a: 1, b: { c: 2 } }, { a: null, b: null })
 
-		expect(merged).toEqual({a: null, b: null})
+		expect(merged).toEqual({ a: null, b: null })
 	})
 
 	test("should skip undefined so it never overrides an earlier value", () => {
-		const merged = deepMerge({a: 1}, {a: undefined})
+		const merged = deepMerge({ a: 1 }, { a: undefined })
 
-		expect(merged).toEqual({a: 1})
+		expect(merged).toEqual({ a: 1 })
 	})
 
 	test("should treat a non-plain object as a leaf and replace it", () => {
@@ -70,23 +70,23 @@ describe("deepMerge", () => {
 		}
 		const instance = new Custom()
 
-		expect(deepMerge({a: {b: 1}}, {a: date})["a"]).toBe(date)
-		expect(deepMerge({a: {b: 1}}, {a: map})["a"]).toBe(map)
-		expect(deepMerge({a: {b: 1}}, {a: instance})["a"]).toBe(instance)
+		expect(deepMerge({ a: { b: 1 } }, { a: date })["a"]).toBe(date)
+		expect(deepMerge({ a: { b: 1 } }, { a: map })["a"]).toBe(map)
+		expect(deepMerge({ a: { b: 1 } }, { a: instance })["a"]).toBe(instance)
 	})
 
 	test("should not mutate any source object", () => {
-		const first = {database: {host: "localhost", port: 5432}}
-		const second = {database: {host: "db.internal"}}
+		const first = { database: { host: "localhost", port: 5432 } }
+		const second = { database: { host: "db.internal" } }
 
 		deepMerge(first, second)
 
-		expect(first).toEqual({database: {host: "localhost", port: 5432}})
-		expect(second).toEqual({database: {host: "db.internal"}})
+		expect(first).toEqual({ database: { host: "localhost", port: 5432 } })
+		expect(second).toEqual({ database: { host: "db.internal" } })
 	})
 
 	test("should build results with a null prototype", () => {
-		const merged = deepMerge({database: {host: "localhost"}})
+		const merged = deepMerge({ database: { host: "localhost" } })
 
 		expect(Object.getPrototypeOf(merged)).toBeNull()
 		expect(Object.getPrototypeOf(merged["database"])).toBeNull()
@@ -108,7 +108,7 @@ describe("deepMerge", () => {
 
 			const merged = deepMerge(payload)
 
-			expect(merged).toEqual({database: {}})
+			expect(merged).toEqual({ database: {} })
 			expect(Object.prototype).not.toHaveProperty("polluted")
 		})
 
@@ -120,7 +120,7 @@ describe("deepMerge", () => {
 
 			const merged = deepMerge(payload)
 
-			expect(merged).toEqual({keep: 1})
+			expect(merged).toEqual({ keep: 1 })
 		})
 	})
 })
