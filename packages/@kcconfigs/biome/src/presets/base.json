@@ -69,5 +69,13 @@
 		"formatter": {
 			"bracketSameLine": true
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/package.json"],
+			"formatter": {
+				"expand": "always"
+			}
+		}
+	]
 }

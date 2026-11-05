@@ -84,6 +84,7 @@ Inherited from [base.json](./src/presets/base.json):
 - **Indent width**: 2
 - **Line width**: 120
 - **Line ending**: LF
+- **package.json**: arrays and objects always expanded, one item per line
 - **VCS integration**: enabled, uses `.gitignore`, default branch `main`
 
 The default preset also sets `formatter.useEditorconfig` to `true`,
