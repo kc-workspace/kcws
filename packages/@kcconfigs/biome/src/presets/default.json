@@ -1,46 +1,14 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
-	"extends": ["./base.json"],
-	"files": {
-		"includes": [
-			"**",
-			"!.vitest",
-			"!.dist",
-			"!dist",
-			"!dist.*",
-			"!build",
-			"!build.*",
-			"!out",
-			"!out.*",
-			"!.*.old",
-			"!node_modules"
-		]
-	},
-	"formatter": {
-		"useEditorconfig": true
-	},
+	"extends": ["./base.json", "../features/ignores.json", "../features/ignoresBuild.json"],
+	"formatter": {"useEditorconfig": true},
 	"overrides": [
 		{
 			"includes": ["**/*.test.*", "**/*.spec.*", "**/__mocks__/**"],
 			"linter": {
 				"rules": {
-					"complexity": {
-						"useLiteralKeys": {
-							"level": "off",
-							"fix": "none"
-						}
-					},
-					"suspicious": {
-						"noExplicitAny": {
-							"level": "off"
-						}
-					},
-					"style": {
-						"noNonNullAssertion": {
-							"level": "off",
-							"fix": "none"
-						}
-					}
+					"suspicious": {"noExplicitAny": {"level": "off"}},
+					"style": {"noNonNullAssertion": {"level": "off", "fix": "none"}}
 				}
 			}
 		}

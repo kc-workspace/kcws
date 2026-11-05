@@ -1,10 +1,5 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
-	"extends": ["./base.json"],
-	"files": {
-		"includes": ["**", "!.vitest", "!dist", "!dist.*", "!.*.old", "!node_modules"]
-	},
-	"html": {
-		"experimentalFullSupportEnabled": true
-	}
+	"extends": ["./base.json", "../features/ignores.json", "../features/ignoresBuild.json", "../features/htmlFull.json"],
+	"files": {"includes": ["!.svelte-kit"]}
 }

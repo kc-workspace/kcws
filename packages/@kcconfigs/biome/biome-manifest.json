@@ -1,0 +1,15 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/manifest_schema.json",
+	"version": 1,
+	"configs": [
+		{
+			"default": "./src/presets/default.json",
+			"base": "./src/presets/base.json",
+			"astro": "./src/presets/astro.json",
+			"svelte": "./src/presets/svelte.json",
+			"features.ignores": "./src/features/ignores.json",
+			"features.ignoresBuild": "./src/features/ignoresBuild.json",
+			"features.htmlFull": "./src/features/htmlFull.json"
+		}
+	]
+}

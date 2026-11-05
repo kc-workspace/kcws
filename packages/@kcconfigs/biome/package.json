@@ -14,12 +14,10 @@
 		"@biomejs/biome": "2.6.2"
 	},
 	"peerDependencies": {
-		"@biomejs/biome": "^2.0.0"
+		"@biomejs/biome": "^2.6.0"
 	},
-	"main": "./src/presets/default.json",
 	"exports": {
-		".": "./src/presets/default.json",
-		"./*": "./src/presets/*.json"
+		"biome": "./biome-manifest.json"
 	},
 	"license": "AGPL-3.0-only",
 	"homepage": "https://github.com/kc-workspace/kcws/tree/main/packages/@kcconfigs/biome",
@@ -33,8 +31,8 @@
 		"email": "kcws@kc.in.th",
 		"url": "https://github.com/kamontat"
 	},
-	"keywords": ["linter", "formatter", "config", "biome"],
-	"files": ["CHANGELOG.json", "CHANGELOG.md", "src"],
+	"keywords": ["linter", "formatter", "config", "biome", "biome-plugin"],
+	"files": ["CHANGELOG.json", "CHANGELOG.md", "biome-manifest.json", "src"],
 	"engines": {
 		"node": ">=22"
 	},
