@@ -2,6 +2,6 @@
 	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
 	"html": {
 		"experimentalFullSupportEnabled": true,
-		"formatter": { "enabled": true }
+		"formatter": { "enabled": true, "indentScriptAndStyle": true }
 	}
 }
