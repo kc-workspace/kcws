@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.6](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.4.5...@kcconfigs/tsdown+v0.4.6) (2026-11-06)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @kcinternals/config-builder bumped to 0.3.6
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.2
+    * @kcconfigs/tsconfig bumped to 2.1.5
+
 ## [0.4.5](https://github.com/kc-workspace/kcws/compare/@kcconfigs/tsdown+v0.4.4...@kcconfigs/tsdown+v0.4.5) (2026-11-05)
 
 

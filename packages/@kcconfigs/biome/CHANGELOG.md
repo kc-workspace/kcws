@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.2](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.2.1...@kcconfigs/biome+v4.2.2) (2026-11-06)
+
+
+### Bugfixes
+
+* **kcconfigs/biome:** indent script and style in htmlFull formatter ([#291](https://github.com/kc-workspace/kcws/issues/291)) ([40261ba](https://github.com/kc-workspace/kcws/commit/40261baac80da8e2b64a62ac339943886deb1f7c))
+
 ## [4.2.1](https://github.com/kc-workspace/kcws/compare/@kcconfigs/biome+v4.2.0...@kcconfigs/biome+v4.2.1) (2026-11-05)
 
 

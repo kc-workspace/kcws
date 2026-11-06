@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.6](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.5...@kcws/zconfig+v0.3.6) (2026-11-06)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @kcconfigs/biome bumped to 4.2.2
+    * @kcconfigs/tsconfig bumped to 2.1.5
+    * @kcconfigs/tsdown bumped to 0.4.6
+    * @kcconfigs/vitest bumped to 0.4.6
+
 ## [0.3.5](https://github.com/kc-workspace/kcws/compare/@kcws/zconfig+v0.3.4...@kcws/zconfig+v0.3.5) (2026-11-05)
 
 
