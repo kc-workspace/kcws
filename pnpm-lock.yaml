@@ -243,8 +243,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0(typedoc@0.28.20)
       typedoc-plugin-dt-links:
-        specifier: 2.0.79
-        version: 2.0.79(typedoc@0.28.20)
+        specifier: 2.0.80
+        version: 2.0.80(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: 4.0.1
         version: 4.0.1(typedoc@0.28.20)
@@ -426,7 +426,7 @@ importers:
         version: 1.4.1(typedoc@0.28.20)
       typedoc-plugin-dt-links:
         specifier: ^2.0.0
-        version: 2.0.79(typedoc@0.28.20)
+        version: 2.0.80(typedoc@0.28.20)
       typedoc-plugin-extras:
         specifier: ^4.0.0
         version: 4.0.1(typedoc@0.28.20)
@@ -5598,8 +5598,8 @@ packages:
     peerDependencies:
       typedoc: ^0.25.13 || ^0.26.x || ^0.27.x || ^0.28.x
 
-  typedoc-plugin-dt-links@2.0.79:
-    resolution: {integrity: sha512-kDynmiXbNXumeNfbC1UCD2qJNexEIWoT7mS50xg/RE0FAXqWaseHfrmn2POsqJKlqpbnHM0VEmh9Fc//VjzBcw==}
+  typedoc-plugin-dt-links@2.0.80:
+    resolution: {integrity: sha512-DORpQvHuNgoxQNahZS+QlUAtu/4m6Hp2dmVk2etgcfZnXnfFeE7TWtGu9J09HbA8L7G2NsWrF9rYygcMCdajXA==}
     peerDependencies:
       typedoc: 0.28.x
 
@@ -11296,7 +11296,7 @@ snapshots:
       '@material/material-color-utilities': 0.3.0
       typedoc: 0.28.20(typescript@6.0.3)
 
-  typedoc-plugin-dt-links@2.0.79(typedoc@0.28.20):
+  typedoc-plugin-dt-links@2.0.80(typedoc@0.28.20):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
 
@@ -11506,7 +11506,7 @@ snapshots:
       lightningcss: 1.33.0
       picomatch: 4.0.7
       postcss: 8.5.26
-      rolldown: 1.2.8
+      rolldown: 1.2.16
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 24.19.2
