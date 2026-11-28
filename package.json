@@ -20,7 +20,7 @@
 		"commit": "git-cz"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.5",
+		"@biomejs/biome": "2.6.7",
 		"@commitlint/cli": "21.2.4",
 		"@commitlint/cz-commitlint": "21.2.4",
 		"@kcconfigs/biome": "workspace:",
