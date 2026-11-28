@@ -20,7 +20,7 @@
 		"yaml": "2.9.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.5",
+		"@biomejs/biome": "2.6.7",
 		"@commitlint/config-conventional": "21.2.4",
 		"@commitlint/types": "21.2.3",
 		"@kcconfigs/biome": "workspace:*",

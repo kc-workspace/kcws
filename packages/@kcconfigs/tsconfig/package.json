@@ -16,7 +16,7 @@
 		"@types/node": "^26.6.6"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.6.5",
+		"@biomejs/biome": "2.6.7",
 		"@kcconfigs/biome": "workspace:*"
 	},
 	"peerDependencies": {
